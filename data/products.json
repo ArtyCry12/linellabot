@@ -1,0 +1,137 @@
+[
+  {
+    "id": "lntl-001",
+    "nameRu": "Хлеб «Linella» традиционный нарезной",
+    "nameRo": "Franzelă „Linella” feliată",
+    "nameEn": "Linella traditional sliced bread",
+    "priceLei": 8.9,
+    "category": "bakery",
+    "isPromo": true
+  },
+  {
+    "id": "lntl-002",
+    "nameRu": "Молоко JLC 3.5%, 1 л",
+    "nameRo": "Lapte JLC 3.5%, 1 l",
+    "nameEn": "JLC milk 3.5%, 1 L",
+    "priceLei": 16.5,
+    "category": "dairy",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-003",
+    "nameRu": "Йогурт греческий классический 350 г",
+    "nameRo": "Iaurt grecesc clasic 350 g",
+    "nameEn": "Classic Greek yogurt 350 g",
+    "priceLei": 29.9,
+    "category": "dairy",
+    "isPromo": true
+  },
+  {
+    "id": "lntl-004",
+    "nameRu": "Курица охлаждённая (кг)",
+    "nameRo": "Pui refrigerat (kg)",
+    "nameEn": "Chilled chicken (per kg)",
+    "priceLei": 69.9,
+    "category": "meat",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-005",
+    "nameRu": "Филе лосося атлантического охлаждённое (кг)",
+    "nameRo": "File de somon atlantic refrigerat (kg)",
+    "nameEn": "Atlantic salmon fillet chilled (per kg)",
+    "priceLei": 249.0,
+    "category": "fish",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-006",
+    "nameRu": "Яблоки Gala, 1 кг",
+    "nameRo": "Mere Gala, 1 kg",
+    "nameEn": "Gala apples, 1 kg",
+    "priceLei": 21.5,
+    "category": "produce",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-007",
+    "nameRu": "Бананы эквадорские, 1 кг",
+    "nameRo": "Banane Ecuador, 1 kg",
+    "nameEn": "Ecuador bananas, 1 kg",
+    "priceLei": 24.9,
+    "category": "produce",
+    "isPromo": true
+  },
+  {
+    "id": "lntl-008",
+    "nameRu": "Томаты черри 250 г",
+    "nameRo": "Roșii cherry 250 g",
+    "nameEn": "Cherry tomatoes 250 g",
+    "priceLei": 35.0,
+    "category": "produce",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-009",
+    "nameRu": "Сыр «Пармезан» тертый 150 г",
+    "nameRo": "Brânză „Parmezan” rasă 150 g",
+    "nameEn": "Grated parmesan 150 g",
+    "priceLei": 54.5,
+    "category": "dairy",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-010",
+    "nameRu": "Оливковое масло extravirgin 750 мл",
+    "nameRo": "Ulei de măsline extravirgin 750 ml",
+    "nameEn": "Extra virgin olive oil 750 ml",
+    "priceLei": 159.0,
+    "category": "grocery",
+    "isPromo": true
+  },
+  {
+    "id": "lntl-011",
+    "nameRu": "Чай зелёный Jasmin 100 пак.",
+    "nameRo": "Ceai verde Jasmin 100 filtre",
+    "nameEn": "Jasmin green tea 100 bags",
+    "priceLei": 42.9,
+    "category": "grocery",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-012",
+    "nameRu": "Кофе в зернах Linella Espresso 500 г",
+    "nameRo": "Cafea boabe Linella Espresso 500 g",
+    "nameEn": "Linella Espresso coffee beans 500 g",
+    "priceLei": 119.0,
+    "category": "grocery",
+    "isPromo": true
+  },
+  {
+    "id": "lntl-013",
+    "nameRu": "Шоколад темный 70% 100 г",
+    "nameRo": "Ciocolată neagră 70% 100 g",
+    "nameEn": "Dark chocolate 70% 100 g",
+    "priceLei": 39.5,
+    "category": "sweet",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-014",
+    "nameRu": "Паста Barilla Spaghetti №5 500 г",
+    "nameRo": "Paste Barilla Spaghetti Nr.5 500 g",
+    "nameEn": "Barilla spaghetti No.5 500 g",
+    "priceLei": 47.0,
+    "category": "grocery",
+    "isPromo": false
+  },
+  {
+    "id": "lntl-015",
+    "nameRu": "Лимонад Linella груша-имбирь 1.5 л",
+    "nameRo": "Limonadă Linella pere-ghimbir 1.5 l",
+    "nameEn": "Linella pear-ginger lemonade 1.5 L",
+    "priceLei": 18.9,
+    "category": "drinks",
+    "isPromo": true
+  }
+]

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --linella-red: #e30613;
+  --linella-white: #ffffff;
+}
+
+.glass-panel {
+  @apply rounded-2xl border border-white/10 bg-white/5 shadow-glass backdrop-blur-xl;
+}
+
+.bento {
+  @apply grid gap-3 sm:gap-4;
+}
