@@ -1,12 +1,13 @@
 import { getBot } from "@/lib/telegram-bot";
+import type { Update } from "telegraf/types";
 
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 /**
  * Incoming Telegram webhook: POST JSON update.
  * Validates `x-telegram-bot-api-secret-token` against `WEBHOOK_SECRET`
- * (omit `WEBHOOK_SECRET` locally only if webhook is configured without secret).
+ * when the env var is set.
  */
 export async function POST(req: Request) {
   const expected = process.env.WEBHOOK_SECRET;
@@ -18,9 +19,9 @@ export async function POST(req: Request) {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  let body: unknown;
+  let body: Update;
   try {
-    body = await req.json();
+    body = (await req.json()) as Update;
   } catch {
     return new Response("Bad Request", { status: 400 });
   }

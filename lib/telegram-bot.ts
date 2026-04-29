@@ -1,6 +1,5 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { Telegraf, Markup } from "telegraf";
 import { tr } from "./i18n";
 import { findProductsByText, productLabel } from "./products";
@@ -27,6 +26,7 @@ function webAppUrl(pathname: string, query?: Record<string, string>): string {
 
 let botInstance: Telegraf | null = null;
 
+/** Token: set `BOT_TOKEN` in `.env` / Vercel (BotFather). */
 export function getBot(): Telegraf {
   const token = process.env.BOT_TOKEN;
   if (!token) {
@@ -77,7 +77,7 @@ function register(bot: Telegraf) {
         { source: photo },
         { caption: tr("welcomeCaption", "ro"), ...langKb() }
       );
-    } catch (error) {
+    } catch {
       console.log("Картинка не найдена, отправляем просто текст.");
       await ctx.reply(tr("welcomeCaption", "ro"), langKb());
     }
@@ -90,8 +90,8 @@ function register(bot: Telegraf) {
     setLang(uid, lang);
     await ctx.editMessageCaption(`✅ ${tr("langSet", lang)}`, {
       reply_markup: { inline_keyboard: [] },
-    }).catch(() => {
-      ctx.editMessageText(`✅ ${tr("langSet", lang)}`, {
+    }).catch(async () => {
+      await ctx.editMessageText(`✅ ${tr("langSet", lang)}`, {
         reply_markup: { inline_keyboard: [] },
       });
     });
@@ -189,20 +189,4 @@ export function assertSecret(header: string | null): boolean {
   const expected = process.env.WEBHOOK_SECRET;
   if (!expected) return true;
   return header === expected;
-}
-
-// Запускаем бота, если файл вызван напрямую через терминал
-if (process.argv[1] && process.argv[1].includes("telegram-bot.ts")) {
-  const bot = getBot();
-  console.log("🚀 Бот Linella запускается в режиме прямой связи (polling)...");
-  
-  bot.launch().then(() => {
-    console.log("✅ Бот успешно подключен! Можно писать в Telegram.");
-  }).catch((err) => {
-    console.error("❌ Ошибка запуска:", err);
-  });
-
-  // Правильная остановка при закрытии терминала
-  process.once("SIGINT", () => bot.stop("SIGINT"));
-  process.once("SIGTERM", () => bot.stop("SIGTERM"));
 }

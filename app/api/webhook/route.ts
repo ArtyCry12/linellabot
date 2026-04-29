@@ -1,4 +1,5 @@
-import { getBot, assertSecret } from "@/lib/telegram-bot";
+import { assertSecret, getBot } from "@/lib/telegram-bot";
+import type { Update } from "telegraf/types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,8 +9,9 @@ export async function POST(req: Request) {
     return new Response("Unauthorized", { status: 401 });
   }
 
+  let update: Update;
   try {
-    const update = await req.json();
+    update = (await req.json()) as Update;
     await getBot().handleUpdate(update);
   } catch (e) {
     console.error(e);
