@@ -1,0 +1,19 @@
+Huashu Design — глобальное правило для Cursor (скопируйте блок ниже в:
+Cursor → Settings → Rules → User Rules → Add rule)
+
+---CUT BELOW---
+
+## Huashu Design (обязательно для визуальных HTML-задач)
+
+Канон: skill «huashu-design» (репозиторий https://github.com/alchaincyf/huashu-design ).
+
+Установлено на этой машине:
+- Cursor personal skills: C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md
+- Agents / CLI skills: C:/Users/Asus/.agents/skills/huashu-design/SKILL.md
+Обновление: `npx.cmd skills add alchaincyf/huashu-design`
+
+Если задача про: интерактивный прототип (App/Web), HTML-слайды/PPTX, motion/анимацию и экспорт MP4/GIF, инфографику, выбор визуального направления, экспертный дизайн-ревью, длинное видео с озвучкой — сначала прочитай и следуй C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md; при необходимости подключай файлы из той же папки references/.
+
+При составлении плана или промпта явно указывай «Huashu Design» / «花叔 Design», чтобы исполнение шло по этому skill. Триггеры пользователя: @huashu, «по huashu», «花叔».
+
+---CUT ABOVE---

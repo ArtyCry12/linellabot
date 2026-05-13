@@ -1,0 +1,16 @@
+---
+description: Huashu Design — HTML high-fidelity prototypes, motion, decks, infographics; always load skill for matching tasks.
+alwaysApply: true
+---
+
+# Huashu Design (花叔) — workspace rule
+
+**Skill paths on this machine:** `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md` and `C:/Users/Asus/.agents/skills/huashu-design/SKILL.md`. **Repo:** https://github.com/alchaincyf/huashu-design — **refresh:** `npx.cmd skills add alchaincyf/huashu-design`
+
+**When this applies:** interactive HTML/App/Web prototypes, HTML slide decks and PPTX export, motion design and MP4/GIF export from HTML, infographics, design-direction exploration (fallback advisor), 5-dimension expert critique, long narrated explainers — per triggers in `SKILL.md`.
+
+**You MUST:** before executing such tasks, read `SKILL.md` above; use `references/` from the same folder as needed; in plans and replies, name **Huashu Design** explicitly so workflow follows the skill.
+
+**User shortcuts:** `@huashu`, «по huashu», «花叔».
+
+**Other Cursor projects:** paste the block from `huashu-design-USER-RULES.txt` (repo root) into **Cursor → Settings → Rules → User Rules**.
