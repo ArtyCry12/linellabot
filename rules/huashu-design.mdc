@@ -13,4 +13,4 @@ alwaysApply: true
 
 **User shortcuts:** `@huashu`, «по huashu», «花叔».
 
-**Other Cursor projects:** paste the block from `huashu-design-USER-RULES.txt` (repo root) into **Cursor → Settings → Rules → User Rules**.
+**Other Cursor projects:** paste the block from `huashu-design-USER-RULES.txt` (repo root) into **Cursor → Settings → Rules → User Rules**. Or run `python commands/huashu-sync-workspace-rules.py` from `C:/Users/Asus/.cursor` to copy this rule into every workspace Cursor remembers.

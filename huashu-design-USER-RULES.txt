@@ -16,4 +16,6 @@ Cursor → Settings → Rules → User Rules → Add rule)
 
 При составлении плана или промпта явно указывай «Huashu Design» / «花叔 Design», чтобы исполнение шло по этому skill. Триггеры пользователя: @huashu, «по huashu», «花叔».
 
+Авторазвёртывание project-rule во все открывавшиеся workspace: `python commands/huashu-sync-workspace-rules.py` из корня `C:/Users/Asus/.cursor`.
+
 ---CUT ABOVE---
