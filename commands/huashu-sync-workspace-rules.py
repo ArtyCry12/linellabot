@@ -1,12 +1,13 @@
-"""Idempotent: write Huashu Design rule into every known Cursor workspace folder."""
+"""Sync all project rules (.mdc) from this repo into every Cursor-known workspace root."""
 from __future__ import annotations
 
 import json
 import os
+import shutil
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
-SOURCE = Path(r"C:\Users\Asus\.cursor\rules\huashu-design.mdc")
+RULES_DIR = Path(r"C:\Users\Asus\.cursor\rules")
 _APPDATA = Path(os.environ.get("APPDATA", ""))
 STORAGE = _APPDATA / "Cursor/User/globalStorage/storage.json"
 WS_ROOT = _APPDATA / "Cursor/User/workspaceStorage"
@@ -48,9 +49,13 @@ def collect_uris() -> set[str]:
 
 
 def main() -> None:
-    text = SOURCE.read_text(encoding="utf-8")
+    files = sorted(RULES_DIR.glob("*.mdc"))
+    if not files:
+        print("No .mdc files in", RULES_DIR)
+        return
     done = 0
     skipped = 0
+    copied = 0
     for uri in sorted(collect_uris()):
         base = uri_to_path(uri)
         if not base or not base.is_dir():
@@ -58,10 +63,14 @@ def main() -> None:
             continue
         dest_dir = base / ".cursor" / "rules"
         dest_dir.mkdir(parents=True, exist_ok=True)
-        dest = dest_dir / "huashu-design.mdc"
-        dest.write_text(text, encoding="utf-8")
+        for src in files:
+            shutil.copy2(src, dest_dir / src.name)
+            copied += 1
         done += 1
-    print(f"huashu-design.mdc written to {done} workspace roots ({skipped} missing/skipped)")
+    print(
+        f"Copied {len(files)} rule file(s) to {done} workspace roots "
+        f"({copied} total copies; {skipped} roots missing/skipped)"
+    )
 
 
 if __name__ == "__main__":

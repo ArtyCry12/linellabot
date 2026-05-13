@@ -1,21 +1,11 @@
-Huashu Design — глобальное правило для Cursor (скопируйте блок ниже в:
-Cursor → Settings → Rules → User Rules → Add rule)
+Скопируйте **только** блок между CUT в **Cursor → Settings → Rules → User Rules** (одно короткое правило — не дублирует проектные `.mdc`).
 
 ---CUT BELOW---
 
-## Huashu Design (обязательно для визуальных HTML-задач)
-
-Канон: skill «huashu-design» (репозиторий https://github.com/alchaincyf/huashu-design ).
-
-Установлено на этой машине:
-- Cursor personal skills: C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md
-- Agents / CLI skills: C:/Users/Asus/.agents/skills/huashu-design/SKILL.md
-Обновление: `npx.cmd skills add alchaincyf/huashu-design`
-
-Если задача про: интерактивный прототип (App/Web), HTML-слайды/PPTX, motion/анимацию и экспорт MP4/GIF, инфографику, выбор визуального направления, экспертный дизайн-ревью, длинное видео с озвучкой — сначала прочитай и следуй C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md; при необходимости подключай файлы из той же папки references/.
-
-При составлении плана или промпта явно указывай «Huashu Design» / «花叔 Design», чтобы исполнение шло по этому skill. Триггеры пользователя: @huashu, «по huashu», «花叔».
-
-Авторазвёртывание project-rule во все открывавшиеся workspace: `python commands/huashu-sync-workspace-rules.py` из корня `C:/Users/Asus/.cursor`.
+Оркестрация: не подгружай все MCP/скиллы сразу. Перед вызовом инструмента с нового MCP-сервера прочитай один JSON-дескриптор из `C:/Users/Asus/.cursor/projects/c-Users-Asus-cursor/mcps/<сервер>/tools/`. Читай `SKILL.md` только если задача совпадает с описанием скилла. Расширенная маршрутизация и таблицы — в project rules `00-agent-orchestrator.mdc` и `mcp-routing.mdc` в репо `C:/Users/Asus/.cursor` (синхрон: `python commands/huashu-sync-workspace-rules.py`). Приоритет: явные User Rules и текст задачи. Для визуального HTML pipelines — по запросу читай `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md`.
 
 ---CUT ABOVE---
+
+(Необязательно, отдельным User Rule) Huashu / 花叔: при прототипах, слайдах, motion, инфографике — следовать `SKILL.md` по путям выше; триггеры @huashu / «по huashu».
+
+Длинная версия только для справки (не вставлять целиком в User Rules): см. исторические коммиты или `rules/huashu-design.mdc`.

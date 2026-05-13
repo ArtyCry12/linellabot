@@ -44,8 +44,10 @@ This project is indexed by GitNexus as **.cursor** (11 symbols, 4 relationships,
 
 ## Huashu Design (花叔 Design)
 
-Установлено глобально: `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md` (копия с `C:/Users/Asus/.agents/skills/huashu-design/`). Обновление: `npx.cmd skills add alchaincyf/huashu-design`.
+Скилл: `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md` (или `~/.agents/skills/`). Обновление: `npx.cmd skills add alchaincyf/huashu-design`. Правило в `.cursor/rules/huashu-design.mdc` подключается **по релевантности** (не always-on), чтобы не раздувать контекст.
 
-Если задача про HTML-прототипы, слайды/PPTX, motion/MP4/GIF, инфографику, дизайн-направления или ревью — **сначала** прочитай этот `SKILL.md` и при необходимости `references/` рядом. В планах и ответах называй явно **Huashu Design**, чтобы цепочка шла по skill (@huashu / «по huashu»).
+## Оркестрация MCP и скиллов
 
-Текст для **User Rules** (все проекты): см. файл `huashu-design-USER-RULES.txt` в корне этого репозитория.
+Лёгкое правило-оркестратор: `.cursor/rules/00-agent-orchestrator.mdc`. Детали по MCP — `.cursor/rules/mcp-routing.mdc` (по задаче). Синхрон этих правил во все известные workspace: `python commands/huashu-sync-workspace-rules.py`.
+
+Текст для **User Rules** (весь Cursor): `huashu-design-USER-RULES.txt` — компактный блок.

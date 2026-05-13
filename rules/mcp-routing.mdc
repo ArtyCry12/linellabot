@@ -1,0 +1,24 @@
+---
+description: Когда нужны MCP — выбор сервера, схема инструментов, порядок вызова, снижение конфликтов между web-провайдерами и IDE-браузером.
+alwaysApply: false
+---
+
+# MCP — детальная маршрутизация (по запросу)
+
+## Где лежат дескрипторы
+
+`C:/Users/Asus/.cursor/projects/c-Users-Asus-cursor/mcps/<server>/tools/*.json` — читать **только** инструменты, которые собираешься вызвать.
+
+## Пересечения и конфликты
+
+- **Несколько web-источников:** Exa, Tavily, `user-fetch`, браузер MCP — выбери **один** основной путь под задачу; второй только если первый не покрыл (не параллель «все поисковики» без причины).
+- **Браузер:** `cursor-ide-browser` — для реальной страницы/формы. Для «быстро скачать markdown по URL» часто достаточно fetch/Exa/Tavily по цели пользователя и User Rules.
+- **GitNexus vs grep:** в индексированных репо — GitNexus; «тупой» grep по всему диску без цели — избегать.
+
+## Плагины как скиллы
+
+Кэш плагинов: `plugins/cache/cursor-public/<vendor>/<hash>/skills/**/SKILL.md`. Загружай skill-файл только если задача совпадает с триггерами skill (Next.js, Supabase, Stripe и т.д.) или пользователь указал провайдера.
+
+## Встроенные Cursor skills (skills-cursor)
+
+Используй по смыслу: `create-rule`, `create-skill`, `create-hook`, `sdk`, `canvas`, `babysit`, `split-to-prs`, `statusline`, `update-cursor-settings`, `shell` и др. — **читай SKILL при необходимости**, не включай все описания в контекст заранее.
