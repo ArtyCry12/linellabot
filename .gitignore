@@ -21,9 +21,8 @@ projects/*/*
 # Agent transcripts for citation
 !projects/*/agent-transcripts/
 !projects/*/agent-transcripts/**
-# Terminal output files
-!projects/*/terminals/
-!projects/*/terminals/**
+# Terminal session dumps — local only (never commit)
+projects/*/terminals/
 # Conversation notes (shared scratchpad)
 !projects/*/agent-notes/
 !projects/*/agent-notes/**
