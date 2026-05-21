@@ -9,7 +9,7 @@ alwaysApply: true
 
 1. **Не подтягивай** полные инструкции всех MCP, плагинов и скиллов в каждый ответ. Подключай их **только если** задача в явном или сильном неявном запросе это требует.
 2. **Перед первым вызовом** инструмента MCP с нового сервера — прочитай **один** JSON-дескриптор из `projects/c-Users-Asus-cursor/mcps/<имя-сервера>/tools/<tool>.json` (или список папки), затем вызывай. Не перечитывай все дескрипторы подряд «на про запас».
-3. **Скиллы:** читай `SKILL.md` только когда задача попадает в описание скилла (или пользователь просит явно). Пути: `skills-cursor/`, `.cursor/skills/` (личные), `~/.agents/skills/` (CLI agents), плагины — `plugins/cache/cursor-public/*/skills/**/SKILL.md` только по **явному** тегу `@…` или прямой просьбе.
+3. **Скиллы:** читай `SKILL.md` только когда задача попадает в описание скилла (или пользователь просит явно). Пути: `skills-cursor/`, `skills/` (личные, напр. `skills/clone-website/`, `skills/huashu-design/`), `~/.agents/skills/` (CLI agents), плагины — `plugins/cache/cursor-public/*/skills/**/SKILL.md` только по **явному** тегу `@…` или прямой просьбе.
 4. Пользовательские **User Rules** в Cursor имеют приоритет над этим файлом при конфликте.
 5. В этом репозитории блок **GitNexus** в `AGENTS.md` / `CLAUDE.md` сохраняется для правок **символов кода** — не дублируй его здесь.
 
@@ -34,6 +34,13 @@ alwaysApply: true
 | Quest / hzdb | `plugin-meta-quest-agentic-tools-hzdb` |
 | Wix (в других проектах) | `plugin-wix-wix-mcp` |
 | GitLens / PR (контекст IDE) | `user-eamodio.gitlens-extension-GitKraken` |
+
+## Быстрый выбор скиллов (личные)
+
+| Задача | Скилл (`skills/<name>/SKILL.md`) |
+|--------|----------------------------------|
+| Клон сайта, pixel-perfect rebuild | `clone-website` — браузер MCP обязателен; пустой проект → `node skills/clone-website/scripts/init-clone-project.mjs .` |
+| HTML-прототип, motion, слайды | `huashu-design` — `@huashu` |
 
 Расширенные подсказки и антиконфликты — в правиле **`mcp-routing`** (подключается по описанию, не всегда).
 

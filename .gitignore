@@ -5,11 +5,6 @@ node_modules
 # >>> CURSOR MANAGED BLOCK >>>
 # Ignore everything in .cursor
 *
-!.gitignore
-# Tracked workspace metadata (Huashu + agent instructions)
-!AGENTS.md
-!CLAUDE.md
-!huashu-design-USER-RULES.txt
 # Un-ignore projects so we can descend to allowlisted subdirs
 !projects/
 projects/*
@@ -21,8 +16,9 @@ projects/*/*
 # Agent transcripts for citation
 !projects/*/agent-transcripts/
 !projects/*/agent-transcripts/**
-# Terminal session dumps — local only (never commit)
-projects/*/terminals/
+# Terminal output files
+!projects/*/terminals/
+!projects/*/terminals/**
 # Conversation notes (shared scratchpad)
 !projects/*/agent-notes/
 !projects/*/agent-notes/**
@@ -38,8 +34,6 @@ projects/*/terminals/
 # User's personal skills
 !skills/
 !skills/**
-# Huashu skill tree is large — keep local only; reinstall: npx.cmd skills add alchaincyf/huashu-design
-skills/huashu-design/
 # User's personal slash commands
 !commands/
 !commands/**
@@ -53,6 +47,7 @@ skills/huashu-design/
 !rules/
 !rules/**
 # <<< CURSOR MANAGED BLOCK <<<
+
 
 # --- ИСКЛЮЧЕНИЯ (ЧТОБЫ НЕ ТОРМОЗИЛО) ---
 # Игнорируем тяжелый кэш и временные файлы внутри разрешенных папок

@@ -46,6 +46,10 @@ This project is indexed by GitNexus as **.cursor** (11 symbols, 4 relationships,
 
 Скилл: `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md` (или `~/.agents/skills/`). Обновление: `npx.cmd skills add alchaincyf/huashu-design`. Правило в `.cursor/rules/huashu-design.mdc` подключается **по релевантности** (не always-on), чтобы не раздувать контекст.
 
+## Clone Website (AI Website Cloner)
+
+Скилл: `C:/Users/Asus/.cursor/skills/clone-website/SKILL.md`. Шаблон Next.js: `skills/clone-website/template/`. Bootstrap в любую папку: `node skills/clone-website/scripts/init-clone-project.mjs <dir>`. Триггеры: `@clone-website`, `/clone-website`, клон/копия сайта. Требует **cursor-ide-browser** MCP.
+
 ## Оркестрация MCP и скиллов
 
 Лёгкое правило-оркестратор: `.cursor/rules/00-agent-orchestrator.mdc`. Детали по MCP — `.cursor/rules/mcp-routing.mdc` (по задаче). Синхрон этих правил во все известные workspace: `python commands/huashu-sync-workspace-rules.py`.
