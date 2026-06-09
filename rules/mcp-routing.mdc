@@ -9,6 +9,14 @@ alwaysApply: false
 
 `C:/Users/Asus/.cursor/projects/c-Users-Asus-cursor/mcps/<server>/tools/*.json` — читать **только** инструменты, которые собираешься вызвать.
 
+## Obsidian (always-on)
+
+- Сервер **`obsidian`** — встроенный MCP плагина Local REST API (`http://127.0.0.1:27123/mcp/`).
+- Правило **`obsidian-mcp.mdc`** (`alwaysApply: true`) — для vault/PKM/заметок **всегда** предпочитай Obsidian MCP.
+- Не дублируй: `user-memory` для длинных заметок; `Read` по диску вместо vault API; grep по `.obsidian` без цели.
+- Obsidian Desktop должен быть запущен. Веб obsidian.md — **не** этот MCP.
+- Скилл: `skills/obsidian-mcp/SKILL.md`.
+
 ## Пересечения и конфликты
 
 - **Несколько web-источников:** Exa, Tavily, `user-fetch`, браузер MCP — выбери **один** основной путь под задачу; второй только если первый не покрыл (не параллель «все поисковики» без причины).

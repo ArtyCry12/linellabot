@@ -1,0 +1,19 @@
+---
+description: >-
+  Awesome DESIGN.md — 71 brand design systems (Stripe, Linear, Vercel, etc.).
+  Triggers @awesome-design-md, @design-md, DESIGN.md, looks like [brand], design
+  tokens from real sites, getdesign.md.
+alwaysApply: false
+---
+
+# Awesome DESIGN.md — load on relevance
+
+**Skill:** `C:/Users/Asus/.cursor/skills/awesome-design-md/SKILL.md`
+
+**Library:** `C:/Users/Asus/.cursor/skills/awesome-design-md/library/<slug>/DESIGN.md`
+
+**Catalog:** `catalog.md` in the same folder — pick slug before reading a 500+ line spec.
+
+**Triggers:** `@awesome-design-md`, `@design-md`, "use DESIGN.md", "looks like Stripe/Linear/…", design system from a known product site.
+
+**Do not** load the full skill for generic "make it pretty" with no brand reference — use huashu-design design-direction mode instead.

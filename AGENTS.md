@@ -50,6 +50,14 @@ This project is indexed by GitNexus as **.cursor** (11 symbols, 4 relationships,
 
 Скилл: `C:/Users/Asus/.cursor/skills/clone-website/SKILL.md`. Шаблон Next.js: `skills/clone-website/template/`. Bootstrap в любую папку: `node skills/clone-website/scripts/init-clone-project.mjs <dir>`. Триггеры: `@clone-website`, `/clone-website`, клон/копия сайта. Требует **cursor-ide-browser** MCP.
 
+## Obsidian MCP (always-on)
+
+MCP `obsidian` в `mcp.json` — встроенный сервер плагина **Local REST API with MCP** (`http://127.0.0.1:27123/mcp/`, Bearer). Правило `rules/obsidian-mcp.mdc` всегда активно. Скилл: `skills/obsidian-mcp/SKILL.md`. Требует запущенный **Obsidian Desktop** (не web).
+
+## 21st Design (21st.dev UI registry)
+
+Скилл: `C:/Users/Asus/.cursor/skills/21st-design/SKILL.md`. Локальный каталог: `lib/21st/search_results.json` (обновление: `node skills/21st-design/scripts/ensure-library.mjs`). Триггеры: `@21st`, 21st.dev, Magic MCP `/ui`, установка компонентов через `shadcn add https://21st.dev/r/...`. MCP: `@21st-dev/magic` (ключ: https://21st.dev/magic/console).
+
 ## Оркестрация MCP и скиллов
 
 Лёгкое правило-оркестратор: `.cursor/rules/00-agent-orchestrator.mdc`. Детали по MCP — `.cursor/rules/mcp-routing.mdc` (по задаче). Синхрон этих правил во все известные workspace: `python commands/huashu-sync-workspace-rules.py`.

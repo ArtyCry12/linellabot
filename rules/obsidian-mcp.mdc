@@ -1,0 +1,74 @@
+---
+description: >-
+  Obsidian vault — always-on MCP через Local REST API. Читать/писать заметки,
+  поиск, теги, ссылки, команды плагина, REST API vault. Применяется в любом
+  workspace и при любом запросе, где релевантен vault или база знаний.
+alwaysApply: true
+---
+
+# Obsidian MCP (always-on)
+
+## Исключение из оркестратора
+
+Это правило **всегда активно** (`alwaysApply: true`). Для задач, связанных с заметками, vault, PKM, документацией в Obsidian — **приоритет у MCP `obsidian`**, а не у grep/файловой системы.
+
+## Подключение
+
+| Параметр | Значение |
+|----------|----------|
+| Сервер MCP | `obsidian` |
+| Транспорт | Streamable HTTP (встроенный MCP плагина) |
+| URL | `http://127.0.0.1:27123/mcp/` (HTTP; HTTPS: `https://127.0.0.1:27124/mcp/`) |
+| Auth | `Authorization: Bearer <ключ из Settings → Local REST API>` |
+| Конфиг | `C:/Users/Asus/.cursor/mcp.json` (глобально для всех проектов) |
+| Плагин | **Local REST API with MCP** v4.x в Obsidian Desktop |
+
+**Перед первым вызовом** прочитай один JSON-дескриптор из `projects/c-Users-Asus-cursor/mcps/user-obsidian/tools/` (или `plugin-obsidian-obsidian/tools/`), затем вызывай нужный инструмент.
+
+## Обязательные условия
+
+1. **Obsidian Desktop** должен быть запущен с включённым плагином Local REST API.
+2. В плагине: **Enable HTTP server** (порт 27123) — для Cursor без проблем с self-signed TLS.
+3. При 401 — проверь Bearer-ключ в `mcp.json` и в Obsidian Settings → Local REST API.
+4. **Obsidian Web** (obsidian.md) этим MCP **не** обслуживается — только локальное приложение.
+
+## Когда использовать (всегда предпочитай MCP)
+
+- Прочитать / создать / обновить / удалить заметку
+- Поиск по vault (текст, теги, пути, даты)
+- Теги, frontmatter, backlinks, исходящие ссылки
+- Список папок и файлов vault
+- Открыть заметку в UI Obsidian (`/open/...`)
+- Выполнить команду Obsidian / плагина (`/commands/...`)
+- Синхронизировать знания: чаты → vault, vault → код/доки
+- Любой запрос «в моих заметках», «в Obsidian», «в vault»
+
+## Когда НЕ дублировать
+
+- Не читай vault через `Read` по абсолютному пути, если задача — Obsidian-контент (MCP даёт корректные пути, метаданные, теги).
+- Не используй `user-memory` для долгих заметок — vault в Obsidian.
+- Для веб-страниц вне vault — Exa/Tavily/fetch, не Obsidian.
+
+## Полный охват возможностей
+
+Используй **все** инструменты MCP и REST, которые экспонирует плагин:
+
+- CRUD заметок (markdown + frontmatter)
+- Поиск: simple / query / по тегам и периодам
+- Структура vault: list, tree, move, rename
+- Ссылки: backlinks, outgoing, broken
+- Теги: list / add / remove
+- Периодические заметки (daily/weekly) если настроены
+- **Команды** Obsidian и community plugins (если не заблокированы в настройках плагина)
+- Открытие файлов в Obsidian UI
+
+Если инструмент недоступен — в Obsidian: Settings → Local REST API → разрешить dangerous commands / снять блокировки команд.
+
+## Skill
+
+Детальный workflow и каталог: `C:/Users/Asus/.cursor/skills/obsidian-mcp/SKILL.md` — читай при первой vault-задаче в сессии.
+
+## Безопасность
+
+- API-ключ только в `mcp.json` (файл в `.gitignore`, не коммитить).
+- Vault доступен только с `127.0.0.1` — не публикуй порт наружу.

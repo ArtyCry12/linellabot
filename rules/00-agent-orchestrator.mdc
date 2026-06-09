@@ -7,7 +7,7 @@ alwaysApply: true
 
 ## Принципы
 
-1. **Не подтягивай** полные инструкции всех MCP, плагинов и скиллов в каждый ответ. Подключай их **только если** задача в явном или сильном неявном запросе это требует.
+1. **Не подтягивай** полные инструкции всех MCP, плагинов и скиллов в каждый ответ. Подключай их **только если** задача в явном или сильном неявном запросе это требует. **Исключение:** `obsidian` MCP — always-on правило `obsidian-mcp.mdc`; для vault/PKM используй его без ожидания явного тега.
 2. **Перед первым вызовом** инструмента MCP с нового сервера — прочитай **один** JSON-дескриптор из `projects/c-Users-Asus-cursor/mcps/<имя-сервера>/tools/<tool>.json` (или список папки), затем вызывай. Не перечитывай все дескрипторы подряд «на про запас».
 3. **Скиллы:** читай `SKILL.md` только когда задача попадает в описание скилла (или пользователь просит явно). Пути: `skills-cursor/`, `skills/` (личные, напр. `skills/clone-website/`, `skills/huashu-design/`), `~/.agents/skills/` (CLI agents), плагины — `plugins/cache/cursor-public/*/skills/**/SKILL.md` только по **явному** тегу `@…` или прямой просьбе.
 4. Пользовательские **User Rules** в Cursor имеют приоритет над этим файлом при конфликте.
@@ -34,6 +34,7 @@ alwaysApply: true
 | Quest / hzdb | `plugin-meta-quest-agentic-tools-hzdb` |
 | Wix (в других проектах) | `plugin-wix-wix-mcp` |
 | GitLens / PR (контекст IDE) | `user-eamodio.gitlens-extension-GitKraken` |
+| **Obsidian vault (always-on)** | `obsidian` — `http://127.0.0.1:27123/mcp/`, Bearer в `mcp.json` |
 
 ## Быстрый выбор скиллов (личные)
 
@@ -41,9 +42,11 @@ alwaysApply: true
 |--------|----------------------------------|
 | Клон сайта, pixel-perfect rebuild | `clone-website` — браузер MCP обязателен; пустой проект → `node skills/clone-website/scripts/init-clone-project.mjs .` |
 | HTML-прототип, motion, слайды | `huashu-design` — `@huashu` |
+| React UI из 21st.dev / Magic MCP | `21st-design` — `@21st`, `/ui`, `shadcn add https://21st.dev/r/...` |
+| Vault, заметки, PKM | `obsidian-mcp` — always-on, MCP `obsidian` |
 
 Расширенные подсказки и антиконфликты — в правиле **`mcp-routing`** (подключается по описанию, не всегда).
 
 ## Локальная конфигурация MCP
 
-Корневой `mcp.json` (user): команды `gitnexus`, `@modelcontextprotocol/server-memory`, `server-fetch`. Дескрипторы инструментов для UI-агента лежат в `projects/.../mcps/`.
+Корневой `mcp.json` (user): `gitnexus`, `memory`, `fetch`, **`obsidian`** (HTTP MCP плагина). Дескрипторы — `projects/.../mcps/`.
