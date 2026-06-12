@@ -5,28 +5,41 @@ alwaysApply: false
 
 # MCP — детальная маршрутизация (по запросу)
 
-## Где лежат дескрипторы
+Registry: `SYSTEM-REGISTRY.md`. Decision tree: `rules/auto-orchestrator.mdc`.
 
-`C:/Users/Asus/.cursor/projects/c-Users-Asus-cursor/mcps/<server>/tools/*.json` — читать **только** инструменты, которые собираешься вызвать.
+## Дескрипторы
+
+`projects/c-Users-Asus-cursor/mcps/<server>/tools/*.json` — читать **только** инструменты перед вызовом.
+
+## Naming map (config ↔ folder)
+
+| MCP id | Descriptor folder |
+|--------|-------------------|
+| `obsidian` | `user-obsidian` |
+| `gitnexus` | `user-gitnexus` |
+| `memory` | `user-memory` |
+| `fetch` | `user-fetch` |
+| `@21st-dev/magic` | см. `mcps/*magic*` или 21st plugin folder |
 
 ## Obsidian (always-on)
 
-- Сервер **`obsidian`** — встроенный MCP плагина Local REST API (`http://127.0.0.1:27123/mcp/`).
-- Правило **`obsidian-mcp.mdc`** (`alwaysApply: true`) — для vault/PKM/заметок **всегда** предпочитай Obsidian MCP.
-- Не дублируй: `user-memory` для длинных заметок; `Read` по диску вместо vault API; grep по `.obsidian` без цели.
-- Obsidian Desktop должен быть запущен. Веб obsidian.md — **не** этот MCP.
+- Сервер **`obsidian`** — Local REST API (`http://127.0.0.1:27123/mcp/`).
+- Правило `obsidian-mcp.mdc` — vault/PKM через MCP, не grep/Read по диску.
 - Скилл: `skills/obsidian-mcp/SKILL.md`.
 
-## Пересечения и конфликты
+## Web — один primary провайдер
 
-- **Несколько web-источников:** Exa, Tavily, `user-fetch`, браузер MCP — выбери **один** основной путь под задачу; второй только если первый не покрыл (не параллель «все поисковики» без причины).
-- **Браузер:** `cursor-ide-browser` — для реальной страницы/формы. Для «быстро скачать markdown по URL» часто достаточно fetch/Exa/Tavily по цели пользователя и User Rules.
-- **GitNexus vs grep:** в индексированных репо — GitNexus; «тупой» grep по всему диску без цели — избегать.
+1. **Research / search / docs** → **`plugin-exa-exa`** (primary)
+2. **Known single URL** → `user-fetch`
+3. **Tavily / Firecrawl** — только если Exa не покрыл задачу; **не** параллельно с Exa
+4. **Live page / forms / clicks** → `cursor-ide-browser`
 
-## Плагины как скиллы
+## Прочие антиконфликты
 
-Кэш плагинов: `plugins/cache/cursor-public/<vendor>/<hash>/skills/**/SKILL.md`. Загружай skill-файл только если задача совпадает с триггерами skill (Next.js, Supabase, Stripe и т.д.) или пользователь указал провайдера.
+- **GitNexus vs grep:** indexed repo → GitNexus; blind disk grep — избегать.
+- **Obsidian vs memory:** long-term notes → vault; session crumbs → `user-memory`.
+- **Plugin skills:** `plugins/cache/cursor-public/*/skills/**/SKILL.md` — по триггеру задачи, не все сразу.
 
-## Встроенные Cursor skills (skills-cursor)
+## skills-cursor
 
-Используй по смыслу: `create-rule`, `create-skill`, `create-hook`, `sdk`, `canvas`, `babysit`, `split-to-prs`, `statusline`, `update-cursor-settings`, `shell` и др. — **читай SKILL при необходимости**, не включай все описания в контекст заранее.
+`create-rule`, `create-skill`, `sdk`, `canvas`, `babysit`, `fix-ci`, … — читать SKILL по необходимости.

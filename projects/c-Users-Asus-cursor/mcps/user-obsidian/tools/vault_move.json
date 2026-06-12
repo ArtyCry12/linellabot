@@ -1,0 +1,27 @@
+{
+  "name": "vault_move",
+  "description": "Move (rename) a vault file to a new path. Creates any missing parent directories at the destination automatically. Preserves file history and updates internal Obsidian links. Throws if the source file does not exist. Throws if the destination already exists and allowOverwrite is not set to true.\n\nThe destination must be a vault-relative path (e.g. 'archive/notes/todo.md'). If the destination ends with '/', the source filename is preserved and the file is placed in that directory (e.g. destination 'archive/' moves 'notes/todo.md' to 'archive/todo.md'). The destination must not escape the vault root (i.e. the resolved path must remain within the vault).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "Source file path relative to vault root"
+      },
+      "destination": {
+        "type": "string",
+        "description": "Destination path relative to vault root. May end with '/' to preserve the source filename in the target directory."
+      },
+      "allowOverwrite": {
+        "type": "boolean",
+        "description": "If true, move proceeds even when a file already exists at the destination (default: false)"
+      }
+    },
+    "required": [
+      "path",
+      "destination"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

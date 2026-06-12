@@ -46,6 +46,11 @@ projects/*/*
 # User-level cursor rules
 !rules/
 !rules/**
+# Hub registry and agent docs
+!SYSTEM-REGISTRY.md
+!AGENTS.md
+!CLAUDE.md
+!huashu-design-USER-RULES.txt
 # <<< CURSOR MANAGED BLOCK <<<
 
 
@@ -60,3 +65,7 @@ plugins/cache/
 .DS_Store
 Thumbs.db
 .gitnexus
+extensions/
+mcp.json
+plans/archive/
+skills/cybersecurity/library/

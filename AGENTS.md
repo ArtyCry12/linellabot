@@ -50,9 +50,9 @@ This project is indexed by GitNexus as **.cursor** (11 symbols, 4 relationships,
 
 Скилл: `C:/Users/Asus/.cursor/skills/clone-website/SKILL.md`. Шаблон Next.js: `skills/clone-website/template/`. Bootstrap в любую папку: `node skills/clone-website/scripts/init-clone-project.mjs <dir>`. Триггеры: `@clone-website`, `/clone-website`, клон/копия сайта. Требует **cursor-ide-browser** MCP.
 
-## Obsidian MCP (always-on)
+## Obsidian MCP (always-on, автономный)
 
-MCP `obsidian` в `mcp.json` — встроенный сервер плагина **Local REST API with MCP** (`http://127.0.0.1:27123/mcp/`, Bearer). Правило `rules/obsidian-mcp.mdc` всегда активно. Скилл: `skills/obsidian-mcp/SKILL.md`. Требует запущенный **Obsidian Desktop** (не web).
+MCP `obsidian` в `mcp.json`. Правило `rules/obsidian-mcp.mdc` — **always-on**: агент **сам** создаёт/редактирует/удаляет заметки после содержательной работы, **без** запроса «сохранить?». Скилл: `skills/obsidian-mcp/SKILL.md`. Obsidian Desktop должен быть запущен.
 
 ## 21st Design (21st.dev UI registry)
 
@@ -60,6 +60,8 @@ MCP `obsidian` в `mcp.json` — встроенный сервер плагин�
 
 ## Оркестрация MCP и скиллов
 
-Лёгкое правило-оркестратор: `.cursor/rules/00-agent-orchestrator.mdc`. Детали по MCP — `.cursor/rules/mcp-routing.mdc` (по задаче). Синхрон этих правил во все известные workspace: `python commands/huashu-sync-workspace-rules.py`.
+**Registry:** `SYSTEM-REGISTRY.md` · **Decision tree:** `rules/auto-orchestrator.mdc`
+
+Лёгкое правило-оркестратор: `rules/00-agent-orchestrator.mdc`. Детали MCP — `rules/mcp-routing.mdc`. Синхрон rules: `python commands/huashu-sync-workspace-rules.py`. One-click refresh: `commands/cursor-system-refresh.cmd`.
 
 Текст для **User Rules** (весь Cursor): `huashu-design-USER-RULES.txt` — компактный блок.

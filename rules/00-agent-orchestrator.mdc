@@ -5,48 +5,39 @@ alwaysApply: true
 
 # Оркестрация агента (компактно)
 
+**Registry:** `SYSTEM-REGISTRY.md` · **Decision tree:** `rules/auto-orchestrator.mdc` (on-demand)
+
 ## Принципы
 
-1. **Не подтягивай** полные инструкции всех MCP, плагинов и скиллов в каждый ответ. Подключай их **только если** задача в явном или сильном неявном запросе это требует. **Исключение:** `obsidian` MCP — always-on правило `obsidian-mcp.mdc`; для vault/PKM используй его без ожидания явного тега.
-2. **Перед первым вызовом** инструмента MCP с нового сервера — прочитай **один** JSON-дескриптор из `projects/c-Users-Asus-cursor/mcps/<имя-сервера>/tools/<tool>.json` (или список папки), затем вызывай. Не перечитывай все дескрипторы подряд «на про запас».
-3. **Скиллы:** читай `SKILL.md` только когда задача попадает в описание скилла (или пользователь просит явно). Пути: `skills-cursor/`, `skills/` (личные, напр. `skills/clone-website/`, `skills/huashu-design/`), `~/.agents/skills/` (CLI agents), плагины — `plugins/cache/cursor-public/*/skills/**/SKILL.md` только по **явному** тегу `@…` или прямой просьбе.
-4. Пользовательские **User Rules** в Cursor имеют приоритет над этим файлом при конфликте.
-5. В этом репозитории блок **GitNexus** в `AGENTS.md` / `CLAUDE.md` сохраняется для правок **символов кода** — не дублируй его здесь.
+1. Не подтягивай все MCP/скиллы в каждый ответ — только по задаче. **Исключение:** `obsidian-mcp.mdc` (vault always-on).
+2. Перед первым вызовом MCP с нового сервера — **один** JSON из `projects/c-Users-Asus-cursor/mcps/<server>/tools/`.
+3. Скиллы: `skills/`, `skills-cursor/`, `~/.agents/skills/`, plugin cache — по триггеру или `@tag`.
+4. User Rules в Cursor — приоритет выше этого файла.
+5. GitNexus блок в `AGENTS.md` — для правок символов; не дублируй здесь.
 
-## Быстрый выбор MCP (по типу задачи)
+## MCP (быстрый выбор)
 
-| Задача | Сервер (каталог `projects/c-Users-Asus-cursor/mcps/`) |
-|--------|----------------------------------------------------------|
-| Браузер, клики, скриншоты | `cursor-ide-browser` |
-| Код-граф, impact | `user-gitnexus` |
-| Память сессии MCP | `user-memory` |
-| HTTP/страница по URL | `user-fetch` или сеть задач |
-| Поиск/извлечение веб (Exa) | `plugin-exa-exa` |
-| Поиск/crawl (Tavily) | `plugin-tavily-tavily` |
-| Supabase | `plugin-supabase-supabase` |
-| Vercel | `plugin-vercel-vercel` |
-| Stripe | `plugin-stripe-stripe` |
-| Resend / почта | `plugin-resend-resend` |
-| Figma | `plugin-figma-figma` |
-| Clerk | `plugin-clerk-clerk` |
-| Webflow | `plugin-webflow-webflow` |
-| Zapier | `plugin-zapier-zapier` |
-| Quest / hzdb | `plugin-meta-quest-agentic-tools-hzdb` |
-| Wix (в других проектах) | `plugin-wix-wix-mcp` |
-| GitLens / PR (контекст IDE) | `user-eamodio.gitlens-extension-GitKraken` |
-| **Obsidian vault (always-on)** | `obsidian` — `http://127.0.0.1:27123/mcp/`, Bearer в `mcp.json` |
+| Задача | Сервер (descriptor folder) |
+|--------|----------------------------|
+| Vault / PKM | `obsidian` → `user-obsidian` |
+| Код-граф | `gitnexus` → `user-gitnexus` |
+| Память сессии | `memory` → `user-memory` |
+| Один URL | `fetch` → `user-fetch` |
+| **Web research (primary)** | **`plugin-exa-exa`** |
+| 21st.dev UI | `@21st-dev/magic` |
+| Браузер E2E | `cursor-ide-browser` |
+| Supabase / Vercel / Stripe / Clerk / Figma / Zapier | `plugin-*` по задаче |
+| Crawl fallback | `plugin-tavily-tavily` (если Exa не хватило) |
 
-## Быстрый выбор скиллов (личные)
+## Скиллы (личные)
 
-| Задача | Скилл (`skills/<name>/SKILL.md`) |
-|--------|----------------------------------|
-| Клон сайта, pixel-perfect rebuild | `clone-website` — браузер MCP обязателен; пустой проект → `node skills/clone-website/scripts/init-clone-project.mjs .` |
-| HTML-прототип, motion, слайды | `huashu-design` — `@huashu` |
-| React UI из 21st.dev / Magic MCP | `21st-design` — `@21st`, `/ui`, `shadcn add https://21st.dev/r/...` |
-| Vault, заметки, PKM | `obsidian-mcp` — always-on, MCP `obsidian` |
+| Задача | Скилл |
+|--------|-------|
+| Vault | `obsidian-mcp` |
+| Клон сайта | `clone-website` + browser |
+| HTML/motion/deck | `huashu-design` |
+| 21st UI | `21st-design` |
+| SEO/GEO | `seo-geo` |
+| Security | `cybersecurity` |
 
-Расширенные подсказки и антиконфликты — в правиле **`mcp-routing`** (подключается по описанию, не всегда).
-
-## Локальная конфигурация MCP
-
-Корневой `mcp.json` (user): `gitnexus`, `memory`, `fetch`, **`obsidian`** (HTTP MCP плагина). Дескрипторы — `projects/.../mcps/`.
+Детали MCP — `rules/mcp-routing.mdc`. Конфиг: `mcp.json` (gitignored).

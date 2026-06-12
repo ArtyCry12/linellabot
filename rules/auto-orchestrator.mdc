@@ -1,0 +1,54 @@
+---
+description: >-
+  Decision tree for task routing — pick MCP, skill, or subagent without loading
+  everything. Use when task type is unclear or spans multiple domains.
+alwaysApply: false
+---
+
+# Auto-orchestrator (decision tree)
+
+Registry: `SYSTEM-REGISTRY.md`. Always-on pointers: `00-agent-orchestrator.mdc`, `obsidian-mcp.mdc`.
+
+## 1. Classify the task
+
+```
+User query
+  ├─ Vault / notes / PKM / "в Obsidian"     → obsidian MCP + obsidian-mcp skill
+  ├─ Single URL content                      → user-fetch (or Exa fetch if blocked)
+  ├─ Web research / fact-check / docs        → plugin-exa-exa (ONE provider)
+  ├─ Live page / form / E2E UI               → cursor-ide-browser
+  ├─ Clone / rebuild website                 → clone-website skill + browser
+  ├─ HTML prototype / motion / deck          → huashu-design skill
+  ├─ 21st.dev / shadcn registry UI           → 21st-design + @21st-dev/magic
+  ├─ SEO / GEO audit                         → seo-geo skill pack
+  ├─ Security audit                          → cybersecurity skill
+  ├─ Symbol edit in indexed repo             → gitnexus impact → edit → detect_changes
+  ├─ CI / PR checks failing                  → fix-ci / ci-investigator / shell
+  ├─ Broad "how does X work" in repo         → explore subagent OR gitnexus_query
+  ├─ Deploy / Vercel                         → plugin-vercel-vercel + deployment-expert
+  ├─ Supabase / DB                           → plugin-supabase-supabase
+  └─ Stripe / Clerk / Figma / Zapier         → matching plugin MCP + plugin skill
+```
+
+## 2. Load minimal context
+
+1. One matching **rule** (if not already always-on)
+2. One **SKILL.md** if triggers match
+3. One **MCP descriptor JSON** before first tool call on that server
+4. **Subagent** only if steps are independent or scope is large
+
+## 3. After substantive work
+
+- **Obsidian:** autonomous sync (see `obsidian-mcp.mdc`) — no "save to vault?" prompt
+- **Git commit:** `gitnexus_detect_changes()` if hub code symbols changed
+
+## Examples
+
+| User says | Route |
+|-----------|-------|
+| "Find my note about neo-car" | obsidian search → vault_read |
+| "What's the latest Next.js cache API?" | Exa search → cite sources |
+| "Open example.com and click Sign in" | browser navigate → snapshot → click |
+| "Clone landing page X" | clone-website + browser screenshots |
+| "Fix failing GitHub check" | ci-investigator or shell + fix-ci skill |
+| "Rename function foo across repo" | gitnexus_impact → gitnexus_rename |
