@@ -81,6 +81,17 @@ try {
 
 $obsidian = Test-ObsidianHealth
 
+$pendingPath = Join-Path $reportDir ".deferred-refresh-pending.json"
+$deferredPending = $false
+$deferredQueuedAt = $null
+if (Test-Path $pendingPath) {
+    $deferredPending = $true
+    try {
+        $p = Get-Content $pendingPath -Raw | ConvertFrom-Json
+        $deferredQueuedAt = $p.queuedAt
+    } catch { }
+}
+
 $totalMB = ($sizes.Values | Measure-Object -Sum).Sum
 $report = [ordered]@{
     timestamp = (Get-Date).ToString("o")
@@ -93,6 +104,8 @@ $report = [ordered]@{
     gitnexusStale = $gitnexusStale
     untrackedGitLines = $untracked
     obsidian = $obsidian
+    deferredPending = $deferredPending
+    deferredQueuedAt = $deferredQueuedAt
     recommendations = @(
         if ($sizes.extensions -gt 100) { "DELETE extensions/ (~$($sizes.extensions) MB misplaced)" }
         if ($sizes.'skills-libraries' -gt 50) { "DELETE skills-libraries/ after skills installed" }
@@ -101,6 +114,7 @@ $report = [ordered]@{
         if ($brokenJunctions.Count -gt 0) { "RUN node skills/cybersecurity/scripts/ensure-library.mjs" }
         if ($gitnexusStale) { "RUN npx gitnexus analyze" }
         if (-not $obsidian.ok) { "Start Obsidian + enable Local REST API HTTP" }
+        if ($deferredPending) { "Deferred cleanup pending (closes when Cursor exits)" }
     ) | Where-Object { $_ }
 }
 
@@ -117,6 +131,7 @@ $md = @"
 - **Untracked git lines:** $untracked
 - **GitNexus stale (>7d):** $gitnexusStale
 - **Obsidian OK:** $($obsidian.ok)
+- **Deferred cleanup pending:** $deferredPending$(if ($deferredQueuedAt) { " (since $deferredQueuedAt)" })
 
 ## Top sizes (MB)
 

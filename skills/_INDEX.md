@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-06-12T16:50:21.810Z
+Generated: 2026-06-12T18:33:25.874Z
 
 | Skill | Path | Description |
 |-------|------|-------------|
