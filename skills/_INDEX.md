@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-06-12T18:33:25.874Z
+Generated: 2026-06-15T18:06:45.873Z
 
 | Skill | Path | Description |
 |-------|------|-------------|
@@ -33,6 +33,7 @@ Generated: 2026-06-12T18:33:25.874Z
 | markitdown | `skills/markitdown/SKILL.md` | Converts PDF, Office, HTML, audio, images, ZIP, EPUB, and more to token-efficient Markdown using Microsoft MarkItDown be |
 | mattpocock-skills | `skills/mattpocock-skills/SKILL.md` | >- |
 | obsidian-mcp | `skills/obsidian-mcp/SKILL.md` | >- |
+| project-squad | `skills/project-squad/SKILL.md` | >- |
 | remotion | `skills/remotion/SKILL.md` | >- |
 | seo-geo | `skills/seo-geo/SKILL.md` | >- |
 | design-an-interface | `skills/skills-main-top-coding/skills-main/skills/deprecated/design-an-interface/SKILL.md` | Generate multiple radically different interface designs for a module using parallel sub-agents. Use when user wants to d |
@@ -68,4 +69,4 @@ Generated: 2026-06-12T18:33:25.874Z
 | uv | `skills/uv/SKILL.md` | >- |
 | writing-plans | `skills/writing-plans/SKILL.md` | "Write implementation plans: bite-sized tasks, paths, code." |
 
-Total: 63 skills
+Total: 64 skills

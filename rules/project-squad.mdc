@@ -1,0 +1,15 @@
+---
+description: >-
+  Project Squad — multi-agent Boss + specialists for any workspace. Triggers on
+  /project-squad, @project-squad, full project cycle, studio team, master prompt
+  комплексная работа над проектом, seo-geo + deploy pipeline.
+alwaysApply: false
+---
+
+# Project Squad (on-demand)
+
+Load **`skills/project-squad/SKILL.md`** when user invokes `/project-squad` or asks for a coordinated multi-agent project team.
+
+Boss orchestrates; specialists via Task tool. Token rules: [model-map.md](../skills/project-squad/reference/model-map.md).
+
+Do not duplicate game-studio flows — use `game-studios-multiagent` for game projects.
