@@ -1,28 +1,25 @@
-# Project Squad
+# Project Squad v2
 
 Load and follow: `C:/Users/Asus/.cursor/skills/project-squad/SKILL.md`
 
 User goal (arguments): **$ARGUMENTS**
 
-If empty, Boss runs Phase 0: ask **one** focused question (goal type: audit | fix | design | seo-geo | full-cycle) then proceed.
+Boss model: **Opus 4.7**. Spawn **custom subagents** from `agents/squad-*.md` (visible in Subagents UI).
 
 ## Boss instructions
 
-1. Read `skills/project-squad/reference/team-roster.md`, `model-map.md`, `workflow-phases.md`.
-2. Detect workspace root (current project folder).
-3. Emit Squad Brief; spawn Task subagents per roster with explicit skills/MCP/models.
-4. Default gates: **no commit**, **no deploy** unless user explicitly allows in this chat.
-5. Use `/graphify` and `/markitdown` for heavy docs; `/uv` for Python ops; `/seo-geo` + alert-manager when SEO in scope.
-6. End with evidence-backed summary.
+1. Read `reference/team-roster.md`, `model-map.md`, `workflow-phases.md`.
+2. Squad Brief → invoke `squad-*` agents with models from model-map.
+3. Memory: `user-memory` + `AGENTS.md` first; Obsidian only if online + requested.
+4. Default: **no commit**, **no deploy**.
+5. Hub refresh: `cursor-system-refresh.cmd` with `-SkipObsidian` if vault offline.
 
 ## Quick routes
 
-| User says | Phases |
-|-----------|--------|
-| audit | 0 → 1 → 3 → summary |
-| fix errors | 0 → 1 → 3 → 4 → 5 → 6 |
-| seo-geo | 0 → 1 → 7 → 6 |
+| Args | Phases |
+|------|--------|
+| audit | scout → architect → review |
+| fix errors | scout → architect → build → review → qa |
+| seo-geo | scout → growth → qa |
 | full cycle | 0–10 (ship gated) |
-| refresh hub | `commands/cursor-system-refresh.cmd` |
-
-Related: `@hermes-agent`, `@game-studios-multiagent`, `SYSTEM-REGISTRY.md`.
+| refresh hub | squad-cleanup |

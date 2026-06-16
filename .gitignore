@@ -43,6 +43,9 @@ projects/*/*
 # Subagent state/transcripts
 !subagents/
 !subagents/**
+# Project Squad custom subagents
+!agents/
+!agents/**
 # User-level cursor rules
 !rules/
 !rules/**
@@ -52,6 +55,7 @@ projects/*/*
 !CLAUDE.md
 !huashu-design-USER-RULES.txt
 # <<< CURSOR MANAGED BLOCK <<<
+
 
 
 # --- ИСКЛЮЧЕНИЯ (ЧТОБЫ НЕ ТОРМОЗИЛО) ---

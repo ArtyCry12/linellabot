@@ -1,70 +1,60 @@
-# Project Squad — workflow phases
+# Project Squad — workflow phases v2
 
-## Phase 0 — Gate (Boss, no code)
+## Phase 0 — Gate (Boss, Opus 4.7)
 
-1. Parse user goal; if ambiguous → **one** AskQuestion block (max 2 questions).
-2. Confirm: target path, forbidden zones (`.env`, contracts, etc.), commit/deploy policy.
-3. Emit **Squad Brief** (markdown): goal, constraints, agent map, success criteria.
+1. Parse goal; if empty → one AskQuestion (goal type).
+2. Confirm: path, forbidden zones, commit/deploy policy.
+3. Emit **Squad Brief**: agents, models, gates.
 
-## Phase 1 — Scout (`explore`, Scout model)
+## Phase 1 — Scout (`squad-scout`, Composer)
 
-- Repo layout, stack, scripts, env samples (never print secrets).
-- Use `graphify` / `markitdown` for heavy docs.
-- Output: `scout-report.md` structure in chat (paths, risks, unknowns).
+- Repo layout, stack, junk candidates (list only).
+- `graphify` / `markitdown` for heavy docs.
 
-## Phase 2 — Design (`generalPurpose`, Standard)
+## Phase 2 — Architect (`squad-architect`, Sonnet)
 
-Only if UI/UX/motion in scope:
+- Technical plan from scout; GitNexus impact list.
+- Boss approval before build if large scope.
 
-- `/ui-ux-pro-max` + `/huashu-design` for direction.
-- `/21st-design` + `@21st-dev/magic` for components.
-- `/remotion` + `/figma` for motion/assets.
-- Output: design decisions list (no mass writes without Boss approval).
+## Phase 3 — Design (`squad-design`, Sonnet)
 
-## Phase 3 — Plan (Boss)
+Only if UI/UX/motion in scope.
 
-- Structured fix/build plan from scout + design.
-- GitNexus **impact** before symbol edits (indexed repos).
-- User approval before Phase 4 if changes are large.
+## Phase 4 — Build (`squad-build`, Codex High)
 
-## Phase 4 — Build (`generalPurpose`, Heavy)
+- Minimal diff; `mattpocock-skills`.
 
-- `/mattpocock-skills` conventions.
-- Minimal diff; match existing code style.
-- `uv` for Python; `npx.cmd` on Windows.
+## Phase 5 — Review (`squad-review`, GPT-5.5)
 
-## Phase 5 — Review (`code-reviewer` / `bugbot`, Standard)
+- Fix critical before QA.
 
-- `/thermo-nuclear-code-quality-review` Task for maintainability.
-- Fix critical findings before QA.
+## Phase 6 — QA (`squad-qa`, Sonnet)
 
-## Phase 6 — QA (`shell` + Playwright + browser MCP)
+- lint, typecheck, build, Playwright.
 
-- lint, typecheck, build, tests (project scripts).
-- Playwright smoke on critical flows.
-- `cursor-ide-browser` for live UI if dev server running.
+## Phase 7 — Growth (optional, `squad-growth`)
 
-## Phase 7 — Growth (optional)
+- `/seo-geo`, performance-optimizer.
 
-- `/seo-geo` + alert-manager sub-skill if SEO requested.
-- `performance-optimizer` Task if perf requested.
+## Phase 8 — Cleanup (`squad-cleanup`, Composer)
 
-## Phase 8 — Cleanup (Fast shell)
+- Safe cache purge; hub refresh with `-SkipObsidian` if vault offline.
 
-- List cache/temp candidates; delete only obvious junk.
-- Never delete `.env`, migrations, lockfiles without approval.
+## Phase 9 — Ship (gated, `squad-ship`)
 
-## Phase 9 — Ship (gated)
+- No commit/deploy without explicit user OK.
 
-- **No commit** unless user said so or master prompt allows after green checks.
-- **No deploy** without explicit user approval.
-- `deployment-expert` + `plugin-vercel-vercel` when approved.
+## Phase 10 — Memory (`squad-memory`, Haiku)
 
-## Phase 10 — Memory + refresh
+1. `user-memory` crumbs
+2. Update `AGENTS.md` if high-signal
+3. `ai-tracking/` one-liner
+4. Obsidian **only if** user requested PKM and vault online
 
-- Obsidian: update project note (autonomous per `obsidian-mcp.mdc`).
-- Hub refresh: `commands/cursor-system-refresh.cmd` when working in `.cursor` hub.
+## Hub refresh (when workspace is `.cursor` hub)
+
+`commands/cursor-system-refresh.cmd` — prefer `-SkipObsidian` when REST API offline.
 
 ## Final deliverable
 
-Boss outputs: changes summary, checks run, open risks, next steps. No "done" without evidence.
+Evidence-backed summary: agents spawned, checks, risks, next steps.

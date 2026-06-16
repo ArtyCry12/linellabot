@@ -9,7 +9,7 @@ alwaysApply: true
 
 ## Принципы
 
-1. Не подтягивай все MCP/скиллы в каждый ответ — только по задаче. **Исключение:** `obsidian-mcp.mdc` (vault always-on).
+1. Не подтягивай все MCP/скиллы в каждый ответ — только по задаче.
 2. Перед первым вызовом MCP с нового сервера — **один** JSON из `projects/c-Users-Asus-cursor/mcps/<server>/tools/`.
 3. Скиллы: `skills/`, `skills-cursor/`, `~/.agents/skills/`, plugin cache — по триггеру или `@tag`.
 4. User Rules в Cursor — приоритет выше этого файла.
@@ -19,9 +19,9 @@ alwaysApply: true
 
 | Задача | Сервер (descriptor folder) |
 |--------|----------------------------|
-| Vault / PKM | `obsidian` → `user-obsidian` |
+| Память сессии (primary) | `memory` → `user-memory` |
 | Код-граф | `gitnexus` → `user-gitnexus` |
-| Память сессии | `memory` → `user-memory` |
+| Vault / PKM (optional) | `obsidian` → `user-obsidian` — on-demand only |
 | Один URL | `fetch` → `user-fetch` |
 | **Web research (primary)** | **`plugin-exa-exa`** |
 | 21st.dev UI | `@21st-dev/magic` |

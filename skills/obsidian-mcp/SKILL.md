@@ -1,15 +1,51 @@
 ---
 name: obsidian-mcp
 description: >-
-  Управление Obsidian vault через встроенный MCP Local REST API — чтение/запись
-  заметок, поиск, теги, ссылки, команды, открытие в UI. Триггеры: @obsidian,
-  vault, заметки, PKM, knowledge base, Obsidian. Always-on вместе с
-  rules/obsidian-mcp.mdc. Требует запущенный Obsidian Desktop.
+  Optional Obsidian vault PKM when user requests @obsidian or vault export.
+  Primary memory is user-memory + AGENTS.md (Project Squad squad-memory).
+  On-demand rule obsidian-mcp.mdc. Triggers: @obsidian, vault, PKM archive.
 ---
 
-# Obsidian MCP
+# Obsidian MCP — optional PKM
 
-Прямое взаимодействие с **Obsidian Desktop** через плагин **Local REST API with MCP** (не веб-версия).
+**Not the default memory layer.** Use when user explicitly wants vault notes or PKM export.
+
+Primary stack (Project Squad): `user-memory` → `AGENTS.md` → `ai-tracking/`.
+
+## When to use Obsidian
+
+```
+Работа в коде/чате
+    → search vault (тема / проект / папка)
+    → read если заметка есть
+    → create | update | append | move | tag | link
+    → (редко) delete дубликатов
+    → 1 строка в ответе: что изменено в vault
+```
+
+## Структура заметок (defaults)
+
+| Тип | Путь | Содержимое |
+|-----|------|------------|
+| Проект | `Projects/<имя>.md` или папка проекта в vault | Статус, стек, решения |
+| Сессия / лог | `ai-tracking/YYYY-MM-DD.md` | Краткий changelog |
+| Runbook | `Runbooks/<topic>.md` | MCP, деплой, env |
+| Решение | секция в проектной заметке | Контекст → решение |
+
+Если в vault уже есть структура — **следуй ей**.
+
+## Автозахват — обязательно
+
+- Решения, багфиксы, настройки MCP/skills/env (без секретов)
+- Команды, ветки, деплои, «где остановились»
+
+## Автозахват — не писать
+
+- Пустой чат; API keys и пароли — **никогда**
+
+## CRUD без спроса
+
+Create / Update / Append / Move / Tag — **автоматически**. Delete — дубликаты и stubs; массовое удаление — **спросить**.
 
 ## Подключение (Cursor)
 
@@ -28,11 +64,12 @@ description: >-
 
 ## Workflow агента
 
-1. Убедись, что Obsidian запущен.
-2. Прочитай дескриптор инструмента из `projects/.../mcps/<obsidian-server>/tools/*.json`.
-3. Для правки заметки: **сначала прочитай** текущий контент, потом обновляй (избегай полной перезаписи без чтения).
-4. После создания/изменения важных заметок — при необходимости вызови open в UI для проверки пользователем.
-5. Имена путей — **vault-relative** (`Folder/Note.md`), без абсолютных путей Windows.
+1. Obsidian запущен — иначе один раз сообщи, догоняй sync позже.
+2. Прочитай дескриптор MCP-инструмента перед вызовом.
+3. **Read before write** — всегда перед update/delete.
+4. **Не спрашивай** «сохранить в Obsidian?» — сохраняй сам после содержательной работы.
+5. Пути — **vault-relative** (`Folder/Note.md`).
+6. В конце ответа — 1 строка: что изменено в vault.
 
 ## Категории возможностей
 

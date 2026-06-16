@@ -1,34 +1,46 @@
-# Project Squad — team roster
+# Project Squad — team roster v2 (10 specialists + Boss)
 
-Universal team for **any** Cursor workspace (Next.js, static, monorepo). Boss orchestrates; specialists run via **Task** tool.
+Boss orchestrates; **10 custom subagents** in `~/.cursor/agents/squad-*.md`.
 
-| ID | Role | Task `subagent_type` | Model (see model-map) | Primary skills / MCP |
-|----|------|----------------------|------------------------|----------------------|
-| **boss** | Orchestrator | *(parent agent)* | Standard | `SYSTEM-REGISTRY.md`, `rules/auto-orchestrator.mdc`, `graphify`, `markitdown` |
-| **scout** | Audit / inventory | `explore` | Scout | `graphify`, `markitdown`, `user-gitnexus` (if indexed) |
-| **design** | UI/UX / motion plan | `generalPurpose` | Standard | `huashu-design`, `ui-ux-pro-max`, `21st-design`, `remotion`, `plugin-figma-figma` |
-| **build** | Implementation | `generalPurpose` | Heavy | `mattpocock-skills`, Vercel `nextjs`, `shadcn` plugin skills |
-| **qa** | Tests + browser | `shell` + `generalPurpose` | Fast / Heavy | Playwright skill (`~/.codex/skills/playwright`), `cursor-ide-browser` |
-| **review** | Code quality | `code-reviewer` or `bugbot` | Standard | `thermo-nuclear-code-quality-review` (Task), plugin review skills |
-| **growth** | SEO / GEO / perf | `generalPurpose` + `performance-optimizer` | Standard | `seo-geo` (+ `seo-geo-alert-manager` sub-skill), Vercel perf |
-| **ship** | Deploy / env | `deployment-expert` | Standard | `plugin-vercel-vercel`, `deployments-cicd` skill |
-| **memory** | PKM + session facts | *(Boss inline)* | Fast | `obsidian` MCP, `user-memory`, `agents-memory-updater` pattern via Obsidian |
+| ID | Role | Custom agent | Task fallback | Model | Primary skills / MCP |
+|----|------|--------------|---------------|-------|----------------------|
+| **boss** | Orchestrator | — | — | Opus 4.7 | `project-squad`, `SYSTEM-REGISTRY.md`, `auto-orchestrator` |
+| **scout** | Audit / inventory | `squad-scout` | `explore` | Composer | `graphify`, `markitdown`, `user-gitnexus` |
+| **architect** | Tech plan, modules | `squad-architect` | `generalPurpose` | Sonnet | GitNexus impact, `auto-orchestrator` |
+| **design** | UI/UX / motion | `squad-design` | `generalPurpose` | Sonnet | `huashu-design`, `ui-ux-pro-max`, `21st-design`, `remotion`, `plugin-figma-figma` |
+| **build** | Implementation | `squad-build` | `generalPurpose` | Codex High | `mattpocock-skills`, Vercel `nextjs`, `shadcn` |
+| **qa** | Tests + browser | `squad-qa` | `shell` | Sonnet | Playwright skill, `cursor-ide-browser`, `verification` |
+| **review** | Code quality | `squad-review` | `code-reviewer` / `bugbot` | GPT-5.5 | `thermo-nuclear-code-quality-review` |
+| **growth** | SEO / GEO / perf | `squad-growth` | `performance-optimizer` | Sonnet | `seo-geo`, alert-manager sub-skill |
+| **ship** | Deploy / env | `squad-ship` | `deployment-expert` | Sonnet | `plugin-vercel-vercel`, `deployments-cicd` |
+| **memory** | Session + project facts | `squad-memory` | — | Haiku | **`user-memory`**, `AGENTS.md`, `ai-tracking/`; Obsidian **optional** |
+| **cleanup** | Cache / hub refresh | `squad-cleanup` | `shell` | Composer | `cursor-system-refresh.cmd` |
+
+## Memory stack (Obsidian demoted)
+
+| Priority | Tool | Use |
+|----------|------|-----|
+| 1 | `user-memory` MCP | Short session facts |
+| 2 | `AGENTS.md` / project README | Durable team context |
+| 3 | `ai-tracking/` | Hub audit one-liners |
+| 4 | Obsidian vault | **Optional** PKM when online + user asks; `skills/obsidian-mcp` on-demand |
 
 ## Parallelism
 
 | Safe parallel | Never parallel |
 |---------------|----------------|
-| scout + design (after scout brief) | build + review on same diff |
-| growth SEO audit + qa playwright (different surfaces) | two build agents same module |
-| ship env check + qa smoke | cleanup delete + build |
+| scout + design (after brief) | build + review same diff |
+| growth + qa (different surfaces) | two build agents same module |
+| memory + cleanup (post-work) | cleanup delete + build |
+| architect + scout (read-only) | ship + cleanup |
 
-## Missing skills (substitutes)
+## Spawn template (Boss)
 
-| Requested | Status | Substitute |
-|-----------|--------|------------|
-| `humanizer-main` | not in hub | Manual tone pass; or add skill later |
-| `agents-memory-updater` | plugin Task agent | Obsidian autonomous + `user-memory` crumbs |
-| `/thermo-nuclear-code-quality-review` | Task subagent | Launch via Task description exactly |
-| `/performance-optimizer` | Vercel subagent | Task `performance-optimizer` |
+```
+Use the squad-<role> subagent to <task>.
+Workspace: <absolute path>
+Model: <from model-map.md>
+Constraints: <no commit, forbidden paths>
+```
 
-Full workflow phases: [workflow-phases.md](workflow-phases.md)
+Full phases: [workflow-phases.md](workflow-phases.md)

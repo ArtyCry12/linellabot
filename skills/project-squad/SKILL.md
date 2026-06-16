@@ -1,109 +1,65 @@
 ---
 name: project-squad
 description: >-
-  Universal multi-agent project team (Boss + 8 specialists) for any Cursor workspace.
-  Token-optimized orchestration via Task subagents with explicit skills, MCP, and models.
-  Use for @project-squad, /project-squad, full project cycle, studio team, game-studios-style
-  delivery on web apps, SEO/GEO audits, design+build+QA+deploy pipelines, or master
-  prompt "комплексная работа над проектом". Triggers: project squad, studio team, full cycle,
-  seo-geo + deploy, multiagent project, hermes team, game-studios for non-game projects.
-argument-hint: "[goal e.g. audit only | fix errors | redesign + motion | seo-geo | full cycle to deploy]"
+  Universal multi-agent project team (Boss Opus 4.7 + 10 custom subagents in agents/squad-*.md)
+  for any Cursor workspace. Token-optimized models per role. Invokes squad-scout, squad-build,
+  etc. via Cursor Subagents UI or Task fallback. Use for @project-squad, /project-squad, full
+  project cycle, SEO/GEO, design+build+QA+deploy. Triggers: project squad, studio team,
+  squad-scout, 10 agents, multiagent project.
+argument-hint: "[audit | fix | design | seo-geo | full cycle | refresh hub]"
 user-invocable: true
 ---
 
-# Project Squad (Cursor)
+# Project Squad v2 (Cursor)
 
-Turn one session into a **token-efficient project studio**: Boss orchestrates; specialists run through the **Task** tool with fixed roles, models, skills, and MCP bindings.
+Boss (**Opus 4.7**) orchestrates; **10 custom subagents** in `C:/Users/Asus/.cursor/agents/squad-*.md` — visible in Cursor **Subagents** panel.
 
 | Resource | Path |
 |----------|------|
+| Agents | `C:/Users/Asus/.cursor/agents/squad-*.md` |
 | Skill root | `C:/Users/Asus/.cursor/skills/project-squad/` |
-| Team roster | [reference/team-roster.md](reference/team-roster.md) |
-| Model map | [reference/model-map.md](reference/model-map.md) |
+| Roster | [reference/team-roster.md](reference/team-roster.md) |
+| Models | [reference/model-map.md](reference/model-map.md) |
 | Phases | [reference/workflow-phases.md](reference/workflow-phases.md) |
-| Registry | `C:/Users/Asus/.cursor/SYSTEM-REGISTRY.md` |
-| Similar patterns | `game-studios-multiagent`, `hermes-agent` |
 
 ## Non-negotiable rules
 
-1. **Boss never skips Phase 0** — clarify goal, forbidden paths, commit/deploy gates.
-2. **Token economy** — graphify/markitdown before heavy files; one web MCP (Exa primary); read one MCP descriptor JSON per server.
-3. **No commit / no deploy** unless user explicitly allowed (default: ask first).
-4. **No secrets in git** — never commit `.env`, keys, tokens.
-5. **GitNexus** — impact before symbol edits in indexed repos; detect_changes before commit.
-6. **Parallel Task** only when [team-roster.md](reference/team-roster.md) allows.
-7. **Obsidian** — autonomous vault sync after substantive work (`obsidian-mcp` rule).
+1. **Boss never skips Phase 0** — goal, forbidden paths, commit/deploy gates.
+2. **Spawn custom subagents first** — `Use the squad-<role> subagent to …` with model from model-map.
+3. **Token economy** — graphify/markitdown; one web MCP (Exa); Haiku/Composer for scout/memory/cleanup.
+4. **No commit / no deploy** unless user explicitly allowed.
+5. **GitNexus** — impact before symbol edits; detect_changes before commit.
+6. **Memory** — `user-memory` + `AGENTS.md` + `ai-tracking/`; Obsidian **optional only** (on-demand `obsidian-mcp` skill).
+7. **Parallel** only per [team-roster.md](reference/team-roster.md).
 
-## Boss startup checklist
+## Boss checklist
 
 ```
-1. Read reference/team-roster.md + model-map.md
-2. Detect workspace root (user folder vs hub C:/Users/Asus/.cursor)
-3. Write Squad Brief (goal, scope, agents to spawn, gates)
-4. Run phases from workflow-phases.md — skip phases not in scope
-5. End with evidence-backed summary (commands run, URLs, risks)
+1. Read team-roster.md + model-map.md
+2. Squad Brief (agents, models, gates)
+3. Invoke squad-* subagents per phase (skip out-of-scope)
+4. Evidence-backed final summary
 ```
 
-## Spawning a specialist
+## How to spawn (preferred)
 
-Template for Task prompt:
-
-```markdown
-You are <ROLE> in Project Squad.
-Workspace: <absolute path>
-Read skill: <path/to/SKILL.md> if listed below.
-MCP: <server id> — read one tool JSON from projects/.../mcps/<server>/tools/ before first call.
-Constraints: <forbidden paths, no commit, etc.>
-Deliverable: <exact output format>
-Return ONLY deliverables; no filler.
+```
+Use the squad-scout subagent to audit <workspace path>.
+Model: composer-2.5-fast. No commits.
 ```
 
-### Model parameter
+Fallback if custom agent unavailable: Task with `subagent_type` from roster + `model` from model-map.
 
-Pass `model` to Task only when user requested a specific tier — else use [model-map.md](reference/model-map.md).
+## Quick routes
 
-| Role | subagent_type | model (optional) |
-|------|---------------|------------------|
-| scout | `explore` | `claude-4.5-haiku-thinking` |
-| design | `generalPurpose` | `claude-4.6-sonnet-medium-thinking` |
-| build | `generalPurpose` | `gpt-5.3-codex-high-fast` |
-| qa shell | `shell` | `composer-2.5-fast` |
-| review | `code-reviewer` or `bugbot` | `claude-4.6-sonnet-medium-thinking` |
-| growth perf | `performance-optimizer` | default |
-| ship | `deployment-expert` | default |
-
-## Skill / MCP bindings by phase
-
-| Phase | Skills | MCP |
-|-------|--------|-----|
-| Scout | `graphify`, `markitdown`, `uv` | `user-gitnexus`, `plugin-exa-exa` |
-| Design | `huashu-design`, `ui-ux-pro-max`, `21st-design`, `remotion` | `plugin-figma-figma`, `@21st-dev/magic` |
-| Build | `mattpocock-skills`, Vercel `nextjs`, `shadcn` | `user-gitnexus` |
-| QA | Playwright skill, `verification` | `cursor-ide-browser` |
-| Review | Task `thermo-nuclear-code-quality-review`, `bugbot` | — |
-| Growth | `seo-geo` → `library/monitor/alert-manager/SKILL.md` | `plugin-exa-exa` |
-| Ship | Vercel `deployments-cicd`, `vercel-cli` | `plugin-vercel-vercel` |
-| Memory | `obsidian-mcp` | `obsidian`, `user-memory` |
-| Hub refresh | — | run `commands/cursor-system-refresh.cmd` |
-
-## Prompt audit (master prompt compatibility)
-
-When user pastes the long "мастер-промпт":
-
-| Issue | Action |
-|-------|--------|
-| Contradiction: "идеал без ошибок" vs huge scope | Boss splits into phases; ship only after green checks |
-| `humanizer-main` missing | Flag; offer manual tone pass |
-| Duplicate design stacks | Pick huashu + ui-ux direction first, 21st for components |
-| Commit + deploy before tests | Block until Phase 6 green |
-| `/agents-memory-updater` | Use Obsidian + optional Task `agents-memory-updater` if available |
-
-## Integration with other studio skills
-
-- **Game scope** → defer to `game-studios-multiagent` instead of this skill.
-- **Hermes persona** → merge `SOUL.md` from `hermes-agent` bootstrap into Squad Brief.
-- **SEO-only** → skip design/build; scout → growth → qa.
+| User says | Agents |
+|-----------|--------|
+| audit | scout → architect → review |
+| fix errors | scout → architect → build → review → qa |
+| seo-geo | scout → growth → qa |
+| full cycle | all phases (ship gated) |
+| refresh hub | squad-cleanup → cursor-system-refresh.cmd `-SkipObsidian` |
 
 ## Command
 
-User invokes: **`/project-squad`** → load this file → Boss executes Phase 0 immediately.
+**`/project-squad`** → load this file → Boss Phase 0 immediately.

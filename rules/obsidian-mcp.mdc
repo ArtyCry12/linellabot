@@ -1,36 +1,18 @@
 ---
 description: >-
-  Obsidian vault — always-on MCP. Pointer to obsidian server + autonomous sync;
-  full workflow in skills/obsidian-mcp/SKILL.md.
-alwaysApply: true
+  Obsidian vault — on-demand PKM only. Primary memory is user-memory + AGENTS.md.
+  Full workflow in skills/obsidian-mcp/SKILL.md. Triggers: @obsidian, vault export, PKM archive.
+alwaysApply: false
 ---
 
-# Obsidian MCP (always-on)
+# Obsidian MCP (on-demand)
 
-**Exception:** for vault/PKM/notes — use MCP `obsidian`, not filesystem grep.
+**Not primary memory.** Default stack: `user-memory` → `AGENTS.md` → `ai-tracking/`. Use Obsidian only when user asks for vault/PKM or `squad-memory` confirms API online.
 
 | Item | Value |
 |------|-------|
-| Server | `obsidian` → descriptors: `projects/c-Users-Asus-cursor/mcps/user-obsidian/tools/` |
-| URL | `http://127.0.0.1:27123/mcp/` |
-| Auth | Bearer key in `mcp.json` (gitignored) |
-| Requires | Obsidian Desktop + Local REST API plugin running |
+| Server | `obsidian` → `projects/c-Users-Asus-cursor/mcps/user-obsidian/tools/` |
+| Ensure | `commands/ensure-obsidian.ps1` |
+| Skill | `skills/obsidian-mcp/SKILL.md` |
 
-Read **one** tool JSON before first call. Details: `skills/obsidian-mcp/SKILL.md`.
-
-## Autonomous vault (default)
-
-After substantive work — **without asking** "save to Obsidian?":
-
-1. Search for existing project/topic note
-2. Update or create in logical folder; tags + wikilinks
-3. Log one line in `ai-tracking/` or daily note
-4. End user reply with 1 line: what changed in vault
-
-**Ask once only:** mass delete (>3 files), notes with backlinks, `Archive/`.
-
-**Auto-delete OK:** empty stubs, `_draft/` junk, merged duplicates.
-
-If Obsidian offline — note once, catch up when available.
-
-**Not for vault:** `user-memory` (long notes), parallel web search tools.
+If offline — skip silently; never block Project Squad phases.
