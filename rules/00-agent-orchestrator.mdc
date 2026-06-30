@@ -26,6 +26,7 @@ alwaysApply: true
 | **Web research (primary)** | **`plugin-exa-exa`** |
 | Design (Figma file) | `plugin-figma-figma` |
 | Design (Stitch projects) | `stitch` → `user-stitch` |
+| Gemini LLM (generate, vision, embed) | `gemini` → `user-gemini` |
 | 21st.dev UI | `@21st-dev/magic` |
 | Браузер E2E | `cursor-ide-browser` |
 | Supabase / Vercel / Stripe / Clerk / Figma / Zapier | `plugin-*` по задаче |

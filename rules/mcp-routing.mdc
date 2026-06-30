@@ -20,6 +20,7 @@ Registry: `SYSTEM-REGISTRY.md`. Decision tree: `rules/auto-orchestrator.mdc`.
 | `memory` | `user-memory` |
 | `fetch` | `user-fetch` |
 | `stitch` | `user-stitch` (after Cursor MCP reload) |
+| `gemini` | `user-gemini` (after Cursor MCP reload) |
 | `@21st-dev/magic` | см. `mcps/*magic*` или 21st plugin folder |
 
 ## Obsidian (always-on)

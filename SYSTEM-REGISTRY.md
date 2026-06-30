@@ -43,6 +43,7 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | `fetch` | Single URL fallback |
 | `@21st-dev/magic` | UI components from 21st.dev |
 | `stitch` | Google Stitch — AI UI design projects (remote HTTP) |
+| `gemini` | Google AI Studio — Gemini models via `@anzchy/mcp-server-gemini` (stdio) |
 
 ## Plugin MCP (enable on demand)
 
@@ -122,6 +123,7 @@ Boss (parent chat): **Opus 4.7**. Skill: `skills/project-squad/SKILL.md` · Comm
 | `commands/cursor-system-refresh-deferred.ps1` | Heavy cleanup after Cursor exits (auto-spawned) |
 | `commands/ensure-obsidian.ps1` | Start Obsidian + poll HTTP/HTTPS + sync apiKey |
 | `commands/project-squad.md` | **Project Squad** — `/project-squad` multi-agent team |
+| `commands/gemini-mcp.md` | **Gemini MCP** — Google AI Studio tools reference |
 | `commands/cursor-system-audit.ps1` | Hub health report → `ai-tracking/` |
 | `commands/cursor-system-cleanup.ps1` | Move repos, delete caches (`-Apply`, `-SkipLocked`, `-Force`) |
 | `commands/huashu-sync-workspace-rules.py` | Push rules to workspaces |

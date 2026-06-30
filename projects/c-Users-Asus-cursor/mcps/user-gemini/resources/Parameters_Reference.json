@@ -1,0 +1,6 @@
+{
+  "uri": "gemini://help/parameters",
+  "name": "Parameters Reference",
+  "description": "Detailed documentation of all parameters",
+  "mimeType": "text/markdown"
+}
