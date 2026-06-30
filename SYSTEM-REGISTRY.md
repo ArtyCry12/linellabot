@@ -42,6 +42,7 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | `obsidian` | Optional PKM — Local REST API (on-demand) |
 | `fetch` | Single URL fallback |
 | `@21st-dev/magic` | UI components from 21st.dev |
+| `stitch` | Google Stitch — AI UI design projects (remote HTTP) |
 
 ## Plugin MCP (enable on demand)
 

@@ -24,6 +24,8 @@ alwaysApply: true
 | Vault / PKM (optional) | `obsidian` → `user-obsidian` — on-demand only |
 | Один URL | `fetch` → `user-fetch` |
 | **Web research (primary)** | **`plugin-exa-exa`** |
+| Design (Figma file) | `plugin-figma-figma` |
+| Design (Stitch projects) | `stitch` → `user-stitch` |
 | 21st.dev UI | `@21st-dev/magic` |
 | Браузер E2E | `cursor-ide-browser` |
 | Supabase / Vercel / Stripe / Clerk / Figma / Zapier | `plugin-*` по задаче |
