@@ -54,7 +54,10 @@ projects/*/*
 !AGENTS.md
 !CLAUDE.md
 !huashu-design-USER-RULES.txt
+# MCP config template (live secrets: mcp.json — gitignored)
+!mcp.json.example
 # <<< CURSOR MANAGED BLOCK <<<
+
 
 
 

@@ -1,0 +1,47 @@
+{
+  "mcpServers": {
+    "gitnexus": {
+      "command": "gitnexus",
+      "args": ["mcp"],
+      "env": {
+        "NODE_OPTIONS": "--max-old-space-size=4096"
+      }
+    },
+    "memory": {
+      "command": "npx.cmd",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "fetch": {
+      "command": "npx.cmd",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "@21st-dev/magic": {
+      "command": "npx.cmd",
+      "args": ["-y", "@21st-dev/magic@latest"],
+      "env": {
+        "API_KEY": "YOUR_21ST_MAGIC_API_KEY"
+      }
+    },
+    "obsidian": {
+      "url": "http://127.0.0.1:27123/mcp/",
+      "headers": {
+        "Authorization": "Bearer YOUR_OBSIDIAN_LOCAL_REST_API_KEY"
+      }
+    },
+    "stitch": {
+      "url": "https://stitch.googleapis.com/mcp",
+      "headers": {
+        "X-Goog-Api-Key": "YOUR_STITCH_API_KEY"
+      }
+    },
+    "gemini": {
+      "command": "npx.cmd",
+      "args": ["-y", "@anzchy/mcp-server-gemini"],
+      "env": {
+        "GEMINI_API_KEY": "YOUR_GOOGLE_AI_STUDIO_API_KEY",
+        "GOOGLE_API_KEY": "YOUR_GOOGLE_AI_STUDIO_API_KEY",
+        "GEMINI_DEFAULT_MODEL": "gemini-flash-latest"
+      }
+    }
+  }
+}

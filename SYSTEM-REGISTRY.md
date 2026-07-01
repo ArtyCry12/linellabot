@@ -35,6 +35,8 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 
 ## User MCP (`mcp.json`, gitignored)
 
+**Setup:** copy `mcp.json.example` → `mcp.json` and fill keys. Never commit `mcp.json`.
+
 | Server | Role |
 |--------|------|
 | `memory` | **Primary** session facts |
