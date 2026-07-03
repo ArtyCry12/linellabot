@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-06-16T11:34:55.717Z
+Generated: 2026-07-03T16:46:15.116Z
 
 | Skill | Path | Description |
 |-------|------|-------------|
@@ -13,6 +13,7 @@ Generated: 2026-06-16T11:34:55.717Z
 | create-subagent | `skills-cursor/create-subagent/SKILL.md` | >- |
 | loop | `skills-cursor/loop/SKILL.md` | >- |
 | migrate-to-skills | `skills-cursor/migrate-to-skills/SKILL.md` | >- |
+| onboard | `skills-cursor/onboard/SKILL.md` | >- |
 | review-bugbot | `skills-cursor/review-bugbot/SKILL.md` | Review code changes with Bugbot subagent. |
 | review-security | `skills-cursor/review-security/SKILL.md` | Review code changes with Security Review subagent. |
 | review | `skills-cursor/review/SKILL.md` | Review code changes with the Bugbot or Security Review subagent. |
@@ -26,13 +27,21 @@ Generated: 2026-06-16T11:34:55.717Z
 | awesome-design-md | `skills/awesome-design-md/SKILL.md` | >- |
 | clone-website | `skills/clone-website/SKILL.md` | >- |
 | cybersecurity | `skills/cybersecurity/SKILL.md` | >- |
+| dev-os-autonomy | `skills/dev-os/autonomy/SKILL.md` | >- |
+| dev-os-decision | `skills/dev-os/decision/SKILL.md` | >- |
+| dev-os-emergence | `skills/dev-os/emergence/SKILL.md` | >- |
+| dev-os-evolution | `skills/dev-os/evolution/SKILL.md` | >- |
+| dev-os-execution | `skills/dev-os/execution/SKILL.md` | >- |
+| dev-os-memory | `skills/dev-os/memory/SKILL.md` | >- |
+| dev-os-research | `skills/dev-os/research/SKILL.md` | >- |
+| dev-os | `skills/dev-os/SKILL.md` | >- |
 | game-studios-multiagent | `skills/game-studios-multiagent/SKILL.md` | >- |
 | graphify | `skills/graphify/SKILL.md` | >- |
 | hermes-agent | `skills/hermes-agent/SKILL.md` | >- |
 | huashu-design | `skills/huashu-design/SKILL.md` | 花叔Design（Huashu-Design）——用HTML做高保真原型、交互Demo、幻灯片、动画、设计变体探索+设计方向顾问+专家评审的一体化设计能力。HTML是工具不是媒介，根据任务embody不同专家（UX设计师/动画师/幻灯片设计 |
 | markitdown | `skills/markitdown/SKILL.md` | Converts PDF, Office, HTML, audio, images, ZIP, EPUB, and more to token-efficient Markdown using Microsoft MarkItDown be |
 | mattpocock-skills | `skills/mattpocock-skills/SKILL.md` | >- |
-| obsidian-mcp | `skills/obsidian-mcp/SKILL.md` | >- |
+| n8n-workflow | `skills/n8n-workflow/SKILL.md` | >- |
 | project-squad | `skills/project-squad/SKILL.md` | >- |
 | remotion | `skills/remotion/SKILL.md` | >- |
 | seo-geo | `skills/seo-geo/SKILL.md` | >- |
@@ -69,4 +78,4 @@ Generated: 2026-06-16T11:34:55.717Z
 | uv | `skills/uv/SKILL.md` | >- |
 | writing-plans | `skills/writing-plans/SKILL.md` | "Write implementation plans: bite-sized tasks, paths, code." |
 
-Total: 64 skills
+Total: 73 skills

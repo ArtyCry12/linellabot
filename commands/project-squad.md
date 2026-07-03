@@ -10,9 +10,9 @@ Boss model: **Opus 4.7**. Spawn **custom subagents** from `agents/squad-*.md` (v
 
 1. Read `reference/team-roster.md`, `model-map.md`, `workflow-phases.md`.
 2. Squad Brief → invoke `squad-*` agents with models from model-map.
-3. Memory: `user-memory` + `AGENTS.md` first; Obsidian only if online + requested.
+3. Memory: `user-memory` + `AGENTS.md` + `ai-tracking/` (DEC-009).
 4. Default: **no commit**, **no deploy**.
-5. Hub refresh: `cursor-system-refresh.cmd` with `-SkipObsidian` if vault offline.
+5. Hub refresh: `cursor-system-refresh.cmd` or `-Quick`.
 
 ## Quick routes
 

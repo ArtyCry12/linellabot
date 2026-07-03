@@ -37,26 +37,21 @@ projects/*/*
 # User's personal slash commands
 !commands/
 !commands/**
+# Dev OS canonical docs
+!docs/
+!docs/dev-os/
+!docs/dev-os/**
 # User's plan files
 !plans/
 !plans/**
 # Subagent state/transcripts
 !subagents/
 !subagents/**
-# Project Squad custom subagents
-!agents/
-!agents/**
 # User-level cursor rules
 !rules/
 !rules/**
-# Hub registry and agent docs
-!SYSTEM-REGISTRY.md
-!AGENTS.md
-!CLAUDE.md
-!huashu-design-USER-RULES.txt
-# MCP config template (live secrets: mcp.json — gitignored)
-!mcp.json.example
 # <<< CURSOR MANAGED BLOCK <<<
+
 
 
 

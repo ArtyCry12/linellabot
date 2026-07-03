@@ -2,7 +2,6 @@
 param(
     [switch]$Quick,
     [switch]$Deferred,
-    [switch]$SkipObsidian,
     [switch]$SkipCyber,
     [switch]$NoDeferredQueue,
     [string]$HubRoot = "C:\Users\Asus\.cursor"
@@ -37,12 +36,6 @@ Invoke-Step "Pre-audit" {
 }
 
 if (-not $Quick) {
-    if (-not $SkipObsidian) {
-        Invoke-Step "Obsidian" {
-            & (Join-Path $commands "ensure-obsidian.ps1") -HubRoot $HubRoot
-        }
-    }
-
     if (-not $SkipCyber) {
         Invoke-Step "Cybersecurity library" {
             node (Join-Path $HubRoot "skills\cybersecurity\scripts\ensure-library.mjs")

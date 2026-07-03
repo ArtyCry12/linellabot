@@ -38,7 +38,7 @@ Only if UI/UX/motion in scope.
 
 ## Phase 8 — Cleanup (`squad-cleanup`, Composer)
 
-- Safe cache purge; hub refresh with `-SkipObsidian` if vault offline.
+- Safe cache purge; hub refresh via `cursor-system-refresh.cmd`.
 
 ## Phase 9 — Ship (gated, `squad-ship`)
 
@@ -49,11 +49,10 @@ Only if UI/UX/motion in scope.
 1. `user-memory` crumbs
 2. Update `AGENTS.md` if high-signal
 3. `ai-tracking/` one-liner
-4. Obsidian **only if** user requested PKM and vault online
 
 ## Hub refresh (when workspace is `.cursor` hub)
 
-`commands/cursor-system-refresh.cmd` — prefer `-SkipObsidian` when REST API offline.
+`commands/cursor-system-refresh.cmd` or `-Quick`.
 
 ## Final deliverable
 

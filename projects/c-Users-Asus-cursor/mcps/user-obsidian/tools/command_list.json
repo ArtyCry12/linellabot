@@ -1,9 +1,0 @@
-{
-  "name": "command_list",
-  "description": "Return all registered Obsidian commands. Each entry has an 'id' and a human-readable 'name'. Pass the 'id' to command_execute to run a command.",
-  "arguments": {
-    "type": "object",
-    "properties": {},
-    "$schema": "http://json-schema.org/draft-07/schema#"
-  }
-}

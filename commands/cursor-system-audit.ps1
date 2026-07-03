@@ -23,19 +23,8 @@ function Get-DirSizeMB {
     return [math]::Round($bytes / 1MB, 1)
 }
 
-function Test-ObsidianHealth {
-    $mcpPath = Join-Path $HubRoot "mcp.json"
-    if (-not (Test-Path $mcpPath)) { return @{ ok = $false; reason = "mcp.json missing" } }
-    try {
-        $cfg = Get-Content $mcpPath -Raw | ConvertFrom-Json
-        $token = $cfg.mcpServers.obsidian.headers.Authorization -replace '^Bearer\s+', ''
-        if (-not $token) { return @{ ok = $false; reason = "no obsidian token" } }
-        $headers = @{ Authorization = "Bearer $token" }
-        $r = Invoke-RestMethod -Uri "http://127.0.0.1:27123/" -Headers $headers -TimeoutSec 5
-        return @{ ok = ($r.status -eq "OK"); authenticated = $r.authenticated; version = $r.versions.self }
-    } catch {
-        return @{ ok = $false; reason = $_.Exception.Message }
-    }
+function Test-McpFetchHealth {
+    return @{ ok = $true; note = 'fetch MCP - restart via Cursor Settings if errored' }
 }
 
 $topLevel = Get-ChildItem -LiteralPath $HubRoot -Force -ErrorAction SilentlyContinue |
@@ -79,7 +68,7 @@ try {
     Pop-Location
 }
 
-$obsidian = Test-ObsidianHealth
+$mcpHealth = Test-McpFetchHealth
 
 $pendingPath = Join-Path $reportDir ".deferred-refresh-pending.json"
 $deferredPending = $false
@@ -103,7 +92,6 @@ $report = [ordered]@{
     brokenJunctions = $brokenJunctions
     gitnexusStale = $gitnexusStale
     untrackedGitLines = $untracked
-    obsidian = $obsidian
     deferredPending = $deferredPending
     deferredQueuedAt = $deferredQueuedAt
     recommendations = @(
@@ -113,7 +101,6 @@ $report = [ordered]@{
         if ($nestedGit.Count -gt 5) { "MOVE embedded repos to C:\Users\Asus\projects\" }
         if ($brokenJunctions.Count -gt 0) { "RUN node skills/cybersecurity/scripts/ensure-library.mjs" }
         if ($gitnexusStale) { "RUN npx gitnexus analyze" }
-        if (-not $obsidian.ok) { "Start Obsidian + enable Local REST API HTTP" }
         if ($deferredPending) { "Deferred cleanup pending (closes when Cursor exits)" }
     ) | Where-Object { $_ }
 }
@@ -121,6 +108,8 @@ $report = [ordered]@{
 $jsonPath = Join-Path $reportDir "system-audit-$date.json"
 $mdPath = Join-Path $reportDir "system-audit-$date.md"
 $report | ConvertTo-Json -Depth 6 | Set-Content -Path $jsonPath -Encoding UTF8
+
+$deferredLine = if ($deferredQueuedAt) { "$deferredPending (since $deferredQueuedAt)" } else { "$deferredPending" }
 
 $md = @"
 # System audit $date
@@ -130,8 +119,7 @@ $md = @"
 - **Nested .git repos:** $($nestedGit.Count)
 - **Untracked git lines:** $untracked
 - **GitNexus stale (>7d):** $gitnexusStale
-- **Obsidian OK:** $($obsidian.ok)
-- **Deferred cleanup pending:** $deferredPending$(if ($deferredQueuedAt) { " (since $deferredQueuedAt)" })
+- **Deferred cleanup pending:** $deferredLine
 
 ## Top sizes (MB)
 

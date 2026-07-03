@@ -12,6 +12,8 @@ user-invocable: true
 
 # Project Squad v2 (Cursor)
 
+> **Dev OS DEC-004:** Squad is the **execution layer** under Candidate A (minimal meta). Research → `@dev-os` / `dev-os-research`. Build/ship → Squad. New agents require DEC + emergence checklist.
+
 Boss (**Opus 4.7**) orchestrates; **10 custom subagents** in `C:/Users/Asus/.cursor/agents/squad-*.md` — visible in Cursor **Subagents** panel.
 
 | Resource | Path |
@@ -29,7 +31,7 @@ Boss (**Opus 4.7**) orchestrates; **10 custom subagents** in `C:/Users/Asus/.cur
 3. **Token economy** — graphify/markitdown; one web MCP (Exa); Haiku/Composer for scout/memory/cleanup.
 4. **No commit / no deploy** unless user explicitly allowed.
 5. **GitNexus** — impact before symbol edits; detect_changes before commit.
-6. **Memory** — `user-memory` + `AGENTS.md` + `ai-tracking/`; Obsidian **optional only** (on-demand `obsidian-mcp` skill).
+6. **Memory** — `user-memory` + `AGENTS.md` + `ai-tracking/` (see DEC-009 memory stack).
 7. **Parallel** only per [team-roster.md](reference/team-roster.md).
 
 ## Boss checklist
@@ -58,7 +60,7 @@ Fallback if custom agent unavailable: Task with `subagent_type` from roster + `m
 | fix errors | scout → architect → build → review → qa |
 | seo-geo | scout → growth → qa |
 | full cycle | all phases (ship gated) |
-| refresh hub | squad-cleanup → cursor-system-refresh.cmd `-SkipObsidian` |
+| refresh hub | squad-cleanup → cursor-system-refresh.cmd |
 
 ## Command
 

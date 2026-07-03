@@ -29,9 +29,10 @@
       }
     },
     "stitch": {
-      "url": "https://stitch.googleapis.com/mcp",
-      "headers": {
-        "X-Goog-Api-Key": "YOUR_STITCH_API_KEY"
+      "command": "node",
+      "args": ["C:/Users/Asus/.cursor/commands/stitch-mcp-proxy.mjs"],
+      "env": {
+        "STITCH_API_KEY": "YOUR_STITCH_API_KEY"
       }
     },
     "gemini": {
@@ -41,6 +42,12 @@
         "GEMINI_API_KEY": "YOUR_GOOGLE_AI_STUDIO_API_KEY",
         "GOOGLE_API_KEY": "YOUR_GOOGLE_AI_STUDIO_API_KEY",
         "GEMINI_DEFAULT_MODEL": "gemini-flash-latest"
+      }
+    },
+    "n8n-mcp": {
+      "url": "https://YOUR_INSTANCE.app.n8n.cloud/mcp-server/http",
+      "headers": {
+        "Authorization": "Bearer YOUR_N8N_MCP_JWT"
       }
     }
   }

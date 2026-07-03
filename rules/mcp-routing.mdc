@@ -15,19 +15,21 @@ Registry: `SYSTEM-REGISTRY.md`. Decision tree: `rules/auto-orchestrator.mdc`.
 
 | MCP id | Descriptor folder |
 |--------|-------------------|
-| `obsidian` | `user-obsidian` |
 | `gitnexus` | `user-gitnexus` |
 | `memory` | `user-memory` |
 | `fetch` | `user-fetch` |
-| `stitch` | `user-stitch` (after Cursor MCP reload) |
+| `stitch` | `user-stitch` — **stdio proxy required** (`commands/stitch-mcp-proxy.mjs`); do not use bare remote URL in Cursor |
 | `gemini` | `user-gemini` (after Cursor MCP reload) |
+| `n8n-mcp` | `user-n8n-mcp` — HTTP streamable; token from n8n Settings → Instance-level MCP |
+| `@n8n` / JSON authoring | `skills/n8n-workflow/` — offline knowledge (no MCP required) |
+| `@dev-os` / bootstrap | `skills/dev-os/` — research-first meta-layer |
 | `@21st-dev/magic` | см. `mcps/*magic*` или 21st plugin folder |
 
-## Obsidian (always-on)
+## Memory stack (primary)
 
-- Сервер **`obsidian`** — Local REST API (`http://127.0.0.1:27123/mcp/`).
-- Правило `obsidian-mcp.mdc` — vault/PKM через MCP, не grep/Read по диску.
-- Скилл: `skills/obsidian-mcp/SKILL.md`.
+1. **`user-memory` MCP** — session facts, validated LTM
+2. **`AGENTS.md`** — durable agent instructions per repo
+3. **`ai-tracking/`** — hub audit, Dev OS corpus, one-liners
 
 ## Web — один primary провайдер
 
@@ -38,8 +40,9 @@ Registry: `SYSTEM-REGISTRY.md`. Decision tree: `rules/auto-orchestrator.mdc`.
 
 ## Прочие антиконфликты
 
+- **n8n vs Zapier:** n8n workflows / Workflow SDK → `n8n-mcp`; cross-app SaaS actions → `plugin-zapier-zapier`. Не дублировать одну операцию через оба.
 - **GitNexus vs grep:** indexed repo → GitNexus; blind disk grep — избегать.
-- **Obsidian vs memory:** long-term notes → vault; session crumbs → `user-memory`.
+- **Memory:** long-term → user-memory + AGENTS.md + ai-tracking/; no vault MCP.
 - **Plugin skills:** `plugins/cache/cursor-public/*/skills/**/SKILL.md` — по триггеру задачи, не все сразу.
 
 ## skills-cursor

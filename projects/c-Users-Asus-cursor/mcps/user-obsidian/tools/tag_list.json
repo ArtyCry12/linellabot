@@ -1,9 +1,0 @@
-{
-  "name": "tag_list",
-  "description": "Return all tags used across the vault, each with a usage count. Tag names do not include the leading '#'. This tool is read-only. To add a tag to a specific file, use vault_patch with targetType 'frontmatter', target 'tags', operation 'append', contentType 'application/json', and content [\"tag-name\"] (set createTargetIfMissing to true if the file may have no tags yet). To remove a tag, read the current tags list with vault_read, filter client-side, then replace the whole field with vault_patch using operation 'replace'. For full examples, read the OpenAPI spec resource at obsidian://local-rest-api/openapi.yaml.",
-  "arguments": {
-    "type": "object",
-    "properties": {},
-    "$schema": "http://json-schema.org/draft-07/schema#"
-  }
-}

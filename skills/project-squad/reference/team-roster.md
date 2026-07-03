@@ -13,17 +13,16 @@ Boss orchestrates; **10 custom subagents** in `~/.cursor/agents/squad-*.md`.
 | **review** | Code quality | `squad-review` | `code-reviewer` / `bugbot` | GPT-5.5 | `thermo-nuclear-code-quality-review` |
 | **growth** | SEO / GEO / perf | `squad-growth` | `performance-optimizer` | Sonnet | `seo-geo`, alert-manager sub-skill |
 | **ship** | Deploy / env | `squad-ship` | `deployment-expert` | Sonnet | `plugin-vercel-vercel`, `deployments-cicd` |
-| **memory** | Session + project facts | `squad-memory` | — | Haiku | **`user-memory`**, `AGENTS.md`, `ai-tracking/`; Obsidian **optional** |
+| **memory** | Session + project facts | `squad-memory` | — | Haiku | **`user-memory`**, `AGENTS.md`, `ai-tracking/` |
 | **cleanup** | Cache / hub refresh | `squad-cleanup` | `shell` | Composer | `cursor-system-refresh.cmd` |
 
-## Memory stack (Obsidian demoted)
+## Memory stack (DEC-009)
 
 | Priority | Tool | Use |
 |----------|------|-----|
-| 1 | `user-memory` MCP | Short session facts |
+| 1 | `user-memory` MCP | Session facts, validated LTM |
 | 2 | `AGENTS.md` / project README | Durable team context |
-| 3 | `ai-tracking/` | Hub audit one-liners |
-| 4 | Obsidian vault | **Optional** PKM when online + user asks; `skills/obsidian-mcp` on-demand |
+| 3 | `ai-tracking/` | Hub audit, Dev OS corpus |
 
 ## Parallelism
 

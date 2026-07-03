@@ -1,0 +1,26 @@
+---
+description: >-
+  Cursor AI Dev OS — DEC-008 executive charter. Full lifecycle delivery;
+  objective-level checkpoints only. Triggers @dev-os, /dev-os.
+alwaysApply: false
+---
+
+# Dev OS Meta-Layer
+
+**Charter:** `docs/dev-os/EXECUTIVE.md` · **Skill:** `skills/dev-os/SKILL.md` · **Execution:** `skills/dev-os/execution/SKILL.md`
+
+## Triggers
+
+`@dev-os`, `/dev-os`, bootstrap, research-first, Dev OS lifecycle, end-to-end delivery.
+
+## Action
+
+1. Load EXECUTIVE + dev-os skill + execution lifecycle
+2. Run UNDERSTAND→EVOLVE without phase stops; route IMPLEMENT/VALIDATE to Squad
+3. Log assumptions to `decisions/log.md`
+4. **Checkpoint:** one line after completed objective only (DEC-006/008); silence = continue
+5. **Escalate immediately:** security, data loss, irreversible architecture, critical missing data, legal, destructive ops
+
+## vs Project Squad
+
+Dev OS = meta (Phase 5). Squad = execution. Research → dev-os-research; build → Squad.

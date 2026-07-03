@@ -50,9 +50,9 @@ This project is indexed by GitNexus as **.cursor** (11 symbols, 4 relationships,
 
 Скилл: `C:/Users/Asus/.cursor/skills/clone-website/SKILL.md`. Шаблон Next.js: `skills/clone-website/template/`. Bootstrap в любую папку: `node skills/clone-website/scripts/init-clone-project.mjs <dir>`. Триггеры: `@clone-website`, `/clone-website`, клон/копия сайта. Требует **cursor-ide-browser** MCP.
 
-## Obsidian MCP (always-on, автономный)
+## Memory stack (DEC-009)
 
-MCP `obsidian` в `mcp.json`. Правило `rules/obsidian-mcp.mdc` — **always-on**: агент **сам** создаёт/редактирует/удаляет заметки после содержательной работы, **без** запроса «сохранить?». Скилл: `skills/obsidian-mcp/SKILL.md`. Obsidian Desktop должен быть запущен.
+Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev OS corpus). Obsidian removed from hub. Route memory via `squad-memory` + `skills/dev-os/memory/SKILL.md`.
 
 ## 21st Design (21st.dev UI registry)
 

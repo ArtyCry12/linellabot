@@ -21,12 +21,14 @@ alwaysApply: true
 |--------|----------------------------|
 | Память сессии (primary) | `memory` → `user-memory` |
 | Код-граф | `gitnexus` → `user-gitnexus` |
-| Vault / PKM (optional) | `obsidian` → `user-obsidian` — on-demand only |
 | Один URL | `fetch` → `user-fetch` |
 | **Web research (primary)** | **`plugin-exa-exa`** |
 | Design (Figma file) | `plugin-figma-figma` |
 | Design (Stitch projects) | `stitch` → `user-stitch` |
 | Gemini LLM (generate, vision, embed) | `gemini` → `user-gemini` |
+| n8n workflows / Workflow SDK | `n8n-mcp` → `user-n8n-mcp` |
+| n8n JSON authoring (offline rules) | `skills/n8n-workflow/` · `@n8n` |
+| Dev OS meta-layer (research-first) | `skills/dev-os/` · `@dev-os` |
 | 21st.dev UI | `@21st-dev/magic` |
 | Браузер E2E | `cursor-ide-browser` |
 | Supabase / Vercel / Stripe / Clerk / Figma / Zapier | `plugin-*` по задаче |
@@ -36,7 +38,6 @@ alwaysApply: true
 
 | Задача | Скилл |
 |--------|-------|
-| Vault | `obsidian-mcp` |
 | Клон сайта | `clone-website` + browser |
 | HTML/motion/deck | `huashu-design` |
 | 21st UI | `21st-design` |
