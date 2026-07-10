@@ -1,41 +1,74 @@
 ---
 name: prompt-engineering-coach
 description: >-
-  Параллельное обучение prompt engineering по реальным промтам пользователя.
-  После крупной сессии — brief с исправлениями, хуками LLM, примером идеального промта.
-  Notion: 📚Мой promt-engineering. Триггеры: урок промта, prompt engineering, как писать промт.
-argument-hint: "[analyze session | write lesson]"
+  Параллельное обучение prompt engineering: захват промтов, mini-score 7/10,
+  brief-уроки, Notion publish (с approval), monthly cheatsheet, autopilot contract.
+  Notion: 📚Мой promt-engineering. Триггеры: урок промта, /prompt-lesson.
+argument-hint: "[status | write lesson | notion | cheatsheet]"
 user-invocable: true
 ---
 
-# Prompt Engineering Coach
+# Prompt Engineering Coach (DEC-058 + DEC-059)
 
-**Notion hub:** [📚Мой promt-engineering](https://app.notion.com/p/3966689eb5b880f68f77dbfba5efeed2)
+**Notion:** [📚Мой promt-engineering](https://app.notion.com/p/3966689eb5b880f68f77dbfba5efeed2)  
+**Уроки:** `ai-tracking/prompt-lessons/`  
+**Тест:** `commands/prompt-coach-test.ps1`
 
-## Когда давать урок
+## 4 функции обучения
 
-- После завершённого проекта / крупного обновления системы
-- Когда накопился **достаточный** объём **ваших** формулировок (не каждую сессию)
-- Отличать текст пользователя от текста ИИ в переписке
+| # | Функция | Как |
+|---|---------|-----|
+| 1 | **Mini-score** | Конец сессии: `Промт X/10` + `Register-MiniScore` |
+| 2 | **Brief-урок** | Когда READY или «урок промта» |
+| 3 | **Notion** | После урока спросить «да» → `prompt-lesson-notion.ps1` → MCP |
+| 4 | **Cheatsheet** | `prompt-hooks-cheatsheet.ps1` раз в 30 дней |
 
-## Формат урока
+Плюс: **контракт** в `!auto` — `Deliverables / Не трогать / Готово когда` (hook подсказывает агенту).
 
-Путь: `ai-tracking/prompt-lessons/YYYY-MM-DD-<slug>.md`
+## Автоматика
 
-1. **Что было хорошо** — 2–3 пункта простым языком
-2. **Что мешало LLM** — конкретные фразы/пробелы
-3. **Исправления** — до/после (коротко)
-4. **Хуки системы** — фразы которые Cursor/Squad понимает однозначно
-5. **Один идеальный промт** — переписанный пример под ваш стиль
-6. Опционально: cross-link в Notion (notion MCP, с approval)
+| Компонент | Роль |
+|-----------|------|
+| `hooks/prompt-coach-capture.ps1` | Копит промты |
+| `hooks/prompt-coach-stop.ps1` | Напоминание mini-score |
+| `hooks/autopilot.ps1` | Контракт mega-задач |
+| `lib/prompt-coach/PromptCoach.ps1` | State, scores, cheatsheet, Notion payload |
 
-## Стиль
+## Урок — когда и как
 
-- Человеческий язык, без «AI slop»
-- Brief, scannable (заголовки, списки)
-- Персонализация под ваши проекты и термины
+См. `references/GATING.md`. Шаблон: `templates/prompt-lesson/LESSON-TEMPLATE.md`.
 
-## Out of scope
+После урока:
 
-- Частые «уроки» без нового материала
-- Критика ради критики — только actionable правки
+```powershell
+. lib/prompt-coach/PromptCoach.ps1
+Complete-CoachLesson -Slug "YYYY-MM-DD-slug"
+```
+
+Спросить: **«Опубликовать урок в Notion?»** → `references/NOTION-PUBLISH.md`
+
+## Mini-score
+
+Формат: `**Промт 7/10** — одна причина.`  
+Не путать с полным уроком. Лог: `_scores.jsonl`.
+
+## Cheatsheet
+
+```powershell
+powershell -File commands/prompt-hooks-cheatsheet.ps1
+```
+
+Файл: `ai-tracking/prompt-lessons/cheatsheet-YYYY-MM.md`
+
+## Пользователь vs ИИ
+
+`references/USER-VS-AI.md` · `references/STYLE.md`
+
+## Команды
+
+| Команда | Действие |
+|---------|----------|
+| `prompt-coach-status.ps1` | Готовность урока |
+| `prompt-coach-test.ps1` | Прогон системы |
+| `prompt-lesson-notion.ps1 -LessonPath …` | Пакет для Notion |
+| `prompt-hooks-cheatsheet.ps1` | Топ-5 хуков |

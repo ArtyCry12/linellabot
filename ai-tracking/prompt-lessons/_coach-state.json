@@ -1,0 +1,24 @@
+﻿{
+    "version":  1,
+    "lastLessonAt":  "2026-07-10T12:00:00+03:00",
+    "lessonsWritten":  2,
+    "lastLessonSlug":  "2026-07-10-auto-routing-and-prompt-coach",
+    "substantiveCaptured":  4,
+    "milestones":  [
+                       {
+                           "at":  "2026-07-10T14:00:00+03:00",
+                           "label":  "P3 Notion mega-prompt build complete"
+                       },
+                       {
+                           "at":  "2026-07-10T15:00:00+03:00",
+                           "label":  "DEC-057 task-router"
+                       },
+                       {
+                           "at":  "2026-07-10T15:10:00+03:00",
+                           "label":  "DEC-058 prompt-engineering-coach"
+                       }
+                   ],
+    "lastCaptureAt":  "2026-07-10T15:47:41.0844282+03:00",
+    "lastCheatsheetAt":  "2026-07-10T15:47:42.6708496+03:00",
+    "lastCheatsheetSlug":  "2026-07"
+}

@@ -29,6 +29,35 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | File | Role |
 |------|------|
 | `rules/00-agent-orchestrator.mdc` | MCP/skill routing tables, registry pointer |
+| `rules/task-router.mdc` | Auto intent → skill/MCP/subagent (hook-backed) |
+| `rules/prompt-engineering-coach.mdc` | Post-session prompt lessons (DEC-058) |
+
+## Task Router (DEC-057)
+
+| Resource | Path |
+|----------|------|
+| Manifest (keywords RU+EN) | `lib/task-router/routes.json` |
+| Resolver | `lib/task-router/Resolve-TaskRoute.ps1` |
+| Hook (every prompt) | `hooks/task-router.ps1` |
+| Test | `commands/task-router-test.ps1` · `/route` |
+
+## Prompt Engineering Coach (DEC-058)
+
+| Resource | Path |
+|----------|------|
+| Skill | `skills/prompt-engineering-coach/SKILL.md` |
+| Capture hook | `hooks/prompt-coach-capture.ps1` |
+| State / gating | `lib/prompt-coach/PromptCoach.ps1` |
+| Lessons | `ai-tracking/prompt-lessons/` |
+| Notion hub | 📚Мой promt-engineering |
+| Status | `commands/prompt-coach-status.ps1` · `/prompt-lesson` |
+| Test | `commands/prompt-coach-test.ps1` |
+| Combined test | `commands/hub-learning-test.ps1` (router + coach) |
+| Rule | `rules/prompt-engineering-coach.mdc` (always-on check after delivery) |
+| Mini-score | `hooks/prompt-coach-stop.ps1` · `_scores.jsonl` |
+| Notion publish | `commands/prompt-lesson-notion.ps1` (approval) |
+| Cheatsheet | `commands/prompt-hooks-cheatsheet.ps1` (30d) |
+| Autopilot contract | `templates/prompt-lesson/CONTRACT-TEMPLATE.md` |
 
 ## On-demand rules
 
@@ -210,6 +239,8 @@ Boss (parent chat): **Opus 4.7**. Skill: `skills/project-squad/SKILL.md` · Comm
 | `commands/sync-notion-mcp-descriptors.mjs` | Notion MCP stubs |
 | `commands/build-combined-notion-prompt.mjs` | Concat Notion prompt pages |
 | `commands/pagespeed-audit.ps1` | PageSpeed Insights API run |
+| `commands/task-router-test.ps1` | Task Router classification test |
+| `commands/route.md` | `/route` — preview auto-routing |
 
 ### Deferred cleanup flow
 

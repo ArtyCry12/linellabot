@@ -1,0 +1,38 @@
+---
+description: >-
+  После крупной сессии — prompt-coach readiness, mini-score, Notion approval,
+  monthly cheatsheet. DEC-058/059.
+alwaysApply: true
+---
+
+# Prompt Engineering Coach (фон)
+
+**Skill:** `skills/prompt-engineering-coach/SKILL.md` · **Тест:** `commands/prompt-coach-test.ps1`
+
+## Конец любой смысловой сессии
+
+Одна строка (не урок):
+
+> **Промт X/10** — короткая причина простым языком.
+
+Записать: `Register-MiniScore` в `lib/prompt-coach/PromptCoach.ps1`.
+
+## После крупной доставки
+
+```
+powershell -File commands/prompt-coach-status.ps1
+```
+
+- **READY** → brief-урок → `Complete-CoachLesson` → спросить: **«Опубликовать в Notion?»** (только на **да** → `prompt-lesson-notion.ps1` + MCP)
+- Milestone → `Register-CoachMilestone`
+- Раз в ~30 дней или `prompt-hooks-cheatsheet.ps1 -Force` → персональный топ-5 хуков
+
+## Autopilot mega-задачи
+
+Пользователь может добавить в конец промта:
+
+`Deliverables / Не трогать / Готово когда` — см. `templates/prompt-lesson/CONTRACT-TEMPLATE.md`
+
+## Явный запрос
+
+«урок промта», `/prompt-lesson` → урок даже при низком пороге.

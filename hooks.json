@@ -6,6 +6,22 @@
         "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/autopilot.ps1",
         "matcher": "UserPromptSubmit",
         "timeout": 5
+      },
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/task-router.ps1",
+        "matcher": "UserPromptSubmit",
+        "timeout": 5
+      },
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/prompt-coach-capture.ps1",
+        "matcher": "UserPromptSubmit",
+        "timeout": 5
+      }
+    ],
+    "stop": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/prompt-coach-stop.ps1",
+        "timeout": 5
       }
     ]
   }

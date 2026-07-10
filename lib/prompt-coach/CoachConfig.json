@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "minSubstantivePrompts": 4,
+  "minDaysBetweenLessons": 2,
+  "minCharsSubstantive": 40,
+  "maxLessonsPerWeek": 2,
+  "captureFile": "ai-tracking/prompt-lessons/_capture.jsonl",
+  "stateFile": "ai-tracking/prompt-lessons/_coach-state.json",
+  "lessonsDir": "ai-tracking/prompt-lessons",
+  "notionHub": "https://app.notion.com/p/3966689eb5b880f68f77dbfba5efeed2",
+  "notionHubPageId": "3966689eb5b880f68f77dbfba5efeed2",
+  "scoresFile": "ai-tracking/prompt-lessons/_scores.jsonl",
+  "cheatsheetIntervalDays": 30,
+  "megaTaskMinChars": 120,
+  "noisePatterns": [
+    "Briefly inform the user about the task result",
+    "Implement the plan as specified",
+    "Do NOT edit the plan file itself",
+    "To-do's from the plan have already been created",
+    "Mark them as in_progress as you work",
+    "Don't stop until you have completed all the to-dos"
+  ]
+}

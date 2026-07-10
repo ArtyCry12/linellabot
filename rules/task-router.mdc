@@ -1,0 +1,41 @@
+---
+description: >-
+  Always-on task recognition — honor [TASK ROUTE] from hook; minimal fallback
+  when hook absent. Auto-picks skill, MCP, subagent, mode.
+alwaysApply: true
+---
+
+# Task Router (always-on)
+
+**Manifest:** `lib/task-router/routes.json` · **Hook:** `hooks/task-router.ps1` · **Tree:** `rules/auto-orchestrator.mdc`
+
+## On every user message
+
+1. If prompt contains **`[TASK ROUTE - auto-detected]`** (from hook) — **follow that bundle first**:
+   - Read listed **SKILL.md** before improvising
+   - Load listed **rule** if not already active
+   - Use listed **MCP** only (one descriptor JSON before first call)
+   - Spawn listed **subagent** when scope is large or parallel
+   - Respect **Mode** hint (plan / agent / debug / ask)
+2. Do **not** load unrelated skills/MCP "just in case"
+3. **Autopilot** (`!auto`, `/autopilot`) overrides — full automation rights apply
+
+## Fallback (no hook block)
+
+Classify silently using `lib/task-router/routes.json` keywords or `rules/auto-orchestrator.mdc`.
+
+## Multi-intent
+
+Primary + Secondary routes both apply; sequence Primary first unless user order implies otherwise.
+
+## Examples
+
+| User says | Auto route |
+|-----------|------------|
+| «проверь seo сайта» | seo-geo + seo-audit.ps1 |
+| «клонируй лендинг» | clone-website + browser |
+| «раскадровка для reels» | production-studio |
+| «запомни для Dev OS» | user-memory + squad-memory |
+| «почему падает CI» | ci-debug + ci-investigator |
+
+Test: `powershell -File commands/task-router-test.ps1`

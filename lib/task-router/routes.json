@@ -1,0 +1,274 @@
+﻿{
+  "version": 1,
+  "minScore": 5,
+  "maxRoutes": 2,
+  "skipIfShorterThan": 8,
+  "routes": [
+    {
+      "id": "autopilot",
+      "label": "Full automation",
+      "phrases": ["!auto", "/autopilot"],
+      "tags": ["!auto", "/autopilot"],
+      "mode": "agent",
+      "note": "Handled by hooks/autopilot.ps1; do not double-inject"
+    },
+    {
+      "id": "memory",
+      "label": "Session memory",
+      "keywords": ["запомни", "remember", "recall", "handoff", "сохрани в память"],
+      "phrases": ["remember this", "remember we"],
+      "skill": "skills/project-squad/SKILL.md",
+      "mcp": ["user-memory"],
+      "subagent": ["squad-memory"],
+      "templates": ["templates/squad-handoff.md"],
+      "mode": "agent"
+    },
+    {
+      "id": "seo-geo",
+      "label": "SEO / GEO audit",
+      "keywords": ["seo", "geo", "serp", "sitemap", "meta tag", "core web vitals", "ранжир", "индексац", "бэклинк", "schema markup"],
+      "phrases": ["seo audit", "seo-geo", "geo audit", "аудит seo", "проверь seo", "аудит сайта", "оптимизация сайта", "check seo", "run seo", "seo for"],
+      "tags": ["@seo-geo"],
+      "skill": "skills/seo-geo/SKILL.md",
+      "rule": "rules/seo-geo.mdc",
+      "mcp": ["plugin-exa-exa"],
+      "commands": ["commands/seo-audit.ps1", "commands/seo-stack-verify.ps1", "commands/gsc-audit.ps1"],
+      "subagent": ["squad-growth"],
+      "mode": "agent"
+    },
+    {
+      "id": "pagespeed",
+      "label": "PageSpeed / performance",
+      "keywords": ["pagespeed", "lighthouse", "core web vitals", "cwv", "performance audit"],
+      "phrases": ["page speed", "скорость сайта"],
+      "commands": ["commands/pagespeed-audit.ps1"],
+      "subagent": ["performance-optimizer", "squad-growth"],
+      "mode": "agent"
+    },
+    {
+      "id": "clone-website",
+      "label": "Clone / rebuild website",
+      "keywords": ["клон", "clone", "копия сайта", "reverse engineer", "pixel perfect", "скопируй сайт", "лендинг", "landing"],
+      "phrases": ["clone website", "clone-website", "/clone-website", "clone landing", "клонируй"],
+      "tags": ["@clone-website"],
+      "skill": "skills/clone-website/SKILL.md",
+      "rule": "rules/clone-website.mdc",
+      "mcp": ["cursor-ide-browser", "plugin-exa-exa"],
+      "mode": "agent"
+    },
+    {
+      "id": "huashu-design",
+      "label": "HTML prototype / deck / motion",
+      "keywords": ["прототип", "prototype", "deck", "pptx", "motion", "infographic", "слайд", "озвучк"],
+      "phrases": ["html prototype", "huashu"],
+      "tags": ["@huashu"],
+      "skill": "skills/huashu-design/SKILL.md",
+      "rule": "rules/huashu-design.mdc",
+      "mode": "agent"
+    },
+    {
+      "id": "21st-design",
+      "label": "21st.dev / shadcn UI",
+      "keywords": ["21st", "shadcn", "ui component", "magic mcp"],
+      "tags": ["@21st"],
+      "skill": "skills/21st-design/SKILL.md",
+      "rule": "rules/21st-design.mdc",
+      "mcp": ["user-@21st-dev/magic"],
+      "mode": "agent"
+    },
+    {
+      "id": "design-stack",
+      "label": "Design stack / CRO review",
+      "keywords": ["cro", "hero review", "design stack", "shadcn block", "ui review"],
+      "tags": ["@design-stack"],
+      "skill": "skills/design-stack/SKILL.md",
+      "rule": "rules/design-stack.mdc",
+      "mcp": ["user-context7", "user-@21st-dev/magic"],
+      "mode": "agent"
+    },
+    {
+      "id": "production-studio",
+      "label": "Video / storyboard / LVM",
+      "keywords": ["storyboard", "раскадров", "lvm", "shorts", "reels", "b-roll", "davinci", "сегмент", "viral"],
+      "phrases": ["/storyboard", "/production-studio", "production studio", "storyboard for"],
+      "skill": "skills/production-studio/SKILL.md",
+      "commands": ["commands/storyboard.md", "commands/production-studio.md", "commands/lvm-segment.md"],
+      "mcp": ["user-magnific", "plugin-apify-apify"],
+      "mode": "agent"
+    },
+    {
+      "id": "project-squad",
+      "label": "Multi-agent Squad execution",
+      "keywords": ["squad", "project squad", "субагент", "subagent", "оркестрац"],
+      "phrases": ["/project-squad", "squad-build", "squad-qa", "squad-scout"],
+      "skill": "skills/project-squad/SKILL.md",
+      "rule": "rules/project-squad.mdc",
+      "subagent": ["squad-scout", "squad-architect", "squad-build", "squad-qa", "squad-review", "squad-ship"],
+      "mode": "agent"
+    },
+    {
+      "id": "agency-persona",
+      "label": "Agency marketing persona",
+      "keywords": ["копирайт", "copywriting", "linkedin post", "tiktok", "контент-план", "growth hack", "paid media"],
+      "tags": ["@content-creator", "@seo-specialist", "@brand-guardian", "@ui-designer"],
+      "skill": "skills/agency-agents/SKILL.md",
+      "rule": "rules/agency-agents.mdc",
+      "mode": "agent"
+    },
+    {
+      "id": "web-research",
+      "label": "Web research / fact-check",
+      "keywords": ["найди", "research", "fact check", "latest", "документац", "что нового", "сравни"],
+      "phrases": ["web search", "поищи в интернете"],
+      "mcp": ["plugin-exa-exa"],
+      "mode": "agent"
+    },
+    {
+      "id": "browser-e2e",
+      "label": "Live browser / E2E UI",
+      "keywords": ["открой сайт", "кликни", "snapshot", "браузер", "e2e", "playwright", "side panel"],
+      "phrases": ["open in browser", "click sign in"],
+      "mcp": ["cursor-ide-browser"],
+      "mode": "agent"
+    },
+    {
+      "id": "apify-crawl",
+      "label": "Scale crawl / Apify actors",
+      "keywords": ["apify", "crawl", "scrape", "парсинг", "actor", "anti-bot"],
+      "mcp": ["plugin-apify-apify"],
+      "docs": ["ai-tracking/APIFY-POLICY.md"],
+      "mode": "agent"
+    },
+    {
+      "id": "notion-workspace",
+      "label": "Notion tasks / workspace",
+      "keywords": ["notion", "страницу notion", "t3 cleanup", "обнови статус"],
+      "skill": "skills/notion-workspace/SKILL.md",
+      "rule": "rules/notion-workspace.mdc",
+      "mcp": ["user-notion", "plugin-notion-workspace-notion"],
+      "mode": "agent"
+    },
+    {
+      "id": "google-workspace",
+      "label": "Gmail / Drive / Calendar",
+      "keywords": ["gmail", "google drive", "calendar", "почт", "gsc", "search console"],
+      "mcp": ["user-google-workspace"],
+      "commands": ["commands/gsc-audit.ps1", "commands/ensure-google-mcp.ps1"],
+      "mode": "agent"
+    },
+    {
+      "id": "n8n-automation",
+      "label": "n8n workflows",
+      "keywords": ["n8n", "workflow", "автоматизац"],
+      "tags": ["@n8n"],
+      "skill": "skills/n8n-workflow/SKILL.md",
+      "mcp": ["user-n8n-mcp"],
+      "commands": ["commands/n8n-mcp.md", "commands/n8n-workflow.md"],
+      "mode": "agent"
+    },
+    {
+      "id": "dev-os",
+      "label": "Dev OS / research-first bootstrap",
+      "keywords": ["dev os", "dev-os", "bootstrap", "research sprint", "emergence"],
+      "tags": ["@dev-os"],
+      "skill": "skills/dev-os/SKILL.md",
+      "rule": "rules/dev-os.mdc",
+      "subagent": ["dev-os-research"],
+      "commands": ["commands/dev-os.md"],
+      "mode": "plan"
+    },
+    {
+      "id": "figma-design",
+      "label": "Figma design-to-code",
+      "keywords": ["figma", "design context", "code connect"],
+      "mcp": ["plugin-figma-figma", "user-figma"],
+      "commands": ["commands/figma-mcp.md"],
+      "mode": "agent"
+    },
+    {
+      "id": "stitch-design",
+      "label": "Google Stitch UI",
+      "keywords": ["stitch", "google stitch"],
+      "mcp": ["user-stitch"],
+      "commands": ["commands/stitch-mcp.md", "commands/ensure-stitch.ps1"],
+      "mode": "agent"
+    },
+    {
+      "id": "gitnexus-refactor",
+      "label": "Symbol-safe refactor",
+      "keywords": ["rename", "refactor", "impact analysis", "gitnexus", "call graph"],
+      "mcp": ["user-gitnexus"],
+      "rule": "rules/karpathy-guidelines.mdc",
+      "subagent": ["explore"],
+      "mode": "agent"
+    },
+    {
+      "id": "ci-debug",
+      "label": "CI / failing checks",
+      "keywords": ["ci fail", "github check", "pipeline", "failing test", "падает тест", "ошибка сборки"],
+      "phrases": ["fix ci", "why is build failing", "why is ci failing", "ci failing"],
+      "subagent": ["ci-investigator", "shell"],
+      "skills": ["skills-cursor/review-bugbot/SKILL.md"],
+      "mode": "debug"
+    },
+    {
+      "id": "security-audit",
+      "label": "Security audit",
+      "keywords": ["security", "уязвим", "cve", "secrets scan", "gitleaks", "supply chain"],
+      "tags": ["@cybersecurity"],
+      "skill": "skills/cybersecurity/SKILL.md",
+      "rule": "rules/cybersecurity.mdc",
+      "commands": ["commands/bumblebee-scan.ps1", "commands/hub-supply-scan.ps1"],
+      "subagent": ["security-review"],
+      "mode": "agent"
+    },
+    {
+      "id": "deploy-vercel",
+      "label": "Deploy / Vercel",
+      "keywords": ["deploy", "vercel", "preview url", "production promote"],
+      "mcp": ["plugin-vercel-vercel"],
+      "subagent": ["deployment-expert", "squad-ship"],
+      "mode": "agent"
+    },
+    {
+      "id": "supabase-db",
+      "label": "Supabase / database",
+      "keywords": ["supabase", "postgres", "rls", "migration"],
+      "mcp": ["plugin-supabase-supabase"],
+      "mode": "agent"
+    },
+    {
+      "id": "hub-refresh",
+      "label": "Hub refresh / taxonomy",
+      "keywords": ["refresh hub", "system refresh", "taxonomy", "foundation", "p2 refresh"],
+      "phrases": ["cursor-system-refresh", "hub supply"],
+      "commands": ["commands/cursor-system-refresh.cmd", "commands/foundation-refresh.md", "commands/p2-refresh.ps1"],
+      "rule": "rules/system-taxonomy.mdc",
+      "docs": ["SYSTEM-TAXONOMY.md"],
+      "mode": "agent"
+    },
+    {
+      "id": "prompt-coach",
+      "label": "Prompt engineering lesson",
+      "keywords": ["урок промта", "prompt lesson", "prompt engineering", "как писать промт", "prompt coach"],
+      "phrases": ["/prompt-lesson", "prompt-coach-status", "мой prompt engineering"],
+      "skill": "skills/prompt-engineering-coach/SKILL.md",
+      "mode": "ask"
+    },
+    {
+      "id": "explain-only",
+      "label": "Explain / no edits",
+      "keywords": ["объясни", "что такое", "как работает", "расскажи", "explain"],
+      "phrases": ["what is", "how does"],
+      "mode": "ask"
+    },
+    {
+      "id": "architecture-plan",
+      "label": "Architecture / trade-offs",
+      "keywords": ["архитектур", "trade-off", "сравни redis", "vs postgres", "спроектируй"],
+      "rule": "rules/mode-routing.mdc",
+      "subagent": ["squad-architect", "plugin-architect"],
+      "mode": "plan"
+    }
+  ]
+}

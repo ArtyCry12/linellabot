@@ -2,6 +2,12 @@
 
 **After:** Developer → Reload Window (or `commands/cursor-reload-window.ps1`)
 
+**Task Router (DEC-057):** after reload, every prompt auto-gets `[TASK ROUTE]` via `hooks/task-router.ps1`.
+
+**Prompt Coach (DEC-058):** `hooks/prompt-coach-capture.ps1` копит ваши промты; статус: `prompt-coach-status.ps1`.
+
+Test: `commands/task-router-test.ps1 -Prompt "ваш запрос"`.
+
 ---
 
 ## 1. MCP OAuth (one-time each)

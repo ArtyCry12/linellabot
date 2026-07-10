@@ -1,5 +1,7 @@
 # Prompt hooks — фразы которые система понимает чётко (REQ-071)
 
+**Авто-роутинг (DEC-057):** на **каждый** промпт `hooks/task-router.ps1` подставляет `[TASK ROUTE]` — skill/MCP/subagent. Ручные фразы ниже усиливают или дублируют маршрут.
+
 Используйте в запросах для однозначного роутинга.
 
 ## Фазы и статус
@@ -35,14 +37,21 @@
 | **«P3 test»** | `p3-system-test.ps1` |
 | **«P3 ready»** | `p3-ready-check.ps1` → playbook |
 | **«post reload»** | `POST-RELOAD-GUIDE.md` + `p3-final-audit.ps1` |
+| **`/route`** | Preview task-router classification |
 
-## Production & контент
+## Авто (без фраз)
+
+Любой запрос с ключевыми словами (seo, клон, storyboard, notion, …) → см. `lib/task-router/routes.json`
+
+## Prompt coach (DEC-058)
 
 | Фраза | Route |
 |-------|-------|
-| «storyboard» | production-studio |
-| «раскадровка» | production-studio |
-| «урок промта» | prompt-engineering-coach |
+| «урок промта» | prompt-engineering-coach → brief в `prompt-lessons/` |
+| `/prompt-lesson` | То же + skill |
+| `prompt-coach-status` | Готовность следующего урока |
+| `prompt-hooks-cheatsheet` | Топ-5 твоих хуков за месяц |
+| `Deliverables / Не трогать / Готово когда` | Контракт для !auto mega-задач |
 
 ## Память
 

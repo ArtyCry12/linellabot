@@ -42,6 +42,16 @@ else {
 
 if (-not $matched) { exit 0 }
 
+$contractBlock = @"
+
+## Mega-task contract (add at end of your prompt if missing)
+Deliverables: <files/folders/report>
+Ne trogat / Do not touch: <mcp.json, commits, ...>
+Gotovo kogda / Done when: <0 FAIL, reload works, ...>
+
+If user already included these lines, follow them exactly.
+"@
+
 $block = @"
 [AUTOPILOT MODE — user granted full automation rights]
 
@@ -49,6 +59,7 @@ $block = @"
 - Ask only on real blockers; put questions and improvement ideas at the END.
 - No commits/deploy unless explicitly requested in the task.
 - Respect DEC-004: Squad stays 10 agents; agency max 2/session.
+$contractBlock
 
 "@
 
