@@ -1,0 +1,36 @@
+---
+description: >-
+  SEO & GEO pack — keyword research, audits, content, technical SEO, rank watch.
+  Triggers @seo-geo, SEO audit, GEO, Core Web Vitals, meta tags, schema markup.
+alwaysApply: false
+---
+
+# SEO / GEO (Aaron He Zhu pack)
+
+Load skill: `C:/Users/Asus/.cursor/skills/seo-geo/SKILL.md`
+
+## Quick route
+
+| Intent | Start with |
+|--------|------------|
+| Unknown SEO task | `/aaron:auto` mental model — smallest useful workflow |
+| Full audit | `optimize/on-page-seo-auditor` + `optimize/technical-seo-checker` |
+| GEO / AI citations | `cross-cutting/domain-authority-auditor` + `build/geo-content-optimizer` |
+| Keywords | `research/keyword-research` |
+| Publish gate | `cross-cutting/content-quality-auditor` (CORE-EEAT) |
+
+## CLI stack (P2)
+
+Run hub audits: `commands/seo-audit.ps1`  
+PageSpeed only: `commands/pagespeed-audit.ps1`  
+Docs: `docs/knowledge-base/SEO-STACK.md`
+
+## MCP / tools
+
+- **Primary web research:** plugin-exa-exa
+- **Perf API:** PageSpeed (`secrets.local.json` → `PAGESPEED_API_KEY`)
+- **GSC auto-connect:** blocked until full Google OAuth — see `GOOGLE-STACK-LITE.md`
+
+## Memory handoff
+
+Pass CORE-EEAT scores, CITE scores, target keyword, completion status per `skills/seo-geo/library/CLAUDE.md`.

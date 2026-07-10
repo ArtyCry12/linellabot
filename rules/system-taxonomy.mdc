@@ -1,0 +1,25 @@
+---
+description: >-
+  22-domain system taxonomy — automation, security, orchestration, tokens, marketing,
+  memory, creative studio, B2B, CRM, monetization, etc. Load when classifying skills,
+  planning hub refresh, or mapping external repos to hub routes.
+alwaysApply: false
+---
+
+# System taxonomy (on-demand)
+
+**Canonical:** `SYSTEM-TAXONOMY.md` (repo root)  
+**Foundations:** `docs/knowledge-base/FOUNDATION-REPOS.md`  
+**Agency map:** `docs/knowledge-base/AGENCY-PORTFOLIO-MAP.md`  
+**Token policy:** `docs/knowledge-base/TOKEN-MEMORY-POLICY.md`
+
+## Quick classify
+
+1. Read user intent → match domain #1–22 in `SYSTEM-TAXONOMY.md`
+2. Route via `rules/auto-orchestrator.mdc` (one skill + one MCP max)
+3. External repo? Check `EXTERNAL-CATALOG.md` — **reference**, don't bulk-install
+4. Agency persona? Max 2 divisions via `AGENCY-PORTFOLIO-MAP.md`
+
+## Refresh command
+
+`/foundation-refresh` → `commands/foundation-refresh.md`

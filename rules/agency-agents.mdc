@@ -1,0 +1,15 @@
+---
+description: >-
+  The Agency — 66 on-demand marketing/sales/design/product/paid-media personas
+  (rules/agency/*.mdc). Triggers @agency, content creator, sales engineer, PPC.
+  On-demand only — never alwaysApply.
+alwaysApply: false
+---
+
+# Agency agents (on-demand)
+
+**Skill:** `skills/agency-agents/SKILL.md` · **Rules:** `rules/agency/` · **Repo:** `C:\Users\Asus\projects\agency-agents`
+
+Activate via `@<slug>` (e.g. `@content-creator`). Max 2 personas/session. Pair with Squad — don't replace `squad-*` subagents.
+
+Install/refresh: `commands/install-agency-agents.ps1`

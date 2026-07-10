@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FlowMetrics — huashu motion ref</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600;700&family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Fira Sans", system-ui, sans-serif;
+      background: #0a0e17;
+      color: #e2e8f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .hero {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .hero { grid-template-columns: 1fr; } }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .orb-a { width: 280px; height: 280px; background: #1e40af; top: 10%; left: -5%; animation: drift-a 18s ease-in-out infinite; }
+    .orb-b { width: 200px; height: 200px; background: #3b82f6; bottom: 15%; right: 10%; animation: drift-b 22s ease-in-out infinite; }
+    @keyframes drift-a { 0%,100% { transform: translate(0,0); } 50% { transform: translate(40px,30px); } }
+    @keyframes drift-b { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-30px,-20px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .orb { animation: none; opacity: 0.25; }
+      .bento .cell { animation: none !important; opacity: 1 !important; transform: none !important; }
+    }
+    h1 {
+      font-family: "Fira Code", monospace;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      line-height: 1.15;
+      text-shadow: 0 0 24px rgba(59,130,246,0.35);
+    }
+    h1 span { color: #f59e0b; }
+    p.sub { color: #94a3b8; margin: 1rem 0 1.5rem; max-width: 28rem; line-height: 1.6; }
+    .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      padding: 0.65rem 1.25rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary { background: #f59e0b; color: #0a0e17; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.35); }
+    .btn-ghost { background: rgba(255,255,255,0.08); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.12); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+    .bento {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .cell {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: reveal 0.5s ease forwards;
+    }
+    .cell:nth-child(1) { animation-delay: 0ms; }
+    .cell:nth-child(2) { animation-delay: 80ms; }
+    .cell:nth-child(3) { animation-delay: 160ms; }
+    .cell:nth-child(4) { animation-delay: 240ms; }
+    @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+    .cell .label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
+    .cell .value { font-family: "Fira Code", monospace; font-size: 1.5rem; font-weight: 700; color: #3b82f6; margin-top: 0.35rem; }
+    .badge { display: inline-block; font-size: 0.65rem; padding: 0.2rem 0.5rem; background: rgba(59,130,246,0.2); color: #93c5fd; border-radius: 4px; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <section class="hero">
+    <div>
+      <span class="badge">huashu motion ref · FlowMetrics</span>
+      <h1>See what your team <span>ships</span></h1>
+      <p class="sub">Analytics for engineering teams — deploy frequency, error budgets, and uptime in one bento view.</p>
+      <div class="actions">
+        <button class="btn btn-primary" type="button">Start free trial</button>
+        <button class="btn btn-ghost" type="button">View demo</button>
+      </div>
+    </div>
+    <div class="bento" aria-label="Key metrics preview">
+      <div class="cell"><div class="label">Active users</div><div class="value">12.4k</div></div>
+      <div class="cell"><div class="label">Deploy / week</div><div class="value">47</div></div>
+      <div class="cell"><div class="label">Error rate</div><div class="value">0.02%</div></div>
+      <div class="cell"><div class="label">Uptime</div><div class="value">99.97</div></div>
+    </div>
+  </section>
+</body>
+</html>

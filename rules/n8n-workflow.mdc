@@ -1,0 +1,29 @@
+---
+description: >-
+  n8n workflow JSON authoring — expressions, validation, node config, patterns,
+  AI agents. Triggers @n8n, n8n workflow, webhook automation, n8n JSON.
+alwaysApply: false
+---
+
+# n8n Workflow Skill
+
+**Skill:** `skills/n8n-workflow/SKILL.md` · **Index:** `skills/n8n-workflow/skill-index.md`
+
+## Triggers
+
+`@n8n`, n8n workflow, automate with n8n, webhook workflow, n8n JSON export, validate workflow, AI agent n8n, node parameters, n8n expressions.
+
+## Action
+
+1. Read `skills/n8n-workflow/SKILL.md`
+2. Route via `skill-index.md` to `references/*.md`
+3. If `n8n-mcp` connected — use live `search_nodes`, `validate_*`, deploy tools after applying rules
+
+## Do not
+
+- Invent node types or parameter names
+- Trust default parameter values
+- Use `{{ }}` inside Code nodes
+- Confuse Zapier MCP with n8n (`n8n-mcp` for n8n only)
+
+Knowledge source: [czlonkowski/n8n-mcp](https://github.com/czlonkowski/n8n-mcp) `data/skills/` (MIT).

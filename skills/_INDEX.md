@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-07-03T16:46:15.116Z
+Generated: 2026-07-10T00:01:03.014Z
 
 | Skill | Path | Description |
 |-------|------|-------------|
@@ -24,9 +24,11 @@ Generated: 2026-07-03T16:46:15.116Z
 | update-cli-config | `skills-cursor/update-cli-config/SKILL.md` | >- |
 | update-cursor-settings | `skills-cursor/update-cursor-settings/SKILL.md` | >- |
 | 21st-design | `skills/21st-design/SKILL.md` | >- |
+| agency-agents | `skills/agency-agents/SKILL.md` | >- |
 | awesome-design-md | `skills/awesome-design-md/SKILL.md` | >- |
 | clone-website | `skills/clone-website/SKILL.md` | >- |
 | cybersecurity | `skills/cybersecurity/SKILL.md` | >- |
+| design-stack | `skills/design-stack/SKILL.md` | >- |
 | dev-os-autonomy | `skills/dev-os/autonomy/SKILL.md` | >- |
 | dev-os-decision | `skills/dev-os/decision/SKILL.md` | >- |
 | dev-os-emergence | `skills/dev-os/emergence/SKILL.md` | >- |
@@ -42,7 +44,10 @@ Generated: 2026-07-03T16:46:15.116Z
 | markitdown | `skills/markitdown/SKILL.md` | Converts PDF, Office, HTML, audio, images, ZIP, EPUB, and more to token-efficient Markdown using Microsoft MarkItDown be |
 | mattpocock-skills | `skills/mattpocock-skills/SKILL.md` | >- |
 | n8n-workflow | `skills/n8n-workflow/SKILL.md` | >- |
+| notion-workspace | `skills/notion-workspace/SKILL.md` | >- |
+| production-studio | `skills/production-studio/SKILL.md` | >- |
 | project-squad | `skills/project-squad/SKILL.md` | >- |
+| prompt-engineering-coach | `skills/prompt-engineering-coach/SKILL.md` | >- |
 | remotion | `skills/remotion/SKILL.md` | >- |
 | seo-geo | `skills/seo-geo/SKILL.md` | >- |
 | design-an-interface | `skills/skills-main-top-coding/skills-main/skills/deprecated/design-an-interface/SKILL.md` | Generate multiple radically different interface designs for a module using parallel sub-agents. Use when user wants to d |
@@ -78,4 +83,4 @@ Generated: 2026-07-03T16:46:15.116Z
 | uv | `skills/uv/SKILL.md` | >- |
 | writing-plans | `skills/writing-plans/SKILL.md` | "Write implementation plans: bite-sized tasks, paths, code." |
 
-Total: 73 skills
+Total: 78 skills

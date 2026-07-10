@@ -1,0 +1,24 @@
+{
+  "$schema": "hub://production-studio/segment-manifest-v1",
+  "project": "REPLACE_NAME",
+  "aspect": "9:16",
+  "segment_duration_s": 10,
+  "parts_total": 3,
+  "segments": [
+    {
+      "id": "seg-01",
+      "part_index": 1,
+      "track": "hybrid",
+      "time_in": "0:00",
+      "time_out": "0:10",
+      "subtitle_line": "Hook line from SRT",
+      "composition": "face",
+      "camera": "35mm medium, static",
+      "ai_prompt_a": "path/to/storyboard-json.prompt",
+      "ai_prompt_b": "path/to/omni-flash-merge.prompt",
+      "live_shot": "A-roll talking head + B-roll product hands",
+      "status": "draft"
+    }
+  ],
+  "status_values": ["draft", "prompted", "generated", "qc_pass", "assembled"]
+}

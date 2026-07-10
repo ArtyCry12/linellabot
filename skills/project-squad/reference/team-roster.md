@@ -6,12 +6,12 @@ Boss orchestrates; **10 custom subagents** in `~/.cursor/agents/squad-*.md`.
 |----|------|--------------|---------------|-------|----------------------|
 | **boss** | Orchestrator | — | — | Opus 4.7 | `project-squad`, `SYSTEM-REGISTRY.md`, `auto-orchestrator` |
 | **scout** | Audit / inventory | `squad-scout` | `explore` | Composer | `graphify`, `markitdown`, `user-gitnexus` |
-| **architect** | Tech plan, modules | `squad-architect` | `generalPurpose` | Sonnet | GitNexus impact, `auto-orchestrator` |
-| **design** | UI/UX / motion | `squad-design` | `generalPurpose` | Sonnet | `huashu-design`, `ui-ux-pro-max`, `21st-design`, `remotion`, `plugin-figma-figma`, **`stitch` MCP** |
+| **architect** | Tech plan, modules | `squad-architect` | `generalPurpose` | Sonnet | GitNexus impact; agency `@product-manager` on demand |
+| **design** | UI/UX / motion | `squad-design` | `generalPurpose` | Sonnet | `huashu-design`, `ui-ux-pro-max`, `21st-design`, figma, stitch, **`agency-agents`** (`@ui-designer`) |
 | **build** | Implementation | `squad-build` | `generalPurpose` | Codex High | `mattpocock-skills`, Vercel `nextjs`, `shadcn` |
 | **qa** | Tests + browser | `squad-qa` | `shell` | Sonnet | Playwright skill, `cursor-ide-browser`, `verification` |
 | **review** | Code quality | `squad-review` | `code-reviewer` / `bugbot` | GPT-5.5 | `thermo-nuclear-code-quality-review` |
-| **growth** | SEO / GEO / perf | `squad-growth` | `performance-optimizer` | Sonnet | `seo-geo`, alert-manager sub-skill |
+| **growth** | SEO / GEO / perf | `squad-growth` | `performance-optimizer` | Sonnet | `seo-geo`, **`agency-agents`**, prompts.chat MCP |
 | **ship** | Deploy / env | `squad-ship` | `deployment-expert` | Sonnet | `plugin-vercel-vercel`, `deployments-cicd` |
 | **memory** | Session + project facts | `squad-memory` | — | Haiku | **`user-memory`**, `AGENTS.md`, `ai-tracking/` |
 | **cleanup** | Cache / hub refresh | `squad-cleanup` | `shell` | Composer | `cursor-system-refresh.cmd` |

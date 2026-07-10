@@ -1,0 +1,44 @@
+﻿{
+    "timestamp":  "2026-06-12T21:34:53.3838248+03:00",
+    "hubRoot":  "C:\\Users\\Asus\\.cursor",
+    "dryRun":  true,
+    "totalSizeMB":  151.2,
+    "topLevelSizesMB":  {
+                            "commands":  0.1,
+                            "skills-cursor":  0.2,
+                            "lib":  0,
+                            "projects":  42,
+                            "skills":  60.6,
+                            ".obsidian":  4.6,
+                            "plugins":  18.4,
+                            "app":  0,
+                            ".cursor":  0,
+                            "skills-libraries":  12.1,
+                            ".gitnexus":  0,
+                            "libraries":  0,
+                            "plans":  0.4,
+                            "components":  0,
+                            "public":  0.2,
+                            "rules":  0,
+                            "ai-tracking":  12.6,
+                            "cursor-main":  0,
+                            "data":  0,
+                            ".claude":  0
+                        },
+    "nestedGitRepos":  14,
+    "brokenJunctions":  [
+
+                        ],
+    "gitnexusStale":  false,
+    "untrackedGitLines":  131,
+    "obsidian":  {
+                     "ok":  false,
+                     "reason":  "Время ожидания завершения операции истекло."
+                 },
+    "deferredPending":  false,
+    "deferredQueuedAt":  null,
+    "recommendations":  [
+                            "MOVE embedded repos to C:\\Users\\Asus\\projects\\",
+                            "Start Obsidian + enable Local REST API HTTP"
+                        ]
+}

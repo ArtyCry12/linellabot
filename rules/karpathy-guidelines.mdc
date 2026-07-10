@@ -1,0 +1,32 @@
+---
+description: >-
+  Karpathy coding discipline — think before coding, simplicity, surgical changes,
+  goal-driven verification. Use for refactors, reviews, multi-file edits, or when
+  user asks not to break existing behavior. On-demand only (saves tokens).
+alwaysApply: false
+---
+
+# Karpathy Guidelines (compact)
+
+Full skill: `~/.agents/skills/andrej-karpathy-skills-main/.../karpathy-guidelines/SKILL.md`  
+Source: [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
+
+## 1. Think before coding
+- State assumptions; ask if uncertain.
+- Multiple interpretations → present options, don't pick silently.
+- Push back if a simpler approach exists.
+
+## 2. Simplicity first
+- Minimum code for the request; no speculative abstractions.
+- 200 lines → aim for 50 if equivalent.
+
+## 3. Surgical changes
+- Touch only what the request requires.
+- Match existing style; don't drive-by refactor.
+- Remove orphans **your** edit created only.
+
+## 4. Goal-driven execution
+- Define verify steps: `Step → verify: check`.
+- Prefer tests/repro before fix when bugs are reported.
+
+**Pairs with:** GitNexus impact (symbols) · `TOKEN-MEMORY-POLICY.md` (scope).

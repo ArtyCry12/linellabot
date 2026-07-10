@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — FlowMetrics | Plans from $0 to Enterprise</title>
+  <meta name="description" content="FlowMetrics pricing: free Starter for small teams, Team plan at $49/seat for DORA dashboards, Enterprise with VPC deploy. 14-day trial, no credit card." />
+  <link rel="canonical" href="https://flowmetrics.example/pricing" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "FlowMetrics Team",
+    "description": "Engineering analytics for growing teams",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "0",
+      "highPrice": "49",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    }
+  }
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-logo">Flow<span>Metrics</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="pricing.html" class="active">Pricing</a></li>
+    </ul>
+    <a href="#trial" class="btn btn-primary">Start free trial</a>
+  </nav>
+
+  <main class="section" style="padding-top:calc(var(--nav-h) + 4rem)">
+    <p class="section-label reveal">Pricing</p>
+    <h1 class="section-title reveal">Pay for clarity, not seats you don't use</h1>
+    <p class="section-sub reveal">Start free. Upgrade when your exec team asks for the dashboard in the board deck.</p>
+
+    <div class="pricing-grid">
+      <article class="glass price-card reveal">
+        <div class="tier">Starter</div>
+        <div class="amount">$0</div>
+        <p style="color:var(--fm-muted);font-size:0.9rem">Forever free · up to 5 devs</p>
+        <ul>
+          <li>DORA metrics (30-day history)</li>
+          <li>1 Git integration</li>
+          <li>Slack digest (weekly)</li>
+        </ul>
+        <button type="button" class="btn btn-ghost" style="width:100%">Get started</button>
+      </article>
+      <article class="glass price-card featured reveal" id="trial">
+        <div class="tier" style="color:var(--fm-cta)">Team · Most popular</div>
+        <div class="amount">$49<span style="font-size:1rem;color:var(--fm-muted)">/seat/mo</span></div>
+        <p style="color:var(--fm-muted);font-size:0.9rem">14-day trial · no credit card</p>
+        <ul>
+          <li>Unlimited history + deploy diffs</li>
+          <li>Incident timeline + SLA alerts</li>
+          <li>Priority support (&lt;4h SLA)</li>
+          <li>CSV + API export</li>
+        </ul>
+        <button type="button" class="btn btn-primary" style="width:100%">Start free trial</button>
+      </article>
+      <article class="glass price-card reveal">
+        <div class="tier">Enterprise</div>
+        <div class="amount">Custom</div>
+        <p style="color:var(--fm-muted);font-size:0.9rem">SOC 2 · VPC · SSO</p>
+        <ul>
+          <li>Self-hosted or private cloud</li>
+          <li>Custom DORA benchmarks</li>
+          <li>Dedicated CSM</li>
+        </ul>
+        <button type="button" class="btn btn-ghost" style="width:100%">Talk to sales</button>
+      </article>
+    </div>
+
+    <div class="trust-bar reveal">
+      <span>Trusted by 240+ engineering teams</span>
+    </div>
+
+    <div class="faq reveal">
+      <h2 class="section-title" style="font-size:1.5rem;margin-bottom:1rem">FAQ</h2>
+      <details>
+        <summary>Do you store our source code?</summary>
+        <p>No. FlowMetrics reads metadata via GitHub/GitLab APIs — commits, PRs, deploy events. Enterprise can run entirely in your VPC.</p>
+      </details>
+      <details>
+        <summary>How fast is setup?</summary>
+        <p>Most teams connect GitHub and see a live dashboard in under 90 seconds. Historical backfill runs in the background.</p>
+      </details>
+      <details>
+        <summary>Can I cancel anytime?</summary>
+        <p>Yes. Team plans are month-to-month. Export your data before you leave — we don't hold it hostage.</p>
+      </details>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><a href="index.html">← Back to home</a></p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

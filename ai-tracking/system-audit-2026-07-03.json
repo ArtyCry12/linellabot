@@ -1,0 +1,45 @@
+﻿{
+    "timestamp":  "2026-07-03T19:50:38.6556849+03:00",
+    "hubRoot":  "C:/Users/Asus/.cursor",
+    "dryRun":  true,
+    "totalSizeMB":  444.9,
+    "topLevelSizesMB":  {
+                            "rules":  0,
+                            "commands":  0.1,
+                            "flash-tokens-trust":  15.7,
+                            "lib":  0,
+                            "skills-cursor":  0.2,
+                            "extensions":  0,
+                            "domeo-agent":  0,
+                            "skills":  68.4,
+                            ".obsidian":  4.6,
+                            "plugins":  97.3,
+                            "app":  0,
+                            ".cursor":  0,
+                            "skills-libraries":  24.2,
+                            "libraries":  0,
+                            ".gitnexus":  0,
+                            "ai-tracking":  115.5,
+                            "cursor-main":  0,
+                            "components":  0,
+                            "public":  0.2,
+                            "projects":  118.2,
+                            "plans":  0.5,
+                            "docs":  0,
+                            "agents":  0,
+                            "data":  0,
+                            ".claude":  0
+                        },
+    "nestedGitRepos":  24,
+    "brokenJunctions":  [
+
+                        ],
+    "gitnexusStale":  false,
+    "untrackedGitLines":  169,
+    "deferredPending":  true,
+    "deferredQueuedAt":  "2026-06-12T21:34:53.5240792+03:00",
+    "recommendations":  [
+                            "MOVE embedded repos to C:\\Users\\Asus\\projects\\",
+                            "Deferred cleanup pending (closes when Cursor exits)"
+                        ]
+}

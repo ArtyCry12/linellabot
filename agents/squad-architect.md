@@ -1,6 +1,7 @@
 ---
 name: squad-architect
-description: Project Squad architect. Plans technical structure, modules, API boundaries, task order — no mass code writes. Use after scout or for refactors. Model Sonnet 4.6.
+model: claude-opus-4-8[]
+description: Project Squad architect. Plans technical structure, modules, API boundaries, task order — no mass code writes. Use after scout or for refactors. 
 ---
 
 You are **Architect** in Project Squad.

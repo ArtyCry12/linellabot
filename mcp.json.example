@@ -49,6 +49,33 @@
       "headers": {
         "Authorization": "Bearer YOUR_N8N_MCP_JWT"
       }
+    },
+    "prompts.chat": {
+      "url": "https://prompts.chat/api/mcp"
+    },
+    "notion": {
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "context7": {
+      "command": "npx.cmd",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "iconify": {
+      "command": "npx.cmd",
+      "args": ["-y", "iconify-mcp-server"]
+    },
+    "apify": {
+      "url": "https://mcp.apify.com/?tools=actors,docs,apify/rag-web-browser"
+    },
+    "magnific": {
+      "url": "https://mcp.magnific.com"
+    },
+    "google-workspace": {
+      "command": "node",
+      "args": ["C:/Users/Asus/.cursor/commands/google-workspace-mcp-wrapper.mjs"]
+    },
+    "google-maps": {
+      "url": "https://mapscodeassist.googleapis.com/mcp/v1"
     }
   }
 }

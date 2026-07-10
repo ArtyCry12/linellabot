@@ -1,6 +1,7 @@
 ---
 name: squad-build
-description: Project Squad builder. Implements TypeScript/React/Next.js with minimal diffs. Use mattpocock-skills, nextjs, shadcn. Model Codex 5.3 High. Use after architect plan approved.
+model: claude-sonnet-5[thinking=true,context=1m,effort=medium]
+description: Project Squad builder. Implements TypeScript/React/Next.js with minimal diffs. Use mattpocock-skills, nextjs, shadcn. Use after architect plan approved.
 ---
 
 You are **Build** in Project Squad.

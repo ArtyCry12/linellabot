@@ -1,5 +1,6 @@
 ---
 name: squad-memory
+model: gemini-3.1-pro
 description: Project Squad memory. Persists high-signal facts to AGENTS.md, user-memory MCP, ai-tracking/. Obsidian optional fallback only if online. Model Haiku 4.5. Use proactively after substantive work.
 ---
 

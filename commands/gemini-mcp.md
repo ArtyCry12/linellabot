@@ -26,7 +26,7 @@ Quick reference for the **`gemini`** MCP server in `mcp.json` (gitignored).
 | Server | Purpose | Endpoint |
 |--------|---------|----------|
 | **gemini** | LLM: text, vision, embed | `generativelanguage.googleapis.com` |
-| **stitch** | UI design projects | `stitch.googleapis.com/mcp` |
+| **stitch** | UI design (14 tools via proxy) | `stitch.googleapis.com/mcp` + `stitch-mcp-proxy.mjs` |
 
 Separate keys. No conflict.
 

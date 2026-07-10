@@ -1,0 +1,47 @@
+﻿{
+    "timestamp":  "2026-06-16T14:36:16.1441058+03:00",
+    "hubRoot":  "C:\\Users\\Asus\\.cursor",
+    "dryRun":  true,
+    "totalSizeMB":  173.09999999999997,
+    "topLevelSizesMB":  {
+                            "commands":  0.1,
+                            "skills-cursor":  0.2,
+                            "lib":  0,
+                            "extensions":  0,
+                            "projects":  44,
+                            "skills":  68.4,
+                            ".obsidian":  4.6,
+                            "plugins":  18.4,
+                            "app":  0,
+                            ".cursor":  0,
+                            "skills-libraries":  24.2,
+                            ".gitnexus":  0,
+                            "libraries":  0,
+                            "cursor-main":  0,
+                            "components":  0,
+                            "public":  0.2,
+                            "rules":  0,
+                            "plans":  0.4,
+                            "ai-tracking":  12.6,
+                            "agents":  0,
+                            "data":  0,
+                            ".claude":  0
+                        },
+    "nestedGitRepos":  14,
+    "brokenJunctions":  [
+
+                        ],
+    "gitnexusStale":  false,
+    "untrackedGitLines":  133,
+    "obsidian":  {
+                     "ok":  false,
+                     "reason":  "Время ожидания завершения операции истекло."
+                 },
+    "deferredPending":  true,
+    "deferredQueuedAt":  "2026-06-12T21:34:53.5240792+03:00",
+    "recommendations":  [
+                            "MOVE embedded repos to C:\\Users\\Asus\\projects\\",
+                            "Start Obsidian + enable Local REST API HTTP",
+                            "Deferred cleanup pending (closes when Cursor exits)"
+                        ]
+}

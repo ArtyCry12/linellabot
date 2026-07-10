@@ -1,0 +1,383 @@
+﻿{
+    "scannedAt":  "2026-07-10T00:04:54.0151260+03:00",
+    "scanner":  "hub-supply-scan-fallback",
+    "note":  "Install bumblebee for full NDJSON inventory: commands/bumblebee-scan.ps1",
+    "count":  75,
+    "records":  [
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\aikido-cursor-plugin\\e1bd1dfee0ee0d890d51a0024b0ee7dee99fd3bf\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\apify\\2d191083883fa31bde4a477527bf6223a23fd18e\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\braintrust\\ef7bae7ecdd9b3ffeeb444dbec23c8c0ab2003f0\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\browse\\release_v0.2.4\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\canva\\b56291ea0a36d0a941e1478b47959be5f1771dee\\.cursor\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\clerk\\release_v0.2.0\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\exa\\0c6bb4c04067971681f5777606acb60a71ed7270\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\exa\\0c6bb4c04067971681f5777606acb60a71ed7270\\.cursor\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\figma\\bea8bea5f676ab2bf76fa822b82f50b66653c098\\figma-power\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\firebase\\1d7a55fbecfd3c37516e0ee53b6c1ee9ac206db8\\kiro\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\harness\\494bf8c826e9fc21a82262b133cd9906afec68b3\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\hex\\58b7f25fd332f6d5a3f928a9748b415bdb47d476\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\heygen\\396fa481ee17ef5bdfc0c4122f468c4e3080fbe0\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\higgsfield\\af1ae5a79611bb47b9e1db86c4afc13eb406ee07\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\linear\\c2c4cb2ab23206c9219b0dd31c9571e4c922faeb\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\notion-workspace\\cf1324609edba6d617164f1dec138aeb43f26735\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\resend\\2caefffaf938c3c4ed539d5b29e3cd2bd2555bbe\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\stripe\\d076d0558c3b3d86149c2dddc84054fe9c6dd3e0\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\supabase\\release_v0.1.4\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\ai-tracking\\n8n-mcp-src\\ui-apps\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\ai-tracking\\n8n-mcp-src\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\flash-tokens-trust\\frontend\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\flash-tokens-trust\\smart-contract\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\braintrust\\ef7bae7ecdd9b3ffeeb444dbec23c8c0ab2003f0\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\browse\\release_v0.2.4\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\firebase\\1d7a55fbecfd3c37516e0ee53b6c1ee9ac206db8\\scripts\\skill-token-counter\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\frameworks\\next-app-src\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\frameworks\\vite\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\next\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\project\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\project-npm\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\project-npm-react19\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\project-pnpm\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\project-src\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\shadcn\\test\\fixtures\\vite-with-tailwind\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\packages\\tests\\fixtures\\next-app-init\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\templates\\astro-app\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\templates\\astro-monorepo\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\templates\\next-monorepo\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\templates\\react-router-app\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\templates\\react-router-monorepo\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\templates\\start-monorepo\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\templates\\vite-monorepo\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\shadcn\\10f1717a3e2a3c16cfbd43877c1e44063d9d749a\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\plugins\\cache\\cursor-public\\superpowers\\b7a8f76985f1e93e75dd2f2a3b424dc731bd9d37\\tests\\brainstorm-server\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\projects\\c-Users-Asus-cursor-linellabotprojet\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\skills\\clone-website\\template\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\.cursor\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\.cursor"
+                    },
+                    {
+                        "type":  "mcp-config",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\playwright-main\\playwright-main\\examples\\todomvc\\.vscode\\mcp.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\AiManager-project\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\21st-main\\21st-main\\scripts\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\21st-main\\21st-main\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\agent-elements-main\\agent-elements-main\\pnpm-lock.yaml",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\ai-website-cloner-template-master\\ai-website-cloner-template-master\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\magic-mcp-main\\magic-mcp-main\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\npxskillui-main\\npxskillui-main\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\playwright-main\\playwright-main\\tests\\playwright-test\\stable-test-runner\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\playwright-main\\playwright-main\\utils\\flakiness-dashboard\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\external-libs\\playwright-main\\playwright-main\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\frontend\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\smart-contract\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\telegram-bot\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\flash-tokens-trust\\skills-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\gelentwagen-newlook-site\\docs\\design-libraries\\ui-ux-pro-max\\ui-ux-pro-max-skill-main\\cli\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\gelentwagen-newlook-site\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\ipoolgo-landing\\apps\\web\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\linellabotprojet\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\meloai-site\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\my-3d-agency\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\nano-banana-mcp\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\neo-car-site1\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\neo-car-site2\\web\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\stitch-mcp\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    },
+                    {
+                        "type":  "lockfile",
+                        "path":  "C:\\Users\\Asus\\projects\\ui-project\\cli\\package-lock.json",
+                        "root":  "C:\\Users\\Asus\\projects"
+                    }
+                ]
+}

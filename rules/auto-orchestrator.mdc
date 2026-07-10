@@ -7,16 +7,30 @@ alwaysApply: false
 
 # Auto-orchestrator (decision tree)
 
-Registry: `SYSTEM-REGISTRY.md`. Always-on: `00-agent-orchestrator.mdc`.
+Registry: `SYSTEM-REGISTRY.md`. Always-on: `00-agent-orchestrator.mdc`. Taxonomy: `SYSTEM-TAXONOMY.md` (on-demand).
 
 ## 1. Classify the task
 
 ```
 User query
   ├─ Session / project memory              → user-memory MCP + squad-memory
+  ├─ Taxonomy / hub refresh / new skill    → SYSTEM-TAXONOMY.md + foundation-refresh
+  ├─ Notion pages / T3 cleanup              → notion-workspace skill + user-notion MCP
+  ├─ Video / storyboard / LVM               → production-studio skill
+  ├─ shadcn blocks / docs for libs          → design-stack skill + context7 + @21st-dev/magic
+  ├─ Repo patterns (vibe, swarm, visual)    → docs/knowledge-base/P2-REPOS.md
+  ├─ Multi-agent / Squad spawn              → subagent-guardrails.mdc + project-squad
+  ├─ Google mail/drive/calendar/GSC       → google-workspace MCP (OAuth on reload) · gsc-audit.ps1 CSV
+  ├─ Maps / geo MCP                       → google-maps endpoint · gemini fallback
+  ├─ Refactor / review / surgical edit     → karpathy-guidelines.mdc + gitnexus if symbols
+  ├─ Supply-chain / extension inventory    → bumblebee scan → cybersecurity
+  ├─ Prompt templates library              → prompts.chat MCP (if configured)
+  ├─ Marketing/sales/design persona        → agency-agents skill + @slug in rules/agency/
+  ├─ Squad visual monitor                  → pixel-office.ps1 (opt-in)
   ├─ Single URL content                      → user-fetch (or Exa fetch if blocked)
   ├─ Web research / fact-check / docs        → plugin-exa-exa (ONE provider)
   ├─ Live page / form / E2E UI               → cursor-ide-browser
+  ├─ Scale crawl / Actors / anti-bot         → Apify (APIFY-POLICY — ok when best tool; confirm if >$1)
   ├─ Clone / rebuild website                 → clone-website skill + browser
   ├─ HTML prototype / motion / deck          → huashu-design skill
   ├─ 21st.dev / shadcn registry UI           → 21st-design + @21st-dev/magic
@@ -54,3 +68,8 @@ User query
 | "Clone landing page X" | clone-website + browser screenshots |
 | "Fix failing GitHub check" | ci-investigator or shell + fix-ci skill |
 | "Rename function foo across repo" | gitnexus_impact → gitnexus_rename |
+| "Refresh hub from new repos" | SYSTEM-TAXONOMY + foundation-refresh.md |
+| "Marketing copy like an agency" | agency-agents persona + marketingskills |
+| "SEO audit full stack" | seo-audit.ps1 + seo-geo on-page + technical |
+| "P2 refresh" | commands/p2-refresh.ps1 |
+| "Prompt lesson" | prompt-engineering-coach → prompt-lessons/ |

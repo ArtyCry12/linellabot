@@ -61,7 +61,23 @@ Community **Anthropic Cybersecurity Skills** library (754 skills, [agentskills.i
 | IaC / cloud | `auditing-terraform-infrastructure-for-security` → `implementing-infrastructure-as-code-security-scanning` → `auditing-cloud-with-cis-benchmarks` |
 | K8s deploy | `auditing-kubernetes-cluster-rbac` → `implementing-kubernetes-pod-security-standards` → `performing-kubernetes-cis-benchmark-with-kube-bench` |
 | App + API | `performing-threat-modeling-with-owasp-threat-dragon` → `testing-api-security-with-owasp-top-10` → `integrating-dast-with-owasp-zap-in-pipeline` |
+| Supply-chain inventory | [bumblebee](https://github.com/perplexityai/bumblebee) scan → `ai-tracking/bumblebee-inventory.ndjson` → triage with SCA skills |
 | Alert / IOC | `analyzing-indicators-of-compromise` → domain-specific forensics skill from `find-skill.mjs` |
+
+---
+
+## Bumblebee supply-chain scan (hub)
+
+Read-only inventory of on-disk packages, MCP configs, editor extensions, and skills locks.
+
+```powershell
+# After: go install github.com/perplexityai/bumblebee/cmd/bumblebee@latest
+bumblebee scan --profile project --root "C:\Users\Asus\.cursor" --root "C:\Users\Asus\projects" `
+  > C:\Users\Asus\.cursor\ai-tracking\bumblebee-inventory.ndjson
+```
+
+Scans `mcp.json`, Cursor/VS Code manifests, `skills-lock.json` — **does not** emit env secrets.  
+Pair with exposure catalog when advisory names a version. Details: `docs/knowledge-base/FOUNDATION-REPOS.md` § Bumblebee.
 
 ---
 

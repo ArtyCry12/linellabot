@@ -1,0 +1,32 @@
+---
+description: >-
+  Auto-select Cursor interaction mode — plan vs agent vs debug vs ask — without
+  asking the user. REQ-002.
+alwaysApply: false
+---
+
+# Mode routing (REQ-002)
+
+Switch mode **silently** when task type is clear. Do not ask "switch to Plan?".
+
+| Signal | Mode |
+|--------|------|
+| Architecture, trade-offs, multi-phase mega-task | **Plan** |
+| Implement, fix, run commands, edit files | **Agent** |
+| Error, failing test, unexpected behavior, "why broken" | **Debug** |
+| Explain only, no file changes requested | **Ask** |
+| Long parallel tracks, user said multitask | **Multitask** (if available) |
+
+## Rules
+
+1. Default **Agent** when user gave `/autopilot` or `!auto`.
+2. **Plan** first only when >3 architectural decisions AND no `/autopilot`.
+3. **Debug** overrides Plan when stack trace or CI failure is present.
+4. Never block implementation to debate mode — pick best fit and proceed.
+
+## Examples
+
+- "доработай P3 и коммит" → Agent
+- "сравни Redis vs Postgres для кеша" → Plan
+- "seo-audit падает с ошибкой" → Debug
+- "что такое DEC-056?" → Ask

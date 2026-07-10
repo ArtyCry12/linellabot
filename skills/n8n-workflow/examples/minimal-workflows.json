@@ -1,0 +1,87 @@
+{
+  "minimal_webhook": {
+    "name": "Minimal Webhook",
+    "nodes": [
+      {
+        "id": "webhook-1",
+        "name": "Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [250, 300],
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "my-hook",
+          "responseMode": "onReceived"
+        }
+      }
+    ],
+    "connections": {}
+  },
+  "webhook_set_respond": {
+    "name": "Webhook Set Respond",
+    "nodes": [
+      {
+        "id": "webhook-1",
+        "name": "Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [250, 300],
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "form-submit",
+          "responseMode": "responseNode"
+        }
+      },
+      {
+        "id": "set-1",
+        "name": "Set",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [450, 300],
+        "parameters": {
+          "mode": "manual",
+          "assignments": {
+            "assignments": [
+              {
+                "id": "a1",
+                "name": "email",
+                "type": "string",
+                "value": "={{ $json.body.email }}"
+              },
+              {
+                "id": "a2",
+                "name": "message",
+                "type": "string",
+                "value": "={{ $json.body.message }}"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "respond-1",
+        "name": "Respond to Webhook",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.1,
+        "position": [650, 300],
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ { \"ok\": true, \"email\": $json.email } }}"
+        }
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [[{ "node": "Set", "type": "main", "index": 0 }]]
+      },
+      "Set": {
+        "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    }
+  },
+  "if_branch_note": "IF node: main[0]=true branch, main[1]=false branch. In API partial updates prefer branch true/false.",
+  "ai_connection_note": "AI model connects TO agent on ai_languageModel port — see references/ai-agents.md"
+}

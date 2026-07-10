@@ -37,10 +37,6 @@ projects/*/*
 # User's personal slash commands
 !commands/
 !commands/**
-# Dev OS canonical docs
-!docs/
-!docs/dev-os/
-!docs/dev-os/**
 # User's plan files
 !plans/
 !plans/**
@@ -50,7 +46,27 @@ projects/*/*
 # User-level cursor rules
 !rules/
 !rules/**
+# Hub agents, hooks, tracking, templates, docs
+!agents/
+!agents/**
+!hooks/
+!hooks/**
+!hooks.json
+!ai-tracking/
+!ai-tracking/**
+!templates/
+!templates/**
+!docs/
+!docs/**
+!SYSTEM-REGISTRY.md
+!AGENTS.md
+!CLAUDE.md
+!mcp.json.example
+!.gitignore
 # <<< CURSOR MANAGED BLOCK <<<
+
+
+
 
 
 
@@ -71,3 +87,13 @@ extensions/
 mcp.json
 plans/archive/
 skills/cybersecurity/library/
+ai-tracking/secrets.local.json
+ai-tracking/google-oauth-client.json
+**/secrets.local.json
+ai-tracking/tools/ffmpeg.exe
+ai-tracking/tools/
+ai-tracking/n8n-mcp-src/
+ai-tracking/ai-code-tracking.db
+ai-tracking/**/*.db
+ai-tracking/cleanup-log-*.txt
+ai-tracking/.deferred-refresh-pending.json

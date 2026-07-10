@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Оркестрация агента (компактно)
 
-**Registry:** `SYSTEM-REGISTRY.md` · **Decision tree:** `rules/auto-orchestrator.mdc` (on-demand)
+**Registry:** `SYSTEM-REGISTRY.md` · **Decision tree:** `rules/auto-orchestrator.mdc` · **Taxonomy:** `SYSTEM-TAXONOMY.md` (on-demand)
 
 ## Принципы
 
@@ -14,6 +14,8 @@ alwaysApply: true
 3. Скиллы: `skills/`, `skills-cursor/`, `~/.agents/skills/`, plugin cache — по триггеру или `@tag`.
 4. User Rules в Cursor — приоритет выше этого файла.
 5. GitNexus блок в `AGENTS.md` — для правок символов; не дублируй здесь.
+6. **Код-ревью / рефакторинг** — `rules/karpathy-guidelines.mdc` (on-demand).
+7. **Классификация / refresh базы** — `SYSTEM-TAXONOMY.md` + `docs/knowledge-base/`.
 
 ## MCP (быстрый выбор)
 
@@ -33,6 +35,7 @@ alwaysApply: true
 | Браузер E2E | `cursor-ide-browser` |
 | Supabase / Vercel / Stripe / Clerk / Figma / Zapier | `plugin-*` по задаче |
 | Crawl fallback | `plugin-tavily-tavily` (если Exa не хватило) |
+| Prompt library | `prompts.chat` → `plugin-prompts-chat` (optional URL MCP) |
 
 ## Скиллы (личные)
 
@@ -43,5 +46,6 @@ alwaysApply: true
 | 21st UI | `21st-design` |
 | SEO/GEO | `seo-geo` |
 | Security | `cybersecurity` |
+| Agency personas | `agency-agents` · `rules/agency/` · `@content-creator` etc. |
 
 Детали MCP — `rules/mcp-routing.mdc`. Конфиг: `mcp.json` (gitignored).

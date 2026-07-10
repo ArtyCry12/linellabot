@@ -1,0 +1,77 @@
+---
+description: >-
+  Subagent orchestration guardrails (REQ-032–038) — boss delegates, structured
+  handoffs, verification gates, conflict resolution. Load for Squad/multi-agent work.
+alwaysApply: false
+---
+
+# Subagent guardrails (DEC-004 aligned)
+
+**Do not rebuild Squad roster.** These rules supplement `project-squad.mdc` and `agents/squad-*.md`.
+
+## REQ-032 — Known failure modes (awareness only)
+
+| Anti-pattern | Mitigation |
+|--------------|------------|
+| Role overlap | One owner per artifact; see Squad Brief |
+| Scope creep | `Out of scope` block required in handoff |
+| Vague DoD | Acceptance criteria in handoff before spawn |
+| Contradictory prompts | Parent resolves; subagent does not reinterpret |
+
+## REQ-033 — Boss never codes
+
+Orchestrator (parent agent):
+
+- **MUST** delegate implementation to `squad-build`, `squad-design`, or domain subagents
+- **MAY** edit hub config/docs/rules when that IS the task
+- **MUST NOT** write application code in the user's project while acting as orchestrator — spawn builder instead
+
+Exception: trivial one-line fix when user explicitly asks parent only.
+
+## REQ-034 — Structured handoff
+
+Before `Task` spawn, fill `templates/squad-handoff.md` (mental or file):
+
+- Objective (1 sentence)
+- Context (paths, decisions, constraints)
+- **Out of scope** (explicit)
+- Acceptance criteria
+- REQ IDs if from Notion registry
+
+No floating context from chat alone.
+
+## REQ-035 — Hierarchy
+
+```
+User → Parent (orchestrator)
+         → squad-scout / squad-architect (plan)
+         → squad-build / squad-design (execute)
+         → squad-qa / squad-review (verify)
+```
+
+Max **2** agency personas per session (existing policy). Flat 9-agent fan-out **forbidden** without architect layer.
+
+## REQ-036 — Verification gate
+
+Parent **must not** mark DONE until:
+
+1. `squad-qa` or equivalent checks pass, OR
+2. User explicitly waives verification
+
+Failed QA → back to builder with handoff delta, not user.
+
+## REQ-037 — Conflict resolution
+
+| Conflict | Rule |
+|----------|------|
+| design vs build | Architect/spec wins; build implements spec |
+| SEO vs speed | Document tradeoff; user only if product decision |
+| security vs ship | security-review blocks ship |
+
+## REQ-038 — squad-memory
+
+Record **why** (decision + rejected alternatives), not only **what**. Trigger `squad-memory` after substantive P2/P3 work.
+
+## Template
+
+`templates/squad-handoff.md`

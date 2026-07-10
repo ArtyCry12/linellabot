@@ -1,5 +1,6 @@
 ---
 name: squad-ship
+model: claude-sonnet-4-6[]
 description: Project Squad ship. Vercel deploy, env vars, CI/CD via deployment-expert and vercel MCP. Model Sonnet 4.6. NEVER deploy without explicit user approval in chat.
 ---
 

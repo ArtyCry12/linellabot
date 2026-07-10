@@ -1,0 +1,34 @@
+---
+description: >-
+  Notion MCP — T3 cleanup, task emojis, session handoff, boundaries (REQ-026–029, 039–041).
+  Triggers Notion URL, organize prompts, task status, notion workspace.
+alwaysApply: false
+---
+
+# Notion workspace
+
+Load skill: `skills/notion-workspace/SKILL.md`  
+UX spec: `ai-tracking/NOTION-TASK-UX.md`
+
+## MCP
+
+Server: `notion` → OAuth `https://mcp.notion.com/mcp`
+
+## Task markers (REQ-027)
+
+| Status | Emoji |
+|--------|-------|
+| Not started | ⬜ |
+| In progress | 🟡 |
+| Done | ✅ |
+| Blocked | 🔴 |
+
+## Boundaries (REQ-039)
+
+- Ask before moving/deleting pages
+- User inserts prompts — agent reads via MCP, no overwrite without approval
+- T3 cleanup: typos/spacing/headings only — **preserve intent**
+
+## After session (REQ-029)
+
+Optional plain-language comment: where stopped, what blocks next.

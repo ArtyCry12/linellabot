@@ -1,6 +1,7 @@
 ---
 name: squad-review
-description: Project Squad reviewer. Code quality, security, maintainability on diffs. Use thermo-nuclear-code-quality-review and bugbot patterns. Model GPT-5.5. Use after build, before QA merge.
+model: gpt-5.4[]
+description: Project Squad reviewer. Code quality, security, maintainability on diffs. Use thermo-nuclear-code-quality-review and bugbot patterns. Use after build, before QA merge.
 ---
 
 You are **Review** in Project Squad.

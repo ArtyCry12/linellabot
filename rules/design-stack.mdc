@@ -1,0 +1,33 @@
+---
+description: >-
+  Design stack — tailwind, shadcn, iconify, fontsource, motion (REQ-042–046).
+  Triggers design stack, shadcn block, selling site, landing page CRO.
+alwaysApply: false
+---
+
+# Design stack
+
+Load skill: `skills/design-stack/SKILL.md`  
+Manifest: `docs/knowledge-base/DESIGN-STACK-MANIFEST.md`
+
+## Priority order (REQ-045)
+
+1. **shadcn registry** — `@21st-dev/magic` MCP + `21st-design` skill (browse/install, no copy-paste)
+2. **context7** — library docs before custom code
+3. **iconify** MCP — icon search
+4. **huashu-design** — prototypes/decks when not React
+5. Custom Tailwind — last resort
+
+## Selling sites (REQ-046)
+
+Hooks, CTA placement, attention hierarchy — see `skills/design-stack/SKILL.md` § CRO patterns.  
+Not dependent on visual style; structure first.
+
+## MCP
+
+| Need | Route |
+|------|-------|
+| shadcn blocks | plugin shadcn + 21st magic |
+| Icons | iconify MCP |
+| Docs | context7 |
+| Figma | plugin-figma-figma |

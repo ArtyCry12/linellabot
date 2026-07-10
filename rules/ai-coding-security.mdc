@@ -1,0 +1,38 @@
+---
+description: >-
+  AI coding blindspots — SQLi, XSS, secrets, rate limits, API hallucination,
+  incomplete impl, type drift (REQ-067–068). Load for auth, API, DB, deploy tasks.
+alwaysApply: false
+---
+
+# AI coding security awareness
+
+Complements `cybersecurity.mdc` (full audit). Apply on **every** feature touching auth, API, DB, or deploy.
+
+## REQ-067 — Blindspots checklist
+
+| Risk | Before ship |
+|------|-------------|
+| SQL injection | Parameterized queries; no string concat SQL |
+| XSS | Escape output; CSP where applicable |
+| Secrets in repo | `.env` gitignored; scan with cybersecurity skill |
+| Rate limiting | Public endpoints throttled |
+| AuthZ gaps | Verify role checks on mutations |
+
+## REQ-068 — Implementation quality
+
+| Failure mode | Guard |
+|--------------|-------|
+| Hallucinated API | Verify against docs (`context7` MCP) or official fetch |
+| Partial implementation | Acceptance criteria in handoff; no "TODO" in user-facing path |
+| Type drift | Run typecheck/lint in squad-qa |
+| Missing error paths | At least one failure case handled for external IO |
+
+## Deploy / infra (REQ-066)
+
+For deployment tasks: load `cybersecurity` skill + `docs/knowledge-base/SECURITY-AI-CODING.md`.  
+Notion attachment Notes_260706 — principles inlined there; fetch via Notion MCP on demand.
+
+## Veto
+
+Do not commit `.env`, API keys, or OAuth JSON. `gitnexus_detect_changes()` before hub commits.

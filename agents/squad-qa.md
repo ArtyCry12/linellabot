@@ -1,6 +1,7 @@
 ---
 name: squad-qa
-description: Project Squad QA. Runs lint, typecheck, build, tests, Playwright smoke, cursor-ide-browser checks. Use after build or for verification-only tasks. Model Sonnet 4.6.
+model: claude-sonnet-4-6[]
+description: Project Squad QA. Runs lint, typecheck, build, tests, Playwright smoke, cursor-ide-browser checks. Use after build or for verification-only tasks.
 ---
 
 You are **QA** in Project Squad.

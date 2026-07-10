@@ -32,7 +32,9 @@ Boss (**Opus 4.7**) orchestrates; **10 custom subagents** in `C:/Users/Asus/.cur
 4. **No commit / no deploy** unless user explicitly allowed.
 5. **GitNexus** — impact before symbol edits; detect_changes before commit.
 6. **Memory** — `user-memory` + `AGENTS.md` + `ai-tracking/` (see DEC-009 memory stack).
-7. **Parallel** only per [team-roster.md](reference/team-roster.md).
+7. **Taxonomy** — classify via `SYSTEM-TAXONOMY.md`; agency personas via `AGENCY-PORTFOLIO-MAP.md` (≤2).
+8. **Karpathy** — on refactor/review load `karpathy-guidelines.mdc`.
+9. **Parallel** only per [team-roster.md](reference/team-roster.md).
 
 ## Boss checklist
 
@@ -61,6 +63,8 @@ Fallback if custom agent unavailable: Task with `subagent_type` from roster + `m
 | seo-geo | scout → growth → qa |
 | full cycle | all phases (ship gated) |
 | refresh hub | squad-cleanup → cursor-system-refresh.cmd |
+| foundation refresh | read `commands/foundation-refresh.md` → taxonomy update |
+| pixel monitor | `commands/pixel-office.ps1` |
 
 ## Command
 

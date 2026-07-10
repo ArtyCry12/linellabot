@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FlowMetrics - See what your team ships.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#3e90ff",
+                      "surface-dim": "#0f131c",
+                      "on-secondary-container": "#5b3800",
+                      "surface-variant": "#31353f",
+                      "outline-variant": "#414754",
+                      "on-tertiary-container": "#1f2a3c",
+                      "outline": "#8b91a0",
+                      "error-container": "#93000a",
+                      "surface": "#0f131c",
+                      "on-surface": "#dfe2ef",
+                      "tertiary-fixed": "#d8e3fb",
+                      "secondary-fixed": "#ffddb8",
+                      "on-error-container": "#ffdad6",
+                      "surface-tint": "#aac7ff",
+                      "on-background": "#dfe2ef",
+                      "tertiary-container": "#8691a7",
+                      "on-error": "#690005",
+                      "secondary": "#ffb95f",
+                      "surface-container-high": "#262a34",
+                      "primary": "#aac7ff",
+                      "on-primary-fixed": "#001b3e",
+                      "on-primary-container": "#002957",
+                      "inverse-on-surface": "#2c303a",
+                      "on-secondary-fixed-variant": "#653e00",
+                      "background": "#0f131c",
+                      "primary-fixed-dim": "#aac7ff",
+                      "on-tertiary-fixed-variant": "#3c475a",
+                      "on-tertiary": "#263143",
+                      "on-primary-fixed-variant": "#00468d",
+                      "inverse-primary": "#005db8",
+                      "surface-bright": "#353943",
+                      "surface-container-low": "#181b25",
+                      "surface-container-highest": "#31353f",
+                      "secondary-container": "#ee9800",
+                      "tertiary": "#bcc7de",
+                      "secondary-fixed-dim": "#ffb95f",
+                      "on-surface-variant": "#c0c6d6",
+                      "error": "#ffb4ab",
+                      "inverse-surface": "#dfe2ef",
+                      "surface-container-lowest": "#0a0e17",
+                      "surface-container": "#1c1f29",
+                      "on-tertiary-fixed": "#111c2d",
+                      "on-secondary-fixed": "#2a1700",
+                      "tertiary-fixed-dim": "#bcc7de",
+                      "primary-fixed": "#d6e3ff",
+                      "on-secondary": "#472a00",
+                      "on-primary": "#003064"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "40px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "bento-gap": "16px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "data-lg": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "caption": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "data-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "caption": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .float-animation-1 {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .float-animation-2 {
+            animation: float 7s ease-in-out infinite reverse;
+        }
+
+        .float-animation-3 {
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .glass-card {
+            background-color: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 40px rgba(10, 132, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #dfe2ef 0%, #8691a7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface overflow-x-hidden min-h-screen relative">
+<!-- Background Shader -->
+<div class="fixed inset-0 z-0 opacity-80 mix-blend-screen pointer-events-none">
+<!-- STITCH_SHADER_START:ANIMATION_7 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_7" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_7');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+float noise(vec2 p) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 center = uv - 0.5;
+    center.x *= u_resolution.x / u_resolution.y;
+    
+    // Deep OLED base
+    vec3 color = vec3(0.039, 0.055, 0.09); // #0A0E17
+    
+    // Electric Blue Glow Nebula
+    float dist = length(center);
+    float glow = 0.05 / (dist + 0.5);
+    
+    vec2 m = u_mouse / u_resolution;
+    vec2 shift = vec2(sin(u_time * 0.2), cos(u_time * 0.15)) * 0.1;
+    float nebula = 0.0;
+    for(float i = 1.0; i < 4.0; i++) {
+        vec2 p = center * i + shift + (m - 0.5) * 0.2;
+        nebula += noise(p + u_time * 0.05 * i) / i;
+    }
+    
+    vec3 blueGlow = vec3(0.039, 0.518, 1.0) * nebula * 0.4; // #0A84FF
+    color += blueGlow * (1.0 - dist);
+    
+    // Subtle amber highlights
+    float amber = smoothstep(0.6, 0.0, length(center - vec2(0.4, -0.3)));
+    color += vec3(0.96, 0.62, 0.04) * amber * 0.05; // #F59E0B
+    
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_7 -->
+</div>
+<!-- Top Nav Bar (Shared Component) -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-7xl mx-auto border-b border-white/10 shadow-sm bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-xl docked full-width top-0">
+<div class="font-headline-md text-headline-md font-extrabold text-on-surface dark:text-on-surface tracking-tight">
+            FlowMetrics
+        </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary dark:text-primary font-bold border-b-2 border-primary font-body-md text-body-md scale-95 active:scale-90 transition-transform" href="#">Product</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-200 font-body-md text-body-md scale-95 active:scale-90 transition-transform" href="#">Solutions</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-200 font-body-md text-body-md scale-95 active:scale-90 transition-transform" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4 hidden md:flex">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Login</button>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-body-md text-body-md font-bold scale-95 active:scale-90 transition-transform">Get Started</button>
+</div>
+<!-- Mobile Menu Icon (Simplified for pure visual representation) -->
+<div class="md:hidden flex items-center">
+<span class="material-symbols-outlined text-on-surface">menu</span>
+</div>
+</nav>
+<!-- Main Hero Content -->
+<main class="relative z-10 w-full min-h-screen flex items-center pt-24 px-gutter max-w-[1440px] mx-auto overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter w-full relative">
+<!-- Left Column: Copy & Actions -->
+<div class="col-span-1 lg:col-span-6 flex flex-col justify-center z-20">
+<h1 class="font-display-lg-mobile lg:font-display-lg text-display-lg-mobile lg:text-display-lg text-on-surface mb-6 tracking-tight gradient-text max-w-2xl">
+                    See what your team ships.
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10 max-w-xl leading-relaxed">
+                    Unify deploy frequency, error rates, and telemetry in a single, high-performance glass interface. Gain total visibility into engineering velocity.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+<button class="bg-[#F59E0B] text-[#1f2a3c] hover:bg-[#D97706] font-body-md text-body-md font-bold py-4 px-8 rounded-lg shadow-[0_0_20px_rgba(245,158,11,0.2)] transition-all flex items-center justify-center gap-2">
+                        Start Free Trial
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'wght' 600;">arrow_forward</span>
+</button>
+<button class="glass-card hover:bg-white/5 font-body-md text-body-md text-on-surface py-4 px-8 rounded-lg transition-all flex items-center justify-center gap-2 group border-outline-variant">
+                        View Demo
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">play_circle</span>
+</button>
+</div>
+</div>
+<!-- Right Column: 3D Scene & Floating Bento Cards -->
+<div class="col-span-1 lg:col-span-6 relative h-[600px] lg:h-[800px] mt-12 lg:mt-0 z-10 flex items-center justify-center">
+<!-- Center 3D Crystal Scene -->
+<div class="absolute inset-0 z-0 flex items-center justify-center w-[120%] -left-[10%] h-full mix-blend-screen opacity-90 pointer-events-none">
+<!-- STITCH_THREEJS_START:ANIMATION_8 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_8" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_8');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Crystal Geometry (Octahedron + Icosahedron blend)
+const crystalGeom = new THREE.IcosahedronGeometry(1.5, 0);
+const crystalMat = new THREE.MeshPhongMaterial({
+    color: 0x0A84FF,
+    emissive: 0x0A84FF,
+    emissiveIntensity: 0.5,
+    transparent: true,
+    opacity: 0.8,
+    shininess: 100,
+    flatShading: true
+});
+const crystal = new THREE.Mesh(crystalGeom, crystalMat);
+scene.add(crystal);
+
+// Orbiting Rings
+const rings = [];
+const ringData = [
+    { radius: 2.2, color: 0x0A84FF, speed: 0.01, axis: 'z' }, // Deploy
+    { radius: 2.8, color: 0xF59E0B, speed: 0.007, axis: 'y' }, // Uptime
+    { radius: 3.4, color: 0x0A84FF, speed: 0.005, axis: 'x' }  // Errors
+];
+
+ringData.forEach(data => {
+    const geom = new THREE.TorusGeometry(data.radius, 0.02, 16, 100);
+    const mat = new THREE.MeshBasicMaterial({ color: data.color, transparent: true, opacity: 0.6 });
+    const ring = new THREE.Mesh(geom, mat);
+    ring.rotation.x = Math.random() * Math.PI;
+    ring.rotation.y = Math.random() * Math.PI;
+    scene.add(ring);
+    rings.push({ mesh: ring, speed: data.speed, axis: data.axis });
+});
+
+// Particles
+const particlesGeom = new THREE.BufferGeometry();
+const particlesCount = 200;
+const posArray = new Float32Array(particlesCount * 3);
+for(let i=0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 10;
+}
+particlesGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+const particlesMat = new THREE.PointsMaterial({ size: 0.02, color: 0xFFFFFF, transparent: true, opacity: 0.5 });
+const particlesMesh = new THREE.Points(particlesGeom, particlesMat);
+scene.add(particlesMesh);
+
+camera.position.z = 6;
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    crystal.rotation.y += 0.005;
+    crystal.rotation.z += 0.002;
+    
+    rings.forEach(r => {
+        r.mesh.rotation[r.axis] += r.speed;
+    });
+    
+    particlesMesh.rotation.y += 0.001;
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_8 -->
+</div>
+<!-- Floating Glass Cards Overlays -->
+<!-- Card 1: Top Right (Deploy Frequency) -->
+<div class="glass-card rounded-xl p-6 absolute top-10 right-0 w-64 float-animation-1 z-20 backdrop-blur-xl shadow-xl">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Deploys/Wk</span>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-mono text-label-mono text-primary-container">Live</span>
+</div>
+</div>
+<div class="font-data-lg text-data-lg text-on-surface mb-2 tracking-tight">142.5</div>
+<!-- Minimalist Sparkline representation -->
+<div class="w-full h-8 flex items-end gap-1 opacity-70">
+<div class="w-full bg-primary/20 rounded-t-sm" style="height: 40%"></div>
+<div class="w-full bg-primary/40 rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-primary/30 rounded-t-sm" style="height: 50%"></div>
+<div class="w-full bg-primary/80 rounded-t-sm" style="height: 90%"></div>
+<div class="w-full bg-primary/50 rounded-t-sm" style="height: 70%"></div>
+<div class="w-full bg-primary rounded-t-sm" style="height: 100%; box-shadow: 0 -2px 10px rgba(170, 199, 255, 0.5);"></div>
+</div>
+</div>
+<!-- Card 2: Bottom Left (Error Rate) -->
+<div class="glass-card rounded-xl p-6 absolute bottom-24 left-0 w-72 float-animation-2 z-20 backdrop-blur-xl shadow-xl">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase mb-1">Error Rate</div>
+<div class="flex items-baseline gap-2">
+<span class="font-data-lg text-data-lg text-on-surface">0.04%</span>
+<span class="font-label-mono text-label-mono text-error">↓ 0.02</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Center Bottom (System Uptime) -->
+<div class="glass-card rounded-xl p-5 absolute -bottom-10 right-20 w-56 float-animation-3 z-20 backdrop-blur-xl shadow-xl flex items-center gap-4">
+<div class="relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-secondary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="99.9, 100" stroke-linecap="round" stroke-width="3" style="filter: drop-shadow(0 0 4px rgba(255, 185, 95, 0.4));"></path>
+</svg>
+</div>
+<div>
+<div class="font-data-lg text-data-lg text-on-surface leading-none">99.99%</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase mt-1">Uptime</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

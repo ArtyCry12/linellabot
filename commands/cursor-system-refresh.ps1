@@ -43,6 +43,10 @@ if (-not $Quick) {
     }
 }
 
+Invoke-Step "Design MCP (Stitch + Figma)" {
+    & (Join-Path $commands "ensure-design-mcp.ps1")
+}
+
 Invoke-Step "Sync workspace rules" {
     python (Join-Path $commands "huashu-sync-workspace-rules.py")
 }
