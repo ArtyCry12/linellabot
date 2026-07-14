@@ -25,6 +25,9 @@ projects/*/*
 # Large tool output files
 !projects/*/agent-tools/
 !projects/*/agent-tools/**
+# Canvas artifacts (hub audits, analyses)
+!projects/*/canvases/
+!projects/*/canvases/**
 # Plugin cache (rules, skills, agents)
 !plugins/
 !plugins/**
