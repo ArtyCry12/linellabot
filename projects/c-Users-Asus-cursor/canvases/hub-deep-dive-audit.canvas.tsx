@@ -26,7 +26,7 @@ import {
 
 type RowTone = "success" | "danger" | "warning" | "info" | "neutral";
 
-const CANVAS_VERSION = "v3 · 14.07.2026 20:15";
+const CANVAS_VERSION = "v3.1 · 14.07.2026 20:25";
 
 function dataTable(
   headers: string[],
@@ -500,6 +500,8 @@ export default function HubDeepDiveAudit() {
           <Card variant="elevated">
             <CardHeader title="Explore Subagent Model" />
             <CardBody>
+              <Stack gap={6}>
+                <Text weight="medium">Поставь: Composer 2.5 (Fast) — НЕ «Inherit from parent»</Text>
                 <Text tone="secondary">
                   Inherit тянет модель Boss-чата. Если Boss на Opus или Auto выбрал Opus — каждый explore съедает в 10×
                   больше токенов. Explore = только чтение/grep/разведка → Composer 2.5 Fast (128K, effort low).
