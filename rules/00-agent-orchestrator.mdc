@@ -7,6 +7,21 @@ alwaysApply: true
 
 **Registry:** `SYSTEM-REGISTRY.md` · **Decision tree:** `rules/auto-orchestrator.mdc` · **Taxonomy:** `SYSTEM-TAXONOMY.md` · **Auto-route:** `rules/task-router.mdc` + `lib/task-router/`
 
+## Системообразующие функции (always auto)
+
+Пользователь **не обязан** упоминать эти слои в промпте. Hooks и always-on rules работают сами.
+
+| Слой | Как включается | Действие агента |
+|------|----------------|-----------------|
+| **MarkItDown** | hook `markitdown-intake.ps1` | Читать `.md` из `.cache/markitdown/`, не бинарник |
+| **RTK** | hook `rtk-cursor-hook.ps1` (preToolUse Shell) | Не обходить; узкие shell-команды |
+| **Task Router** | hook `task-router.ps1` | Следовать `[TASK ROUTE]` (skill/MCP/subagent) |
+| **Repo intake** | hook `repo-intake.ps1` | Учитывать контекст репо из hook |
+| **Prompt coach** | capture + stop hooks | Метрики water; уроки после сессии |
+| **Autopilot** | hook `autopilot.ps1` | `!auto` / контракт Deliverables |
+
+MCP для MarkItDown **не нужен** — hook быстрее и без дубля. n8n-templates подключается через router при задачах n8n.
+
 ## Принципы
 
 1. Не подтягивай все MCP/скиллы в каждый ответ — только по задаче.
@@ -47,5 +62,6 @@ alwaysApply: true
 | SEO/GEO | `seo-geo` |
 | Security | `cybersecurity` |
 | Agency personas | `agency-agents` · `rules/agency/` · `@content-creator` etc. |
+| skills.sh / найти скилл | `find-skills` · `@find-skills` · `npx skills find` |
 
 Детали MCP — `rules/mcp-routing.mdc`. Конфиг: `mcp.json` (gitignored).

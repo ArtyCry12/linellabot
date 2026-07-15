@@ -21,6 +21,15 @@ Assume the implementer is a skilled developer but knows almost nothing about the
 
 **Core principle:** A good plan makes implementation obvious. If someone has to guess, the plan is incomplete.
 
+## Skill gap-check (hub · skills.sh)
+
+Before finalizing a Plan / Phase 0 brief:
+
+1. List hub skills already covering the work.
+2. Name gaps → run `commands/find-skills.ps1 -Query "..."` (or route `find-skills`).
+3. Prefer high installs on [skills.sh](https://www.skills.sh/); Design/UI may be below threshold.
+4. Present candidates once → user confirms → install. See `skills/find-skills/SKILL.md`.
+
 ## When to Use
 
 **Always use before:**

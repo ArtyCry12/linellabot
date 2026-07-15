@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-07-10T00:01:03.014Z
+Generated: 2026-07-15T23:22:06.329Z
 
 | Skill | Path | Description |
 |-------|------|-------------|
@@ -23,10 +23,15 @@ Generated: 2026-07-10T00:01:03.014Z
 | statusline | `skills-cursor/statusline/SKILL.md` | >- |
 | update-cli-config | `skills-cursor/update-cli-config/SKILL.md` | >- |
 | update-cursor-settings | `skills-cursor/update-cursor-settings/SKILL.md` | >- |
+| game-studios-multiagent | `skills/_archive/game-studios-multiagent/SKILL.md` | >- |
 | 21st-design | `skills/21st-design/SKILL.md` | >- |
 | agency-agents | `skills/agency-agents/SKILL.md` | >- |
 | awesome-design-md | `skills/awesome-design-md/SKILL.md` | >- |
+| awesome-prompts | `skills/awesome-prompts/SKILL.md` | >- |
+| babyagi | `skills/babyagi/SKILL.md` | >- |
+| brainstorming | `skills/brainstorming/SKILL.md` | "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying |
 | clone-website | `skills/clone-website/SKILL.md` | >- |
+| crew-ai | `skills/crew-ai/SKILL.md` | >- |
 | cybersecurity | `skills/cybersecurity/SKILL.md` | >- |
 | design-stack | `skills/design-stack/SKILL.md` | >- |
 | dev-os-autonomy | `skills/dev-os/autonomy/SKILL.md` | >- |
@@ -37,18 +42,26 @@ Generated: 2026-07-10T00:01:03.014Z
 | dev-os-memory | `skills/dev-os/memory/SKILL.md` | >- |
 | dev-os-research | `skills/dev-os/research/SKILL.md` | >- |
 | dev-os | `skills/dev-os/SKILL.md` | >- |
-| game-studios-multiagent | `skills/game-studios-multiagent/SKILL.md` | >- |
+| ecc-harness | `skills/ecc-harness/SKILL.md` | >- |
+| find-skills | `skills/find-skills/SKILL.md` | >- |
+| frontend-design | `skills/frontend-design/frontend-design/SKILL.md` | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to  |
+| frontend-design | `skills/frontend-design/SKILL.md` | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to  |
 | graphify | `skills/graphify/SKILL.md` | >- |
 | hermes-agent | `skills/hermes-agent/SKILL.md` | >- |
 | huashu-design | `skills/huashu-design/SKILL.md` | 花叔Design（Huashu-Design）——用HTML做高保真原型、交互Demo、幻灯片、动画、设计变体探索+设计方向顾问+专家评审的一体化设计能力。HTML是工具不是媒介，根据任务embody不同专家（UX设计师/动画师/幻灯片设计 |
+| llm-council | `skills/llm-council/SKILL.md` | >- |
 | markitdown | `skills/markitdown/SKILL.md` | Converts PDF, Office, HTML, audio, images, ZIP, EPUB, and more to token-efficient Markdown using Microsoft MarkItDown be |
 | mattpocock-skills | `skills/mattpocock-skills/SKILL.md` | >- |
+| n8n-templates | `skills/n8n-templates/SKILL.md` | >- |
 | n8n-workflow | `skills/n8n-workflow/SKILL.md` | >- |
+| notion-tasks | `skills/notion-tasks/SKILL.md` | >- |
 | notion-workspace | `skills/notion-workspace/SKILL.md` | >- |
+| pr-review | `skills/pr-review/SKILL.md` | >- |
 | production-studio | `skills/production-studio/SKILL.md` | >- |
 | project-squad | `skills/project-squad/SKILL.md` | >- |
 | prompt-engineering-coach | `skills/prompt-engineering-coach/SKILL.md` | >- |
 | remotion | `skills/remotion/SKILL.md` | >- |
+| repo-intake | `skills/repo-intake/SKILL.md` | >- |
 | seo-geo | `skills/seo-geo/SKILL.md` | >- |
 | design-an-interface | `skills/skills-main-top-coding/skills-main/skills/deprecated/design-an-interface/SKILL.md` | Generate multiple radically different interface designs for a module using parallel sub-agents. Use when user wants to d |
 | qa | `skills/skills-main-top-coding/skills-main/skills/deprecated/qa/SKILL.md` | Interactive QA session where user reports bugs or issues conversationally, and the agent files GitHub issues. Explores t |
@@ -74,13 +87,17 @@ Generated: 2026-07-10T00:01:03.014Z
 | scaffold-exercises | `skills/skills-main-top-coding/skills-main/skills/misc/scaffold-exercises/SKILL.md` | Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user |
 | setup-pre-commit | `skills/skills-main-top-coding/skills-main/skills/misc/setup-pre-commit/SKILL.md` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user w |
 | edit-article | `skills/skills-main-top-coding/skills-main/skills/personal/edit-article/SKILL.md` | Edit and improve articles by restructuring sections, improving clarity, and tightening prose. Use when user wants to edi |
-| obsidian-vault | `skills/skills-main-top-coding/skills-main/skills/personal/obsidian-vault/SKILL.md` | >- |
 | caveman | `skills/skills-main-top-coding/skills-main/skills/productivity/caveman/SKILL.md` | > |
 | grill-me | `skills/skills-main-top-coding/skills-main/skills/productivity/grill-me/SKILL.md` | Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the |
 | handoff | `skills/skills-main-top-coding/skills-main/skills/productivity/handoff/SKILL.md` | Compact the current conversation into a handoff document for another agent to pick up. |
 | write-a-skill | `skills/skills-main-top-coding/skills-main/skills/productivity/write-a-skill/SKILL.md` | Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to cre |
+| subagent-driven-development | `skills/subagent-driven-development/SKILL.md` | Use when executing implementation plans with independent tasks in the current session |
+| systematic-debugging | `skills/systematic-debugging/SKILL.md` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
 | ui-ux-pro-max | `skills/ui-ux-pro-max/SKILL.md` | >- |
+| understand-anything | `skills/understand-anything/SKILL.md` | >- |
 | uv | `skills/uv/SKILL.md` | >- |
+| verification-before-completion | `skills/verification-before-completion/SKILL.md` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verifi |
+| video-learning | `skills/video-learning/SKILL.md` | >- |
 | writing-plans | `skills/writing-plans/SKILL.md` | "Write implementation plans: bite-sized tasks, paths, code." |
 
-Total: 78 skills
+Total: 95 skills

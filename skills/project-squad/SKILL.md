@@ -26,7 +26,7 @@ Boss (**Opus 4.7**) orchestrates; **10 custom subagents** in `C:/Users/Asus/.cur
 
 ## Non-negotiable rules
 
-1. **Boss never skips Phase 0** — goal, forbidden paths, commit/deploy gates.
+1. **Boss never skips Phase 0** — goal, forbidden paths, commit/deploy gates. **Skill gap-check:** hub stack + `skills/find-skills` / skills.sh (Ask once before install).
 2. **Spawn custom subagents first** — `Use the squad-<role> subagent to …` with model from model-map.
 3. **Token economy** — graphify/markitdown; one web MCP (Exa); Haiku/Composer for scout/memory/cleanup.
 4. **No commit / no deploy** unless user explicitly allowed.
@@ -62,6 +62,8 @@ Fallback if custom agent unavailable: Task with `subagent_type` from roster + `m
 | fix errors | scout → architect → build → review → qa |
 | seo-geo | scout → growth → qa |
 | full cycle | all phases (ship gated) |
+| marketing / landing | growth → design → build → qa (humanizer on copy) |
+| reels brief | growth + `templates/marketing/landing-brief.md` |
 | refresh hub | squad-cleanup → cursor-system-refresh.cmd |
 | foundation refresh | read `commands/foundation-refresh.md` → taxonomy update |
 | pixel monitor | `commands/pixel-office.ps1` |
@@ -69,3 +71,19 @@ Fallback if custom agent unavailable: Task with `subagent_type` from roster + `m
 ## Command
 
 **`/project-squad`** → load this file → Boss Phase 0 immediately.
+
+## Claude plugins bridge (Cursor hub)
+
+Adapted from `claude-plugins-official` (runtime remains `claude` CLI; skills synced to hub):
+
+| Plugin | Hub path | Squad / route |
+|--------|----------|---------------|
+| superpowers | `skills/brainstorming`, `writing-plans`, `systematic-debugging`, `subagent-driven-development`, `verification-before-completion` | Route `coding-discipline` → architect → build |
+| frontend-design | `skills/frontend-design` | `squad-design` anti-slop gate; route `frontend-design-web` |
+| code-review | `skills/pr-review` | `squad-review` PR mode; route `pr-review` |
+| claude-code-setup | — | `squad-scout` automation audit; route `automation-audit` |
+
+Refresh skills: `powershell -File commands/sync-claude-plugin-skills.ps1`  
+Verify: `powershell -File commands/claude-plugins-bridge-test.ps1`
+
+**Merge rule:** Superpowers = Phase 0–1 (spec/plan). Squad = Phase 2+ (design/growth/build/qa). Do not run both bosses in parallel.

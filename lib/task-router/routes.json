@@ -1,9 +1,39 @@
-﻿{
+{
   "version": 1,
   "minScore": 5,
   "maxRoutes": 2,
   "skipIfShorterThan": 8,
   "routes": [
+    {
+      "id": "clarify-first",
+      "label": "Clarify before big task",
+      "keywords": ["большая задача", "полный план", "с нуля", "неясно", "уточни", "вопросы"],
+      "phrases": ["clarify first", "ask questions first", "полный список вопросов", "сначала вопросы"],
+      "skill": "skills/prompt-engineering-coach/SKILL.md",
+      "rule": "rules/user-profile.mdc",
+      "mode": "plan",
+      "note": "Ask full question list BEFORE work; user answered quiz preference"
+    },
+    {
+      "id": "video-learning",
+      "label": "Video / Reels / YouTube learning",
+      "keywords": ["youtube", "reels", "tiktok", "shorts", "видео", "транскрипт", "сводка по ссылке"],
+      "phrases": ["video summary", "разбери видео", "learn from video"],
+      "skill": "skills/video-learning/SKILL.md",
+      "mcp": ["plugin-exa-exa", "user-fetch"],
+      "commands": ["commands/ensure-markitdown.ps1"],
+      "mode": "agent"
+    },
+    {
+      "id": "notion-tasks",
+      "label": "Notion task sync",
+      "keywords": ["notion", "задач", "галочк", "чеклист", "notion.so"],
+      "phrases": ["notion task", "sync notion", "notion page"],
+      "skill": "skills/notion-tasks/SKILL.md",
+      "mcp": ["user-notion"],
+      "rule": "rules/notion-workspace.mdc",
+      "mode": "agent"
+    },
     {
       "id": "autopilot",
       "label": "Full automation",
@@ -99,12 +129,55 @@
     {
       "id": "project-squad",
       "label": "Multi-agent Squad execution",
-      "keywords": ["squad", "project squad", "субагент", "subagent", "оркестрац"],
-      "phrases": ["/project-squad", "squad-build", "squad-qa", "squad-scout"],
+      "keywords": ["squad", "project squad", "субагент", "subagent", "оркестрац", "маркетинг", "landing", "лендинг", "reels", "копирайт", "кейс"],
+      "phrases": ["/project-squad", "squad-build", "squad-qa", "squad-scout", "squad-growth", "marketing squad"],
       "skill": "skills/project-squad/SKILL.md",
       "rule": "rules/project-squad.mdc",
       "subagent": ["squad-scout", "squad-architect", "squad-build", "squad-qa", "squad-review", "squad-ship"],
       "mode": "agent"
+    },
+    {
+      "id": "coding-discipline",
+      "label": "Plan-first coding (Superpowers bridge)",
+      "keywords": ["implement", "refactor", "fix bug", "добавь фичу", "исправь", "tdd", "debug", "отладк", "рефактор"],
+      "phrases": ["implement feature", "fix the bug", "systematic debug", "subagent driven", "before coding"],
+      "skill": "skills/brainstorming/SKILL.md",
+      "subagent": ["squad-architect", "squad-build", "squad-qa"],
+      "mode": "plan",
+      "note": "Chain: brainstorming -> writing-plans -> tdd -> subagent-driven-development. Squad executes after approve."
+    },
+    {
+      "id": "frontend-design-web",
+      "label": "Web UI anti-slop (frontend-design)",
+      "keywords": ["web app", "dashboard", "landing page", "ui page", "компонент", "интерфейс", "сайт", "next.js page"],
+      "phrases": ["build a page", "web interface", "production ui", "anti slop", "не серый дизайн"],
+      "tags": ["@frontend-design"],
+      "skill": "skills/frontend-design/SKILL.md",
+      "rule": "rules/design-stack.mdc",
+      "subagent": ["squad-design", "squad-build"],
+      "mode": "agent",
+      "note": "Deck/HTML/motion -> huashu-design route. Web app -> this route."
+    },
+    {
+      "id": "pr-review",
+      "label": "PR review confidence scoring",
+      "keywords": ["pull request", "pr review", "code review pr", "pre-merge", "review pr"],
+      "phrases": ["/pr-review", "review this pr", "review pull request"],
+      "skill": "skills/pr-review/SKILL.md",
+      "subagent": ["squad-review"],
+      "commands": ["commands/pr-review.ps1"],
+      "mode": "agent",
+      "note": "Requires gh auth; posts only issues confidence >= 80 after user OK"
+    },
+    {
+      "id": "automation-audit",
+      "label": "Automation recommendations (scout)",
+      "keywords": ["recommend automations", "what hooks", "automation audit", "claude code setup", "что автоматизировать"],
+      "phrases": ["recommend automations for", "automation audit", "audit automations"],
+      "skill": "skills/project-squad/SKILL.md",
+      "subagent": ["squad-scout"],
+      "mode": "agent",
+      "note": "Read-only; claude-code-setup pattern via squad-scout"
     },
     {
       "id": "agency-persona",
@@ -157,13 +230,25 @@
       "mode": "agent"
     },
     {
+      "id": "markitdown",
+      "label": "Document to Markdown",
+      "keywords": ["markitdown", "pdf", "docx", "pptx", "xlsx", "convert to markdown", "экономия токенов", "markdown conversion"],
+      "phrases": ["convert pdf", "read pdf", "extract from pdf", "office to md"],
+      "tags": ["@markitdown"],
+      "skill": "skills/markitdown/SKILL.md",
+      "rule": "rules/markitdown.mdc",
+      "commands": ["commands/ensure-markitdown.ps1", "commands/markitdown-drain.ps1"],
+      "mode": "agent"
+    },
+    {
       "id": "n8n-automation",
       "label": "n8n workflows",
-      "keywords": ["n8n", "workflow", "автоматизац"],
+      "keywords": ["n8n", "workflow", "автоматизац", "n8n template"],
       "tags": ["@n8n"],
       "skill": "skills/n8n-workflow/SKILL.md",
       "mcp": ["user-n8n-mcp"],
-      "commands": ["commands/n8n-mcp.md", "commands/n8n-workflow.md"],
+      "commands": ["commands/n8n-mcp.md", "commands/n8n-workflow.md", "commands/n8n-templates-match.ps1"],
+      "docs": ["skills/n8n-templates/SKILL.md"],
       "mode": "agent"
     },
     {
@@ -261,6 +346,99 @@
       "keywords": ["объясни", "что такое", "как работает", "расскажи", "explain"],
       "phrases": ["what is", "how does"],
       "mode": "ask"
+    },
+    {
+      "id": "repo-intake",
+      "label": "Repository drop-in analysis",
+      "keywords": ["репозитор", "repository", "github.com", "gitlab.com", ".zip"],
+      "phrases": ["/repo", "разбери репо", "этот репозиторий"],
+      "tags": ["@repo"],
+      "skill": "skills/repo-intake/SKILL.md",
+      "rule": "rules/repo-intake.mdc",
+      "subagent": ["squad-scout"],
+      "commands": ["commands/repo.md"],
+      "mode": "agent"
+    },
+    {
+      "id": "babyagi",
+      "label": "Creative task loop (BabyAGI)",
+      "keywords": ["babyagi", "baby agi", "creative loop", "brainstorm tasks", "agent creativity"],
+      "phrases": ["creative loop", "expand tasks", "open ended ideation"],
+      "tags": ["@babyagi"],
+      "skill": "skills/babyagi/SKILL.md",
+      "rule": "rules/babyagi.mdc",
+      "commands": ["commands/creative-loop.ps1", "commands/babyagi-test.ps1"],
+      "subagent": ["generalPurpose", "squad-design"],
+      "mode": "agent"
+    },
+    {
+      "id": "crew-ai",
+      "label": "CrewAI marketing / production pipeline",
+      "keywords": ["crewai", "crew ai", "marketing crew", "production crew", "multi-agent workflow"],
+      "phrases": ["crew plan", "marketing pipeline", "production pipeline", "crew marketing"],
+      "tags": ["@crew-ai"],
+      "skill": "skills/crew-ai/SKILL.md",
+      "rule": "rules/crew-ai.mdc",
+      "commands": ["commands/crew-plan.ps1", "commands/crew-ai-test.ps1"],
+      "subagent": ["squad-growth", "squad-design", "squad-qa"],
+      "mode": "agent"
+    },
+    {
+      "id": "find-skills",
+      "label": "skills.sh catalog — find / gap-check / install",
+      "keywords": [
+        "find skill",
+        "skills.sh",
+        "npx skills",
+        "skill catalog",
+        "find-skills",
+        "найди скилл",
+        "установи skill",
+        "каталог skills"
+      ],
+      "phrases": [
+        "find a skill for",
+        "is there a skill",
+        "skills.sh search",
+        "npx skills find",
+        "каких скиллов не хватает"
+      ],
+      "tags": ["@find-skills"],
+      "skill": "skills/find-skills/SKILL.md",
+      "rule": "rules/find-skills.mdc",
+      "commands": ["commands/find-skills.ps1", "commands/find-skills-test.ps1"],
+      "mode": "agent",
+      "note": "Gap-check mandatory on Plan/Phase0. Ask once before install. Prefer high installs; Design/UI exception."
+    },
+    {
+      "id": "awesome-prompts",
+      "label": "Prompt template match + adapt",
+      "keywords": ["улучши промт", "prompt template", "act as", "awesome-prompts", "шаблон промта"],
+      "phrases": ["improve my prompt", "match prompt", "prompt library", "как написать промт"],
+      "tags": ["@awesome-prompts"],
+      "skill": "skills/awesome-prompts/SKILL.md",
+      "rule": "rules/awesome-prompts.mdc",
+      "mcp": ["user-prompts.chat"],
+      "commands": ["commands/awesome-prompts-match.ps1", "commands/build-awesome-prompts-index.ps1"],
+      "mode": "agent"
+    },
+    {
+      "id": "llm-council",
+      "label": "LLM Council — multi-perspective task discussion",
+      "keywords": ["council", "совет моделей", "несколько мнений", "llm-council", "cross-review"],
+      "phrases": ["llm council", "обсудим задачу", "совет llm", "rank opinions"],
+      "skill": "skills/llm-council/SKILL.md",
+      "rule": "rules/llm-council.mdc",
+      "subagent": ["squad-architect", "generalPurpose"],
+      "mode": "plan"
+    },
+    {
+      "id": "ecosystem-audit",
+      "label": "Hub ecosystem audit + quizzes",
+      "keywords": ["аудит экосистем", "ecosystem audit", "issuess-index", "quiz-ingest"],
+      "phrases": ["ecosystem-audit", "hub audit", "квиз профиль"],
+      "commands": ["commands/quiz-ingest.ps1"],
+      "mode": "agent"
     },
     {
       "id": "architecture-plan",

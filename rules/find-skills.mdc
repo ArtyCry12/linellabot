@@ -1,0 +1,18 @@
+---
+description: >-
+  skills.sh / find-skills — gap-check on Plan and Phase 0; catalog search via
+  npx skills find. Prefer high installs; Design/UI exception.
+alwaysApply: false
+---
+
+# Find Skills (skills.sh)
+
+When the user asks to **find a skill**, mentions **skills.sh** / **npx skills**, or you are in **Plan** / **Phase 0** on a large task:
+
+1. Read `skills/find-skills/SKILL.md` (hub protocol)
+2. Prefer upstream detail at `.agents/skills/find-skills/SKILL.md`
+3. Run `commands/find-skills.ps1 -Query "..."` or `npx.cmd skills find "..."`
+4. Gap-check: hub stack first → candidates from catalog → **Ask once** before install
+5. Prefer high install counts; allow Design/UI below threshold
+
+Do **not** mass-install without user confirm. Do **not** edit upstream find-skills copy.

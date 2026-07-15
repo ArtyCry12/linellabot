@@ -16,7 +16,8 @@ $samples = @(
     "open site and click sign in",
     "setup n8n workflow for slack",
     "what is DEC-056",
-    "/project-squad audit this repo"
+    "/project-squad audit this repo",
+    "find skill for react performance on skills.sh"
 )
 
 Write-Host "=== Task Router test ===" -ForegroundColor Cyan
