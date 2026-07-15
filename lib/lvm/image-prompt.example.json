@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "goal": "Hero still for Reels opener — premium SaaS dashboard vibe",
+  "subject": {
+    "main": "founder at standing desk looking at glowing analytics UI",
+    "action": "soft smile, hand hovering over trackpad",
+    "props": ["laptop", "notebook", "coffee"]
+  },
+  "environment": {
+    "setting": "modern loft office",
+    "timeOfDay": "golden hour",
+    "atmosphere": "calm focused productive"
+  },
+  "camera": {
+    "shot": "medium",
+    "angle": "slightly low",
+    "lensMm": 35
+  },
+  "lighting": "warm side light + cool screen fill",
+  "style": {
+    "medium": "cinematic photo",
+    "references": ["editorial tech magazine"],
+    "avoid": ["purple gradient", "stock handshake", "inter font overlays"]
+  },
+  "textInImage": { "allowed": false },
+  "aspectRatio": "9:16",
+  "durationHintSec": 4,
+  "negative": ["blurry", "extra fingers", "watermark", "logo spam"],
+  "seed": null,
+  "platform": "magnific",
+  "rawPrompt": "Cinematic medium shot, slightly low angle 35mm, founder at standing desk in modern loft at golden hour, warm side light and cool screen fill, soft smile hand over trackpad, laptop notebook coffee, editorial tech magazine look, 9:16, no text overlays, avoid purple gradients and stock poses"
+}

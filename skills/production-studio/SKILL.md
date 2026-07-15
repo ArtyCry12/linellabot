@@ -27,6 +27,17 @@ Full map: `ai-tracking/production-studio/ARCHITECTURE.md`
 
 `[Тип/Стиль] + [Объект и действие] + [Окружение] + [Свет/ракурс] + [Параметры/текст]`
 
+## Image / keyframe prompts → JSON (LVM interop)
+
+For Magnific / Gemini / carousel seeds, prefer structured JSON (not free-form only):
+
+1. Schema: `lib/lvm/image-prompt.schema.json`
+2. Example: `lib/lvm/image-prompt.example.json`
+3. Compile `rawPrompt` from fields before calling an image MCP
+4. Keep `aspectRatio` + `durationHintSec` aligned with segment chunk (2/4/6/8/10 s)
+
+Agent must pass JSON to tools when the client accepts structured input; otherwise paste `rawPrompt`.
+
 ## Chunk durations (REQ-057)
 
 2 / 4 / 6 / 8 / 10 s — one duration per project. See `references/segment-splitter.md`.
@@ -53,6 +64,8 @@ Brief → Style lock → Script (refs) → Segment manifest → Storyboard → G
 | Transcribe | `commands/transcribe-video.ps1` |
 | Media refs | `references/media-conversion.md` |
 | LVM segment | `/lvm-segment` |
+| Carousel GPT Image 2 | `references/carousel-gpt-image-2.md` · `templates/production-studio/carousel-slide-spec.json` |
+| Photocard AI video | `references/photocard-ai-video.md` · `templates/production-studio/photocard-prompts.json` |
 
 ## MCP
 

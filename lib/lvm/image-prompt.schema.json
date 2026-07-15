@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cursor.local/lvm/image-prompt.schema.json",
+  "title": "LVMImagePrompt",
+  "description": "Structured image generation prompt for LVM / Magnific / carousel / photocard interop (Session 2).",
+  "type": "object",
+  "required": ["version", "goal", "subject", "style"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "string", "const": "1.0" },
+    "goal": {
+      "type": "string",
+      "description": "What the image must achieve (ad, hero, storyboard frame, product)."
+    },
+    "subject": {
+      "type": "object",
+      "required": ["main"],
+      "properties": {
+        "main": { "type": "string" },
+        "action": { "type": "string" },
+        "props": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "setting": { "type": "string" },
+        "timeOfDay": { "type": "string" },
+        "atmosphere": { "type": "string" }
+      }
+    },
+    "camera": {
+      "type": "object",
+      "properties": {
+        "shot": { "type": "string", "description": "wide / medium / close-up / macro" },
+        "angle": { "type": "string" },
+        "lensMm": { "type": "integer", "minimum": 10, "maximum": 400 }
+      }
+    },
+    "lighting": { "type": "string" },
+    "style": {
+      "type": "object",
+      "required": ["medium"],
+      "properties": {
+        "medium": { "type": "string", "description": "photo / cinematic / illustration / 3d" },
+        "references": { "type": "array", "items": { "type": "string" } },
+        "avoid": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "textInImage": {
+      "type": "object",
+      "properties": {
+        "allowed": { "type": "boolean", "default": false },
+        "copy": { "type": "string" },
+        "language": { "type": "string", "default": "ru" }
+      }
+    },
+    "aspectRatio": {
+      "type": "string",
+      "enum": ["1:1", "4:5", "9:16", "16:9", "3:2", "2:3"]
+    },
+    "durationHintSec": {
+      "type": "integer",
+      "description": "If used as video keyframe seed",
+      "enum": [2, 4, 6, 8, 10]
+    },
+    "negative": { "type": "array", "items": { "type": "string" } },
+    "seed": { "type": ["integer", "null"] },
+    "platform": {
+      "type": "string",
+      "enum": ["magnific", "gemini", "ideogram", "other"]
+    },
+    "rawPrompt": {
+      "type": "string",
+      "description": "Flattened natural-language prompt compiled from fields"
+    }
+  }
+}
