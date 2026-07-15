@@ -25,9 +25,6 @@ projects/*/*
 # Large tool output files
 !projects/*/agent-tools/
 !projects/*/agent-tools/**
-# Canvas artifacts (hub audits, analyses)
-!projects/*/canvases/
-!projects/*/canvases/**
 # Plugin cache (rules, skills, agents)
 !plugins/
 !plugins/**
@@ -49,7 +46,7 @@ projects/*/*
 # User-level cursor rules
 !rules/
 !rules/**
-# Hub agents, hooks, tracking, templates, docs
+# Hub agents, hooks, tracking, templates, docs, lib
 !agents/
 !agents/**
 !hooks/
@@ -61,11 +58,17 @@ projects/*/*
 !templates/**
 !docs/
 !docs/**
+!lib/
+!lib/**
 !SYSTEM-REGISTRY.md
+!SYSTEM-TAXONOMY.md
 !AGENTS.md
 !CLAUDE.md
 !mcp.json.example
 !.gitignore
+# Canvas artifacts
+!projects/*/canvases/
+!projects/*/canvases/**
 # <<< CURSOR MANAGED BLOCK <<<
 
 
