@@ -34,9 +34,23 @@ Registry: `SYSTEM-REGISTRY.md`. Decision tree: `rules/auto-orchestrator.mdc`.
 ## Web — один primary провайдер
 
 1. **Research / search / docs** → **`plugin-exa-exa`** (primary)
-2. **Known single URL** → `user-fetch`
-3. **Tavily / Firecrawl** — только если Exa не покрыл задачу; **не** параллельно с Exa
+2. **Known single URL** → `user-fetch` / `fetch` in mcp.json
+3. **Crawl at scale** → **`plugin-firecrawl-firecrawl`** (если Exa не хватило)
 4. **Live page / forms / clicks** → `cursor-ide-browser`
+
+**Не по умолчанию:** `tavily` / `plugin-tavily-tavily`, `browse` — в `disableArchive` (`lib/mcp-router/McpTier.ps1`).
+
+## MCP tiers (Session 2)
+
+| Tier | Servers | Notes |
+|------|---------|-------|
+| **Always-on** | memory, gitnexus | markitdown — prefer hook; MCP optional |
+| **On-demand** | exa, fetch, firecrawl, browsers, stitch/figma, n8n, … | См. `ai-tracking/mcp-plugin-tiers-s2.md` |
+| **disable-archive** | obsidian, tavily, browse | Не грузить без явного запроса |
+
+**Browser routing:** E2E → `playwright`; DOM/debug → `chrome-devtools`; IDE smoke → `cursor-ide-browser`.
+
+Health: `commands/mcp-health.ps1` · Tiers: `lib/mcp-router/McpTier.ps1`
 
 ## Прочие антиконфликты
 

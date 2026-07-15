@@ -15,17 +15,23 @@
       "command": "npx.cmd",
       "args": ["-y", "@modelcontextprotocol/server-fetch"]
     },
+    "markitdown-mcp": {
+      "command": "C:/Users/Asus/.cursor/.venv-markitdown/Scripts/markitdown-mcp.exe",
+      "args": []
+    },
+    "playwright": {
+      "command": "npx.cmd",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "chrome-devtools": {
+      "command": "npx.cmd",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    },
     "@21st-dev/magic": {
       "command": "npx.cmd",
       "args": ["-y", "@21st-dev/magic@latest"],
       "env": {
         "API_KEY": "YOUR_21ST_MAGIC_API_KEY"
-      }
-    },
-    "obsidian": {
-      "url": "http://127.0.0.1:27123/mcp/",
-      "headers": {
-        "Authorization": "Bearer YOUR_OBSIDIAN_LOCAL_REST_API_KEY"
       }
     },
     "stitch": {
