@@ -26,7 +26,14 @@ import {
 
 type RowTone = "success" | "danger" | "warning" | "info" | "neutral";
 
-const CANVAS_VERSION = "v4.0 · 16.07.2026 S4";
+const CANVAS_VERSION = "v4.1 · 16.07.2026 P3";
+
+const DESIGN_REFS = [
+  { url: "https://www.apple.com/", role: "Золотой стандарт", note: "Эталон чистоты, иерархии, brand-first" },
+  { url: "https://antigravity.google/", role: "Wow / современный фаворит", note: "Когда нужен сильный wow-эффект" },
+  { url: "https://framery.com/en/", role: "Продающий почти идеал", note: "Landing CRO + продукт в кадре" },
+  { url: "https://www.palantir.com/platforms/aip/", role: "Красота + эффективность", note: "B2B platform: эстетика без потери ясности" },
+];
 
 function dataTable(
   headers: string[],
@@ -325,8 +332,10 @@ const ACTION_ITEMS = [
   { id: "sync-models", content: "НЕ синхронизировать agents/*.md model lines (trust_manual lock)", status: "cancelled" as const },
   { id: "reload", content: "Reload Window — только если правили hooks.json (S3 не трогал)", status: "cancelled" as const },
   { id: "deferred", content: "Boss: закрыть Cursor → cursor-system-refresh-deferred.ps1", status: "pending" as const },
-  { id: "design-refs", content: "P3: Design refs — 3 сайта-референса когда будут", status: "pending" as const },
-  { id: "p3-rest", content: "P3: budget / Notion publish / model-map unlock", status: "pending" as const },
+  { id: "design-refs", content: "Design refs: Apple · Antigravity · Framery · Palantir AIP", status: "completed" as const },
+  { id: "notion-p3", content: "Notion: publish under Prompt Coach hub (CoachConfig)", status: "completed" as const },
+  { id: "models-boss", content: "Models: Boss настроил в Settings — model-map unlock закрыт", status: "completed" as const },
+  { id: "budget", content: "P3: budget $/mo — пока нет точной цифры", status: "pending" as const },
 ];
 
 const SQUAD_MODELS = [
@@ -450,6 +459,13 @@ export default function HubDeepDiveAudit() {
           </Card>
           <H2>Ближайшие действия</H2>
           <TodoList todos={ACTION_ITEMS} />
+          <H2>Design refs (канон)</H2>
+          <Table
+            {...dataTable(
+              ["Роль", "URL", "Заметка"],
+              DESIGN_REFS.map((r) => [r.role, r.url, r.note]),
+            )}
+          />
         </Stack>
       )}
 
@@ -870,8 +886,8 @@ export default function HubDeepDiveAudit() {
                   <Text tone="secondary">1. Название агентства + niche (для brand-guardian)</Text>
                   <Text tone="secondary">2. Top-3 revenue services сейчас</Text>
                   <Text tone="secondary">3. GitHub org strategy — hub vs client repos</Text>
-                  <Text tone="secondary">4. Design refs — пока нет конкретных 3 сайтов (заполнишь позже)</Text>
-                  <Text tone="secondary">5. Budget cap на AI models / month</Text>
+                  <Text tone="secondary">4. Design refs — Apple (gold) · Antigravity (wow) · Framery (sell) · Palantir AIP</Text>
+                  <Text tone="secondary">5. Budget cap на AI models / month — пока не задан</Text>
                 </Stack>
               </CardBody>
             </Card>

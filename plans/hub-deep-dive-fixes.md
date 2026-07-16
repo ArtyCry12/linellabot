@@ -1,107 +1,82 @@
 ---
 name: Hub Deep Dive Fixes
-overview: "S4 in progress/complete P0–P1. P3 backlog. Не трогать hooks.json, mcp secrets, markitdown, agents model lines."
+overview: "S4 + P3 design-refs/Notion/models DONE. Open: deferred Boss refresh + budget (нет цифры)."
 todos:
   - id: s4-reaudit
-    content: "Старт сессии: короткий re-audit hub → ai-tracking/SESSION-4-REAUDIT.md (skills/rules/MCP/routes/canvas/tests)"
+    content: "Старт сессии: короткий re-audit hub → ai-tracking/SESSION-4-REAUDIT.md"
     status: completed
   - id: canvas-full-sync
-    content: "P0: полный sync canvas hub-deep-dive-audit (версия, секции, drift, ACTION_ITEMS vs post-S3 reality)"
+    content: "P0: полный sync canvas hub-deep-dive-audit"
     status: completed
   - id: stale-markers
-    content: "P0: синхронизировать SESSION-3-REAUDIT + SESSION-3-COMPLETE (убрать ложные TODO на уже сделанное)"
+    content: "P0: синхронизировать SESSION-3 markers"
     status: completed
   - id: index-dedupe
-    content: "P1: убрать дубль frontend-design в skills/_INDEX.md + regenerate index"
+    content: "P1: _INDEX frontend-design dedupe"
     status: completed
   - id: gate-smoke
-    content: "P1: smoke design-gate Applied + route-echo «Подключил» (чеклист/мини-тест, без hooks.json)"
+    content: "P1: gate-smoke checklist"
     status: completed
   - id: taxonomy-refresh
-    content: "P1: освежить skills-taxonomy-s2 + mcp-plugin-tiers-s2 даты/дрифт после S3"
+    content: "P1: taxonomy + MCP post-S3 notes"
     status: completed
   - id: s3-plan-close
-    content: "P1: закрыть todos в plans/3_sessions_hub_refactor_*.plan.md (S1–S3 completed)"
+    content: "P1: close 3_sessions plan todos"
     status: completed
   - id: deferred-boss
-    content: "P1: Boss checklist — закрыть Cursor → cursor-system-refresh-deferred.ps1"
+    content: "P1: Boss — закрыть Cursor → cursor-system-refresh-deferred.ps1"
     status: pending
   - id: design-refs
-    content: "P3: 3 design-ref сайта в canvas (когда будут URL)"
-    status: pending
-  - id: budget-notion-models
-    content: "P3: budget $/mo · Notion publish уроков · model-map unlock (только после снятия trust_manual)"
+    content: "P3: 4 design-ref URL в canvas + design-refs-canon.md"
+    status: completed
+  - id: notion-publish
+    content: "P3: Notion pages under Prompt Coach hub"
+    status: completed
+  - id: models-closed
+    content: "P3: model-map unlock CLOSED — Boss настроил Settings сам"
+    status: completed
+  - id: budget
+    content: "P3: budget $/mo — ждём цифру"
     status: pending
 isProject: false
 ---
 
-# Hub Deep Dive — план (S4 executed P0–P1)
+# Hub Deep Dive — план (S4 + P3 partial)
 
-**Роль:** канон deep-dive. S4 закрыл P0–P1; **P3** и **deferred-boss** открыты.
-
-**Не трогать:** `hooks.json` · mcp secrets · markitdown · `agents/*.md` model lines / model-map (`trust_manual`).
-
-```mermaid
-flowchart TD
-  s4done[S4 P0-P1 DONE]
-  deferred[Boss deferred refresh]
-  p3[P3 backlog]
-  s4done --> deferred
-  s4done --> p3
-```
+**Не трогать:** `hooks.json` · mcp secrets · markitdown · `agents/*.md` model lines (Boss закрыл unlock — не sync).
 
 ---
 
-## S4 deliverables (DONE)
+## Notion — куда пишем (канон)
 
-| Todo | Artifact |
-|------|----------|
-| `s4-reaudit` | `ai-tracking/SESSION-4-REAUDIT.md` |
-| `canvas-full-sync` | canvas `v4.0 · 16.07.2026 S4` |
-| `stale-markers` | SESSION-3 SUPERSEDED banner + COMPLETE updated |
-| `index-dedupe` | `generate-skill-index.mjs` skip nested; `_INDEX` 1× frontend-design (118) |
-| `gate-smoke` | `ai-tracking/GATE-SMOKE-S4.md` |
-| `taxonomy-refresh` | post-S3 notes in taxonomy + mcp tiers |
-| `s3-plan-close` | `3_sessions_hub_refactor_*.plan.md` todos completed |
+| Уровень | Название | ID / URL |
+|---------|----------|----------|
+| Hub (parent) | 📚Мой promt-engineering… | [`3966689eb5b880f68f77dbfba5efeed2`](https://app.notion.com/p/3966689eb5b880f68f77dbfba5efeed2) |
+| Config | `lib/prompt-coach/CoachConfig.json` → `notionHubPageId` | то же |
+| Дерево | ⚒️Cursor – промты → ⚙️Cursor… → 📈 Разное… → **1** → hub | |
+| Child 2026-07-16 | Design refs | [страница](https://app.notion.com/p/39f6689eb5b8812e99e4ffd26a45aad6) |
+| Child 2026-07-16 | Урок план ≠ исполнение | [страница](https://app.notion.com/p/39f6689eb5b8812486aaeaaf9ae4792d) |
 
-Tests: `task-router-test` PASS · `find-skills-test` PASS.
+Новые уроки промптов / design-canon → **только под этот hub** (не в корень workspace).
 
 ---
 
-## Справка S1–S3 (не чинить)
+## Design refs (DONE)
 
-find-skills · taxonomy · MCP tiers · design matrix · route echo · cleanup · dual review · digest · agency off · LVM JSON.
+| Роль | URL |
+|------|-----|
+| Золотой стандарт | https://www.apple.com/ |
+| Wow фаворит | https://antigravity.google/ |
+| Продающий | https://framery.com/en/ |
+| Красота + эффективность | https://www.palantir.com/platforms/aip/ |
+
+Локально: `ai-tracking/design-refs-canon.md` · canvas v4.1
 
 ---
 
 ## Ещё открыто
 
-### P1 — Boss
+1. **deferred-boss** — закрыть Cursor → `commands/cursor-system-refresh-deferred.ps1`  
+2. **budget** — когда будет цифра $/mo  
 
-**`deferred-boss`** (только ты):
-
-1. Закрыть Cursor  
-2. `powershell -File commands/cursor-system-refresh-deferred.ps1`  
-3. Reload Window — только если меняли hooks (**не меняли**)
-
-### P3 backlog
-
-- **`design-refs`** — 3 URL в canvas  
-- **`budget-notion-models`** — budget · Notion · model-map unlock после снятия lock  
-
----
-
-## Design matrix (канон)
-
-`rules/design-stack.mdc` + `agents/squad-design.md` — без переписи в S4.
-
----
-
-## Готово когда (S4)
-
-1. SESSION-4-REAUDIT — **есть**  
-2. Canvas ≥ v4.0 — **есть**  
-3. Stale markers — **есть**  
-4. `_INDEX` без дубля frontend-design — **есть**  
-5. P0–P1 completed; P3 + deferred pending — **да**  
-6. Boss reminder deferred — **ниже в чате**
+Models unlock — **закрыт** (Boss сам в Settings).
