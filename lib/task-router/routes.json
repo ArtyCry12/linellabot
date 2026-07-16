@@ -234,8 +234,8 @@
     {
       "id": "shadcn",
       "label": "Official shadcn/ui CLI skill",
-      "keywords": ["shadcn init", "components.json", "shadcn add", "shadcn preset"],
-      "phrases": ["add shadcn component", "shadcn cli"],
+      "keywords": ["shadcn", "shadcn init", "components.json", "shadcn add", "shadcn preset"],
+      "phrases": ["shadcn init", "add shadcn component", "shadcn cli", "shadcn ui"],
       "tags": ["@shadcn"],
       "skill": "skills/shadcn/SKILL.md",
       "mode": "agent",
