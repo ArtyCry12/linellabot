@@ -1,0 +1,29 @@
+{
+  "categories": [
+    "Autonomy",
+    "Task Router",
+    "MCP",
+    "Hub tests",
+    "Docs",
+    "Token cost",
+    "Rules/skills",
+    "ai-tracking",
+    "Integrations",
+    "Clarity auto"
+  ],
+  "labelsRu": [
+    "Автономия",
+    "Task Router",
+    "MCP",
+    "Тесты hub",
+    "Доки",
+    "Цена токенов",
+    "Rules/skills",
+    "ai-tracking",
+    "Интеграции",
+    "Ясность !auto"
+  ],
+  "beforeNow": [8.0, 8.5, 7.5, 6.8, 8.0, 6.5, 7.2, 6.0, 7.8, 6.2],
+  "afterNow": [8.3, 9.0, 8.3, 7.8, 8.0, 7.3, 7.5, 7.2, 8.2, 7.7],
+  "target": [9.0, 9.0, 8.5, 8.0, 8.5, 8.0, 8.5, 8.0, 9.0, 8.5]
+}

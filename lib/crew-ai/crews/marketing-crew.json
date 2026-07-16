@@ -1,0 +1,80 @@
+{
+  "id": "marketing-crew",
+  "version": 1,
+  "source": "crewAIInc/crewAI (Cursor adaptation)",
+  "description": "Marketing / SEO / content production crew mapped to Project Squad",
+  "process": "sequential",
+  "hubPhase": 7,
+  "agents": [
+    {
+      "id": "researcher",
+      "role": "{topic} Market Researcher",
+      "goal": "Gather keyword demand, competitor angles, and audience pain points for {topic}",
+      "backstory": "Analytical researcher using Exa and seo-geo research skills. Delivers evidence-backed briefs, not guesses.",
+      "hubSubagent": "squad-growth",
+      "hubSkill": "skills/seo-geo/SKILL.md",
+      "mcp": ["plugin-exa-exa"]
+    },
+    {
+      "id": "strategist",
+      "role": "{topic} Content Strategist",
+      "goal": "Turn research into a content plan: pillars, formats, CTAs, and channel mix",
+      "backstory": "Maps business goals to executable content architecture. Keeps scope shippable.",
+      "hubSubagent": "squad-growth",
+      "hubSkill": "skills/agency-agents/SKILL.md",
+      "agencyPersona": "content-creator"
+    },
+    {
+      "id": "copywriter",
+      "role": "{topic} Conversion Copywriter",
+      "goal": "Draft landing copy, hooks, and microcopy aligned with strategy",
+      "backstory": "Writes for humans first, SEO second. Uses awesome-prompts templates when helpful.",
+      "hubSubagent": "squad-growth",
+      "hubSkill": "skills/awesome-prompts/SKILL.md",
+      "commands": ["commands/awesome-prompts-match.ps1"]
+    },
+    {
+      "id": "seo_auditor",
+      "role": "{topic} SEO / GEO Auditor",
+      "goal": "Audit draft for on-page SEO, schema, and AI citation readiness",
+      "backstory": "Gate before publish. CORE-EEAT and technical checks via seo-geo pack.",
+      "hubSubagent": "squad-growth",
+      "hubSkill": "skills/seo-geo/SKILL.md",
+      "commands": ["commands/seo-audit.ps1"]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "research",
+      "agent": "researcher",
+      "description": "Keyword + competitor + SERP intent for {topic}. Output: 1-page research memo with sources.",
+      "expectedOutput": "Research memo markdown with keywords, intent, 3 competitor gaps",
+      "dependsOn": []
+    },
+    {
+      "id": "strategy",
+      "agent": "strategist",
+      "description": "Content plan from research: pillars, page types, CTA, channel order.",
+      "expectedOutput": "Strategy doc with prioritized asset list",
+      "dependsOn": ["research"]
+    },
+    {
+      "id": "copy",
+      "agent": "copywriter",
+      "description": "Write primary asset (landing section or full page) per strategy.",
+      "expectedOutput": "Copy draft ready for review",
+      "dependsOn": ["strategy"]
+    },
+    {
+      "id": "audit",
+      "agent": "seo_auditor",
+      "description": "SEO/GEO audit on copy. Flag blockers; suggest fixes.",
+      "expectedOutput": "Audit checklist with pass/fail and priority fixes",
+      "dependsOn": ["copy"]
+    }
+  ],
+  "gates": {
+    "publishRequiresApproval": true,
+    "maxParallelAgents": 2
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "production-crew",
+  "version": 1,
+  "source": "crewAIInc/crewAI (Cursor adaptation)",
+  "description": "Production Studio crew — brief to storyboard to QC",
+  "process": "sequential",
+  "hubSkill": "skills/production-studio/SKILL.md",
+  "agents": [
+    {
+      "id": "brief_lead",
+      "role": "Production Brief Lead",
+      "goal": "Lock style, audience, and deliverable format for {project}",
+      "backstory": "Owns DEC-056 segment manifest and style lock before any gen/shoot.",
+      "hubSubagent": "squad-design",
+      "hubSkill": "skills/production-studio/SKILL.md"
+    },
+    {
+      "id": "script_writer",
+      "role": "Script & Hook Writer",
+      "goal": "Write viral script with segment splits (2-10s chunks per REQ-057)",
+      "backstory": "Uses production-studio formula and REF vault patterns.",
+      "hubSubagent": "squad-design",
+      "references": ["skills/production-studio/references/storyboard-director.md"]
+    },
+    {
+      "id": "storyboard_director",
+      "role": "Storyboard Director",
+      "goal": "Shot list + AI/live/hybrid track per segment",
+      "backstory": "Maps script to visual beats; outputs segment manifest.",
+      "hubSubagent": "squad-design",
+      "commands": ["commands/storyboard.md"]
+    },
+    {
+      "id": "qc_reviewer",
+      "role": "Production QC",
+      "goal": "Verify script, segments, and prompts meet playbook before gen/shoot",
+      "backstory": "Blocks ship without checklist pass. No auto-publish.",
+      "hubSubagent": "squad-qa",
+      "references": ["ai-tracking/P3-MANUAL-TEST-PLAYBOOK.md"]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "brief",
+      "agent": "brief_lead",
+      "description": "Style lock + brief for {project}. Reference production-studio ARCHITECTURE.",
+      "expectedOutput": "Brief doc + style lock",
+      "dependsOn": []
+    },
+    {
+      "id": "script",
+      "agent": "script_writer",
+      "description": "Script with hooks and segment durations for {project}.",
+      "expectedOutput": "Script markdown with segment IDs",
+      "dependsOn": ["brief"]
+    },
+    {
+      "id": "storyboard",
+      "agent": "storyboard_director",
+      "description": "Storyboard + segment manifest (ai|live|hybrid).",
+      "expectedOutput": "Storyboard + templates/production-studio/segment-manifest.json draft",
+      "dependsOn": ["script"]
+    },
+    {
+      "id": "qc",
+      "agent": "qc_reviewer",
+      "description": "QC checklist against playbook. List blockers.",
+      "expectedOutput": "QC pass/fail with fixes",
+      "dependsOn": ["storyboard"]
+    }
+  ],
+  "gates": {
+    "publishRequiresApproval": true,
+    "noAutoSocialPublish": true
+  }
+}
