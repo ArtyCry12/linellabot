@@ -1,0 +1,28 @@
+---
+description: >-
+  Always-on RTK — Shell output compressed via preToolUse hook automatically.
+  User never needs to say rtk. Triggers: git, test, grep, terminal, token economy.
+globs:
+alwaysApply: true
+---
+
+# RTK (always-on, hook-driven)
+
+RTK сжимает вывод Shell **автоматически** через `hooks/rtk-cursor-hook.ps1` → `preToolUse` / `Shell`.
+
+## Правила агента
+
+1. **Не жди** упоминания RTK в промпте — hook уже активен
+2. Предпочитай узкие команды: `git log -5`, `rg -l pattern`
+3. Документы → MarkItDown (`.md`), не RTK
+4. Код → GitNexus query/context, не grep по всему репо
+
+## Setup (один раз)
+
+```powershell
+powershell -File commands/ensure-rtk.ps1
+```
+
+Health: `ai-tracking/rtk-health.json` · Test: `commands/rtk-test.ps1`
+
+Reload Window после правок `hooks.json`.

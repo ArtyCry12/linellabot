@@ -1,0 +1,16 @@
+---
+description: >-
+  Dropped repo (URL/path/zip) — auto scout + menu A/B/C, no "what to do?"
+  questions. Skill: repo-intake.
+alwaysApply: false
+---
+
+# Repo Intake
+
+If `[REPO INTAKE]` in context or user drops github.com / @path / .zip:
+
+1. Read `skills/repo-intake/SKILL.md`
+2. Scout → classify → **3 options (A/B/C)**
+3. **Wait** for user pick unless `!auto` + high confidence
+
+Slash: `/repo <url or path>`

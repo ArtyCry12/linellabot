@@ -1,0 +1,40 @@
+---
+description: >-
+  Always-on MarkItDown intake: PDF/Office/HTML to token-efficient Markdown
+  before LLM reads. Hook markitdown-intake.ps1 runs on every prompt when
+  documents are detected. Triggers: pdf, docx, pptx, markitdown, convert.
+globs:
+alwaysApply: true
+---
+
+# MarkItDown (always-on)
+
+Microsoft MarkItDown converts documents to Markdown **before** they enter context. **Пользователь не должен писать «markitdown»** — hook срабатывает сам при любом документе в промпте или вложении.
+
+## When active
+
+- Hook [`hooks/markitdown-intake.ps1`](hooks/markitdown-intake.ps1) detects document paths in the user prompt
+- Venv: `.venv-markitdown` (Python 3.12 via uv)
+- Cache: `.cache/markitdown/` + manifest `ai-tracking/markitdown-cache-manifest.json`
+
+## Agent rules
+
+1. **Read `.md` outputs**, not raw PDF/DOCX/binary
+2. Large files: use `Read` with offset/limit or `Grep` on the `.md` path
+3. If hook says QUEUED: run `powershell -File commands/markitdown-drain.ps1`
+4. Manual convert: `powershell -File commands/ensure-markitdown.ps1` then `skills/markitdown/scripts/convert_to_md.py`
+
+## Skip
+
+User says `skip-markitdown` or `raw pdf`. Short prompts without document paths.
+
+## Setup
+
+```powershell
+powershell -File commands/ensure-markitdown.ps1
+powershell -File commands/markitdown-test.ps1
+```
+
+Reload Window after `hooks.json` changes.
+
+Skill detail: [`skills/markitdown/SKILL.md`](skills/markitdown/SKILL.md)

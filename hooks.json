@@ -8,6 +8,11 @@
         "timeout": 5
       },
       {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/user-profile-intake.ps1",
+        "matcher": "UserPromptSubmit",
+        "timeout": 5
+      },
+      {
         "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/task-router.ps1",
         "matcher": "UserPromptSubmit",
         "timeout": 5
@@ -16,12 +21,28 @@
         "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/prompt-coach-capture.ps1",
         "matcher": "UserPromptSubmit",
         "timeout": 5
+      },
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/repo-intake.ps1",
+        "matcher": "UserPromptSubmit",
+        "timeout": 5
+      },
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/markitdown-intake.ps1",
+        "matcher": "UserPromptSubmit",
+        "timeout": 12
       }
     ],
     "stop": [
       {
         "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/prompt-coach-stop.ps1",
         "timeout": 5
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/rtk-cursor-hook.ps1",
+        "matcher": "Shell"
       }
     ]
   }

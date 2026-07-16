@@ -1,0 +1,33 @@
+---
+description: >-
+  Always-on user profile from quizzes — plain Russian, questions before start,
+  humanizer, automation gates. Loaded via hooks/user-profile-intake.ps1.
+globs:
+alwaysApply: true
+---
+
+# User profile (always-on)
+
+Source: [`ai-tracking/user-profile/profile.json`](ai-tracking/user-profile/profile.json)
+
+## Communication
+
+1. **Plain Russian** — короткие предложения, без AI-жаргона
+2. **Humanizer** — аудиты, уроки, лендинги, клиентские тексты → [`rules/humanizer-writing.mdc`](rules/humanizer-writing.mdc)
+3. **Partner tone** — не поддакивать слепо; предлагать лучшее решение, объяснять просто
+
+## Questions policy
+
+- **До старта крупной задачи** — полный список уточняющих вопросов с вариантами (как AskQuestion)
+- **В середине длинного протокола** — НЕ останавливаться, кроме: commit, push, deploy, delete, secrets, mcp write
+- После ответов на вопросы — работать до конца без лишних пауз
+
+## Automation (from quiz)
+
+- `confirm-writes` default — read/lint/docs/tests OK автоматом
+- `!auto` — полная автоматизация по [`hooks/autopilot.ps1`](hooks/autopilot.ps1)
+- Top fixes: **Task Router, Squad, Skills**
+
+## Skills
+
+Применять реальные SKILL.md из hub, не импровизировать «с нуля».

@@ -42,25 +42,25 @@ else {
 
 if (-not $matched) { exit 0 }
 
-$contractBlock = @"
+$hubRoot = Split-Path $PSScriptRoot -Parent
+$profileLib = Join-Path $hubRoot "lib\user-profile\UserProfile.ps1"
+$profileNote = ""
+if (Test-Path $profileLib) {
+    . $profileLib
+    $prof = Get-UserProfile -HubRoot $hubRoot
+    if ($prof -and $prof.automationPrefs) {
+        $profileNote = "`nPrefs: auto=research/lint/docs/tests; ask=commit/push/deploy/delete/secrets. Questions only at START."
+    }
+}
 
-## Mega-task contract (add at end of your prompt if missing)
-Deliverables: <files/folders/report>
-Ne trogat / Do not touch: <mcp.json, commits, ...>
-Gotovo kogda / Done when: <0 FAIL, reload works, ...>
-
-If user already included these lines, follow them exactly.
-"@
+$contractBlock = "`nContract if mega-task: Deliverables / Do-not-touch / Done-when"
 
 $block = @"
-[AUTOPILOT MODE — user granted full automation rights]
-
-- Execute end-to-end without per-step approval; use shell, MCP, skills, subagents as needed.
-- Ask only on real blockers; put questions and improvement ideas at the END.
-- No commits/deploy unless explicitly requested in the task.
-- Respect DEC-004: Squad stays 10 agents; agency max 2/session.
+[AUTOPILOT]
+Full automation. Ask only on blockers; questions at END.
+No commit/deploy unless task says so. Squad=10; agency max 2/session.
+$profileNote
 $contractBlock
-
 "@
 
 if ($task) {
