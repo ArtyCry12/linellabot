@@ -1,0 +1,82 @@
+﻿[
+    {
+        "pkg":  "resciencelab/opc-skills",
+        "skills":  "seo-geo",
+        "exit":  0
+    },
+    {
+        "pkg":  "coreyhaines31/marketingskills",
+        "skills":  "seo-audit,programmatic-seo,copywriting,content-strategy,marketing-psychology,marketing-ideas",
+        "exit":  0
+    },
+    {
+        "pkg":  "dirnbauer/webconsulting-skills",
+        "skills":  "ai-search-optimization",
+        "exit":  0
+    },
+    {
+        "pkg":  "tech-leads-club/agent-skills",
+        "skills":  "core-web-vitals",
+        "exit":  0
+    },
+    {
+        "pkg":  "kostja94/marketing-skills",
+        "skills":  "growth-funnel",
+        "exit":  1
+    },
+    {
+        "pkg":  "vladm3105/aidoc-flow-framework",
+        "skills":  "n8n",
+        "exit":  1
+    },
+    {
+        "pkg":  "sundial-org/awesome-openclaw-skills",
+        "skills":  "n8n-workflow-automation",
+        "exit":  0
+    },
+    {
+        "pkg":  "promptadvisers/n8n-powerhouse",
+        "skills":  "n8n-workflow-architect",
+        "exit":  0
+    },
+    {
+        "pkg":  "bobmatnyc/claude-mpm-skills",
+        "skills":  "playwright-e2e-testing",
+        "exit":  1
+    },
+    {
+        "pkg":  "manutej/luxor-claude-marketplace",
+        "skills":  "playwright-visual-testing",
+        "exit":  0
+    },
+    {
+        "pkg":  "onewave-ai/claude-skills",
+        "skills":  "code-review-pro",
+        "exit":  0
+    },
+    {
+        "pkg":  "petrkindlmann/qa-skills",
+        "skills":  "qa-start",
+        "exit":  0
+    },
+    {
+        "pkg":  "firebase/agent-skills",
+        "skills":  "firebase-security-rules-auditor,firestore-security-rules-auditor",
+        "exit":  0
+    },
+    {
+        "pkg":  "cloudflare/security-audit-skill",
+        "skills":  "security-audit",
+        "exit":  0
+    },
+    {
+        "pkg":  "jwynia/agent-skills",
+        "skills":  "secrets-scan",
+        "exit":  1
+    },
+    {
+        "pkg":  "martinholovsky/claude-skills-generator",
+        "skills":  "devsecops-expert",
+        "exit":  0
+    }
+]

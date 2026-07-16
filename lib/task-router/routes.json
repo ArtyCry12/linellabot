@@ -67,6 +67,59 @@
       "mode": "agent"
     },
     {
+      "id": "opc-seo-geo",
+      "label": "OPC / resciencelab SEO-GEO",
+      "keywords": ["opc seo", "resciencelab", "generative engine", "ai visibility quick", "geo optimization"],
+      "phrases": ["opc-seo-geo", "@opc-seo-geo", "resciencelab seo"],
+      "tags": ["@opc-seo-geo"],
+      "skill": "skills/opc-seo-geo/SKILL.md",
+      "rule": "rules/seo-geo.mdc",
+      "subagent": ["squad-growth"],
+      "mode": "agent",
+      "note": "Complement to skills/seo-geo/ library; fast opc/resciencelab layer"
+    },
+    {
+      "id": "seo-audit-ms",
+      "label": "SEO audit (marketingskills)",
+      "keywords": ["technical seo", "seo health", "on-page seo", "crawl errors", "indexing issues", "почему не ранжиру", "трафик упал"],
+      "phrases": ["seo audit", "technical seo audit", "why not ranking", "seo issues"],
+      "tags": ["@seo-audit"],
+      "skill": "skills/seo-audit/SKILL.md",
+      "subagent": ["squad-growth"],
+      "mode": "agent",
+      "note": "Fast audit; deep CORE-EEAT -> seo-geo route"
+    },
+    {
+      "id": "programmatic-seo",
+      "label": "Programmatic SEO / pSEO",
+      "keywords": ["programmatic seo", "pseo", "template pages", "location pages", "directory pages", "страницы по шаблону"],
+      "phrases": ["pages at scale", "programmatic landing", "keyword city pages"],
+      "tags": ["@programmatic-seo"],
+      "skill": "skills/programmatic-seo/SKILL.md",
+      "subagent": ["squad-growth"],
+      "mode": "agent"
+    },
+    {
+      "id": "ai-search-optimization",
+      "label": "AEO / GEO / AI search visibility",
+      "keywords": ["aeo", "llms.txt", "ai crawler", "ai overviews", "perplexity", "chatgpt search", "answer engine", "geo citation"],
+      "phrases": ["ai search optimization", "llms txt", "make site citable"],
+      "tags": ["@ai-search-optimization"],
+      "skill": "skills/ai-search-optimization/SKILL.md",
+      "subagent": ["squad-growth"],
+      "mode": "agent"
+    },
+    {
+      "id": "entity-seo",
+      "label": "Entity SEO / Knowledge Graph",
+      "keywords": ["entity seo", "knowledge graph", "knowledge panel", "entity signals", "brand entity"],
+      "phrases": ["entity optimization", "entity-first content"],
+      "tags": ["@entity-seo"],
+      "skill": "skills/entity-seo/SKILL.md",
+      "subagent": ["squad-growth"],
+      "mode": "agent"
+    },
+    {
       "id": "pagespeed",
       "label": "PageSpeed / performance",
       "keywords": ["pagespeed", "lighthouse", "core web vitals", "cwv", "performance audit"],
@@ -74,6 +127,17 @@
       "commands": ["commands/pagespeed-audit.ps1"],
       "subagent": ["performance-optimizer", "squad-growth"],
       "mode": "agent"
+    },
+    {
+      "id": "core-web-vitals",
+      "label": "Core Web Vitals (LCP/INP/CLS)",
+      "keywords": ["lcp", "inp", "cls", "layout shift", "largest contentful paint", "interaction to next paint"],
+      "phrases": ["fix core web vitals", "improve cwv", "reduce cls", "fix lcp"],
+      "tags": ["@core-web-vitals"],
+      "skill": "skills/core-web-vitals/SKILL.md",
+      "subagent": ["performance-optimizer", "squad-growth"],
+      "mode": "agent",
+      "note": "Targeted CWV fixes; Lighthouse CLI -> pagespeed route"
     },
     {
       "id": "clone-website",
@@ -217,6 +281,27 @@
       "note": "Requires gh auth; posts only issues confidence >= 80 after user OK"
     },
     {
+      "id": "code-review-pro",
+      "label": "Deep code review (local)",
+      "keywords": ["deep code review", "code audit", "security review code", "performance review code", "refactor review"],
+      "phrases": ["review this code", "audit this code", "code review pro"],
+      "tags": ["@code-review-pro"],
+      "skill": "skills/code-review-pro/SKILL.md",
+      "subagent": ["squad-review", "security-review"],
+      "mode": "agent",
+      "note": "Local/ad-hoc; GitHub PR -> pr-review route"
+    },
+    {
+      "id": "qa-start",
+      "label": "QA bootstrap from scratch",
+      "keywords": ["qa from scratch", "setup qa", "test strategy greenfield", "no tests yet", "bootstrap qa"],
+      "phrases": ["set up qa", "qa start", "/qa-start", "qa with no coverage"],
+      "tags": ["@qa-start"],
+      "skill": "skills/qa-start/SKILL.md",
+      "subagent": ["squad-qa"],
+      "mode": "agent"
+    },
+    {
       "id": "automation-audit",
       "label": "Automation recommendations (scout)",
       "keywords": ["recommend automations", "what hooks", "automation audit", "claude code setup", "что автоматизировать"],
@@ -236,6 +321,45 @@
       "mode": "agent"
     },
     {
+      "id": "copywriting",
+      "label": "Conversion copywriting",
+      "keywords": ["headline", "hero copy", "cta copy", "value proposition", "tagline", "above the fold", "лендинг текст"],
+      "phrases": ["write copy", "improve copy", "marketing copy", "rewrite landing"],
+      "tags": ["@copywriting"],
+      "skill": "skills/copywriting/SKILL.md",
+      "subagent": ["squad-growth"],
+      "mode": "agent"
+    },
+    {
+      "id": "content-strategy",
+      "label": "Content strategy / calendar",
+      "keywords": ["content strategy", "editorial calendar", "topic cluster", "content pillar", "blog strategy", "контент-план"],
+      "phrases": ["what should i write", "content ideas plan", "content roadmap"],
+      "tags": ["@content-strategy"],
+      "skill": "skills/content-strategy/SKILL.md",
+      "subagent": ["squad-growth"],
+      "mode": "agent"
+    },
+    {
+      "id": "marketing-psychology",
+      "label": "Marketing psychology / persuasion",
+      "keywords": ["persuasion", "mental model", "cognitive bias", "social proof", "scarcity", "loss aversion", "поведен"],
+      "phrases": ["marketing psychology", "why people buy", "behavioral science marketing"],
+      "tags": ["@marketing-psychology"],
+      "skill": "skills/marketing-psychology/SKILL.md",
+      "mode": "agent"
+    },
+    {
+      "id": "marketing-ideas",
+      "label": "Marketing ideas backlog",
+      "keywords": ["marketing ideas", "growth ideas", "channel ideas", "go-to-market ideas", "идеи маркетинг"],
+      "phrases": ["marketing ideas for", "growth tactics list"],
+      "tags": ["@marketing-ideas"],
+      "skill": "skills/marketing-ideas/SKILL.md",
+      "subagent": ["squad-growth"],
+      "mode": "agent"
+    },
+    {
       "id": "web-research",
       "label": "Web research / fact-check",
       "keywords": ["найди", "research", "fact check", "latest", "документац", "что нового", "сравни"],
@@ -249,6 +373,28 @@
       "keywords": ["открой сайт", "кликни", "snapshot", "браузер", "e2e", "playwright", "side panel"],
       "phrases": ["open in browser", "click sign in"],
       "mcp": ["cursor-ide-browser"],
+      "mode": "agent"
+    },
+    {
+      "id": "playwright-e2e",
+      "label": "Playwright E2E tests",
+      "keywords": ["playwright test", "e2e spec", "test automation", "cross-browser test", "playwright config"],
+      "phrases": ["write playwright test", "playwright e2e", "end to end test code"],
+      "tags": ["@playwright"],
+      "skill": "skills/playwright/SKILL.md",
+      "subagent": ["squad-qa"],
+      "mode": "agent",
+      "note": "Test code; live browser -> browser-e2e route"
+    },
+    {
+      "id": "playwright-visual-testing",
+      "label": "Playwright visual regression",
+      "keywords": ["visual regression", "screenshot test", "visual diff", "baseline screenshot", "ui regression"],
+      "phrases": ["visual testing playwright", "screenshot comparison"],
+      "tags": ["@playwright-visual-testing"],
+      "skill": "skills/playwright-visual-testing/SKILL.md",
+      "mcp": ["cursor-ide-browser", "user-playwright"],
+      "subagent": ["squad-qa"],
       "mode": "agent"
     },
     {
@@ -297,6 +443,27 @@
       "commands": ["commands/n8n-mcp.md", "commands/n8n-workflow.md", "commands/n8n-templates-match.ps1"],
       "docs": ["skills/n8n-templates/SKILL.md"],
       "mode": "agent"
+    },
+    {
+      "id": "n8n-workflow-automation",
+      "label": "n8n production workflows",
+      "keywords": ["n8n retry", "n8n error handling", "n8n idempotent", "review queue", "n8n logging"],
+      "phrases": ["harden n8n workflow", "n8n production json"],
+      "tags": ["@n8n-workflow-automation"],
+      "skill": "skills/n8n-workflow-automation/SKILL.md",
+      "mcp": ["user-n8n-mcp"],
+      "mode": "agent",
+      "note": "Recipes; JSON authoring -> n8n-workflow skill"
+    },
+    {
+      "id": "n8n-workflow-architect",
+      "label": "n8n automation architecture",
+      "keywords": ["n8n architect", "automation architecture", "shopify n8n", "hubspot n8n", "n8n vs python"],
+      "phrases": ["plan n8n automation", "n8n workflow architect", "automation feasibility"],
+      "tags": ["@n8n-workflow-architect"],
+      "skill": "skills/n8n-workflow-architect/SKILL.md",
+      "mode": "plan",
+      "note": "Strategic design; implementation -> n8n-automation route"
     },
     {
       "id": "dev-os",
@@ -353,6 +520,47 @@
       "commands": ["commands/bumblebee-scan.ps1", "commands/hub-supply-scan.ps1"],
       "subagent": ["security-review"],
       "mode": "agent"
+    },
+    {
+      "id": "firebase-security-rules",
+      "label": "Firebase / Firestore security rules",
+      "keywords": ["firestore rules", "firebase rules", "security rules audit", "firestore rls"],
+      "phrases": ["audit firestore rules", "firebase security rules"],
+      "tags": ["@firebase-security-rules-auditor"],
+      "skill": "skills/firebase-security-rules-auditor/SKILL.md",
+      "subagent": ["security-review"],
+      "mode": "agent"
+    },
+    {
+      "id": "cloudflare-security-audit",
+      "label": "Exploitable code security audit",
+      "keywords": ["pen test code", "exploitable vulnerability", "security review codebase", "cloudflare audit"],
+      "phrases": ["audit codebase security", "find security bugs in code"],
+      "tags": ["@cloudflare-security-audit"],
+      "skill": "skills/cloudflare-security-audit/SKILL.md",
+      "subagent": ["security-review"],
+      "mode": "agent",
+      "note": "Cloudflare skill; broad library -> cybersecurity route"
+    },
+    {
+      "id": "devsecops-expert",
+      "label": "DevSecOps / secure CI/CD",
+      "keywords": ["devsecops", "secure pipeline", "sast", "dast", "container scan", "slsa", "supply chain security"],
+      "phrases": ["secure ci cd", "security gates pipeline", "devsecops expert"],
+      "tags": ["@devsecops-expert"],
+      "skill": "skills/devsecops-expert/SKILL.md",
+      "subagent": ["security-review", "ci-investigator"],
+      "mode": "agent"
+    },
+    {
+      "id": "secret-scanning",
+      "label": "GitHub secret scanning",
+      "keywords": ["secret scanning", "push protection", "leaked secret", "custom secret pattern", "blocked push secret"],
+      "phrases": ["enable secret scanning", "github push protection", "triage secret alert"],
+      "tags": ["@secret-scanning"],
+      "skill": "skills/secret-scanning/SKILL.md",
+      "mode": "agent",
+      "note": "GitHub config; pre-commit hub scan -> security-audit commands"
     },
     {
       "id": "deploy-vercel",

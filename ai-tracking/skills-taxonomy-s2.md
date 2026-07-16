@@ -34,6 +34,26 @@ Sacred (do not delete): project-squad + coding chain; markitdown; find-skills; p
 
 | Skill | Why |
 |-------|-----|
+| opc-seo-geo | resciencelab complement to seo-geo pack |
+| seo-audit | Fast technical/on-page audit |
+| programmatic-seo | pSEO templates at scale |
+| ai-search-optimization | AEO/GEO / llms.txt |
+| core-web-vitals | LCP/INP/CLS targeted fixes |
+| entity-seo | Knowledge Graph / entity signals |
+| copywriting | Conversion copy |
+| content-strategy | Editorial / topic clusters |
+| marketing-psychology | Persuasion / mental models |
+| marketing-ideas | Growth idea backlog |
+| n8n-workflow-automation | Production n8n JSON recipes |
+| n8n-workflow-architect | Automation architecture (plan) |
+| playwright | Playwright E2E test code |
+| playwright-visual-testing | Visual regression |
+| code-review-pro | Deep local code review |
+| qa-start | Greenfield QA bootstrap |
+| firebase-security-rules-auditor | Firestore rules red-team |
+| cloudflare-security-audit | Exploitable-code audit |
+| devsecops-expert | Secure CI/CD pipelines |
+| secret-scanning | GitHub secret scanning config |
 | ui-ux-pro-max | UX audit rule |
 | awesome-design-md | DESIGN.md |
 | remotion | Motion code (replace candidate) |
