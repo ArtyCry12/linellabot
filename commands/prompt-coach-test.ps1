@@ -78,6 +78,17 @@ $cheat = Join-Path $HubRoot "ai-tracking/prompt-lessons/cheatsheet-$(Get-Date -F
 if (Test-Path $cheat) { Write-Host "OK  cheatsheet generated" -ForegroundColor Green }
 else { Write-Host "FAIL cheatsheet file" -ForegroundColor Red; $fail++ }
 
+$w = Measure-PromptWater -Text "please could you maybe help me with something really important"
+if ($w.waterLevel -lt 1 -or $w.waterLevel -gt 5) {
+    Write-Host "FAIL Measure-PromptWater range" -ForegroundColor Red; $fail++
+} else {
+    Write-Host "OK  Measure-PromptWater level=$($w.waterLevel)" -ForegroundColor Green
+}
+
+$cap = Add-PromptCapture -Prompt "Deliverables: test`nDone when: water metrics work" -HubRoot $HubRoot
+if ($cap.WaterLevel) { Write-Host "OK  capture waterLevel=$($cap.WaterLevel)" -ForegroundColor Green }
+else { Write-Host "FAIL capture water metrics" -ForegroundColor Red; $fail++ }
+
 Write-Host ""
 if ($fail -eq 0) {
     Write-Host "Summary: 0 FAIL" -ForegroundColor Green

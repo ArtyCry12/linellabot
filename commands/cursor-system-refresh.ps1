@@ -47,6 +47,14 @@ Invoke-Step "Design MCP (Stitch + Figma)" {
     & (Join-Path $commands "ensure-design-mcp.ps1")
 }
 
+Invoke-Step "MarkItDown (document intake)" {
+    & (Join-Path $commands "ensure-markitdown.ps1") -SkipSmoke:$Quick
+}
+
+Invoke-Step "RTK (terminal token economy)" {
+    & (Join-Path $commands "ensure-rtk.ps1") -SkipHook:$Quick
+}
+
 Invoke-Step "Sync workspace rules" {
     python (Join-Path $commands "huashu-sync-workspace-rules.py")
 }
