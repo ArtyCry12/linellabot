@@ -71,7 +71,10 @@ C:\Users\Asus\.cursor\commands\install-agency-agents.ps1
 - MCP: `https://prompts.chat/api/mcp` (remote) or `npx prompts.chat mcp` (local)
 - Book chapters for agent prompt design
 
-**Integration:** optional MCP in `mcp.json.example`. Agent calls MCP when user needs prompt templates — not at session start.
+**Integration (Jul 2026):**
+- MCP in `mcp.json` (remote `search_prompts`, `improve_prompt`)
+- **Local index** from `prompts.csv`: `lib/awesome-prompts/` + `skills/awesome-prompts/` (659 templates, matcher without full repo in context)
+- Build: `commands/build-awesome-prompts-index.ps1` · Match: `commands/awesome-prompts-match.ps1`
 
 ---
 
@@ -90,6 +93,37 @@ bumblebee scan --profile project --root "C:\Users\Asus\.cursor" --root "C:\Users
 ```
 
 Wire into `cursor-system-refresh.ps1` as optional `-SupplyChainScan` (future).
+
+---
+
+## 6. [crewAI](https://github.com/crewAIInc/crewAI)
+
+**What it is:** Python multi-agent framework — Crews (autonomous role-based teams) + Flows (event-driven production pipelines).
+
+**Hub integration (Jul 2026):** Pattern-only — no Python install in `.cursor`. JSON crew definitions map to Project Squad subagents.
+
+| Crew | Path | Owner |
+|------|------|-------|
+| Marketing | `lib/crew-ai/crews/marketing-crew.json` | `squad-growth` |
+| Production | `lib/crew-ai/crews/production-crew.json` | `squad-design` + `squad-qa` |
+
+CLI: `commands/crew-plan.ps1` · Skill: `skills/crew-ai/SKILL.md`
+
+---
+
+## 7. [babyagi](https://github.com/yoheinakajima/babyagi)
+
+**What it is:** Experimental self-building agent framework (`functionz`). Classic Mar 2023 task-planner archived at [babyagi_archive](https://github.com/yoheinakajima/babyagi_archive).
+
+**Hub integration (Jul 2026):** Classic **creative task loop** only — no Python install.
+
+| Piece | Path |
+|-------|------|
+| Loop engine | `lib/babyagi/CreativeLoop.ps1` |
+| CLI | `commands/creative-loop.ps1` |
+| Sessions | `ai-tracking/creative-loop/sessions/` |
+
+Skill: `skills/babyagi/SKILL.md` · Hand off to `crew-ai` when plan crystallizes.
 
 ---
 

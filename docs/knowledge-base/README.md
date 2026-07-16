@@ -8,6 +8,8 @@ On-demand corpus for system refresh. **Not** loaded every session.
 | [EXTERNAL-CATALOG.md](EXTERNAL-CATALOG.md) | Full URL list → hub mapping |
 | [AGENCY-PORTFOLIO-MAP.md](AGENCY-PORTFOLIO-MAP.md) | agency-agents divisions → Squad + spawn hints |
 | [TOKEN-MEMORY-POLICY.md](TOKEN-MEMORY-POLICY.md) | ECC-inspired caps for Cursor hub |
+| [TOKEN-OPTIMIZATION-SOURCES.md](TOKEN-OPTIMIZATION-SOURCES.md) | What saves tokens in hub vs reference-only |
+| [AI-STACK-MAP.md](AI-STACK-MAP.md) | hub / project / reference layer map |
 | [GOOGLE-STACK-LITE.md](GOOGLE-STACK-LITE.md) | P1 Google Trio substitute |
 | [P2-REPOS.md](P2-REPOS.md) | REQ-060–064 repo knowledge |
 | [SEO-STACK.md](SEO-STACK.md) | Lighthouse, PSI, GSC stub |

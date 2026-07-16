@@ -1,0 +1,10 @@
+﻿{
+    "checkedAt":  "2026-07-13T16:05:50.8713727Z",
+    "eccSrc":  true,
+    "instincts":  true,
+    "log":  [
+                "Cloning ECC (depth 1)...",
+                "OK: ecc-src at C:\\Users\\Asus\\.cursor\\lib\\ecc-src",
+                "OK: seeded active-instincts.json"
+            ]
+}

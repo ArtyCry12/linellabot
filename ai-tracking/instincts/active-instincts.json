@@ -1,0 +1,44 @@
+[
+  {
+    "id": "research-first",
+    "confidence": 0.9,
+    "text": "Research before build: dev-os or Exa for unknown APIs; read SKILL.md before improvising.",
+    "source": "ecc-harness",
+    "updatedAt": "2026-07-13T00:00:00Z"
+  },
+  {
+    "id": "confirm-writes",
+    "confidence": 0.95,
+    "text": "Never commit, push, deploy, delete, or MCP-write without user approval unless !auto.",
+    "source": "user-profile-quiz",
+    "updatedAt": "2026-07-13T00:00:00Z"
+  },
+  {
+    "id": "questions-before-start",
+    "confidence": 0.9,
+    "text": "Big tasks: full question list with options BEFORE work, not mid-protocol.",
+    "source": "user-profile-quiz",
+    "updatedAt": "2026-07-13T00:00:00Z"
+  },
+  {
+    "id": "one-web-mcp",
+    "confidence": 0.85,
+    "text": "One web research MCP per task: Exa primary; Tavily only if Exa insufficient.",
+    "source": "mcp-routing",
+    "updatedAt": "2026-07-13T00:00:00Z"
+  },
+  {
+    "id": "markitdown-intake",
+    "confidence": 0.8,
+    "text": "Documents in prompt: hook converts to markdown cache before agent reads raw binary.",
+    "source": "markitdown",
+    "updatedAt": "2026-07-13T00:00:00Z"
+  },
+  {
+    "id": "squad-marketing",
+    "confidence": 0.75,
+    "text": "Marketing/landing/reels: route squad-growth + humanizer on client-facing copy.",
+    "source": "project-squad",
+    "updatedAt": "2026-07-13T00:00:00Z"
+  }
+]

@@ -1,0 +1,32 @@
+﻿{
+    "checkedAt":  "2026-07-13T22:28:17.1593561Z",
+    "totalMb":  379.47,
+    "rows":  [
+                 {
+                     "path":  "~\\ai-tracking",
+                     "kind":  "tracking",
+                     "mb":  214.01
+                 },
+                 {
+                     "path":  "~\\plugins\\cache",
+                     "kind":  "plugins-cache",
+                     "mb":  165.46
+                 },
+                 {
+                     "path":  "~\\lib\\ecc-src",
+                     "kind":  "ecc-src",
+                     "mb":  0
+                 },
+                 {
+                     "path":  "~\\lib\\n8n-templates-src",
+                     "kind":  "n8n-src",
+                     "mb":  0
+                 }
+             ],
+    "safeActions":  [
+                        "commands/cursor-system-refresh-deferred.ps1",
+                        "ai-tracking archive logs \u003e30d",
+                        "plugins/cache old versions",
+                        ".cache/markitdown stale"
+                    ]
+}

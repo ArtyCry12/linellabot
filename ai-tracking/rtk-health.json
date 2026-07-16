@@ -1,0 +1,17 @@
+﻿{
+    "checkedAt":  "2026-07-11T23:54:48.1809959Z",
+    "version":  "rtk 0.43.0",
+    "exePath":  "C:\\Users\\Asus\\.cursor\\tools\\rtk\\rtk.exe",
+    "hookPresent":  true,
+    "hookMerged":  false,
+    "hookMessage":  "RTK preToolUse already present",
+    "tiktokenOk":  true,
+    "log":  [
+                "02:54:46 OK: C:\\Users\\Asus\\.cursor\\tools\\rtk\\rtk.exe",
+                "02:54:47 OK: rtk-cursor-hook.ps1",
+                "02:54:47 RTK preToolUse already present",
+                "02:54:47 Backup: C:\\Users\\Asus\\.cursor\\hooks.json.pre-rtk-merge.bak",
+                "02:54:47 Ensuring tiktoken in markitdown venv...",
+                "02:54:48 OK: tiktoken"
+            ]
+}

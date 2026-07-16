@@ -1,0 +1,16 @@
+﻿{
+    "checkedAt":  "2026-07-13T16:08:07.8423887Z",
+    "python":  "C:\\Users\\Asus\\.cursor\\.venv-markitdown\\Scripts\\python.exe",
+    "venv":  "C:\\Users\\Asus\\.cursor\\.venv-markitdown",
+    "installed":  true,
+    "mcpExe":  "C:\\Users\\Asus\\.cursor\\.venv-markitdown\\Scripts\\markitdown-mcp.exe",
+    "mcpOk":  true,
+    "smokeOk":  false,
+    "smokeOut":  null,
+    "log":  [
+                "19:06:51 Ensuring Python 3.12 via uv...",
+                "19:07:07 Installing markitdown[all]...",
+                "19:08:07 OK: markitdown import",
+                "19:08:07 OK: markitdown-mcp binary at C:\\Users\\Asus\\.cursor\\.venv-markitdown\\Scripts\\markitdown-mcp.exe"
+            ]
+}

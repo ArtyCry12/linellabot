@@ -1,0 +1,44 @@
+﻿{
+    "checkedAt":  "2026-07-13T22:27:21.5371881Z",
+    "dryRun":  false,
+    "remote":  "https://github.com/ArtyCry12/cursor-hub-archive.git",
+    "owner":  "ArtyCry12",
+    "repo":  "cursor-hub-archive",
+    "inventory":  [
+                      {
+                          "path":  "lib\\ecc-src",
+                          "note":  "ECC shallow clone",
+                          "mb":  70.45,
+                          "fileCount":  3351,
+                          "keepStub":  true
+                      },
+                      {
+                          "path":  "lib\\n8n-templates-src",
+                          "note":  "n8n templates corpus",
+                          "mb":  9.12,
+                          "fileCount":  388,
+                          "keepStub":  true
+                      }
+                  ],
+    "verified":  [
+                     {
+                         "path":  "lib\\ecc-src",
+                         "verifyOk":  true,
+                         "remoteFileCount":  -1,
+                         "localFileCount":  3351,
+                         "method":  "api"
+                     },
+                     {
+                         "path":  "lib\\n8n-templates-src",
+                         "verifyOk":  true,
+                         "remoteFileCount":  -1,
+                         "localFileCount":  388,
+                         "method":  "api"
+                     }
+                 ],
+    "deleted":  [
+                    "lib\\ecc-src",
+                    "lib\\n8n-templates-src"
+                ],
+    "url":  "https://github.com/ArtyCry12/cursor-hub-archive"
+}

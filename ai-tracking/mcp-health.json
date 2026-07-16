@@ -1,0 +1,116 @@
+﻿{
+    "checkedAt":  "2026-07-13T16:08:55.9982962Z",
+    "manifest":  {
+                     "version":  1,
+                     "alwaysOn":  [
+                                      "memory",
+                                      "gitnexus",
+                                      "markitdown-mcp"
+                                  ],
+                     "taskRouter":  [
+                                        "plugin-exa-exa",
+                                        "fetch",
+                                        "n8n-mcp",
+                                        "playwright",
+                                        "chrome-devtools",
+                                        "cursor-ide-browser",
+                                        "stitch",
+                                        "figma"
+                                    ],
+                     "pluginOnDemand":  [
+                                            "plugin-tavily-tavily",
+                                            "plugin-vercel-vercel",
+                                            "plugin-supabase-supabase",
+                                            "plugin-zapier-zapier",
+                                            "plugin-apify-apify"
+                                        ],
+                     "browserRouting":  {
+                                            "e2eTests":  "playwright",
+                                            "domDebug":  "chrome-devtools",
+                                            "ideSmoke":  "cursor-ide-browser"
+                                        },
+                     "hubRoot":  "C:\\Users\\Asus\\.cursor"
+                 },
+    "servers":  [
+                    {
+                        "id":  "memory",
+                        "tier":  "always-on",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "gitnexus",
+                        "tier":  "always-on",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "markitdown-mcp",
+                        "tier":  "always-on",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "plugin-exa-exa",
+                        "tier":  "task-router",
+                        "configured":  false
+                    },
+                    {
+                        "id":  "fetch",
+                        "tier":  "task-router",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "n8n-mcp",
+                        "tier":  "task-router",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "playwright",
+                        "tier":  "task-router",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "chrome-devtools",
+                        "tier":  "task-router",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "cursor-ide-browser",
+                        "tier":  "task-router",
+                        "configured":  false
+                    },
+                    {
+                        "id":  "stitch",
+                        "tier":  "task-router",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "figma",
+                        "tier":  "task-router",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "plugin-tavily-tavily",
+                        "tier":  "plugin",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "plugin-vercel-vercel",
+                        "tier":  "plugin",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "plugin-supabase-supabase",
+                        "tier":  "plugin",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "plugin-zapier-zapier",
+                        "tier":  "plugin",
+                        "configured":  true
+                    },
+                    {
+                        "id":  "plugin-apify-apify",
+                        "tier":  "plugin",
+                        "configured":  true
+                    }
+                ]
+}

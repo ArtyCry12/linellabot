@@ -1,0 +1,8 @@
+{
+  "language": "ru",
+  "style": "plain",
+  "humanizerSkill": "~/.agents/skills/humanizer-main/humanizer-main/SKILL.md",
+  "rule": "rules/humanizer-writing.mdc",
+  "notes": "Короткие предложения. Без AI-слов (pivotal, vibrant, showcase). Объяснять MCP/hook/skill простыми словами. Для обучения и аудитов всегда humanizer.",
+  "updatedAt": "2026-07-10T18:00:00Z"
+}
