@@ -43,6 +43,15 @@
 
 Любой запрос с ключевыми словами (seo, клон, storyboard, notion, …) → см. `lib/task-router/routes.json`
 
+## Repo intake (DEC-060)
+
+| Фраза | Route |
+|-------|-------|
+| GitHub/GitLab URL в чате | auto hook → scout → меню A/B/C |
+| `/repo <url>` | repo-intake skill |
+| `@C:\path\to\repo` | repo-intake |
+| `!auto` + URL | выполнить A если очевидно |
+
 ## Prompt coach (DEC-058)
 
 | Фраза | Route |

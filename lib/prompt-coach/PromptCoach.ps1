@@ -57,6 +57,153 @@ function Save-CoachState {
     $State | ConvertTo-Json -Depth 6 | Set-Content $Paths.StatePath -Encoding UTF8
 }
 
+function Get-PromptTokenCount {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Text,
+        [string]$HubRoot = ""
+    )
+
+    if (-not $HubRoot) { $HubRoot = Get-DefaultHubRoot }
+    $py = Join-Path $HubRoot ".venv-markitdown\Scripts\python.exe"
+    $script = Join-Path $HubRoot "lib\prompt-coach\count_tokens.py"
+    if (-not (Test-Path $py) -or -not (Test-Path $script)) { return $null }
+
+    $prev = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+        $escaped = $Text -replace '"', '\"'
+        $out = & $py $script $Text 2>&1 | Select-Object -Last 1
+        if ($out -match '^\d+$') { return [int]$out }
+        return $null
+    }
+    finally {
+        $ErrorActionPreference = $prev
+    }
+}
+
+function Measure-PromptWater {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Text,
+        [string]$HubRoot = ""
+    )
+
+    $words = @($Text -split '\s+' | Where-Object { $_.Length -gt 0 })
+    $wordCount = $words.Count
+    $len = $Text.Length
+    $tokenCount = Get-PromptTokenCount -Text $Text -HubRoot $HubRoot
+
+    $fillers = @(
+        "please", "kindly", "just", "really", "very", "maybe", "somewhat",
+        "could you", "i want you to", "i need you to",
+        "пожалуйста", "можешь", "хочу чтобы", "нужно чтобы", "очень", "просто",
+        "как-нибудь", "если можно", "было бы здорово"
+    )
+
+    $lower = $Text.ToLowerInvariant()
+    $fillerHits = 0
+    foreach ($f in $fillers) {
+        if ($lower.Contains($f)) { $fillerHits++ }
+    }
+
+    $hasContract = ($Text -match 'Deliverables:|Done when:|!auto|/autopilot|REQ-')
+    $level = 3
+    if ($len -lt 80) { $level-- }
+    if ($len -gt 400) { $level++ }
+    if ($len -gt 900) { $level++ }
+    if ($wordCount -gt 150) { $level++ }
+    if ($fillerHits -ge 3) { $level++ }
+    if ($hasContract) { $level-- }
+    if ($null -ne $tokenCount) {
+        if ($tokenCount -gt 250) { $level++ }
+        if ($tokenCount -gt 600) { $level++ }
+        if ($tokenCount -lt 40) { $level-- }
+    }
+    if ($level -lt 1) { $level = 1 }
+    if ($level -gt 5) { $level = 5 }
+
+    return [PSCustomObject]@{
+        wordCount   = $wordCount
+        charCount   = $len
+        tokenCount  = $tokenCount
+        fillerHits  = $fillerHits
+        hasContract = [bool]$hasContract
+        waterLevel  = $level
+    }
+}
+
+function Register-PromptMetrics {
+    param(
+        [Parameter(Mandatory = $true)]
+        $Metrics,
+        [string]$HubRoot = ""
+    )
+
+    $paths = Get-CoachPaths -HubRoot $HubRoot
+    $cfg = $paths.Config
+    if (-not $cfg.metricsFile) { return }
+
+    $metricsPath = Join-Path $paths.HubRoot $cfg.metricsFile
+    $dir = Split-Path $metricsPath -Parent
+    if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+
+    $entry = @{
+        t           = (Get-Date).ToString("o")
+        wordCount   = $Metrics.wordCount
+        charCount   = $Metrics.charCount
+        tokenCount  = $Metrics.tokenCount
+        fillerHits  = $Metrics.fillerHits
+        hasContract = $Metrics.hasContract
+        waterLevel  = $Metrics.waterLevel
+    } | ConvertTo-Json -Compress
+
+    Add-Content -Path $metricsPath -Value $entry -Encoding UTF8
+}
+
+function Get-PromptWaterReport {
+    param(
+        [int]$Last = 20,
+        [string]$HubRoot = ""
+    )
+
+    $paths = Get-CoachPaths -HubRoot $HubRoot
+    $cfg = $paths.Config
+    $metricsPath = Join-Path $paths.HubRoot $cfg.metricsFile
+    if (-not (Test-Path $metricsPath)) {
+        return [PSCustomObject]@{
+            Count   = 0
+            AvgWater = 0
+            HighWater = 0
+            Items   = @()
+        }
+    }
+
+    $items = @()
+    $lines = Get-Content $metricsPath -Encoding UTF8 | Select-Object -Last $Last
+    foreach ($line in $lines) {
+        try { $items += $line | ConvertFrom-Json } catch { }
+    }
+
+    if ($items.Count -eq 0) {
+        return [PSCustomObject]@{ Count = 0; AvgWater = 0; HighWater = 0; Items = @() }
+    }
+
+    $sum = 0
+    $high = 0
+    foreach ($i in $items) {
+        $sum += [int]$i.waterLevel
+        if ([int]$i.waterLevel -ge 4) { $high++ }
+    }
+
+    return [PSCustomObject]@{
+        Count    = $items.Count
+        AvgWater = [math]::Round($sum / $items.Count, 2)
+        HighWater = $high
+        Items    = $items
+    }
+}
+
 function Add-PromptCapture {
     param(
         [Parameter(Mandatory = $true)]
@@ -70,23 +217,34 @@ function Add-PromptCapture {
         return [PSCustomObject]@{ Captured = $false; Reason = "filtered" }
     }
 
+    $metrics = Measure-PromptWater -Text $Prompt
+
     $entry = @{
-        t      = (Get-Date).ToString("o")
-        len    = $Prompt.Length
-        text   = $Prompt
-        source = "user"
+        t           = (Get-Date).ToString("o")
+        len         = $Prompt.Length
+        text        = $Prompt
+        source      = "user"
+        wordCount   = $metrics.wordCount
+        waterLevel  = $metrics.waterLevel
+        fillerHits  = $metrics.fillerHits
+        hasContract = $metrics.hasContract
     } | ConvertTo-Json -Compress -Depth 3
 
     $capDir = Split-Path $paths.CapturePath -Parent
     if (-not (Test-Path $capDir)) { New-Item -ItemType Directory -Path $capDir -Force | Out-Null }
     Add-Content -Path $paths.CapturePath -Value $entry -Encoding UTF8
+    Register-PromptMetrics -Metrics $metrics -HubRoot $HubRoot
 
     $state = Get-CoachState -Paths $paths
     $state.substantiveCaptured = [int]$state.substantiveCaptured + 1
     $state.lastCaptureAt = (Get-Date).ToString("o")
     Save-CoachState -Paths $paths -State $state
 
-    return [PSCustomObject]@{ Captured = $true; Total = $state.substantiveCaptured }
+    return [PSCustomObject]@{
+        Captured   = $true
+        Total      = $state.substantiveCaptured
+        WaterLevel = $metrics.waterLevel
+    }
 }
 
 function Get-CapturesSinceLesson {

@@ -1,4 +1,4 @@
-# Session end — remind agent: mini prompt score (DEC-059)
+# Session end — mini prompt score (compact)
 
 $ErrorActionPreference = "Stop"
 $hubRoot = Split-Path $PSScriptRoot -Parent
@@ -13,13 +13,15 @@ $captures = @(Get-CapturesSinceLesson -Paths $paths -State $state)
 $recent = $captures | Select-Object -Last 1
 if (-not $recent) { exit 0 }
 
-$msg = @"
-[PROMPT COACH — end of session]
-Give ONE line mini-score for the user's main prompt this session (not a full lesson):
-Format: **Промт X/10** — <one short reason in plain Russian>.
-Then ask once: «Опубликовать урок в Notion?» only if you wrote a lesson this session.
-Log via: Register-MiniScore in lib/prompt-coach/PromptCoach.ps1 when score assigned.
-"@
+$waterNote = ""
+if ($recent.PSObject.Properties.Name -contains "waterLevel") {
+    $wl = [int]$recent.waterLevel
+    if ($wl -ge 4) {
+        $waterNote = " Water was $wl/5 - suggest shorter prompt if score <8."
+    }
+}
+
+$msg = "[PROMPT COACH] One line: **Промт X/10** — short RU reason.$waterNote Log via Register-MiniScore. Lesson? humanizer + TTS + Notion preview."
 
 $out = @{ followup_message = $msg } | ConvertTo-Json -Compress -Depth 3
 Write-Output $out

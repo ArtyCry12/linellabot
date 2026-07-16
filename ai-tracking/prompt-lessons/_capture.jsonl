@@ -2,3 +2,13 @@
 {"t":"2026-07-10T15:45:58.6378066+03:00","source":"user","text":"test prompt for coach capture with enough length to pass filter","len":63}
 {"t":"2026-07-10T15:46:51.0216632+03:00","source":"user","text":"test prompt for coach capture with enough length to pass filter","len":63}
 {"t":"2026-07-10T15:47:40.9081964+03:00","source":"user","text":"test prompt for coach capture with enough length to pass filter","len":63}
+{"len":63,"waterLevel":2,"hasContract":false,"source":"user","fillerHits":0,"t":"2026-07-10T21:12:53.5836878+03:00","text":"test prompt for coach capture with enough length to pass filter","wordCount":11}
+{"len":48,"waterLevel":1,"hasContract":true,"source":"user","fillerHits":0,"t":"2026-07-10T21:12:54.8461882+03:00","text":"Deliverables: test\nDone when: water metrics work","wordCount":7}
+{"len":63,"waterLevel":1,"hasContract":false,"source":"user","fillerHits":0,"t":"2026-07-12T02:56:43.6105449+03:00","text":"test prompt for coach capture with enough length to pass filter","wordCount":11}
+{"len":48,"waterLevel":1,"hasContract":true,"source":"user","fillerHits":0,"t":"2026-07-12T02:57:04.2963585+03:00","text":"Deliverables: test\nDone when: water metrics work","wordCount":7}
+{"len":63,"waterLevel":1,"hasContract":false,"source":"user","fillerHits":0,"t":"2026-07-13T17:20:59.7544721+03:00","text":"test prompt for coach capture with enough length to pass filter","wordCount":11}
+{"len":48,"waterLevel":1,"hasContract":true,"source":"user","fillerHits":0,"t":"2026-07-13T17:21:02.1109505+03:00","text":"Deliverables: test\nDone when: water metrics work","wordCount":7}
+{"len":63,"waterLevel":1,"hasContract":false,"source":"user","fillerHits":0,"t":"2026-07-13T19:09:04.1675702+03:00","text":"test prompt for coach capture with enough length to pass filter","wordCount":11}
+{"len":48,"waterLevel":1,"hasContract":true,"source":"user","fillerHits":0,"t":"2026-07-13T19:09:07.9325518+03:00","text":"Deliverables: test\nDone when: water metrics work","wordCount":7}
+{"len":63,"waterLevel":1,"hasContract":false,"source":"user","fillerHits":0,"t":"2026-07-13T19:11:48.3720974+03:00","text":"test prompt for coach capture with enough length to pass filter","wordCount":11}
+{"len":48,"waterLevel":1,"hasContract":true,"source":"user","fillerHits":0,"t":"2026-07-13T19:11:53.1346553+03:00","text":"Deliverables: test\nDone when: water metrics work","wordCount":7}

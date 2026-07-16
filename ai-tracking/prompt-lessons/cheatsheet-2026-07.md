@@ -4,8 +4,9 @@ Personal cheatsheet from _capture.jsonl
 
 | # | Pattern | Count |
 |---|---------|-------|
-| 1 | prompt-lesson | 1x |
-| 2 | !auto / /autopilot | 1x |
+| 1 | mega-task contract | 4x |
+| 2 | prompt-lesson | 1x |
+| 3 | !auto / /autopilot | 1x |
 
 ## Quick adds
 
@@ -15,4 +16,4 @@ Personal cheatsheet from _capture.jsonl
 
 Full list: ai-tracking/PROMPT-HOOKS.md
 
-*Generated: 2026-07-10T15:47:42.6166718+03:00*
+*Generated: 2026-07-13T19:11:49.9394813+03:00*

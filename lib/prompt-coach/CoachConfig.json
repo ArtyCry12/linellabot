@@ -12,6 +12,8 @@
   "scoresFile": "ai-tracking/prompt-lessons/_scores.jsonl",
   "cheatsheetIntervalDays": 30,
   "megaTaskMinChars": 120,
+  "metricsFile": "ai-tracking/prompt-lessons/_metrics.jsonl",
+  "waterWarnLevel": 4,
   "noisePatterns": [
     "Briefly inform the user about the task result",
     "Implement the plan as specified",
