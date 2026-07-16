@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-07-15T23:22:06.329Z
+Generated: 2026-07-16T16:24:16.089Z
 
 | Skill | Path | Description |
 |-------|------|-------------|
@@ -26,14 +26,21 @@ Generated: 2026-07-15T23:22:06.329Z
 | game-studios-multiagent | `skills/_archive/game-studios-multiagent/SKILL.md` | >- |
 | 21st-design | `skills/21st-design/SKILL.md` | >- |
 | agency-agents | `skills/agency-agents/SKILL.md` | >- |
+| ai-search-optimization | `skills/ai-search-optimization/SKILL.md` | >- |
 | awesome-design-md | `skills/awesome-design-md/SKILL.md` | >- |
 | awesome-prompts | `skills/awesome-prompts/SKILL.md` | >- |
 | babyagi | `skills/babyagi/SKILL.md` | >- |
 | brainstorming | `skills/brainstorming/SKILL.md` | "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying |
 | clone-website | `skills/clone-website/SKILL.md` | >- |
+| cloudflare-security-audit | `skills/cloudflare-security-audit/SKILL.md` | >- |
+| code-review-pro | `skills/code-review-pro/SKILL.md` | >- |
+| content-strategy | `skills/content-strategy/SKILL.md` | >- |
+| copywriting | `skills/copywriting/SKILL.md` | >- |
+| core-web-vitals | `skills/core-web-vitals/SKILL.md` | >- |
 | crew-ai | `skills/crew-ai/SKILL.md` | >- |
 | cybersecurity | `skills/cybersecurity/SKILL.md` | >- |
 | design-stack | `skills/design-stack/SKILL.md` | >- |
+| design-taste-frontend | `skills/design-taste-frontend/SKILL.md` | >- |
 | dev-os-autonomy | `skills/dev-os/autonomy/SKILL.md` | >- |
 | dev-os-decision | `skills/dev-os/decision/SKILL.md` | >- |
 | dev-os-emergence | `skills/dev-os/emergence/SKILL.md` | >- |
@@ -42,27 +49,43 @@ Generated: 2026-07-15T23:22:06.329Z
 | dev-os-memory | `skills/dev-os/memory/SKILL.md` | >- |
 | dev-os-research | `skills/dev-os/research/SKILL.md` | >- |
 | dev-os | `skills/dev-os/SKILL.md` | >- |
+| devsecops-expert | `skills/devsecops-expert/SKILL.md` | >- |
 | ecc-harness | `skills/ecc-harness/SKILL.md` | >- |
+| entity-seo | `skills/entity-seo/SKILL.md` | >- |
 | find-skills | `skills/find-skills/SKILL.md` | >- |
+| firebase-security-rules-auditor | `skills/firebase-security-rules-auditor/SKILL.md` | >- |
 | frontend-design | `skills/frontend-design/frontend-design/SKILL.md` | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to  |
 | frontend-design | `skills/frontend-design/SKILL.md` | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to  |
 | graphify | `skills/graphify/SKILL.md` | >- |
 | hermes-agent | `skills/hermes-agent/SKILL.md` | >- |
 | huashu-design | `skills/huashu-design/SKILL.md` | 花叔Design（Huashu-Design）——用HTML做高保真原型、交互Demo、幻灯片、动画、设计变体探索+设计方向顾问+专家评审的一体化设计能力。HTML是工具不是媒介，根据任务embody不同专家（UX设计师/动画师/幻灯片设计 |
+| impeccable | `skills/impeccable/SKILL.md` | >- |
 | llm-council | `skills/llm-council/SKILL.md` | >- |
+| marketing-ideas | `skills/marketing-ideas/SKILL.md` | >- |
+| marketing-psychology | `skills/marketing-psychology/SKILL.md` | >- |
 | markitdown | `skills/markitdown/SKILL.md` | Converts PDF, Office, HTML, audio, images, ZIP, EPUB, and more to token-efficient Markdown using Microsoft MarkItDown be |
 | mattpocock-skills | `skills/mattpocock-skills/SKILL.md` | >- |
 | n8n-templates | `skills/n8n-templates/SKILL.md` | >- |
+| n8n-workflow-architect | `skills/n8n-workflow-architect/SKILL.md` | >- |
+| n8n-workflow-automation | `skills/n8n-workflow-automation/SKILL.md` | >- |
 | n8n-workflow | `skills/n8n-workflow/SKILL.md` | >- |
 | notion-tasks | `skills/notion-tasks/SKILL.md` | >- |
 | notion-workspace | `skills/notion-workspace/SKILL.md` | >- |
+| opc-seo-geo | `skills/opc-seo-geo/SKILL.md` | >- |
+| playwright-visual-testing | `skills/playwright-visual-testing/SKILL.md` | >- |
+| playwright | `skills/playwright/SKILL.md` | >- |
 | pr-review | `skills/pr-review/SKILL.md` | >- |
 | production-studio | `skills/production-studio/SKILL.md` | >- |
+| programmatic-seo | `skills/programmatic-seo/SKILL.md` | >- |
 | project-squad | `skills/project-squad/SKILL.md` | >- |
 | prompt-engineering-coach | `skills/prompt-engineering-coach/SKILL.md` | >- |
+| qa-start | `skills/qa-start/SKILL.md` | >- |
 | remotion | `skills/remotion/SKILL.md` | >- |
 | repo-intake | `skills/repo-intake/SKILL.md` | >- |
+| secret-scanning | `skills/secret-scanning/SKILL.md` | >- |
+| seo-audit | `skills/seo-audit/SKILL.md` | >- |
 | seo-geo | `skills/seo-geo/SKILL.md` | >- |
+| shadcn | `skills/shadcn/SKILL.md` | >- |
 | design-an-interface | `skills/skills-main-top-coding/skills-main/skills/deprecated/design-an-interface/SKILL.md` | Generate multiple radically different interface designs for a module using parallel sub-agents. Use when user wants to d |
 | qa | `skills/skills-main-top-coding/skills-main/skills/deprecated/qa/SKILL.md` | Interactive QA session where user reports bugs or issues conversationally, and the agent files GitHub issues. Explores t |
 | request-refactor-plan | `skills/skills-main-top-coding/skills-main/skills/deprecated/request-refactor-plan/SKILL.md` | Create a detailed refactor plan with tiny commits via user interview, then file it as a GitHub issue. Use when user want |
@@ -91,6 +114,7 @@ Generated: 2026-07-15T23:22:06.329Z
 | grill-me | `skills/skills-main-top-coding/skills-main/skills/productivity/grill-me/SKILL.md` | Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the |
 | handoff | `skills/skills-main-top-coding/skills-main/skills/productivity/handoff/SKILL.md` | Compact the current conversation into a handoff document for another agent to pick up. |
 | write-a-skill | `skills/skills-main-top-coding/skills-main/skills/productivity/write-a-skill/SKILL.md` | Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to cre |
+| stitch-shadcn-ui | `skills/stitch-shadcn-ui/SKILL.md` | >- |
 | subagent-driven-development | `skills/subagent-driven-development/SKILL.md` | Use when executing implementation plans with independent tasks in the current session |
 | systematic-debugging | `skills/systematic-debugging/SKILL.md` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
 | ui-ux-pro-max | `skills/ui-ux-pro-max/SKILL.md` | >- |
@@ -98,6 +122,7 @@ Generated: 2026-07-15T23:22:06.329Z
 | uv | `skills/uv/SKILL.md` | >- |
 | verification-before-completion | `skills/verification-before-completion/SKILL.md` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verifi |
 | video-learning | `skills/video-learning/SKILL.md` | >- |
+| web-design-guidelines | `skills/web-design-guidelines/SKILL.md` | >- |
 | writing-plans | `skills/writing-plans/SKILL.md` | "Write implementation plans: bite-sized tasks, paths, code." |
 
-Total: 95 skills
+Total: 120 skills
