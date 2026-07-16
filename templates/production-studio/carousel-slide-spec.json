@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "carouselId": "example-campaign",
+  "aspectRatio": "4:5",
+  "sizePx": { "width": 1080, "height": 1350 },
+  "styleLockRef": "ai-tracking/production-studio/refs/REF-01-style.md",
+  "slides": [
+    {
+      "index": 1,
+      "headline": "Hook — one clear promise",
+      "subline": "Optional subline max 8 words",
+      "visualMetaphor": "hero object centered, dark bg",
+      "gptImagePrompt": "Minimal dark tech carousel slide 1 of 5. Headline: \"Hook — one clear promise\". Hero laptop glow, charcoal background, accent blue, portrait 4:5, typography upper third."
+    },
+    {
+      "index": 2,
+      "headline": "Problem in one line",
+      "subline": "",
+      "visualMetaphor": "split before/after",
+      "gptImagePrompt": "Carousel slide 2 of 5. Headline: \"Problem in one line\". Split screen chaos vs order, same style lock, portrait 4:5."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "projectId": "example-reel",
+  "chunkDurationSec": 4,
+  "aspectRatio": "9:16",
+  "photocards": [
+    {
+      "segmentId": "seg-01-hook",
+      "type": "hook",
+      "durationSec": 4,
+      "track": "ai",
+      "prompt": "Young professional at desk, looks up at camera with confident smile, soft window light, shallow DOF, slow push-in, 4 seconds, cinematic, vertical 9:16, no text overlay."
+    },
+    {
+      "segmentId": "seg-02-stat",
+      "type": "proof",
+      "durationSec": 4,
+      "track": "ai",
+      "prompt": "Abstract particles forming upward trend arrow, dark navy background, accent cyan glow, subtle drift, 4 seconds, clean, no numbers."
+    },
+    {
+      "segmentId": "seg-03-cta",
+      "type": "cta",
+      "durationSec": 4,
+      "track": "hybrid",
+      "prompt": "Minimal end card gradient dark to accent blue, space center for logo overlay, soft vignette, 4 seconds, vertical 9:16.",
+      "liveNotes": "Optional live lip-sync CTA filmed separately"
+    }
+  ]
+}

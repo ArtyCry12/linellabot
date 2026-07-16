@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cursor Hub — аудит экосистемы</title>
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --bg-2: #0f131c;
+      --surface: #141926;
+      --surface-2: #1a2030;
+      --border: #232c40;
+      --border-soft: #1c2333;
+      --text: #e6edf7;
+      --text-soft: #b6c0d4;
+      --muted: #7987a3;
+      --muted-2: #5a6b85;
+      --accent: #4d8dff;
+      --accent-soft: rgba(77, 141, 255, 0.14);
+      --accent-line: rgba(77, 141, 255, 0.35);
+      --success: #3ddc97;
+      --warn: #f5b73d;
+      --danger: #ff6b6b;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --mono: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(900px 500px at 78% -8%, rgba(77, 141, 255, 0.10), transparent 70%),
+        radial-gradient(700px 400px at 0% 100%, rgba(61, 220, 151, 0.06), transparent 70%);
+      background-attachment: fixed;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px 96px;
+    }
+
+    /* Top nav */
+    nav.top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 14, 20, 0.72);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    nav.top .inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+    .brand .dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent);
+    }
+    .nav-links { display: flex; gap: 22px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* Hero */
+    .hero {
+      padding: 96px 0 56px;
+      text-align: center;
+    }
+    .hero .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text-soft);
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+    }
+    .hero .eyebrow .pulse {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 10px var(--success);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 54px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin: 0 0 20px;
+      max-width: 16ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(120deg, #ffffff 0%, #8fb4ff 60%, #4d8dff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p.lead {
+      font-size: 17px;
+      color: var(--text-soft);
+      max-width: 56ch;
+      margin: 0 auto 36px;
+    }
+    .hero .cta-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 12px 22px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+      text-decoration: none;
+    }
+    .btn:hover { background: #5e98ff; box-shadow: 0 8px 24px rgba(77, 141, 255, 0.35); transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+    .btn.ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-soft);
+    }
+    .btn.ghost:hover { background: var(--surface); border-color: var(--accent-line); box-shadow: none; color: var(--text); }
+
+    /* Section */
+    section { padding: 56px 0; scroll-margin-top: 72px; }
+    .sec-head { margin-bottom: 32px; }
+    .sec-head .tag {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .sec-head h2 {
+      font-size: clamp(26px, 3.4vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+    }
+    .sec-head p { color: var(--muted); font-size: 15px; max-width: 60ch; margin: 0; }
+
+    /* Stats strip */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .stat {
+      background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat::after {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
+      opacity: 0.6;
+    }
+    .stat-val {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      font-feature-settings: "tnum";
+    }
+    .stat-val .unit { font-size: 15px; color: var(--muted); font-weight: 500; margin-left: 3px; }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      letter-spacing: 0.02em;
+    }
+    .stat .bar {
+      margin-top: 14px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border-soft);
+      overflow: hidden;
+    }
+    .stat .bar i {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Chart card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .card-h {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .card-h .title { font-weight: 600; font-size: 15px; }
+    .card-h .sub { color: var(--muted); font-size: 12px; }
+    .card-b { padding: 24px; }
+
+    .chart-row { margin-bottom: 18px; }
+    .chart-row:last-child { margin-bottom: 0; }
+    .chart-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .chart-label { font-size: 13px; color: var(--text-soft); font-weight: 500; }
+    .chart-vals { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+    .chart-vals .now { color: var(--text-soft); }
+    .chart-vals .tgt { color: var(--accent); }
+    .chart-track {
+      position: relative;
+      height: 8px;
+      background: var(--border-soft);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bar-now, .bar-target {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .bar-now { background: #3a4660; }
+    .bar-target { background: linear-gradient(90deg, var(--accent), #7aa9ff); }
+    .legend {
+      display: flex;
+      gap: 22px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-soft);
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .legend i {
+      width: 11px; height: 11px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .legend .l-now i { background: #3a4660; }
+    .legend .l-tgt i { background: var(--accent); }
+
+    /* Accordion */
+    .accordion { display: grid; gap: 12px; }
+    details.acc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0;
+      transition: border-color 0.2s;
+    }
+    details.acc[open] { border-color: var(--accent-line); }
+    details.acc summary {
+      cursor: pointer;
+      padding: 18px 22px;
+      font-weight: 600;
+      font-size: 15px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    details.acc summary::-webkit-details-marker { display: none; }
+    details.acc summary .chev {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      transition: transform 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    details.acc[open] summary .chev { transform: rotate(90deg); color: var(--accent); }
+    details.acc .acc-body { padding: 0 22px 22px; color: var(--text-soft); font-size: 14px; }
+    details.acc .acc-body p { margin: 0 0 12px; }
+    details.acc .acc-body p:last-child { margin-bottom: 0; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .pill {
+      font-size: 12px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-soft);
+    }
+    .pill.ok { border-color: rgba(61, 220, 151, 0.4); color: var(--success); background: rgba(61, 220, 151, 0.08); }
+    .pill.warn { border-color: rgba(245, 183, 61, 0.4); color: var(--warn); background: rgba(245, 183, 61, 0.08); }
+
+    /* Flow diagram */
+    .flow {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      overflow-x: auto;
+    }
+    .flow-track {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      min-width: 720px;
+    }
+    .flow-step {
+      flex: 1;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .flow-step .num {
+      font-size: 10px;
+      color: var(--accent);
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+    }
+    .flow-step .name { font-size: 14px; font-weight: 600; }
+    .flow-step .desc { font-size: 12px; color: var(--muted); line-height: 1.45; }
+    .flow-arrow {
+      flex: 0 0 32px;
+      display: grid;
+      place-items: center;
+      color: var(--muted-2);
+      font-size: 18px;
+    }
+    .flow-arrow svg { width: 18px; height: 18px; }
+
+    /* Quiz */
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .quiz-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .quiz-head {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border-soft);
+      background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    }
+    .quiz-head .qtag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .quiz-head h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .quiz-head p { margin: 0; color: var(--muted); font-size: 13px; }
+    .quiz-body { padding: 28px; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 22px;
+    }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    label.fld {
+      font-size: 12px;
+      color: var(--text-soft);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .hint { font-size: 11px; color: var(--muted-2); }
+    input[type=text], input[type=number], textarea, select {
+      width: 100%;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 11px 13px;
+      font: inherit;
+      font-size: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    textarea { resize: vertical; min-height: 78px; font-family: inherit; }
+    select { appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%237987a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 13px center;
+      padding-right: 34px;
+    }
+
+    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+    .checks label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-soft);
+      font-size: 13px;
+      cursor: pointer;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-2);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .checks label:hover { border-color: var(--accent-line); }
+    .checks input { width: 16px; height: 16px; accent-color: var(--accent); margin: 0; }
+    .checks label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); color: var(--text); }
+
+    /* Rating scale 1-5 */
+    .rating { display: flex; gap: 6px; }
+    .rating input { display: none; }
+    .rating label {
+      flex: 1;
+      text-align: center;
+      padding: 9px 0;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--bg-2);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .rating label:hover { border-color: var(--accent-line); color: var(--text-soft); }
+    .rating input:checked + label {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* Slider */
+    .slider-wrap { display: flex; flex-direction: column; gap: 10px; }
+    .slider-top { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border-soft);
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: 3px solid var(--bg);
+      box-shadow: 0 2px 8px rgba(77, 141, 255, 0.5);
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: 3px solid var(--bg);
+    }
+    .slider-val { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 600; }
+
+    .subgroup {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+      padding-top: 22px;
+      border-top: 1px dashed var(--border-soft);
+    }
+    .subgroup-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
+    }
+
+    .quiz-foot {
+      padding: 20px 28px;
+      border-top: 1px solid var(--border-soft);
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .quiz-foot .meta { font-size: 12px; color: var(--muted); }
+
+    /* Status + toast */
+    #status {
+      margin-top: 32px;
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-soft);
+    }
+    #status.ok { border-color: rgba(61, 220, 151, 0.45); background: rgba(61, 220, 151, 0.07); color: var(--text); }
+    #status.err { border-color: rgba(255, 107, 107, 0.45); background: rgba(255, 107, 107, 0.07); color: var(--text); }
+    #status code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: var(--bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--surface);
+      border: 1px solid var(--success);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      display: none;
+      max-width: 340px;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+      z-index: 99;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-soft);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    footer a { color: var(--text-soft); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .wrap { padding: 0 16px 64px; }
+      .hero { padding: 64px 0 40px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .form-grid { grid-template-columns: 1fr; }
+      .checks { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      section { padding: 40px 0; }
+      .quiz-body, .quiz-head, .quiz-foot { padding-left: 18px; padding-right: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top">
+    <div class="inner">
+      <div class="brand"><span class="dot"></span> Cursor Hub · аудит</div>
+      <div class="nav-links">
+        <a href="#inventory">Вся система</a>
+        <a href="#benchmarks">Бенчмарки</a>
+        <a href="#findings">Выводы</a>
+        <a href="#automation">Автоматизация</a>
+        <a href="#quiz-profile">Квизы</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <span class="eyebrow"><span class="pulse"></span> live audit · <span id="date"></span></span>
+      <h1>Аудит экосистемы <span class="grad">Cursor Hub</span></h1>
+      <p class="lead">Разбор всего хаба C:\Users\Asus\.cursor: правила, скиллы, хуки, MCP, команды, squad, ai-tracking. Не только последние установки. Три квиза, в том числе про автоматизацию. Ответы пишутся в hub через localhost.</p>
+      <div class="cta-row">
+        <a class="btn" href="#quiz-profile">Пройти профиль</a>
+        <a class="btn ghost" href="#quiz-automation">Правила !auto</a>
+        <a class="btn ghost" href="#benchmarks">Бенчмарки</a>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <section id="stats">
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-val">80<span class="unit">/80</span></div>
+          <div class="stat-label">Требования P1–P3</div>
+          <div class="bar"><i style="width:100%"></i></div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">4<span class="unit">/4</span></div>
+          <div class="stat-label">Репо Phase A</div>
+          <div class="bar"><i style="width:100%"></i></div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">7.6<span class="unit">/10</span></div>
+          <div class="stat-label">Средний балл (10 осей)</div>
+          <div class="bar"><i style="width:76%"></i></div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">93</div>
+          <div class="stat-label">Rules (.mdc)</div>
+          <div class="bar"><i style="width:90%"></i></div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">78+</div>
+          <div class="stat-label">Skills в индексе</div>
+          <div class="bar"><i style="width:85%"></i></div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">35</div>
+          <div class="stat-label">Маршрутов router</div>
+          <div class="bar"><i style="width:88%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENCHMARKS -->
+    <section id="benchmarks">
+      <div class="sec-head">
+        <div class="tag">Custom benchmarks</div>
+        <h2>Где хаб сейчас и куда целимся</h2>
+        <p>Десять осей по всему хабу. Обновлено после Phase C-D-E (2026-07-13).</p>
+      </div>
+      <div class="card">
+        <div class="card-h">
+          <span class="title">Hub против цели</span>
+          <span class="sub">шкала 0–10</span>
+        </div>
+        <div class="card-b" id="chart"></div>
+      </div>
+    </section>
+
+    <!-- INVENTORY -->
+    <section id="inventory">
+      <div class="sec-head">
+        <div class="tag">Инвентарь</div>
+        <h2>Что лежит в хабе</h2>
+        <p>Коротко по зонам. Путь: C:\Users\Asus\.cursor (~454 MB).</p>
+      </div>
+      <div class="card">
+        <div class="card-b" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;font-size:14px;color:var(--text-soft)">
+          <div><strong style="color:var(--text)">Rules</strong><br>93 файла: 3 always-on hub + 66 agency + on-demand (seo, dev-os, mcp…)</div>
+          <div><strong style="color:var(--text)">Skills</strong><br>78 в _INDEX + SEO×20 + game-studios template + plugin cache</div>
+          <div><strong style="color:var(--text)">Hooks</strong><br>6 beforeSubmitPrompt: autopilot, profile, router, coach, repo, markitdown; RTK preToolUse; stop coach</div>
+          <div><strong style="color:var(--text)">lib/</strong><br>router, coach, awesome-prompts (659), crew-ai, babyagi, quiz-channel</div>
+          <div><strong style="color:var(--text)">Commands</strong><br>~77: refresh, audit, tests, SEO, P3 gates, quiz, creative-loop</div>
+          <div><strong style="color:var(--text)">Agents</strong><br>11 squad: scout, architect, design, build, qa, review, growth, ship…</div>
+          <div><strong style="color:var(--text)">MCP</strong><br>17 user-дескрипторов + ~75 plugin configs (exa, notion, vercel…)</div>
+          <div><strong style="color:var(--text)">ai-tracking</strong><br>~116 MB: dev-os, production-studio, prompt-lessons, quiz profile</div>
+          <div><strong style="color:var(--text)">Docs</strong><br>SYSTEM-REGISTRY, TAXONOMY, knowledge-base (17 файлов)</div>
+          <div><strong style="color:var(--text)">Tests</strong><br>8 *-test.ps1 + p3-system-test; CI нет</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINDINGS (was after benchmarks) -->
+    <section id="findings">
+      <div class="sec-head">
+        <div class="tag">Выводы</div>
+        <h2>Что работает и где болит</h2>
+        <p>12 зон хаба. Простые слова. Полный отчёт: ai-tracking/FULL-SYSTEM-AUDIT.md</p>
+      </div>
+      <div class="accordion">
+        <details class="acc" open>
+          <summary>Что уже работает <span class="chev">›</span></summary>
+          <div class="acc-body">
+            <p>P3 gates закрыты (80/80). Task router на 35 маршрутах. Squad из 10 ролей. Phase A: llm-council, awesome-prompts (659), crew-ai, babyagi.</p>
+            <p>Prompt coach считает воду в промптах. Квизы пишут профиль в ai-tracking.</p>
+            <div class="pill-row">
+              <span class="pill ok">Router 35</span>
+              <span class="pill ok">Squad 10</span>
+              <span class="pill ok">Phase A 4/4</span>
+              <span class="pill ok">Prompt water</span>
+            </div>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>Rules и skills <span class="chev">›</span></summary>
+          <div class="acc-body">
+            <p>~93 rules. Hub rules короткие, но ~66 agency rules и plugin always-on (exa, zapier, team-kit) грузятся в каждый чат.</p>
+            <p>77 skills в индексе, плюс дубли в plugin cache. Не всегда ясно, какой файл главный.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>Hooks и router <span class="chev">›</span></summary>
+          <div class="acc-body">
+            <p>На каждый промпт: autopilot, router, coach, repo-intake. В конце stop-hook.</p>
+            <p>После правки hooks.json нужен Reload Window. Короткие промпты router может пропустить.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>MCP и commands <span class="chev">›</span></summary>
+          <div class="acc-body">
+            <p>17 user MCP + plugin cache. Exa для поиска, memory для памяти. Notion иногда падает по timeout.</p>
+            <p>~77 commands. Не все в одном hub-test. Новые команды Phase A проверяются вручную.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>ai-tracking и тесты <span class="chev">›</span></summary>
+          <div class="acc-body">
+            <p>ai-tracking ~116 MB. Риск секретов в логах. 8 test-скриптов, CI нет. Hub test около 6.8.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>Автоматизация <span class="chev">›</span></summary>
+          <div class="acc-body">
+            <p>!auto не значит «всё без спроса». Commit, push, deploy, delete всегда с подтверждением. Квиз 3 фиксирует твои правила.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary>Главные риски <span class="chev">›</span></summary>
+          <div class="acc-body">
+            <p>Token bloat. Reload Window. Notion timeout. Список: ai-tracking/ISSUES-INDEX.md</p>
+            <div class="pill-row">
+              <span class="pill warn">Token cost</span>
+              <span class="pill warn">Reload Window</span>
+              <span class="pill warn">Notion</span>
+              <span class="pill warn">Tests</span>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- AUTOMATION GUIDE -->
+    <section id="automation">
+      <div class="sec-head">
+        <div class="tag">Автоматизация</div>
+        <h2>Когда агент может сам, а когда спрашивает</h2>
+        <p>Три режима. !auto не значит «делай что хочешь».</p>
+      </div>
+      <div class="card">
+        <div class="card-b" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;font-size:14px;color:var(--text-soft)">
+          <div>
+            <strong style="color:var(--success)">Можно сам (!auto)</strong>
+            <p style="margin:8px 0 0">Чтение файлов, grep, audit, lint fix, docs, мелкий рефактор, research через exa, локальные тесты без deploy.</p>
+          </div>
+          <div>
+            <strong style="color:var(--warn)">Всегда спросить</strong>
+            <p style="margin:8px 0 0">git commit/push, deploy, удаление файлов, MCP write (email, slack), правка .env и секретов, force push.</p>
+          </div>
+          <div>
+            <strong style="color:var(--accent)">Сначала план</strong>
+            <p style="margin:8px 0 0">Новая фича, архитектура, большой рефактор, security review, смена hooks/rules на always-on.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOW -->
+    <section id="flow">
+      <div class="sec-head">
+        <div class="tag">Поток данных</div>
+        <h2>Как запрос проходит через хаб</h2>
+        <p>Пять шагов от ввода до записи. Линейно, без скрытых веток.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-track">
+          <div class="flow-step">
+            <span class="num">01</span>
+            <span class="name">User Prompt</span>
+            <span class="desc">Текст пользователя в чат</span>
+          </div>
+          <div class="flow-arrow"><svg viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="flow-step">
+            <span class="num">02</span>
+            <span class="name">Task Router</span>
+            <span class="desc">hooks/task-router.ps1 ставит маршрут</span>
+          </div>
+          <div class="flow-arrow"><svg viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="flow-step">
+            <span class="num">03</span>
+            <span class="name">Rules + Skills</span>
+            <span class="desc">Подгружаются по триггеру</span>
+          </div>
+          <div class="flow-arrow"><svg viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="flow-step">
+            <span class="num">04</span>
+            <span class="name">MCP + Squad</span>
+            <span class="desc">exa, memory, notion и squad-агенты</span>
+          </div>
+          <div class="flow-arrow"><svg viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="flow-step">
+            <span class="num">05</span>
+            <span class="name">Track + Commit</span>
+            <span class="desc">ai-tracking, Notion, git commit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZZES -->
+    <section id="quizzes">
+      <div class="sec-head">
+        <div class="tag">Онлайн-квизы</div>
+        <h2>Три квиза: профиль, фиксы, автоматизация</h2>
+        <p>Ответы уходят через POST /api/quiz-ingest в ai-tracking/user-profile/. Запусти сервер на localhost.</p>
+      </div>
+
+      <div class="quiz-grid">
+
+        <!-- QUIZ 1: PROFILE -->
+        <div id="quiz-profile" class="quiz-card">
+          <div class="quiz-head">
+            <div class="qtag">Квиз 1 · Профиль</div>
+            <h3>Кто ты и как работаешь</h3>
+            <p>Чем подробнее, тем точнее хаб подстроит маршрут и скиллы.</p>
+          </div>
+          <div class="quiz-body">
+            <div class="form-grid">
+              <div class="field">
+                <label class="fld" for="pName">Имя или ник</label>
+                <input type="text" id="pName" placeholder="Как обращаться" />
+              </div>
+              <div class="field">
+                <label class="fld" for="pTimezone">Часовой пояс</label>
+                <input type="text" id="pTimezone" placeholder="Например UTC+3 или Europe/Moscow" />
+              </div>
+
+              <div class="field">
+                <label class="fld" for="pRole">Роль</label>
+                <input type="text" id="pRole" placeholder="Как представляешь себя системе" />
+              </div>
+              <div class="field">
+                <label class="fld" for="pEntType">Тип предпринимателя</label>
+                <select id="pEntType">
+                  <option value="">— выбери —</option>
+                  <option value="solo">Соло-предприниматель</option>
+                  <option value="agency">Агентство / студия</option>
+                  <option value="product">Продуктовый founder</option>
+                  <option value="creator">Контент / медиа</option>
+                  <option value="consultant">Консалтинг / фриланс</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label class="fld" for="pActivity">Чем занимаешься</label>
+                <textarea id="pActivity" placeholder="1–3 предложения о работе"></textarea>
+              </div>
+
+              <div class="field full">
+                <label class="fld">Цели в hub</label>
+                <div class="checks">
+                  <label><input type="checkbox" id="gMarketing" /> Маркетинг / SEO / контент</label>
+                  <label><input type="checkbox" id="gCode" /> Код / продукт / automation</label>
+                  <label><input type="checkbox" id="gContent" /> Медиа / carousel / video</label>
+                  <label><input type="checkbox" id="gOps" /> Ops / Notion / память</label>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label class="fld" for="pTools">Основные инструменты</label>
+                <input type="text" id="pTools" placeholder="Cursor, Notion, Figma, n8n, что ещё..." />
+              </div>
+
+              <div class="field full">
+                <label class="fld" for="pPain">Главная боль с AI</label>
+                <textarea id="pPain" placeholder="Что бесит больше всего в работе с агентами"></textarea>
+              </div>
+
+              <div class="field">
+                <label class="fld" for="pLearn">Как учишься</label>
+                <select id="pLearn">
+                  <option value="">— выбери —</option>
+                  <option value="text">Текст и доки</option>
+                  <option value="video">Видео и скринкасты</option>
+                  <option value="hands-on">На практике, руками</option>
+                  <option value="mixed">Смешанно</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="fld" for="pHours">Часов в неделю на хаб</label>
+                <input type="number" id="pHours" min="0" max="80" placeholder="например 6" />
+              </div>
+
+              <div class="field full">
+                <label class="fld" for="pAutonomy">Автономия агента</label>
+                <select id="pAutonomy">
+                  <option value="full">Максимум — режим !auto</option>
+                  <option value="confirm-writes">Авто-чтение, подтверждать правки</option>
+                  <option value="plan-first">Сначала план, потом код</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="quiz-foot">
+            <span class="meta">POST /api/quiz-ingest · quiz=profile</span>
+            <button class="btn" type="button" onclick="submitProfile()">Отправить профиль</button>
+          </div>
+        </div>
+
+        <!-- QUIZ 2: FIXES -->
+        <div id="quiz-fixes" class="quiz-card">
+          <div class="quiz-head">
+            <div class="qtag">Квиз 2 · Приоритеты фиксов</div>
+            <h3>Что чинить и насколько доволен</h3>
+            <p>Оцени каждую подсистему 1–5 и оставь комментарий. Чем точнее, тем выше приоритет в работе.</p>
+          </div>
+          <div class="quiz-body">
+            <div class="form-grid">
+
+              <div class="subgroup">
+                <div class="subgroup-title">Оценка по подсистемам (1 — плохо, 5 — отлично)</div>
+              </div>
+
+              <div class="field">
+                <label class="fld">Task Router</label>
+                <div class="rating" data-name="satRouter">
+                  <input type="radio" name="satRouter" id="satRouter1" value="1" /><label for="satRouter1">1</label>
+                  <input type="radio" name="satRouter" id="satRouter2" value="2" /><label for="satRouter2">2</label>
+                  <input type="radio" name="satRouter" id="satRouter3" value="3" checked /><label for="satRouter3">3</label>
+                  <input type="radio" name="satRouter" id="satRouter4" value="4" /><label for="satRouter4">4</label>
+                  <input type="radio" name="satRouter" id="satRouter5" value="5" /><label for="satRouter5">5</label>
+                </div>
+              </div>
+              <div class="field">
+                <label class="fld">Prompt Coach</label>
+                <div class="rating" data-name="satCoach">
+                  <input type="radio" name="satCoach" id="satCoach1" value="1" /><label for="satCoach1">1</label>
+                  <input type="radio" name="satCoach" id="satCoach2" value="2" /><label for="satCoach2">2</label>
+                  <input type="radio" name="satCoach" id="satCoach3" value="3" checked /><label for="satCoach3">3</label>
+                  <input type="radio" name="satCoach" id="satCoach4" value="4" /><label for="satCoach4">4</label>
+                  <input type="radio" name="satCoach" id="satCoach5" value="5" /><label for="satCoach5">5</label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="fld">Notion sync</label>
+                <div class="rating" data-name="satNotion">
+                  <input type="radio" name="satNotion" id="satNotion1" value="1" /><label for="satNotion1">1</label>
+                  <input type="radio" name="satNotion" id="satNotion2" value="2" /><label for="satNotion2">2</label>
+                  <input type="radio" name="satNotion" id="satNotion3" value="3" checked /><label for="satNotion3">3</label>
+                  <input type="radio" name="satNotion" id="satNotion4" value="4" /><label for="satNotion4">4</label>
+                  <input type="radio" name="satNotion" id="satNotion5" value="5" /><label for="satNotion5">5</label>
+                </div>
+              </div>
+              <div class="field">
+                <label class="fld">MCP-серверы</label>
+                <div class="rating" data-name="satMcp">
+                  <input type="radio" name="satMcp" id="satMcp1" value="1" /><label for="satMcp1">1</label>
+                  <input type="radio" name="satMcp" id="satMcp2" value="2" /><label for="satMcp2">2</label>
+                  <input type="radio" name="satMcp" id="satMcp3" value="3" checked /><label for="satMcp3">3</label>
+                  <input type="radio" name="satMcp" id="satMcp4" value="4" /><label for="satMcp4">4</label>
+                  <input type="radio" name="satMcp" id="satMcp5" value="5" /><label for="satMcp5">5</label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="fld">Skills library</label>
+                <div class="rating" data-name="satSkills">
+                  <input type="radio" name="satSkills" id="satSkills1" value="1" /><label for="satSkills1">1</label>
+                  <input type="radio" name="satSkills" id="satSkills2" value="2" /><label for="satSkills2">2</label>
+                  <input type="radio" name="satSkills" id="satSkills3" value="3" checked /><label for="satSkills3">3</label>
+                  <input type="radio" name="satSkills" id="satSkills4" value="4" /><label for="satSkills4">4</label>
+                  <input type="radio" name="satSkills" id="satSkills5" value="5" /><label for="satSkills5">5</label>
+                </div>
+              </div>
+              <div class="field">
+                <label class="fld">Squad-агенты</label>
+                <div class="rating" data-name="satSquad">
+                  <input type="radio" name="satSquad" id="satSquad1" value="1" /><label for="satSquad1">1</label>
+                  <input type="radio" name="satSquad" id="satSquad2" value="2" /><label for="satSquad2">2</label>
+                  <input type="radio" name="satSquad" id="satSquad3" value="3" checked /><label for="satSquad3">3</label>
+                  <input type="radio" name="satSquad" id="satSquad4" value="4" /><label for="satSquad4">4</label>
+                  <input type="radio" name="satSquad" id="satSquad5" value="5" /><label for="satSquad5">5</label>
+                </div>
+              </div>
+
+              <div class="subgroup">
+                <div class="subgroup-title">Комментарии по каждой подсистеме</div>
+              </div>
+
+              <div class="field full">
+                <label class="fld" for="txtRouter">Task Router — что не так</label>
+                <textarea id="txtRouter" placeholder="Что бесит, что хочется поменять"></textarea>
+              </div>
+              <div class="field full">
+                <label class="fld" for="txtCoach">Prompt Coach — что не так</label>
+                <textarea id="txtCoach" placeholder="Оценки промптов, уроки, что мешает"></textarea>
+              </div>
+              <div class="field full">
+                <label class="fld" for="txtNotion">Notion — что не так</label>
+                <textarea id="txtNotion" placeholder="Sync, timeout, структура баз"></textarea>
+              </div>
+              <div class="field full">
+                <label class="fld" for="txtMcp">MCP — что не так</label>
+                <textarea id="txtMcp" placeholder="Какие серверы ломаются, чего не хватает"></textarea>
+              </div>
+              <div class="field full">
+                <label class="fld" for="txtSkills">Skills — что не так</label>
+                <textarea id="txtSkills" placeholder="Какие скиллы устарели, чего не хватает"></textarea>
+              </div>
+              <div class="field full">
+                <label class="fld" for="txtSquad">Squad — что не так</label>
+                <textarea id="txtSquad" placeholder="Какие агенты бесполезны, кого не хватает"></textarea>
+              </div>
+
+              <div class="subgroup">
+                <div class="subgroup-title">Автоматизация и приоритеты</div>
+              </div>
+
+              <div class="field full">
+                <label class="fld" for="autoPref">Сколько автоматизации хочешь</label>
+                <div class="slider-wrap">
+                  <div class="slider-top">
+                    <span>Только чтение, всё руками</span>
+                    <span class="slider-val" id="autoPrefVal">3</span>
+                    <span>Полный !auto, правки без спроса</span>
+                  </div>
+                  <input type="range" id="autoPref" min="1" max="5" value="3" oninput="document.getElementById('autoPrefVal').textContent = this.value" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="fld" for="waterLevel">Вода в промптах</label>
+                <select id="waterLevel">
+                  <option value="1">1 — почти без воды</option>
+                  <option value="2">2 — иногда раздуваю</option>
+                  <option value="3" selected>3 — часто много текста</option>
+                  <option value="4">4 — нужен жёсткий лимит</option>
+                  <option value="5">5 — критично</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="fld" for="fixNotes">Что чинить первым</label>
+                <textarea id="fixNotes" placeholder="Одна-две вещи, которые важнее всего"></textarea>
+              </div>
+
+              <div class="field full">
+                <label class="checks" style="border:none; background:transparent; padding:0">
+                  <input type="checkbox" id="reloadOk" checked /> Reload Window после hooks — это нормально
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="quiz-foot">
+            <span class="meta">POST /api/quiz-ingest · quiz=fixes</span>
+            <button class="btn" type="button" onclick="submitFixes()">Отправить приоритеты</button>
+          </div>
+        </div>
+
+        <!-- QUIZ 3: AUTOMATION -->
+        <div id="quiz-automation" class="quiz-card" style="grid-column: 1 / -1">
+          <div class="quiz-head">
+            <div class="qtag">Квиз 3 · Автоматизация</div>
+            <h3>Когда агент работает сам, когда спрашивает</h3>
+            <p>Это главный квиз про !auto. Ответы попадут в profile.automationPrefs и будут читать hooks и агенты.</p>
+          </div>
+          <div class="quiz-body">
+            <div class="form-grid">
+
+              <div class="subgroup">
+                <div class="subgroup-title">Где можно !auto без лишних вопросов</div>
+              </div>
+              <div class="field full">
+                <div class="checks">
+                  <label><input type="checkbox" id="autoRead" checked /> Чтение, grep, audit, research</label>
+                  <label><input type="checkbox" id="autoLint" checked /> Lint fix и мелкие правки кода</label>
+                  <label><input type="checkbox" id="autoDocs" checked /> Docs и комментарии</label>
+                  <label><input type="checkbox" id="autoTests" /> Локальные тесты (npm test, ps1 tests)</label>
+                  <label><input type="checkbox" id="autoRefactor" /> Рефактор до 5 файлов</label>
+                  <label><input type="checkbox" id="autoObsidian" /> Запись в Obsidian / ai-tracking</label>
+                </div>
+              </div>
+
+              <div class="subgroup">
+                <div class="subgroup-title">Где всегда спрашивать (даже при !auto)</div>
+              </div>
+              <div class="field full">
+                <div class="checks">
+                  <label><input type="checkbox" id="askCommit" checked /> git commit</label>
+                  <label><input type="checkbox" id="askPush" checked /> git push</label>
+                  <label><input type="checkbox" id="askDeploy" checked /> deploy (Vercel и т.д.)</label>
+                  <label><input type="checkbox" id="askDelete" checked /> Удаление файлов</label>
+                  <label><input type="checkbox" id="askMcpWrite" checked /> MCP write (email, slack, zapier)</label>
+                  <label><input type="checkbox" id="askSecrets" checked /> .env, ключи, mcp.json</label>
+                </div>
+              </div>
+
+              <div class="subgroup">
+                <div class="subgroup-title">Сначала план, потом код</div>
+              </div>
+              <div class="field full">
+                <div class="checks">
+                  <label><input type="checkbox" id="planArch" checked /> Архитектура и большие фичи</label>
+                  <label><input type="checkbox" id="planSecurity" checked /> Security review</label>
+                  <label><input type="checkbox" id="planHooks" checked /> Правки hooks.json / always-on rules</label>
+                  <label><input type="checkbox" id="planRefactor" /> Большой рефактор (10+ файлов)</label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="fld" for="autoDefault">Режим по умолчанию</label>
+                <select id="autoDefault">
+                  <option value="full">!auto когда уместно</option>
+                  <option value="confirm-writes" selected>Авто-чтение, правки с подтверждением</option>
+                  <option value="plan-first">Почти всегда сначала план</option>
+                  <option value="manual">Минимум автоматики</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="fld" for="maxAgents">Сколько subagent параллельно</label>
+                <select id="maxAgents">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label class="fld" for="autoExplain">Как агент должен объяснять шаги</label>
+                <select id="autoExplain">
+                  <option value="short">Коротко, по делу</option>
+                  <option value="plain" selected>Простыми словами (humanizer)</option>
+                  <option value="detailed">Подробно, как урок</option>
+                  <option value="silent">Мало текста, больше действий</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label class="fld" for="autoNotes">Свои правила (свободный текст)</label>
+                <textarea id="autoNotes" placeholder="Например: deploy только по пятницам; commit только когда попрошу; не трогай Notion без спроса"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="quiz-foot">
+            <span class="meta">POST /api/quiz-ingest · quiz=automation</span>
+            <button class="btn" type="button" onclick="submitAutomation()">Сохранить правила автоматизации</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="status">Заполни квиз и нажми «Отправить». Ответы пойдут в хаб через localhost API.</div>
+    </section>
+
+    <footer>
+      <span>Cursor Hub · ecosystem-audit · localhost</span>
+      <span>Сервер: <code style="font-family:var(--mono);color:var(--text-soft)">powershell -File commands/ecosystem-audit-server.ps1</code></span>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    const CATEGORIES = [
+      "Автономия", "Task Router", "MCP", "Тесты hub", "Доки",
+      "Цена токенов", "Rules/skills", "ai-tracking", "Интеграции", "Ясность !auto"
+    ];
+    const NOW = [8.3, 9.0, 8.3, 7.8, 8.0, 7.3, 7.5, 7.2, 8.2, 7.7];
+    const TARGET = [9, 9, 8.5, 8, 8.5, 8, 8.5, 8, 9, 8.5];
+
+    document.getElementById("date").textContent = new Date().toLocaleDateString("ru-RU", {
+      day: "numeric", month: "long", year: "numeric"
+    });
+
+    // Render benchmark chart
+    (function renderChart() {
+      const chartEl = document.getElementById("chart");
+      CATEGORIES.forEach((cat, i) => {
+        const row = document.createElement("div");
+        row.className = "chart-row";
+        row.innerHTML = `
+          <div class="chart-top">
+            <span class="chart-label">${cat}</span>
+            <span class="chart-vals"><span class="now">${NOW[i].toFixed(1)}</span> → <span class="tgt">${TARGET[i].toFixed(1)}</span></span>
+          </div>
+          <div class="chart-track">
+            <div class="bar-target" style="width:0%"></div>
+            <div class="bar-now" style="width:0%"></div>
+          </div>`;
+        chartEl.appendChild(row);
+        // animate
+        requestAnimationFrame(() => {
+          const bars = row.querySelectorAll(".bar-target, .bar-now");
+          bars[0].style.width = (TARGET[i] * 10) + "%";
+          bars[1].style.width = (NOW[i] * 10) + "%";
+        });
+      });
+      const leg = document.createElement("div");
+      leg.className = "legend";
+      leg.innerHTML = '<span class="l-now"><i></i> Сейчас</span><span class="l-tgt"><i></i> Цель</span>';
+      chartEl.appendChild(leg);
+    })();
+
+    function toast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.style.display = "block";
+      setTimeout(() => { t.style.display = "none"; }, 4000);
+    }
+
+    function setStatus(html, ok) {
+      const s = document.getElementById("status");
+      s.className = ok === true ? "ok" : ok === false ? "err" : "";
+      s.innerHTML = html;
+    }
+
+    function ratingValue(name) {
+      const el = document.querySelector(`input[name="${name}"]:checked`);
+      return el ? Number(el.value) : null;
+    }
+
+    async function ingest(payload) {
+      const res = await fetch("/api/quiz-ingest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "Ingest failed — сервер запущен?");
+      }
+      return data;
+    }
+
+    async function submitProfile() {
+      const payload = {
+        quiz: "profile",
+        timestamp: new Date().toISOString(),
+        source: "ecosystem-audit-localhost",
+        answers: {
+          name: document.getElementById("pName").value.trim(),
+          timezone: document.getElementById("pTimezone").value.trim(),
+          role: document.getElementById("pRole").value.trim(),
+          entrepreneurType: document.getElementById("pEntType").value,
+          mainActivity: document.getElementById("pActivity").value.trim(),
+          goals: {
+            marketing: document.getElementById("gMarketing").checked,
+            code: document.getElementById("gCode").checked,
+            content: document.getElementById("gContent").checked,
+            ops: document.getElementById("gOps").checked,
+          },
+          mainTools: document.getElementById("pTools").value.trim(),
+          biggestPain: document.getElementById("pPain").value.trim(),
+          learningStyle: document.getElementById("pLearn").value,
+          hoursPerWeek: document.getElementById("pHours").value ? Number(document.getElementById("pHours").value) : null,
+          autonomyPref: document.getElementById("pAutonomy").value,
+        },
+      };
+      try {
+        const r = await ingest(payload);
+        setStatus(`Профиль сохранён в хаб. quiz=<code>${r.quiz}</code> record=<code>${r.recordId}</code>`, true);
+        toast("Квиз 1 ушёл в систему");
+      } catch (e) {
+        setStatus("Ошибка: " + e.message + "<br>Запусти: <code>powershell -File commands/ecosystem-audit-server.ps1</code>", false);
+      }
+    }
+
+    async function submitFixes() {
+      const payload = {
+        quiz: "fixes",
+        timestamp: new Date().toISOString(),
+        source: "ecosystem-audit-localhost",
+        answers: {
+          satisfaction: {
+            router: ratingValue("satRouter"),
+            coach: ratingValue("satCoach"),
+            notion: ratingValue("satNotion"),
+            mcp: ratingValue("satMcp"),
+            skills: ratingValue("satSkills"),
+            squad: ratingValue("satSquad"),
+          },
+          comments: {
+            router: document.getElementById("txtRouter").value.trim(),
+            coach: document.getElementById("txtCoach").value.trim(),
+            notion: document.getElementById("txtNotion").value.trim(),
+            mcp: document.getElementById("txtMcp").value.trim(),
+            skills: document.getElementById("txtSkills").value.trim(),
+            squad: document.getElementById("txtSquad").value.trim(),
+          },
+          automationPref: Number(document.getElementById("autoPref").value),
+          promptWaterLevel: Number(document.getElementById("waterLevel").value),
+          topFix: document.getElementById("fixNotes").value.trim(),
+          reloadWindowOk: document.getElementById("reloadOk").checked,
+        },
+      };
+      try {
+        const r = await ingest(payload);
+        setStatus(`Приоритеты сохранены. quiz=<code>${r.quiz}</code> record=<code>${r.recordId}</code>`, true);
+        toast("Квиз 2 ушёл в систему");
+      } catch (e) {
+        setStatus("Ошибка: " + e.message + "<br>Запусти: <code>powershell -File commands/ecosystem-audit-server.ps1</code>", false);
+      }
+    }
+
+    async function submitAutomation() {
+      const payload = {
+        quiz: "automation",
+        timestamp: new Date().toISOString(),
+        source: "ecosystem-audit-localhost",
+        answers: {
+          autoOk: {
+            readResearch: document.getElementById("autoRead").checked,
+            lintFix: document.getElementById("autoLint").checked,
+            docs: document.getElementById("autoDocs").checked,
+            localTests: document.getElementById("autoTests").checked,
+            smallRefactor: document.getElementById("autoRefactor").checked,
+            trackingWrite: document.getElementById("autoObsidian").checked,
+          },
+          alwaysAsk: {
+            commit: document.getElementById("askCommit").checked,
+            push: document.getElementById("askPush").checked,
+            deploy: document.getElementById("askDeploy").checked,
+            deleteFiles: document.getElementById("askDelete").checked,
+            mcpWrite: document.getElementById("askMcpWrite").checked,
+            secrets: document.getElementById("askSecrets").checked,
+          },
+          planFirst: {
+            architecture: document.getElementById("planArch").checked,
+            security: document.getElementById("planSecurity").checked,
+            hooksRules: document.getElementById("planHooks").checked,
+            bigRefactor: document.getElementById("planRefactor").checked,
+          },
+          defaultMode: document.getElementById("autoDefault").value,
+          maxParallelAgents: Number(document.getElementById("maxAgents").value),
+          explainStyle: document.getElementById("autoExplain").value,
+          customRules: document.getElementById("autoNotes").value.trim(),
+        },
+      };
+      try {
+        const r = await ingest(payload);
+        setStatus(`Правила автоматизации сохранены. quiz=<code>${r.quiz}</code> record=<code>${r.recordId}</code>`, true);
+        toast("Квиз 3 ушёл в систему");
+      } catch (e) {
+        setStatus("Ошибка: " + e.message + "<br>Запусти: <code>powershell -File commands/ecosystem-audit-server.ps1</code>", false);
+      }
+    }
+  </script>
+</body>
+</html>
