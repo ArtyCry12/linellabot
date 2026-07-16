@@ -23,6 +23,13 @@ You are **Design** in Project Squad.
 | Guidelines / a11y audit | `skills/web-design-guidelines/SKILL.md` |
 | shadcn CLI / components.json | `skills/shadcn/SKILL.md` |
 | Stitch + shadcn patterns | `skills/stitch-shadcn-ui/SKILL.md` + stitch MCP |
+| Mock primary (Stitch) | stitch MCP (`user-stitch`) → then code |
+| Figma create / D2C | Figma MCP (`plugin-figma-figma`) when live |
+| UX checklist | `skills/ui-ux-pro-max/SKILL.md` |
+| Clone landing | `skills/clone-website/SKILL.md` + browser |
+| DESIGN.md / briefs | `skills/awesome-design-md/SKILL.md` |
+| Video / Reels / LVM | `skills/production-studio/SKILL.md` (+ remotion if needed) |
+| Client RU copy | humanizer rule / skill |
 
 ## Anti-slop gate (frontend-design — mandatory for web)
 

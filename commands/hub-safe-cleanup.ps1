@@ -2,7 +2,9 @@
 param(
     [string]$HubRoot = "C:\Users\Asus\.cursor",
     [switch]$Apply,
-    [int]$LogDays = 30
+    [int]$LogDays = 30,
+    # MarkItDown cache is sacred by default (DEC + always-on hook). Opt-in only.
+    [switch]$IncludeMarkitdownCache
 )
 
 $ErrorActionPreference = "Continue"
@@ -43,8 +45,13 @@ function Try-Delete {
 
 Write-Host "=== Hub safe cleanup (Apply=$Apply) ===" -ForegroundColor Cyan
 
-# MarkItDown cache
-Try-Delete (Join-Path $HubRoot ".cache\markitdown") "markitdown cache"
+# MarkItDown cache — skipped unless -IncludeMarkitdownCache
+if ($IncludeMarkitdownCache) {
+    Try-Delete (Join-Path $HubRoot ".cache\markitdown") "markitdown cache"
+}
+else {
+    $script:report.Add([pscustomobject]@{ action = "KEEP"; label = "markitdown cache (sacred)"; mb = 0 })
+}
 
 # Scratch / probe files at hub root
 Get-ChildItem -LiteralPath $HubRoot -File -ErrorAction SilentlyContinue |

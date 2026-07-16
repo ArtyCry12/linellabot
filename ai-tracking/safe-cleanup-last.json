@@ -1,8 +1,27 @@
 ﻿{
-    "checkedAt":  "2026-07-13T22:09:27.1843978Z",
+    "checkedAt":  "2026-07-16T16:34:48.8927984Z",
     "apply":  true,
     "freedMb":  0,
     "rows":  [
-
+                 {
+                     "action":  "KEEP",
+                     "label":  "markitdown cache (sacred)",
+                     "mb":  0
+                 },
+                 {
+                     "action":  "ARC",
+                     "label":  "system-audit-2026-06-16.json",
+                     "mb":  0
+                 },
+                 {
+                     "action":  "ARC",
+                     "label":  "system-audit-2026-06-16.md",
+                     "mb":  0
+                 },
+                 {
+                     "action":  "DEL",
+                     "label":  "projects/1784145882155",
+                     "mb":  0
+                 }
              ]
 }

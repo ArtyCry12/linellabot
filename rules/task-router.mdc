@@ -13,14 +13,17 @@ alwaysApply: true
 
 ## On every user message
 
-1. If prompt contains **`[TASK ROUTE - auto-detected]`** (from hook) — **follow that bundle first**:
+1. If prompt contains **`[TASK ROUTE]`** or **`[TASK ROUTE - auto-detected]`** (from hook) — **follow that bundle first**:
    - Read listed **SKILL.md** before improvising
    - Load listed **rule** if not already active
    - Use listed **MCP** only (one descriptor JSON before first call)
    - Spawn listed **subagent** when scope is large or parallel
    - Respect **Mode** hint (plan / agent / debug / ask)
-2. Do **not** load unrelated skills/MCP "just in case"
-3. **Autopilot** (`!auto`, `/autopilot`) overrides — full automation rights apply
+2. **Route echo (Boss-facing):** в **первом** блоке ответа (2–4 строки) напиши:
+   `Подключил: <skill> · <MCP если есть> · <subagent если есть>`
+   Если матчей несколько — Primary первым, Secondary через `;`.
+3. Do **not** load unrelated skills/MCP "just in case"
+4. **Autopilot** (`!auto`, `/autopilot`) overrides — full automation rights apply
 
 ## Fallback (no hook block)
 

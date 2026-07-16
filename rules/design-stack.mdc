@@ -1,33 +1,56 @@
 ---
 description: >-
-  Design stack — tailwind, shadcn, iconify, fontsource, motion (REQ-042–046).
-  Triggers design stack, shadcn block, selling site, landing page CRO.
+  Design stack — full hub matrix post-S2/S3 (Stitch, shadcn, frontend-design,
+  taste, impeccable, guidelines, huashu, 21st, clone). Triggers: design stack,
+  shadcn block, selling site, landing CRO, anti-slop.
 alwaysApply: false
 ---
 
 # Design stack
 
 Load skill: `skills/design-stack/SKILL.md`  
-Manifest: `docs/knowledge-base/DESIGN-STACK-MANIFEST.md`
+Manifest: `docs/knowledge-base/DESIGN-STACK-MANIFEST.md`  
+Squad routing: `agents/squad-design.md`
 
-## Priority order (REQ-045)
+## Full matrix (artifact → tool)
 
-1. **shadcn registry** — `@21st-dev/magic` MCP + `21st-design` skill (browse/install, no copy-paste)
-2. **context7** — library docs before custom code
-3. **iconify** MCP — icon search
-4. **huashu-design** — prototypes/decks when not React
-5. Custom Tailwind — last resort
+| Слой | Что | Когда |
+|------|-----|--------|
+| **Mock primary** | Stitch MCP + `skills/stitch-shadcn-ui` | Быстрые UI mockups |
+| **Компоненты** | `skills/shadcn` (CLI first); fallback `skills/21st-design` + Magic MCP | Web app / blocks |
+| **Figma** | `plugin-figma-figma` / `user-figma` | D2C / create file when MCP live |
+| **Anti-slop web** | `skills/frontend-design` (**required gate**) | Любой web UI / landing / dashboard |
+| **Taste depth** | `skills/design-taste-frontend` | Landings / portfolios |
+| **Polish / critique** | `skills/impeccable` | Craft / audit / polish pass |
+| **Guidelines / a11y** | `skills/web-design-guidelines` | Review vs Vercel Web Interface Guidelines |
+| **React stack / CRO** | `skills/design-stack` + this rule | Tailwind/shadcn/fonts/CRO |
+| **Deck / HTML / PPTX** | `skills/huashu-design` | Не React-код |
+| **Clone landing** | `skills/clone-website` + browser | Копия сайта |
+| **UX checklist** | `skills/ui-ux-pro-max` | Audit UX до handoff |
+| **DESIGN.md** | `skills/awesome-design-md` | Design system docs |
+| **Video motion** | `skills/remotion`, `skills/production-studio` | Motion/Reels |
+| **Copy** | humanizer | Клиентский RU текст |
+| **Personas (max 1)** | agency `@ui-designer` / `@brand-guardian` / `@whimsy-injector` | Глубина |
 
-## Selling sites (REQ-046)
+## Priority order
 
-Hooks, CTA placement, attention hierarchy — see `skills/design-stack/SKILL.md` § CRO patterns.  
-Not dependent on visual style; structure first.
+1. **frontend-design** gate for any web UI
+2. **shadcn** CLI / registry; 21st Magic as browse/install aid
+3. **taste** / **impeccable** / **guidelines** as needed
+4. **context7** + **iconify** for docs/icons
+5. **huashu-design** when not React
+6. Custom Tailwind — last resort
+
+## Handoff to Build
+
+Echo: `Applied: [skill1, skill2, …]` + anti-slop checklist (aesthetic, type, palette, motion, differentiation).
 
 ## MCP
 
 | Need | Route |
 |------|-------|
-| shadcn blocks | plugin shadcn + 21st magic |
-| Icons | iconify MCP |
+| shadcn / 21st | `skills/shadcn`, plugin shadcn, `@21st-dev/magic` |
+| Stitch | `user-stitch` + `stitch-shadcn-ui` |
+| Icons | iconify |
 | Docs | context7 |
 | Figma | plugin-figma-figma |
