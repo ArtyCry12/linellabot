@@ -7,7 +7,7 @@
 - Dual-review protocol (`skills/pr-review`, `agents/squad-review`)
 - `hub-safe-cleanup` protects markitdown; Apply run
 - Chat digest → `commands/chat-digest.ps1`
-- Deep-dive plan rebuilt → `plans/2026-07-16-hub-deep-dive-fixes.md` + Cursor plan `hub_deep_dive_fixes_89b4cfe0.plan.md`
+- Deep-dive plan rebuilt → [`plans/hub-deep-dive-fixes.md`](../plans/hub-deep-dive-fixes.md) (единственный)
 - Tests: task-router + find-skills PASS
 
 ## Open / backlog
