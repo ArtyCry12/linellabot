@@ -105,27 +105,24 @@ function Format-TaskRouteContext {
     }
 
     $lines = @(
-        "[TASK ROUTE - auto-detected from your message]",
-        "Follow this bundle before loading unrelated skills/MCP. Read SKILL.md when listed.",
+        "[TASK ROUTE]",
+        "Use listed skill/MCP first. Read SKILL.md when named.",
         ""
     )
 
     $i = 0
     foreach ($m in $ResolveResult.Matches) {
         $i++
-        $rank = if ($i -eq 1) { "Primary" } else { "Secondary" }
-        $lines += "## ${rank}: $($m.Label) (score $($m.Score))"
-        if ($m.Mode) { $lines += "- Mode: $($m.Mode)" }
-        if ($m.Skill) { $lines += "- Skill: $($m.Skill)" }
-        if ($m.Rule) { $lines += "- Rule: $($m.Rule)" }
-        if ($m.Mcp -and $m.Mcp.Count -gt 0) { $lines += "- MCP: $($m.Mcp -join ', ')" }
-        if ($m.Commands -and $m.Commands.Count -gt 0) { $lines += "- Commands: $($m.Commands -join ', ')" }
-        if ($m.Subagent -and $m.Subagent.Count -gt 0) { $lines += "- Subagent: $($m.Subagent -join ', ')" }
-        if ($m.Docs -and $m.Docs.Count -gt 0) { $lines += "- Docs: $($m.Docs -join ', ')" }
-        $lines += "- Signals: $($m.Hits -join '; ')"
-        $lines += ""
+        $rank = if ($i -eq 1) { "P" } else { "S" }
+        $bits = @("${rank}:$($m.Id)")
+        if ($m.Mode) { $bits += "mode=$($m.Mode)" }
+        if ($m.Skill) { $bits += "skill=$($m.Skill)" }
+        if ($m.Mcp -and $m.Mcp.Count -gt 0) { $bits += ("mcp=" + ($m.Mcp -join ",")) }
+        if ($m.Subagent -and $m.Subagent.Count -gt 0 -and $i -eq 1) {
+            $bits += ("sub=" + (($m.Subagent | Select-Object -First 4) -join ","))
+        }
+        $lines += ($bits -join " | ")
     }
 
-    $lines += "Registry: SYSTEM-REGISTRY.md | Tree: rules/auto-orchestrator.mdc"
     return ($lines -join "`n")
 }

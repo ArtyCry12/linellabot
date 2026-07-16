@@ -15,9 +15,10 @@ alwaysApply: false
 
 ## Action
 
-1. Read `skills/n8n-workflow/SKILL.md`
-2. Route via `skill-index.md` to `references/*.md`
-3. If `n8n-mcp` connected — use live `search_nodes`, `validate_*`, deploy tools after applying rules
+1. For **starting from a template**: `skills/n8n-templates/SKILL.md` + `commands/n8n-templates-match.ps1`
+2. Read `skills/n8n-workflow/SKILL.md`
+3. Route via `skill-index.md` to `references/*.md`
+4. If `n8n-mcp` connected — use live `search_nodes`, `validate_*`, deploy tools after applying rules
 
 ## Do not
 

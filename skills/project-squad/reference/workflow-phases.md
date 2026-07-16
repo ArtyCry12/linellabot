@@ -35,6 +35,7 @@ Only if UI/UX/motion in scope.
 ## Phase 7 — Growth (optional, `squad-growth`)
 
 - `/seo-geo`, performance-optimizer.
+- **CrewAI marketing crew:** `commands/crew-plan.ps1 -Crew marketing -Topic "<topic>"` then sequential squad-growth steps (research → strategy → copy → audit). See `skills/project-squad/reference/crew-ai-bridge.md`.
 
 ## Phase 8 — Cleanup (`squad-cleanup`, Composer)
 

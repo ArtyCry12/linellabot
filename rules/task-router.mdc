@@ -9,6 +9,8 @@ alwaysApply: true
 
 **Manifest:** `lib/task-router/routes.json` · **Hook:** `hooks/task-router.ps1` · **Tree:** `rules/auto-orchestrator.mdc`
 
+Пользователь **не обязан** писать `@seo`, `@n8n`, `markitdown` и т.д. — hook классифицирует каждый промпт и подставляет skill/MCP/subagent сам.
+
 ## On every user message
 
 1. If prompt contains **`[TASK ROUTE - auto-detected]`** (from hook) — **follow that bundle first**:
