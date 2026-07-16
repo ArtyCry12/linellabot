@@ -1,6 +1,6 @@
 ---
 name: squad-build
-model: claude-sonnet-5[thinking=true,context=1m,effort=medium]
+model: gpt-5.3-codex[reasoning=high,fast=false]
 description: Project Squad builder. Implements TypeScript/React/Next.js with minimal diffs. Use mattpocock-skills, nextjs, shadcn. Use after architect plan approved.
 ---
 

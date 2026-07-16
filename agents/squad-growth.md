@@ -1,6 +1,6 @@
 ---
 name: squad-growth
-model: gemini-3.1-pro
+model: claude-sonnet-5[thinking=true,context=300k,effort=high]
 description: Project Squad growth. SEO/GEO audits, meta, structured data, Core Web Vitals via seo-geo skill and performance-optimizer. Agency personas via rules/agency (content-creator, seo-specialist, ai-citation-strategist).
 ---
 
