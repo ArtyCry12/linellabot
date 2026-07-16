@@ -156,7 +156,54 @@
       "rule": "rules/design-stack.mdc",
       "subagent": ["squad-design", "squad-build"],
       "mode": "agent",
-      "note": "Deck/HTML/motion -> huashu-design route. Web app -> this route."
+      "note": "Deck/HTML/motion -> huashu-design route. Web app -> this route. Pair taste/impeccable/guidelines as needed."
+    },
+    {
+      "id": "web-design-guidelines",
+      "label": "Vercel Web Interface Guidelines audit",
+      "keywords": ["web guidelines", "interface guidelines", "a11y audit", "accessibility audit", "review my ui", "audit design"],
+      "phrases": ["check against guidelines", "web interface guidelines"],
+      "tags": ["@web-design-guidelines"],
+      "skill": "skills/web-design-guidelines/SKILL.md",
+      "mode": "agent"
+    },
+    {
+      "id": "shadcn",
+      "label": "Official shadcn/ui CLI skill",
+      "keywords": ["shadcn init", "components.json", "shadcn add", "shadcn preset"],
+      "phrases": ["add shadcn component", "shadcn cli"],
+      "tags": ["@shadcn"],
+      "skill": "skills/shadcn/SKILL.md",
+      "mode": "agent",
+      "note": "Official shadcn/ui. Stitch path -> stitch-shadcn-ui. 21st Magic -> 21st-design."
+    },
+    {
+      "id": "stitch-shadcn-ui",
+      "label": "Stitch + shadcn-ui (Google Labs)",
+      "keywords": ["stitch shadcn", "stitch ui", "stitch component"],
+      "tags": ["@stitch-shadcn"],
+      "skill": "skills/stitch-shadcn-ui/SKILL.md",
+      "mcp": ["user-stitch"],
+      "mode": "agent"
+    },
+    {
+      "id": "design-taste-frontend",
+      "label": "Taste skill anti-slop (landings/portfolios)",
+      "keywords": ["design taste", "taste skill", "анти-слоп", "anti-slop landing", "portfolio redesign"],
+      "tags": ["@design-taste"],
+      "skill": "skills/design-taste-frontend/SKILL.md",
+      "subagent": ["squad-design"],
+      "mode": "agent"
+    },
+    {
+      "id": "impeccable",
+      "label": "Impeccable craft / polish / critique",
+      "keywords": ["impeccable", "polish ui", "design critique", "craft ui", "shape ui"],
+      "phrases": ["impeccable polish", "impeccable audit"],
+      "tags": ["@impeccable"],
+      "skill": "skills/impeccable/SKILL.md",
+      "subagent": ["squad-design"],
+      "mode": "agent"
     },
     {
       "id": "pr-review",

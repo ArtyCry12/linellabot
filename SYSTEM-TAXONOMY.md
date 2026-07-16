@@ -9,7 +9,8 @@ Canonical **22-domain** map for routing tasks to skills, MCP, subagents, and ext
 
 See **`ai-tracking/skills-taxonomy-s2.md`** — ACTIVE / ON-DEMAND / ARCHIVE.  
 MCP tiers: **`ai-tracking/mcp-plugin-tiers-s2.md`** + `lib/mcp-router/McpTier.ps1`.  
-Design replace candidates (list only): **`ai-tracking/design-replace-candidates-s2.md`**.
+Design candidates: **`ai-tracking/design-replace-candidates-s2.md`** (**installed** 2026-07-16; remotion optional).  
+Other domains (SEO, n8n, engineering, content, security) — list only: **`ai-tracking/hub-replace-candidates-other-s2.md`**.
 
 ---
 

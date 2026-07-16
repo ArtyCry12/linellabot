@@ -1,10 +1,11 @@
-# Design skills — replace candidates (list only · Session 2)
+# Design skills — replace candidates (Session 2 → installed)
 
-Policy: Design is the most replace-eligible domain. No installs in this pass — wait for explicit Да.
+Policy: Design is the most replace-eligible domain.  
+**Status 2026-07-16:** approved rows **installed** (remotion left optional).
 
-Liquidity from [skills.sh](https://www.skills.sh/) (Jul 2026 probes + leaderboard).
+Liquidity from [skills.sh](https://www.skills.sh/).
 
-## Keep for now (wired sacred-adjacent)
+## Keep (wired sacred-adjacent)
 
 | Hub skill | Role |
 |-----------|------|
@@ -16,26 +17,23 @@ Liquidity from [skills.sh](https://www.skills.sh/) (Jul 2026 probes + leaderboar
 | ui-ux-pro-max | UX checklist |
 | awesome-design-md | DESIGN.md |
 
-## Suboptimal / gap vs catalog
+## Installed (2026-07-16)
 
-| Hub pain | Better candidate (skills.sh) | Installs (approx) | Suggested install cmd |
-|----------|------------------------------|-------------------|------------------------|
-| No Vercel web guidelines skill | `vercel-labs/agent-skills@web-design-guidelines` | **466K** | `npx skills add vercel-labs/agent-skills -s web-design-guidelines` |
-| shadcn not first-class skill | `shadcn/ui@shadcn` | **237K** | `npx skills add shadcn/ui -s shadcn` |
-| Stitch skill missing (MCP only) | `google-labs-code/stitch-skills@shadcn-ui` | **45K** | `npx skills add google-labs-code/stitch-skills -s shadcn-ui` |
-| Taste / anti-slop depth | `leonxlnx/taste-skill@design-taste-frontend` or `high-end-visual-design` | **200K+** (leaderboard) | `npx skills add leonxlnx/taste-skill -s design-taste-frontend` |
-| Impeccable polish suite | `pbakaus/impeccable` (polish/critique/…) | **~195K** | `npx skills add pbakaus/impeccable` |
-| remotion duplicate of production-studio | Consider `remotion-dev/skills@remotion-best-practices` (428K) **or** archive remotion skill later | 428K | Optional later |
-| Low-signal frontend-design forks | Avoid nexu-io forks unless Anthropic skill drifts | 1–3K | Skip |
+| Candidate | Upstream path | Hub wrapper | Route id |
+|-----------|---------------|-------------|----------|
+| `vercel-labs/agent-skills@web-design-guidelines` | `~/.agents/skills/web-design-guidelines` | `skills/web-design-guidelines/` | `web-design-guidelines` |
+| `shadcn/ui@shadcn` | `~/.agents/skills/shadcn` | `skills/shadcn/` | `shadcn` |
+| `google-labs-code/stitch-skills@shadcn-ui` | `~/.agents/skills/shadcn-ui` | `skills/stitch-shadcn-ui/` | `stitch-shadcn-ui` |
+| `leonxlnx/taste-skill@design-taste-frontend` | `~/.agents/skills/design-taste-frontend` | `skills/design-taste-frontend/` | `design-taste-frontend` |
+| `pbakaus/impeccable` | `~/.agents/skills/impeccable` | `skills/impeccable/` | `impeccable` |
 
-## Integration plan (when you say Да)
+## Still optional
 
-1. Install only approved rows via `npx skills add … -g -y`.
-2. Hub wrapper under `skills/<name>/SKILL.md` (thin) OR rely on `.agents/skills` + route.
-3. Add/adjust `routes.json` keywords; do **not** remove huashu/frontend-design until smoke test.
-4. Update `squad-design.md` matrix (routing only; models untouched).
-5. Run `find-skills-test` + design route samples.
+| Item | Notes |
+|------|-------|
+| `remotion-dev/skills@remotion-best-practices` | Overlaps production-studio — install only if Boss says |
+| nexu-io frontend-design forks | Skip |
 
-## Not installing now
+## Other domains (list only — not installed)
 
-Await: AskQuestion with selected IDs from the table above.
+See **`ai-tracking/hub-replace-candidates-other-s2.md`** (SEO, n8n, eng/QA, content, security).
