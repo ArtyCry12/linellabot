@@ -1,0 +1,83 @@
+﻿19:45:30 DELETED extensions/
+19:45:30 DELETED libraries/huashu-design
+19:46:01 DELETED skills-libraries/
+19:47:00 DELETED clone-website template node_modules
+19:47:34 DELETED root node_modules
+19:47:36 DELETED root .next
+19:47:37 DELETED skills/Cursor.lnk
+19:47:56 DELETED projects/linellabotprojet node_modules
+19:47:56 DELETED projects/linellabotprojet .next
+19:47:56 DELETED projects/1776263132426
+19:47:56 DELETED projects/1776264314345
+19:47:56 DELETED projects/1776264314517
+19:47:56 DELETED projects/1776337290320
+19:47:56 DELETED projects/1776424569509
+19:47:56 DELETED projects/1776516759273
+19:47:56 DELETED projects/1776516781157
+19:47:56 DELETED projects/1776596998503
+19:47:57 DELETED projects/1776679948449
+19:47:57 DELETED projects/1777563161309
+19:47:57 DELETED projects/1777722039792
+19:47:57 DELETED projects/1777722039921
+19:47:57 DELETED projects/1778681084410
+19:47:57 DELETED projects/1778681251904
+19:47:57 DELETED projects/1778682162823
+19:47:57 DELETED projects/1779284872260
+19:47:57 DELETED projects/1779286691559
+19:47:57 DELETED projects/1779289317799
+19:47:57 DELETED projects/1779375167678
+19:47:57 DELETED projects/1780060964965
+19:47:57 DELETED projects/1781027923343
+19:47:57 DELETED projects/1781032276746
+19:47:57 DELETED fix.txt
+19:47:57 DELETED init_fix.txt
+19:47:57 DELETED _do_commit2.bat
+19:47:57 DELETED _do_pull_push.bat
+19:47:57 DELETED _do_push.bat
+19:47:57 DELETED _dump_app_user.py
+19:47:57 DELETED _find_rules_in_appuser.py
+19:47:57 DELETED _find_rule_substring.py
+19:47:57 DELETED _finish_cherry.bat
+19:47:57 DELETED _probe2.py
+19:47:57 DELETED _probe3.py
+19:47:57 DELETED _probe4.py
+19:47:58 DELETED _probe5.py
+19:47:58 DELETED _probe6.py
+19:47:58 DELETED _probe7.py
+19:47:58 DELETED _probe_cursor_db.py
+19:47:58 DELETED _read_aisettings.py
+19:47:58 DELETED _read_app_user.py
+19:47:58 DELETED _scan_all_db.py
+19:47:58 DELETED _stash_pull_push.bat
+19:47:58 MOVED meloai-site -> C:\Users\Asus\projects\meloai-site
+19:47:58 MOVED nano-banana-mcp -> C:\Users\Asus\projects\nano-banana-mcp
+19:47:58 MOVED gelentwagen-newlook-site -> C:\Users\Asus\projects\gelentwagen-newlook-site
+19:47:58 MOVED stitch-mcp -> C:\Users\Asus\projects\stitch-mcp
+19:47:58 MOVED ui-project -> C:\Users\Asus\projects\ui-project
+19:47:58 MOVED linellabotprojet -> C:\Users\Asus\projects\linellabotprojet
+19:47:58 MOVED flash-tokens-trust -> C:\Users\Asus\projects\flash-tokens-trust
+19:47:58 MOVED neo-car-site2 -> C:\Users\Asus\projects\neo-car-site2
+19:47:58 MOVED AiManager-project -> C:\Users\Asus\projects\AiManager-project
+19:47:58 MOVED neo-car-site1 -> C:\Users\Asus\projects\neo-car-site1
+19:47:58 MOVED my-3d-agency -> C:\Users\Asus\projects\my-3d-agency
+19:47:59 DELETED hub .cursor/rules duplicate
+19:47:59 DELETED skills/seo-geo-alert-manager
+19:47:59 DELETED skills/seo-geo-backlink-analyzer
+19:47:59 DELETED skills/seo-geo-competitor-analysis
+19:47:59 DELETED skills/seo-geo-content-gap-analysis
+19:47:59 DELETED skills/seo-geo-content-quality-auditor
+19:47:59 DELETED skills/seo-geo-content-refresher
+19:48:00 DELETED skills/seo-geo-domain-authority-auditor
+19:48:00 DELETED skills/seo-geo-entity-optimizer
+19:48:00 DELETED skills/seo-geo-geo-content-optimizer
+19:48:00 DELETED skills/seo-geo-internal-linking-optimizer
+19:48:00 DELETED skills/seo-geo-keyword-research
+19:48:00 DELETED skills/seo-geo-memory-management
+19:48:00 DELETED skills/seo-geo-meta-tags-optimizer
+19:48:00 DELETED skills/seo-geo-on-page-seo-auditor
+19:48:00 DELETED skills/seo-geo-performance-reporter
+19:48:00 DELETED skills/seo-geo-rank-tracker
+19:48:00 DELETED skills/seo-geo-schema-markup-generator
+19:48:00 DELETED skills/seo-geo-seo-content-writer
+19:48:00 DELETED skills/seo-geo-serp-analysis
+19:48:00 DELETED skills/seo-geo-technical-seo-checker

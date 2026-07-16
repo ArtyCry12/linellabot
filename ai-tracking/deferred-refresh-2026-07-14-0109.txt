@@ -1,0 +1,4 @@
+﻿01:09:26 Deferred refresh started (SafeNow=True)
+01:09:26 Running hub-safe-cleanup.ps1
+01:09:27 SafeNow mode: skip wait and heavy locked cleanup
+01:09:27 Pending flag set for full cleanup after Cursor exit

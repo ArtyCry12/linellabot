@@ -1,0 +1,10 @@
+{
+  "quiz": "automation",
+  "timestamp": "2026-07-10T19:05:00Z",
+  "source": "agent-verify",
+  "answers": {
+    "defaultMode": "confirm-writes",
+    "explainStyle": "plain",
+    "maxParallelAgents": 2
+  }
+}

@@ -1,0 +1,8 @@
+﻿21:33:29 DELETED extensions/
+21:33:37 FAILED delete skills-libraries/
+21:33:37 DELETED projects/1781285722705
+21:33:37 DELETED projects/C-Users-Asus-AppData-Local-Temp-3434e2c1-3340-4ea5-945e-10fe3bdfacc4
+21:33:38 DELETED projects/C-Users-Asus-AppData-Local-Temp-8937cc18-810f-4025-91b4-2136e8ae1273
+21:33:39 DELETED projects/C-Users-Asus-AppData-Local-Temp-a16f9590-5cab-4cbe-9ce5-5f7e7c7872ec
+21:33:39 MOVED InCruises -> C:\Users\Asus\projects\InCruises
+21:33:52 DELETED hub .cursor/rules duplicate

@@ -1,0 +1,40 @@
+﻿{
+    "version":  1,
+    "sessionId":  "20260710-210700-d4e9b6af",
+    "objective":  "test creative loop",
+    "context":  "",
+    "maxTasks":  12,
+    "createdAt":  "2026-07-10T18:07:00.9841489Z",
+    "status":  "active",
+    "tasks":  [
+                  {
+                      "id":  "t1",
+                      "description":  "Brainstorm 5 distinct angles for the objective",
+                      "status":  "done",
+                      "priority":  1,
+                      "createdAt":  "2026-07-10T18:07:00.9741553Z",
+                      "completedAt":  "2026-07-10T18:07:01.7298707Z"
+                  },
+                  {
+                      "id":  "t2",
+                      "description":  "Pick the strongest angle and outline 3 concrete deliverables",
+                      "status":  "pending",
+                      "priority":  2,
+                      "createdAt":  "2026-07-10T18:07:00.9831486Z"
+                  },
+                  {
+                      "id":  "t3",
+                      "description":  "Draft the first deliverable (minimal viable artifact)",
+                      "status":  "pending",
+                      "priority":  3,
+                      "createdAt":  "2026-07-10T18:07:00.9831486Z"
+                  },
+                  {
+                      "id":  "t4",
+                      "description":  "follow-up idea A",
+                      "status":  "pending",
+                      "priority":  10,
+                      "createdAt":  "2026-07-10T18:07:01.8091579Z"
+                  }
+              ]
+}

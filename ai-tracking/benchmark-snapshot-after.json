@@ -1,0 +1,47 @@
+﻿{
+    "capturedAt":  "2026-07-13T16:10:29.4924950Z",
+    "phase":  "after-C-D-E",
+    "categories":  [
+                       "Автономия",
+                       "Task Router",
+                       "MCP",
+                       "Тесты hub",
+                       "Доки",
+                       "Цена токенов",
+                       "Rules/skills",
+                       "ai-tracking",
+                       "Интеграции",
+                       "Ясность !auto"
+                   ],
+    "now":  [
+                8.3,
+                9.0,
+                8.3,
+                7.8,
+                8.0,
+                7.3,
+                7.5,
+                7.2,
+                8.2,
+                7.7
+            ],
+    "target":  [
+                   9.0,
+                   9.0,
+                   8.5,
+                   8.0,
+                   8.5,
+                   8.0,
+                   8.5,
+                   8.0,
+                   9.0,
+                   8.5
+               ],
+    "signals":  {
+                    "testScripts":  12,
+                    "userProfileRule":  true,
+                    "mcpHealth":  true,
+                    "hubGate":  true,
+                    "personalizationTest":  true
+                }
+}
