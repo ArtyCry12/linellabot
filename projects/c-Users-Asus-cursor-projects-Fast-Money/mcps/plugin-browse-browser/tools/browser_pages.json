@@ -1,0 +1,12 @@
+{
+  "name": "browser_pages",
+  "description": "List all open browser tabs.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

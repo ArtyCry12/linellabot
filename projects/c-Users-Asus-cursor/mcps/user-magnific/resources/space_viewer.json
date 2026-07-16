@@ -1,0 +1,6 @@
+{
+  "uri": "ui://spaces/viewer",
+  "name": "space_viewer",
+  "description": "Renders a Pikaso space and its elements inline as an MCP App.",
+  "mimeType": "text/html;profile=mcp-app"
+}

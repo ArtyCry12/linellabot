@@ -1,0 +1,18 @@
+{
+  "name": "vault_get_document_map",
+  "description": "Return the structure of a vault file as a document map: the list of heading paths, block reference IDs, and frontmatter field names present in the file. Use this before vault_read or vault_patch with targeting to discover what targets are available without parsing the full markdown content yourself.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "File path relative to vault root"
+      }
+    },
+    "required": [
+      "path"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

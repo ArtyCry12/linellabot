@@ -1,0 +1,62 @@
+{
+  "name": "update-webhook",
+  "description": "Update an existing webhook in Resend. You can change the endpoint URL, subscribed events, or enable/disable the webhook.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "webhookId": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Webhook ID"
+      },
+      "endpoint": {
+        "description": "New URL where webhook events will be sent",
+        "type": "string",
+        "format": "uri"
+      },
+      "events": {
+        "description": "New array of event types to subscribe to",
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "email.sent",
+            "email.scheduled",
+            "email.delivered",
+            "email.delivery_delayed",
+            "email.complained",
+            "email.bounced",
+            "email.opened",
+            "email.clicked",
+            "email.received",
+            "email.failed",
+            "email.suppressed",
+            "contact.created",
+            "contact.updated",
+            "contact.deleted",
+            "domain.created",
+            "domain.updated",
+            "domain.deleted"
+          ]
+        }
+      },
+      "status": {
+        "description": "Webhook status",
+        "type": "string",
+        "enum": [
+          "enabled",
+          "disabled"
+        ]
+      }
+    },
+    "required": [
+      "webhookId"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

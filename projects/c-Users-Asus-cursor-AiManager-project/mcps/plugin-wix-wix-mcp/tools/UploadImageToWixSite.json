@@ -1,0 +1,51 @@
+{
+  "name": "UploadImageToWixSite",
+  "description": "Upload an image to a Wix site's Media Manager.\nReturns the uploaded file URL (wixstatic.com) and media ID usable in other Wix APIs.\n\n⚠️ You MUST provide image data — calling this tool without image data will fail.\n\nChoose ONE of the two supported input methods:\n\nOption A — Base64 (for clients that can read and encode files):\n  Read the file, encode it as base64, and pass siteId + imageBase64 + mimeType.\n\nOption B — URL (for any client that provides a public download URL):\n  Pass siteId + image (with download_url).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "The ID of the Wix site to upload to"
+      },
+      "displayName": {
+        "type": "string",
+        "description": "Optional display name for the file in Media Manager. If not provided, uses the original filename."
+      },
+      "image": {
+        "type": "object",
+        "properties": {
+          "download_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "file_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "download_url"
+        ],
+        "additionalProperties": false,
+        "description": "Use when the client can supply a public download URL for the image. Pass the download_url; file_id is optional metadata. Do NOT use together with imageBase64."
+      },
+      "imageBase64": {
+        "type": "string",
+        "description": "Base64-encoded image data. Use when the client can read a file and encode it as base64 (e.g. claude.ai). May include a data URL prefix (e.g. \"data:image/jpeg;base64,...\") or be raw base64. Do NOT use together with image."
+      },
+      "mimeType": {
+        "type": "string",
+        "description": "MIME type of the image (e.g. \"image/jpeg\", \"image/png\", \"image/webp\"). Required when imageBase64 does not include a data URL prefix."
+      }
+    },
+    "required": [
+      "siteId"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "wix",
+  "marketplace": "cursor-public",
+  "pluginId": "761",
+  "marketplaceId": "34"
+}

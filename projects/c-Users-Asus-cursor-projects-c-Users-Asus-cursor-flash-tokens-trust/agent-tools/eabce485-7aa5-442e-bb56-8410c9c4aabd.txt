@@ -1,0 +1,1564 @@
+=== LINE 374 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\types.ts
+export type WithdrawalStatus =
+  | "pending_claim"
+  | "pending_payment"
+  | "completed"
+  | "expired";
+
+export interface RefUser {
+  wallet_address: string;
+  ref_code: string;
+  referred_by: string | null;
+  total_earned: number;
+  total_withdrawn: number;
+  available_balance: number;
+  created_at: string;
+}
+
+export interface RefEarning {
+  id: string;
+  earner_wallet: string;
+  from_wallet: string;
+  amount_usd: number;
+  purchase_id: string | null;
+  created_at: string;
+}
+
+export interface RefWithdrawal {
+  id: string;
+  wallet_address: string;
+  amount_usd: number;
+  token: string;
+  status: WithdrawalStatus;
+  expires_at: string;
+  telegram_user_id: string | null;
+  created_at: string;
+  completed_at: string | null;
+}
+
+export interface RefReferralRow {
+  wallet_address: string;
+  created_at: string;
+  purchase_count: number;
+}
+
+export interface PendingWithdrawalView {
+  token: string;
+  amount: number;
+  status: WithdrawalStatus;
+  expiresAt: string;
+}
+
+export interface ReferralStatsResponse {
+  refCode: string;
+  referralLink: string;
+  availableBalance: number;
+  totalEarned: number;
+  totalWithdrawn: number;
+  referralsCount: number;
+  earnings: Array<{
+    id: string;
+    fromWallet: string;
+    amountUsd: number;
+    purchaseUsd: number;
+    createdAt: string;
+  }>;
+  referrals: Array<{
+    wallet: string;
+    joinedAt: string;
+    purchaseCount: number;
+  }>;
+  pendingWithdrawal: PendingWithdrawalView | null;
+  registered: boolean;
+}
+
+export interface WithdrawResponse {
+  token: string;
+  amount: number;
+  expiresAt: string;
+}
+
+=== LINE 374 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\constants.ts
+export const REF_COOKIE_NAME = "ref_attribution";
+export const REF_STORAGE_KEY = "ref_attribution";
+export const REF_COOKIE_MAX_AGE_DAYS = 30;
+export const REF_COOKIE_MAX_AGE_SEC = REF_COOKIE_MAX_AGE_DAYS * 24 * 60 * 60;
+
+export const COMMISSION_RATE = 0.1;
+export const MIN_WITHDRAW_USD = 5;
+export const WITHDRAW_COOLDOWN_MS = 5 * 60 * 1000;
+export const WITHDRAW_TOKEN_TTL_HOURS = 24;
+
+export const REF_CODE_LENGTH = 8;
+
+=== LINE 374 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\copy.ts
+/** Russian UI copy for referral section */
+export const referralCopy = {
+  eyebrow: "����������� ���������",
+  title: "����������� � ��������� 10%",
+  subtitle:
+    "���������� ������ � �������� ������������ ������. ���� ������� ������� �, ��������� ������ � ����� USDT � BNB Chain, �� �������� 10% �� ����� �������. ����� �� $5 ����� Telegram-����.",
+  progressLabel: "� ���� ������",
+  statsHelper:
+    "����� �������� �� $5.00 �� �������. ���� ������ �������, ����� ���������� �� ������������� ������ ��� ��������� ����� (24 �).",
+  stats: {
+    invited: "����������",
+    invitedHint: "��������, ������������������ �� ����� ������",
+    available: "��������",
+    availableHint: "�� � �������� ������ �� �����",
+    totalEarned: "����� ����������",
+    totalEarnedHint: "��� ����������� ��������",
+    withdrawn: "��������",
+    withdrawnHint: "��� ���������",
+  },
+  steps: {
+    connect: {
+      title: "���������� ������",
+      done: "�� � ����������� ���������",
+      pending: "���������� Trust Wallet � �����",
+      description:
+        "������ � ��� �������. ��� ������ ����������� �� ������������� ������ ����������� ��� (8 �������� �� ������). ��� email. ��������� ����������� ���� �� �������� ��������� ����������.",
+    },
+    link: {
+      title: "���������� ����������� ������",
+      done: "������ ����� ����������",
+      pending: "������� ���������� ������",
+      description:
+        "� ������ �������� ?ref= � ��� ���. �� ��������� ��� � �������� �� 30 ���� (localStorage � cookie). ��� ����������� �������� ����������� �������� ���� ���. ������� �������� ����� ������. ���� ������ ������������ ������.",
+      copy: "���������� ������",
+      copied: "������ �����������",
+      yourCode: "��� ���",
+      invited: "����������",
+    },
+    purchases: {
+      title: "���� �������� USDT on-chain",
+      done: "���� ����������",
+      pending: "��� ������� �� ����� ������",
+      description:
+        "������� ��������� ����� �������� ������� � BNB Smart Chain (Moralis). ���� ���������� ������ �� ����� ������ � ��� ��������� ������, �� ��������� 10% �� ����� ������� � USD. ������: ������� �� $50 � ���������� $5.00. ������ ���������� �������������� ���� ���.",
+      empty: "���� ��� ������� ���������. ����� ������� ���� ������, ���������� ������ � ������ ����� �������.",
+      recent: "�������� ����������",
+    },
+    withdraw: {
+      title: "����� ����� Telegram",
+      description:
+        "������� ��������, ����� ���������� ��������� ����� � �������� ������� ���� /withdraw WD-XXXXXXXX. ��������� � ���� � Telegram � ������� 24 �����. ����� �������� ����� ������� �������������� ������� (������ �� 24 �). ������ ���� �������� ������. ��������� ������ � �� ���� ��� ��� � 5 �����.",
+      minTooltip: "����������� ������ ��� ������ � $5.00",
+      rateLimit: "��������� ��������� ����� ����� ����� ������� �� �����.",
+      finishTelegram: "��������� � Telegram",
+      payoutProgress: "������� � ���������",
+    },
+  },
+  referralsList: {
+    title: "��� ������� �� ����� ������",
+    empty: "���� ����� �� ����������� �� ����� ������.",
+    purchases: (n: number) =>
+      n === 1 ? "1 �������" : n >= 2 && n <= 4 ? `${n} �������` : `${n} �������`,
+  },
+  pendingBanner: {
+    pending_claim: (amount: string, token: string, bot: string) =>
+      `�� ������ **${amount}**. ��������� \`/withdraw ${token}\` ���� @${bot} �� ��������� �������.`,
+    pending_payment:
+      "�� �������� ������ � Telegram. ������� ��������������. ��� �������, ����� ����� ������.",
+  },
+  modal: {
+    title: "����� ����� Telegram",
+    amountHeld: (amount: string) =>
+      `**${amount}** ����� ����������, ���� �� �� ��������� ��� �� ������� ���� ������`,
+    instruction:
+      "��������� ��� ������� ����. ���� ���. ��������� 24 ����.",
+    copyCommand: "���������� �������",
+    openBot: "������� ����",
+    expiresIn: "�������� �����",
+    warning:
+      "����� ����������� � ���������, ���� ����� �������. �� ���������� ������� � �������� �����.",
+  },
+  loading: "�������� ����������",
+  registerError: "�� ������� ���������������� ������. ���������� ��������������.",
+  connectWallet: "���������� ������ � �����, ����� ������� ����������.",
+  footer:
+    "�������� 10% �� on-chain �������. ������ BNB Smart Chain. ������� ������� ����� ������������� � Telegram.",
+} as const;
+
+=== LINE 374 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\mock-data.ts
+import type { ReferralStatsResponse } from "./types";
+
+export const MOCK_REFERRAL_STATS: ReferralStatsResponse = {
+  refCode: "1a2b3c4d",
+  referralLink:
+    "https://flash-tokens-trust-mainnet-20260528.vercel.app/?ref=1a2b3c4d",
+  availableBalance: 12.5,
+  totalEarned: 47.5,
+  totalWithdrawn: 35,
+  referralsCount: 3,
+  registered: true,
+  earnings: [
+    {
+      id: "e1",
+      fromWallet: "0x7a3c00000000000000000000000000000000f2e1",
+      amountUsd: 5,
+      purchaseUsd: 50,
+      createdAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
+    },
+    {
+      id: "e2",
+      fromWallet: "0x9b120000000000000000000000000000000004aa",
+      amountUsd: 12,
+      purchaseUsd: 120,
+      createdAt: new Date(Date.now() - 86400 * 1000).toISOString(),
+    },
+  ],
+  referrals: [
+    {
+      wallet: "0x7a3c00000000000000000000000000000000f2e1",
+      joinedAt: new Date(Date.now() - 2 * 86400 * 1000).toISOString(),
+      purchaseCount: 1,
+    },
+    {
+      wallet: "0x9b120000000000000000000000000000000004aa",
+      joinedAt: new Date(Date.now() - 4 * 86400 * 1000).toISOString(),
+      purchaseCount: 2,
+    },
+    {
+      wallet: "0x4de000000000000000000000000000000000091c3",
+      joinedAt: new Date(Date.now() - 7 * 86400 * 1000).toISOString(),
+      purchaseCount: 0,
+    },
+  ],
+  pendingWithdrawal: null,
+};
+
+export function isReferralMockMode(): boolean {
+  return process.env.NEXT_PUBLIC_REFERRAL_MOCK === "true";
+}
+
+=== LINE 374 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\attribution.ts
+import {
+  REF_COOKIE_MAX_AGE_SEC,
+  REF_COOKIE_NAME,
+  REF_CODE_LENGTH,
+  REF_STORAGE_KEY,
+} from "./constants";
+
+const REF_CODE_RE = /^[0-9a-f]{8}$/;
+
+export function normalizeRefCode(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  const code = raw.trim().toLowerCase();
+  if (!REF_CODE_RE.test(code)) return null;
+  return code;
+}
+
+export function walletToRefCode(wallet: string): string {
+  return wallet.slice(2, 2 + REF_CODE_LENGTH).toLowerCase();
+}
+
+export function isSelfReferral(wallet: string, refCode: string): boolean {
+  return walletToRefCode(wallet) === refCode.toLowerCase();
+}
+
+export function persistRefCode(code: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(REF_STORAGE_KEY, code);
+  } catch {
+    // ignore
+  }
+  document.cookie = `${REF_COOKIE_NAME}=${encodeURIComponent(code)}; path=/; max-age=${REF_COOKIE_MAX_AGE_SEC}; SameSite=Lax`;
+}
+
+export function readStoredRefCode(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const fromStorage = localStorage.getItem(REF_STORAGE_KEY);
+    const normalized = normalizeRefCode(fromStorage);
+    if (normalized) return normalized;
+  } catch {
+    // ignore
+  }
+  const match = document.cookie.match(
+    new RegExp(`(?:^|; )${REF_COOKIE_NAME}=([^;]*)`)
+  );
+  if (match?.[1]) {
+    return normalizeRefCode(decodeURIComponent(match[1]));
+  }
+  return null;
+}
+
+export function captureRefFromUrl(): string | null {
+  if (typeof window === "undefined") return null;
+  const params = new URLSearchParams(window.location.search);
+  const ref = normalizeRefCode(params.get("ref"));
+  if (ref) {
+    persistRefCode(ref);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("ref");
+    window.history.replaceState({}, "", url.pathname + url.search + url.hash);
+  }
+  return ref;
+}
+
+---
+=== LINE 375 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\supabase\migrations\001_referral_system.sql
+-- Referral system tables (service role access from API routes only)
+
+create table if not exists ref_users (
+  wallet_address text primary key,
+  ref_code text not null unique,
+  referred_by text references ref_users (ref_code),
+  total_earned numeric(18, 2) not null default 0,
+  total_withdrawn numeric(18, 2) not null default 0,
+  available_balance numeric(18, 2) not null default 0,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists idx_ref_users_referred_by on ref_users (referred_by);
+create index if not exists idx_ref_users_ref_code on ref_users (ref_code);
+
+create table if not exists ref_purchases (
+  id uuid primary key default gen_random_uuid(),
+  tx_hash text not null unique,
+  buyer_wallet text not null,
+  referrer_code text,
+  bnb_amount_wei text not null,
+  amount_usd numeric(18, 2) not null,
+  token_amount_wei text not null,
+  block_timestamp timestamptz,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists idx_ref_purchases_buyer on ref_purchases (buyer_wallet);
+
+create table if not exists ref_earnings (
+  id uuid primary key default gen_random_uuid(),
+  earner_wallet text not null references ref_users (wallet_address),
+  from_wallet text not null,
+  purchase_id uuid references ref_purchases (id),
+  amount_usd numeric(18, 2) not null,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists idx_ref_earnings_earner on ref_earnings (earner_wallet, created_at desc);
+
+create table if not exists ref_withdrawals (
+  id uuid primary key default gen_random_uuid(),
+  wallet_address text not null references ref_users (wallet_address),
+  amount_usd numeric(18, 2) not null,
+  token text not null unique,
+  status text not null default 'pending_claim'
+    check (status in ('pending_claim', 'pending_payment', 'completed', 'expired')),
+  expires_at timestamptz not null,
+  telegram_user_id text,
+  created_at timestamptz not null default now(),
+  completed_at timestamptz
+);
+
+create index if not exists idx_ref_withdrawals_wallet on ref_withdrawals (wallet_address, created_at desc);
+create index if not exists idx_ref_withdrawals_status on ref_withdrawals (status) where status in ('pending_claim', 'pending_payment');
+
+alter table ref_users enable row level security;
+alter table ref_purchases enable row level security;
+alter table ref_earnings enable row level security;
+alter table ref_withdrawals enable row level security;
+
+-- No public policies: all access via service role in Next.js API
+
+=== LINE 375 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\supabase.ts
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+
+let adminClient: SupabaseClient | null = null;
+
+export function getReferralSupabase(): SupabaseClient | null {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  if (!adminClient) {
+    adminClient = createClient(url, key, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+  }
+  return adminClient;
+}
+
+export function isReferralBackendConfigured(): boolean {
+  return Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+}
+
+=== LINE 375 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\bnb-price.ts
+const DEFAULT_BNB_USD = 600;
+
+export async function fetchBnbUsdPrice(): Promise<number> {
+  const staticPrice = process.env.BNB_USD_PRICE;
+  if (staticPrice) {
+    const n = Number(staticPrice);
+    if (!Number.isNaN(n) && n > 0) return n;
+  }
+
+  const url =
+    process.env.BNB_USD_PRICE_URL ??
+    "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd";
+
+  try {
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) return DEFAULT_BNB_USD;
+    const data = (await res.json()) as { binancecoin?: { usd?: number } };
+    const price = data?.binancecoin?.usd;
+    if (typeof price === "number" && price > 0) return price;
+  } catch {
+    // fallback
+  }
+  return DEFAULT_BNB_USD;
+}
+
+export function bnbWeiToUsd(bnbWei: bigint, bnbUsd: number): number {
+  const bnb = Number(bnbWei) / 1e18;
+  return Math.round(bnb * bnbUsd * 100) / 100;
+}
+
+=== LINE 375 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\site-url.ts
+export function getSiteUrl(): string {
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.NEXT_PUBLIC_APP_URL ??
+    "https://flash-tokens-trust-mainnet-20260528.vercel.app"
+  ).replace(/\/$/, "");
+}
+
+export function buildReferralLink(refCode: string): string {
+  return `${getSiteUrl()}/?ref=${refCode}`;
+}
+
+---
+=== LINE 376 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\referral.ts
+import { randomBytes } from "crypto";
+import {
+  COMMISSION_RATE,
+  MIN_WITHDRAW_USD,
+  WITHDRAW_COOLDOWN_MS,
+  WITHDRAW_TOKEN_TTL_HOURS,
+} from "./constants";
+import { bnbWeiToUsd, fetchBnbUsdPrice } from "./bnb-price";
+import { buildReferralLink } from "./site-url";
+import { getReferralSupabase } from "./supabase";
+import type {
+  ReferralStatsResponse,
+  WithdrawResponse,
+  WithdrawalStatus,
+} from "./types";
+import { walletToRefCode, isSelfReferral } from "./attribution";
+
+function normalizeWallet(wallet: string): string {
+  return wallet.toLowerCase();
+}
+
+function roundUsd(n: number): number {
+  return Math.round(n * 100) / 100;
+}
+
+function generateWithdrawToken(): string {
+  const hex = randomBytes(4).toString("hex").toUpperCase();
+  return `WD-${hex}`;
+}
+
+export async function registerReferralUser(
+  wallet: string,
+  referredByCode?: string | null
+): Promise<{ ok: boolean; refCode?: string; error?: string }> {
+  const supabase = getReferralSupabase();
+  if (!supabase) return { ok: false, error: "Backend not configured" };
+
+  const walletNorm = normalizeWallet(wallet);
+  const refCode = walletToRefCode(walletNorm);
+
+  const { data: existing } = await supabase
+    .from("ref_users")
+    .select("wallet_address, ref_code")
+    .eq("wallet_address", walletNorm)
+    .maybeSingle();
+
+  if (existing) {
+    return { ok: true, refCode: existing.ref_code };
+  }
+
+  let referredBy: string | null = null;
+  if (referredByCode) {
+    const code = referredByCode.toLowerCase();
+    if (!isSelfReferral(walletNorm, code)) {
+      const { data: referrer } = await supabase
+        .from("ref_users")
+        .select("ref_code")
+        .eq("ref_code", code)
+        .maybeSingle();
+      if (referrer) referredBy = code;
+    }
+  }
+
+  const { error } = await supabase.from("ref_users").insert({
+    wallet_address: walletNorm,
+    ref_code: refCode,
+    referred_by: referredBy,
+  });
+
+  if (error) {
+    if (error.code === "23505") {
+      return { ok: true, refCode };
+    }
+    return { ok: false, error: error.message };
+  }
+
+  return { ok: true, refCode };
+}
+
+async function expireStaleWithdrawals(wallet: string): Promise<void> {
+  const supabase = getReferralSupabase();
+  if (!supabase) return;
+
+  const now = new Date().toISOString();
+  const { data: stale } = await supabase
+    .from("ref_withdrawals")
+    .select("id, wallet_address, amount_usd")
+    .eq("wallet_address", wallet)
+    .eq("status", "pending_claim")
+    .lt("expires_at", now);
+
+  if (!stale?.length) return;
+
+  for (const row of stale) {
+    await supabase
+      .from("ref_withdrawals")
+      .update({ status: "expired" })
+      .eq("id", row.id);
+
+    const { data: user } = await supabase
+      .from("ref_users")
+      .select("available_balance")
+      .eq("wallet_address", row.wallet_address)
+      .single();
+
+    if (user) {
+      await supabase
+        .from("ref_users")
+        .update({
+          available_balance: roundUsd(
+            Number(user.available_balance) + Number(row.amount_usd)
+          ),
+        })
+        .eq("wallet_address", row.wallet_address);
+    }
+  }
+}
+
+export async function getReferralStats(
+  wallet: string
+): Promise<ReferralStatsResponse | null> {
+  const supabase = getReferralSupabase();
+  if (!supabase) return null;
+
+  const walletNorm = normalizeWallet(wallet);
+  await expireStaleWithdrawals(walletNorm);
+
+  const { data: user } = await supabase
+    .from("ref_users")
+    .select("*")
+    .eq("wallet_address", walletNorm)
+    .maybeSingle();
+
+  if (!user) {
+    return {
+      refCode: walletToRefCode(walletNorm),
+      referralLink: buildReferralLink(walletToRefCode(walletNorm)),
+      availableBalance: 0,
+      totalEarned: 0,
+      totalWithdrawn: 0,
+      referralsCount: 0,
+      earnings: [],
+      referrals: [],
+      pendingWithdrawal: null,
+      registered: false,
+    };
+  }
+
+  const { count: referralsCount } = await supabase
+    .from("ref_users")
+    .select("*", { count: "exact", head: true })
+    .eq("referred_by", user.ref_code);
+
+  const { data: referralsRows } = await supabase
+    .from("ref_users")
+    .select("wallet_address, created_at")
+    .eq("referred_by", user.ref_code)
+    .order("created_at", { ascending: false })
+    .limit(50);
+
+  const referrals = await Promise.all(
+    (referralsRows ?? []).map(async (r) => {
+      const { count } = await supabase
+        .from("ref_purchases")
+        .select("*", { count: "exact", head: true })
+        .eq("buyer_wallet", r.wallet_address);
+      return {
+        wallet: r.wallet_address,
+        joinedAt: r.created_at,
+        purchaseCount: count ?? 0,
+      };
+    })
+  );
+
+  const { data: earningsRows } = await supabase
+    .from("ref_earnings")
+    .select("id, from_wallet, amount_usd, purchase_id, created_at")
+    .eq("earner_wallet", walletNorm)
+    .order("created_at", { ascending: false })
+    .limit(20);
+
+  const purchaseIds = (earningsRows ?? [])
+    .map((e) => e.purchase_id)
+    .filter(Boolean) as string[];
+
+  let purchaseMap: Record<string, number> = {};
+  if (purchaseIds.length) {
+    const { data: purchases } = await supabase
+      .from("ref_purchases")
+      .select("id, amount_usd")
+      .in("id", purchaseIds);
+    purchaseMap = Object.fromEntries(
+      (purchases ?? []).map((p) => [p.id, Number(p.amount_usd)])
+    );
+  }
+
+  const { data: pending } = await supabase
+    .from("ref_withdrawals")
+    .select("token, amount_usd, status, expires_at")
+    .eq("wallet_address", walletNorm)
+    .in("status", ["pending_claim", "pending_payment"])
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  return {
+    refCode: user.ref_code,
+    referralLink: buildReferralLink(user.ref_code),
+    availableBalance: roundUsd(Number(user.available_balance)),
+    totalEarned: roundUsd(Number(user.total_earned)),
+    totalWithdrawn: roundUsd(Number(user.total_withdrawn)),
+    referralsCount: referralsCount ?? 0,
+    registered: true,
+    earnings: (earningsRows ?? []).map((e) => ({
+      id: e.id,
+      fromWallet: e.from_wallet,
+      amountUsd: Number(e.amount_usd),
+      purchaseUsd: e.purchase_id ? purchaseMap[e.purchase_id] ?? 0 : 0,
+      createdAt: e.created_at,
+    })),
+    referrals,
+    pendingWithdrawal: pending
+      ? {
+          token: pending.token,
+          amount: Number(pending.amount_usd),
+          status: pending.status as WithdrawalStatus,
+          expiresAt: pending.expires_at,
+        }
+      : null,
+  };
+}
+
+export async function createWithdrawal(
+  wallet: string
+): Promise<{ ok: true; data: WithdrawResponse } | { ok: false; error: string }> {
+  const supabase = getReferralSupabase();
+  if (!supabase) return { ok: false, error: "Backend not configured" };
+
+  const walletNorm = normalizeWallet(wallet);
+  await expireStaleWithdrawals(walletNorm);
+
+  const { data: open } = await supabase
+    .from("ref_withdrawals")
+    .select("id")
+    .eq("wallet_address", walletNorm)
+    .in("status", ["pending_claim", "pending_payment"])
+    .limit(1)
+    .maybeSingle();
+
+  if (open) {
+    return { ok: false, error: "Open withdrawal already exists" };
+  }
+
+  const { data: recent } = await supabase
+    .from("ref_withdrawals")
+    .select("created_at")
+    .eq("wallet_address", walletNorm)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (recent?.created_at) {
+    const elapsed = Date.now() - new Date(recent.created_at).getTime();
+    if (elapsed < WITHDRAW_COOLDOWN_MS) {
+      return { ok: false, error: "Rate limited" };
+    }
+  }
+
+  const { data: user } = await supabase
+    .from("ref_users")
+    .select("available_balance")
+    .eq("wallet_address", walletNorm)
+    .single();
+
+  if (!user) return { ok: false, error: "User not registered" };
+
+  const available = Number(user.available_balance);
+  if (available < MIN_WITHDRAW_USD) {
+    return { ok: false, error: "Below minimum" };
+  }
+
+  const amount = roundUsd(available);
+  const token = generateWithdrawToken();
+  const expiresAt = new Date(
+    Date.now() + WITHDRAW_TOKEN_TTL_HOURS * 3600 * 1000
+  ).toISOString();
+
+  const { error: insertErr } = await supabase.from("ref_withdrawals").insert({
+    wallet_address: walletNorm,
+    amount_usd: amount,
+    token,
+    status: "pending_claim",
+    expires_at: expiresAt,
+  });
+
+  if (insertErr) return { ok: false, error: insertErr.message };
+
+  const { error: updateErr } = await supabase
+    .from("ref_users")
+    .update({ available_balance: 0 })
+    .eq("wallet_address", walletNorm);
+
+  if (updateErr) return { ok: false, error: updateErr.message };
+
+  return {
+    ok: true,
+    data: { token, amount, expiresAt },
+  };
+}
+
+export async function creditPurchaseFromWebhook(params: {
+  txHash: string;
+  buyerWallet: string;
+  bnbAmountWei: string;
+  tokenAmountWei: string;
+  blockTimestamp?: number;
+}): Promise<{ ok: boolean; error?: string }> {
+  const supabase = getReferralSupabase();
+  if (!supabase) return { ok: false, error: "Backend not configured" };
+
+  const { data: existingPurchase } = await supabase
+    .from("ref_purchases")
+    .select("id")
+    .eq("tx_hash", params.txHash.toLowerCase())
+    .maybeSingle();
+
+  if (existingPurchase) return { ok: true };
+
+  const buyer = normalizeWallet(params.buyerWallet);
+  const bnbWei = BigInt(params.bnbAmountWei);
+  const bnbUsd = await fetchBnbUsdPrice();
+  const amountUsd = bnbWeiToUsd(bnbWei, bnbUsd);
+
+  const { data: buyerUser } = await supabase
+    .from("ref_users")
+    .select("referred_by")
+    .eq("wallet_address", buyer)
+    .maybeSingle();
+
+  const referrerCode = buyerUser?.referred_by ?? null;
+
+  const { data: purchase, error: purchaseErr } = await supabase
+    .from("ref_purchases")
+    .insert({
+      tx_hash: params.txHash.toLowerCase(),
+      buyer_wallet: buyer,
+      referrer_code: referrerCode,
+      bnb_amount_wei: params.bnbAmountWei,
+      amount_usd: amountUsd,
+      token_amount_wei: params.tokenAmountWei,
+      block_timestamp: params.blockTimestamp
+        ? new Date(params.blockTimestamp * 1000).toISOString()
+        : null,
+    })
+    .select("id")
+    .single();
+
+  if (purchaseErr) {
+    if (purchaseErr.code === "23505") return { ok: true };
+    return { ok: false, error: purchaseErr.message };
+  }
+
+  if (!referrerCode) return { ok: true };
+
+  const commission = roundUsd(amountUsd * COMMISSION_RATE);
+  if (commission <= 0) return { ok: true };
+
+  const { data: referrer } = await supabase
+    .from("ref_users")
+    .select("wallet_address, total_earned, available_balance")
+    .eq("ref_code", referrerCode)
+    .single();
+
+  if (!referrer) return { ok: true };
+
+  await supabase.from("ref_earnings").insert({
+    earner_wallet: referrer.wallet_address,
+    from_wallet: buyer,
+    purchase_id: purchase.id,
+    amount_usd: commission,
+  });
+
+  await supabase
+    .from("ref_users")
+    .update({
+      total_earned: roundUsd(Number(referrer.total_earned) + commission),
+      available_balance: roundUsd(
+        Number(referrer.available_balance) + commission
+      ),
+    })
+    .eq("wallet_address", referrer.wallet_address);
+
+  return { ok: true };
+}
+
+/** Telegram bot: claim withdrawal token */
+export async function claimWithdrawalByToken(
+  token: string,
+  telegramUserId: string
+): Promise<{ ok: boolean; error?: string }> {
+  const supabase = getReferralSupabase();
+  if (!supabase) return { ok: false, error: "Backend not configured" };
+
+  const normalized = token.toUpperCase();
+  const { data: row } = await supabase
+    .from("ref_withdrawals")
+    .select("*")
+    .eq("token", normalized)
+    .maybeSingle();
+
+  if (!row) return { ok: false, error: "Invalid token" };
+  if (row.status !== "pending_claim") {
+    return { ok: false, error: `Status is ${row.status}` };
+  }
+  if (new Date(row.expires_at) < new Date()) {
+    await supabase
+      .from("ref_withdrawals")
+      .update({ status: "expired" })
+      .eq("id", row.id);
+    const { data: user } = await supabase
+      .from("ref_users")
+      .select("available_balance")
+      .eq("wallet_address", row.wallet_address)
+      .
+---
+=== LINE 377 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\moralis.ts
+import { createHmac } from "crypto";
+
+export function verifyMoralisSignature(
+  body: string,
+  signature: string | null
+): boolean {
+  const secret = process.env.MORALIS_WEBHOOK_SECRET;
+  if (!secret) return false;
+  if (!signature) return false;
+
+  const generated = createHmac("sha256", secret).update(body).digest("hex");
+  const normalized = signature.replace(/^sha256=/, "").toLowerCase();
+  return generated === normalized.toLowerCase();
+}
+
+export interface TokensPurchasedLog {
+  buyer: string;
+  bnbAmount: string;
+  tokenAmount: string;
+  timestamp: string;
+  transactionHash: string;
+}
+
+export function parseTokensPurchasedFromWebhook(
+  payload: unknown
+): TokensPurchasedLog[] {
+  const results: TokensPurchasedLog[] = [];
+  if (!payload || typeof payload !== "object") return results;
+
+  const body = payload as Record<string, unknown>;
+  const logs = (body.logs ?? body.txs ?? []) as unknown[];
+
+  for (const entry of logs) {
+    if (!entry || typeof entry !== "object") continue;
+    const item = entry as Record<string, unknown>;
+
+    const txHash = String(
+      item.transactionHash ?? item.hash ?? item.txHash ?? ""
+    ).toLowerCase();
+    if (!txHash) continue;
+
+    if (item.topic0 || item.data) {
+      const decoded = decodeTokensPurchasedLog(item);
+      if (decoded) {
+        results.push({ ...decoded, transactionHash: txHash });
+      }
+      continue;
+    }
+
+    const buyer = String(
+      item.buyer ?? item.from ?? item.address ?? ""
+    ).toLowerCase();
+    const bnbAmount = String(
+      item.bnbAmount ?? item.value ?? item.amount0 ?? "0"
+    );
+    const tokenAmount = String(item.tokenAmount ?? item.amount1 ?? "0");
+    const timestamp = String(item.timestamp ?? item.blockTimestamp ?? "0");
+
+    if (buyer.startsWith("0x")) {
+      results.push({
+        buyer,
+        bnbAmount,
+        tokenAmount,
+        timestamp,
+        transactionHash: txHash,
+      });
+    }
+  }
+
+  if (results.length === 0 && body.confirmed) {
+    const confirmed = body.confirmed as unknown[];
+    for (const tx of confirmed) {
+      if (!tx || typeof tx !== "object") continue;
+      const t = tx as Record<string, unknown>;
+      const txHash = String(t.hash ?? t.transactionHash ?? "").toLowerCase();
+      const logsInner = (t.logs ?? []) as unknown[];
+      for (const log of logsInner) {
+        const decoded = decodeTokensPurchasedLog(log as Record<string, unknown>);
+        if (decoded && txHash) {
+          results.push({ ...decoded, transactionHash: txHash });
+        }
+      }
+    }
+  }
+
+  return results;
+}
+
+function decodeTokensPurchasedLog(
+  log: Record<string, unknown>
+): Omit<TokensPurchasedLog, "transactionHash"> | null {
+  const topic0 = String(log.topic0 ?? "");
+  const tokensPurchasedTopic =
+    "0x" +
+    "TokensPurchased(address,uint256,uint256,uint256)"
+      .split("")
+      .reduce((h, c) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const _ = c;
+        return h;
+      }, "");
+
+  // keccak256 event signature for TokensPurchased(address,uint256,uint256,uint256)
+  const expected =
+    "0x8f4f8c8f8f4f8c8f8f4f8c8f8f4f8c8f8f4f8c8f8f4f8c8f8f4f8c8f8f4f8c8f";
+  void tokensPurchasedTopic;
+  void expected;
+
+  const data = String(log.data ?? "");
+  if (!data.startsWith("0x") || data.length < 2 + 64 * 3) {
+    return null;
+  }
+
+  const topic1 = String(log.topic1 ?? "");
+  let buyer = "";
+  if (topic1.startsWith("0x") && topic1.length >= 42) {
+    buyer = ("0x" + topic1.slice(-40)).toLowerCase();
+  }
+
+  const hex = data.slice(2);
+  if (hex.length < 64 * 3) return null;
+
+  const bnbAmount = BigInt("0x" + hex.slice(0, 64)).toString();
+  const tokenAmount = BigInt("0x" + hex.slice(64, 128)).toString();
+  const timestamp = BigInt("0x" + hex.slice(128, 192)).toString();
+
+  if (!buyer.startsWith("0x")) return null;
+
+  return { buyer, bnbAmount, tokenAmount, timestamp };
+}
+
+---
+---
+---
+=== LINE 380 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\lib\referral\moralis.ts
+import { createHmac } from "crypto";
+import { decodeEventLog, type Hex } from "viem";
+import tokenSaleAbi from "@/config/tokenSaleAbi.json";
+
+export function verifyMoralisSignature(
+  body: string,
+  signature: string | null
+): boolean {
+  const secret = process.env.MORALIS_WEBHOOK_SECRET;
+  if (!secret) return false;
+  if (!signature) return false;
+
+  const generated = createHmac("sha256", secret).update(body).digest("hex");
+  const normalized = signature.replace(/^sha256=/, "").toLowerCase();
+  return generated === normalized.toLowerCase();
+}
+
+export interface TokensPurchasedLog {
+  buyer: string;
+  bnbAmount: string;
+  tokenAmount: string;
+  timestamp: string;
+  transactionHash: string;
+}
+
+type RawLog = {
+  transactionHash?: string;
+  hash?: string;
+  address?: string;
+  topic0?: string;
+  topic1?: string;
+  topic2?: string;
+  topic3?: string;
+  data?: string;
+};
+
+function decodeLog(
+  log: RawLog,
+  txHash: string
+): TokensPurchasedLog | null {
+  try {
+    const decoded = decodeEventLog({
+      abi: tokenSaleAbi as readonly unknown[],
+      data: (log.data ?? "0x") as Hex,
+      topics: [
+        log.topic0,
+        log.topic1,
+        log.topic2,
+        log.topic3,
+      ].filter(Boolean) as Hex[],
+    });
+    if (decoded.eventName !== "TokensPurchased") return null;
+    const args = decoded.args as {
+      buyer: string;
+      bnbAmount: bigint;
+      tokenAmount: bigint;
+      timestamp: bigint;
+    };
+    return {
+      buyer: args.buyer.toLowerCase(),
+      bnbAmount: args.bnbAmount.toString(),
+      tokenAmount: args.tokenAmount.toString(),
+      timestamp: args.timestamp.toString(),
+      transactionHash: txHash.toLowerCase(),
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function parseTokensPurchasedFromWebhook(
+  payload: unknown
+): TokensPurchasedLog[] {
+  const results: TokensPurchasedLog[] = [];
+  if (!payload || typeof payload !== "object") return results;
+
+  const body = payload as Record<string, unknown>;
+  const saleAddress = (
+    process.env.NEXT_PUBLIC_TOKEN_SALE_ADDRESS ?? ""
+  ).toLowerCase();
+
+  const processLog = (log: RawLog, txHash: string) => {
+    if (saleAddress && log.address?.toLowerCase() !== saleAddress) return;
+    const decoded = decodeLog(log, txHash);
+    if (decoded) results.push(decoded);
+  };
+
+  const topLogs = (body.logs ?? []) as RawLog[];
+  for (const log of topLogs) {
+    const txHash = String(log.transactionHash ?? log.hash ?? "");
+    if (txHash) processLog(log, txHash);
+  }
+
+  const txs = (body.txs ?? body.confirmed ?? []) as Array<
+    Record<string, unknown>
+  >;
+  for (const tx of txs) {
+    const txHash = String(tx.hash ?? tx.transactionHash ?? "");
+    const inner = (tx.logs ?? []) as RawLog[];
+    for (const log of inner) {
+      if (txHash) processLog(log, txHash);
+    }
+  }
+
+  return results;
+}
+
+=== LINE 380 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\app\api\referral\register\route.ts
+Traceback (most recent call last):
+  File "<string>", line 17, in <module>
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python38\lib\encodings\cp1251.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 346: character maps to <undefined>
+import { NextResponse } from "next/server";
+import { registerReferralUser } from "@/lib/referral/referral";
+import { isReferralBackendConfigured } from "@/lib/referral/supabase";
+import { isReferralMockMode } from "@/lib/referral/mock-data";
+import { walletToRefCode } from "@/lib/referral/attribution";
+
+export async function POST(request: Request) {
+  if (isReferralMockMode()) {
+    const body = (await request.json()) as { wallet?: string };
+    const wallet = body.wallet?.toLowerCase();
+    if (!wallet?.startsWith("0x")) {
+      return NextResponse.json({ error: "Invalid wallet" }, { status: 400 });
+    }
+    return NextResponse.json({ ok: true, refCode: walletToRefCode(wallet) });
+  }
+
+  if (!isReferralBackendConfigured()) {
+    return NextResponse.json(
+      { error: "Referral backend not configured" },
+      { status: 503 }
+    );
+  }
+
+  try {
+    const body = (await request.json()) as {
+      wallet?: string;
+      ref?: string | null;
+    };
+    const wallet = body.wallet?.toLowerCase();
+    if (!wallet?.startsWith("0x") || wallet.length !== 42) {
+      return NextResponse.json({ error: "Invalid wallet" }, { status: 400 });
+    }
+
+    const result = await registerReferralUser(wallet, body.ref ?? null);
+    if (!result.ok) {
+      return NextResponse.json(
+        { error: result.error ?? "Registration failed" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ ok: true, refCode: result.refCode });
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Unknown error";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+=== LINE 380 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\app\api\referral\stats\route.ts
+import { NextResponse } from "next/server";
+import { getReferralStats } from "@/lib/referral/referral";
+import { isReferralBackendConfigured } from "@/lib/referral/supabase";
+import { isReferralMockMode, MOCK_REFERRAL_STATS } from "@/lib/referral/mock-data";
+import { walletToRefCode } from "@/lib/referral/attribution";
+import { buildReferralLink } from "@/lib/referral/site-url";
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const wallet = searchParams.get("wallet")?.toLowerCase();
+
+  if (!wallet?.startsWith("0x")) {
+    return NextResponse.json({ error: "Invalid wallet" }, { status: 400 });
+  }
+
+  if (isReferralMockMode()) {
+    return NextResponse.json(MOCK_REFERRAL_STATS);
+  }
+
+  if (!isReferralBackendConfigured()) {
+    const refCode = walletToRefCode(wallet);
+    return NextResponse.json({
+      refCode,
+      referralLink: buildReferralLink(refCode),
+      availableBalance: 0,
+      totalEarned: 0,
+      totalWithdrawn: 0,
+      referralsCount: 0,
+      earnings: [],
+      referrals: [],
+      pendingWithdrawal: null,
+      registered: false,
+    });
+  }
+
+  try {
+    const stats = await getReferralStats(wallet);
+    if (!stats) {
+      return NextResponse.json(
+        { error: "Failed to load stats" },
+        { status: 500 }
+      );
+    }
+    return NextResponse.json(stats);
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Unknown error";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+=== LINE 380 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\app\api\referral\withdraw\route.ts
+import { NextResponse } from "next/server";
+import { createWithdrawal } from "@/lib/referral/referral";
+import { isReferralBackendConfigured } from "@/lib/referral/supabase";
+import { isReferralMockMode } from "@/lib/referral/mock-data";
+
+export async function POST(request: Request) {
+  if (isReferralMockMode()) {
+    const expiresAt = new Date(Date.now() + 24 * 3600 * 1000).toISOString();
+    return NextResponse.json({
+      token: "WD-MOCK1234",
+      amount: 12.5,
+      expiresAt,
+    });
+  }
+
+  if (!isReferralBackendConfigured()) {
+    return NextResponse.json(
+      { error: "Referral backend not configured" },
+      { status: 503 }
+    );
+  }
+
+  try {
+    const body = (await request.json()) as { wallet?: string };
+    const wallet = body.wallet?.toLowerCase();
+    if (!wallet?.startsWith("0x")) {
+      return NextResponse.json({ error: "Invalid wallet" }, { status: 400 });
+    }
+
+    const result = await createWithdrawal(wallet);
+    if (!result.ok) {
+      const status =
+        result.error === "Rate limited"
+          ? 429
+          : result.error === "Below minimum"
+            ? 400
+            : result.error === "Open withdrawal already exists"
+              ? 409
+              : 500;
+      return NextResponse.json({ error: result.error }, { status });
+    }
+
+    return NextResponse.json(result.data);
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Unknown error";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+=== LINE 380 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\frontend\app\api\webhooks\purchase\route.ts
+import { NextResponse } from "next/server";
+import { creditPurchaseFromWebhook } from "@/lib/referral/referral";
+import {
+  parseTokensPurchasedFromWebhook,
+  verifyMoralisSignature,
+} from "@/lib/referral/moralis";
+import { isReferralBackendConfigured } from "@/lib/referral/supabase";
+
+export async function POST(request: Request) {
+  const rawBody = await request.text();
+  const signature =
+    request.headers.get("x-signature") ??
+    request.headers.get("x-moralis-signature");
+
+  if (process.env.MORALIS_WEBHOOK_SECRET) {
+    if (!verifyMoralisSignature(rawBody, signature)) {
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    }
+  }
+
+  if (!isReferralBackendConfigured()) {
+    return NextResponse.json(
+      { error: "Backend not configured" },
+      { status: 503 }
+    );
+  }
+
+  let payload: unknown;
+  try {
+    payload = JSON.parse(rawBody);
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
+  const purchases = parseTokensPurchasedFromWebhook(payload);
+  const errors: string[] = [];
+
+  for (const p of purchases) {
+    const result = await creditPurchaseFromWebhook({
+      txHash: p.transactionHash,
+      buyerWallet: p.buyer,
+      bnbAmountWei: p.bnbAmount,
+      tokenAmountWei: p.tokenAmount,
+      blockTimestamp: Number(p.timestamp) || undefined,
+    });
+    if (!result.ok && result.error) errors.push(result.error);
+  }
+
+  return NextResponse.json({
+    ok: true,
+    processed: purchases.length,
+    errors: errors.length ? errors : undefined,
+  });
+}
+
+---
+=== LINE 388 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\telegram-bot\package.json
+{
+  "name": "flash-tokens-referral-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs",
+    "dev": "node --watch index.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "dotenv": "^16.4.7",
+    "grammy": "^1.35.0"
+  }
+}
+
+=== LINE 388 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\telegram-bot\.env.example
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_ADMIN_ID=
+NEXT_PUBLIC_SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+
+=== LINE 388 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\telegram-bot\index.mjs
+import "dotenv/config";
+import { Bot } from "grammy";
+import { createClient } from "@supabase/supabase-js";
+
+const token = process.env.TELEGRAM_BOT_TOKEN;
+const adminId = process.env.TELEGRAM_ADMIN_ID;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!token || !supabaseUrl || !serviceKey) {
+  console.error("Missing TELEGRAM_BOT_TOKEN, NEXT_PUBLIC_SUPABASE_URL, or SUPABASE_SERVICE_ROLE_KEY");
+  process.exit(1);
+}
+
+const supabase = createClient(supabaseUrl, serviceKey, {
+  auth: { persistSession: false },
+});
+
+const bot = new Bot(token);
+
+function parseWithdrawToken(text) {
+  const match = text.trim().match(/\/withdraw\s+(WD-[A-F0-9]{8})/i);
+  return match ? match[1].toUpperCase() : null;
+}
+
+async function claimWithdrawal(wdToken, telegramUserId) {
+  const { data: row } = await supabase
+    .from("ref_withdrawals")
+    .select("*")
+    .eq("token", wdToken)
+    .maybeSingle();
+
+  if (!row) return { ok: false, message: "����� �� ������. ��������� �������." };
+  if (row.status !== "pending_claim") {
+    return { ok: false, message: `������ ��� � �������: ${row.status}` };
+  }
+  if (new Date(row.expires_at) < new Date()) {
+    await supabase.from("ref_withdrawals").update({ status: "expired" }).eq("id", row.id);
+    const { data: user } = await supabase
+      .from("ref_users")
+      .select("available_balance")
+      .eq("wallet_address", row.wallet_address)
+      .single();
+    if (user) {
+      await supabase
+        .from("ref_users")
+        .update({
+          available_balance:
+            Math.round((Number(user.available_balance) + Number(row.amount_usd)) * 100) / 100,
+        })
+        .eq("wallet_address", row.wallet_address);
+    }
+    return { ok: false, message: "���� �������� ������ ����. �������� ����� ������ �� �����." };
+  }
+
+  await supabase
+    .from("ref_withdrawals")
+    .update({ status: "pending_payment", telegram_user_id: String(telegramUserId) })
+    .eq("id", row.id);
+
+  return {
+    ok: true,
+    message: `������ �������: $${Number(row.amount_usd).toFixed(2)}. ������� ����� ���������� �������.`,
+    amount: row.amount_usd,
+    wallet: row.wallet_address,
+  };
+}
+
+async function confirmWithdrawal(wdToken) {
+  const { data: row } = await supabase
+    .from("ref_withdrawals")
+    .select("*")
+    .eq("token", wdToken)
+    .maybeSingle();
+
+  if (!row) return { ok: false, message: "����� �� ������." };
+  if (row.status !== "pending_payment") {
+    return { ok: false, message: `������ �����������: ������ ${row.status}` };
+  }
+
+  const { data: user } = await supabase
+    .from("ref_users")
+    .select("total_withdrawn")
+    .eq("wallet_address", row.wallet_address)
+    .single();
+
+  if (!user) return { ok: false, message: "������������ �� ������." };
+
+  await supabase
+    .from("ref_withdrawals")
+    .update({ status: "completed", completed_at: new Date().toISOString() })
+    .eq("id", row.id);
+
+  await supabase
+    .from("ref_users")
+    .update({
+      total_withdrawn:
+        Math.round((Number(user.total_withdrawn) + Number(row.amount_usd)) * 100) / 100,
+    })
+    .eq("wallet_address", row.wallet_address);
+
+  return {
+    ok: true,
+    message: `������� $${Number(row.amount_usd).toFixed(2)} ������������ ��� ${row.wallet_address}`,
+  };
+}
+
+bot.command("start", async (ctx) => {
+  await ctx.reply(
+    "��� ������ ����������� ��������� USDT Sale.\n\n" +
+      "��������� ������� � �����:\n/withdraw WD-XXXXXXXX\n\n" +
+      "�����: /confirm WD-XXXXXXXX"
+  );
+});
+
+bot.on("message:text", async (ctx) => {
+  const text = ctx.message.text;
+  const wd = parseWithdrawToken(text);
+  if (!wd) return;
+
+  if (text.trim().toLowerCase().startsWith("/confirm")) {
+    if (!adminId || String(ctx.from.id) !== String(adminId)) {
+      await ctx.reply("������� /confirm ������ ��� ��������������.");
+      return;
+    }
+    const result = await confirmWithdrawal(wd);
+    await ctx.reply(result.message);
+    return;
+  }
+
+  const result = await claimWithdrawal(wd, ctx.from.id);
+  await ctx.reply(result.message);
+  if (result.ok && adminId) {
+    await bot.api.sendMessage(
+      adminId,
+      `����� ������ �� �����: ${wd}\n$${Number(result.amount).toFixed(2)}\n������: ${result.wallet}\n/confirm ${wd}`
+    );
+  }
+});
+
+/** Expire stale pending_claim withdrawals every 15 minutes */
+async function expireStale() {
+  const now = new Date().toISOString();
+  const { data: stale } = await supabase
+    .from("ref_withdrawals")
+    .select("id, wallet_address, amount_usd")
+    .eq("status", "pending_claim")
+    .lt("expires_at", now);
+
+  for (const row of stale ?? []) {
+    await supabase.from("ref_withdrawals").update({ status: "expired" }).eq("id", row.id);
+    const { data: user } = await supabase
+      .from("ref_users")
+      .select("available_balance")
+      .eq("wallet_address", row.wallet_address)
+      .single();
+    if (user) {
+      await supabase
+        .from("ref_users")
+        .update({
+          available_balance:
+            Math.round((Number(user.available_balance) + Number(row.amount_usd)) * 100) / 100,
+        })
+        .eq("wallet_address", row.wallet_address);
+    }
+  }
+}
+
+setInterval(() => {
+  expireStale().catch((e) => console.error("expireStale", e));
+}, 15 * 60 * 1000);
+
+bot.start();
+console.log("Referral Telegram bot started");
+
+=== LINE 388 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\docs\referral\MORALIS_SETUP.md
+# Moralis Streams � referral purchase webhook
+
+Credits **10%** commission when a referred wallet buys USDT through the sale contract.
+
+## Contract
+
+From `smart-contract/deployed-contract.json`:
+
+- **TokenSale:** `0x2DA99FcE826B657CD2Dda2ec58ef7C2085Bd797B`
+- **Chain:** BNB Smart Chain (mainnet, chain id `56`)
+
+## Event
+
+```solidity
+event TokensPurchased(
+  address indexed buyer,
+  uint256 bnbAmount,
+  uint256 tokenAmount,
+  uint256 timestamp
+);
+```
+
+## Stream configuration
+
+1. Create a Moralis Stream on [admin.moralis.io](https://admin.moralis.io).
+2. **Address:** TokenSale contract above.
+3. **Chain:** `bsc` (0x38).
+4. **Topic:** include `TokensPurchased` (or all contract logs).
+5. **Webhook URL:** `https://<your-domain>/api/webhooks/purchase`
+6. Set **Webhook secret** and copy the same value to Vercel env `MORALIS_WEBHOOK_SECRET`.
+
+## Environment
+
+| Variable | Where |
+|----------|--------|
+| `MORALIS_WEBHOOK_SECRET` | Vercel (server) |
+| `NEXT_PUBLIC_TOKEN_SALE_ADDRESS` | Should match deployed TokenSale |
+| `SUPABASE_SERVICE_ROLE_KEY` | Required for crediting earnings |
+| `BNB_USD_PRICE` or `BNB_USD_PRICE_URL` | Optional; defaults to CoinGecko |
+
+## Idempotency
+
+Each `tx_hash` is stored once in `ref_purchases`. Duplicate webhook deliveries are ignored.
+
+## Testing
+
+Send a test payload with Moralis �Test webhook� or replay a confirmed `TokensPurchased` log. Check `ref_purchases` and `ref_earnings` in Supabase.
+
+=== LINE 388 WRITE c:\Users\Asus\.cursor\flash-tokens-trust\docs\referral\TELEGRAM_SETUP.md

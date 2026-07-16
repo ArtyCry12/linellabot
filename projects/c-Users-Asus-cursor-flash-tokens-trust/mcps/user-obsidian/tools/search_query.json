@@ -1,0 +1,19 @@
+{
+  "name": "search_query",
+  "description": "Search vault files using a JsonLogic query evaluated against each note's metadata.\n\nThe query is a JSON object following the JsonLogic spec (https://jsonlogic.com/operations.html). It is evaluated against a NoteJson object for each file; files where the result is truthy are returned.\n\nEach NoteJson has: path (string), content (string), tags (string[]), frontmatter (object), stat ({ctime, mtime, size}), links (string[]), backlinks (string[]).\n\nExtra operators available beyond standard JsonLogic:\n- {\"glob\": [\"*.foo\", {\"var\": \"path\"}]} — glob pattern match\n- {\"regexp\": [\"^daily/\", {\"var\": \"path\"}]} — regular expression match\n\nReturns an array of {filename, result} objects where result is the truthy value the query produced for that file.\n\nExamples:\n- Find by tag: {\"in\": [\"myTag\", {\"var\": \"tags\"}]}\n- Find by frontmatter field: {\"==\": [{\"var\": \"frontmatter.status\"}, \"done\"]}\n- Find by path glob: {\"glob\": [\"journal/*\", {\"var\": \"path\"}]}",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "object",
+        "additionalProperties": {},
+        "description": "JsonLogic query object to evaluate against each note"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

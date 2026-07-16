@@ -1,0 +1,15 @@
+{
+  "name": "app_update_user_preferences",
+  "description": " Internal helper for GitKraken MCP apps. App-only — agents must not call this tool.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "git_graph_app_collapsed": {
+        "type": "boolean"
+      },
+      "git_status_app_collapsed": {
+        "type": "boolean"
+      }
+    }
+  }
+}

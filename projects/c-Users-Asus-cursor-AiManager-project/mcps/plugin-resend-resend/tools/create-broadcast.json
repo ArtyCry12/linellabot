@@ -1,0 +1,61 @@
+{
+  "name": "create-broadcast",
+  "description": "**Purpose:** Create a broadcast campaign (one email sent to an entire segment). Defines subject, body, and segment; does NOT send yet. Use send-broadcast to send it.\n\n**NOT for:** Sending a one-off email to specific people (use send-email). Not for adding contacts (use create-contact).\n\n**Returns:** Broadcast ID. Use this ID with send-broadcast to send, or get-broadcast/update-broadcast to manage.\n\n**When to use:**\n- User wants to \"email my list\", \"send a newsletter\", \"broadcast to my segment\", \"email all contacts in X\"\n- Newsletter, announcement, or bulk message to one segment\n- Supports personalization: {{{FIRST_NAME}}}, {{{LAST_NAME}}}, {{{EMAIL}}}, {{{RESEND_UNSUBSCRIBE_URL}}}\n\n**\"All contacts\" note:** Broadcasts require a segment. There is no \"all contacts\" option in the API. If the user wants to send to all contacts, check list-segments for an existing segment that covers everyone. If none exists, suggest creating one with create-segment.\n\n**Workflow:** list-segments (if needed) → create-broadcast → get-tiptap-json-content (with include_schema: true) → compose-broadcast → send-broadcast.\n\n**Content options after creating:**\n- **compose-broadcast** (recommended): Sets TipTap content that the user can visually edit in the Resend dashboard. Use this when the user wants to collaborate on or refine the email in the editor.\n- **update-broadcast with html/text**: Sets static HTML/text content. Use this only when the user explicitly wants to set raw HTML. Switching between compose and html/text modes is lossy — some content or formatting may be lost. Ask the user before switching.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Name for the broadcast. If the user does not provide a name, go ahead and create a descriptive name for them, based on the email subject/content and the context of your conversation."
+      },
+      "segmentId": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Segment ID to send to"
+      },
+      "subject": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Email subject"
+      },
+      "text": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Plain text version of the email content. The following placeholders may be used to personalize the email content: {{{FIRST_NAME|fallback}}}, {{{LAST_NAME|fallback}}}, {{{EMAIL}}}, {{{RESEND_UNSUBSCRIBE_URL}}}"
+      },
+      "html": {
+        "description": "HTML version of the email content. Placeholders: {{{FIRST_NAME|fallback}}}, {{{LAST_NAME|fallback}}}, {{{EMAIL}}}, {{{RESEND_UNSUBSCRIBE_URL}}}.\n\nEmail HTML requirements — follow all of these without exception:\n\nSTRUCTURE\n- Always include <!DOCTYPE html>, <html>, <head>, <body>\n- Layout must be table-based: <table>, <tr>, <td> — never use <div> for layout\n- Outer wrapper table at width=\"100%\", inner content table at max 600px wide\n- Every table must have cellpadding=\"0\" cellspacing=\"0\" border=\"0\"\n\nCSS\n- All styles must be inline (style=\"...\") — no <style> tag, no external stylesheets\n- No flexbox, no grid, no CSS variables, no CSS shorthand (use padding-top not padding)\n- font-family must always include web-safe fallbacks (Arial, Helvetica, Georgia, sans-serif)\n- Always set font-size, line-height, and color explicitly on every text element\n\nIMAGES\n- Always set width, height, border=\"0\", display:block on every <img>\n- Use absolute URLs only — no relative paths\n- Always include alt text\n\nLINKS & BUTTONS\n- Never use <button> — use <a> styled as a button inside a <td>\n- No <video>, <form>, or <input> elements\n- No JavaScript of any kind\n\nOUTLOOK COMPATIBILITY\n- Use bgcolor attribute on <td> alongside CSS background-color\n- No CSS background-image (poor Outlook support)\n- Add <!--[if mso]> conditionals where needed for Outlook rendering\n\nMETA (in <head>)\n- <meta charset=\"UTF-8\">\n- <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">",
+        "type": "string"
+      },
+      "previewText": {
+        "description": "Preview text for the email",
+        "type": "string"
+      },
+      "from": {
+        "type": "string",
+        "minLength": 1,
+        "description": "From email address (e.g. \"onboarding@resend.com\" or \"Resend <onboarding@resend.com>\")"
+      },
+      "replyTo": {
+        "description": "Reply-to email address(es)",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "name",
+      "segmentId",
+      "subject",
+      "text",
+      "from"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

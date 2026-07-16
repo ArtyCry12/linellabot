@@ -1,0 +1,18 @@
+{
+  "name": "vault_delete",
+  "description": "Delete a file from the vault. Throws if the file does not exist.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "File path relative to vault root"
+      }
+    },
+    "required": [
+      "path"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

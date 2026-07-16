@@ -1,0 +1,6 @@
+{
+  "uri": "voices://",
+  "name": "voices",
+  "description": "TTS voice picker catalog with preview assets. Optional `provider` and `search` query params.",
+  "mimeType": "application/json"
+}

@@ -1,0 +1,132 @@
+{
+  "name": "de_page_tool",
+  "description": "Designer Tool - Page tool to perform actions like create page, create page folder, get current page, switch page, open a component in the Designer canvas, list branches, get current branch ID, get parent page ID for a branched page, and get current Designer mode",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "The ID of the site. DO NOT ASSUME site id. ALWAYS ask user for site id if not already provided or known. use sites_list tool to fetch all sites and then ask user to select one of them."
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Label to identify this action in the response when sending multiple actions."
+            },
+            "create_page": {
+              "type": "object",
+              "properties": {
+                "page_name": {
+                  "type": "string",
+                  "description": "The name of the page to create"
+                },
+                "meta_title": {
+                  "type": "string",
+                  "description": "The meta title of the page to create"
+                },
+                "meta_description": {
+                  "type": "string",
+                  "description": "The meta description of the page to create"
+                },
+                "page_parent_folder_id": {
+                  "type": "string",
+                  "description": "The id of the parent page folder to create the page in"
+                }
+              },
+              "required": [
+                "page_name",
+                "meta_title"
+              ],
+              "additionalProperties": false,
+              "description": "Create new page"
+            },
+            "create_page_folder": {
+              "type": "object",
+              "properties": {
+                "page_folder_name": {
+                  "type": "string",
+                  "description": "The name of the page folder to create"
+                },
+                "page_folder_parent_id": {
+                  "type": "string",
+                  "description": "The id of the parent page folder to create the page folder in"
+                }
+              },
+              "required": [
+                "page_folder_name"
+              ],
+              "additionalProperties": false,
+              "description": "Create new page folder"
+            },
+            "get_branch_parent_page_id": {
+              "type": "boolean",
+              "description": "Get the parent page ID of the current page. For branch pages, returns the original page ID."
+            },
+            "get_current_branch_id": {
+              "type": "boolean",
+              "description": "Get the branch ID of the current page, if it exists on a branch."
+            },
+            "get_current_mode": {
+              "type": "boolean",
+              "description": "Get the current Webflow Designer mode. Returns one of 'design', 'build', 'preview', 'edit', 'comment', or null if it cannot be determined."
+            },
+            "get_current_page": {
+              "type": "boolean",
+              "description": "Get current page active on webflow designer"
+            },
+            "list_branches": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string",
+                  "description": "The id of the page to list branches for"
+                }
+              },
+              "required": [
+                "page_id"
+              ],
+              "additionalProperties": false,
+              "description": "Discover all branches for a page by page ID."
+            },
+            "switch_page": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string",
+                  "description": "The id of the page to switch to"
+                }
+              },
+              "required": [
+                "page_id"
+              ],
+              "additionalProperties": false,
+              "description": "Switch to a page on webflow designer"
+            }
+          },
+          "required": [
+            "label"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "siteId",
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

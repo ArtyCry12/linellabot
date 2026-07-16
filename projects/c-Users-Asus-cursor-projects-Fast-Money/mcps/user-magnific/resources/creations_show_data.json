@@ -1,0 +1,6 @@
+{
+  "uri": "creations://show",
+  "name": "creations_show_data",
+  "description": "Batch creation data for the media viewer. URI: creations://show?ids=id1,id2,...",
+  "mimeType": "application/json"
+}

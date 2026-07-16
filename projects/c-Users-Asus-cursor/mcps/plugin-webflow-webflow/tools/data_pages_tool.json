@@ -1,0 +1,814 @@
+{
+  "name": "data_pages_tool",
+  "description": "Data tool - Pages tool to perform actions like list pages, get page metadata, update page settings, create a page, bulk update page settings, manage branches and their staging previews, and read or write JSON-LD schema markup for pages in bulk.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "bulk_update_pages": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "ID of the page to update."
+                          },
+                          "localeId": {
+                            "$ref": "#/$defs/localeId"
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "Page title."
+                          },
+                          "slug": {
+                            "$ref": "#/$defs/slug"
+                          },
+                          "draft": {
+                            "$ref": "#/$defs/draft"
+                          },
+                          "parentFolderId": {
+                            "$ref": "#/$defs/parentFolderId"
+                          },
+                          "seo": {
+                            "$ref": "#/$defs/seo"
+                          },
+                          "openGraph": {
+                            "$ref": "#/$defs/openGraph"
+                          },
+                          "jsonLdSchema": {
+                            "$ref": "#/$defs/jsonLdSchema"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 100,
+                      "description": "Array of pages to update (1..100)."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "pages"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update settings for 1..100 pages of a site in one request (writes to existing pages). Each item targets a page by id and may set any subset of: localeId (write to a secondary locale), title, slug, draft, parentFolderId, seo, openGraph, and jsonLdSchema."
+                }
+              },
+              "required": [
+                "label",
+                "bulk_update_pages"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "bulk_update_pages_schema_markup": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Page ID."
+                          },
+                          "localeId": {
+                            "$ref": "#/$defs/localeId"
+                          },
+                          "jsonLdSchema": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "additionalProperties": {}
+                              },
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "description": "JSON-LD structured data as an object, a raw JSON string, or null to clear existing markup."
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "jsonLdSchema"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 25,
+                      "description": "Array of pages to write (1..25)."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "pages"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Write or clear JSON-LD schema markup for one or more pages (1..25). Pass a 1-item array for a single page. Per item: id (required), optional localeId, and jsonLdSchema. Strings wrapped in <script type=\"application/ld+json\">…</script> are accepted."
+                }
+              },
+              "required": [
+                "label",
+                "bulk_update_pages_schema_markup"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "page_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an async task to create a branch from a page on a site."
+                }
+              },
+              "required": [
+                "label",
+                "create_branch"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_page": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Page title."
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "URL slug for the page (the path segment)."
+                    },
+                    "parentFolderId": {
+                      "type": "string",
+                      "description": "ID of the folder to nest the page under. Omit to create the page at the site root."
+                    },
+                    "draft": {
+                      "type": "boolean",
+                      "description": "Whether the page is a draft (excluded from publishing). Defaults to false when omitted."
+                    },
+                    "duplicateOf": {
+                      "type": "string",
+                      "description": "ID of an existing page in the same site to duplicate."
+                    },
+                    "seo": {
+                      "$ref": "#/$defs/seo"
+                    },
+                    "openGraph": {
+                      "$ref": "#/$defs/openGraph"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "title",
+                    "slug"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a new page in a site. title and slug are required; optionally nest it under a folder (parentFolderId), mark it as a draft, duplicate an existing page (duplicateOf), and set seo and openGraph metadata."
+                }
+              },
+              "required": [
+                "label",
+                "create_page"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "delete_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "branch_id": {
+                      "$ref": "#/$defs/branch_id"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an async task to delete a branch from a site."
+                }
+              },
+              "required": [
+                "label",
+                "delete_branch"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_branch_conflicts": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "branch_id": {
+                      "$ref": "#/$defs/branch_id"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read-only: list a branch's unresolved conflicts with the site's main pages (no merge attempted). Returns { conflicts }, each { id, name, type: \"style\" | \"component\", updatedAt?, updatedBy? }; id is not always an ObjectId (e.g. \"default-body\"); updatedAt/updatedBy appear on style conflicts only. Each entry maps 1:1 to a resolutions[] item for update_branch or merge_branch. Computed against the last synced state — re-check after very recent branch edits; an empty array usually means update/merge needs no resolutions. 404 branch_not_found."
+                }
+              },
+              "required": [
+                "label",
+                "get_branch_conflicts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_branch_details": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "branch_id": {
+                      "$ref": "#/$defs/branch_id"
+                    },
+                    "limit": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Max records to return (up to 100)."
+                    },
+                    "offset": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Pagination offset."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get detailed information about a branch."
+                }
+              },
+              "required": [
+                "label",
+                "get_branch_details"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_branch_task_status": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "task_id": {
+                      "type": "string",
+                      "description": "Async branch task ID (a UUID, not an ObjectId)."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "task_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Poll the status of an async branch task, using the taskId from the mutation's response, until \"finished\" or \"failed\". Returns { taskId, status, taskType, branchId, siteId, createdOn, error?, nextActions }; status: \"queued\" | \"started\" | \"finished\" | \"failed\"; taskType: \"branch_create\" | \"branch_delete\" | \"branch_merge\" | \"branch_publish\" | \"branch_update\". branchId is null until a create task finishes; on \"failed\", read error.message and error.code. 404 branch_task_not_found for an unknown task ID, a non-branch task, or a task from a different site."
+                }
+              },
+              "required": [
+                "label",
+                "get_branch_task_status"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_page_metadata": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string"
+                    },
+                    "localeId": {
+                      "$ref": "#/$defs/localeId2"
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get a page's metadata: SEO, Open Graph, and draft/published status."
+                }
+              },
+              "required": [
+                "label",
+                "get_page_metadata"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "list_branches": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "limit": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Max branches to return (up to 100)."
+                    },
+                    "offset": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Pagination offset."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List a site's branches, with pagination."
+                }
+              },
+              "required": [
+                "label",
+                "list_branches"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "list_pages": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "localeId": {
+                      "$ref": "#/$defs/localeId2"
+                    },
+                    "limit": {
+                      "type": "number",
+                      "description": "Max records to return (up to 100)."
+                    },
+                    "offset": {
+                      "type": "number",
+                      "description": "Pagination offset."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List a site's pages: IDs, titles, and slugs."
+                }
+              },
+              "required": [
+                "label",
+                "list_pages"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "merge_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "branch_id": {
+                      "$ref": "#/$defs/branch_id"
+                    },
+                    "resolutions": {
+                      "$ref": "#/$defs/resolutions"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an async task that merges a branch INTO the site's main pages (branch -> main); on success the branch is consumed and disappears from list_branches. Returns { taskId, status: \"queued\", nextActions } — poll get_branch_task_status (taskType \"branch_merge\"). If the branch conflicts, pass resolutions covering every conflict: list them via get_branch_conflicts, or omit resolutions to get code \"branch_merge_conflict\" with conflicts[] inline and retry. Unresolved conflicts surface as a failed task. 409 branch_merge_in_progress if a merge is already running for the site; 404 branch_not_found."
+                }
+              },
+              "required": [
+                "label",
+                "merge_branch"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "publish_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "branch_id": {
+                      "$ref": "#/$defs/branch_id"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an async task that publishes ONLY the branch's page preview to its configured staging domain — production domains are not published and nothing is merged. Returns { taskId, status: \"queued\", stagingDomain, publishedOn, nextActions }; publishedOn is the trigger time, not completion — poll get_branch_task_status (taskType \"branch_publish\"). 409 branch_publish_failed if no staging domain is configured; 404 branch_not_found. The staging domain also appears on list_branches and get_branch_details."
+                }
+              },
+              "required": [
+                "label",
+                "publish_branch"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "query_pages_schema_markup": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Page ID."
+                          },
+                          "localeId": {
+                            "$ref": "#/$defs/localeId"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 100,
+                      "description": "Array of pages to read (1..100)."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "pages"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read JSON-LD schema markup for one or more pages (1..100). Pass a 1-item array for a single page."
+                }
+              },
+              "required": [
+                "label",
+                "query_pages_schema_markup"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "branch_id": {
+                      "$ref": "#/$defs/branch_id"
+                    },
+                    "resolutions": {
+                      "$ref": "#/$defs/resolutions"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an async task that pulls the latest main-page changes INTO a branch (main -> branch); it does NOT merge the branch back to main. Returns { taskId, status: \"queued\", nextActions } — poll get_branch_task_status (taskType \"branch_update\"). If the branch conflicts, pass resolutions covering every conflict (list them via get_branch_conflicts); 400 invalid_resolution means they do not cover the full set. 409 branch_update_in_progress if an update is already running; 404 branch_not_found."
+                }
+              },
+              "required": [
+                "label",
+                "update_branch"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_page_settings": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page to update."
+                    },
+                    "localeId": {
+                      "$ref": "#/$defs/localeId"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Page title."
+                    },
+                    "slug": {
+                      "$ref": "#/$defs/slug"
+                    },
+                    "draft": {
+                      "$ref": "#/$defs/draft"
+                    },
+                    "parentFolderId": {
+                      "$ref": "#/$defs/parentFolderId"
+                    },
+                    "seo": {
+                      "$ref": "#/$defs/seo"
+                    },
+                    "openGraph": {
+                      "$ref": "#/$defs/openGraph"
+                    },
+                    "jsonLdSchema": {
+                      "$ref": "#/$defs/jsonLdSchema"
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update settings for a single page (writes to an existing page). Accepts any subset of: title, slug, draft, parentFolderId, seo, openGraph, and jsonLdSchema. Pass localeId to write to a secondary locale; omit it for the primary locale."
+                }
+              },
+              "required": [
+                "label",
+                "update_page_settings"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$defs": {
+      "label": {
+        "type": "string",
+        "description": "Echoed in the response; does not select which action runs."
+      },
+      "site_id": {
+        "type": "string",
+        "description": "Webflow site ID. Use list_sites to discover site IDs."
+      },
+      "localeId": {
+        "type": "string",
+        "description": "Secondary locale ID. Omit for the primary locale."
+      },
+      "seo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "SEO title (page <title> / meta title)."
+          },
+          "description": {
+            "type": "string",
+            "description": "SEO meta description."
+          }
+        },
+        "additionalProperties": false,
+        "description": "SEO metadata for the page."
+      },
+      "openGraph": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Open Graph title (og:title)."
+          },
+          "titleCopied": {
+            "type": "boolean",
+            "description": "Whether the Open Graph title is copied from the SEO/page title."
+          },
+          "description": {
+            "type": "string",
+            "description": "Open Graph description (og:description)."
+          },
+          "descriptionCopied": {
+            "type": "boolean",
+            "description": "Whether the Open Graph description is copied from the SEO/page description."
+          },
+          "imageUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Open Graph image URL (og:image); null unsets it. Mutually exclusive with imageAssetId."
+          },
+          "imageAssetId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Site asset ID for the Open Graph image; null unsets it. Mutually exclusive with imageUrl."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Open Graph metadata for the page."
+      },
+      "branch_id": {
+        "type": "string",
+        "description": "Branch ID. Use list_branches to discover branch IDs."
+      },
+      "localeId2": {
+        "type": "string",
+        "description": "Locale ID to read, when using localization."
+      },
+      "resolutions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Identifier of the conflicting style or component, as returned by get_branch_conflicts or merge_branch's branch_merge_conflict conflicts[] (not always an ObjectId)."
+            },
+            "resolution": {
+              "type": "string",
+              "enum": [
+                "main",
+                "branch"
+              ],
+              "description": "Which side wins for this conflict: \"main\" keeps the main version, \"branch\" keeps the branch version."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "style",
+                "component"
+              ],
+              "description": "The kind of conflicting item."
+            }
+          },
+          "required": [
+            "id",
+            "resolution",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        "description": "Conflict resolutions; required when the branch conflicts with main. For merge_branch, omitting on the first attempt returns branch_merge_conflict with conflicts[] inline."
+      },
+      "slug": {
+        "type": "string",
+        "description": "URL slug for the page (the path segment)."
+      },
+      "draft": {
+        "type": "boolean",
+        "description": "Whether the page is a draft (excluded from publishing)."
+      },
+      "parentFolderId": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "ID of the folder to nest the page under. null moves the page to the site root."
+      },
+      "jsonLdSchema": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "JSON-LD structured data as a raw string. null clears the page's existing JSON-LD schema markup."
+      }
+    }
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

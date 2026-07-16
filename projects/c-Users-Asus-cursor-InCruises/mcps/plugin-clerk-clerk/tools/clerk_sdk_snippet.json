@@ -1,0 +1,20 @@
+{
+  "name": "clerk_sdk_snippet",
+  "description": "Get Clerk SDK code snippets and patterns.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "slug": {
+        "type": "string",
+        "description": "SDK snippet slug (e.g. \"use-user\", \"use-auth\") OR bundle name (e.g. \"b2b-saas\", \"organizations\").",
+        "default": "b2b-saas"
+      }
+    },
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "clerk",
+  "marketplace": "cursor-public",
+  "pluginId": "710",
+  "marketplaceId": "34"
+}

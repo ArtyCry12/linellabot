@@ -1,0 +1,130 @@
+{
+  "name": "data_sites_tool",
+  "description": "Data tool - Sites tool to perform actions like list sites, get site details, and publish sites",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Label echoed in the response for this action item. It does not select which action runs."
+                },
+                "get_site": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the site."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get detailed information about a specific site including its settings, domains, and publishing status."
+                }
+              },
+              "required": [
+                "label",
+                "get_site"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_site: Get detailed information about a specific site including its settings, domains, and publishing status."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_sites": {
+                  "type": "object",
+                  "properties": {
+                    "limit": {
+                      "type": "number",
+                      "description": "Maximum number of sites to return. Defaults to infinite."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "List all sites accessible to the authenticated user. Returns basic site information including site ID, name, and last published date."
+                }
+              },
+              "required": [
+                "label",
+                "list_sites"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_sites: List all sites accessible to the authenticated user. Returns basic site information including site ID, name, and last published date."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "publish_site": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the site."
+                    },
+                    "customDomains": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": [],
+                      "description": "Array of custom domains to publish the site to."
+                    },
+                    "publishToWebflowSubdomain": {
+                      "type": "boolean",
+                      "description": "Whether to publish to the Webflow subdomain."
+                    },
+                    "pageId": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{24}$",
+                      "description": "Optional page ID for Single Page Publishing (e.g., '63c720f9347c2139b248e552'). Use list_pages to discover available page IDs. When provided, only that page is published (CMS items are not published via single-page publishing). When omitted, the entire site is published. Requires an Enterprise site with single-page publishing enabled and at least one prior full-site publish on the main branch."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Publish a site. By default this publishes the entire site, making the latest changes live on the specified domains. To publish only a single page (Single Page Publishing), pass the optional pageId; in that case only that page is published and CMS items are not published."
+                }
+              },
+              "required": [
+                "label",
+                "publish_site"
+              ],
+              "additionalProperties": false,
+              "description": "Run publish_site: Publish a site. By default this publishes the entire site, making the latest changes live on the specified domains. To publish only a single page (Single Page Publishing), pass the optional pageId; in that case only that page is published and CMS items are not published."
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property: get_site, list_sites, publish_site."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

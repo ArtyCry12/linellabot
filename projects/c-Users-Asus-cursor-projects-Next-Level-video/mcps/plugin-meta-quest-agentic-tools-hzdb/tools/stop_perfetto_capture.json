@@ -1,0 +1,30 @@
+{
+  "name": "stop_perfetto_capture",
+  "description": "Stop a background Perfetto capture started with start_perfetto_capture. Sends SIGINT to flush buffers, pulls the trace from device. Returns trace path and session_id for use with load_trace_for_analysis.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "output_name": {
+        "description": "The output_name from start_perfetto_capture output.",
+        "type": "string"
+      },
+      "pid": {
+        "description": "The PID of the background perfetto process (from start_perfetto_capture output).",
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "pid",
+      "output_name"
+    ],
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Request parameters for stop_perfetto_capture tool.",
+    "title": "StopPerfettoCaptureRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

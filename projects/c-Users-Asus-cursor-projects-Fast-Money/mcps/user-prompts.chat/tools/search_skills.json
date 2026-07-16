@@ -1,0 +1,32 @@
+{
+  "name": "search_skills",
+  "description": "Search for Agent Skills by keyword. Returns matching skills with title, description, author, and file list. Use this to discover reusable AI agent capabilities for coding, analysis, automation, and more.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "description": "Search query to find relevant skills",
+        "type": "string"
+      },
+      "limit": {
+        "description": "Maximum number of skills to return (default 10, max 50)",
+        "default": 10,
+        "type": "number",
+        "minimum": 1,
+        "maximum": 50
+      },
+      "category": {
+        "description": "Filter by category slug",
+        "type": "string"
+      },
+      "tag": {
+        "description": "Filter by tag slug",
+        "type": "string"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

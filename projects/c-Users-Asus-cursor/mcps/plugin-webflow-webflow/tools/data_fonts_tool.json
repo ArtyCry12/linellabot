@@ -1,0 +1,403 @@
+{
+  "name": "data_fonts_tool",
+  "description": "Data tool - Manage a site's uploaded custom fonts: list and inspect them, register new fonts and replace their files (a two-step upload flow), update font metadata, and remove fonts individually or in batches.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "batch_delete_fonts": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "pattern": "^[a-f0-9]{24}$",
+                            "description": "Custom font identifier to delete: a 24-character lowercase hex Mongo ObjectId. Example: 659bc2b8a1f3c40012abcd34."
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 100,
+                      "description": "Custom fonts to delete, from 1 to 100 entries, each holding the font id. Example: [{ id: 659bc2b8a1f3c40012abcd34 }]."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "items"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete up to 100 custom fonts from a site in a single call. DESTRUCTIVE: the listed fonts are removed from the site and there is no API to restore them; confirm with the user before calling. Returns a per-item manifest reporting success or failure for each font."
+                }
+              },
+              "required": [
+                "label",
+                "batch_delete_fonts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_font": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "file_name": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "pattern": "^[^/\\\\]+\\.(woff2|woff|ttf|otf|eot)$",
+                      "description": "Font file name including extension, up to 256 characters, with no path separators. Allowed extensions: woff2, woff, ttf, otf, eot. Example: Inter-Regular.woff2."
+                    },
+                    "file_hash": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$",
+                      "description": "MD5 digest of the raw font file bytes, encoded as a 32-character lowercase hex string. Used for content addressing and S3 verification. Example: 9e107d9d372bb6826bd81d3542a419d6."
+                    },
+                    "font_family": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256,
+                      "description": "Font family name as it will appear in the site, from 1 to 256 characters. Example: Inter."
+                    },
+                    "weight": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1000,
+                      "description": "Numeric font weight, from 1 to 1000. Example: 400."
+                    },
+                    "italic": {
+                      "type": "boolean",
+                      "description": "Whether this font face is italic. Example: false."
+                    },
+                    "font_display": {
+                      "$ref": "#/$defs/font_display"
+                    },
+                    "axes": {
+                      "$ref": "#/$defs/axes"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "file_name",
+                    "file_hash",
+                    "font_family",
+                    "weight",
+                    "italic",
+                    "font_display"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Register a new custom font on a site. This is the first step of a two-step upload flow: it records the font metadata and returns a presigned upload target. The font file bytes are uploaded in a separate step before the font becomes usable."
+                }
+              },
+              "required": [
+                "label",
+                "create_font"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "delete_font": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "font_id": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{24}$",
+                      "description": "Custom font identifier to delete: a 24-character lowercase hex Mongo ObjectId. Example: 659bc2b8a1f3c40012abcd34."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "font_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete a single custom font from a site. DESTRUCTIVE: the font is removed from the site and there is no API to restore it; confirm with the user before calling. Returns a 404 error when the font does not exist."
+                }
+              },
+              "required": [
+                "label",
+                "delete_font"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_font": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "font_id": {
+                      "$ref": "#/$defs/font_id"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "font_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Retrieve the metadata and upload status of a single custom font on a site."
+                }
+              },
+              "required": [
+                "label",
+                "get_font"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "list_fonts": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Maximum number of fonts to return, from 1 to 100. Example: 25."
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "Number of fonts to skip before returning results, 0 or greater. Example: 0."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List the custom fonts uploaded to a site, with their metadata and upload status. Supports pagination via limit and offset."
+                }
+              },
+              "required": [
+                "label",
+                "list_fonts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "replace_font_file": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "font_id": {
+                      "$ref": "#/$defs/font_id"
+                    },
+                    "file_name": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "pattern": "^[^/\\\\]+\\.(woff2|woff|ttf|otf|eot)$",
+                      "description": "Font file name including extension, up to 256 characters, with no path separators. Allowed extensions: woff2, woff, ttf, otf, eot. Example: Inter-Regular.woff2."
+                    },
+                    "file_hash": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$",
+                      "description": "MD5 digest of the raw font file bytes, encoded as a 32-character lowercase hex string. Used for content addressing and S3 verification. Example: 9e107d9d372bb6826bd81d3542a419d6."
+                    },
+                    "axes": {
+                      "$ref": "#/$defs/axes"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "font_id",
+                    "file_name",
+                    "file_hash"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Replace the file behind an existing custom font on a site, keeping the same font record. This is the first step of a two-step upload flow: it returns a presigned upload target for the new file bytes, which are uploaded in a separate step. Returns a 404 error when the font does not exist."
+                }
+              },
+              "required": [
+                "label",
+                "replace_font_file"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_font": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "font_id": {
+                      "$ref": "#/$defs/font_id"
+                    },
+                    "font_family": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256,
+                      "description": "New font family name, from 1 to 256 characters. Example: Inter."
+                    },
+                    "weight": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1000,
+                      "description": "New numeric font weight, from 1 to 1000. Example: 400."
+                    },
+                    "italic": {
+                      "type": "boolean",
+                      "description": "New italic setting for this font face. Example: false."
+                    },
+                    "font_display": {
+                      "$ref": "#/$defs/font_display"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "font_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update the metadata of an existing custom font on a site. Only the metadata fields you provide are sent and changed; the others are left as they are. This does not change the underlying font file."
+                }
+              },
+              "required": [
+                "label",
+                "update_font"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$defs": {
+      "label": {
+        "type": "string",
+        "description": "Echoed in the response; does not select which action runs."
+      },
+      "site_id": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{24}$",
+        "description": "Site identifier: a 24-character lowercase hex Mongo ObjectId. Example: 580e63e98c9a982ac9b8b741."
+      },
+      "font_id": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{24}$",
+        "description": "Custom font identifier: a 24-character lowercase hex Mongo ObjectId. Example: 659bc2b8a1f3c40012abcd34."
+      },
+      "axes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "pattern": "^[\\x20-\\x7E]{4}$",
+              "description": "Variable-font axis tag: exactly 4 printable-ASCII characters. Example: wght."
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 64,
+              "description": "Human-readable label for the axis, up to 64 characters. Example: Weight."
+            },
+            "min": {
+              "type": "number",
+              "description": "Minimum value the axis accepts. Example: 100."
+            },
+            "max": {
+              "type": "number",
+              "description": "Maximum value the axis accepts. Example: 900."
+            },
+            "default_value": {
+              "type": "number",
+              "description": "Value the axis uses when none is specified. Example: 400."
+            }
+          },
+          "required": [
+            "tag",
+            "min",
+            "max",
+            "default_value"
+          ],
+          "additionalProperties": false,
+          "description": "A single variable-font axis describing one adjustable dimension (such as weight or width) and its allowed range."
+        },
+        "maxItems": 16,
+        "description": "Variable-font axes describing the font's adjustable dimensions, up to 16 entries. Example: a weight axis with tag wght ranging from 100 to 900."
+      },
+      "font_display": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "block",
+          "swap",
+          "fallback",
+          "optional"
+        ],
+        "description": "CSS font-display strategy controlling how the font renders while loading. One of: auto, block, swap, fallback, optional. Example: swap."
+      }
+    }
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

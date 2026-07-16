@@ -1,0 +1,33 @@
+{
+  "name": "list_video_translations",
+  "description": "Returns a paginated list of all video translation jobs in the account.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "limit": {
+        "default": 10,
+        "description": "Maximum number of items per page",
+        "title": "Limit",
+        "type": "integer"
+      },
+      "token": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Opaque cursor token for the next page",
+        "title": "Token"
+      }
+    },
+    "title": "ListVideoTranslationsInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

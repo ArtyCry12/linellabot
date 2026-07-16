@@ -1,0 +1,11 @@
+{
+  "name": "Model Details",
+  "description": "Get detailed information about a model from the Hugging Face Hub. Includes README from the repository - review before use.",
+  "arguments": [
+    {
+      "name": "model_id",
+      "description": "The Model ID in author/model format (e.g. 'openai/gpt-oss-120b')",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/billing-integration",
+  "name": "Billing Integration (Stripe)",
+  "description": "Integrate Stripe billing with Clerk organizations",
+  "mimeType": "text/markdown"
+}

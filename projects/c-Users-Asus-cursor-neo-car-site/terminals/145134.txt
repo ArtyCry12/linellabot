@@ -1,0 +1,42 @@
+---
+pid: 768
+cwd: "C:\\Users\\Asus\\.cursor\\neo-car-site"
+command: "Set-Location \"c:\\Users\\Asus\\.cursor\\neo-car-site\"; npm.cmd run build 2>&1"
+started_at: 2026-05-06T20:40:36.222Z
+running_for_ms: 97749    
+---
+
+> neo-car-site@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.16
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 27.3s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/4) ...
+   Generating static pages (1/4) 
+   Generating static pages (2/4) 
+   Generating static pages (3/4) 
+ ✓ Generating static pages (4/4)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                     354 kB         457 kB
+└ ○ /_not-found                            993 B         104 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-226bd5918a99f1a2.js       46.2 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          2.54 kB
+
+
+○  (Static)  prerendered as static content
+
+
+---
+exit_code: 0
+elapsed_ms: 99509
+ended_at: 2026-05-06T20:42:15.731Z
+---

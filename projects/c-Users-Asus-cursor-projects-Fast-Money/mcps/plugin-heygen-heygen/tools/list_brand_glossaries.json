@@ -1,0 +1,33 @@
+{
+  "name": "list_brand_glossaries",
+  "description": "List brand glossaries (custom term mappings, a.k.a. brand voices) in the authenticated user's workspace. A brand glossary enforces custom term translations during video translation — for example, translating \"Reformer\" as Pilates equipment instead of as a political activist. Brand glossaries are created and edited in the HeyGen web app under Brand Kit; this endpoint is read-only for discovery.\n\nPass the returned `brand_glossary_id` (or the legacy alias `brand_voice_id`) on POST /v2/video_translate to apply the glossary during translation.\n",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "limit": {
+        "default": 10,
+        "description": "Maximum number of brand glossaries to return (1-100). Default 10.",
+        "title": "Limit",
+        "type": "integer"
+      },
+      "token": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Opaque pagination cursor from a previous response's `next_token`. Omit for the first page.",
+        "title": "Token"
+      }
+    },
+    "title": "ListBrandGlossariesInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

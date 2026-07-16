@@ -1,0 +1,32 @@
+{
+  "name": "stock_to_creation",
+  "description": "Convert Freepik stock item → Pikaso creation. Use after user selects from stock_show.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Freepik stock item ID.",
+        "type": "integer"
+      },
+      "type": {
+        "description": "Default: image. Use \"video\" for stock videos.",
+        "enum": [
+          "image",
+          "video"
+        ],
+        "type": "string"
+      },
+      "folder_reference": {
+        "description": "Target project folder UUID. Omit to save without folder.",
+        "type": "string"
+      },
+      "title": {
+        "description": "Creation display title. Defaults to \"Stock item {id}\".",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

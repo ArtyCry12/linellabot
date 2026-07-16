@@ -1,0 +1,67 @@
+{
+  "name": "data_assets_tool",
+  "description": "Data tool - Manage Webflow site assets via the Data API. Generates asset metadata entries and returns presigned S3 upload information (uploadUrl and uploadDetails) used to upload the file bytes.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Label to identify this action in the response when sending multiple actions."
+            },
+            "create_asset": {
+              "type": "object",
+              "properties": {
+                "site_id": {
+                  "type": "string",
+                  "description": "The site ID."
+                },
+                "file_name": {
+                  "type": "string",
+                  "maxLength": 100,
+                  "description": "File name including file extension. Must be less than 100 characters."
+                },
+                "file_hash": {
+                  "type": "string",
+                  "description": "MD5 hash of the file."
+                },
+                "parent_folder": {
+                  "type": "string",
+                  "description": "Optional asset folder ID to place the asset in."
+                }
+              },
+              "required": [
+                "site_id",
+                "file_name",
+                "file_hash"
+              ],
+              "additionalProperties": false,
+              "description": "Create an asset metadata entry for a site. Generates a response with the following information: uploadUrl and uploadDetails. The uploadDetails props are used as form fields in a multipart/form-data POST request to Amazon S3 (uploadUrl) to complete the upload of the actual file bytes. For code examples (Node, Python, curl) read the MCP resource webflow://guides/asset-upload."
+            }
+          },
+          "required": [
+            "label"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

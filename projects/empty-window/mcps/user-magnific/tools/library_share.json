@@ -1,0 +1,63 @@
+{
+  "name": "library_share",
+  "description": "Share an owned library asset by numeric `id` with team / projects / individuals / groups. Replaces the asset's share targets. Types (as library_list emits): character/style/product/locations (references), color, template, app.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Numeric library asset id (from library_list).",
+        "type": "integer"
+      },
+      "type": {
+        "description": "From library_list `type`. character|style|product|locations|color|template|app.",
+        "enum": [
+          "character",
+          "style",
+          "element",
+          "locations",
+          "palette",
+          "template",
+          "app",
+          "product",
+          "color"
+        ],
+        "type": "string"
+      },
+      "access": {
+        "description": "Share targets. Empty array shares with no one.",
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "description": "team = whole team (no ids). project|individual|group require ids.",
+              "enum": [
+                "team",
+                "project",
+                "individual",
+                "group"
+              ],
+              "type": "string"
+            },
+            "ids": {
+              "description": "Target ids (user/project/group). Required for project|individual|group; omit for team.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object",
+          "required": [
+            "type"
+          ]
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "id",
+      "type",
+      "access"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "queue_operations",
+  "description": "Execute multiple operations in sequence. Operations run in order with result references ($0.field) to chain outputs. Use for multi-step workflows.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "operations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "tool": {
+              "type": "string",
+              "enum": [
+                "manage_email",
+                "manage_calendar",
+                "manage_drive",
+                "manage_sheets",
+                "manage_docs",
+                "manage_tasks",
+                "manage_meet",
+                "manage_accounts",
+                "manage_scratchpad",
+                "manage_workspace"
+              ],
+              "description": "Tool to call"
+            },
+            "args": {
+              "type": "object",
+              "description": "Arguments for the tool. Use $N.field to reference results from earlier operations."
+            },
+            "onError": {
+              "type": "string",
+              "enum": [
+                "bail",
+                "continue"
+              ],
+              "description": "bail: stop on error (default) | continue: skip and proceed"
+            }
+          },
+          "required": [
+            "tool",
+            "args"
+          ]
+        },
+        "maxItems": 10,
+        "description": "Operations to execute sequentially"
+      },
+      "detail": {
+        "type": "string",
+        "enum": [
+          "summary",
+          "full"
+        ],
+        "description": "summary: one-line status per operation (default) | full: include complete output from each operation"
+      }
+    },
+    "required": [
+      "operations"
+    ],
+    "additionalProperties": false
+  }
+}

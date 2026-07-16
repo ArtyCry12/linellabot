@@ -1,0 +1,111 @@
+---
+pid: 2388
+cwd: "C:\\Users\\Asus\\.cursor"
+command: "cd \"C:\\Users\\Asus\\.cursor\"\n$ErrorActionPreference = \"Continue\"\nWrite-Host \"=== retry playwright ===\"\nnpx.cmd skills add bobmatnyc/claude-mpm-skills -s playwright -g -y --agent cursor 2>&1 | Select-Object -Last 25\nWrite-Host \"exit=$LASTEXITCODE\"\nWrite-Host \"=== retry firestore ===\"\nnpx.cmd skills add firebase/agent-skills -s firestore-security-rules-auditor -g -y --agent cursor 2>&1 | Select-Object -Last 25\nWrite-Host \"exit=$LASTEXITCODE\"\nWrite-Host \"=== growth substitute entity-seo ===\"\nnpx.cmd skills add kostja94/marketing-skills -s entity-seo -g -y --agent cursor 2>&1 | Select-Object -Last 20\nWrite-Host \"exit=$LASTEXITCODE\"\nWrite-Host \"=== find secrets skill ===\"\nnpx.cmd skills find \"secrets scan\" 2>&1 | Select-Object -First 40\n"
+started_at: 2026-07-16T16:13:33.023Z
+running_for_ms: 45223    
+---
+=== retry playwright ===
+|                               |
++-------------------------------+
+|
+o  Security Risk Assessments --------------------------------+
+|                                                            |
+|              Gen               Socket            Snyk      |
+|  playwright  Safe              0 alerts          Low Risk  |
+|                                                            |
+|  Details: https://skills.sh/bobmatnyc/claude-mpm-skills    |
+|                                                            |
++------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ---------------+
+|                                   |
+|  ✓ playwright (copied)            |
+|    → ~\.agents\skills\playwright  |
+|                                   |
++-----------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+exit=0
+=== retry firestore ===
+x  No matching skills found for: firestore-security-rules-auditor
+|
+•  Available skills:
+|
+|    - firebase-ai-logic-basics
+|
+|    - firebase-app-hosting-basics
+|
+|    - firebase-auth-basics
+|
+|    - firebase-basics
+|
+|    - firebase-crashlytics
+|
+|    - firebase-data-connect
+|
+|    - firebase-firestore
+|
+|    - firebase-hosting-basics
+|
+|    - firebase-remote-config-basics
+|
+|    - firebase-security-rules-auditor
+|
+|    - xcode-project-setup
+exit=1
+=== growth substitute entity-seo ===
+|              Gen               Socket            Snyk      |
+|  entity-seo  Safe              0 alerts          Low Risk  |
+|                                                            |
+|  Details: https://skills.sh/kostja94/marketing-skills      |
+|                                                            |
++------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ---------------+
+|                                   |
+|  ✓ entity-seo (copied)            |
+|    → ~\.agents\skills\entity-seo  |
+|                                   |
++-----------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+exit=0
+=== find secrets skill ===
+
+[38;5;102mInstall with[0m npx skills add <owner/repo@skill>
+
+[38;5;145mgithub/awesome-copilot@secret-scanning[0m [36m3.7K installs[0m
+[38;5;102m└ https://skills.sh/github/awesome-copilot/secret-scanning[0m
+
+[38;5;145mghostsecurity/skills@ghost-scan-secrets[0m [36m2.6K installs[0m
+[38;5;102m└ https://skills.sh/ghostsecurity/skills/ghost-scan-secrets[0m
+
+[38;5;145mlevnikolaevich/claude-code-skills@ln-761-secret-scanner[0m [36m395 installs[0m
+[38;5;102m└ https://skills.sh/levnikolaevich/claude-code-skills/ln-761-secret-scanner[0m
+
+[38;5;145mjwynia/agent-skills@secrets-scan[0m [36m268 installs[0m
+[38;5;102m└ https://skills.sh/jwynia/agent-skills/secrets-scan[0m
+
+[38;5;145mpatricio0312rev/skills@secrets-scanner[0m [36m192 installs[0m
+[38;5;102m└ https://skills.sh/patricio0312rev/skills/secrets-scanner[0m
+
+[38;5;145msteipete/clawdis@openclaw-secret-scanning-maintainer[0m [36m149 installs[0m
+[38;5;102m└ https://skills.sh/steipete/clawdis/openclaw-secret-scanning-maintainer[0m
+
+
+---
+exit_code: 0
+elapsed_ms: 45638
+ended_at: 2026-07-16T16:14:18.661Z
+---

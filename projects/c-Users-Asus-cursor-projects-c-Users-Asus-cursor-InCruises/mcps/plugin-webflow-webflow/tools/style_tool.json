@@ -1,0 +1,365 @@
+{
+  "name": "style_tool",
+  "description": "Designer Tool - Style tool to perform actions like create style, get all styles, update styles, remove styles",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "Unique identifier for the Webflow site (e.g., '580e63e98c9a982ac9b8b741'). Use list_sites to discover available site IDs."
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Label echoed in the response for this action item. It does not select which action runs."
+                },
+                "create_style": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the style"
+                    },
+                    "properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property_name": {
+                            "type": "string",
+                            "description": "The name of the property"
+                          },
+                          "property_value": {
+                            "type": "string",
+                            "description": "The value of the property"
+                          },
+                          "variable_as_value": {
+                            "type": "string",
+                            "description": "The variable id to use as the value"
+                          }
+                        },
+                        "required": [
+                          "property_name"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "The properties of the style. if you are looking to link a variable as the value, then use the variable_as_value field. but do not use both property_value and variable_as_value"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The name of the parent style to create the new style in. this will use to create combo class"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "properties"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a new style"
+                }
+              },
+              "required": [
+                "label",
+                "create_style"
+              ],
+              "additionalProperties": false,
+              "description": "Run create_style: Create a new style"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_styles": {
+                  "type": "object",
+                  "properties": {
+                    "skip_properties": {
+                      "type": "boolean",
+                      "description": "Whether to skip the properties of the style. to get minimal data."
+                    },
+                    "include_all_breakpoints": {
+                      "type": "boolean",
+                      "description": "Whether to include all breakpoints styles or not. very data intensive."
+                    },
+                    "query": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "filtered"
+                      ],
+                      "description": "The query to get all styles or filtered styles"
+                    },
+                    "filter_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The ids of the styles to filter by. should be used with query filtered"
+                    }
+                  },
+                  "required": [
+                    "query"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get all styles"
+                }
+              },
+              "required": [
+                "label",
+                "get_styles"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_styles: Get all styles"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "query_styles": {
+                  "type": "object",
+                  "properties": {
+                    "queries": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "description": "A label to identify this query in the results."
+                          },
+                          "style_id": {
+                            "type": "string",
+                            "description": "Filter by style ID. Exact match. Bypasses other filters."
+                          },
+                          "name_path": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Filter by style name path. Supports combo classes (e.g. ['base', 'combo']). Each segment is a case-insensitive substring match."
+                          },
+                          "properties": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "CSS property name. Case-insensitive substring match."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "CSS property value. Case-insensitive substring match."
+                                }
+                              },
+                              "required": [
+                                "name"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "description": "Filter styles that have ALL listed CSS properties matching. Each entry checks name (and optionally value)."
+                          },
+                          "include_properties": {
+                            "type": "boolean",
+                            "description": "Include style properties in results. Default: false."
+                          },
+                          "include_all_breakpoints": {
+                            "type": "boolean",
+                            "description": "Include all breakpoint styles in results. Default: false."
+                          },
+                          "limit": {
+                            "type": "number",
+                            "minimum": 1,
+                            "maximum": 200,
+                            "description": "Max results for this query. Default: 50, Max: 200."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "queries"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Query styles by name path, ID, or CSS properties"
+                }
+              },
+              "required": [
+                "label",
+                "query_styles"
+              ],
+              "additionalProperties": false,
+              "description": "Run query_styles: Query styles by name path, ID, or CSS properties"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "remove_style": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The name of the style to remove"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names (for combo class)"
+                    }
+                  },
+                  "required": [
+                    "style_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove a style"
+                }
+              },
+              "required": [
+                "label",
+                "remove_style"
+              ],
+              "additionalProperties": false,
+              "description": "Run remove_style: Remove a style"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_style": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The name of the style to update"
+                    },
+                    "breakpoint_id": {
+                      "type": "string",
+                      "enum": [
+                        "xxl",
+                        "xl",
+                        "large",
+                        "main",
+                        "medium",
+                        "small",
+                        "tiny"
+                      ],
+                      "description": "The breakpoint to update the style for"
+                    },
+                    "pseudo": {
+                      "type": "string",
+                      "enum": [
+                        "noPseudo",
+                        "nth-child(odd)",
+                        "nth-child(even)",
+                        "first-child",
+                        "last-child",
+                        "hover",
+                        "active",
+                        "pressed",
+                        "visited",
+                        "focus",
+                        "focus-visible",
+                        "focus-within",
+                        "placeholder",
+                        "empty",
+                        "before",
+                        "after"
+                      ],
+                      "description": "The pseudo class to update the style for"
+                    },
+                    "properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property_name": {
+                            "type": "string",
+                            "description": "The name of the property"
+                          },
+                          "property_value": {
+                            "type": "string",
+                            "description": "The value of the property"
+                          },
+                          "variable_as_value": {
+                            "type": "string",
+                            "description": "The variable id to use as the value"
+                          }
+                        },
+                        "required": [
+                          "property_name"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "The properties to update or add to the style for"
+                    },
+                    "remove_properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The properties to remove from the style"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names to update the style for (for combo class)"
+                    }
+                  },
+                  "required": [
+                    "style_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update a style"
+                }
+              },
+              "required": [
+                "label",
+                "update_style"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_style: Update a style"
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property: create_style, get_styles, query_styles, remove_style, update_style."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "siteId",
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

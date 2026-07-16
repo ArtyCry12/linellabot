@@ -1,0 +1,14 @@
+---
+pid: 11828
+cwd: "C:\\Users\\Asus\\.cursor\\neo-car-site"
+command: "Test-Path \"c:\\Users\\Asus\\.cursor\\neo-car-site\\node_modules\""
+started_at: 2026-05-06T19:55:33.788Z
+running_for_ms: 75284    
+---
+True
+
+---
+exit_code: 0
+elapsed_ms: 75475
+ended_at: 2026-05-06T19:56:49.263Z
+---

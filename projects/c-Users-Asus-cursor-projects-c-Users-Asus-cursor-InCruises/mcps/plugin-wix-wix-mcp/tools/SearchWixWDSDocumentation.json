@@ -1,0 +1,29 @@
+{
+  "name": "SearchWixWDSDocumentation",
+  "description": "",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "searchTerm": {
+        "type": "string",
+        "description": "The search term to search for in the Wix Design System Documentation"
+      },
+      "maxResults": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 15,
+        "description": "The maximum number of results to return, default is 10, max is 15",
+        "default": 15
+      }
+    },
+    "required": [
+      "searchTerm"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "wix",
+  "marketplace": "cursor-public",
+  "pluginId": "761",
+  "marketplaceId": "34"
+}

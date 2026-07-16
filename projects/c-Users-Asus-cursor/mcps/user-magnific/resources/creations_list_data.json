@@ -1,0 +1,6 @@
+{
+  "uri": "creations://list",
+  "name": "creations_list_data",
+  "description": "Paginated creation list for the media list browser. URI: creations://list?from=history&fileType=image&page=1",
+  "mimeType": "application/json"
+}

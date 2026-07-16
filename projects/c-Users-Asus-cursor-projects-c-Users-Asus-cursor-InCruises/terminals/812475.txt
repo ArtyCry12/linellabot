@@ -1,0 +1,24 @@
+---
+pid: 2972
+cwd: "C:\\Users\\Asus\\.cursor\\projects\\c-Users-Asus-cursor-InCruises"
+command: "python -c \"\nimport importlib.util\nprint('librosa', bool(importlib.util.find_spec('librosa')))\nprint('numpy', bool(importlib.util.find_spec('numpy')))\n\" 2>&1; pip install librosa -q 2>&1 | Select-Object -Last 2"
+started_at: 2026-06-19T23:04:09.477Z
+running_for_ms: 309834   
+---
+librosa False
+numpy True
+pip : WARNING: You are using pip version 21.1.1; however, version 25.0.1 is available.
+C:\Users\Asus\AppData\Local\Temp\ps-script-72c38b04-6fb3-4180-a56e-57cfd14a09ae.ps1:83 ����:9
++ " 2>&1; pip install librosa -q 2>&1 | Select-Object -Last 2
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: You ar...1 is available.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+You should consider upgrading via the 'c:\users\asus\appdata\local\programs\python\python38\python.exe -m pip install -
+-upgrade pip' command.
+
+---
+exit_code: 0
+elapsed_ms: 312051
+ended_at: 2026-06-19T23:09:21.528Z
+---

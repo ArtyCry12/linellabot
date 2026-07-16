@@ -1,0 +1,50 @@
+{
+  "name": "create-webhook",
+  "description": "Create a new webhook in Resend. A webhook allows you to receive notifications at a specified URL when certain events occur (e.g. email.sent, email.delivered, email.bounced).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "endpoint": {
+        "type": "string",
+        "format": "uri",
+        "description": "The URL where webhook events will be sent"
+      },
+      "events": {
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "email.sent",
+            "email.scheduled",
+            "email.delivered",
+            "email.delivery_delayed",
+            "email.complained",
+            "email.bounced",
+            "email.opened",
+            "email.clicked",
+            "email.received",
+            "email.failed",
+            "email.suppressed",
+            "contact.created",
+            "contact.updated",
+            "contact.deleted",
+            "domain.created",
+            "domain.updated",
+            "domain.deleted"
+          ]
+        },
+        "description": "Array of event types to subscribe to"
+      }
+    },
+    "required": [
+      "endpoint",
+      "events"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

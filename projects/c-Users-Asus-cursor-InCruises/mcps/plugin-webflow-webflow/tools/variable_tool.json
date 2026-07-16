@@ -1,0 +1,835 @@
+{
+  "name": "variable_tool",
+  "description": "Designer Tool - Variable tool to perform actions like create variable, get all variables, update variable, rename and delete variables, and manage style variable modes.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "The ID of the site. DO NOT ASSUME site id. ALWAYS ask user for site id if not already provided or known. use sites_list tool to fetch all sites and then ask user to select one of them."
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Label to identify this action in the response when sending multiple actions."
+            },
+            "create_color_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "string"
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string (e.g. 'color-mix(in srgb, red 50%, blue)'). Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_name",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Create a new color variable"
+            },
+            "create_font_family_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "string"
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string. Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_name",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Create a new font family variable"
+            },
+            "create_number_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "number"
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string. Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_name",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Create a new number variable"
+            },
+            "create_percentage_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "number"
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string. Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_name",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Create a new percentage variable"
+            },
+            "create_size_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "number"
+                        },
+                        "unit": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "unit"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string (e.g. 'calc(100vh - 60px)'). Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_name",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Create a new size variable"
+            },
+            "create_variable_collection": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the variable collection to create"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false,
+              "description": "Create a new variable collection"
+            },
+            "create_variable_mode": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string",
+                  "description": "The id of the variable collection to create the variable mode in"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The name of the variable mode to create"
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "name"
+              ],
+              "additionalProperties": false,
+              "description": "Create a new variable mode in a variable collection"
+            },
+            "delete_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string",
+                  "description": "The id of the variable collection containing the variable"
+                },
+                "variable_id": {
+                  "type": "string",
+                  "description": "The id of the variable to delete"
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_id"
+              ],
+              "additionalProperties": false,
+              "description": "Delete a variable"
+            },
+            "get_style_variable_modes": {
+              "type": "object",
+              "properties": {
+                "style_name": {
+                  "type": "string",
+                  "description": "The name of the style to read variable modes from"
+                },
+                "variant_id": {
+                  "type": "string",
+                  "description": "The id of the variant to read variable modes from. Use 'base' or omit for the base variant."
+                },
+                "breakpoint_id": {
+                  "type": "string",
+                  "enum": [
+                    "xxl",
+                    "xl",
+                    "large",
+                    "main",
+                    "medium",
+                    "small",
+                    "tiny"
+                  ],
+                  "description": "The breakpoint to get variable modes for"
+                },
+                "pseudo": {
+                  "type": "string",
+                  "enum": [
+                    "noPseudo",
+                    "nth-child(odd)",
+                    "nth-child(even)",
+                    "first-child",
+                    "last-child",
+                    "hover",
+                    "active",
+                    "pressed",
+                    "visited",
+                    "focus",
+                    "focus-visible",
+                    "focus-within",
+                    "placeholder",
+                    "empty",
+                    "before",
+                    "after"
+                  ],
+                  "description": "The pseudo class to get variable modes for"
+                }
+              },
+              "required": [
+                "style_name"
+              ],
+              "additionalProperties": false,
+              "description": "Get the variable modes applied to a style. Returns a map of collection IDs to mode IDs. Optionally scoped to a component variant."
+            },
+            "get_variable_collections": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "string",
+                  "enum": [
+                    "all",
+                    "filtered"
+                  ],
+                  "description": "The query to get all variable collections"
+                },
+                "filter_collections_by_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "The ids of the variable collections to filter by"
+                }
+              },
+              "required": [
+                "query"
+              ],
+              "additionalProperties": false,
+              "description": "Get all variable collections and its modes"
+            },
+            "get_variables": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string",
+                  "description": "The id of the variable collection to get the variables from"
+                },
+                "include_all_modes": {
+                  "type": "boolean",
+                  "description": "Whether to include all modes or not"
+                },
+                "filter_variables_by_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "The ids of the variables to filter by"
+                }
+              },
+              "required": [
+                "variable_collection_id"
+              ],
+              "additionalProperties": false,
+              "description": "Get all variables in a variable collection and its modes"
+            },
+            "query_variables": {
+              "type": "object",
+              "properties": {
+                "queries": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "description": "A label to identify this query in the results."
+                      },
+                      "variable_id": {
+                        "type": "string",
+                        "description": "Filter by variable ID. Exact match. Bypasses other filters."
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Filter by variable name. Case-insensitive substring match."
+                      },
+                      "css_name": {
+                        "type": "string",
+                        "description": "Filter by CSS variable name (e.g. '--my-color'). Case-insensitive substring match."
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "Color",
+                          "Size",
+                          "Number",
+                          "Percentage",
+                          "FontFamily"
+                        ],
+                        "description": "Filter by variable type. Exact match."
+                      },
+                      "variable_collection_id": {
+                        "type": "string",
+                        "description": "Scope search to a specific variable collection."
+                      },
+                      "include_all_modes": {
+                        "type": "boolean",
+                        "description": "Include values for all modes in results."
+                      },
+                      "limit": {
+                        "type": "number",
+                        "minimum": 1,
+                        "maximum": 200,
+                        "description": "Max results for this query. Default: 50, Max: 200."
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "queries"
+              ],
+              "additionalProperties": false,
+              "description": "Query variables across collections by name, ID, CSS name, or type [BETA]"
+            },
+            "remove_all_style_variable_modes": {
+              "type": "object",
+              "properties": {
+                "style_name": {
+                  "type": "string",
+                  "description": "The name of the style to update"
+                },
+                "variant_id": {
+                  "type": "string",
+                  "description": "The id of the variant to remove all variable modes from. Use 'base' or omit for the base variant."
+                },
+                "breakpoint_id": {
+                  "type": "string",
+                  "enum": [
+                    "xxl",
+                    "xl",
+                    "large",
+                    "main",
+                    "medium",
+                    "small",
+                    "tiny"
+                  ],
+                  "description": "The breakpoint to remove variable modes for"
+                },
+                "pseudo": {
+                  "type": "string",
+                  "enum": [
+                    "noPseudo",
+                    "nth-child(odd)",
+                    "nth-child(even)",
+                    "first-child",
+                    "last-child",
+                    "hover",
+                    "active",
+                    "pressed",
+                    "visited",
+                    "focus",
+                    "focus-visible",
+                    "focus-within",
+                    "placeholder",
+                    "empty",
+                    "before",
+                    "after"
+                  ],
+                  "description": "The pseudo class to remove variable modes for"
+                }
+              },
+              "required": [
+                "style_name"
+              ],
+              "additionalProperties": false,
+              "description": "Remove all variable mode overrides from a style, reverting to inherited/default modes for all collections. Optionally scoped to a component variant."
+            },
+            "remove_style_variable_mode": {
+              "type": "object",
+              "properties": {
+                "style_name": {
+                  "type": "string",
+                  "description": "The name of the style to update"
+                },
+                "collection_id": {
+                  "type": "string",
+                  "description": "The id of the variable collection whose mode override should be removed"
+                },
+                "variant_id": {
+                  "type": "string",
+                  "description": "The id of the variant to remove the variable mode from. Use 'base' or omit for the base variant."
+                },
+                "breakpoint_id": {
+                  "type": "string",
+                  "enum": [
+                    "xxl",
+                    "xl",
+                    "large",
+                    "main",
+                    "medium",
+                    "small",
+                    "tiny"
+                  ],
+                  "description": "The breakpoint to remove the variable mode for"
+                },
+                "pseudo": {
+                  "type": "string",
+                  "enum": [
+                    "noPseudo",
+                    "nth-child(odd)",
+                    "nth-child(even)",
+                    "first-child",
+                    "last-child",
+                    "hover",
+                    "active",
+                    "pressed",
+                    "visited",
+                    "focus",
+                    "focus-visible",
+                    "focus-within",
+                    "placeholder",
+                    "empty",
+                    "before",
+                    "after"
+                  ],
+                  "description": "The pseudo class to remove the variable mode for"
+                }
+              },
+              "required": [
+                "style_name",
+                "collection_id"
+              ],
+              "additionalProperties": false,
+              "description": "Remove the variable mode for a specific collection from a style, reverting that collection to its inherited/default mode. Optionally scoped to a component variant."
+            },
+            "rename_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string",
+                  "description": "The id of the variable collection containing the variable"
+                },
+                "variable_id": {
+                  "type": "string",
+                  "description": "The id of the variable to rename"
+                },
+                "new_name": {
+                  "type": "string",
+                  "description": "The new name for the variable"
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_id",
+                "new_name"
+              ],
+              "additionalProperties": false,
+              "description": "Rename a variable"
+            },
+            "set_style_variable_mode": {
+              "type": "object",
+              "properties": {
+                "style_name": {
+                  "type": "string",
+                  "description": "The name of the style to update"
+                },
+                "modes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "Map of variable collection IDs to mode IDs to apply. e.g. { 'collection-id': 'mode-id' }"
+                },
+                "variant_id": {
+                  "type": "string",
+                  "description": "The id of the variant to apply variable modes to. Use 'base' or omit for the base variant."
+                },
+                "breakpoint_id": {
+                  "type": "string",
+                  "enum": [
+                    "xxl",
+                    "xl",
+                    "large",
+                    "main",
+                    "medium",
+                    "small",
+                    "tiny"
+                  ],
+                  "description": "The breakpoint to set variable modes for"
+                },
+                "pseudo": {
+                  "type": "string",
+                  "enum": [
+                    "noPseudo",
+                    "nth-child(odd)",
+                    "nth-child(even)",
+                    "first-child",
+                    "last-child",
+                    "hover",
+                    "active",
+                    "pressed",
+                    "visited",
+                    "focus",
+                    "focus-visible",
+                    "focus-within",
+                    "placeholder",
+                    "empty",
+                    "before",
+                    "after"
+                  ],
+                  "description": "The pseudo class to set variable modes for"
+                }
+              },
+              "required": [
+                "style_name",
+                "modes"
+              ],
+              "additionalProperties": false,
+              "description": "Apply variable modes to a style. Sets the active mode for one or more variable collections, allowing different design tokens per breakpoint, pseudo state, or component variant."
+            },
+            "update_color_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_id": {
+                  "type": "string"
+                },
+                "mode_id": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "string"
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string (e.g. 'color-mix(in srgb, red 50%, blue)'). Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_id",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Update a color variable"
+            },
+            "update_font_family_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_id": {
+                  "type": "string"
+                },
+                "mode_id": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "string"
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string. Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_id",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Update a font family variable"
+            },
+            "update_number_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_id": {
+                  "type": "string"
+                },
+                "mode_id": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "number"
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string. Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_id",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Update a number variable"
+            },
+            "update_percentage_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_id": {
+                  "type": "string"
+                },
+                "mode_id": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "number"
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string. Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_id",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Update a percentage variable"
+            },
+            "update_size_variable": {
+              "type": "object",
+              "properties": {
+                "variable_collection_id": {
+                  "type": "string"
+                },
+                "variable_id": {
+                  "type": "string"
+                },
+                "mode_id": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "static_value": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "number"
+                        },
+                        "unit": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "unit"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "existing_variable_id": {
+                      "type": "string"
+                    },
+                    "custom_value": {
+                      "type": "string",
+                      "description": "An arbitrary CSS expression string (e.g. 'calc(100vh - 60px)'). Use when the value doesn't fit standard typed formats."
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "variable_collection_id",
+                "variable_id",
+                "value"
+              ],
+              "additionalProperties": false,
+              "description": "Update a size variable"
+            }
+          },
+          "required": [
+            "label"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "siteId",
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

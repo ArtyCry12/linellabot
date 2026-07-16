@@ -1,0 +1,6 @@
+{
+  "uri": "stock://download",
+  "name": "stock_download_resource",
+  "description": "Returns a signed download URL for a stock item. Used by the stock picker download button.",
+  "mimeType": "application/json"
+}

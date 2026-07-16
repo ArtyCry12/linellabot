@@ -1,0 +1,16 @@
+{
+  "name": "design_auto_resize_show",
+  "description": "Show aspect-ratio picker when ratios are vague or explicitly requested; otherwise call `design_auto_resize`. Never call twice.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "creationIdentifier": {
+        "description": "Source image identifier.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "creationIdentifier"
+    ]
+  }
+}

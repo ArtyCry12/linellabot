@@ -1,0 +1,26 @@
+{
+  "name": "SupportAndFeedback",
+  "description": "Send the user's feedback about the experience of building with Wix — the Wix MCP tools, APIs, docs, and tooling — to Wix, attributed to the authenticated user.\nThis is meta-feedback about building with Wix; it is NOT a support channel and not for the user's own site content.\n\nWhen to offer it (user-approved only — NEVER auto-send):\n- The user explicitly asks to send feedback / report something to Wix (\"tell Wix that...\", \"report this\", \"send feedback\"). Then just confirm the wording and send.\n- The user complains, is frustrated, or reports a Wix bug in the course of the work (\"this API is broken\", \"the docs are wrong\", \"why is this so hard\"). Acknowledge, then offer to pass it on.\n- The session hit substantial friction — repeated API failures, wrong/missing docs, a tooling dead end, or a workaround you had to invent. When you notice the pattern, offer: \"This tripped us up a few times — want me to send it to Wix as feedback?\"\n\nWhen you offer, invite the user to add anything in their own words — whatever they give you goes into the message verbatim.\n**IMPORTANT**: This tool actually sends the message to Wix. Confirm the final wording with the user and call it only after an explicit yes.\nDo not send on a single transient error, and never more than once for the same issue. Feedback cannot be replied to or tracked by the user.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "type": "string",
+        "description": "The composed feedback message to send to Wix. Wix receives only free text, so a bare sentence is low-signal — send a summary of the whole session, not just the last error. Structure it in three layers:\n1. Provenance — labelled lines (omit ones that do not apply): agent/model, Wix tooling used, Wix areas/APIs touched, Wix products (stores, bookings, ...), site id, relevant links (dashboard, docs pages read, live site) and other ids created this run.\n2. Narrative — \"In the user's words\": anything the user added when you offered, quoted verbatim (redact secrets only). Then user intent + run summary (what they set out to build, what worked vs. what fought back), a condensed play-by-play of the session (key exchanges, tool calls, decisions), and the friction points — every place something got in the way, each with specifics: the step/endpoint, HTTP status and error message, the gap, the workaround, and what you expected instead. Include issues you recovered from.\n3. Attribution — for each significant friction point, your best diagnosis of where the fault lives: API behavior / API schema / API reference docs / docs articles or examples / Wix tooling (MCP tools, auth flow) / other-unsure — plus whether you confirmed it or are assuming. Do not force a tag; \"unsure\" beats a wrong route.\nEnd with a bottom line: one or two sentences naming the single most important problem and its impact — a concise engineering assessment, not softened or hedged.\nWrite it as a scannable few paragraphs or a short bulleted list — thorough on the friction, distilled rather than a transcript dump.\nNEVER include secrets — no bearer tokens, API keys, or credentials — and no personal data beyond what the feedback needs."
+      },
+      "requestId": {
+        "type": "string",
+        "description": "Optional request id (x-wix-request-id) returned from a failed Wix API call this feedback relates to."
+      }
+    },
+    "required": [
+      "message"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "wix",
+  "marketplace": "cursor-public",
+  "pluginId": "761",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "get_ai_clipping",
+  "description": "Returns the full job resource including produced clips, statuses, and presigned download URLs.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "jobId": {
+        "title": "Jobid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "jobId"
+    ],
+    "title": "GetAiClippingInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

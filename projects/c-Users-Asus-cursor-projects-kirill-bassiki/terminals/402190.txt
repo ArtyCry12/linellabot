@@ -1,0 +1,14 @@
+---
+pid: 9664
+cwd: "C:\\Users\\Asus\\projects\\ipoolgo-landing\\apps\\web"
+command: "Set-Location \"C:\\Users\\Asus\\projects\\ipoolgo-landing\\apps\\web\"; npx vercel env add TELEGRAM_BOT_TOKEN production --value \"8700144686:AAGQ0doLXafJ7Q8bunrm-A6aTY0GHYRGE6Y\" --yes 2>&1; npx vercel env add TELEGRAM_BOT_TOKEN preview --value \"8700144686:AAGQ0doLXafJ7Q8bunrm-A6aTY0GHYRGE6Y\" --yes 2>&1; npx vercel env add TELEGRAM_CHAT_ID preview --value \"8873079079\" --yes 2>&1; npx vercel --prod --yes 2>&1 | Select-Object -Last 8"
+started_at: 2026-06-30T23:35:23.537Z
+running_for_ms: 66280907 
+---
+Retrieving project…
+Retrieving project…
+Saving
+Added Environment Variable TELEGRAM_BOT_TOKEN to Project web [324ms]
+Common next commands:
+- `vercel env ls`
+- `vercel env pull`

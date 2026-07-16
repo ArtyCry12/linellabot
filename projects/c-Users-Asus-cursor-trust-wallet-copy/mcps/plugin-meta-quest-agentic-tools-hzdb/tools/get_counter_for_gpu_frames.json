@@ -1,0 +1,43 @@
+{
+  "name": "get_counter_for_gpu_frames",
+  "description": "Get all GPU metric counters for the given GPU frame time ranges. Provide arrays of start and end times (at least 20 pairs recommended). Get frame timestamps first with run_sql_query: SELECT ts, dur FROM slice WHERE name LIKE 'GPU%' LIMIT 20. If session_id is omitted, uses the most recently captured trace.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "end_ts": {
+        "description": "Array of end times of GPU frames in nanoseconds",
+        "items": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "type": "array"
+      },
+      "session_id": {
+        "description": "The file name of the trace (session ID). If omitted, uses the most recently captured trace.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "start_ts": {
+        "description": "Array of start times of GPU frames in nanoseconds",
+        "items": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "start_ts",
+      "end_ts"
+    ],
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Request parameters for get_counter_for_gpu_frames tool.",
+    "title": "GetGpuCountersRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

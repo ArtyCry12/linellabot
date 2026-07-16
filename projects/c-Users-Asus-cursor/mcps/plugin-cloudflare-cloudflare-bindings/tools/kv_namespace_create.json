@@ -1,0 +1,21 @@
+{
+  "name": "kv_namespace_create",
+  "description": "Create a new kv namespace in your Cloudflare account",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "The human-readable name/title of the KV namespace"
+      }
+    },
+    "required": [
+      "title"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "cloudflare",
+  "marketplace": "cursor-public",
+  "pluginId": "407",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,119 @@
+{
+  "name": "audio_tts",
+  "description": "TTS voiceover. ElevenLabs/Google: voiceId (single) or speakers (2) — get via `audio_voices_show` (or `audio_voices_list` for agent-only lookup). Seed Audio (model=seed_audio_1_0): voice-less, no voiceId, maxDuration required.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "description": "Max 40k (seed_audio_1_0: 2k). Eleven v3 best <=3k; turbo <=10k. `(pause 1.5s)` only on turbo.",
+        "type": "string"
+      },
+      "voiceId": {
+        "description": "From voices catalog; required unless `speakers` or model=seed_audio_1_0 (voice-less).",
+        "type": "integer"
+      },
+      "speakers": {
+        "description": "2 speakers, same provider.",
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "voiceId": {
+              "type": "integer"
+            },
+            "speakerName": {
+              "description": "Label; defaults to voice name.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "required": [
+            "voiceId"
+          ]
+        },
+        "type": "array"
+      },
+      "model": {
+        "description": "Default: eleven_v3 or gemini_v2_5_pro.",
+        "enum": [
+          "eleven_turbo_v2_5",
+          "eleven_v3",
+          "gemini_v2_5_pro",
+          "gemini_v3_1_flash_tts",
+          "seed_audio_1_0"
+        ],
+        "type": "string"
+      },
+      "stability": {
+        "description": "ElevenLabs 0-1; default 0.5.",
+        "type": "number"
+      },
+      "similarityBoost": {
+        "description": "ElevenLabs 0-1; default 0.2.",
+        "type": "number"
+      },
+      "speed": {
+        "description": "0.7-1.2 (ElevenLabs); 0.5-2.0 (seed_audio_1_0); default 1.0.",
+        "type": "number"
+      },
+      "useSpeakerBoost": {
+        "description": "ElevenLabs; default true.",
+        "type": "boolean"
+      },
+      "temperature": {
+        "description": "Gemini 0-2; default 1.0.",
+        "type": "number"
+      },
+      "systemInstruction": {
+        "description": "Gemini; max 10k.",
+        "type": "string"
+      },
+      "maxDuration": {
+        "description": "seed_audio_1_0 only, required. 10-120s. Billing = seconds.",
+        "type": "integer"
+      },
+      "volume": {
+        "description": "seed_audio_1_0 only; 0-2.",
+        "type": "number"
+      },
+      "pitch": {
+        "description": "seed_audio_1_0 only; -12..12.",
+        "type": "integer"
+      },
+      "sampleRate": {
+        "description": "seed_audio_1_0 only; 8000-48000 Hz.",
+        "type": "integer"
+      },
+      "outputFormat": {
+        "description": "seed_audio_1_0 only.",
+        "enum": [
+          "mp3",
+          "wav",
+          "pcm",
+          "ogg_opus"
+        ],
+        "type": "string"
+      },
+      "audioUrls": {
+        "description": "seed_audio_1_0 only; <=3 reference-audio URLs for voice style.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "imageUrl": {
+        "description": "seed_audio_1_0 only; style reference; excludes audioUrls.",
+        "type": "string"
+      },
+      "visible": {
+        "type": "boolean"
+      },
+      "folderReference": {
+        "description": "Optional project/folder reference from `folders_list` to place results in. Omit for the default.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "text"
+    ]
+  }
+}

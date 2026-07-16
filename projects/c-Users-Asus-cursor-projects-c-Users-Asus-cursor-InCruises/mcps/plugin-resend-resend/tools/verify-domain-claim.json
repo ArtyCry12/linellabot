@@ -1,0 +1,22 @@
+{
+  "name": "verify-domain-claim",
+  "description": "Trigger asynchronous DNS verification and ownership transfer for a domain claim, using the placeholder Domain ID. The claim stays \"pending\" while verification runs; poll get-domain-claim for status. Once \"completed\", the transferred domain has NEW DKIM records — fetch them with get-domain, add them to DNS, then run verify-domain.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The placeholder Domain ID created by the claim"
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

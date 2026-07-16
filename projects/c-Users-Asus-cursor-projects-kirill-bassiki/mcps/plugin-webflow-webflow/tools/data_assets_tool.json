@@ -1,0 +1,503 @@
+{
+  "name": "data_assets_tool",
+  "description": "Data tool - Manage Webflow site assets and asset folders via the Data API. Creates asset metadata entries and returns presigned S3 upload information (uploadUrl and uploadDetails) used to upload the file bytes, and supports listing, updating, organizing, and deleting assets and asset folders, plus compressing image assets to webp or avif via async tasks.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Label echoed in the response for this action item. It does not select which action runs."
+                },
+                "compress_assets": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID."
+                    },
+                    "asset_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "minItems": 1,
+                      "maxItems": 100,
+                      "description": "Asset IDs to compress (1-100). All must exist on the site and be jpg/jpeg/png/webp images — a single unknown ID fails the whole request with 404, and a single never-compressible asset (e.g. svg) fails it with 400."
+                    },
+                    "format": {
+                      "type": "string",
+                      "enum": [
+                        "webp",
+                        "avif"
+                      ],
+                      "description": "Target image format: \"webp\" or \"avif\"."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "asset_ids",
+                    "format"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Start an asynchronous task that compresses a site's image assets (jpg/jpeg/png/webp) to webp or avif. Compression REPLACES each asset's hosted file in place — same asset ID, new hostedUrl/contentType/size; the original file is not retained — confirm with the user first. Returns { taskId, status, skippedAssetIds, polling } — poll the task with get_compression_task using the polling hints. Assets already in the target format are skipped; if ALL requested assets are skipped, returns taskId null and status \"completed\" with no polling hints (no task created). Only one compression task may be pending per site: requesting different work while one is pending returns 409 with the pending taskId in the error message (poll that task and retry after it finishes), while re-requesting the same format and a subset of the pending task's assets returns the pending task's envelope (idempotent retry). Errors: 404 if any requested asset does not exist on the site (or the compression API is not enabled for the environment); 400 if any asset is never-compressible (e.g. svg). Rate limited to 10 requests/min per site."
+                }
+              },
+              "required": [
+                "label",
+                "compress_assets"
+              ],
+              "additionalProperties": false,
+              "description": "Run compress_assets: Start an asynchronous task that compresses a site's image assets (jpg/jpeg/png/webp) to webp or avif. Compression REPLACES each asset's hosted file in place — same asset ID, new hostedUrl/contentType/size; the original file is not retained — confirm with the user first. Returns { taskId, status, skippedAssetIds, polling } — poll the task with get_compression_task using the polling hints. Assets already in the target format are skipped; if ALL requested assets are skipped, returns taskId null and status \"completed\" with no polling hints (no task created). Only one compression task may be pending per site: requesting different work while one is pending returns 409 with the pending taskId in the error message (poll that task and retry after it finishes), while re-requesting the same format and a subset of the pending task's assets returns the pending task's envelope (idempotent retry). Errors: 404 if any requested asset does not exist on the site (or the compression API is not enabled for the environment); 400 if any asset is never-compressible (e.g. svg). Rate limited to 10 requests/min per site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "create_asset": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID."
+                    },
+                    "file_name": {
+                      "type": "string",
+                      "maxLength": 100,
+                      "description": "File name including file extension. Must be less than 100 characters."
+                    },
+                    "file_hash": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$",
+                      "description": "MD5 digest of the raw file bytes (the same bytes you will upload to S3), encoded as a 32-character lowercase hex string. Not SHA-1/SHA-256, not base64, not the file name. Webflow uses this hash for content addressing and S3 ETag verification."
+                    },
+                    "parent_folder": {
+                      "type": "string",
+                      "description": "Optional asset folder ID (the folder's `_id` from the Webflow Assets API) to place the asset in. Omit to create the asset at the site's root. Pass the folder's ID — not its display name or path."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "file_name",
+                    "file_hash"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create an asset metadata entry for a site. Generates a response with the following information: uploadUrl and uploadDetails. The uploadDetails props are used as form fields in a multipart/form-data POST request to Amazon S3 (uploadUrl) to complete the upload of the actual file bytes. For code examples (Node, Python, curl) read the MCP resource webflow://guides/asset-upload."
+                }
+              },
+              "required": [
+                "label",
+                "create_asset"
+              ],
+              "additionalProperties": false,
+              "description": "Run create_asset: Create an asset metadata entry for a site. Generates a response with the following information: uploadUrl and uploadDetails. The uploadDetails props are used as form fields in a multipart/form-data POST request to Amazon S3 (uploadUrl) to complete the upload of the actual file bytes. For code examples (Node, Python, curl) read the MCP resource webflow://guides/asset-upload."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "create_asset_folder": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID."
+                    },
+                    "display_name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256,
+                      "description": "Name for the new folder (1-256 characters). Must be unique among sibling folders under the same parent."
+                    },
+                    "parent_folder": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Optional asset folder ID to nest the new folder under, or null to create it at the site root. Omitting it also creates the folder at the root."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "display_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a new asset folder on a site. NOTE: there is no API to delete asset folders, so created folders are permanent — confirm with the user before creating. Folder names must be unique among siblings under the same parent (a duplicate name returns 409); an unknown parent_folder returns 404. Returns the created folder."
+                }
+              },
+              "required": [
+                "label",
+                "create_asset_folder"
+              ],
+              "additionalProperties": false,
+              "description": "Run create_asset_folder: Create a new asset folder on a site. NOTE: there is no API to delete asset folders, so created folders are permanent — confirm with the user before creating. Folder names must be unique among siblings under the same parent (a duplicate name returns 409); an unknown parent_folder returns 404. Returns the created folder."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "delete_asset": {
+                  "type": "object",
+                  "properties": {
+                    "asset_id": {
+                      "type": "string",
+                      "description": "The asset ID to delete."
+                    }
+                  },
+                  "required": [
+                    "asset_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete an asset from a site. DESTRUCTIVE — the asset is removed from the site's assets (soft delete) and there is no API to restore it; confirm with the user before calling. Returns a 404 error if the asset is unknown or already deleted."
+                }
+              },
+              "required": [
+                "label",
+                "delete_asset"
+              ],
+              "additionalProperties": false,
+              "description": "Run delete_asset: Delete an asset from a site. DESTRUCTIVE — the asset is removed from the site's assets (soft delete) and there is no API to restore it; confirm with the user before calling. Returns a 404 error if the asset is unknown or already deleted."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_asset": {
+                  "type": "object",
+                  "properties": {
+                    "asset_id": {
+                      "type": "string",
+                      "description": "The asset ID to fetch. Discover asset IDs via list_assets."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Optional locale ID to resolve altText for that locale. Must be a SECONDARY locale of the site — the primary locale ID or an unknown ID returns a 400 error."
+                    }
+                  },
+                  "required": [
+                    "asset_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get one asset's metadata by ID, including hostedUrl, altText, and folderId (null when at the site root). Returns a 404 error if the asset does not exist or has been deleted. Note: originalFileName is the internal storage key, not the human-readable name — use displayName for that."
+                }
+              },
+              "required": [
+                "label",
+                "get_asset"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_asset: Get one asset's metadata by ID, including hostedUrl, altText, and folderId (null when at the site root). Returns a 404 error if the asset does not exist or has been deleted. Note: originalFileName is the internal storage key, not the human-readable name — use displayName for that."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_asset_folder": {
+                  "type": "object",
+                  "properties": {
+                    "folder_id": {
+                      "type": "string",
+                      "description": "The asset folder ID to fetch. Discover folder IDs via list_asset_folders."
+                    }
+                  },
+                  "required": [
+                    "folder_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get one asset folder by ID, including displayName, parentFolder (null when at the site root), and the list of asset IDs inside it. Returns a 404 error if the folder does not exist."
+                }
+              },
+              "required": [
+                "label",
+                "get_asset_folder"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_asset_folder: Get one asset folder by ID, including displayName, parentFolder (null when at the site root), and the list of asset IDs inside it. Returns a 404 error if the folder does not exist."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_compression_task": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID the task was created for."
+                    },
+                    "task_id": {
+                      "type": "string",
+                      "description": "The compression task ID (UUID) returned by compress_assets."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "task_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Poll the status of an asset compression task started by compress_assets. Returns { taskId, status } where status is \"pending\", \"completed\", or \"failed\". On completion, also returns result with the target format, counts (assetsQueued/assetsCompressed/assetsSkipped/assetsFailed), total previousByteSize/compressedByteSize, and per-asset outcomes in result.assets — each entry has status (\"compressed\" | \"skipped\" | \"failed\"), a reason on skipped/failed, and the updated hostedUrl/contentType/size on compressed. Failed tasks expose no internal error details; a task pending for more than 15 minutes is reported failed. Poll using the hints from the enqueue response: start at a 1s delay, double up to 10s, and give up after 10 minutes. Returns 404 for an unknown task ID, a task belonging to another site, an expired task (tasks are queryable for ~24h), or when the compression API is not enabled for the environment."
+                }
+              },
+              "required": [
+                "label",
+                "get_compression_task"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_compression_task: Poll the status of an asset compression task started by compress_assets. Returns { taskId, status } where status is \"pending\", \"completed\", or \"failed\". On completion, also returns result with the target format, counts (assetsQueued/assetsCompressed/assetsSkipped/assetsFailed), total previousByteSize/compressedByteSize, and per-asset outcomes in result.assets — each entry has status (\"compressed\" | \"skipped\" | \"failed\"), a reason on skipped/failed, and the updated hostedUrl/contentType/size on compressed. Failed tasks expose no internal error details; a task pending for more than 15 minutes is reported failed. Poll using the hints from the enqueue response: start at a 1s delay, double up to 10s, and give up after 10 minutes. Returns 404 for an unknown task ID, a task belonging to another site, an expired task (tasks are queryable for ~24h), or when the compression API is not enabled for the environment."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_asset_folders": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID."
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Maximum number of folders to return per page. Optional; defaults to 25, maximum 100."
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "Number of folders to skip for pagination. Optional; defaults to 0."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List a site's asset folders. Returns { assetFolders, pagination }; each folder includes id, displayName, parentFolder (null when at the site root), and the IDs of the assets it contains. The default page size is 25 (NOT 100) — pass limit 100 and paginate with offset to enumerate all folders."
+                }
+              },
+              "required": [
+                "label",
+                "list_asset_folders"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_asset_folders: List a site's asset folders. Returns { assetFolders, pagination }; each folder includes id, displayName, parentFolder (null when at the site root), and the IDs of the assets it contains. The default page size is 25 (NOT 100) — pass limit 100 and paginate with offset to enumerate all folders."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_assets": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID."
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Maximum number of assets to return per page. Optional; defaults to 100, maximum 100."
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "Number of assets to skip for pagination. Optional; defaults to 0."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Optional locale ID to resolve each asset's altText for that locale. Must be a SECONDARY locale of the site — the primary locale ID or an unknown ID returns a 400 error. Omit for primary-locale altText."
+                    },
+                    "folder_id": {
+                      "type": "string",
+                      "description": "Optional asset folder ID. When provided, returns only assets inside that folder and its descendant folders. Omit to list all assets on the site."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List a site's assets, sorted newest-first by createdOn. Returns { assets, pagination }; each asset includes id, displayName, contentType, size, hostedUrl, altText, folderId (null when at the site root), and image variants. Optionally filter to one folder subtree with folderId, or resolve localized altText with localeId."
+                }
+              },
+              "required": [
+                "label",
+                "list_assets"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_assets: List a site's assets, sorted newest-first by createdOn. Returns { assets, pagination }; each asset includes id, displayName, contentType, size, hostedUrl, altText, folderId (null when at the site root), and image variants. Optionally filter to one folder subtree with folderId, or resolve localized altText with localeId."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_compression_tasks": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID."
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Maximum number of tasks to return per page. Optional; defaults to 25."
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "Number of tasks to skip for pagination. Optional; defaults to 0."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List a site's asset compression tasks, newest first. Returns { tasks, pagination }; each task includes taskId, status (\"pending\" | \"completed\" | \"failed\"), format, createdOn, and summary fields (assetsCompressed, assetsFailed, previousByteSize, compressedByteSize) that are null unless the task completed. Tasks expire ~24h after creation and no longer appear. Returns 404 when the compression API is not enabled for the environment."
+                }
+              },
+              "required": [
+                "label",
+                "list_compression_tasks"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_compression_tasks: List a site's asset compression tasks, newest first. Returns { tasks, pagination }; each task includes taskId, status (\"pending\" | \"completed\" | \"failed\"), format, createdOn, and summary fields (assetsCompressed, assetsFailed, previousByteSize, compressedByteSize) that are null unless the task completed. Tasks expire ~24h after creation and no longer appear. Returns 404 when the compression API is not enabled for the environment."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_asset": {
+                  "type": "object",
+                  "properties": {
+                    "asset_id": {
+                      "type": "string",
+                      "description": "The asset ID to update."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Optional locale ID. When provided, alt_text is applied to that locale instead of the primary locale. Must be a SECONDARY locale of the site — the primary locale ID or an unknown ID returns a 400 error."
+                    },
+                    "display_name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256,
+                      "description": "New display name for the asset (1-256 characters). Renaming does NOT preserve the file extension automatically — include the extension in the new name (e.g. 'hero.png')."
+                    },
+                    "alt_text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "New alt text. Pass a string to set it; pass null (or an empty string) to clear it and mark the asset as decorative. Omit to leave unchanged."
+                    },
+                    "folder_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Asset folder ID to move the asset into, or null to move it to the site root. Omit to leave the asset's folder unchanged."
+                    }
+                  },
+                  "required": [
+                    "asset_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update an asset's metadata: rename it (display_name), set or clear its alt text (alt_text), and/or move it between folders (folder_id). Only the provided fields are changed. If folder_id references a folder that does not exist on the site, the call fails with 404 and NONE of the fields are applied. Returns the updated asset."
+                }
+              },
+              "required": [
+                "label",
+                "update_asset"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_asset: Update an asset's metadata: rename it (display_name), set or clear its alt text (alt_text), and/or move it between folders (folder_id). Only the provided fields are changed. If folder_id references a folder that does not exist on the site, the call fails with 404 and NONE of the fields are applied. Returns the updated asset."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_asset_folder": {
+                  "type": "object",
+                  "properties": {
+                    "folder_id": {
+                      "type": "string",
+                      "description": "The asset folder ID to update."
+                    },
+                    "display_name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256,
+                      "description": "New name for the folder (1-256 characters). Folder names must be unique among siblings under the same parent."
+                    },
+                    "parent_folder": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Asset folder ID to move this folder under, or null to move it to the site root. Omit to leave the folder's parent unchanged. Moving a folder into itself or a descendant returns 400."
+                    }
+                  },
+                  "required": [
+                    "folder_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Rename an asset folder and/or move it under a different parent. Only the provided fields are changed; both may be changed in one call. Errors: 400 if the folder would be moved into itself or one of its own descendants, 404 if the folder or new parent is not found, 409 if a sibling under the target parent already has the same name. Returns the updated folder."
+                }
+              },
+              "required": [
+                "label",
+                "update_asset_folder"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_asset_folder: Rename an asset folder and/or move it under a different parent. Only the provided fields are changed; both may be changed in one call. Errors: 400 if the folder would be moved into itself or one of its own descendants, 404 if the folder or new parent is not found, 409 if a sibling under the target parent already has the same name. Returns the updated folder."
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property: compress_assets, create_asset, create_asset_folder, delete_asset, get_asset, get_asset_folder, get_compression_task, list_asset_folders, list_assets, list_compression_tasks, update_asset, update_asset_folder."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

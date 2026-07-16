@@ -1,0 +1,20 @@
+{
+  "name": "webflow_guide_tool",
+  "description": "Provides essential guidelines and best practices for effectively using the Webflow tools. Call this tool to understand recommended workflows and important considerations before performing actions. ALWAYS CALL THIS TOOL FIRST BEFORE CALLING ANY OTHER TOOLS.  ALWAYS CALL THIS TOOL FIRST BEFORE CALLING ANY OTHER TOOLS. ",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "context"
+    ]
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

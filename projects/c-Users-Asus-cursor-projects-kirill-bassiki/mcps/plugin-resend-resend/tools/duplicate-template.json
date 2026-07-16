@@ -1,0 +1,22 @@
+{
+  "name": "duplicate-template",
+  "description": "Duplicate an existing email template in Resend. Creates a new draft copy of the template with a new ID. Accepts a template ID, alias, or Resend dashboard URL.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The ID, alias, or Resend dashboard URL (e.g. https://resend.com/templates/<id>) of the template to duplicate."
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

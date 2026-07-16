@@ -1,0 +1,67 @@
+{
+  "name": "participate_in_contest",
+  "description": "Enter the website in the current Higgsfield app contest, together with the social-media links promoting it. A website not yet PUBLISHED to the community feed is published automatically by the entry — no need to call publish_website first. The website DOES need a live production deploy (deploy_website), else the entry is rejected. BEFORE entering, make sure the page metadata in app/src/app-meta.json is filled with real values (og_title etc.) — the auto-publish lists the website on the feed and an empty og_title makes it INVISIBLE there. Pass one or more urls, each a social-media link (YouTube, X/Twitter, Instagram, or TikTok); any other host is rejected. There is a single active contest, so no contest id is needed. Calling again for the same website OVERWRITES its urls (use it to fix or add links), it does not create a second entry.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "website_id": {
+        "type": "string",
+        "description": "The website's id (returned by create_website)."
+      },
+      "urls": {
+        "minItems": 1,
+        "maxItems": 10,
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Social-media links promoting the website (YouTube / X-Twitter / Instagram / TikTok). At least one, at most ten."
+      }
+    },
+    "required": [
+      "website_id",
+      "urls"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "submission_id": {
+        "description": "The contest entry id.",
+        "type": "string"
+      },
+      "contest_id": {
+        "description": "The contest the website was entered in.",
+        "type": "string"
+      },
+      "urls": {
+        "description": "The submitted links.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "error": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

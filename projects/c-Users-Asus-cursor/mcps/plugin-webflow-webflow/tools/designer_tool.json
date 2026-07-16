@@ -1,0 +1,380 @@
+{
+  "name": "designer_tool",
+  "description": "Interact with the user's live Webflow Designer session — select an element on the canvas or read which element is currently selected, navigate the canvas between pages and component canvases, switch to or read the current page, list a page's branches, read the current branch ID, parent page ID, and Designer mode, enter, exit, or inspect the current component view, and read all breakpoints (media queries) configured for the site.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "Webflow site ID. Use list_sites to discover site IDs."
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "check_if_inside_component_view": {
+                  "type": "boolean",
+                  "description": "Check if inside component view. this helpful to make changes to the component"
+                }
+              },
+              "required": [
+                "label",
+                "check_if_inside_component_view"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "close_component_view": {
+                  "type": "boolean",
+                  "description": "Close a component instance view. it will close and open the page view."
+                }
+              },
+              "required": [
+                "label",
+                "close_component_view"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_page_folder": {
+                  "type": "object",
+                  "properties": {
+                    "page_folder_name": {
+                      "type": "string",
+                      "description": "The name of the page folder to create"
+                    },
+                    "page_folder_parent_id": {
+                      "type": "string",
+                      "description": "The id of the parent page folder to create the page folder in"
+                    }
+                  },
+                  "required": [
+                    "page_folder_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create new page folder"
+                }
+              },
+              "required": [
+                "label",
+                "create_page_folder"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_all_breakpoints": {
+                  "type": "boolean",
+                  "description": "Get all breakpoints (media queries) configured for the site, in cascade specificity order. Each breakpoint includes its id, name, minWidth, maxWidth, and whether it is the base breakpoint."
+                }
+              },
+              "required": [
+                "label",
+                "get_all_breakpoints"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_branch_parent_page_id": {
+                  "type": "boolean",
+                  "description": "Get the parent page ID of the current page. For branch pages, returns the original page ID."
+                }
+              },
+              "required": [
+                "label",
+                "get_branch_parent_page_id"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_current_branch_id": {
+                  "type": "boolean",
+                  "description": "Get the branch ID of the current page, if it exists on a branch."
+                }
+              },
+              "required": [
+                "label",
+                "get_current_branch_id"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_current_component": {
+                  "type": "boolean",
+                  "description": "Get the component currently being edited on the canvas (in-context editing or component canvas). Returns null if on a regular page."
+                }
+              },
+              "required": [
+                "label",
+                "get_current_component"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_current_mode": {
+                  "type": "boolean",
+                  "description": "Get the current Webflow Designer mode. Returns one of 'design', 'build', 'preview', 'edit', 'comment', or null if it cannot be determined."
+                }
+              },
+              "required": [
+                "label",
+                "get_current_mode"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_current_page": {
+                  "type": "boolean",
+                  "description": "Get current page active on webflow designer"
+                }
+              },
+              "required": [
+                "label",
+                "get_current_page"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_selected_element": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false,
+                  "description": "Get the element currently selected on the current active page in the Designer. Returns the selected element's id object ({component, element}) and the id of the current page (usable as pageId in data_element_tool calls) when an element is selected."
+                }
+              },
+              "required": [
+                "label",
+                "get_selected_element"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "list_branches": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "The id of the page to list branches for"
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Discover all branches for a page by page ID."
+                }
+              },
+              "required": [
+                "label",
+                "list_branches"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "open_canvas": {
+                  "type": "object",
+                  "properties": {
+                    "component_id": {
+                      "type": "string",
+                      "description": "The id of the component to open in the canvas. Use this or page_id."
+                    },
+                    "page_id": {
+                      "type": "string",
+                      "description": "The id of the page to navigate to. Use this to exit the component canvas and return to a page."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Navigate the Designer canvas to a component or page. Use component_id to open a component canvas, or page_id to navigate to a page (e.g. to exit component canvas). Provide exactly one of component_id or page_id."
+                }
+              },
+              "required": [
+                "label",
+                "open_canvas"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "open_component_view": {
+                  "type": "object",
+                  "properties": {
+                    "component_instance_id": {
+                      "$ref": "#/$defs/component_instance_id"
+                    }
+                  },
+                  "required": [
+                    "component_instance_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Open a component instance view for changes or reading."
+                }
+              },
+              "required": [
+                "label",
+                "open_component_view"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "select_element": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "$ref": "#/$defs/component_instance_id"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Select an element on the current active page in the Designer. Returns a confirmation message, the selected element's id object, and the id of the page the element lives on (usable as pageId in data_element_tool calls)."
+                }
+              },
+              "required": [
+                "label",
+                "select_element"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "switch_page": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "The id of the page to switch to"
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Switch to a page on webflow designer"
+                }
+              },
+              "required": [
+                "label",
+                "switch_page"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "siteId",
+      "actions",
+      "context"
+    ],
+    "$defs": {
+      "label": {
+        "type": "string",
+        "description": "Echoed in the response; does not select which action runs."
+      },
+      "component_instance_id": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "string",
+            "description": "Pass element.id.component verbatim — do not invent or shorten it."
+          },
+          "element": {
+            "type": "string",
+            "description": "Pass element.id.element verbatim — do not invent or shorten it."
+          }
+        },
+        "required": [
+          "component",
+          "element"
+        ],
+        "additionalProperties": false,
+        "description": "The `id` object of a Designer element — two fields, not a single string. Copy it verbatim from the tool result that returned the element."
+      }
+    }
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

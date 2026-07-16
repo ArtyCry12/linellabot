@@ -1,0 +1,21 @@
+{
+  "name": "get_lipsync",
+  "description": "Returns details for a lipsync job including status, video_url, caption_url, and failure info if applicable.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "lipsyncId": {
+        "title": "Lipsyncid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "lipsyncId"
+    ],
+    "title": "GetLipsyncInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

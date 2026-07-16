@@ -1,0 +1,4 @@
+{
+  "name": "Model Details",
+  "description": "Get detailed information about a model from the Hugging Face Hub. Includes README from the repository - review before use."
+}

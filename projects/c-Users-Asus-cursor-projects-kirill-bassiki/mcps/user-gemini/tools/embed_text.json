@@ -1,0 +1,24 @@
+{
+  "name": "embed_text",
+  "description": "Generate embeddings for text using Gemini embedding models",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "Text to generate embeddings for"
+      },
+      "model": {
+        "type": "string",
+        "description": "Embedding model to use",
+        "enum": [
+          "gemini-embedding-001"
+        ],
+        "default": "gemini-embedding-001"
+      }
+    },
+    "required": [
+      "text"
+    ]
+  }
+}

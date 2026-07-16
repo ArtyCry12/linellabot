@@ -1,0 +1,6 @@
+{
+  "uri": "memory://knowledge-graph",
+  "name": "knowledge-graph",
+  "description": "The full knowledge graph with all entities and relations",
+  "mimeType": "application/json"
+}

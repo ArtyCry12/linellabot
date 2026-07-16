@@ -1,0 +1,74 @@
+---
+pid: 9624
+cwd: "C:\\Users\\Asus\\.cursor"
+command: "cd \"C:\\Users\\Asus\\.cursor\"\n$ErrorActionPreference = \"Continue\"\nWrite-Host \"=== try jwynia @syntax ===\"\nnpx.cmd skills add \"jwynia/agent-skills@secrets-scan\" -g -y --agent cursor 2>&1 | Select-Object -Last 20\nWrite-Host \"exit=$LASTEXITCODE\"\nif ($LASTEXITCODE -ne 0) {\n  Write-Host \"=== fallback github secret-scanning ===\"\n  npx.cmd skills add github/awesome-copilot -s secret-scanning -g -y --agent cursor 2>&1 | Select-Object -Last 20\n  Write-Host \"exit=$LASTEXITCODE\"\n}\nWrite-Host \"=== verify key skills ===\"\n@(\"seo-geo\",\"seo-audit\",\"programmatic-seo\",\"copywriting\",\"content-strategy\",\"marketing-psychology\",\"marketing-ideas\",\"ai-search-optimization\",\"core-web-vitals\",\"entity-seo\",\"n8n-workflow-automation\",\"n8n-workflow-architect\",\"playwright\",\"playwright-visual-testing\",\"code-review-pro\",\"qa-start\",\"firebase-security-rules-auditor\",\"security-audit\",\"devsecops-expert\",\"secrets-scan\",\"secret-scanning\") | ForEach-Object {\n  $ok = Test-Path \"$env:USERPROFILE\\.agents\\skills\\$_\\SKILL.md\"\n  \"$_ : $ok\"\n}\n"
+started_at: 2026-07-16T16:14:48.484Z
+running_for_ms: 118314   
+---
+=== try jwynia @syntax ===
+
+|
+•   cursor-cli  Agent detected — installing non-interactively
+[?25l|
+o  Source: https://github.com/jwynia/agent-skills.git @secrets-scan
+[?25h[?25l|
+•  Cloning repository…[1G[Jo  Cloning repository…[1G[JO  Cloning repository…[1G[J0  Cloning repository…[1G[J•  Cloning repository…[1G[Jo  Cloning repository…[1G[JO  Cloning repository…[1G[J0  Cloning repository…[1G[J•  Cloning repository….[1G[Jo  Cloning repository….[1G[JO  Cloning repository….[1G[J0  Cloning repository….[1G[J•  Cloning repository….[1G[Jo  Cloning repository….[1G[JO  Cloning repository….[1G[J0  Cloning repository….[1G[J•  Cloning repository…..[1G[Jo  Cloning repository…..[1G[JO  Cloning repository…..[1G[J0  Cloning repository…..[1G[J•  Cloning repository…..[1G[Jo  Cloning repository…..[1G[JO  Cloning repository…..[1G[J0  Cloning repository…..[1G[J•  Cloning repository…...[1G[Jo  Cloning repository…...[1G[JO  Cloning repository…...[1G[J0  Cloning repository…...[1G[J•  Cloning repository…...[1G[Jo  Cloning repository…...[1G[JO  Cloning repository…...[1G[J0  Cloning repository…...[1G[J•  Cloning repository…...[1G[Jo  Cloning repository…[1G[JO  Cloning repository…[1G[J0  Cloning repository…[1G[J•  Cloning repository…[1G[Jo  Cloning repository…[1G[Jo  Repository cloned
+[?25h[?25l|
+[1G[Jo  Found 1 skill
+[?25h|
+x  No matching skills found for: secrets-scan
+|
+•  Available skills:
+|
+|    - document-to-narration
+exit=1
+=== fallback github secret-scanning ===
+|                   Gen               Socket            Snyk      |
+|  secret-scanning  Safe              0 alerts          Low Risk  |
+|                                                                 |
+|  Details: https://skills.sh/github/awesome-copilot              |
+|                                                                 |
++-----------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill --------------------+
+|                                        |
+|  ✓ secret-scanning (copied)            |
+|    → ~\.agents\skills\secret-scanning  |
+|                                        |
++----------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+exit=0
+=== verify key skills ===
+seo-geo : True
+seo-audit : True
+programmatic-seo : True
+copywriting : True
+content-strategy : True
+marketing-psychology : True
+marketing-ideas : True
+ai-search-optimization : True
+core-web-vitals : True
+entity-seo : True
+n8n-workflow-automation : True
+n8n-workflow-architect : True
+playwright : True
+playwright-visual-testing : True
+code-review-pro : True
+qa-start : True
+firebase-security-rules-auditor : True
+security-audit : True
+devsecops-expert : True
+secrets-scan : False
+secret-scanning : True
+
+---
+exit_code: 0
+elapsed_ms: 120401
+ended_at: 2026-07-16T16:16:48.885Z
+---

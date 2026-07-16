@@ -1,0 +1,26 @@
+{
+  "name": "flows_show",
+  "description": "Inline flow picker for visual selection. For headless catalog use flows_list; for a single flow spec use flows_get.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string"
+      },
+      "ownership": {
+        "description": "mine (default) = own + saved + shared. public = community.",
+        "enum": [
+          "mine",
+          "public"
+        ],
+        "type": "string"
+      },
+      "page": {
+        "type": "integer"
+      },
+      "perPage": {
+        "type": "integer"
+      }
+    }
+  }
+}

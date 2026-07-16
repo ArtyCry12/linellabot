@@ -1,0 +1,107 @@
+{
+  "name": "website_status",
+  "description": "Get the website's deploy status — the live URL and the status of the last deploy. Use to check a deploy that returned 'pending', or to fetch the live URL.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "website_id": {
+        "type": "string",
+        "description": "The website's id (returned by create_website)."
+      }
+    },
+    "required": [
+      "website_id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "slug": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "production": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "listed_in_community": {
+        "description": "Whether the website is currently on the community feed.",
+        "type": "boolean"
+      },
+      "marketplace_url": {
+        "description": "The website's community-feed listing page, when listed.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "submitted_to_contest": {
+        "description": "Whether the website is currently entered in the app contest.",
+        "type": "boolean"
+      },
+      "contest_urls": {
+        "description": "The social-media links submitted with the contest entry.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "error": {
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

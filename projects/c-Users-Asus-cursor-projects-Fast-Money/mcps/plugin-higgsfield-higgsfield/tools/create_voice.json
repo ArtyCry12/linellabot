@@ -1,0 +1,79 @@
+{
+  "name": "create_voice",
+  "description": "Open the Create Voice Apps UI. Call this immediately when the user asks to create a voice, call the Create Voice tool, or needs a local browser record/upload surface and no confirmed audio_media_id is already present. Do not ask the user to upload an audio file or provide the name in chat first; the widget collects the required name plus record/upload audio. If the user already has or attached an audio file in chat, still call this tool with initial_tab='upload' — remote tools cannot read Claude chat attachments, so the user re-selects the file in the widget's Upload tab (it uploads directly to Higgsfield). Do not try to pass a chat attachment or ask for a URL. The widget records/uploads, confirms the audio, and creates the voice itself end-to-end — and if the user is out of credits or on a free plan it shows the plans/credits UI inline. After the widget reports success you do NOT need to call create_voice_from_confirmed_audio again. Only call create_voice_from_confirmed_audio yourself when a confirmed audio_media_id is already present in the prompt and no UI step is needed.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Initial name to prefill in the UI.",
+        "type": "string",
+        "maxLength": 128
+      },
+      "initial_tab": {
+        "description": "Initial tab for the create voice UI. Defaults to record. Use 'upload' when the user already has or attached an audio file.",
+        "type": "string",
+        "enum": [
+          "record",
+          "upload"
+        ]
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "mode": {
+        "type": "string",
+        "const": "voice_create",
+        "description": "Discriminator for the widget's initial view."
+      },
+      "initial_tab": {
+        "type": "string",
+        "enum": [
+          "record",
+          "upload"
+        ],
+        "description": "Initial tab for the create voice UI."
+      },
+      "resource_uri": {
+        "type": "string",
+        "description": "URI of the UI resource this tool binds to."
+      },
+      "microphone_required": {
+        "type": "boolean",
+        "description": "True when the record tab may request browser microphone permission."
+      },
+      "name": {
+        "description": "Initial name to prefill in the UI.",
+        "type": "string"
+      },
+      "fallback": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Human-readable hint when no UI is available."
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "mode",
+      "initial_tab",
+      "resource_uri",
+      "microphone_required",
+      "fallback"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "creation_status",
+  "description": "Snapshot creation status. In-progress: `poll_after_seconds`. Internal/widget. Wait: `creations_wait`. Browse: `creations_get`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "creationIdentifier": {
+        "description": "Creation identifier.",
+        "type": "string"
+      },
+      "inlineImage": {
+        "description": "On completed: return `data:` URI in `results.url` (CSP-restricted iframes). Original URL in `results.originalUrl`.",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "creationIdentifier"
+    ]
+  }
+}

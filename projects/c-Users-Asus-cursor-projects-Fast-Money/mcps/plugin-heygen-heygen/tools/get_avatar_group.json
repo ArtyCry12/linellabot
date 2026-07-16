@@ -1,0 +1,21 @@
+{
+  "name": "get_avatar_group",
+  "description": "Returns details for a specific avatar group including name, gender, preview URLs, looks count, and training status.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "groupId": {
+        "title": "Groupid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "groupId"
+    ],
+    "title": "GetAvatarGroupInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

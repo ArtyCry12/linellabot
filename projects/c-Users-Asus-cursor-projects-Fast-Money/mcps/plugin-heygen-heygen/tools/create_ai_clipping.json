@@ -1,0 +1,221 @@
+{
+  "name": "create_ai_clipping",
+  "description": "Submit a source video and return a job id immediately. The job runs asynchronously and produces one or more short clips per the requested output_settings. Poll GET /v3/ai-clipping/{id} or subscribe to ai_clipping.success / ai_clipping.fail webhooks.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "video": {
+        "description": "Source video. Either a URL or an asset_id from POST /v1/asset.",
+        "discriminator": {
+          "mapping": {
+            "asset_id": "#/$defs/AssetId",
+            "url": "#/$defs/AssetUrl"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/AssetUrl"
+          },
+          {
+            "$ref": "#/$defs/AssetId"
+          }
+        ],
+        "title": "Video"
+      },
+      "title": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Title for the job. Defaults to the source video's title if omitted.",
+        "title": "Title"
+      },
+      "inputLanguage": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "ISO-639-1 source language code (e.g. 'en', 'es'). Omit for auto-detect.",
+        "title": "Inputlanguage"
+      },
+      "outputSettings": {
+        "$ref": "#/$defs/HighlightOutputSettings",
+        "description": "Configuration for the produced clips (duration mix, aspect ratio, captions, etc.)."
+      },
+      "callbackUrl": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "HTTPS URL to receive per-job webhook callbacks. Mirrors /v3/video-translations callback_url. Per-job callback_url deliveries are NOT HMAC-signed: authenticate them by verifying TLS and matching the echoed callback_id, and do not trust an unverified body. To receive a signed payload, register a webhook endpoint with a secret (the signature header is sent only to registered endpoints).",
+        "title": "Callbackurl"
+      },
+      "callbackId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Opaque client identifier echoed verbatim in webhook payloads. Mirrors /v3/video-translations callback_id.",
+        "title": "Callbackid"
+      }
+    },
+    "required": [
+      "video"
+    ],
+    "$defs": {
+      "AssetId": {
+        "description": "Asset input via HeyGen asset ID from the asset upload endpoint.",
+        "properties": {
+          "type": {
+            "const": "asset_id",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "asset_id": {
+            "description": "HeyGen asset ID from the asset upload endpoint",
+            "title": "Asset Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "asset_id"
+        ],
+        "title": "AssetId",
+        "type": "object"
+      },
+      "AssetUrl": {
+        "description": "Asset input via publicly accessible HTTPS URL.",
+        "properties": {
+          "type": {
+            "const": "url",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "description": "Publicly accessible HTTPS URL for the asset",
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ],
+        "title": "AssetUrl",
+        "type": "object"
+      },
+      "HighlightOutputSettings": {
+        "description": "Configuration for the clips the job will produce.\n\nPublic projection of the internal ``HighlightOutputSettings``\n(heygen/temporal/workflow/model/instant_highlight.py:27),\nminus internal-only fields (``caption_config`` — internal StyleConfig from\nthe frontend, not part of the public contract).",
+        "properties": {
+          "duration_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/$defs/OutputDuration"
+                },
+                "maxItems": 4,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "One or more target clip durations to produce. Each produces a separate clip.",
+            "title": "Duration Types"
+          },
+          "aspect_ratio": {
+            "$ref": "#/$defs/OutputAspectRatio",
+            "default": "portrait",
+            "description": "Aspect ratio for all produced clips. Default 'portrait' (9:16, social-ready)."
+          },
+          "captions": {
+            "default": true,
+            "description": "Burn captions into the clips. Set false to disable.",
+            "title": "Captions",
+            "type": "boolean"
+          },
+          "caption_style": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Named caption style preset (e.g. 'classic', 'bold'). Omit for the default style.",
+            "title": "Caption Style"
+          },
+          "prompt": {
+            "anyOf": [
+              {
+                "maxLength": 500,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional editorial guidance for the highlight model. Max 500 characters.",
+            "title": "Prompt"
+          }
+        },
+        "title": "HighlightOutputSettings",
+        "type": "object"
+      },
+      "OutputAspectRatio": {
+        "description": "Output aspect ratio for produced clips.",
+        "enum": [
+          "landscape",
+          "portrait",
+          "square"
+        ],
+        "title": "OutputAspectRatio",
+        "type": "string"
+      },
+      "OutputDuration": {
+        "description": "Target clip duration. ``long`` returns the model's choice >180s.",
+        "enum": [
+          "30",
+          "60",
+          "180",
+          "long"
+        ],
+        "title": "OutputDuration",
+        "type": "string"
+      }
+    },
+    "title": "CreateAiClippingInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

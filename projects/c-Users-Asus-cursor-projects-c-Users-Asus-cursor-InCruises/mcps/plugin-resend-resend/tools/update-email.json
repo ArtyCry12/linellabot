@@ -1,0 +1,26 @@
+{
+  "name": "update-email",
+  "description": "Reschedule a scheduled email by updating its scheduled send time. Only works for emails that were scheduled and have not yet been sent.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "The ID of the scheduled email to update"
+      },
+      "scheduledAt": {
+        "type": "string",
+        "description": "The new scheduled time in ISO 8601 format (e.g., \"2024-08-05T11:52:01.858Z\")."
+      }
+    },
+    "required": [
+      "id",
+      "scheduledAt"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "update-contact-property",
+  "description": "Update an existing contact property in Resend. Only the fallback value can be changed — the key and type cannot be modified after creation.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "contactPropertyId": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Contact property ID"
+      },
+      "fallbackValue": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "New default value for the property. Pass null to remove the fallback value. Must match the property type."
+      }
+    },
+    "required": [
+      "contactPropertyId",
+      "fallbackValue"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

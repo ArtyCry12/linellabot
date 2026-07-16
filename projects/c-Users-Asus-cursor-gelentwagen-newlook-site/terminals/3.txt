@@ -1,0 +1,37 @@
+---
+pid: 9412
+cwd: |
+  C:\Users\Asus\.cursor\gelentwagen-newlook-site
+---
+PS C:\Users\Asus\.cursor\gelentwagen-newlook-site>
+cd C:\Users\Asus\.cursor\gelentwagen-newlook-site
+>> npm run dev
+
+> gelandewagen-newlook-site@0.3.1 predev
+> node scripts/stop-stale-dev.mjs       
+
+[dev] stopped stale process 18836
+
+> gelandewagen-newlook-site@0.3.1 dev
+> next dev --webpack --port 3000
+
+▲ Next.js 16.2.1 (webpack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.100.148:3000
+✓ Ready in 2.4s
+
+○ Compiling / ...
+ GET / 200 in 36.0s (next.js: 35.1s, application-code: 878ms)
+
+ *  Журнал восстановлен 
+
+PS C:\Users\Asus\.cursor\gelentwagen-newlook-site> 
+ *  Журнал восстановлен 
+
+PS C:\Users\Asus\.cursor\gelentwagen-newlook-site> 
+ *  Журнал восстановлен 
+
+PS C:\Users\Asus\.cursor\gelentwagen-newlook-site> 
+ *  Журнал восстановлен 
+
+PS C:\Users\Asus\.cursor\gelentwagen-newlook-site> 

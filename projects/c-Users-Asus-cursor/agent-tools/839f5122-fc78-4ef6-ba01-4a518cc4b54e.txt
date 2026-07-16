@@ -1,0 +1,452 @@
+
+
+    ��⠫��: C:\Users\Asus\.cursor\docs\squad\demo-flowmetrics
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        03.07.2026     20:53                stitch-output                                                        
+{
+  "id": 2,
+  "jsonrpc": "2.0",
+  "result": {
+    "content": [
+      {
+        "text": "{\"projectId\":\"17152691140235890532\",\"sessionId\":\"1985718270416971169\",\"outputComponents\":[{\"designSystem\":{\"name\":\"assets/d2da4501d32b4f589cf45d5a633f6724\",\"designSystem\":{\"displayName\":\"High-Performance Analytical Interface\",\"styleGuidelines\":\"## Brand & Style\\nThis design system is engineered for high-performance SaaS environments, blending the precision of professional data tools with the immersive aesthetics of modern Web3 interfaces. The visual narrative centers on \\\"Technical Transparency\\\"—a style that prioritizes clarity through depth and light.\\n\\nThe design movement is a sophisticated **Glassmorphism**, utilizing multi-layered translucent surfaces to create a sense of physical space. It leverages high-contrast OLED blacks to ensure data points pop with electric intensity. The emotional response is one of absolute control, speed, and futuristic reliability, avoiding generic consumer trends in favor of a bespoke, \\\"Apple-meets-Web3\\\" professional workspace.\\n\\n## Layout & Spacing\\nThe layout follows a **Bento-style grid** philosophy. Content is organized into discrete, modular containers that vary in size but maintain consistent internal padding and external gaps.\\n\\n- **Desktop:** A 12-column fluid grid. Use a 24px gutter to allow the glass containers to \\\"breathe.\\\"\\n- **Bento Logic:** Cards should span 3, 4, 6, or 12 columns. Avoid odd-numbered spans to maintain a sense of mathematical order.\\n- **Vertical Rhythm:** Use a 4px base unit. Component internal padding should default to 24px (6 units) for a premium, spacious feel.\\n- **Mobile Reflow:** Bento cards stack vertically, maintaining a 16px margin and 16px gap between elements.\\n\\n## Elevation & Depth\\nDepth is not communicated through traditional drop shadows, but through **Tonal Stacking** and **Backdrop Blurring**.\\n\\n1.  **Level 0 (Base):** Pure #0A0E17.\\n2.  **Level 1 (Bento Cards):** Semi-transparent Navy (#1E293B at 40% opacity) with a `backdrop-filter: blur(12px)`. Add a 1px inner border (stroke) using `rgba(255, 255, 255, 0.1)` to define the edge.\\n3.  **Level 2 (Popovers/Tooltips):** Lighter translucent fill with a higher blur (20px) and a subtle 0.5px Electric Blue outer glow (bloom).\\n4.  **Interaction:** When hovering over cards, increase the inner border opacity to 0.3 and add a very subtle Electric Blue drop shadow with a 40px blur and 0% spread to simulate a \\\"lifted\\\" light source.\\n\\n## Components\\n- **Buttons:**\\n    - *Primary:* Electric Blue fill with white text. High-gloss finish (subtle top-down gradient).\\n    - *CTA:* Amber fill with dark text. No gradient, pure flat impact.\\n    - *Ghost:* 1px Slate border, no fill, blur background on hover.\\n- **Bento Cards:** The core unit. Must include a `label-mono` header and often a `data-lg` metric. The background must always be blurred.\\n- **Data Visualizations:** Charts should use \\\"Neon-stroke\\\" lines (2px width) with a subtle vertical gradient fill (Electric Blue to transparent). \\n- **Input Fields:** Darker than the card background, subtle 1px border. Focus state triggers an Electric Blue glow. Use JetBrains Mono for user input.\\n- **Chips/Status:** Use low-opacity fills of the status color (e.g., 10% Green for 'Success') with a solid 2px dot indicator.\\n- **KPI Widgets:** Large JetBrains Mono numbers. Small \\\"sparkline\\\" charts should be embedded within these widgets for immediate context.\",\"theme\":{\"colorMode\":\"DARK\",\"font\":\"HANKEN_GROTESK\",\"roundness\":\"ROUND_EIGHT\",\"customColor\":\"#0a84ff\",\"headlineFont\":\"HANKEN_GROTESK\",\"bodyFont\":\"HANKEN_GROTESK\",\"labelFont\":\"JETBRAINS_MONO\",\"namedColors\":{\"background\":\"#0f131c\",\"error\":\"#ffb4ab\",\"error_container\":\"#93000a\",\"inverse_on_surface\":\"#2c303a\",\"inverse_primary\":\"#005db8\",\"inverse_surface\":\"#dfe2ef\",\"on_background\":\"#dfe2ef\",\"on_error\":\"#690005\",\"on_error_container\":\"#ffdad6\",\"on_primary\":\"#003064\",\"on_primary_container\":\"#002957\",\"on_primary_fixed\":\"#001b3e\",\"on_primary_fixed_variant\":\"#00468d\",\"on_secondary\":\"#472a00\",\"on_secondary_container\":\"#5b3800\",\"on_secondary_fixed\":\"#2a1700\",\"on_secondary_fixed_variant\":\"#653e00\",\"on_surface\":\"#dfe2ef\",\"on_surface_variant\":\"#c0c6d6\",\"on_tertiary\":\"#263143\",\"on_tertiary_container\":\"#1f2a3c\",\"on_tertiary_fixed\":\"#111c2d\",\"on_tertiary_fixed_variant\":\"#3c475a\",\"outline\":\"#8b91a0\",\"outline_variant\":\"#414754\",\"primary\":\"#aac7ff\",\"primary_container\":\"#3e90ff\",\"primary_fixed\":\"#d6e3ff\",\"primary_fixed_dim\":\"#aac7ff\",\"secondary\":\"#ffb95f\",\"secondary_container\":\"#ee9800\",\"secondary_fixed\":\"#ffddb8\",\"secondary_fixed_dim\":\"#ffb95f\",\"surface\":\"#0f131c\",\"surface_bright\":\"#353943\",\"surface_container\":\"#1c1f29\",\"surface_container_high\":\"#262a34\",\"surface_container_highest\":\"#31353f\",\"surface_container_low\":\"#181b25\",\"surface_container_lowest\":\"#0a0e17\",\"surface_dim\":\"#0f131c\",\"surface_tint\":\"#aac7ff\",\"surface_variant\":\"#31353f\",\"tertiary\":\"#bcc7de\",\"tertiary_container\":\"#8691a7\",\"tertiary_fixed\":\"#d8e3fb\",\"tertiary_fixed_dim\":\"#bcc7de\"},\"designMd\":\"---\\nname: High-Performance Analytical Interface\\ncolors:\\n  surface: '#0f131c'\\n  surface-dim: '#0f131c'\\n  surface-bright: '#353943'\\n  surface-container-lowest: '#0a0e17'\\n  surface-container-low: '#181b25'\\n  surface-container: '#1c1f29'\\n  surface-container-high: '#262a34'\\n  surface-container-highest: '#31353f'\\n  on-surface: '#dfe2ef'\\n  on-surface-variant: '#c0c6d6'\\n  inverse-surface: '#dfe2ef'\\n  inverse-on-surface: '#2c303a'\\n  outline: '#8b91a0'\\n  outline-variant: '#414754'\\n  surface-tint: '#aac7ff'\\n  primary: '#aac7ff'\\n  on-primary: '#003064'\\n  primary-container: '#3e90ff'\\n  on-primary-container: '#002957'\\n  inverse-primary: '#005db8'\\n  secondary: '#ffb95f'\\n  on-secondary: '#472a00'\\n  secondary-container: '#ee9800'\\n  on-secondary-container: '#5b3800'\\n  tertiary: '#bcc7de'\\n  on-tertiary: '#263143'\\n  tertiary-container: '#8691a7'\\n  on-tertiary-container: '#1f2a3c'\\n  error: '#ffb4ab'\\n  on-error: '#690005'\\n  error-container: '#93000a'\\n  on-error-container: '#ffdad6'\\n  primary-fixed: '#d6e3ff'\\n  primary-fixed-dim: '#aac7ff'\\n  on-primary-fixed: '#001b3e'\\n  on-primary-fixed-variant: '#00468d'\\n  secondary-fixed: '#ffddb8'\\n  secondary-fixed-dim: '#ffb95f'\\n  on-secondary-fixed: '#2a1700'\\n  on-secondary-fixed-variant: '#653e00'\\n  tertiary-fixed: '#d8e3fb'\\n  tertiary-fixed-dim: '#bcc7de'\\n  on-tertiary-fixed: '#111c2d'\\n  on-tertiary-fixed-variant: '#3c475a'\\n  background: '#0f131c'\\n  on-background: '#dfe2ef'\\n  surface-variant: '#31353f'\\ntypography:\\n  display-lg:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 48px\\n    fontWeight: '800'\\n    lineHeight: '1.1'\\n    letterSpacing: -0.02em\\n  display-lg-mobile:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 32px\\n    fontWeight: '800'\\n    lineHeight: '1.2'\\n    letterSpacing: -0.02em\\n  headline-md:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 24px\\n    fontWeight: '700'\\n    lineHeight: '1.3'\\n  data-lg:\\n    fontFamily: JetBrains Mono\\n    fontSize: 20px\\n    fontWeight: '600'\\n    lineHeight: '1.0'\\n  body-md:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 16px\\n    fontWeight: '400'\\n    lineHeight: '1.6'\\n  label-mono:\\n    fontFamily: JetBrains Mono\\n    fontSize: 12px\\n    fontWeight: '500'\\n    lineHeight: '1.0'\\n    letterSpacing: 0.05em\\n  caption:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 13px\\n    fontWeight: '500'\\n    lineHeight: '1.4'\\nrounded:\\n  sm: 0.25rem\\n  DEFAULT: 0.5rem\\n  md: 0.75rem\\n  lg: 1rem\\n  xl: 1.5rem\\n  full: 9999px\\nspacing:\\n  unit: 4px\\n  gutter: 24px\\n  margin-desktop: 40px\\n  margin-mobile: 16px\\n  bento-gap: 16px\\n---\\n\\n## Brand & Style\\nThis design system is engineered for high-performance SaaS environments, blending the precision of professional data tools with the immersive aesthetics of modern Web3 interfaces. The visual narrative centers on \\\"Technical Transparency\\\"—a style that prioritizes clarity through depth and light.\\n\\nThe design movement is a sophisticated **Glassmorphism**, utilizing multi-layered translucent surfaces to create a sense of physical space. It leverages high-contrast OLED blacks to ensure data points pop with electric intensity. The emotional response is one of absolute control, speed, and futuristic reliability, avoiding generic consumer trends in favor of a bespoke, \\\"Apple-meets-Web3\\\" professional workspace.\\n\\n## Colors\\nThe palette is rooted in a \\\"Deep Space\\\" hierarchy. The primary canvas uses a true OLED black to maximize battery efficiency on mobile and visual impact on desktop.\\n\\n- **Electric Blue (#0A84FF):** Reserved for primary actions, active states, and data trend lines. It represents flow and connectivity.\\n- **Amber (#F59E0B):** Used exclusively for High-Value CTAs and critical alerts. It serves as a tactical \\\"interrupt\\\" in the cool-toned interface.\\n- **Deep Navy & Slate:** Foundations for surfaces and secondary text. These provide the necessary low-contrast background for the glass effects to remain legible.\\n- **Glow Orbs:** Subtle, large-radius radial gradients of Electric Blue (at 5-10% opacity) should be placed behind key content areas to suggest depth and energy.\\n\\n## Typography\\nThe typographic system utilizes a dual-engine approach to distinguish between narrative and technical data.\\n\\n- **Hanken Grotesk:** Used for all structural elements, headings, and body copy. It provides a clean, humanist feel that balances the \\\"tech\\\" aesthetic. Headlines should utilize tight tracking and heavy weights for a commanding presence.\\n- **JetBrains Mono:** The \\\"Technical Voice.\\\" Used for all dynamic numbers, timestamps, IDs, and code snippets. This font ensures that digits are easily scannable and tabular data remains perfectly aligned.\\n\\n## Layout & Spacing\\nThe layout follows a **Bento-style grid** philosophy. Content is organized into discrete, modular containers that vary in size but maintain consistent internal padding and external gaps.\\n\\n- **Desktop:** A 12-column fluid grid. Use a 24px gutter to allow the glass containers to \\\"breathe.\\\"\\n- **Bento Logic:** Cards should span 3, 4, 6, or 12 columns. Avoid odd-numbered spans to maintain a sense of mathematical order.\\n- **Vertical Rhythm:** Use a 4px base unit. Component internal padding should default to 24px (6 units) for a premium, spacious feel.\\n- **Mobile Reflow:** Bento cards stack vertically, maintaining a 16px margin and 16px gap between elements.\\n\\n## Elevation & Depth\\nDepth is not communicated through traditional drop shadows, but through **Tonal Stacking** and **Backdrop Blurring**.\\n\\n1.  **Level 0 (Base):** Pure #0A0E17.\\n2.  **Level 1 (Bento Cards):** Semi-transparent Navy (#1E293B at 40% opacity) with a `backdrop-filter: blur(12px)`. Add a 1px inner border (stroke) using `rgba(255, 255, 255, 0.1)` to define the edge.\\n3.  **Level 2 (Popovers/Tooltips):** Lighter translucent fill with a higher blur (20px) and a subtle 0.5px Electric Blue outer glow (bloom).\\n4.  **Interaction:** When hovering over cards, increase the inner border opacity to 0.3 and add a very subtle Electric Blue drop shadow with a 40px blur and 0% spread to simulate a \\\"lifted\\\" light source.\\n\\n## Shapes\\nThe shape language is \\\"Squircle-adjacent\\\"—modern, friendly, but disciplined. \\n\\n- **Primary Containers:** 1rem (16px) corner radius. This applies to all bento cards and main dashboard sections.\\n- **Small Components:** 0.5rem (8px) for buttons, input fields, and tags.\\n- **Interactive States:** On active/pressed states, shapes remain constant, but the \\\"glow\\\" or \\\"stroke\\\" intensity changes.\\n\\n## Components\\n- **Buttons:**\\n    - *Primary:* Electric Blue fill with white text. High-gloss finish (subtle top-down gradient).\\n    - *CTA:* Amber fill with dark text. No gradient, pure flat impact.\\n    - *Ghost:* 1px Slate border, no fill, blur background on hover.\\n- **Bento Cards:** The core unit. Must include a `label-mono` header and often a `data-lg` metric. The background must always be blurred.\\n- **Data Visualizations:** Charts should use \\\"Neon-stroke\\\" lines (2px width) with a subtle vertical gradient fill (Electric Blue to transparent). \\n- **Input Fields:** Darker than the card background, subtle 1px border. Focus state triggers an Electric Blue glow. Use JetBrains Mono for user input.\\n- **Chips/Status:** Use low-opacity fills of the status color (e.g., 10% Green for 'Success') with a solid 2px dot indicator.\\n- **KPI Widgets:** Large JetBrains Mono numbers. Small \\\"sparkline\\\" charts should be embedded within these widgets for immediate context.\",\"colorVariant\":\"FIDELITY\",\"overridePrimaryColor\":\"#0a84ff\",\"overrideSecondaryColor\":\"#f59e0b\",\"overrideTertiaryColor\":\"#1e293b\",\"overrideNeutralColor\":\"#0a0e17\",\"spacingScale\":2,\"typography\":{\"body-md\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"16px\",\"fontWeight\":\"400\",\"lineHeight\":\"1.6\"},\"caption\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"13px\",\"fontWeight\":\"500\",\"lineHeight\":\"1.4\"},\"data-lg\":{\"fontFamily\":\"JetBrains Mono\",\"fontSize\":\"20px\",\"fontWeight\":\"600\",\"lineHeight\":\"1.0\"},\"display-lg\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"48px\",\"fontWeight\":\"800\",\"lineHeight\":\"1.1\",\"letterSpacing\":\"-0.02em\"},\"display-lg-mobile\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"32px\",\"fontWeight\":\"800\",\"lineHeight\":\"1.2\",\"letterSpacing\":\"-0.02em\"},\"headline-md\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"24px\",\"fontWeight\":\"700\",\"lineHeight\":\"1.3\"},\"label-mono\":{\"fontFamily\":\"JetBrains Mono\",\"fontSize\":\"12px\",\"fontWeight\":\"500\",\"lineHeight\":\"1.0\",\"letterSpacing\":\"0.05em\"}},\"spacing\":{\"bento-gap\":\"16px\",\"gutter\":\"24px\",\"margin-desktop\":\"40px\",\"margin-mobile\":\"16px\",\"unit\":\"4px\"},\"headlineFontFamily\":\"Hanken Grotesk\",\"bodyFontFamily\":\"Hanken Grotesk\",\"labelFontFamily\":\"Jetbrains Mono\"}},\"version\":\"1\"}},{\"design\":{\"screens\":[{\"screenshot\":{\"name\":\"projects/17152691140235890532/files/a75298e786f649d09cd466b52c837079\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AP1WRLtpAg5PaU24ytGUstAXaopFoIfY3mbIbzbxc61G1XLtsbXHXbBy8g2IeRl5cirLpBlcvCgq3UeawfPRowNqcpuXBniP8fHE8C0-Y4JOL_tn9Fj9M4LhTCKOJxo5DmaELVEb56rlheH9pULHVLYe1W-pw5989fn9tQGP9P1Z7wTLPld6ZmPPjOy5Q57ie_jiKUe4gK-6uFGVkPzXbLmAD2IQRj7tM6HHphI-2zKqishFyuxz6j_AdctGiJJF\"},\"htmlCode\":{\"name\":\"projects/17152691140235890532/files/65c234882416481781cdc40fe01ecb4c\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzFhNDBhYmQxNzAxMDQ1Y2JiMzFiNTc1YjY2MjRjYjY2EgsSBxCZ-_3Kpg0YAZIBJAoKcHJvamVjdF9pZBIWQhQxNzE1MjY5MTE0MDIzNTg5MDUzMg&filename=&opi=96797242\",\"mimeType\":\"text/html\"},\"id\":\"9759c45e202a474cb390a545cc624935\",\"generatedBy\":\"figaro_agent\",\"width\":\"2560\",\"height\":\"2048\",\"title\":\"FlowMetrics Premium Hero\",\"prompt\":\"A 'WOW' factor home page hero section for FlowMetrics. \\nFull viewport height (100vh) with a deep OLED #0A0E17 background. \\nLayout: Split 60/40.\\nLeft Side: Massive headline 'See what your team ships' in Hanken Grotesk. Subtext explaining the flow metrics platform. Dual CTAs: Primary in Amber #F59E0B, Secondary in a Ghost Glass style.\\nRight Side: A floating 3D-style glass dashboard mockup. This mockup contains a bento-grid layout of metric cards: \\n1. Deploy Frequency (Line chart)\\n2. Error Rate (Percentage)\\n3. Uptime (99.9% with a pulse icon)\\n4. Active Users (Number count). \\nUse JetBrains Mono for all numbers and metric labels. \\nApply heavy backdrop-blur (glassmorphism) to the dashboard cards. \\nBackground: Subtle electric blue #0A84FF glow orbs behind the dashboard for depth.\\nBottom: A minimalist 'Scroll to explore' hint with a subtle animation.\\nVisual style: Ultra-premium, dark, clean, and high-performance.\",\"name\":\"projects/17152691140235890532/screens/9759c45e202a474cb390a545cc624935\",\"theme\":{\"colorMode\":\"DARK\",\"font\":\"HANKEN_GROTESK\",\"roundness\":\"ROUND_EIGHT\",\"customColor\":\"#0a84ff\",\"headlineFont\":\"HANKEN_GROTESK\",\"bodyFont\":\"HANKEN_GROTESK\",\"labelFont\":\"JETBRAINS_MONO\",\"namedColors\":{\"background\":\"#0f131c\",\"error\":\"#ffb4ab\",\"error_container\":\"#93000a\",\"inverse_on_surface\":\"#2c303a\",\"inverse_primary\":\"#005db8\",\"inverse_surface\":\"#dfe2ef\",\"on_background\":\"#dfe2ef\",\"on_error\":\"#690005\",\"on_error_container\":\"#ffdad6\",\"on_primary\":\"#003064\",\"on_primary_container\":\"#002957\",\"on_primary_fixed\":\"#001b3e\",\"on_primary_fixed_variant\":\"#00468d\",\"on_secondary\":\"#472a00\",\"on_secondary_container\":\"#5b3800\",\"on_secondary_fixed\":\"#2a1700\",\"on_secondary_fixed_variant\":\"#653e00\",\"on_surface\":\"#dfe2ef\",\"on_surface_variant\":\"#c0c6d6\",\"on_tertiary\":\"#263143\",\"on_tertiary_container\":\"#1f2a3c\",\"on_tertiary_fixed\":\"#111c2d\",\"on_tertiary_fixed_variant\":\"#3c475a\",\"outline\":\"#8b91a0\",\"outline_variant\":\"#414754\",\"primary\":\"#aac7ff\",\"primary_container\":\"#3e90ff\",\"primary_fixed\":\"#d6e3ff\",\"primary_fixed_dim\":\"#aac7ff\",\"secondary\":\"#ffb95f\",\"secondary_container\":\"#ee9800\",\"secondary_fixed\":\"#ffddb8\",\"secondary_fixed_dim\":\"#ffb95f\",\"surface\":\"#0f131c\",\"surface_bright\":\"#353943\",\"surface_container\":\"#1c1f29\",\"surface_container_high\":\"#262a34\",\"surface_container_highest\":\"#31353f\",\"surface_container_low\":\"#181b25\",\"surface_container_lowest\":\"#0a0e17\",\"surface_dim\":\"#0f131c\",\"surface_tint\":\"#aac7ff\",\"surface_variant\":\"#31353f\",\"tertiary\":\"#bcc7de\",\"tertiary_container\":\"#8691a7\",\"tertiary_fixed\":\"#d8e3fb\",\"tertiary_fixed_dim\":\"#bcc7de\"},\"colorVariant\":\"FIDELITY\",\"overridePrimaryColor\":\"#0a84ff\",\"overrideSecondaryColor\":\"#f59e0b\",\"overrideTertiaryColor\":\"#1e293b\",\"overrideNeutralColor\":\"#0a0e17\",\"spacingScale\":2,\"typography\":{\"body-md\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"16px\",\"fontWeight\":\"400\",\"lineHeight\":\"1.6\"},\"caption\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"13px\",\"fontWeight\":\"500\",\"lineHeight\":\"1.4\"},\"data-lg\":{\"fontFamily\":\"JetBrains Mono\",\"fontSize\":\"20px\",\"fontWeight\":\"600\",\"lineHeight\":\"1.0\"},\"display-lg\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"48px\",\"fontWeight\":\"800\",\"lineHeight\":\"1.1\",\"letterSpacing\":\"-0.02em\"},\"display-lg-mobile\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"32px\",\"fontWeight\":\"800\",\"lineHeight\":\"1.2\",\"letterSpacing\":\"-0.02em\"},\"headline-md\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"24px\",\"fontWeight\":\"700\",\"lineHeight\":\"1.3\"},\"label-mono\":{\"fontFamily\":\"JetBrains Mono\",\"fontSize\":\"12px\",\"fontWeight\":\"500\",\"lineHeight\":\"1.0\",\"letterSpacing\":\"0.05em\"}},\"spacing\":{\"bento-gap\":\"16px\",\"gutter\":\"24px\",\"margin-desktop\":\"40px\",\"margin-mobile\":\"16px\",\"unit\":\"4px\"},\"headlineFontFamily\":\"Hanken Grotesk\",\"bodyFontFamily\":\"Hanken Grotesk\",\"labelFontFamily\":\"Jetbrains Mono\"},\"deviceType\":\"DESKTOP\",\"screenType\":\"DESIGN\",\"screenMetadata\":{\"agentType\":\"PRO_AGENT\",\"status\":\"COMPLETE\"},\"designSystem\":{\"name\":\"assets/d2da4501d32b4f589cf45d5a633f6724\",\"designSystem\":{\"displayName\":\"High-Performance Analytical Interface\",\"styleGuidelines\":\"## Brand & Style\\nThis design system is engineered for high-performance SaaS environments, blending the precision of professional data tools with the immersive aesthetics of modern Web3 interfaces. The visual narrative centers on \\\"Technical Transparency\\\"—a style that prioritizes clarity through depth and light.\\n\\nThe design movement is a sophisticated **Glassmorphism**, utilizing multi-layered translucent surfaces to create a sense of physical space. It leverages high-contrast OLED blacks to ensure data points pop with electric intensity. The emotional response is one of absolute control, speed, and futuristic reliability, avoiding generic consumer trends in favor of a bespoke, \\\"Apple-meets-Web3\\\" professional workspace.\\n\\n## Layout & Spacing\\nThe layout follows a **Bento-style grid** philosophy. Content is organized into discrete, modular containers that vary in size but maintain consistent internal padding and external gaps.\\n\\n- **Desktop:** A 12-column fluid grid. Use a 24px gutter to allow the glass containers to \\\"breathe.\\\"\\n- **Bento Logic:** Cards should span 3, 4, 6, or 12 columns. Avoid odd-numbered spans to maintain a sense of mathematical order.\\n- **Vertical Rhythm:** Use a 4px base unit. Component internal padding should default to 24px (6 units) for a premium, spacious feel.\\n- **Mobile Reflow:** Bento cards stack vertically, maintaining a 16px margin and 16px gap between elements.\\n\\n## Elevation & Depth\\nDepth is not communicated through traditional drop shadows, but through **Tonal Stacking** and **Backdrop Blurring**.\\n\\n1.  **Level 0 (Base):** Pure #0A0E17.\\n2.  **Level 1 (Bento Cards):** Semi-transparent Navy (#1E293B at 40% opacity) with a `backdrop-filter: blur(12px)`. Add a 1px inner border (stroke) using `rgba(255, 255, 255, 0.1)` to define the edge.\\n3.  **Level 2 (Popovers/Tooltips):** Lighter translucent fill with a higher blur (20px) and a subtle 0.5px Electric Blue outer glow (bloom).\\n4.  **Interaction:** When hovering over cards, increase the inner border opacity to 0.3 and add a very subtle Electric Blue drop shadow with a 40px blur and 0% spread to simulate a \\\"lifted\\\" light source.\\n\\n## Components\\n- **Buttons:**\\n    - *Primary:* Electric Blue fill with white text. High-gloss finish (subtle top-down gradient).\\n    - *CTA:* Amber fill with dark text. No gradient, pure flat impact.\\n    - *Ghost:* 1px Slate border, no fill, blur background on hover.\\n- **Bento Cards:** The core unit. Must include a `label-mono` header and often a `data-lg` metric. The background must always be blurred.\\n- **Data Visualizations:** Charts should use \\\"Neon-stroke\\\" lines (2px width) with a subtle vertical gradient fill (Electric Blue to transparent). \\n- **Input Fields:** Darker than the card background, subtle 1px border. Focus state triggers an Electric Blue glow. Use JetBrains Mono for user input.\\n- **Chips/Status:** Use low-opacity fills of the status color (e.g., 10% Green for 'Success') with a solid 2px dot indicator.\\n- **KPI Widgets:** Large JetBrains Mono numbers. Small \\\"sparkline\\\" charts should be embedded within these widgets for immediate context.\",\"theme\":{\"colorMode\":\"DARK\",\"font\":\"HANKEN_GROTESK\",\"roundness\":\"ROUND_EIGHT\",\"customColor\":\"#0a84ff\",\"headlineFont\":\"HANKEN_GROTESK\",\"bodyFont\":\"HANKEN_GROTESK\",\"labelFont\":\"JETBRAINS_MONO\",\"namedColors\":{\"background\":\"#0f131c\",\"error\":\"#ffb4ab\",\"error_container\":\"#93000a\",\"inverse_on_surface\":\"#2c303a\",\"inverse_primary\":\"#005db8\",\"inverse_surface\":\"#dfe2ef\",\"on_background\":\"#dfe2ef\",\"on_error\":\"#690005\",\"on_error_container\":\"#ffdad6\",\"on_primary\":\"#003064\",\"on_primary_container\":\"#002957\",\"on_primary_fixed\":\"#001b3e\",\"on_primary_fixed_variant\":\"#00468d\",\"on_secondary\":\"#472a00\",\"on_secondary_container\":\"#5b3800\",\"on_secondary_fixed\":\"#2a1700\",\"on_secondary_fixed_variant\":\"#653e00\",\"on_surface\":\"#dfe2ef\",\"on_surface_variant\":\"#c0c6d6\",\"on_tertiary\":\"#263143\",\"on_tertiary_container\":\"#1f2a3c\",\"on_tertiary_fixed\":\"#111c2d\",\"on_tertiary_fixed_variant\":\"#3c475a\",\"outline\":\"#8b91a0\",\"outline_variant\":\"#414754\",\"primary\":\"#aac7ff\",\"primary_container\":\"#3e90ff\",\"primary_fixed\":\"#d6e3ff\",\"primary_fixed_dim\":\"#aac7ff\",\"secondary\":\"#ffb95f\",\"secondary_container\":\"#ee9800\",\"secondary_fixed\":\"#ffddb8\",\"secondary_fixed_dim\":\"#ffb95f\",\"surface\":\"#0f131c\",\"surface_bright\":\"#353943\",\"surface_container\":\"#1c1f29\",\"surface_container_high\":\"#262a34\",\"surface_container_highest\":\"#31353f\",\"surface_container_low\":\"#181b25\",\"surface_container_lowest\":\"#0a0e17\",\"surface_dim\":\"#0f131c\",\"surface_tint\":\"#aac7ff\",\"surface_variant\":\"#31353f\",\"tertiary\":\"#bcc7de\",\"tertiary_container\":\"#8691a7\",\"tertiary_fixed\":\"#d8e3fb\",\"tertiary_fixed_dim\":\"#bcc7de\"},\"designMd\":\"---\\nname: High-Performance Analytical Interface\\ncolors:\\n  surface: '#0f131c'\\n  surface-dim: '#0f131c'\\n  surface-bright: '#353943'\\n  surface-container-lowest: '#0a0e17'\\n  surface-container-low: '#181b25'\\n  surface-container: '#1c1f29'\\n  surface-container-high: '#262a34'\\n  surface-container-highest: '#31353f'\\n  on-surface: '#dfe2ef'\\n  on-surface-variant: '#c0c6d6'\\n  inverse-surface: '#dfe2ef'\\n  inverse-on-surface: '#2c303a'\\n  outline: '#8b91a0'\\n  outline-variant: '#414754'\\n  surface-tint: '#aac7ff'\\n  primary: '#aac7ff'\\n  on-primary: '#003064'\\n  primary-container: '#3e90ff'\\n  on-primary-container: '#002957'\\n  inverse-primary: '#005db8'\\n  secondary: '#ffb95f'\\n  on-secondary: '#472a00'\\n  secondary-container: '#ee9800'\\n  on-secondary-container: '#5b3800'\\n  tertiary: '#bcc7de'\\n  on-tertiary: '#263143'\\n  tertiary-container: '#8691a7'\\n  on-tertiary-container: '#1f2a3c'\\n  error: '#ffb4ab'\\n  on-error: '#690005'\\n  error-container: '#93000a'\\n  on-error-container: '#ffdad6'\\n  primary-fixed: '#d6e3ff'\\n  primary-fixed-dim: '#aac7ff'\\n  on-primary-fixed: '#001b3e'\\n  on-primary-fixed-variant: '#00468d'\\n  secondary-fixed: '#ffddb8'\\n  secondary-fixed-dim: '#ffb95f'\\n  on-secondary-fixed: '#2a1700'\\n  on-secondary-fixed-variant: '#653e00'\\n  tertiary-fixed: '#d8e3fb'\\n  tertiary-fixed-dim: '#bcc7de'\\n  on-tertiary-fixed: '#111c2d'\\n  on-tertiary-fixed-variant: '#3c475a'\\n  background: '#0f131c'\\n  on-background: '#dfe2ef'\\n  surface-variant: '#31353f'\\ntypography:\\n  display-lg:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 48px\\n    fontWeight: '800'\\n    lineHeight: '1.1'\\n    letterSpacing: -0.02em\\n  display-lg-mobile:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 32px\\n    fontWeight: '800'\\n    lineHeight: '1.2'\\n    letterSpacing: -0.02em\\n  headline-md:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 24px\\n    fontWeight: '700'\\n    lineHeight: '1.3'\\n  data-lg:\\n    fontFamily: JetBrains Mono\\n    fontSize: 20px\\n    fontWeight: '600'\\n    lineHeight: '1.0'\\n  body-md:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 16px\\n    fontWeight: '400'\\n    lineHeight: '1.6'\\n  label-mono:\\n    fontFamily: JetBrains Mono\\n    fontSize: 12px\\n    fontWeight: '500'\\n    lineHeight: '1.0'\\n    letterSpacing: 0.05em\\n  caption:\\n    fontFamily: Hanken Grotesk\\n    fontSize: 13px\\n    fontWeight: '500'\\n    lineHeight: '1.4'\\nrounded:\\n  sm: 0.25rem\\n  DEFAULT: 0.5rem\\n  md: 0.75rem\\n  lg: 1rem\\n  xl: 1.5rem\\n  full: 9999px\\nspacing:\\n  unit: 4px\\n  gutter: 24px\\n  margin-desktop: 40px\\n  margin-mobile: 16px\\n  bento-gap: 16px\\n---\\n\\n## Brand & Style\\nThis design system is engineered for high-performance SaaS environments, blending the precision of professional data tools with the immersive aesthetics of modern Web3 interfaces. The visual narrative centers on \\\"Technical Transparency\\\"—a style that prioritizes clarity through depth and light.\\n\\nThe design movement is a sophisticated **Glassmorphism**, utilizing multi-layered translucent surfaces to create a sense of physical space. It leverages high-contrast OLED blacks to ensure data points pop with electric intensity. The emotional response is one of absolute control, speed, and futuristic reliability, avoiding generic consumer trends in favor of a bespoke, \\\"Apple-meets-Web3\\\" professional workspace.\\n\\n## Colors\\nThe palette is rooted in a \\\"Deep Space\\\" hierarchy. The primary canvas uses a true OLED black to maximize battery efficiency on mobile and visual impact on desktop.\\n\\n- **Electric Blue (#0A84FF):** Reserved for primary actions, active states, and data trend lines. It represents flow and connectivity.\\n- **Amber (#F59E0B):** Used exclusively for High-Value CTAs and critical alerts. It serves as a tactical \\\"interrupt\\\" in the cool-toned interface.\\n- **Deep Navy & Slate:** Foundations for surfaces and secondary text. These provide the necessary low-contrast background for the glass effects to remain legible.\\n- **Glow Orbs:** Subtle, large-radius radial gradients of Electric Blue (at 5-10% opacity) should be placed behind key content areas to suggest depth and energy.\\n\\n## Typography\\nThe typographic system utilizes a dual-engine approach to distinguish between narrative and technical data.\\n\\n- **Hanken Grotesk:** Used for all structural elements, headings, and body copy. It provides a clean, humanist feel that balances the \\\"tech\\\" aesthetic. Headlines should utilize tight tracking and heavy weights for a commanding presence.\\n- **JetBrains Mono:** The \\\"Technical Voice.\\\" Used for all dynamic numbers, timestamps, IDs, and code snippets. This font ensures that digits are easily scannable and tabular data remains perfectly aligned.\\n\\n## Layout & Spacing\\nThe layout follows a **Bento-style grid** philosophy. Content is organized into discrete, modular containers that vary in size but maintain consistent internal padding and external gaps.\\n\\n- **Desktop:** A 12-column fluid grid. Use a 24px gutter to allow the glass containers to \\\"breathe.\\\"\\n- **Bento Logic:** Cards should span 3, 4, 6, or 12 columns. Avoid odd-numbered spans to maintain a sense of mathematical order.\\n- **Vertical Rhythm:** Use a 4px base unit. Component internal padding should default to 24px (6 units) for a premium, spacious feel.\\n- **Mobile Reflow:** Bento cards stack vertically, maintaining a 16px margin and 16px gap between elements.\\n\\n## Elevation & Depth\\nDepth is not communicated through traditional drop shadows, but through **Tonal Stacking** and **Backdrop Blurring**.\\n\\n1.  **Level 0 (Base):** Pure #0A0E17.\\n2.  **Level 1 (Bento Cards):** Semi-transparent Navy (#1E293B at 40% opacity) with a `backdrop-filter: blur(12px)`. Add a 1px inner border (stroke) using `rgba(255, 255, 255, 0.1)` to define the edge.\\n3.  **Level 2 (Popovers/Tooltips):** Lighter translucent fill with a higher blur (20px) and a subtle 0.5px Electric Blue outer glow (bloom).\\n4.  **Interaction:** When hovering over cards, increase the inner border opacity to 0.3 and add a very subtle Electric Blue drop shadow with a 40px blur and 0% spread to simulate a \\\"lifted\\\" light source.\\n\\n## Shapes\\nThe shape language is \\\"Squircle-adjacent\\\"—modern, friendly, but disciplined. \\n\\n- **Primary Containers:** 1rem (16px) corner radius. This applies to all bento cards and main dashboard sections.\\n- **Small Components:** 0.5rem (8px) for buttons, input fields, and tags.\\n- **Interactive States:** On active/pressed states, shapes remain constant, but the \\\"glow\\\" or \\\"stroke\\\" intensity changes.\\n\\n## Components\\n- **Buttons:**\\n    - *Primary:* Electric Blue fill with white text. High-gloss finish (subtle top-down gradient).\\n    - *CTA:* Amber fill with dark text. No gradient, pure flat impact.\\n    - *Ghost:* 1px Slate border, no fill, blur background on hover.\\n- **Bento Cards:** The core unit. Must include a `label-mono` header and often a `data-lg` metric. The background must always be blurred.\\n- **Data Visualizations:** Charts should use \\\"Neon-stroke\\\" lines (2px width) with a subtle vertical gradient fill (Electric Blue to transparent). \\n- **Input Fields:** Darker than the card background, subtle 1px border. Focus state triggers an Electric Blue glow. Use JetBrains Mono for user input.\\n- **Chips/Status:** Use low-opacity fills of the status color (e.g., 10% Green for 'Success') with a solid 2px dot indicator.\\n- **KPI Widgets:** Large JetBrains Mono numbers. Small \\\"sparkline\\\" charts should be embedded within these widgets for immediate context.\",\"colorVariant\":\"FIDELITY\",\"overridePrimaryColor\":\"#0a84ff\",\"overrideSecondaryColor\":\"#f59e0b\",\"overrideTertiaryColor\":\"#1e293b\",\"overrideNeutralColor\":\"#0a0e17\",\"spacingScale\":2,\"typography\":{\"body-md\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"16px\",\"fontWeight\":\"400\",\"lineHeight\":\"1.6\"},\"caption\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"13px\",\"fontWeight\":\"500\",\"lineHeight\":\"1.4\"},\"data-lg\":{\"fontFamily\":\"JetBrains Mono\",\"fontSize\":\"20px\",\"fontWeight\":\"600\",\"lineHeight\":\"1.0\"},\"display-lg\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"48px\",\"fontWeight\":\"800\",\"lineHeight\":\"1.1\",\"letterSpacing\":\"-0.02em\"},\"display-lg-mobile\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"32px\",\"fontWeight\":\"800\",\"lineHeight\":\"1.2\",\"letterSpacing\":\"-0.02em\"},\"headline-md\":{\"fontFamily\":\"Hanken Grotesk\",\"fontSize\":\"24px\",\"fontWeight\":\"700\",\"lineHeight\":\"1.3\"},\"label-mono\":{\"fontFamily\":\"JetBrains Mono\",\"fontSize\":\"12px\",\"fontWeight\":\"500\",\"lineHeight\":\"1.0\",\"letterSpacing\":\"0.05em\"}},\"spacing\":{\"bento-gap\":\"16px\",\"gutter\":\"24px\",\"margin-desktop\":\"40px\",\"margin-mobile\":\"16px\",\"unit\":\"4px\"},\"headlineFontFamily\":\"Hanken Grotesk\",\"bodyFontFamily\":\"Hanken Grotesk\",\"labelFontFamily\":\"Jetbrains Mono\"}},\"version\":\"1\"}}],\"theme\":{}}},{\"text\":\"I've designed a high-impact, premium hero section for FlowMetrics that captures the \\\"Apple-meets-Web3\\\" aesthetic you requested. \\n\\n### Key Design Decisions:\\n*   **Visual Depth:** I used a deep OLED background (#0A0E17) paired with subtle Electric Blue glow orbs to create a sense of infinite space and depth.\\n*   **Glassmorphism:** The right-side dashboard features bento-style cards with heavy backdrop blur and fine borders, creating a sophisticated \\\"glass\\\" look.\\n*   **Typography Pairings:** **Hanken Grotesk** provides a bold, professional presence for the massive headline, while **JetBrains Mono** adds a high-tech, precise feel to the metric data.\\n*   **Color Strategy:** The Amber CTA (#F59E0B) creates a high-contrast focal point against the dark mode interface, ensuring strong conversion signals.\\n*   **Bento Mockup:** The metrics (Deploy Frequency, Error Rate, Uptime, Active Users) are organized in a modern bento grid within the floating dashboard mockup to showcase the product's value at a glance.\\n\\nWould you like to explore adding subtle animations to the glow orbs, or perhaps iterate on the dashboard metrics?\"},{\"suggestion\":\"Add subtle float animations to the dashboard cards\"},{\"suggestion\":\"Change the primary accent color to a neon green\"},{\"suggestion\":\"Expand this into a full landing page design\"}]}",
+        "type": "text"
+      }
+    ],
+    "structuredContent": {
+      "outputComponents": [
+        {
+          "designSystem": {
+            "designSystem": {
+              "displayName": "High-Performance Analytical Interface",
+              "styleGuidelines": "## Brand & Style\nThis design system is engineered for high-performance SaaS environments, blending the precision of professional data tools with the immersive aesthetics of modern Web3 interfaces. The visual narrative centers on \"Technical Transparency\"—a style that prioritizes clarity through depth and light.\n\nThe design movement is a sophisticated **Glassmorphism**, utilizing multi-layered translucent surfaces to create a sense of physical space. It leverages high-contrast OLED blacks to ensure data points pop with electric intensity. The emotional response is one of absolute control, speed, and futuristic reliability, avoiding generic consumer trends in favor of a bespoke, \"Apple-meets-Web3\" professional workspace.\n\n## Layout & Spacing\nThe layout follows a **Bento-style grid** philosophy. Content is organized into discrete, modular containers that vary in size but maintain consistent internal padding and external gaps.\n\n- **Desktop:** A 12-column fluid grid. Use a 24px gutter to allow the glass containers to \"breathe.\"\n- **Bento Logic:** Cards should span 3, 4, 6, or 12 columns. Avoid odd-numbered spans to maintain a sense of mathematical order.\n- **Vertical Rhythm:** Use a 4px base unit. Component internal padding should default to 24px (6 units) for a premium, spacious feel.\n- **Mobile Reflow:** Bento cards stack vertically, maintaining a 16px margin and 16px gap between elements.\n\n## Elevation & Depth\nDepth is not communicated through traditional drop shadows, but through **Tonal Stacking** and **Backdrop Blurring**.\n\n1.  **Level 0 (Base):** Pure #0A0E17.\n2.  **Level 1 (Bento Cards):** Semi-transparent Navy (#1E293B at 40% opacity) with a `backdrop-filter: blur(12px)`. Add a 1px inner border (stroke) using `rgba(255, 255, 255, 0.1)` to define the edge.\n3.  **Level 2 (Popovers/Tooltips):** Lighter translucent fill with a higher blur (20px) and a subtle 0.5px Electric Blue outer glow (bloom).\n4.  **Interaction:** When hovering over cards, increase the inner border opacity to 0.3 and add a very subtle Electric Blue drop shadow with a 40px blur and 0% spread to simulate a \"lifted\" light source.\n\n## Components\n- **Buttons:**\n    - *Primary:* Electric Blue fill with white text. High-gloss finish (subtle top-down gradient).\n    - *CTA:* Amber fill with dark text. No gradient, pure flat impact.\n    - *Ghost:* 1px Slate border, no fill, blur background on hover.\n- **Bento Cards:** The core unit. Must include a `label-mono` header and often a `data-lg` metric. The background must always be blurred.\n- **Data Visualizations:** Charts should use \"Neon-stroke\" lines (2px width) with a subtle vertical gradient fill (Electric Blue to transparent). \n- **Input Fields:** Darker than the card background, subtle 1px border. Focus state triggers an Electric Blue glow. Use JetBrains Mono for user input.\n- **Chips/Status:** Use low-opacity fills of the status color (e.g., 10% Green for 'Success') with a solid 2px dot indicator.\n- **KPI Widgets:** Large JetBrains Mono numbers. Small \"sparkline\" charts should be embedded within these widgets for immediate context.",
+              "theme": {
+                "bodyFont": "HANKEN_GROTESK",
+                "bodyFontFamily": "Hanken Grotesk",
+                "colorMode": "DARK",
+                "colorVariant": "FIDELITY",
+                "customColor": "#0a84ff",
+                "designMd": "---\nname: High-Performance Analytical Interface\ncolors:\n  surface: '#0f131c'\n  surface-dim: '#0f131c'\n  surface-bright: '#353943'\n  surface-container-lowest: '#0a0e17'\n  surface-container-low: '#181b25'\n  surface-container: '#1c1f29'\n  surface-container-high: '#262a34'\n  surface-container-highest: '#31353f'\n  on-surface: '#dfe2ef'\n  on-surface-variant: '#c0c6d6'\n  inverse-surface: '#dfe2ef'\n  inverse-on-surface: '#2c303a'\n  outline: '#8b91a0'\n  outline-variant: '#414754'\n  surface-tint: '#aac7ff'\n  primary: '#aac7ff'\n  on-primary: '#003064'\n  primary-container: '#3e90ff'\n  on-primary-container: '#002957'\n  inverse-primary: '#005db8'\n  secondary: '#ffb95f'\n  on-secondary: '#472a00'\n  secondary-container: '#ee9800'\n  on-secondary-container: '#5b3800'\n  tertiary: '#bcc7de'\n  on-tertiary: '#263143'\n  tertiary-container: '#8691a7'\n  on-tertiary-container: '#1f2a3c'\n  error: '#ffb4ab'\n  on-error: '#690005'\n  error-container: '#93000a'\n  on-error-container: '#ffdad6'\n  primary-fixed: '#d6e3ff'\n  primary-fixed-dim: '#aac7ff'\n  on-primary-fixed: '#001b3e'\n  on-primary-fixed-variant: '#00468d'\n  secondary-fixed: '#ffddb8'\n  secondary-fixed-dim: '#ffb95f'\n  on-secondary-fixed: '#2a1700'\n  on-secondary-fixed-variant: '#653e00'\n  tertiary-fixed: '#d8e3fb'\n  tertiary-fixed-dim: '#bcc7de'\n  on-tertiary-fixed: '#111c2d'\n  on-tertiary-fixed-variant: '#3c475a'\n  background: '#0f131c'\n  on-background: '#dfe2ef'\n  surface-variant: '#31353f'\ntypography:\n  display-lg:\n    fontFamily: Hanken Grotesk\n    fontSize: 48px\n    fontWeight: '800'\n    lineHeight: '1.1'\n    letterSpacing: -0.02em\n  display-lg-mobile:\n    fontFamily: Hanken Grotesk\n    fontSize: 32px\n    fontWeight: '800'\n    lineHeight: '1.2'\n    letterSpacing: -0.02em\n  headline-md:\n    fontFamily: Hanken Grotesk\n    fontSize: 24px\n    fontWeight: '700'\n    lineHeight: '1.3'\n  data-lg:\n    fontFamily: JetBrains Mono\n    fontSize: 20px\n    fontWeight: '600'\n    lineHeight: '1.0'\n  body-md:\n    fontFamily: Hanken Grotesk\n    fontSize: 16px\n    fontWeight: '400'\n    lineHeight: '1.6'\n  label-mono:\n    fontFamily: JetBrains Mono\n    fontSize: 12px\n    fontWeight: '500'\n    lineHeight: '1.0'\n    letterSpacing: 0.05em\n  caption:\n    fontFamily: Hanken Grotesk\n    fontSize: 13px\n    fontWeight: '500'\n    lineHeight: '1.4'\nrounded:\n  sm: 0.25rem\n  DEFAULT: 0.5rem\n  md: 0.75rem\n  lg: 1rem\n  xl: 1.5rem\n  full: 9999px\nspacing:\n  unit: 4px\n  gutter: 24px\n  margin-desktop: 40px\n  margin-mobile: 16px\n  bento-gap: 16px\n---\n\n## Brand & Style\nThis design system is engineered for high-performance SaaS environments, blending the precision of professional data tools with the immersive aesthetics of modern Web3 interfaces. The visual narrative centers on \"Technical Transparency\"—a style that prioritizes clarity through depth and light.\n\nThe design movement is a sophisticated **Glassmorphism**, utilizing multi-layered translucent surfaces to create a sense of physical space. It leverages high-contrast OLED blacks to ensure data points pop with electric intensity. The emotional response is one of absolute control, speed, and futuristic reliability, avoiding generic consumer trends in favor of a bespoke, \"Apple-meets-Web3\" professional workspace.\n\n## Colors\nThe palette is rooted in a \"Deep Space\" hierarchy. The primary canvas uses a true OLED black to maximize battery efficiency on mobile and visual impact on desktop.\n\n- **Electric Blue (#0A84FF):** Reserved for primary actions, active states, and data trend lines. It represents flow and connectivity.\n- **Amber (#F59E0B):** Used exclusively for High-Value CTAs and critical alerts. It serves as a tactical \"interrupt\" in the cool-toned interface.\n- **Deep Navy & Slate:** Foundations for surfaces and secondary text. These provide the necessary low-contrast background for the glass effects to remain legible.\n- **Glow Orbs:** Subtle, large-radius radial gradients of Electric Blue (at 5-10% opacity) should be placed behind key content areas to suggest depth and energy.\n\n## Typography\nThe typographic system utilizes a dual-engine approach to distinguish between narrative and technical data.\n\n- **Hanken Grotesk:** Used for all structural elements, headings, and body copy. It provides a clean, humanist feel that balances the \"tech\" aesthetic. Headlines should utilize tight tracking and heavy weights for a commanding presence.\n- **JetBrains Mono:** The \"Technical Voice.\" Used for all dynamic numbers, timestamps, IDs, and code snippets. This font ensures that digits are easily scannable and tabular data remains perfectly aligned.\n\n## Layout & Spacing\nThe layout follows a **Bento-style grid** philosophy. Content is organized into discrete, modular containers that vary in size but maintain consistent internal padding and external gaps.\n\n- **Desktop:** A 12-column fluid grid. Use a 24px gutter to allow the glass containers to \"breathe.\"\n- **Bento Logic:** Cards should span 3, 4, 6, or 12 columns. Avoid odd-numbered spans to maintain a sense of mathematical order.\n- **Vertical Rhythm:** Use a 4px base unit. Component internal padding should default to 24px (6 units) for a premium, spacious feel.\n- **Mobile Reflow:** Bento cards stack vertically, maintaining a 16px margin and 16px gap between elements.\n\n## Elevation & Depth\nDepth is not communicated through traditional drop shadows, but through **Tonal Stacking** and **Backdrop Blurring**.\n\n1.  **Level 0 (Base):** Pure #0A0E17.\n2.  **Level 1 (Bento Cards):** Semi-transparent Navy (#1E293B at 40% opacity) with a `backdrop-filter: blur(12px)`. Add a 1px inner border (stroke) using `rgba(255, 255, 255, 0.1)` to define the edge.\n3.  **Level 2 (Popovers/Tooltips):** Lighter translucent fill with a higher blur (20px) and a subtle 0.5px Electric Blue outer glow (bloom).\n4.  **Interaction:** When hovering over cards, increase the inner border opacity to 0.3 and add a very subtle Electric Blue drop shadow with a 40px blur and 0% spread to simulate a \"lifted\" light source.\n\n## Shapes\nThe shape language is \"Squircle-adjacent\"—modern, friendly, but disciplined. \n\n- **Primary Containers:** 1rem (16px) corner radius. This applies to all bento cards and main dashboard sections.\n- **Small Components:** 0.5rem (8px) for buttons, input fields, and tags.\n- **Interactive States:** On active/pressed states, shapes remain constant, but the \"glow\" or \"stroke\" intensity changes.\n\n## Components\n- **Buttons:**\n    - *Primary:* Electric Blue fill with white text. High-gloss finish (subtle top-down gradient).\n    - *CTA:* Amber fill with dark text. No gradient, pure flat impact.\n    - *Ghost:* 1px Slate border, no fill, blur background on hover.\n- **Bento Cards:** The core unit. Must include a `label-mono` header and often a `data-lg` metric. The background must always be blurred.\n- **Data Visualizations:** Charts should use \"Neon-stroke\" lines (2px width) with a subtle vertical gradient fill (Electric Blue to transparent). \n- **Input Fields:** Darker than the card background, subtle 1px border. Focus state triggers an Electric Blue glow. Use JetBrains Mono for user input.\n- **Chips/Status:** Use low-opacity fills of the status color (e.g., 10% Green for 'Success') with a solid 2px dot indicator.\n- **KPI Widgets:** Large JetBrains Mono numbers. Small \"sparkline\" charts should be embedded within these widgets for immediate context.",
+                "font": "HANKEN_GROTESK",
+                "headlineFont": "HANKEN_GROTESK",
+                "headlineFontFamily": "Hanken Grotesk",
+                "labelFont": "JETBRAINS_MONO",
+                "labelFontFamily": "Jetbrains Mono",
+                "namedColors": {
+                  "background": "#0f131c",
+                  "error": "#ffb4ab",
+                  "error_container": "#93000a",
+                  "inverse_on_surface": "#2c303a",
+                  "inverse_primary": "#005db8",
+                  "inverse_surface": "#dfe2ef",
+                  "on_background": "#dfe2ef",
+                  "on_error": "#690005",
+                  "on_error_container": "#ffdad6",
+                  "on_primary": "#003064",
+                  "on_primary_container": "#002957",
+                  "on_primary_fixed": "#001b3e",
+                  "on_primary_fixed_variant": "#00468d",
+                  "on_secondary": "#472a00",
+                  "on_secondary_container": "#5b3800",
+                  "on_secondary_fixed": "#2a1700",
+                  "on_secondary_fixed_variant": "#653e00",
+                  "on_surface": "#dfe2ef",
+                  "on_surface_variant": "#c0c6d6",
+                  "on_tertiary": "#263143",
+                  "on_tertiary_container": "#1f2a3c",
+                  "on_tertiary_fixed": "#111c2d",
+                  "on_tertiary_fixed_variant": "#3c475a",
+                  "outline": "#8b91a0",
+                  "outline_variant": "#414754",
+                  "primary": "#aac7ff",
+                  "primary_container": "#3e90ff",
+                  "primary_fixed": "#d6e3ff",
+                  "primary_fixed_dim": "#aac7ff",
+                  "secondary": "#ffb95f",
+                  "secondary_container": "#ee9800",
+                  "secondary_fixed": "#ffddb8",
+                  "secondary_fixed_dim": "#ffb95f",
+                  "surface": "#0f131c",
+                  "surface_bright": "#353943",
+                  "surface_container": "#1c1f29",
+                  "surface_container_high": "#262a34",
+                  "surface_container_highest": "#31353f",
+                  "surface_container_low": "#181b25",
+                  "surface_container_lowest": "#0a0e17",
+                  "surface_dim": "#0f131c",
+                  "surface_tint": "#aac7ff",
+                  "surface_variant": "#31353f",
+                  "tertiary": "#bcc7de",
+                  "tertiary_container": "#8691a7",
+                  "tertiary_fixed": "#d8e3fb",
+                  "tertiary_fixed_dim": "#bcc7de"
+                },
+                "overrideNeutralColor": "#0a0e17",
+                "overridePrimaryColor": "#0a84ff",
+                "overrideSecondaryColor": "#f59e0b",
+                "overrideTertiaryColor": "#1e293b",
+                "roundness": "ROUND_EIGHT",
+                "spacing": {
+                  "bento-gap": "16px",
+                  "gutter": "24px",
+                  "margin-desktop": "40px",
+                  "margin-mobile": "16px",
+                  "unit": "4px"
+                },
+                "spacingScale": 2,
+                "typography": {
+                  "body-md": {
+                    "fontFamily": "Hanken Grotesk",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "lineHeight": "1.6"
+                  },
+                  "caption": {
+                    "fontFamily": "Hanken Grotesk",
+                    "fontSize": "13px",
+                    "fontWeight": "500",
+                    "lineHeight": "1.4"
+                  },
+                  "data-lg": {
+                    "fontFamily": "JetBrains Mono",
+                    "fontSize": "20px",
+                    "fontWeight": "600",
+                    "lineHeight": "1.0"
+                  },
+                  "display-lg": {
+                    "fontFamily": "Hanken Grotesk",
+                    "fontSize": "48px",
+                    "fontWeight": "800",
+                    "letterSpacing": "-0.02em",
+                    "lineHeight": "1.1"
+                  },
+                  "display-lg-mobile": {
+                    "fontFamily": "Hanken Grotesk",
+                    "fontSize": "32px",
+                    "fontWeight": "800",
+                    "letterSpacing": "-0.02em",
+                    "lineHeight": "1.2"
+                  },
+                  "headline-md": {
+                    "fontFamily": "Hanken Grotesk",
+                    "fontSize": "24px",
+                    "fontWeight": "700",
+                    "lineHeight": "1.3"
+                  },
+                  "label-mono": {
+                    "fontFamily": "JetBrains Mono",
+                    "fontSize": "12px",
+                    "fontWeight": "500",
+                    "letterSpacing": "0.05em",
+                    "lineHeight": "1.0"
+                  }
+                }
+              }
+            },
+            "name": "assets/d2da4501d32b4f589cf45d5a633f6724",
+            "version": "1"
+          }
+        },
+        {
+          "design": {
+            "screens": [
+              {
+                "designSystem": {
+                  "designSystem": {
+                    "displayName": "High-Performance Analytical Interface",
+                    "styleGuidelines": "## Brand & Style\nThis design system is engineered for high-performance SaaS environments, blending the precision of professional data tools with the immersive aesthetics of modern Web3 interfaces. The visual narrative centers on \"Technical Transparency\"—a style that prioritizes clarity through depth and light.\n\nThe design movement is a sophisticated **Glassmorphism**, utilizing multi-layered translucent surfaces to create a sense of physical space. It leverages high-contrast OLED blacks to ensure data points pop with electric intensity. The emotional response is one of absolute control, speed, and futuristic reliability, avoiding generic consumer trends in favor of a bespoke, \"Apple-meets-Web3\" professional workspace.\n\n## Layout & Spacing\nThe layout follows a **Bento-style grid** philosophy. Content is organized into discrete, modular containers that vary in size but maintain consistent internal padding and external gaps.\n\n- **Desktop:** A 12-column fluid grid. Use a 24px gutter to allow the glass containers to \"breathe.\"\n- **Bento Logic:** Cards should span 3, 4, 6, or 12 columns. Avoid odd-numbered spans to maintain a sense of mathematical order.\n- **Vertical Rhythm:** Use a 4px base unit. Component internal padding should default to 24px (6 units) for a premium, spacious feel.\n- **Mobile Reflow:** Bento cards stack vertically, maintaining a 16px margin and 16px gap between elements.\n\n## Elevation & Depth\nDepth is not communicated through traditional drop shadows, but through **Tonal Stacking** and **Backdrop Blurring**.\n\n1.  **Level 0 (Base):** Pure #0A0E17.\n2.  **Level 1 (Bento Cards):** Semi-transparent Navy (#1E293B at 40% opacity) with a `backdrop-filter: blur(12px)`. Add a 1px inner border (stroke) using `rgba(255, 255, 255, 0.1)` to define the edge.\n3.  **Level 2 (Popovers/Tooltips):** Lighter translucent fill with a higher blur (20px) and a subtle 0.5px Electric Blue outer glow (bloom).\n4.  **Interaction:** When hovering over cards, increase the inner border opacity to 0.3 and add a very subtle Electric Blue drop shadow with a 40px blur and 0% spread to simulate a \"lifted\" light source.\n\n## Components\n- **Buttons:**\n    - *Primary:* Electric Blue fill with white text. High-gloss finish (subtle top-down gradient).\n    - *CTA:* Amber fill with dark text. No gradient, pure flat impact.\n    - *Ghost:* 1px Slate border, no fill, blur background on hover.\n- **Bento Cards:** The core unit. Must include a `label-mono` header and often a `data-lg` metric. The background must always be blurred.\n- **Data Visualizations:** Charts should use \"Neon-stroke\" lines (2px width) with a subtle vertical gradient fill (Electric Blue to transparent). \n- **Input Fields:** Darker than the card background, subtle 1px border. Focus state triggers an Electric Blue glow. Use JetBrains Mono for user input.\n- **Chips/Status:** Use low-opacity fills of the status color (e.g., 10% Green for 'Success') with a solid 2px dot indicator.\n- **KPI Widgets:** Large JetBrains Mono numbers. Small \"sparkline\" charts should be embedded within these widgets for immediate context.",
+                    "theme": {
+                      "bodyFont": "HANKEN_GROTESK",
+                      "bodyFontFamily": "Hanken Grotesk",
+                      "colorMode": "DARK",
+                      "colorVariant": "FIDELITY",
+                      "customColor": "#0a84ff",
+                      "designMd": "---\nname: High-Performance Analytical Interface\ncolors:\n  surface: '#0f131c'\n  surface-dim: '#0f131c'\n  surface-bright: '#353943'\n  surface-container-lowest: '#0a0e17'\n  surface-container-low: '#181b25'\n  surface-container: '#1c1f29'\n  surface-container-high: '#262a34'\n  surface-container-highest: '#31353f'\n  on-surface: '#dfe2ef'\n  on-surface-variant: '#c0c6d6'\n  inverse-surface: '#dfe2ef'\n  inverse-on-surface: '#2c303a'\n  outline: '#8b91a0'\n  outline-variant: '#414754'\n  surface-tint: '#aac7ff'\n  primary: '#aac7ff'\n  on-primary: '#003064'\n  primary-container: '#3e90ff'\n  on-primary-container: '#002957'\n  inverse-primary: '#005db8'\n  secondary: '#ffb95f'\n  on-secondary: '#472a00'\n  secondary-container: '#ee9800'\n  on-secondary-container: '#5b3800'\n  tertiary: '#bcc7de'\n  on-tertiary: '#263143'\n  tertiary-container: '#8691a7'\n  on-tertiary-container: '#1f2a3c'\n  error: '#ffb4ab'\n  on-error: '#690005'\n  error-container: '#93000a'\n  on-error-container: '#ffdad6'\n  primary-fixed: '#d6e3ff'\n  primary-fixed-dim: '#aac7ff'\n  on-primary-fixed: '#001b3e'\n  on-primary-fixed-variant: '#00468d'\n  secondary-fixed: '#ffddb8'\n  secondary-fixed-dim: '#ffb95f'\n  on-secondary-fixed: '#2a1700'\n  on-secondary-fixed-variant: '#653e00'\n  tertiary-fixed: '#d8e3fb'\n  tertiary-fixed-dim: '#bcc7de'\n  on-tertiary-fixed: '#111c2d'\n  on-tertiary-fixed-variant: '#3c475a'\n  background: '#0f131c'\n  on-background: '#dfe2ef'\n  surface-variant: '#31353f'\ntypography:\n  display-lg:\n    fontFamily: Hanken Grotesk\n    fontSize: 48px\n    fontWeight: '800'\n    lineHeight: '1.1'\n    letterSpacing: -0.02em\n  display-lg-mobile:\n    fontFamily: Hanken Grotesk\n    fontSize: 32px\n    fontWeight: '800'\n    lineHeight: '1.2'\n    letterSpacing: -0.02em\n  headline-md:\n    fontFamily: Hanken Grotesk\n    fontSize: 24px\n    fontWeight: '700'\n    lineHeight: '1.3'\n  data-lg:\n    fontFamily: JetBrains Mono\n    fontSize: 20px\n    fontWeight: '600'\n    lineHeight: '1.0'\n  body-md:\n    fontFamily: Hanken Grotesk\n    fontSize: 16px\n    fontWeight: '400'\n    lineHeight: '1.6'\n  label-mono:\n    fontFamily: JetBrains Mono\n    fontSize: 12px\n    fontWeight: '500'\n    lineHeight: '1.0'\n    letterSpacing: 0.05em\n  caption:\n    fontFamily: Hanken Grotesk\n    fontSize: 13px\n    fontWeight: '500'\n    lineHeight: '1.4'\nrounded:\n  sm: 0.25rem\n  DEFAULT: 0.5rem\n  md: 0.75rem\n  lg: 1rem\n  xl: 1.5rem\n  full: 9999px\nspacing:\n  unit: 4px\n  gutter: 24px\n  margin-desktop: 40px\n  margin-mobile: 16px\n  bento-gap: 16px\n---\n\n## Brand & Style\nThis design system is engineered for high-performance SaaS environments, blending the precision of professional data tools with the immersive aesthetics of modern Web3 interfaces. The visual narrative centers on \"Technical Transparency\"—a style that prioritizes clarity through depth and light.\n\nThe design movement is a sophisticated **Glassmorphism**, utilizing multi-layered translucent surfaces to create a sense of physical space. It leverages high-contrast OLED blacks to ensure data points pop with electric intensity. The emotional response is one of absolute control, speed, and futuristic reliability, avoiding generic consumer trends in favor of a bespoke, \"Apple-meets-Web3\" professional workspace.\n\n## Colors\nThe palette is rooted in a \"Deep Space\" hierarchy. The primary canvas uses a true OLED black to maximize battery efficiency on mobile and visual impact on desktop.\n\n- **Electric Blue (#0A84FF):** Reserved for primary actions, active states, and data trend lines. It represents flow and connectivity.\n- **Amber (#F59E0B):** Used exclusively for High-Value CTAs and critical alerts. It serves as a tactical \"interrupt\" in the cool-toned interface.\n- **Deep Navy & Slate:** Foundations for surfaces and secondary text. These provide the necessary low-contrast background for the glass effects to remain legible.\n- **Glow Orbs:** Subtle, large-radius radial gradients of Electric Blue (at 5-10% opacity) should be placed behind key content areas to suggest depth and energy.\n\n## Typography\nThe typographic system utilizes a dual-engine approach to distinguish between narrative and technical data.\n\n- **Hanken Grotesk:** Used for all structural elements, headings, and body copy. It provides a clean, humanist feel that balances the \"tech\" aesthetic. Headlines should utilize tight tracking and heavy weights for a commanding presence.\n- **JetBrains Mono:** The \"Technical Voice.\" Used for all dynamic numbers, timestamps, IDs, and code snippets. This font ensures that digits are easily scannable and tabular data remains perfectly aligned.\n\n## Layout & Spacing\nThe layout follows a **Bento-style grid** philosophy. Content is organized into discrete, modular containers that vary in size but maintain consistent internal padding and external gaps.\n\n- **Desktop:** A 12-column fluid grid. Use a 24px gutter to allow the glass containers to \"breathe.\"\n- **Bento Logic:** Cards should span 3, 4, 6, or 12 columns. Avoid odd-numbered spans to maintain a sense of mathematical order.\n- **Vertical Rhythm:** Use a 4px base unit. Component internal padding should default to 24px (6 units) for a premium, spacious feel.\n- **Mobile Reflow:** Bento cards stack vertically, maintaining a 16px margin and 16px gap between elements.\n\n## Elevation & Depth\nDepth is not communicated through traditional drop shadows, but through **Tonal Stacking** and **Backdrop Blurring**.\n\n1.  **Level 0 (Base):** Pure #0A0E17.\n2.  **Level 1 (Bento Cards):** Semi-transparent Navy (#1E293B at 40% opacity) with a `backdrop-filter: blur(12px)`. Add a 1px inner border (stroke) using `rgba(255, 255, 255, 0.1)` to define the edge.\n3.  **Level 2 (Popovers/Tooltips):** Lighter translucent fill with a higher blur (20px) and a subtle 0.5px Electric Blue outer glow (bloom).\n4.  **Interaction:** When hovering over cards, increase the inner border opacity to 0.3 and add a very subtle Electric Blue drop shadow with a 40px blur and 0% spread to simulate a \"lifted\" light source.\n\n## Shapes\nThe shape language is \"Squircle-adjacent\"—modern, friendly, but disciplined. \n\n- **Primary Containers:** 1rem (16px) corner radius. This applies to all bento cards and main dashboard sections.\n- **Small Components:** 0.5rem (8px) for buttons, input fields, and tags.\n- **Interactive States:** On active/pressed states, shapes remain constant, but the \"glow\" or \"stroke\" intensity changes.\n\n## Components\n- **Buttons:**\n    - *Primary:* Electric Blue fill with white text. High-gloss finish (subtle top-down gradient).\n    - *CTA:* Amber fill with dark text. No gradient, pure flat impact.\n    - *Ghost:* 1px Slate border, no fill, blur background on hover.\n- **Bento Cards:** The core unit. Must include a `label-mono` header and often a `data-lg` metric. The background must always be blurred.\n- **Data Visualizations:** Charts should use \"Neon-stroke\" lines (2px width) with a subtle vertical gradient fill (Electric Blue to transparent). \n- **Input Fields:** Darker than the card background, subtle 1px border. Focus state triggers an Electric Blue glow. Use JetBrains Mono for user input.\n- **Chips/Status:** Use low-opacity fills of the status color (e.g., 10% Green for 'Success') with a solid 2px dot indicator.\n- **KPI Widgets:** Large JetBrains Mono numbers. Small \"sparkline\" charts should be embedded within these widgets for immediate context.",
+                      "font": "HANKEN_GROTESK",
+                      "headlineFont": "HANKEN_GROTESK",
+                      "headlineFontFamily": "Hanken Grotesk",
+                      "labelFont": "JETBRAINS_MONO",
+                      "labelFontFamily": "Jetbrains Mono",
+                      "namedColors": {
+                        "background": "#0f131c",
+                        "error": "#ffb4ab",
+                        "error_container": "#93000a",
+                        "inverse_on_surface": "#2c303a",
+                        "inverse_primary": "#005db8",
+                        "inverse_surface": "#dfe2ef",
+                        "on_background": "#dfe2ef",
+                        "on_error": "#690005",
+                        "on_error_container": "#ffdad6",
+                        "on_primary": "#003064",
+                        "on_primary_container": "#002957",
+                        "on_primary_fixed": "#001b3e",
+                        "on_primary_fixed_variant": "#00468d",
+                        "on_secondary": "#472a00",
+                        "on_secondary_container": "#5b3800",
+                        "on_secondary_fixed": "#2a1700",
+                        "on_secondary_fixed_variant": "#653e00",
+                        "on_surface": "#dfe2ef",
+                        "on_surface_variant": "#c0c6d6",
+                        "on_tertiary": "#263143",
+                        "on_tertiary_container": "#1f2a3c",
+                        "on_tertiary_fixed": "#111c2d",
+                        "on_tertiary_fixed_variant": "#3c475a",
+                        "outline": "#8b91a0",
+                        "outline_variant": "#414754",
+                        "primary": "#aac7ff",
+                        "primary_container": "#3e90ff",
+                        "primary_fixed": "#d6e3ff",
+                        "primary_fixed_dim": "#aac7ff",
+                        "secondary": "#ffb95f",
+                        "secondary_container": "#ee9800",
+                        "secondary_fixed": "#ffddb8",
+                        "secondary_fixed_dim": "#ffb95f",
+                        "surface": "#0f131c",
+                        "surface_bright": "#353943",
+                        "surface_container": "#1c1f29",
+                        "surface_container_high": "#262a34",
+                        "surface_container_highest": "#31353f",
+                        "surface_container_low": "#181b25",
+                        "surface_container_lowest": "#0a0e17",
+                        "surface_dim": "#0f131c",
+                        "surface_tint": "#aac7ff",
+                        "surface_variant": "#31353f",
+                        "tertiary": "#bcc7de",
+                        "tertiary_container": "#8691a7",
+                        "tertiary_fixed": "#d8e3fb",
+                        "tertiary_fixed_dim": "#bcc7de"
+                      },
+                      "overrideNeutralColor": "#0a0e17",
+                      "overridePrimaryColor": "#0a84ff",
+                      "overrideSecondaryColor": "#f59e0b",
+                      "overrideTertiaryColor": "#1e293b",
+                      "roundness": "ROUND_EIGHT",
+                      "spacing": {
+                        "bento-gap": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                      },
+                      "spacingScale": 2,
+                      "typography": {
+                        "body-md": {
+                          "fontFamily": "Hanken Grotesk",
+                          "fontSize": "16px",
+                          "fontWeight": "400",
+                          "lineHeight": "1.6"
+                        },
+                        "caption": {
+                          "fontFamily": "Hanken Grotesk",
+                          "fontSize": "13px",
+                          "fontWeight": "500",
+                          "lineHeight": "1.4"
+                        },
+                        "data-lg": {
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": "20px",
+                          "fontWeight": "600",
+                          "lineHeight": "1.0"
+                        },
+                        "display-lg": {
+                          "fontFamily": "Hanken Grotesk",
+                          "fontSize": "48px",
+                          "fontWeight": "800",
+                          "letterSpacing": "-0.02em",
+                          "lineHeight": "1.1"
+                        },
+                        "display-lg-mobile": {
+                          "fontFamily": "Hanken Grotesk",
+                          "fontSize": "32px",
+                          "fontWeight": "800",
+                          "letterSpacing": "-0.02em",
+                          "lineHeight": "1.2"
+                        },
+                        "headline-md": {
+                          "fontFamily": "Hanken Grotesk",
+                          "fontSize": "24px",
+                          "fontWeight": "700",
+                          "lineHeight": "1.3"
+                        },
+                        "label-mono": {
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": "12px",
+                          "fontWeight": "500",
+                          "letterSpacing": "0.05em",
+                          "lineHeight": "1.0"
+                        }
+                      }
+                    }
+                  },
+                  "name": "assets/d2da4501d32b4f589cf45d5a633f6724",
+                  "version": "1"
+                },
+                "deviceType": "DESKTOP",
+                "generatedBy": "figaro_agent",
+                "height": "2048",
+                "htmlCode": {
+                  "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzFhNDBhYmQxNzAxMDQ1Y2JiMzFiNTc1YjY2MjRjYjY2EgsSBxCZ-_3Kpg0YAZIBJAoKcHJvamVjdF9pZBIWQhQxNzE1MjY5MTE0MDIzNTg5MDUzMg&filename=&opi=96797242",
+                  "mimeType": "text/html",
+                  "name": "projects/17152691140235890532/files/65c234882416481781cdc40fe01ecb4c"
+                },
+                "id": "9759c45e202a474cb390a545cc624935",
+                "name": "projects/17152691140235890532/screens/9759c45e202a474cb390a545cc624935",
+                "prompt": "A 'WOW' factor home page hero section for FlowMetrics. \nFull viewport height (100vh) with a deep OLED #0A0E17 background. \nLayout: Split 60/40.\nLeft Side: Massive headline 'See what your team ships' in Hanken Grotesk. Subtext explaining the flow metrics platform. Dual CTAs: Primary in Amber #F59E0B, Secondary in a Ghost Glass style.\nRight Side: A floating 3D-style glass dashboard mockup. This mockup contains a bento-grid layout of metric cards: \n1. Deploy Frequency (Line chart)\n2. Error Rate (Percentage)\n3. Uptime (99.9% with a pulse icon)\n4. Active Users (Number count). \nUse JetBrains Mono for all numbers and metric labels. \nApply heavy backdrop-blur (glassmorphism) to the dashboard cards. \nBackground: Subtle electric blue #0A84FF glow orbs behind the dashboard for depth.\nBottom: A minimalist 'Scroll to explore' hint with a subtle animation.\nVisual style: Ultra-premium, dark, clean, and high-performance.",
+                "screenMetadata": {
+                  "agentType": "PRO_AGENT",
+                  "status": "COMPLETE"
+                },
+                "screenType": "DESIGN",
+                "screenshot": {
+                  "downloadUrl": "https://lh3.googleusercontent.com/aida/AP1WRLtpAg5PaU24ytGUstAXaopFoIfY3mbIbzbxc61G1XLtsbXHXbBy8g2IeRl5cirLpBlcvCgq3UeawfPRowNqcpuXBniP8fHE8C0-Y4JOL_tn9Fj9M4LhTCKOJxo5DmaELVEb56rlheH9pULHVLYe1W-pw5989fn9tQGP9P1Z7wTLPld6ZmPPjOy5Q57ie_jiKUe4gK-6uFGVkPzXbLmAD2IQRj7tM6HHphI-2zKqishFyuxz6j_AdctGiJJF",
+                  "name": "projects/17152691140235890532/files/a75298e786f649d09cd466b52c837079"
+                },
+                "theme": {
+                  "bodyFont": "HANKEN_GROTESK",
+                  "bodyFontFamily": "Hanken Grotesk",
+                  "colorMode": "DARK",
+                  "colorVariant": "FIDELITY",
+                  "customColor": "#0a84ff",
+                  "font": "HANKEN_GROTESK",
+                  "headlineFont": "HANKEN_GROTESK",
+                  "headlineFontFamily": "Hanken Grotesk",
+                  "labelFont": "JETBRAINS_MONO",
+                  "labelFontFamily": "Jetbrains Mono",
+                  "namedColors": {
+                    "background": "#0f131c",
+                    "error": "#ffb4ab",
+                    "error_container": "#93000a",
+                    "inverse_on_surface": "#2c303a",
+                    "inverse_primary": "#005db8",
+                    "inverse_surface": "#dfe2ef",
+                    "on_background": "#dfe2ef",
+                    "on_error": "#690005",
+                    "on_error_container": "#ffdad6",
+                    "on_primary": "#003064",
+                    "on_primary_container": "#002957",
+                    "on_primary_fixed": "#001b3e",
+                    "on_primary_fixed_variant": "#00468d",
+                    "on_secondary": "#472a00",
+                    "on_secondary_container": "#5b3800",
+                    "on_secondary_fixed": "#2a1700",
+                    "on_secondary_fixed_variant": "#653e00",
+                    "on_surface": "#dfe2ef",
+                    "on_surface_variant": "#c0c6d6",
+                    "on_tertiary": "#263143",
+                    "on_tertiary_container": "#1f2a3c",
+                    "on_tertiary_fixed": "#111c2d",
+                    "on_tertiary_fixed_variant": "#3c475a",
+                    "outline": "#8b91a0",
+                    "outline_variant": "#414754",
+                    "primary": "#aac7ff",
+                    "primary_container": "#3e90ff",
+                    "primary_fixed": "#d6e3ff",
+                    "primary_fixed_dim": "#aac7ff",
+                    "secondary": "#ffb95f",
+                    "secondary_container": "#ee9800",
+                    "secondary_fixed": "#ffddb8",
+                    "secondary_fixed_dim": "#ffb95f",
+                    "surface": "#0f131c",
+                    "surface_bright": "#353943",
+                    "surface_container": "#1c1f29",
+                    "surface_container_high": "#262a34",
+                    "surface_container_highest": "#31353f",
+                    "surface_container_low": "#181b25",
+                    "surface_container_lowest": "#0a0e17",
+                    "surface_dim": "#0f131c",
+                    "surface_tint": "#aac7ff",
+                    "surface_variant": "#31353f",
+                    "tertiary": "#bcc7de",
+                    "tertiary_container": "#8691a7",
+                    "tertiary_fixed": "#d8e3fb",
+                    "tertiary_fixed_dim": "#bcc7de"
+                  },
+                  "overrideNeutralColor": "#0a0e17",
+                  "overridePrimaryColor": "#0a84ff",
+                  "overrideSecondaryColor": "#f59e0b",
+                  "overrideTertiaryColor": "#1e293b",
+                  "roundness": "ROUND_EIGHT",
+                  "spacing": {
+                    "bento-gap": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "margin-mobile": "16px",
+                    "unit": "4px"
+                  },
+                  "spacingScale": 2,
+                  "typography": {
+                    "body-md": {
+                      "fontFamily": "Hanken Grotesk",
+                      "fontSize": "16px",
+                      "fontWeight": "400",
+                      "lineHeight": "1.6"
+                    },
+                    "caption": {
+                      "fontFamily": "Hanken Grotesk",
+                      "fontSize": "13px",
+                      "fontWeight": "500",
+                      "lineHeight": "1.4"
+                    },
+                    "data-lg": {
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": "20px",
+                      "fontWeight": "600",
+                      "lineHeight": "1.0"
+                    },
+                    "display-lg": {
+                      "fontFamily": "Hanken Grotesk",
+                      "fontSize": "48px",
+                      "fontWeight": "800",
+                      "letterSpacing": "-0.02em",
+                      "lineHeight": "1.1"
+                    },
+                    "display-lg-mobile": {
+                      "fontFamily": "Hanken Grotesk",
+                      "fontSize": "32px",
+                      "fontWeight": "800",
+                      "letterSpacing": "-0.02em",
+                      "lineHeight": "1.2"
+                    },
+                    "headline-md": {
+                      "fontFamily": "Hanken Grotesk",
+                      "fontSize": "24px",
+                      "fontWeight": "700",
+                      "lineHeight": "1.3"
+                    },
+                    "label-mono": {
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": "12px",
+                      "fontWeight": "500",
+                      "letterSpacing": "0.05em",
+                      "lineHeight": "1.0"
+                    }
+                  }
+                },
+                "title": "FlowMetrics Premium Hero",
+                "width": "2560"
+              }
+            ],
+            "theme": {}
+          }
+        },
+        {
+          "text": "I've designed a high-impact, premium hero section for FlowMetrics that captures the \"Apple-meets-Web3\" aesthetic you requested. \n\n### Key Design Decisions:\n*   **Visual Depth:** I used a deep OLED background (#0A0E17) paired with subtle Electric Blue glow orbs to create a sense of infinite space and depth.\n*   **Glassmorphism:** The right-side dashboard features bento-style cards with heavy backdrop blur and fine borders, creating a sophisticated \"glass\" look.\n*   **Typography Pairings:** **Hanken Grotesk** provides a bold, professional presence for the massive headline, while **JetBrains Mono** adds a high-tech, precise feel to the metric data.\n*   **Color Strategy:** The Amber CTA (#F59E0B) creates a high-contrast focal point against the dark mode interface, ensuring strong conversion signals.\n*   **Bento Mockup:** The metrics (Deploy Frequency, Error Rate, Uptime, Active Users) are organized in a modern bento grid within the floating dashboard mockup to showcase the product's value at a glance.\n\nWould you like to explore adding subtle animations to the glow orbs, or perhaps iterate on the dashboard metrics?"
+        },
+        {
+          "suggestion": "Add subtle float animations to the dashboard cards"
+        },
+        {
+          "suggestion": "Change the primary accent color to a neon green"
+        },
+        {
+          "suggestion": "Expand this into a full landing page design"
+        }
+      ],
+      "projectId": "17152691140235890532",
+      "sessionId": "1985718270416971169"
+    }
+  }
+}

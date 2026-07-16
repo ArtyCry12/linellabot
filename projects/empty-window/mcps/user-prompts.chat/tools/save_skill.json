@@ -1,0 +1,63 @@
+{
+  "name": "save_skill",
+  "description": "Save a new Agent Skill to your prompts.chat account. Skills are multi-file prompts that can include SKILL.md (required), reference docs, scripts, and configuration files. Requires API key authentication. If the file contents are too long, first save the SKILL.md only, with no other files. Then call add_file_to_skill tool per file.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "description": "Title of the skill",
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": {
+        "description": "Description of what the skill does",
+        "type": "string",
+        "maxLength": 500
+      },
+      "files": {
+        "description": "Array of files. Must include SKILL.md as the main skill file.",
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "description": "File path (e.g., 'SKILL.md', 'reference.md', 'scripts/helper.py')",
+              "type": "string"
+            },
+            "content": {
+              "description": "File content",
+              "type": "string"
+            }
+          },
+          "required": [
+            "filename",
+            "content"
+          ]
+        }
+      },
+      "tags": {
+        "description": "Optional array of tag names",
+        "maxItems": 10,
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "category": {
+        "description": "Optional category slug",
+        "type": "string"
+      },
+      "isPrivate": {
+        "description": "Whether the skill is private (default: uses your account setting)",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "title",
+      "files"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

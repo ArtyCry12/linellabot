@@ -1,0 +1,363 @@
+{
+  "name": "data_pages_tool",
+  "description": "Data tool - Pages tool to perform actions like list pages, get page metadata, update page settings, create a page (headless beta), bulk update page settings (beta), manage branches (list, create, delete), and (beta) read or write JSON-LD schema markup for pages in bulk.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Label echoed in the response for this action item. It does not select which action runs."
+                },
+                "create_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page to create a branch from."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a new branch for a page on a site."
+                }
+              },
+              "required": [
+                "label",
+                "create_branch"
+              ],
+              "additionalProperties": false,
+              "description": "Run create_branch: Create a new branch for a page on a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "delete_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "branch_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the branch to delete."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete a branch from a site."
+                }
+              },
+              "required": [
+                "label",
+                "delete_branch"
+              ],
+              "additionalProperties": false,
+              "description": "Run delete_branch: Delete a branch from a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_branch_details": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "branch_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the branch."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Maximum number of records to return (max 100)."
+                    },
+                    "offset": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Number of records to skip for pagination."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get detailed information about a specific branch on a site."
+                }
+              },
+              "required": [
+                "label",
+                "get_branch_details"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_branch_details: Get detailed information about a specific branch on a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_page_metadata": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Unique identifier for a specific locale. Applicable when using localization."
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get metadata for a specific page including SEO settings, Open Graph data, and page status (draft/published)."
+                }
+              },
+              "required": [
+                "label",
+                "get_page_metadata"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_page_metadata: Get metadata for a specific page including SEO settings, Open Graph data, and page status (draft/published)."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_branches": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Maximum number of branches to return (max 100)."
+                    },
+                    "offset": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Number of branches to skip for pagination."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List all branches present on a site. Returns branch metadata with pagination support."
+                }
+              },
+              "required": [
+                "label",
+                "list_branches"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_branches: List all branches present on a site. Returns branch metadata with pagination support."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_pages": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to list its pages."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Unique identifier for a specific locale. Applicable when using localization."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "description": "Maximum number of records to be returned (max limit: 100)"
+                    },
+                    "offset": {
+                      "type": "number",
+                      "description": "Offset used for pagination if the results have more than limit records."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List all pages within a site. Returns page metadata including IDs, titles, and slugs."
+                }
+              },
+              "required": [
+                "label",
+                "list_pages"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_pages: List all pages within a site. Returns page metadata including IDs, titles, and slugs."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_page_settings": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page to update."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Secondary locale ID to write the changes to. Omit for the primary locale."
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Page title."
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "URL slug for the page (the path segment)."
+                    },
+                    "draft": {
+                      "type": "boolean",
+                      "description": "Whether the page is a draft (excluded from publishing)."
+                    },
+                    "parentFolderId": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "ID of the folder to nest the page under. null moves the page to the site root."
+                    },
+                    "seo": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "description": "SEO title (page <title> / meta title)."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "SEO meta description."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "SEO metadata for the page."
+                    },
+                    "openGraph": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "description": "Open Graph title (og:title)."
+                        },
+                        "titleCopied": {
+                          "type": "boolean",
+                          "description": "Whether the Open Graph title is copied from the SEO/page title."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Open Graph description (og:description)."
+                        },
+                        "descriptionCopied": {
+                          "type": "boolean",
+                          "description": "Whether the Open Graph description is copied from the SEO/page description."
+                        },
+                        "imageUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Raw Open Graph image URL (og:image). null unsets the image. Mutually exclusive with imageAssetId — provide at most one."
+                        },
+                        "imageAssetId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Site asset ID to use as the Open Graph image. null unsets the image. Mutually exclusive with imageUrl — provide at most one."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Open Graph metadata for the page."
+                    },
+                    "jsonLdSchema": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "JSON-LD structured data as a raw string. null clears the page's existing JSON-LD schema markup."
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Updates settings for a single page (write/side-effect: this updates an existing page). Accepts any subset of: title, slug, draft (publishing status), parentFolderId, seo, openGraph, and jsonLdSchema. Pass localeId to write the changes to a specific secondary locale; omit it for the primary locale. parentFolderId nests the page under a folder; null moves it to the site root. For openGraph, imageUrl and imageAssetId are mutually exclusive (provide at most one); passing null for either unsets it. jsonLdSchema null clears the page's JSON-LD schema markup."
+                }
+              },
+              "required": [
+                "label",
+                "update_page_settings"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_page_settings: Updates settings for a single page (write/side-effect: this updates an existing page). Accepts any subset of: title, slug, draft (publishing status), parentFolderId, seo, openGraph, and jsonLdSchema. Pass localeId to write the changes to a specific secondary locale; omit it for the primary locale. parentFolderId nests the page under a folder; null moves it to the site root. For openGraph, imageUrl and imageAssetId are mutually exclusive (provide at most one); passing null for either unsets it. jsonLdSchema null clears the page's JSON-LD schema markup."
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property: create_branch, delete_branch, get_branch_details, get_page_metadata, list_branches, list_pages, update_page_settings."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

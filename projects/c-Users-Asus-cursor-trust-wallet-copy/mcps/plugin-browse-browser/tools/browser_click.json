@@ -1,0 +1,22 @@
+{
+  "name": "browser_click",
+  "description": "Click an element on the page by ref. Use browser_snapshot first to get element refs. Refs look like @0-5.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "ref": {
+        "type": "string",
+        "description": "Element ref from snapshot (e.g., @0-5)"
+      }
+    },
+    "required": [
+      "ref"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

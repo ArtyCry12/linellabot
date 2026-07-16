@@ -1,0 +1,48 @@
+{
+  "name": "create-domain-claim",
+  "description": "Start a claim for a domain another Resend account has already verified. The domain is recreated under your account with brand-new DKIM keys, so the previous account's DNS records cannot be reused. Returns a TXT record that MUST be added to your DNS to prove ownership. You MUST display the TXT record to the user. After they add it, use verify-domain-claim, then poll get-domain-claim until status is \"completed\".",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The domain name to claim (e.g., example.com)"
+      },
+      "region": {
+        "description": "Deployment region. Defaults to \"us-east-1\".",
+        "type": "string",
+        "enum": [
+          "us-east-1",
+          "eu-west-1",
+          "sa-east-1",
+          "ap-northeast-1"
+        ]
+      },
+      "customReturnPath": {
+        "description": "Subdomain for the Return-Path address. Defaults to \"send\".",
+        "type": "string"
+      },
+      "openTracking": {
+        "description": "Enable email open rate tracking.",
+        "type": "boolean"
+      },
+      "clickTracking": {
+        "description": "Enable click tracking in HTML emails.",
+        "type": "boolean"
+      },
+      "trackingSubdomain": {
+        "description": "Custom subdomain for tracking links (e.g., \"track\" for track.example.com).",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

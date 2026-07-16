@@ -1,0 +1,798 @@
+{
+  "name": "data_scripts_tool",
+  "description": "Data tool - Scripts tool to manage custom code scripts. Register, apply, update, and remove scripts at the site or page level, and read or write freeform head/footer custom code blocks.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "add_page_script": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string"
+                    },
+                    "script_id": {
+                      "type": "string",
+                      "description": "ID of the registered script."
+                    },
+                    "location": {
+                      "$ref": "#/$defs/location"
+                    },
+                    "version": {
+                      "type": "string",
+                      "description": "Version of the script."
+                    },
+                    "attributes": {
+                      "$ref": "#/$defs/attributes"
+                    }
+                  },
+                  "required": [
+                    "page_id",
+                    "script_id",
+                    "location",
+                    "version"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Apply a single registered script to a page without affecting other applied scripts (register one first with register_inline_script or register_hosted_script). If the script ID is already applied, its location, version, and attributes are updated."
+                }
+              },
+              "required": [
+                "label",
+                "add_page_script"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "add_site_script": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    },
+                    "script_id": {
+                      "type": "string",
+                      "description": "ID of the registered script."
+                    },
+                    "location": {
+                      "$ref": "#/$defs/location"
+                    },
+                    "version": {
+                      "type": "string",
+                      "description": "Version of the script."
+                    },
+                    "attributes": {
+                      "$ref": "#/$defs/attributes"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "script_id",
+                    "location",
+                    "version"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Apply a single registered script to a site without affecting other applied scripts (register one first with register_inline_script or register_hosted_script). If the script ID is already applied, its location, version, and attributes are updated."
+                }
+              },
+              "required": [
+                "label",
+                "add_site_script"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "clear_page_scripts": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove all scripts applied to a page. The scripts stay registered on the site and can be re-applied with add_page_script or set_page_scripts."
+                }
+              },
+              "required": [
+                "label",
+                "clear_page_scripts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "clear_site_scripts": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove all scripts applied to a site. The scripts stay registered on the site and can be re-applied with add_site_script or set_site_scripts."
+                }
+              },
+              "required": [
+                "label",
+                "clear_site_scripts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "delete_registered_script": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    },
+                    "script_id": {
+                      "type": "string",
+                      "description": "The registered script ID to delete."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "script_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete a registered script and all of its versions from a site. Destructive and irreversible."
+                }
+              },
+              "required": [
+                "label",
+                "delete_registered_script"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_page_freeform_code": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "$ref": "#/$defs/location2"
+                    },
+                    "localeId": {
+                      "$ref": "#/$defs/localeId"
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read the freeform head/footer custom code blocks on a page."
+                }
+              },
+              "required": [
+                "label",
+                "get_page_freeform_code"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_page_scripts": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get all scripts currently applied to a page, with their IDs, locations (header/footer), versions, and attributes."
+                }
+              },
+              "required": [
+                "label",
+                "get_page_scripts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_registered_script": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    },
+                    "script_id": {
+                      "type": "string",
+                      "description": "The registered script ID."
+                    },
+                    "version": {
+                      "type": "string",
+                      "description": "Optional SemVer version string. When omitted, returns the most recently created version."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "script_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get a single registered script for a site by script ID. Returns its metadata: ID, display name, version, and hosting information."
+                }
+              },
+              "required": [
+                "label",
+                "get_registered_script"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_registered_scripts": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List all scripts registered for a site (up to 800 per site), with script IDs, display names, versions, and hosting information. Apply them with add_site_script or add_page_script."
+                }
+              },
+              "required": [
+                "label",
+                "get_registered_scripts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_site_freeform_code": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "$ref": "#/$defs/location2"
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read the freeform head/footer custom code blocks on a site. These are raw code blocks, distinct from registered scripts."
+                }
+              },
+              "required": [
+                "label",
+                "get_site_freeform_code"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_site_scripts": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get all scripts currently applied to a site, with their IDs, locations (header/footer), versions, and attributes."
+                }
+              },
+              "required": [
+                "label",
+                "get_site_scripts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "register_hosted_script": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID to register the script for."
+                    },
+                    "hosted_location": {
+                      "type": "string",
+                      "description": "URI of the externally hosted script."
+                    },
+                    "integrity_hash": {
+                      "type": "string",
+                      "description": "Sub-Resource Integrity (SRI) hash for the hosted script."
+                    },
+                    "version": {
+                      "type": "string",
+                      "description": "SemVer version string, e.g. '1.0.0'."
+                    },
+                    "display_name": {
+                      "$ref": "#/$defs/display_name"
+                    },
+                    "can_copy": {
+                      "$ref": "#/$defs/can_copy"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "hosted_location",
+                    "integrity_hash",
+                    "version",
+                    "display_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Register an externally hosted script for a site without applying it anywhere. Returns the registered script's metadata, including its ID; apply it with add_site_script or add_page_script."
+                }
+              },
+              "required": [
+                "label",
+                "register_hosted_script"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "register_inline_script": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site ID to register the script for."
+                    },
+                    "source_code": {
+                      "type": "string",
+                      "description": "Inline script source code hosted by Webflow. Max 2000 characters."
+                    },
+                    "version": {
+                      "type": "string",
+                      "description": "SemVer version string, e.g. '0.0.1'."
+                    },
+                    "display_name": {
+                      "$ref": "#/$defs/display_name"
+                    },
+                    "can_copy": {
+                      "$ref": "#/$defs/can_copy"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "source_code",
+                    "version",
+                    "display_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Register an inline script for a site without applying it anywhere. Returns the registered script's metadata, including its ID; apply it with add_site_script or add_page_script."
+                }
+              },
+              "required": [
+                "label",
+                "register_inline_script"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "remove_page_script": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string"
+                    },
+                    "script_id": {
+                      "type": "string",
+                      "description": "ID of the script to remove from the page."
+                    }
+                  },
+                  "required": [
+                    "page_id",
+                    "script_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove a single script from a page without affecting other applied scripts. If the script is not applied, the current list is returned unchanged; removing the last one clears all scripts from the page."
+                }
+              },
+              "required": [
+                "label",
+                "remove_page_script"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "remove_site_script": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    },
+                    "script_id": {
+                      "type": "string",
+                      "description": "ID of the script to remove from the site."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "script_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove a single script from a site without affecting other applied scripts. If the script is not applied, the current list is returned unchanged; removing the last one clears all scripts from the site."
+                }
+              },
+              "required": [
+                "label",
+                "remove_site_script"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "set_page_freeform_code": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "$ref": "#/$defs/location3"
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "The full raw code to store in the block."
+                    },
+                    "localeId": {
+                      "$ref": "#/$defs/localeId"
+                    }
+                  },
+                  "required": [
+                    "page_id",
+                    "location",
+                    "content"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Write the freeform head or footer custom code block on a page, replacing the block's full content. Folder-type pages do not support freeform code and return an error."
+                }
+              },
+              "required": [
+                "label",
+                "set_page_freeform_code"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "set_page_scripts": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string"
+                    },
+                    "scripts": {
+                      "$ref": "#/$defs/scripts"
+                    }
+                  },
+                  "required": [
+                    "page_id",
+                    "scripts"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Replace ALL scripts applied to a page. WARNING: any script not in the provided list is removed. To add or remove a single script, use add_page_script or remove_page_script instead. Only registered scripts can be applied."
+                }
+              },
+              "required": [
+                "label",
+                "set_page_scripts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "set_site_freeform_code": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "$ref": "#/$defs/location3"
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "The full raw code to store in the block."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "location",
+                    "content"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Write the freeform head or footer custom code block on a site, replacing the block's full content. content must be within the site's custom-code character limit."
+                }
+              },
+              "required": [
+                "label",
+                "set_site_freeform_code"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "set_site_scripts": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    },
+                    "scripts": {
+                      "$ref": "#/$defs/scripts"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "scripts"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Replace ALL scripts applied to a site. WARNING: any script not in the provided list is removed. To add or remove a single script, use add_site_script or remove_site_script instead. Only registered scripts can be applied."
+                }
+              },
+              "required": [
+                "label",
+                "set_site_scripts"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_registered_script": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string"
+                    },
+                    "script_id": {
+                      "type": "string",
+                      "description": "The registered script ID to update."
+                    },
+                    "display_name": {
+                      "$ref": "#/$defs/display_name"
+                    },
+                    "source_code": {
+                      "type": "string",
+                      "description": "Inline script source code (for inline scripts). Max 2000 characters."
+                    },
+                    "hosted_location": {
+                      "type": "string",
+                      "description": "URI of the externally hosted script (for hosted scripts)."
+                    },
+                    "integrity_hash": {
+                      "type": "string",
+                      "description": "Sub-Resource Integrity (SRI) hash for the hosted script. Required when updating 'hosted_location'."
+                    },
+                    "can_copy": {
+                      "type": "boolean",
+                      "description": "Whether the script can be copied on site duplication."
+                    },
+                    "version": {
+                      "type": "string",
+                      "description": "SemVer version string, e.g. '0.0.2'."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "script_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update a registered script for a site: display name, inline source code, hosted location + integrity hash, version, and canCopy. All body fields are optional — only provided fields are updated."
+                }
+              },
+              "required": [
+                "label",
+                "update_registered_script"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$defs": {
+      "label": {
+        "type": "string",
+        "description": "Echoed in the response; does not select which action runs."
+      },
+      "location": {
+        "type": "string",
+        "enum": [
+          "header",
+          "footer"
+        ],
+        "description": "Where to place the script: 'header' or 'footer'."
+      },
+      "attributes": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Optional HTML attributes for the script element, as a flat map of attribute name to string value, e.g. { async: 'true', type: 'module', 'data-id': 'analytics' }. Values must be strings; booleans and numbers are not accepted."
+      },
+      "location2": {
+        "type": "string",
+        "enum": [
+          "head",
+          "footer"
+        ],
+        "description": "Optional: 'head' or 'footer'. Omit to fetch both blocks."
+      },
+      "display_name": {
+        "type": "string",
+        "description": "User-facing name for the script. 1-50 alphanumeric characters."
+      },
+      "can_copy": {
+        "type": "boolean",
+        "description": "Whether the script can be copied on site duplication. Defaults to true."
+      },
+      "localeId": {
+        "type": "string",
+        "description": "Optional locale ID. Must equal the site's primary locale if provided."
+      },
+      "location3": {
+        "type": "string",
+        "enum": [
+          "head",
+          "footer"
+        ],
+        "description": "Which block to write: 'head' or 'footer'."
+      },
+      "scripts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Registered script ID."
+            },
+            "location": {
+              "type": "string",
+              "enum": [
+                "header",
+                "footer"
+              ],
+              "description": "Script placement: 'header' or 'footer'."
+            },
+            "version": {
+              "type": "string",
+              "description": "Version of the script."
+            },
+            "attributes": {
+              "$ref": "#/$defs/attributes"
+            }
+          },
+          "required": [
+            "id",
+            "location",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "description": "Complete list of scripts. Replaces all existing applied scripts."
+      }
+    }
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

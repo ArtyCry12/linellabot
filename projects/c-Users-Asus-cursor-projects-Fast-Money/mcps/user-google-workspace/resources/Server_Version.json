@@ -1,0 +1,6 @@
+{
+  "uri": "gws://config/version",
+  "name": "Server Version",
+  "description": "Build version of the google-workspace-mcp server",
+  "mimeType": "application/json"
+}

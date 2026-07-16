@@ -1,0 +1,57 @@
+{
+  "name": "video_speak",
+  "description": "Make a character speak. Image+audio → talking head (Veed Fabric 1.0). Video+audio → lip sync (Lipsync 2.0). Omit `mode` for auto. Pass asset URLs or a creation `identifier` (from `audio_tts`, `images_generate`, `video_generate`). Then call `creations_show`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "audioUrl": {
+        "description": "Asset URL or a creation `identifier` (from `audio_tts`).",
+        "type": "string"
+      },
+      "videoUrl": {
+        "description": "Asset URL or a creation `identifier`. Required without `imageUrl`; mutually exclusive with it.",
+        "type": "string"
+      },
+      "imageUrl": {
+        "description": "Asset URL or a creation `identifier`. Required without `videoUrl`; mutually exclusive with it.",
+        "type": "string"
+      },
+      "mode": {
+        "description": "Omit for auto: image → veed-fabric-1.0, video → lipsync-2.0.",
+        "enum": [
+          "latentsync",
+          "lipsync-2.0",
+          "omnihuman",
+          "veed-fabric-1.0",
+          "veed-fabric-1.0-fast",
+          "veed-sync-2-v2v",
+          "react-1"
+        ],
+        "type": "string"
+      },
+      "resolution": {
+        "description": "Only for veed modes; defaults to 720p.",
+        "enum": [
+          "480p",
+          "720p"
+        ],
+        "type": "string"
+      },
+      "prompt": {
+        "description": "Script/prompt; model-dependent support.",
+        "type": "string"
+      },
+      "voiceId": {
+        "description": "Voice ID from `audio_voices_list`; links the voice to the creation.",
+        "type": "integer"
+      },
+      "folderReference": {
+        "description": "Optional project/folder reference from `folders_list` to place results in. Omit for the default.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "audioUrl"
+    ]
+  }
+}

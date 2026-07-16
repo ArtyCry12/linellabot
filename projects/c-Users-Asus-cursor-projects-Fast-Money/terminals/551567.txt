@@ -1,0 +1,48 @@
+---
+pid: 11304
+cwd: "C:\\Users\\Asus\\.cursor\\projects\\Fast-Money"
+command: "Set-Location \"c:\\Users\\Asus\\.cursor\\projects\\Fast-Money\"; npm run build"
+started_at: 2026-07-13T17:00:27.431Z
+running_for_ms: 64533    
+---
+
+> ai-website-clone-template@0.3.1 build
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\Asus\.cursor\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\Asus\.cursor\projects\Fast-Money\package-lock.json
+
+▲ Next.js 16.2.1 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 20.0s
+  Running TypeScript ...
+  Finished TypeScript in 14.7s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/7) ...
+  Generating static pages using 3 workers (1/7) 
+  Generating static pages using 3 workers (3/7) 
+  Generating static pages using 3 workers (5/7) 
+✓ Generating static pages using 3 workers (7/7) in 4.5s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /demo/auto
+├ ○ /demo/salon
+└ ○ /demo/stomatolog
+
+
+○  (Static)  prerendered as static content
+
+
+---
+exit_code: 0
+elapsed_ms: 69392
+ended_at: 2026-07-13T17:01:36.823Z
+---

@@ -1,0 +1,6 @@
+{
+  "uri": "stock://search",
+  "name": "stock_search_catalog",
+  "description": "Enriched Freepik stock catalog for the stock picker iframe. Agent reasoning uses the stock_search tool instead.",
+  "mimeType": "application/json"
+}

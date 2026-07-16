@@ -1,0 +1,504 @@
+MCP Servers in Cursor: Setup, Configuration, and Security (2026 Guide)
+
+TrueFoundry recognized in Gartner Hype Cycle for Platform Engineering 2026. Read the full report →
+
+Join our VAR & VAD ecosystem — deliver enterprise AI governance across LLMs, MCPs & Agents. Become a Partner →
+
+# MCP Servers in Cursor: Setup, Configuration, and Security (2026 Guide)
+
+By Ashish Dubey
+
+Published: June 15, 2026
+
+### Built for Speed: ~10ms Latency, Even Under Load
+
+Blazingly fast way to build, track and deploy your models!
+
+- Handles 350+ RPS on just 1 vCPU — no tuning needed
+- Production-ready with full enterprise support
+
+Get Started with Truefoundry NowTalk to the Expert
+
+⚡ TL;DR
+
+Cursor connects to MCP servers to give the AI real tools and data — but wiring them up safely means understanding transports, config, and the security gaps that open once servers touch your systems.
+
+Key takeaways
+
+- Cursor talks to MCP servers over stdio (local) or HTTP/SSE (remote); the transport drives how credentials and config are handled.
+- Setup lives in mcp.json — per-project or global — with secrets in environment variables, never hard-coded keys.
+- Security is the real risk: prompt injection, over-broad tool scopes, and unvetted servers can leak data or trigger unintended actions.
+- Scaling MCP from one developer to a team needs a gateway: vetted servers, scoped credentials, per-user OAuth, and full audit logs.
+
+Out of the box, Cursor's AI agent only knows about your codebase. That's it. It can't see your Postgres tables, has no clue what GitHub issues are piling up, and definitely can't pull design tokens from Figma. MCP servers are what bridge that gap. They're lightweight programs that plug external tools into Cursor through one standardized protocol—the Model Context Protocol—so the agent can query databases, file issues, or fetch API data right from the editor.
+
+Some quick history. Anthropic open-sourced MCP in November 2024. OpenAI adopted it by May 2025, and Google DeepMind brought Gemini support in April. Then, in December 2025, Anthropic donated the whole thing to the Agentic AI Foundation (under the Linux Foundation), co-founded with Block and OpenAI. That move was significant. MCP went from being Anthropic's project to a genuinely vendor-neutral standard.
+
+Cursor has emerged as one of the go-to MCP clients among IDEs. But getting it set up properly—and understanding what can go wrong from both a config and security standpoint—takes more than just pasting a JSON snippet you found on Reddit.
+
+MCP in Cursor is easy. Governing it across a team isn't.
+
+TrueFoundry's MCP Gateway gives every developer governed access to MCP servers — with RBAC, audit logs, and central credential management.
+
+Book a 30-min Demo Explore MCP Gateway
+
+## How MCP Actually Works Inside Cursor
+
+This is one reason MCP vs API matters for IDE agents: APIs require explicit integration logic, while MCP lets Cursor dynamically load available tools from connected servers.
+
+MCP defines three moving pieces. Hosts are the application—Cursor. Clients are connectors inside the host that handle individual server connections. Servers are the lightweight programs on the other end, exposing tools via JSON-RPC 2.0.
+
+In practice? You open Cursor. Its Agent scans your enabled MCP servers, loads the tools they expose, and figures out which ones to call as part of whatever task it's working on. Head over to Cursor Settings > Tools & MCP and you'll see every loaded server with a status indicator. You can flip individual tools on or off from that panel.
+
+Servers can expose three types of things:
+
+- Tools are the big one—executable functions like create_issue or run_query. Cursor has supported tools since the early days of its MCP integration.
+- Resources are contextual data: file contents, database schemas, configuration details. Support for resources arrived in Cursor v1.6 (September 2025).
+- Prompts let servers offer reusable templates and predefined workflows to the client.
+
+For a more thorough walkthrough of MCP architecture and server primitives, check out our guide on MCP and How It Works.
+
+## Transport Types: How Cursor Talks to MCP Servers
+
+Three options here. Which one you pick depends on a simple question—local server or remote?
+
+| Transport | How It Works | Best For | Limitations |
+| --- | --- | --- | --- |
+| stdio | Cursor spawns the server as a child process. Communication goes through stdin/stdout. | Solo dev, local tinkering | Requires Node.js or Python installed locally. No way to share across a team. |
+| HTTP+SSE | Server runs on its own over HTTP. Streaming uses Server-Sent Events. | Older MCP servers that haven't migrated yet | Legacy transport from the Nov 2024 spec. On its way out. |
+| Streamable HTTP | Single HTTP endpoint. POST and GET. Built-in sessions, streaming, concurrency, connections. | Shared team servers, remote deployments, CI/CD | Server needs to be hosted somewhere network-accessible. |
+
+Our recommendation: stdio for local experimentation. Streamable HTTP for literally everything else.
+
+## Setting Up MCP Servers
+
+### The Easy Way: One-Click Deep Links
+
+More and more MCP servers now have an "Add to Cursor" button sitting right on their docs page. Click that, and Cursor opens a dialog with the server name, transport, and URL already filled in. Click Install. That's the whole process.
+
+Servers requiring authentication will trigger a browser-based OAuth flow, and Cursor stores the resulting credentials for you. If you're a server developer wanting to add these deep links, the Cursor MCP documentation explains how.
+
+### Manual Setup: stdio for Local Servers
+
+Open Cursor Settings > Tools & MCP, hit New MCP Server (which drops you into mcp.json), or just create the file manually. Put it at .cursor/mcp.json inside your project for project-scoped config, or ~/.cursor/mcp.json for global.
+
+Here's what a GitHub MCP server looks like running through Docker:
+
+```
+{
+  "mcpServers": {
+    "github": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
+      }
+    }
+  }
+}
+```
+
+The fields, briefly:
+
+- "command" — What Cursor runs to start the server. npx, docker, python, node—whatever the server expects.
+- "args" — Arguments forwarded to that command.
+- "env" — Environment variables passed in at runtime. Put API keys here. Not in your shell profile, not in a .env file that gets committed accidentally—here.
+
+### Manual Setup: Streamable HTTP for Remote Servers
+
+Way simpler. Just a URL and optional headers:
+
+```
+{
+  "mcpServers": {
+    "remote-api": {
+      "url": "https://mcp.example.com/mcp",
+      "headers": {
+        "Authorization": "Bearer <YOUR_API_KEY>"
+      }
+    }
+  }
+}
+```
+
+No command. No args. Cursor hits the HTTP endpoint directly.
+
+### Project-Level vs. Global Config
+
+Project config (.cursor/mcp.json in the repo root) affects only that project. Global config (~/.cursor/mcp.json) applies everywhere. Same server defined in both files? Project-level wins.
+
+## When Things Break: Troubleshooting MCP in Cursor
+
+### The 40-Tool Limit
+
+Cursor has a ceiling of roughly 40 active tools across all your MCP servers combined. Exceed it and two things happen: you get a warning, and the agent silently loses access to some tools. It just can't see them anymore.
+
+Why does the limit exist? Each tool definition burns context tokens. And once you shove 40+ tool descriptions into a prompt, the LLM's ability to pick the right one deteriorates noticeably.
+
+What to do about it: open each server in settings and switch off the tools you're not actively using. And as a general rule, a server exposing 5 to 10 well-defined tools will serve you better than one megaserver trying to do 30 things.
+
+### "No Tools Found" or Silent Failures
+
+Your MCP server didn't start. Cursor shows no error. No warning. Nothing. You just notice that tools aren't showing up.
+
+Nine times out of ten, the problem is one of these: Node.js or Python isn't installed (or isn't on your PATH). The package version in your config doesn't exist. Or an environment variable you referenced is either empty or completely missing.
+
+Fastest way to debug: copy the command from your mcp.json verbatim and run it in a terminal. Like this: npx -y @modelcontextprotocol/server-postgres postgresql://localhost/mydb. Whatever error Cursor was swallowing will print right to your screen.
+
+### SSH and Remote Environments
+
+stdio transport and remote environments do not get along. The subprocess launches on the remote side, but Cursor expects it locally. You end up with intermittent connection failures that are incredibly annoying to track down.
+
+Just use Streamable HTTP. Deploy the MCP server as a hosted endpoint and point Cursor at the URL. Saves hours of debugging.
+
+### Tiny Config Mistakes That Waste Your Afternoon
+
+We keep running into the same three:
+
+- Server name + tool name over 60 characters. Cursor throws an error, but the message isn't particularly helpful.
+- Missing the "mcpServers" root key. No error. No warning. Cursor just ignores the entire file. You'll stare at your perfectly formatted JSON wondering why nothing is loading.
+- Forgetting -y with npx. The process hangs forever. Why? Because npx is waiting for you to confirm a package install, but there's no interactive terminal for you to type "y" into.
+
+Key Metrics for Evaluating Gateway
+
+| Criteria | What should you evaluate ? | Priority | TrueFoundry |
+| --- | --- | --- | --- |
+| Latency | Adds <10ms p95 overhead for time-to-first-token? | Must Have | ✅ Supported |
+| Data Residency | Keeps logs within your region (EU/US)? | Depends on use case | ✅ Supported |
+| Latency-Based Routing | Automatically reroutes based on real-time latency/failures? | Must Have | ✅ Supported |
+| Key Rotation & Revocation | Rotate or revoke keys without downtime? | Must Have | ✅ Supported |
+| Key Rotation & Revocation | Rotate or revoke keys without downtime? | Must Have | ✅ Supported |
+| Key Rotation & Revocation | Rotate or revoke keys without downtime? | Must Have | ✅ Supported |
+| Key Rotation & Revocation | Rotate or revoke keys without downtime? | Must Have | ✅ Supported |
+| Key Rotation & Revocation | Rotate or revoke keys without downtime? | Must Have | ✅ Supported |
+
+MCP Gateway Evaluation Checklist
+
+A practical guide used by platform & infra teams
+
+## MCP Security: The Part You Can't Afford to Skip
+
+MCP servers run code with your credentials. Let that sink in for a moment. Whatever permissions you hand a server—database access, GitHub tokens, API keys—it will use them. Every MCP server is, for all practical purposes, a fully trusted integration. If a server is compromised or malicious, it has everything you gave it.
+
+2025 was a rough year for Cursor MCP security. Researchers published multiple critical CVEs, and each one exposed a fundamentally different attack surface:
+
+- CVE-2025-54136, dubbed "MCPoison" - Check Point Research uncovered that Cursor pinned trust to the MCP server's key name in the config file, not to the actual command being run underneath. Concrete impact: someone could push a modified .cursor/mcp.json to a shared repository, swapping a legitimate command for a malicious one. Cursor would still run it without asking for approval, because the key name hadn't changed. Fixed in Cursor 1.3, July 2025.
+- CVE-2025-54135, called "CurXecute" - AIM Security pulled off something wild. They showed that poisoned content inside Slack messages, when summarized by Cursor's agent, could rewrite your MCP configuration file and auto-launch rogue servers. A Slack message. That's the attack vector. Fixed in Cursor 1.3.9.
+- CVE-2025-59944 - Lakera found a case-sensitivity trick targeting macOS and Windows. Attackers could overwrite .cursor/mcp.json by writing to .cUrSoR/mcp.json—the filesystem treated them as the same path. Fixed in Cursor 1.7.
+- CVE-2025-64106 - Cyata Security discovered that the MCP installation dialog in Cursor could be spoofed. It would show a trusted name like "Playwright" to the user while executing completely different, attacker-controlled commands behind the scenes. Cursor shipped a fix in version 2.0. Took them just 48 hours from disclosure.
+
+### Security Best Practices
+
+- Kill auto-run mode. Force the agent to get explicit approval before every tool invocation. Yes, every single one. The friction is worth it.
+- Least privilege for credentials, always. Read-only GitHub tokens for anything search-related. Read-only database users for schema browsing. Never grant write access unless the use case absolutely demands it.
+- Pin package versions. npx -y mcp-server@1.2.3—not @latest. A compromised latest tag is a real supply-chain attack vector, and you don't want to find out the hard way.
+- Read the source code of third-party servers. If you wouldn't run an unvetted npm package in production, you shouldn't run an unvetted MCP server in your IDE either. Same risk profile.
+- Stay on the latest Cursor version. Full credit to the Cursor team—they patched every one of these CVEs within days. But those patches only help if you actually update.
+- Treat .cursor/mcp.json changes in Git like infrastructure changes. Same review rigor you'd apply to a Terraform file or a GitHub Actions workflow.
+
+More details on these topics in our guides on enterprise MCP security and access control patterns.
+
+Is your Cursor MCP setup production-safe?
+
+Check everything that's true for your team.
+
+Check the boxes above to see your score.
+
+Close the gaps with a governed MCP Gateway →
+
+‍
+
+## Scaling MCP from Developer to Enterprise
+
+For a single developer, MCP is great. Set it up once, enjoy the productivity boost, move on. But scaling to a team of 20? Or 200? That's where the pain starts.
+
+API keys end up scattered across individual laptops. There's no centralized view of which servers and tools are active across the org. Zero audit trail. And when somebody leaves the company—or even just switches teams—you're stuck rotating credentials in dozens of individual Cursor config files spread across who-knows-how-many machines.
+
+An MCP Gateway puts a layer between your agents and your MCP servers that handles all of the above: centralized authentication, role-based access, observability, and policy enforcement.
+
+TrueFoundry's MCP Gateway does exactly that. Developers authenticate once against the gateway. From that point on, the gateway manages every downstream OAuth token and credential for them. Administrators define per-server access controls and permissions through RBAC. Every tool call—every single one—gets logged with full request-level tracing.
+
+One feature worth calling out specifically: Virtual MCP Servers. The gateway can expose a scoped subset of tools from the servers behind it. Suppose you want an agent that can read GitHub issues but must never, under any circumstances, delete a repository. You don't enforce that via a system prompt the LLM might ignore. The gateway enforces it at the protocol level. The "delete repo" tool simply doesn't exist from the agent's perspective.
+
+Organizations already running TrueFoundry's AI Gateway for LLM routing and cost control get native integration with MCP Gateway. One control plane covering models, tools, and agents.
+
+Cursor can also connect directly to TrueFoundry's AI Gateway for centralized LLM routing, cost tracking, and key management.
+
+## Wrapping Up
+
+MCP gives Cursor the ability to interact with real, external tools—not just your source files. Individual setup takes minutes. The actual engineering challenge shows up later: governance, credential management, access control, and observability at team scale.
+
+Start small. One or two servers. Use deep links where available. Respect the 40-tool limit. Stay updated to keep ahead of security patches. And if you're deploying MCP across a team or org, look into an MCP Gateway before the credential sprawl problem solves itself by turning into a security incident.
+
+Explore TrueFoundry's MCP Gateway or book a demo to see it in action.
+
+Ready to roll MCP out to your whole team — without the security incidents?
+
+Book a Demo →
+
+‍
+
+## Frequently Asked Questions
+
+### What exactly is an MCP server in Cursor?
+
+A lightweight program connecting Cursor's AI agent to an external tool or data source via the Model Context Protocol. It exposes functions (called "tools") that the agent discovers and calls during workflows. GitHub, Postgres, Figma, Slack—they all have MCP servers available.
+
+### How do I add one to Cursor?
+
+Three ways. One-click deep-link buttons on the server's docs page (easiest). The Cursor Settings > Tools & MCP > New MCP Server UI. Or manually creating .cursor/mcp.json (project-scoped) or ~/.cursor/mcp.json (global).
+
+### What's the tool limit?
+
+Around 40 active tools across all servers. Past that, the agent gets worse at picking the right tool because context fills up. Turn off what you're not using.
+
+### Does Cursor handle MCP resources and elicitation?
+
+Yes. Resources shipped in v1.6 (September 2025)—contextual data like schemas and file contents. Elicitation landed in v1.5(August 2025)—servers can ask for structured user input mid-execution.
+
+### Are MCP servers safe to use in Cursor?
+
+Depends on your setup. MCP servers run code with the permissions you provide. Researchers found multiple critical vulnerabilities in 2025, all patched quickly. Keep Cursor current, disable auto-run, restrict credentials, pin package versions, and audit third-party servers before adding them.
+
+### How do large teams manage MCP servers?
+
+Through an MCP Gateway. TrueFoundry's gateway centralizes auth, enforces RBAC, and logs every tool invocation. Admins control exactly which teams get access to which servers. See our MCP gateways comparison for a detailed breakdown.
+
+TrueFoundry AI Gateway delivers ~3–4 ms latency, handles 350+ RPS on 1 vCPU, scales horizontally with ease, and is production-ready, while LiteLLM suffers from high latency, struggles beyond moderate RPS, lacks built-in scaling, and is best for light or prototype workloads.
+
+Built for Speed: ~10ms Latency, Even Under Load
+
+Schedule your Demo Now
+
+## The fastest way to build, govern and scale your AI
+
+Sign Up
+
+How Can You Prevent GenAI Costs From Spiraling at Scale?
+
+Access Full 2026 Report
+
+Gartner Hype Cycle for Platform Engineering 2026
+
+Access Full 2026 Report
+
+## One Layer of Control for All AI
+
+Route and govern model and tool traffic with a centralized AI Gateway
+
+Book Demo
+
+Table of Contents
+
+Text Link
+
+### One Gateway for Every LLM, Agent and MCP Server
+
+Book a 30-min with our AI expert
+
+Book a Demo
+
+### The fastest way to build, govern and scale your AI
+
+Book Demo
+
+Summarize with
+
+## Discover More
+
+No items found.
+
+June 24, 2026
+
+|
+
+5 min read
+
+### Self-Hosting Open-Weight LLMs Behind the AI Gateway
+
+No items found.
+
+https://www.truefoundry.com/blog/self-hosted-open-weight-models-gateway
+
+June 24, 2026
+
+|
+
+5 min read
+
+### Braintrust Pricing in 2026: Full Breakdown of Plans, Costs, and What Enterprises Should Know
+
+No items found.
+
+https://www.truefoundry.com/blog/braintrust-pricing
+
+June 24, 2026
+
+|
+
+5 min read
+
+### Kimi K2.7 Code Cuts Reasoning Costs by 30% — And Beats Claude Opus 4.8 on MCP Tool Use
+
+LLM Tools
+
+https://www.truefoundry.com/blog/kimi-k2-7-code-cuts-reasoning-costs-by-30----and-beats-claude-opus-4-8-on-mcp-tool-use
+
+June 23, 2026
+
+|
+
+5 min read
+
+### LiteLLM Vs OpenRouter: Which Is Right For You?
+
+comparison
+
+https://www.truefoundry.com/blog/litellm-vs-openrouter
+
+No items found.
+
+## Recent Blogs
+
+https://www.truefoundry.com/blog/self-hosted-open-weight-models-gateway
+
+### Self-Hosting Open-Weight LLMs Behind the AI Gateway
+
+June 24, 2026Boyu Wang
+
+https://www.truefoundry.com/blog/braintrust-pricing
+
+### Braintrust Pricing in 2026: Full Breakdown of Plans, Costs, and What Enterprises Should Know
+
+June 24, 2026Ashish Dubey
+
+https://www.truefoundry.com/blog/kimi-k2-7-code-cuts-reasoning-costs-by-30----and-beats-claude-opus-4-8-on-mcp-tool-use
+
+### Kimi K2.7 Code Cuts Reasoning Costs by 30% — And Beats Claude Opus 4.8 on MCP Tool Use
+
+June 24, 2026Amrutha Potluri
+
+https://www.truefoundry.com/blog/claude-code-with-litellm-setup-guide-when-to-use-truefoundry-ai-gateway
+
+### Claude Code with LiteLLM: Setup Guide + When to Use TrueFoundry AI Gateway
+
+June 23, 2026
+
+https://www.truefoundry.com/blog/forecasting-ai-cost
+
+### Seeing the Bill Before It Lands: Forecasting Enterprise AI Spend
+
+June 23, 2026Boyu Wang
+
+https://www.truefoundry.com/blog/kv-cache-routing-why-standard-load-balancers-break-prefix-caching-and-how-to-fix-it
+
+### KV Cache Routing: Why Standard Load Balancers Break Prefix Caching (and How to Fix It)
+
+June 22, 2026Amrutha Potluri
+
+https://www.truefoundry.com/blog/mcp-apps-tasks-gateway-governance
+
+### MCP Apps and Tasks: Governing the New First-Class MCP Extensions
+
+June 22, 2026Boyu Wang
+
+https://www.truefoundry.com/blog/multi-agent-a2a-governance-gateway
+
+### Governing Multi-Agent Systems: Agent Identity, A2A, and the Agent Gateway
+
+June 19, 2026Boyu Wang
+
+https://www.truefoundry.com/blog/grok-4-3-amazon-bedrock-truefoundry-gateway
+
+### Grok 4.3 on Amazon Bedrock: We Routed Four Frontier Models Through One Gateway and Measured the Cost
+
+June 19, 2026Amrutha Potluri
+
+https://www.truefoundry.com/blog/jit-context-just-in-time-context-agents
+
+### JIT Context: Why the Best Agents Load Late and Load Little
+
+June 18, 2026Boyu Wang
+
+https://www.truefoundry.com/blog/ai-cost-optimization-tools
+
+### Best AI Cost Optimization Tools in 2026: Compared for Enterprise Teams
+
+June 18, 2026Ashish Dubey
+
+https://www.truefoundry.com/blog/ai-cost-optimization-strategies
+
+### AI Cost Optimization Strategies in 2026: A Practical Guide for Enterprise Teams
+
+June 18, 2026Ashish Dubey
+
+https://www.truefoundry.com/blog/claude-mcp-registry
+
+### Claude MCP Registry: A Complete Guide for Developers and Enterprise Teams
+
+June 17, 2026Ashish Dubey
+
+https://www.truefoundry.com/blog/what-is-ai-policy-enforcement
+
+### AI Policy Enforcement: A Complete Guide for Enterprise Teams
+
+June 17, 2026Ashish Dubey
+
+https://www.truefoundry.com/blog/ai-utility-guide
+
+### AI Utility: A Complete Guide to AI in Energy and Utilities for 2026
+
+June 17, 2026Ashish Dubey
+
+Take a quick product tour
+
+Start Product Tour
+
+Product Tour
+
+Product
+
+- AI Gateway
+- MCP Gateway
+- LLMOps
+- Model Serving
+- Tracing
+
+Company
+
+Resources
+
+- Documentation
+- Product Tour
+- Pharma Case Study
+- Nvidia Case Study
+- TrueFoundry vs Sagemaker
+- Glossary
+- Models
+- Legal Hub
+
+#### Blog
+
+Self-Hosting Open-Weight LLMs Behind the AI Gateway
+
+Braintrust Pricing in 2026: Full Breakdown of Plans, Costs, and What Enterprises Should Know
+
+Kimi K2.7 Code Cuts Reasoning Costs by 30% — And Beats Claude Opus 4.8 on MCP Tool Use
+
+Claude Code with LiteLLM: Setup Guide + When to Use TrueFoundry AI Gateway
+
+Seeing the Bill Before It Lands: Forecasting Enterprise AI Spend
+
+KV Cache Routing: Why Standard Load Balancers Break Prefix Caching (and How to Fix It)
+
+Ensemble Labs Inc, 355 Bryant Street, Suite 403, San Francisco, CA 94107
+
+#### Subscribe to our newsletter
+
+The latest news, articles, and resources sent to your inbox
+
+© 2026 All rights reserved.

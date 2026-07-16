@@ -1,0 +1,28 @@
+{
+  "name": "spaces_add_creations",
+  "description": "Add existing creation(s) as image nodes to a Space. Pass creation identifiers from creations_finalize_upload, images_generate, or creations_search. Give the user space.webUrl afterwards.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "spaceId": {
+        "description": "Space UUID.",
+        "type": "string"
+      },
+      "creationIdentifiers": {
+        "description": "Creation identifiers (1-20) to add as nodes.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "pageId": {
+        "description": "Target page id. Defaults to the current page.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "spaceId",
+      "creationIdentifiers"
+    ]
+  }
+}

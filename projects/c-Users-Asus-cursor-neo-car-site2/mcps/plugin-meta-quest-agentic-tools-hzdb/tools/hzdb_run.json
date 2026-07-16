@@ -1,0 +1,1511 @@
+{
+  "name": "hzdb_run",
+  "description": "Invoke any hzdb (Meta's Quest dev CLI) subcommand that isn't exposed as a dedicated MCP tool. hzdb is the standard CLI for Meta Quest VR/MR headset dev — like `gcloud` for GCP.\n\nPrefer a DEDICATED tool when one fits — they have richer schemas: hzdb_app (apps), hzdb_device (devices), hzdb_files (files), meta_docs_search / meta_docs_get_page (docs), get_device_logcat (logs), take_screenshot (screenshots).\n\nUse this catch-all for everything else: `perf` (capture / analyze / simpleperf), `ovrmetrics`, UI automation, audio control, casting, window mgmt, Unity editors, sideload, asset search, config, etc. The schema's `oneOf` enumerates every available subcommand with its real flags, defaults, and enum constraints — pick a subcommand path and pass typed args. For human-readable help on any subcommand tree, call hzdb_cli_help (topic=<group>).",
+  "arguments": {
+    "type": "object",
+    "required": [
+      "subcommand"
+    ],
+    "additionalProperties": false,
+    "oneOf": [
+      {
+        "additionalProperties": false,
+        "description": "Set up hzdb — install AI agent skills and configure MCP servers",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "claude-code": {
+                "description": "Install skill for Claude Code",
+                "type": "boolean"
+              },
+              "codex": {
+                "description": "Install skill for OpenAI Codex",
+                "type": "boolean"
+              },
+              "copilot": {
+                "description": "Install skill for GitHub Copilot",
+                "type": "boolean"
+              },
+              "cursor": {
+                "description": "Install skill for Cursor",
+                "type": "boolean"
+              },
+              "gemini": {
+                "description": "Install skill for Gemini CLI",
+                "type": "boolean"
+              },
+              "no-prompt": {
+                "description": "Skip interactive prompts (install to all detected agents)",
+                "type": "boolean"
+              },
+              "opencode": {
+                "description": "Install skill for OpenCode",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "init"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Run a shell command on the device",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "commands": {
+                "description": "Command and arguments to run (interactive shell if omitted)",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "adb",
+              "shell"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Forward port connections (host -> device)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "local": {
+                "description": "Local port spec (e.g., tcp:8080)",
+                "type": "string"
+              },
+              "remote": {
+                "description": "Remote port spec (e.g., tcp:8080)",
+                "type": "string"
+              }
+            },
+            "required": [
+              "local",
+              "remote"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "adb",
+              "forward"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Reverse port connections (device -> host)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "local": {
+                "description": "Local port spec (e.g., tcp:8080)",
+                "type": "string"
+              },
+              "remote": {
+                "description": "Remote port spec (e.g., tcp:8080)",
+                "type": "string"
+              }
+            },
+            "required": [
+              "remote",
+              "local"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "adb",
+              "reverse"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Restart adbd with root permissions",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "adb",
+              "root"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Get a device property",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "property": {
+                "description": "Property name (e.g., ro.product.model)",
+                "type": "string"
+              }
+            },
+            "required": [
+              "property"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "adb",
+              "getprop"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Set a device property",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "property": {
+                "description": "Property name",
+                "type": "string"
+              },
+              "value": {
+                "description": "Property value",
+                "type": "string"
+              }
+            },
+            "required": [
+              "property",
+              "value"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "adb",
+              "setprop"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Print version information",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "adb",
+              "version"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Search for 3D models in Meta's asset library",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "count": {
+                "default": 5,
+                "description": "Number of models to return (default: 5, max: 10)",
+                "type": "integer"
+              },
+              "query": {
+                "description": "Text description of the 3D model to search for (e.g., \"red car\", \"fantasy sword\", \"office chair\")",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "asset",
+              "search"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Get current volume level",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "audio",
+              "status"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Set volume level (0-15)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "level": {
+                "description": "Volume level to set (0-15)",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "level"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "audio",
+              "set"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Mute audio (saves current volume for unmute)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "audio",
+              "mute"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Unmute audio (restores volume from before mute)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "audio",
+              "unmute"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Get a configuration value",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "description": "The configuration key to get",
+                "enum": [
+                  "adb-path",
+                  "default-device",
+                  "output-format",
+                  "color"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "key"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "config",
+              "get"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Set a configuration value",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "description": "The configuration key to set",
+                "enum": [
+                  "adb-path",
+                  "default-device",
+                  "output-format",
+                  "color"
+                ],
+                "type": "string"
+              },
+              "value": {
+                "description": "The value to set",
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "value"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "config",
+              "set"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Reset a configuration value to its default",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "description": "The configuration key to reset",
+                "enum": [
+                  "adb-path",
+                  "default-device",
+                  "output-format",
+                  "color"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "key"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "config",
+              "reset"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "List all configuration settings",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "config",
+              "list"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Capture a timed Perfetto trace from a connected device",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "app": {
+                "description": "App package name to trace (auto-detects if not specified)",
+                "type": "string"
+              },
+              "cpu-scheduling": {
+                "default": true,
+                "description": "Enable CPU scheduling tracing (only with --mode custom)",
+                "type": "boolean"
+              },
+              "duration": {
+                "default": 5000,
+                "description": "Duration of capture in milliseconds",
+                "type": "integer"
+              },
+              "extended-scheduling": {
+                "description": "Enable extended scheduling events (only with --mode custom)",
+                "type": "boolean"
+              },
+              "gpu-metrics": {
+                "default": true,
+                "description": "Enable GPU metrics tracing (only with --mode custom)",
+                "type": "boolean"
+              },
+              "gpu-render-stage": {
+                "description": "Enable GPU render stage tracing (only with --mode custom)",
+                "type": "boolean"
+              },
+              "mode": {
+                "default": "standard",
+                "description": "Capture mode preset: standard (default), gpu, cpu, lightweight, full, vr, custom",
+                "type": "string"
+              },
+              "output": {
+                "description": "Output filename (without extension)",
+                "type": "string"
+              },
+              "vulkan-layer": {
+                "description": "Enable Vulkan OS layer tracing (only with --mode custom)",
+                "type": "boolean"
+              },
+              "xr-runtime": {
+                "description": "Enable XR runtime metrics (only with --mode custom)",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "capture"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Get performance analysis context/prompt",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "session_id": {
+                "description": "Optional session ID for trace-specific context",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "context"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Get GPU counter metrics for frame ranges",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "end-ts": {
+                "description": "End timestamps in nanoseconds (comma-separated)",
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              "session_id": {
+                "description": "Session ID (trace file name)",
+                "type": "string"
+              },
+              "start-ts": {
+                "description": "Start timestamps in nanoseconds (comma-separated)",
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "session_id"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "gpu-counters"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Perform a complete performance analysis on a Perfetto trace",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "focus": {
+                "default": "overview",
+                "description": "Analysis focus area: overview (default), gpu, cpu, frames, threads",
+                "type": "string"
+              },
+              "session_id": {
+                "description": "Session ID (trace file name). If omitted, uses the most recently captured trace",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "analyze-trace"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Convert a hexadecimal timestamp to datetime",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "hex_str": {
+                "description": "Hexadecimal string representing Unix timestamp",
+                "type": "string"
+              }
+            },
+            "required": [
+              "hex_str"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "hex-to-datetime"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Load a Perfetto trace for analysis",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "session_id": {
+                "description": "Session ID (trace file name)",
+                "type": "string"
+              }
+            },
+            "required": [
+              "session_id"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "load"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Open a Perfetto trace in the Perfetto UI (ui.perfetto.dev)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "session_id": {
+                "description": "Session ID (trace file name)",
+                "type": "string"
+              }
+            },
+            "required": [
+              "session_id"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "open"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Run a SQL query on a loaded trace",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "description": "SQL query to execute",
+                "type": "string"
+              },
+              "session_id": {
+                "description": "Session ID (trace file name)",
+                "type": "string"
+              }
+            },
+            "required": [
+              "session_id",
+              "query"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "query"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Start a background Perfetto capture (manual start/stop)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "app": {
+                "description": "App package name to trace (auto-detects if not specified)",
+                "type": "string"
+              },
+              "cpu-scheduling": {
+                "default": true,
+                "description": "Enable CPU scheduling tracing (only with --mode custom)",
+                "type": "boolean"
+              },
+              "extended-scheduling": {
+                "description": "Enable extended scheduling events (only with --mode custom)",
+                "type": "boolean"
+              },
+              "gpu-metrics": {
+                "default": true,
+                "description": "Enable GPU metrics tracing (only with --mode custom)",
+                "type": "boolean"
+              },
+              "gpu-render-stage": {
+                "description": "Enable GPU render stage tracing (only with --mode custom)",
+                "type": "boolean"
+              },
+              "mode": {
+                "default": "standard",
+                "description": "Capture mode preset: standard (default), gpu, cpu, lightweight, full, vr, custom",
+                "type": "string"
+              },
+              "output": {
+                "description": "Output filename (without extension)",
+                "type": "string"
+              },
+              "vulkan-layer": {
+                "description": "Enable Vulkan OS layer tracing (only with --mode custom)",
+                "type": "boolean"
+              },
+              "xr-runtime": {
+                "description": "Enable XR runtime metrics (only with --mode custom)",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "start"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Stop a background Perfetto capture and pull the trace",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "output_name": {
+                "description": "Output name (from 'hzdb perf start' output)",
+                "type": "string"
+              },
+              "pid": {
+                "description": "PID of the background perfetto process (from 'hzdb perf start' output)",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "pid",
+              "output_name"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "stop"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Get thread state information from a trace",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "end-ts": {
+                "default": 1000000000000000000,
+                "description": "End time in nanoseconds",
+                "type": "integer"
+              },
+              "session_id": {
+                "description": "Session ID (trace file name)",
+                "type": "string"
+              },
+              "start-ts": {
+                "default": 0,
+                "description": "Start time in nanoseconds",
+                "type": "integer"
+              },
+              "utid": {
+                "description": "Unique thread identifier (utid)",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "session_id",
+              "utid"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "thread-state"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Compare two Perfetto traces and produce a delta report",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "baseline_id": {
+                "description": "Session ID of the baseline trace (before optimization)",
+                "type": "string"
+              },
+              "comparison_id": {
+                "description": "Session ID of the comparison trace (after optimization)",
+                "type": "string"
+              }
+            },
+            "required": [
+              "baseline_id",
+              "comparison_id"
+            ],
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "compare"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "List available Perfetto traces",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "limit": {
+                "default": 10,
+                "description": "Maximum number of traces to list",
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "perf",
+              "traces"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Update hzdb to the latest version (direct-download builds only)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "dry-run": {
+                "description": "Check for updates without installing",
+                "type": "boolean"
+              },
+              "force": {
+                "description": "Force update even if already on latest version",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "self-update"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      },
+      {
+        "additionalProperties": false,
+        "description": "Run a shell command on the device (shortcut for `adb shell`)",
+        "properties": {
+          "args": {
+            "additionalProperties": false,
+            "properties": {
+              "commands": {
+                "description": "Command and arguments to run (interactive shell if omitted)",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "format": {
+            "default": "json",
+            "description": "Output format passed to hzdb as --format.",
+            "enum": [
+              "json",
+              "table",
+              "plain"
+            ],
+            "type": "string"
+          },
+          "subcommand": {
+            "const": [
+              "shell"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "subcommand"
+        ],
+        "type": "object"
+      }
+    ]
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

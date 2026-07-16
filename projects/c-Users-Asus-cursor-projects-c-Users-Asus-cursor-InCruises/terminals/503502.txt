@@ -1,0 +1,16 @@
+---
+pid: 1808
+cwd: "C:\\Users\\Asus\\.cursor\\projects\\c-Users-Asus-cursor-InCruises"
+command: "python -c \"\nimport numpy as np\nimport librosa\n\ny, sr = librosa.load(r'c:\\Users\\Asus\\Downloads\\_ref_voices.wav', sr=None, mono=True)\nsegments = [('ANGELA',0,2),('SASHA',2,4),('DUET',4,22.27)]\nfor name,a,b in segments:\n seg=y[int(a*sr):int(b*sr)]\n rms=float(np.sqrt(np.mean(seg**2)))\n f0,_,_=librosa.pyin(seg,fmin=75,fmax=400,sr=sr)\n f0v=f0[~np.isnan(f0)]\n cent=float(np.median(librosa.feature.spectral_centroid(y=seg,sr=sr)))\n rolloff=float(np.median(librosa.feature.spectral_rolloff(y=seg,sr=sr)))\n tempo_proxy=float(np.median(librosa.feature.rms(y=seg)))\n print(name,'rms',round(rms,4),'f0_med',round(float(np.median(f0v)),1) if len(f0v) else None,'f0_mean',round(float(np.mean(f0v)),1) if len(f0v) else None,'centroid',round(cent),'rolloff',round(rolloff))\n\""
+started_at: 2026-06-19T23:11:53.330Z
+running_for_ms: 251606   
+---
+ANGELA rms 0.0462 f0_med 153.1 f0_mean 150.7 centroid 2768 rolloff 5103
+SASHA rms 0.0378 f0_med 235.4 f0_mean 231.2 centroid 1822 rolloff 4113
+DUET rms 0.0358 f0_med 134.4 f0_mean 157.0 centroid 1881 rolloff 4221
+
+---
+exit_code: 0
+elapsed_ms: 255007
+ended_at: 2026-06-19T23:16:08.337Z
+---

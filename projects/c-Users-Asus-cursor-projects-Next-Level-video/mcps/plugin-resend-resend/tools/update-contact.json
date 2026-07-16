@@ -1,0 +1,70 @@
+{
+  "name": "update-contact",
+  "description": "Update a contact in Resend (by ID or email).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Contact ID",
+        "type": "string"
+      },
+      "email": {
+        "description": "Contact email address",
+        "type": "string",
+        "format": "email",
+        "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+      },
+      "firstName": {
+        "description": "Contact first name. Pass `null` to remove the contact's first name.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "lastName": {
+        "description": "Contact last name. Pass `null` to remove the contact's last name.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "unsubscribed": {
+        "description": "Whether the contact is unsubscribed from all broadcasts",
+        "type": "boolean"
+      },
+      "properties": {
+        "description": "Custom property key-value pairs to update (e.g. { \"company_name\": \"Acme\" })",
+        "type": "object",
+        "propertyNames": {
+          "type": "string"
+        },
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

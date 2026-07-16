@@ -1,0 +1,71 @@
+{
+  "name": "ui_type",
+  "description": "Type text into a UI field on a connected device. Optionally targets a specific field by resource-id or text label (taps to focus first). Set clear=true to erase existing text first, submit=true to press Enter after typing. If no field selector is given, types into the currently focused field.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "clear": {
+        "description": "Clear existing text in the field before typing (default: false)",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "content_desc": {
+        "description": "Content-description of the field to type into",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "device_id": {
+        "description": "Device ID (optional if only one device connected)",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "exact": {
+        "description": "Match id/text_match/content_desc by full-string equality (case-insensitive) instead of the default substring match.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "id": {
+        "description": "Resource ID of the text field to type into (optional -- types into focused field if omitted)",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "input_text": {
+        "description": "The text to type",
+        "type": "string"
+      },
+      "submit": {
+        "description": "Press Enter/submit after typing (default: false)",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "text_match": {
+        "description": "Visible text or hint text of the field to type into",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "input_text"
+    ],
+    "description": "Generated MCP request struct for this tool.",
+    "title": "UiTypeRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "get_project_registries",
+  "description": "Get configured registry names from components.json - Returns error if no components.json exists (use init_project to create one)",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "shadcn",
+  "marketplace": "cursor-public",
+  "pluginId": "6948",
+  "marketplaceId": "34"
+}

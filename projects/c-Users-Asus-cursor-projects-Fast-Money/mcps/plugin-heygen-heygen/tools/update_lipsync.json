@@ -1,0 +1,27 @@
+{
+  "name": "update_lipsync",
+  "description": "Updates the display title of a lipsync job.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "lipsyncId": {
+        "title": "Lipsyncid",
+        "type": "string"
+      },
+      "title": {
+        "description": "New title for the lipsync",
+        "title": "Title",
+        "type": "string"
+      }
+    },
+    "required": [
+      "lipsyncId",
+      "title"
+    ],
+    "title": "UpdateLipsyncInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

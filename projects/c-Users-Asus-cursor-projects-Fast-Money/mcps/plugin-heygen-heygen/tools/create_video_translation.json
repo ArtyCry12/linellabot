@@ -1,0 +1,410 @@
+{
+  "name": "create_video_translation",
+  "description": "Translates a video into one or more target languages with voice cloning and lip-sync. Returns one video_translation_id per language. Use mode: 'speed' (default) for fast turnaround or 'precision' for higher lip-sync quality.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "video": {
+        "description": "Source video — provide as {type: 'url', url: '...'} or {type: 'asset_id', asset_id: '...'}",
+        "discriminator": {
+          "mapping": {
+            "asset_id": "#/$defs/AssetId",
+            "url": "#/$defs/AssetUrl"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/AssetUrl"
+          },
+          {
+            "$ref": "#/$defs/AssetId"
+          }
+        ],
+        "title": "Video"
+      },
+      "outputLanguages": {
+        "description": "Target language names (e.g. 'Chinese (Cantonese, Traditional)', 'Spanish (Spain)', 'English'). Use GET /v3/video-translations/languages for valid values. Use one for single translation, multiple for batch.",
+        "items": {
+          "type": "string"
+        },
+        "title": "Outputlanguages",
+        "type": "array"
+      },
+      "title": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Title for the translation job",
+        "title": "Title"
+      },
+      "audio": {
+        "anyOf": [
+          {
+            "discriminator": {
+              "mapping": {
+                "asset_id": "#/$defs/AssetId",
+                "url": "#/$defs/AssetUrl"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/AssetUrl"
+              },
+              {
+                "$ref": "#/$defs/AssetId"
+              }
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Custom audio for dubbing — provide as {type: 'url', url: '...'} or {type: 'asset_id', asset_id: '...'}",
+        "title": "Audio"
+      },
+      "inputLanguage": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Source language code (auto-detected if omitted)",
+        "title": "Inputlanguage"
+      },
+      "translateAudioOnly": {
+        "default": false,
+        "description": "Only translate audio, keep original video",
+        "title": "Translateaudioonly",
+        "type": "boolean"
+      },
+      "speakerNum": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Number of speakers (improves speaker separation)",
+        "title": "Speakernum"
+      },
+      "mode": {
+        "default": "speed",
+        "description": "Translation quality mode: 'speed' (faster) or 'precision' (higher quality, uses avatar inference)",
+        "enum": [
+          "speed",
+          "precision"
+        ],
+        "title": "Mode",
+        "type": "string"
+      },
+      "callbackUrl": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Webhook URL for completion notifications",
+        "title": "Callbackurl"
+      },
+      "callbackId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "ID included in webhook payload",
+        "title": "Callbackid"
+      },
+      "enableCaption": {
+        "default": false,
+        "description": "Generate captions for translated video",
+        "title": "Enablecaption",
+        "type": "boolean"
+      },
+      "keepTheSameFormat": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Preserve the source video's encoding specs (resolution, bitrate).",
+        "title": "Keepthesameformat"
+      },
+      "enableDynamicDuration": {
+        "default": true,
+        "description": "Allow dynamic duration adjustment",
+        "title": "Enabledynamicduration",
+        "type": "boolean"
+      },
+      "disableMusicTrack": {
+        "default": false,
+        "description": "Remove background music",
+        "title": "Disablemusictrack",
+        "type": "boolean"
+      },
+      "enableSpeechEnhancement": {
+        "default": false,
+        "description": "Enhance speech quality",
+        "title": "Enablespeechenhancement",
+        "type": "boolean"
+      },
+      "enableWatermark": {
+        "default": false,
+        "description": "Add watermark to output",
+        "title": "Enablewatermark",
+        "type": "boolean"
+      },
+      "startTime": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Start time in seconds for partial translation",
+        "title": "Starttime"
+      },
+      "endTime": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "End time in seconds for partial translation",
+        "title": "Endtime"
+      },
+      "brandVoiceId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Brand glossary ID for custom term translations. Legacy field name for `brand_glossary_id` — both are accepted and resolve to the same workspace record. Discover IDs via GET /v3/brand-glossaries.",
+        "title": "Brandvoiceid"
+      },
+      "brandGlossaryId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Brand glossary ID for custom term translations (e.g. translate 'Reformer' as the Pilates equipment, not 'political activist'). Alias for the legacy `brand_voice_id` field. Discover IDs via GET /v3/brand-glossaries.",
+        "title": "Brandglossaryid"
+      },
+      "stockVoiceConfig": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/StockVoiceConfig"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Use a preset stock voice for the translation instead of recreating the original speaker's voice. By default, Video Translation clones the original speaker so the result sounds like them; with this enabled, the translation is spoken by a natural preset voice optimized for clear pronunciation and accent in the target language (the result will not sound like the original speaker). Enterprise feature, available for selected accounts and languages by request — contact your HeyGen account team."
+      },
+      "srt": {
+        "anyOf": [
+          {
+            "discriminator": {
+              "mapping": {
+                "asset_id": "#/$defs/AssetId",
+                "url": "#/$defs/AssetUrl"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/AssetUrl"
+              },
+              {
+                "$ref": "#/$defs/AssetId"
+              }
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Custom subtitle file — provide as {type: 'url', url: '...'} or {type: 'asset_id', asset_id: '...'}. Enterprise plan only.",
+        "title": "Srt"
+      },
+      "srtRole": {
+        "anyOf": [
+          {
+            "enum": [
+              "input",
+              "output"
+            ],
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Which video the subtitle applies to: 'input' (source) or 'output' (translated). Enterprise plan only.",
+        "title": "Srtrole"
+      },
+      "fpsMode": {
+        "anyOf": [
+          {
+            "enum": [
+              "vfr",
+              "cfr",
+              "passthrough"
+            ],
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Frame rate mode for the output video. 'vfr' = variable frame rate, 'cfr' = constant frame rate, 'passthrough' = match the source. Only takes effect when a custom 'audio' track is provided.",
+        "title": "Fpsmode"
+      },
+      "folderId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Project/folder ID to organize translation into",
+        "title": "Folderid"
+      }
+    },
+    "required": [
+      "video",
+      "outputLanguages"
+    ],
+    "$defs": {
+      "AssetId": {
+        "description": "Asset input via HeyGen asset ID from the asset upload endpoint.",
+        "properties": {
+          "type": {
+            "const": "asset_id",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "asset_id": {
+            "description": "HeyGen asset ID from the asset upload endpoint",
+            "title": "Asset Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "asset_id"
+        ],
+        "title": "AssetId",
+        "type": "object"
+      },
+      "AssetUrl": {
+        "description": "Asset input via publicly accessible HTTPS URL.",
+        "properties": {
+          "type": {
+            "const": "url",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "description": "Publicly accessible HTTPS URL for the asset",
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ],
+        "title": "AssetUrl",
+        "type": "object"
+      },
+      "StockVoiceConfig": {
+        "description": "Stock-voice options for a video translation request.\n\nUse a preset HeyGen voice for the translation instead of recreating the original\nspeaker's voice. Enterprise feature, available for selected accounts and languages\nby request. See the ``stock_voice_config`` request field for usage.",
+        "properties": {
+          "use_stock_voice": {
+            "default": false,
+            "description": "Set to true to use a preset stock voice instead of cloning the original speaker.",
+            "title": "Use Stock Voice",
+            "type": "boolean"
+          },
+          "preferred_stock_voice_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional. Pin specific stock voice IDs to draw from. If omitted, the target language's default stock-voice pool is used.",
+            "title": "Preferred Stock Voice Ids"
+          }
+        },
+        "title": "StockVoiceConfig",
+        "type": "object"
+      }
+    },
+    "title": "CreateVideoTranslationInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

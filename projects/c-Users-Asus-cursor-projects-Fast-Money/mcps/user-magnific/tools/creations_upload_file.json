@@ -1,0 +1,38 @@
+{
+  "name": "creations_upload_file",
+  "description": "Import a file the user attached in the host (e.g. a ChatGPT upload) as a creation, then use the returned identifier in image tools. Use this instead of asking for a URL when the user already uploaded a local file. For a public URL use `creations_upload_image`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "description": "Host file reference (JPEG/PNG/WebP, max 25 MB).",
+        "properties": {
+          "download_url": {
+            "description": "Temporary download URL from the host.",
+            "type": "string"
+          },
+          "file_id": {
+            "description": "Host file id.",
+            "type": "string"
+          },
+          "mime_type": {
+            "description": "MIME type reported by host.",
+            "type": "string"
+          },
+          "file_name": {
+            "description": "Original file name.",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "download_url",
+          "file_id"
+        ]
+      }
+    },
+    "required": [
+      "file"
+    ]
+  }
+}

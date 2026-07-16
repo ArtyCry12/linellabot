@@ -1,0 +1,55 @@
+{
+  "name": "hzdb_unity_setup",
+  "description": "PRIMARY tool for creating or configuring a **Meta Quest VR** Unity project. When the user wants a Quest/VR Unity project, ALWAYS use this instead of running `Unity -createProject` directly or walking the user through the manual Package Manager / XR Plug-in Management flow. \n\nDO NOT use this for non-Quest Unity projects (2D games, mobile, desktop, etc.) — for those, use Unity Hub or `Unity -createProject` as normal. This tool installs Meta XR SDKs, configures OpenXR for Quest, and adds an OVRCameraRig — none of which belong in a non-VR project. \n\nActions:\n- inject (default): Write the Simplified VR Setup script (MetaQuestVRSetup.cs) into the project's Assets/Editor/ folder. If project_path doesn't exist or lacks Assets/, the tool BOOTSTRAPS a fresh Unity project skeleton there: it detects the latest installed Unity, fetches the URP-blank template manifest from packages.unity.com (no package versions are hardcoded in this tool — Unity's UPM registry is the source of truth), and writes Assets/, Packages/manifest.json, and ProjectSettings/ProjectVersion.txt. Requires network access for first-time bootstrap (cached 24h afterward). DO NOT pre-create the directory or write a manifest yourself before calling this. Also writes a marker in Library/ so setup auto-starts on next Unity open. Pass auto_run=false to skip the marker (user must then click Meta > Simplified VR Setup > Run Setup manually). Setup handles: build target switch, XR package installation (OpenXR, Meta XR Core SDK, uGUI), OpenXR configuration with Meta Quest features + Hand Tracking, VR scene setup (OVRCameraRig), and Project Setup Tool Fix All.\n- check: Inspect whether the project is already configured for Quest (checks manifest.json for required packages).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "$ref": "#/$defs/Action",
+        "default": "inject",
+        "description": "Action: 'inject' (write setup script into project, default) or 'check' (inspect project configuration)"
+      },
+      "auto_run": {
+        "default": true,
+        "description": "Auto-start setup on next Unity open by writing a marker file the script consumes. Default: true.",
+        "type": "boolean"
+      },
+      "force": {
+        "default": false,
+        "description": "Overwrite MetaQuestVRSetup.cs if it already exists. Default: false",
+        "type": "boolean"
+      },
+      "project_path": {
+        "description": "Absolute path to the Unity project root. If the path does not exist or lacks Assets/, the tool bootstraps a new project skeleton there: detects the latest installed Unity, fetches the URP-blank template manifest from packages.unity.com (version-matched to that Unity), and writes Assets/, Packages/manifest.json (deps come from Unity's package registry — nothing pinned in this tool), and ProjectSettings/ProjectVersion.txt. An empty pre-existing directory is fine — the tool will bootstrap inside it. If Assets/ already exists, the tool treats it as an existing project and skips bootstrap (preserving any user packages); it just injects the script. Requires network access to packages.unity.com for first-time bootstrap; results are cached for 24h. The 'check' action requires an existing project with Packages/manifest.json.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "project_path"
+    ],
+    "$defs": {
+      "Action": {
+        "description": "Action selector for `hzdb_unity_setup`. Encoded in JSON as snake_case so the\nMCP wire format stays `\"inject\"` / `\"check\"`.",
+        "oneOf": [
+          {
+            "const": "inject",
+            "description": "Write the setup script into the project's `Assets/Editor/` folder.",
+            "type": "string"
+          },
+          {
+            "const": "check",
+            "description": "Inspect the project's `Packages/manifest.json` for required packages.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Request parameters for `hzdb_unity_setup`.",
+    "title": "HzdbUnitySetupRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

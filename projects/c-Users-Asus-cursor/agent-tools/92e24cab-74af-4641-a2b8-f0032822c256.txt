@@ -1,0 +1,344 @@
+MarkItDown MCP: Microsoft's File-to-Markdown Server Guide — MCP.Directory
+
+Back to all posts
+
+MarkitdownmicrosoftOfficial1-Click ReadyEasily convert markdown to PDF using Markitdown MCP server. Supports HTTP, STDIO, and SSE for fast converting markdown to PDF workflows.2.6k96
+
+## TL;DR
+
+- One package:`pip install markitdown-mcp`(Python 3.10+), or zero-install via`uvx markitdown-mcp`. It pins`markitdown[all]` as a dependency, so every converter ships with it.
+- One tool:`convert_to_markdown(uri)`, accepting`http:`,`https:`,`file:`, and`data:` URIs. That is the entire API surface.
+- Zero configuration: no API keys, no env vars, no account. Conversion runs locally; nothing leaves your machine unless you point it at a remote URL.
+- Claude Code one-liner:`claude mcp add markitdown -- uvx markitdown-mcp`
+- Know the limits: it extracts document structure (headings, lists, tables, links), not visual fidelity. Scanned PDFs come back empty — there is no built-in OCR on the PDF path.
+
+The rest of this guide explains why the snippets look the way they do, where the library and the MCP package diverge, and when you should reach for a Claude skill instead of a server.
+
+## What MarkItDown actually does
+
+MarkItDown converts files into Markdown — Markdown because it is close to plain text, cheap in tokens, and the markup it does keep (headings, tables, lists, links) is exactly the structure an LLM can use. Microsoft built it for feeding documents into LLM and text-analysis pipelines, and it hit the Hacker News front page within days of release in December 2024 (329 points, 81 comments).
+
+The format list, straight from the README:
+
+| Input | What you get back |
+| --- | --- |
+| PDF | Embedded text layer as Markdown (no OCR on this path) |
+| PowerPoint (.pptx) | Slide text, speaker notes, table content |
+| Word (.docx) | Headings, lists, tables, links |
+| Excel (.xlsx / .xls) | Sheets as Markdown tables |
+| Images | EXIF metadata + OCR text |
+| Audio | EXIF metadata + speech transcription (optional extra) |
+| HTML | Cleaned Markdown |
+| CSV / JSON / XML | Text-based passthrough |
+| ZIP | Iterates over contents, converts each file |
+| YouTube URLs | Video transcript |
+| EPUB | Chapter text as Markdown |
+| Outlook .msg | Email body + metadata ([outlook] extra) |
+
+The design priority is worth internalizing before you install anything: MarkItDown preserves structure, not appearance. A pixel-perfect brochure becomes plain paragraphs. That trade is deliberate — Obsidian’s CEO kepano put it well on the HN thread: “plain text is the ideal format for analysis” — and the question becomes why the data was locked in .docx in the first place.
+
+The MCP wrapper arrived later, in spring 2025, and mostly without fanfare:
+
+Microsoft quietly released an MCP server that converts any Office file (Powerpoint, Word, Excel) to markdown: markitdown-mcp
+
+> — matt palmer (@mattyp) April 18, 2025
+
+Why an MCP server matters when the CLI already exists: agents can’t run your shell pipeline. With the server registered, “read this .docx and summarize the contract terms” becomes a single tool call the model makes itself — no manual conversion step, no copy-paste, and the same behavior in every MCP client. The catalog entry at/servers/markitdown tracks the package.
+
+## The MarkItDown library vs the markitdown-mcp package
+
+This is where most coverage gets sloppy.`markitdown` and`markitdown-mcp` are two different PyPI packages from the same monorepo, and they have different capability surfaces.
+
+The library (`pip install ‘markitdown[all]’`) is the converter itself, with a CLI and a Python API:
+
+```
+# CLI
+markitdown report.pdf > report.md
+markitdown slides.pptx -o slides.md
+
+# Python API
+from markitdown import MarkItDown
+md = MarkItDown(enable_plugins=False)
+result = md.convert("quarterly.xlsx")
+print(result.text_content)
+```
+
+Converters are split into optional extras so you can install only what you need:`[pptx]`,`[docx]`,`[xlsx]`,`[xls]`,`[pdf]`,`[outlook]`,`[audio-transcription]`,`[youtube-transcription]`,`[az-doc-intel]`, or everything via`[all]`. The library also has three power features: LLM-generated image descriptions (pass an`llm_client` and`llm_model` to caption images inside PowerPoints), Azure Document Intelligence routing (`docintel_endpoint`) for hard documents, and a third-party plugin system (search GitHub for`#markitdown-plugin`).
+
+The MCP package (`pip install markitdown-mcp`) is a thin server around that library. Three precise facts about it:
+
+- It depends on`markitdown[all]`— installing the MCP server always pulls in the full converter set, pinned to a compatible library version. You never chase missing extras.
+- It exposes one tool,`convert_to_markdown(uri)`, and speaks three transports: STDIO (default), Streamable HTTP, and SSE.
+- The library’s power features do not cross the boundary. The tool takes a URI and nothing else — no parameter for LLM image captions, Azure Document Intelligence, or plugins. If you need those, you need the Python API, not the MCP server.
+
+Our take: that minimalism is the right call for a converter. One tool means the model never picks the wrong one, and zero config means nothing to misconfigure. But know which package you’re holding — half the “MarkItDown can’t do X” complaints are really “the MCP tool doesn’t expose X.”
+
+## Install (every client)
+
+The server is a local process; your MCP client launches it. The cleanest launcher is`uvx`(from`uv`), which fetches and caches the package on first run — the same trick Simon Willison pointed out for the CLI on launch day. The install panel below pulls its configs from the canonical/servers/markitdown entry, so it stays in sync:
+
+One-line install · Markitdown
+
+Open server page
+
+### Install
+
+Cursor
+
+One-click install
+
+1-Click
+
+VS Code
+
+One-click install
+
+1-Click
+
+Claude Desktop
+
+Copy configuration
+
+Claude Code
+
+Copy CLI command
+
+CLI
+
+Gemini
+
+Copy CLI command
+
+CLI
+
+Codex
+
+Copy CLI command
+
+CLI
+
+Windsurf
+
+Copy configuration
+
+ChatGPT
+
+Add via Settings → Connectors
+
+M
+
+Manual
+
+Copy configuration
+
+Client-specific notes:
+
+Claude Desktop: add to`claude_desktop_config.json`:
+
+```
+{
+  "mcpServers": {
+    "markitdown": {
+      "command": "uvx",
+      "args": ["markitdown-mcp"]
+    }
+  }
+}
+```
+
+Docker: build from the repo (`docker build -t markitdown-mcp:latest .`) or pull`mcp/markitdown` from Docker Hub, then swap the command:
+
+```
+{
+  "mcpServers": {
+    "markitdown": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i",
+        "-v", "/home/user/data:/workdir",
+        "markitdown-mcp:latest"]
+    }
+  }
+}
+```
+
+- Claude Code:`claude mcp add markitdown -- uvx markitdown-mcp`. Add`--scope project` to register it in the repo’s`.mcp.json` for your whole team. See/clients/claude-code.
+- Cursor / VS Code / Windsurf: the same JSON shape in`~/.cursor/mcp.json`, VS Code’s MCP settings, or`~/.codeium/windsurf/mcp_config.json`. See/clients/cursor.
+- The`-v` mount matters: inside the container, your files live at`/workdir`, and`file:` URIs must use the container path.
+- HTTP mode (advanced):`markitdown-mcp --http --host 127.0.0.1 --port 3001` serves Streamable HTTP at`/mcp` and SSE at`/sse`. The README is blunt: the server has no authentication and runs as the invoking user. Keep it on localhost. Debug any transport with`npx @modelcontextprotocol/inspector`.
+
+## The one tool: convert_to_markdown
+
+The whole tool surface is a single function. What varies is the URI scheme, and each scheme is a different workflow:
+
+- `file:`— local documents. The agent passes`file:///Users/you/reports/q2.pdf` and gets Markdown back into context. This is the workhorse scheme.
+- `http:`/`https:`— the server fetches the URL and converts it. Works for web pages, remote PDFs, and YouTube links (the YouTube converter returns the transcript), which makes this a serviceable URL-to-Markdown tool too.
+- `data:`— inline base64 payloads, useful when another tool already holds the bytes.
+
+A real exchange in Claude Code looks like:
+
+```
+> Convert file:///Users/dev/contracts/msa-2026.docx to markdown
+  and list every clause that mentions liability caps.
+
+⏺ markitdown - convert_to_markdown (MCP)
+  ⎿ # Master Services Agreement
+    ## 1. Definitions ...
+    ## 9. Limitation of Liability ...
+
+⏺ Three clauses reference liability caps: §9.1 caps aggregate
+  liability at fees paid in the prior 12 months; §9.3 ...
+```
+
+One budgeting note from running this daily: the tool returns the entire document. A 60-page PDF can be 40,000+ tokens of Markdown landing in your context window in one call. For big files, either ask the agent to convert and immediately distill (“convert, then keep only the section headings and the tables”), or do bulk work with the CLI outside the agent and bring in only the pieces you need.
+
+## Recipes
+
+### Recipe 1 — RAG ingestion: normalize a mixed corpus
+
+The classic use. You have a folder of .docx, .pptx, .pdf, and .xlsx; your retrieval pipeline wants clean text. Markdown is the right canonical format before chunking — headings give you natural chunk boundaries and tables stay machine-readable. Prompt:
+
+```
+For each file in ./docs (use file:// URIs), call
+convert_to_markdown and write the output to ./corpus/<name>.md.
+Preserve heading structure; skip files that return empty and
+list them at the end.
+```
+
+The skip-and-report clause matters: scanned PDFs return near-empty output (see limits below), and you want a list of failures, not silent gaps in your corpus.
+
+### Recipe 2 — Batch conversion: know when to skip the agent
+
+For tens of files, the agent loop above is fine. For hundreds, it’s the wrong tool — one tool call per file, each round-tripping through the model. Use the CLI directly and save the agent for the analysis pass:
+
+```
+find ./docs -type f \( -name '*.docx' -o -name '*.pptx' -o -name '*.pdf' \) \
+  -exec sh -c 'markitdown "$1" -o "corpus/$(basename "$1").md"' _ {} \;
+```
+
+Opinionated rule of thumb: the MCP server is for conversion inside a conversation; the CLI is for conversion as a pipeline step. Mixing them up wastes either tokens or your time.
+
+### Recipe 3 — Email attachments and Outlook archives
+
+The`[outlook]` converter (included via`[all]`) reads .msg files — body, sender, subject. Combined with the ZIP converter, an exported mail archive becomes triageable:
+
+```
+Convert file:///Users/dev/export/vendor-emails.zip to markdown.
+For each message, extract sender, date, and any commitments on
+delivery dates. Build a timeline table.
+```
+
+The ZIP converter iterates the archive and converts each member file, so attachments inside the export (a .docx quote, an .xlsx price list) get folded into the same output.
+
+### Recipe 4 — URLs and YouTube transcripts
+
+Because`https:` URIs are first-class, the same tool covers “read this page” and “get me the transcript of this talk.” Pass a YouTube URL and you get the transcript as Markdown; pass a documentation page and you get cleaned text. If URL-to-Markdown is your primary need, a dedicated reader handles JavaScript -heavy pages better — see our Jina AI skill guide for that workflow. MarkItDown’s edge is being one tool that covers files and URLs.
+
+## What it does NOT preserve (read before you commit)
+
+Every converter is a lossy function. Here is what MarkItDown drops, plus two things we got wrong when we first wired it up.
+
+- Visual layout, by design. Fonts, colors, positioning, multi-column flow — all gone. You get structure (headings, lists, tables, links), which is what the model needs and nothing more.
+- Scanned PDFs. The PDF path extracts the embedded text layer — as one HN commenter traced, it wraps pdfminer.six. Image-only pages yield nothing. This is the one we got wrong first: we assumed “Images (OCR)” in the format list applied to PDFs too. It doesn’t — OCR runs on image files, not on images embedded in PDFs. Scanned documents need Azure Document Intelligence (library-only) or a different tool.
+- Complex PDF tables. A tabletop-RPG indexer on the HN thread called table handling a “non-starter” for layout-heavy PDFs: columns survive partially, table semantics often don’t. DOCX and XLSX tables fare far better because the structure is explicit in the format.
+- Spreadsheets, philosophically. A contrarian take worth hearing: one engineer who built the same feature in-house called the implementation reasonable but advises against using it for images (modern models accept images directly) and spreadsheets (“LLMs are very bad at interpreting Markdown tables”). For numeric analysis, CSV into a code-execution tool beats a Markdown table into context.
+- The reverse direction. MarkItDown never writes .docx or PDF. The second thing we got wrong: the name parses both ways, and early directory metadata (ours included) described it as “markdown to PDF.” It is strictly files to Markdown. Pandoc owns the other direction.
+
+## Troubleshooting
+
+### A PDF converts to empty or near-empty Markdown
+
+It’s a scanned or image-only PDF — there is no text layer to extract and the MCP path has no OCR. Options: run the document through Azure Document Intelligence via the Python library, or in Claude Code use the pdf-to-markdown skill or pass page images directly to the model.
+
+### file: URIs fail under Docker
+
+The container can’t see your filesystem. Mount the directory (`-v /home/user/data:/workdir`) and reference container paths:`file:///workdir/report.pdf`, not the host path. This is the most common Docker-setup failure.
+
+### uvx: command not found (or pip-env confusion)
+
+Install uv first (`brew install uv` or the official installer) —`uvx` ships with it. If you used`pip install markitdown-mcp` instead, make sure the client launches the same Python environment you installed into; a`command` of`markitdown-mcp` only works if it’s on PATH. uvx sidesteps the whole problem.
+
+### Server starts but a specific format fails
+
+The MCP package pins`markitdown[all]`, so missing-extra errors usually mean a stale install. Refresh with`uv cache clean`(uvx) or`pip install -U markitdown-mcp`. Audio transcription and YouTube transcripts also depend on network-reachable services at conversion time.
+
+### Huge document blows the context window
+
+The tool returns the whole document in one response. Convert-then-distill in the same prompt (“keep only headings and tables”), or pre-convert with the CLI and load sections selectively. There is no built-in pagination or chunking parameter.
+
+## Skill vs server, and the alternatives
+
+MarkItDown MCP sits in a crowded space. The honest decision table:
+
+- The pdf-to-markdown skill: if your input is specifically PDFs and your client is Claude Code, the skill is the sharper tool — it’s built around loading entire PDFs into context with no server process to register. Our skill cookbook covers ten workflows. The server wins when you need the other nineteen formats, or any client beyond Claude Code.
+- The markitdown skill: wraps the same Microsoft library as a Claude skill — scripts instead of a server. Good for batch jobs inside Claude Code where you’d rather not run an MCP process.
+- Docling (IBM): ML-based, layout-aware parsing — meaningfully better on complex PDF tables and scanned material, meaningfully heavier to run. Pick it when table fidelity is the job.
+- Pandoc: the bidirectional veteran. It writes Markdown back to DOCX/PDF (which MarkItDown never will), but doesn’t read Excel or PowerPoint, and has no MCP wrapper from its maintainers.
+
+Our take
+
+Install MarkItDown MCP if your agent regularly meets Office documents, EPUBs, ZIPs, or mixed folders — it’s zero-config, free, local, and the single-tool design is exactly how a converter should expose itself. Skip it if your workload is scanned PDFs or table-heavy financial documents (Docling or Azure Document Intelligence), or if you only ever touch PDFs inside Claude Code (the pdf-to-markdown skill is leaner). For the broader landscape, see our awesome MCP servers roundup.
+
+## FAQ
+
+How do I install the MarkItDown MCP server?
+
+Run `pip install markitdown-mcp` (Python 3.10+) or skip the install entirely with `uvx markitdown-mcp`. For Claude Code: `claude mcp add markitdown -- uvx markitdown-mcp`. For Claude Desktop, Cursor, or VS Code, paste the uvx JSON block from the install card on this page. No API keys, no environment variables — the server starts with zero configuration.
+
+What is the difference between MarkItDown and markitdown-mcp?
+
+MarkItDown is Microsoft's Python library and CLI for converting files to Markdown — you call it from code or a terminal. markitdown-mcp is a separate PyPI package in the same repo that wraps the library as an MCP server, exposing one tool (convert_to_markdown) so AI agents like Claude can call the converter themselves. The MCP package depends on markitdown[all], so installing it pulls in every converter.
+
+What file formats does MarkItDown convert?
+
+Per the README: PDF, PowerPoint, Word, Excel, images (EXIF metadata and OCR), audio (EXIF metadata and speech transcription), HTML, text-based formats (CSV, JSON, XML), ZIP files (iterates over contents), YouTube URLs, and EPUBs. Outlook .msg files are supported via the library's [outlook] extra, which markitdown-mcp includes through markitdown[all].
+
+Does MarkItDown OCR scanned PDFs?
+
+No. PDF conversion extracts the embedded text layer (via pdfminer.six), so a scanned, image-only PDF comes back essentially empty. The library can route documents through Azure Document Intelligence for that case, but the MCP tool does not expose that option. For scanned PDFs in Claude Code, the pdf-to-markdown skill or passing page images directly to the model works better.
+
+Can I run MarkItDown MCP remotely over HTTP?
+
+The server supports Streamable HTTP and SSE via `markitdown-mcp --http --host 127.0.0.1 --port 3001` (endpoints /mcp and /sse). But it ships no authentication and runs as the invoking user, and the README warns against binding to anything other than localhost. Treat it as a local server; put a real auth layer in front before exposing it beyond your machine.
+
+Is MarkItDown MCP free?
+
+Yes. Both the library and the MCP server are MIT-licensed open source from Microsoft, and conversion runs entirely on your machine — no API keys, no usage billing, no data leaving your environment unless you convert a remote URL. Optional library features like Azure Document Intelligence or LLM image captions cost whatever those services cost, but the core path is free.
+
+Should I use the MarkItDown MCP server or a Claude skill instead?
+
+Use the MCP server when you need many formats (Office, EPUB, audio, ZIP) or a client other than Claude Code. Use the pdf-to-markdown skill when your input is specifically PDFs in Claude Code — it's purpose-built for loading whole PDFs into context. There's also a markitdown skill that wraps the same library for script-based batch work without a server process.
+
+Can MarkItDown convert Markdown back to PDF or Word?
+
+No — it's one-way. MarkItDown converts files to Markdown, never the reverse. The name reads ambiguously and directory listings sometimes get this wrong, but there is no markdown-to-PDF path in the package. For the reverse direction use Pandoc, which converts Markdown into DOCX, PDF, and dozens of other formats.
+
+## Sources
+
+- MarkItDown repository and README: github.com/microsoft/markitdown(MIT)
+- markitdown-mcp package README: packages/markitdown-mcp
+- PyPI: pypi.org/project/markitdown-mcp(depends on markitdown[all]; Python ≥3.10)
+- Hacker News launch thread (Dec 2024): news.ycombinator.com/item?id=42410803
+- First community spotting of the MCP package:@mattyp, April 18, 2025
+- Docker Hub image: hub.docker.com/r/mcp/markitdown
+- Canonical MCP.Directory entry:/servers/markitdown
+- Related skills:/skills/pdf-to-markdown·/skills/markitdown
+
+### Claude PDF-to-Markdown Skill: 10 Workflows
+
+Skill cookbookRead
+
+### Jina AI Skill: URL-to-Markdown for Agents
+
+Skill cookbookRead
+
+### Claude Code — MCP client reference
+
+ClientOpen
+
+Found an issue?
+
+If something in this guide is out of date — a new converter, a changed CLI flag, an MCP-side feature we should cover — email
+
+[email protected] or read more on our about page. We keep these guides current.
+
+Feedback

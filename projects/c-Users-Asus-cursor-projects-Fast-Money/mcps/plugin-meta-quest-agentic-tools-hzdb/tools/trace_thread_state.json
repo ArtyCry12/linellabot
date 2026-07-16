@@ -1,0 +1,42 @@
+{
+  "name": "trace_thread_state",
+  "description": "Retrieve thread state information from a Perfetto trace. Analyzes thread scheduling states (Running, Sleeping, etc.) during a specific time range. Find thread IDs first with run_sql_query: SELECT utid, name FROM thread. If session_id is omitted, uses the most recently captured trace.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "end_ts": {
+        "default": 1000000000000000000,
+        "description": "End time of the query in nanoseconds (default: very large)",
+        "format": "int64",
+        "type": "integer"
+      },
+      "session_id": {
+        "description": "The file name of the trace (session ID). If omitted, uses the most recently captured trace.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "start_ts": {
+        "default": 0,
+        "description": "Start time of the query in nanoseconds (default: 0)",
+        "format": "int64",
+        "type": "integer"
+      },
+      "utid": {
+        "description": "Unique thread identifier (utid) from Perfetto trace",
+        "format": "int64",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "utid"
+    ],
+    "description": "Request parameters for trace_thread_state tool.",
+    "title": "TraceThreadStateRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

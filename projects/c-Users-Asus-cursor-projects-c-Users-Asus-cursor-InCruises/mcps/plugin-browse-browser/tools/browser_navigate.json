@@ -1,0 +1,22 @@
+{
+  "name": "browser_navigate",
+  "description": "Navigate to a URL in the browser. Launches Chrome automatically on first call. Returns page title and URL.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "The URL to navigate to (include https://)"
+      }
+    },
+    "required": [
+      "url"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

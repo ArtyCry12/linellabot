@@ -1,0 +1,27 @@
+{
+  "name": "add_file_to_skill",
+  "description": "Add a new file to an existing Agent Skill. Use this to add reference docs, scripts, or configuration files to a skill you own.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "skillId": {
+        "description": "The ID of the skill to add the file to",
+        "type": "string"
+      },
+      "filename": {
+        "description": "File path (e.g., 'reference.md', 'scripts/helper.py', 'config/settings.json')",
+        "type": "string"
+      },
+      "content": {
+        "description": "File content",
+        "type": "string"
+      }
+    },
+    "required": [
+      "skillId",
+      "filename",
+      "content"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

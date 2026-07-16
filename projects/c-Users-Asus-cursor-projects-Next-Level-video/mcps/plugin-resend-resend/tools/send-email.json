@@ -1,0 +1,138 @@
+{
+  "name": "send-email",
+  "description": "**Purpose:** Send a single transactional email to one or more recipients immediately (or schedule it). Use for one-off messages, notifications, and direct replies.\n\n**NOT for:** Sending the same email to a whole list/audience (use create-broadcast + send-broadcast). Not for managing contacts or audiences.\n\n**Returns:** Send confirmation and email ID.\n\n**When to use:**\n- User wants to \"send an email\" to specific people (names or addresses)\n- One-off messages: password reset, order confirmation, receipt, alert\n- User says \"email this to X\", \"notify them\", \"send a message to...\"\n- Scheduling a single email for later\n\n**Workflow:** Get recipient(s) and content from user → send-email. Use list-emails or get-email to check delivery status afterward.\n\n**Key trigger phrases:** \"Send an email\", \"Email this to\", \"Notify\", \"Send a message\", \"Reply to them\", \"Schedule an email\"",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "to": {
+        "minItems": 1,
+        "maxItems": 50,
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "email",
+          "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+        },
+        "description": "Array of recipient email addresses (1-50 recipients)"
+      },
+      "subject": {
+        "type": "string",
+        "description": "Email subject line"
+      },
+      "text": {
+        "type": "string",
+        "description": "Plain text email content"
+      },
+      "html": {
+        "description": "HTML email content. When provided, the plain text argument MUST be provided as well.",
+        "type": "string"
+      },
+      "cc": {
+        "description": "Optional array of CC email addresses. You MUST ask the user for this parameter. Under no circumstance provide it yourself",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "email",
+          "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+        }
+      },
+      "bcc": {
+        "description": "Optional array of BCC email addresses. You MUST ask the user for this parameter. Under no circumstance provide it yourself",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "email",
+          "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+        }
+      },
+      "scheduledAt": {
+        "description": "Optional parameter to schedule the email. This uses natural language. Examples would be 'tomorrow at 10am' or 'in 2 hours' or 'next day at 9am PST' or 'Friday at 3pm ET'.",
+        "type": "string"
+      },
+      "attachments": {
+        "description": "Array of file attachments. Each needs filename plus one of: url or content. Max 40MB total.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string",
+              "description": "Name of the file with extension (e.g., \"report.pdf\")"
+            },
+            "url": {
+              "description": "URL where the file is hosted (Resend will fetch it)",
+              "type": "string"
+            },
+            "content": {
+              "description": "Base64-encoded file content",
+              "type": "string"
+            },
+            "contentType": {
+              "description": "MIME type (e.g., \"application/pdf\"). Auto-derived from filename if not set",
+              "type": "string"
+            },
+            "contentId": {
+              "description": "Content ID for inline images. Reference in HTML with cid:<contentId>",
+              "type": "string"
+            }
+          },
+          "required": [
+            "filename"
+          ]
+        }
+      },
+      "tags": {
+        "description": "Array of custom tags for tracking/analytics. Each tag has a name and value.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Tag name (key)"
+            },
+            "value": {
+              "type": "string",
+              "description": "Tag value"
+            }
+          },
+          "required": [
+            "name",
+            "value"
+          ]
+        }
+      },
+      "topicId": {
+        "description": "Topic ID for subscription-based sending. When set, the email respects contact subscription preferences for this topic.",
+        "type": "string"
+      },
+      "from": {
+        "type": "string",
+        "minLength": 1,
+        "format": "email",
+        "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+        "description": "Sender email address. You MUST ask the user for this parameter. Under no circumstance provide it yourself"
+      },
+      "replyTo": {
+        "description": "Optional email addresses for the email readers to reply to. You MUST ask the user for this parameter. Under no circumstance provide it yourself",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "email",
+          "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+        }
+      }
+    },
+    "required": [
+      "to",
+      "subject",
+      "text",
+      "from"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

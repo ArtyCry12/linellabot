@@ -1,0 +1,19 @@
+{
+  "name": "browser_snapshot",
+  "description": "Get the accessibility tree snapshot with element refs. Use refs from the output to target elements in browser_click, browser_fill, and browser_select.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "compact": {
+        "type": "boolean",
+        "description": "Compact output without maps (default: true)"
+      }
+    },
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "list_video_translation_languages",
+  "description": "Returns all supported target language names for video translation.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

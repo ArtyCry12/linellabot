@@ -1,0 +1,41 @@
+---
+pid: 4984
+cwd: "C:\\Users\\Asus\\.cursor\\projects\\Fast-Money"
+command: "Set-Location \"c:\\Users\\Asus\\.cursor\\projects\\Fast-Money\"; npm run build"
+started_at: 2026-07-13T17:11:30.206Z
+running_for_ms: 45841    
+---
+
+> ai-website-clone-template@0.3.1 build
+> next build
+
+▲ Next.js 16.2.1 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 11.8s
+  Running TypeScript ...
+  Finished TypeScript in 18.0s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/7) ...
+  Generating static pages using 3 workers (1/7) 
+  Generating static pages using 3 workers (3/7) 
+  Generating static pages using 3 workers (5/7) 
+✓ Generating static pages using 3 workers (7/7) in 792ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /demo/auto
+├ ○ /demo/salon
+└ ○ /demo/stomatolog
+
+
+○  (Static)  prerendered as static content
+
+
+---
+exit_code: 0
+elapsed_ms: 49764
+ended_at: 2026-07-13T17:12:19.970Z
+---

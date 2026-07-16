@@ -1,0 +1,6 @@
+{
+  "uri": "flows://",
+  "name": "flows",
+  "description": "Enriched flows catalog (with preview URLs) for the flows picker iframe. Agent reasoning uses the flows_list tool.",
+  "mimeType": "application/json"
+}

@@ -1,0 +1,43 @@
+{
+  "name": "search_prompts",
+  "description": "Search for AI prompts by keyword. Returns matching prompts with title, description, content, author, category, and tags. Use this to discover prompts for various AI tasks like coding, writing, analysis, and more.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "description": "Search query to find relevant prompts",
+        "type": "string"
+      },
+      "limit": {
+        "description": "Maximum number of prompts to return (default 10, max 50)",
+        "default": 10,
+        "type": "number",
+        "minimum": 1,
+        "maximum": 50
+      },
+      "type": {
+        "description": "Filter by prompt type",
+        "type": "string",
+        "enum": [
+          "TEXT",
+          "STRUCTURED",
+          "IMAGE",
+          "VIDEO",
+          "AUDIO"
+        ]
+      },
+      "category": {
+        "description": "Filter by category slug",
+        "type": "string"
+      },
+      "tag": {
+        "description": "Filter by tag slug",
+        "type": "string"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

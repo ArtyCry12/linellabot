@@ -1,0 +1,30 @@
+{
+  "name": "simulate_spaces",
+  "description": "Estimate the credit cost of `spaces_run` before running it, for the same `startNodeId` and `mode`. Read-only — never charges.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "spaceId": {
+        "description": "Space UUID.",
+        "type": "string"
+      },
+      "startNodeId": {
+        "description": "Node id from `spaces_state` — same start node you would pass to `spaces_run`.",
+        "type": "string"
+      },
+      "mode": {
+        "description": "Default downstream. Matches `spaces_run`.",
+        "enum": [
+          "singular",
+          "connected",
+          "downstream"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "spaceId",
+      "startNodeId"
+    ]
+  }
+}

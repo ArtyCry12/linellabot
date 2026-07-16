@@ -1,0 +1,123 @@
+{
+  "name": "metavr_app",
+  "description": "Query and manage apps on a connected Meta Quest VR headset via metavr (Meta's Quest dev CLI). DO NOT GUESS what's installed.\n\nRead actions: list (target=<serial>, app_type=all|user|system, all optional), info (package=<package>).\n\nMutating actions: install (apk_path; replace / grant_permissions / downgrade optional), uninstall (package; keep_data optional — destructive), launch (package; activity optional), stop (package), clear (package — destructive), travel-test (package; destination=<api_name>; deeplink_message / lobby optional — launch at a travel/deeplink destination for multiplayer testing).\n\nCall metavr_device action='list' first when multiple headsets may be connected so you can pass `target`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "description": "Action to run. One of:\n- list: list installed apps (target=<serial> optional; app_type=<all|user|system> optional, default 'all')\n- info: Android manifest, version, and signing info for an installed app (package=<package>)\n- install: install an APK (apk_path=<path>; replace, grant_permissions, downgrade are optional bools)\n- uninstall: uninstall an app (package=<package>; keep_data optional bool) — destructive\n- launch: launch an app (package=<package>; activity optional)\n- stop: force stop an app (package=<package>)\n- clear: clear app data (package=<package>) — destructive\n- travel-test: launch an app at a travel/deeplink destination for multiplayer testing (package=<package>; destination=<api_name>; deeplink_message optional; lobby optional)",
+        "type": "string"
+      },
+      "activity": {
+        "default": null,
+        "description": "Activity to launch (e.g. .MainActivity). Optional; defaults to the package's launcher activity. Only used with action='launch'.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "apk_path": {
+        "default": null,
+        "description": "Filesystem path to an APK on the developer's machine. Required for action='install'.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "app_type": {
+        "default": null,
+        "description": "Filter for action='list': 'all', 'user' (third-party), or 'system'. Defaults to 'all'.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "deeplink_message": {
+        "default": null,
+        "description": "Deeplink message payload. Optional; only used with action='travel-test'.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "destination": {
+        "default": null,
+        "description": "Destination api name to travel to. Required for action='travel-test'.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "downgrade": {
+        "default": null,
+        "description": "Allow version downgrade. Only used with action='install'.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "format": {
+        "default": "json",
+        "description": "Output format: 'json' (default), 'table', or 'plain'.",
+        "type": "string"
+      },
+      "grant_permissions": {
+        "default": null,
+        "description": "Grant all runtime permissions on install. Only used with action='install'.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "keep_data": {
+        "default": null,
+        "description": "Keep app data and cache when uninstalling. Only used with action='uninstall'.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "lobby": {
+        "default": null,
+        "description": "Lobby session id to join. Optional; only used with action='travel-test'.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "package": {
+        "default": null,
+        "description": "Android package name (e.g. com.oculus.myapp). Required for info / uninstall / launch / stop / clear.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "replace": {
+        "default": null,
+        "description": "Replace the existing installation (keep data). Only used with action='install'.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "target": {
+        "default": null,
+        "description": "Device serial used to disambiguate when more than one device is connected. Optional; passed to metavr as the global `--device <serial>` flag.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "action"
+    ],
+    "description": "Request parameters for `hzdb_app`.",
+    "title": "MetavrAppRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

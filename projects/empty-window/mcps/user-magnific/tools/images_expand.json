@@ -1,0 +1,48 @@
+{
+  "name": "images_expand",
+  "description": "AI outpaint to `aspectRatio`: keeps the original and generates new surroundings, anchoring the subject automatically. Crop instead (no new pixels): `images_crop`. Ratios: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 21:9.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "creationIdentifier": {
+        "description": "Image creation identifier (import uploads first).",
+        "type": "string"
+      },
+      "aspectRatio": {
+        "description": "Target ratio to outpaint into.",
+        "enum": [
+          "1:1",
+          "16:9",
+          "9:16",
+          "4:3",
+          "3:4",
+          "3:2",
+          "2:3",
+          "21:9"
+        ],
+        "type": "string"
+      },
+      "prompt": {
+        "description": "Optional hint for what to generate in the new area, e.g. \"sandy beach\".",
+        "type": "string"
+      },
+      "mode": {
+        "description": "Generation model. Default ideogram.",
+        "enum": [
+          "ideogram",
+          "flux",
+          "classic"
+        ],
+        "type": "string"
+      },
+      "folderReference": {
+        "description": "Optional project/folder reference from `folders_list` to place results in. Omit for the default.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "creationIdentifier",
+      "aspectRatio"
+    ]
+  }
+}

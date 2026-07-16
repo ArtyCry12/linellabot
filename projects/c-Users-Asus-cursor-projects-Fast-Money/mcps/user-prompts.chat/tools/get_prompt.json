@@ -1,0 +1,22 @@
+{
+  "name": "get_prompt",
+  "description": "Get a prompt by ID and optionally fill in its variables. If the prompt contains template variables (like {{variable}}), you will be asked to provide values for them.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "The ID of the prompt to retrieve",
+        "type": "string"
+      },
+      "fill_variables": {
+        "description": "If true and the prompt has template variables, triggers interactive variable filling. Default false — returns raw prompt with variable metadata.",
+        "default": false,
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

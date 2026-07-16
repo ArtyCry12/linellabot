@@ -1,0 +1,30 @@
+{
+  "name": "design_auto_layers",
+  "description": "Extract editable layers from a flat image into a Pikaso design.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "creationIdentifier": {
+        "description": "Identifier of the source image.",
+        "type": "string"
+      },
+      "name": {
+        "description": "Descriptive 2-6 word name from the image subject. Required.",
+        "type": "string"
+      },
+      "numLayers": {
+        "description": "Max layers (2-8, default 6).",
+        "minimum": 2,
+        "maximum": 8,
+        "type": "integer"
+      },
+      "vectorize": {
+        "description": "Vectorize image layers (default false).",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "creationIdentifier"
+    ]
+  }
+}

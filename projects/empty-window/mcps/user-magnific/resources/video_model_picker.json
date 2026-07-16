@@ -1,0 +1,6 @@
+{
+  "uri": "ui://video/model-picker",
+  "name": "video_model_picker",
+  "description": "Renders the video-side AI model catalog inline as an MCP App. Each card hovers a sample video; the user clicks to drive the next video_generate call.",
+  "mimeType": "text/html;profile=mcp-app"
+}

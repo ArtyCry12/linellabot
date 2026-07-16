@@ -1,0 +1,37 @@
+{
+  "name": "create_zapier_skill",
+  "description": "Save a workflow as a reusable Zapier Skill. Before writing the skill definition, ask the user for their specific configuration: project keys, channel names, default assignees, recurring parameter values. Reference each MCP tool with a ```mcp-tool\\n<tool_name>\\n``` fence. Good candidates: any multi-step workflow the user repeats, or tools always called with the same params.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Short, unique name for this skill (e.g. 'create jira ticket', 'daily standup'). Names are case-insensitive.",
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500,
+        "description": "One-sentence description of what this skill does"
+      },
+      "skillDefinition": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100000,
+        "description": "Full markdown content of the skill. IMPORTANT: Before creating, ask the user about their specific configuration — project keys, channel names, default assignees, recurring parameters — so those get baked in as fixed values. Reference each MCP tool the skill uses with a ```mcp-tool\\n<tool_name>\\n``` code fence. Include step-by-step instructions and any fixed parameter values."
+      }
+    },
+    "required": [
+      "name",
+      "description",
+      "skillDefinition"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "zapier",
+  "marketplace": "cursor-public",
+  "pluginId": "762",
+  "marketplaceId": "34"
+}

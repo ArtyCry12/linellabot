@@ -1,0 +1,169 @@
+{
+  "name": "create_video_from_cinematic_avatar",
+  "description": "Create a video from a text prompt plus avatar and asset references (Cinematic Avatar).\n\nCinematic Avatar generates a video from a natural-language ``prompt`` guided by\nreference content: one to three avatar looks and optional reference assets\n(images / videos / audio). Unlike the ``avatar`` and ``image`` modes there is\nno script or voice — motion and speech are driven entirely by the prompt and\nthe supplied references. Backed by the Seedance generation pipeline.\n",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "description": "Natural-language prompt describing the video to generate.",
+        "title": "Prompt",
+        "type": "string"
+      },
+      "avatarId": {
+        "description": "Avatar look ID(s) used as visual references. Provide 1 to 3 look IDs.",
+        "items": {
+          "type": "string"
+        },
+        "title": "Avatarid",
+        "type": "array"
+      },
+      "references": {
+        "anyOf": [
+          {
+            "items": {
+              "discriminator": {
+                "mapping": {
+                  "asset_id": "#/$defs/AssetId",
+                  "url": "#/$defs/AssetUrl"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/AssetUrl"
+                },
+                {
+                  "$ref": "#/$defs/AssetId"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Reference assets (images, videos, or audio) guiding the generation. Each accepts a URL, an asset_id. Combined limits: at most 3 videos and 9 images across avatars and references.",
+        "title": "References"
+      },
+      "aspectRatio": {
+        "default": "16:9",
+        "description": "Output aspect ratio. Supported for cinematic_avatar: '16:9', '9:16', '1:1'. Defaults to '16:9'.",
+        "enum": [
+          "16:9",
+          "9:16",
+          "4:5",
+          "5:4",
+          "1:1",
+          "auto"
+        ],
+        "title": "Aspectratio",
+        "type": "string"
+      },
+      "resolution": {
+        "default": "720p",
+        "description": "Output resolution. Supported for cinematic_avatar: '720p', '1080p'. Defaults to '720p'.",
+        "enum": [
+          "720p",
+          "1080p"
+        ],
+        "title": "Resolution",
+        "type": "string"
+      },
+      "autoDuration": {
+        "default": false,
+        "description": "Let the model choose the video length. When true, omit duration.",
+        "title": "Autoduration",
+        "type": "boolean"
+      },
+      "duration": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Video length in seconds (4–15). Defaults to 10. Omit when auto_duration is true.",
+        "title": "Duration"
+      },
+      "enhancePrompt": {
+        "default": false,
+        "description": "Enable server-side prompt enhancement.",
+        "title": "Enhanceprompt",
+        "type": "boolean"
+      },
+      "title": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Display title for the video in the HeyGen dashboard.",
+        "title": "Title"
+      }
+    },
+    "required": [
+      "prompt",
+      "avatarId"
+    ],
+    "$defs": {
+      "AssetId": {
+        "description": "Asset input via HeyGen asset ID from the asset upload endpoint.",
+        "properties": {
+          "type": {
+            "const": "asset_id",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "asset_id": {
+            "description": "HeyGen asset ID from the asset upload endpoint",
+            "title": "Asset Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "asset_id"
+        ],
+        "title": "AssetId",
+        "type": "object"
+      },
+      "AssetUrl": {
+        "description": "Asset input via publicly accessible HTTPS URL.",
+        "properties": {
+          "type": {
+            "const": "url",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "description": "Publicly accessible HTTPS URL for the asset",
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ],
+        "title": "AssetUrl",
+        "type": "object"
+      }
+    },
+    "title": "CreateVideoFromCinematicAvatarInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

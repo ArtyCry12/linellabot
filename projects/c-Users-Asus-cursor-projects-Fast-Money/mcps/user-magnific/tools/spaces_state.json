@@ -1,0 +1,42 @@
+{
+  "name": "spaces_state",
+  "description": "Read-only board context, raw TOON. Default: current page + pageIndex (other pages, counts). pageId: another page on demand. scope=all: whole board (costly). selectedElementIds: selected nodes. Needs view perm.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "spaceId": {
+        "description": "Space UUID.",
+        "type": "string"
+      },
+      "selectedElementIds": {
+        "description": "Selected node ids.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "selectedConnectionIds": {
+        "description": "Selected connection ids.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "currentPageId": {
+        "description": "Page the user is viewing.",
+        "type": "string"
+      },
+      "pageId": {
+        "description": "Read a specific page; falls back to currentPageId.",
+        "type": "string"
+      },
+      "scope": {
+        "description": "current_page (default) | all (whole board, costly).",
+        "type": "string"
+      }
+    },
+    "required": [
+      "spaceId"
+    ]
+  }
+}

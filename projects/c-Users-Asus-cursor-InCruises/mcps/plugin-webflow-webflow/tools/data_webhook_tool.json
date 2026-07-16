@@ -1,0 +1,135 @@
+{
+  "name": "data_webhook_tool",
+  "description": "Data tool - Webhook tool to perform actions like list webhooks, create webhooks, get webhook details, and delete webhooks for a Webflow site.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Label to identify this action in the response when sending multiple actions."
+            },
+            "create_webhook": {
+              "type": "object",
+              "properties": {
+                "site_id": {
+                  "type": "string",
+                  "description": "The site's unique ID, used to create a webhook for this site."
+                },
+                "trigger_type": {
+                  "type": "string",
+                  "enum": [
+                    "form_submission",
+                    "site_publish",
+                    "page_created",
+                    "page_metadata_updated",
+                    "page_deleted",
+                    "ecomm_new_order",
+                    "ecomm_order_changed",
+                    "ecomm_inventory_changed",
+                    "user_account_added",
+                    "user_account_updated",
+                    "user_account_deleted",
+                    "collection_item_created",
+                    "collection_item_changed",
+                    "collection_item_deleted",
+                    "collection_item_published",
+                    "collection_item_unpublished",
+                    "comment_created"
+                  ],
+                  "description": "The type of event that triggers the webhook. Choose from 17 supported trigger types."
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "The URL that will receive the webhook POST request when the event is triggered."
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the form to receive notifications for."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Only supported for the 'form_submission' trigger type. Filter for a specific form by name."
+                }
+              },
+              "required": [
+                "site_id",
+                "trigger_type",
+                "url"
+              ],
+              "additionalProperties": false,
+              "description": "Create a new webhook for a site. Limit of 75 registrations per trigger type, per site."
+            },
+            "delete_webhook": {
+              "type": "object",
+              "properties": {
+                "webhook_id": {
+                  "type": "string",
+                  "description": "The webhook's unique ID, used to identify which webhook to remove."
+                }
+              },
+              "required": [
+                "webhook_id"
+              ],
+              "additionalProperties": false,
+              "description": "Remove a webhook registration."
+            },
+            "get_webhook": {
+              "type": "object",
+              "properties": {
+                "webhook_id": {
+                  "type": "string",
+                  "description": "The webhook's unique ID, used to retrieve its details."
+                }
+              },
+              "required": [
+                "webhook_id"
+              ],
+              "additionalProperties": false,
+              "description": "Get detailed information about a specific webhook including its trigger type, URL, and last triggered date."
+            },
+            "list_webhooks": {
+              "type": "object",
+              "properties": {
+                "site_id": {
+                  "type": "string",
+                  "description": "The site's unique ID, used to list its registered webhooks."
+                }
+              },
+              "required": [
+                "site_id"
+              ],
+              "additionalProperties": false,
+              "description": "List all App-created webhooks registered for a given site. Returns webhook details including trigger type, URL, and creation date."
+            }
+          },
+          "required": [
+            "label"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

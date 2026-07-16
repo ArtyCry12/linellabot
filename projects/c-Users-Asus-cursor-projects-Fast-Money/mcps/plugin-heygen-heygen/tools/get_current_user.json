@@ -1,0 +1,12 @@
+{
+  "name": "get_current_user",
+  "description": "Returns the authenticated user's profile, remaining credits or balance, and billing details.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "folders_get",
+  "description": "Fetch folder metadata by `reference`. Use before `creations_search` (`from=folder`). Foreign refs error.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "reference": {
+        "description": "Folder reference.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference"
+    ]
+  }
+}

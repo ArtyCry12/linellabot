@@ -1,0 +1,27 @@
+{
+  "name": "update_video_translation",
+  "description": "Updates the display title of a video translation job.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "videoTranslationId": {
+        "title": "Videotranslationid",
+        "type": "string"
+      },
+      "title": {
+        "description": "New title for the video translation",
+        "title": "Title",
+        "type": "string"
+      }
+    },
+    "required": [
+      "videoTranslationId",
+      "title"
+    ],
+    "title": "UpdateVideoTranslationInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

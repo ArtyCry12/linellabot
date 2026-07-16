@@ -1,0 +1,16 @@
+{
+  "name": "creations_get",
+  "description": "Single creation complete data — metadata + URLs (`url` full-res, `previewUrl` ~1024px, `thumbnailUrl` ~400px).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "creationIdentifier": {
+        "description": "Creation identifier.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "creationIdentifier"
+    ]
+  }
+}

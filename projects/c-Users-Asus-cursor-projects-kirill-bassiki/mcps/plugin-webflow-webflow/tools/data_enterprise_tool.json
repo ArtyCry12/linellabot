@@ -1,0 +1,517 @@
+{
+  "name": "data_enterprise_tool",
+  "description": "Data tool - Enterprise tool to perform actions like manage 301 redirects, manage robots.txt and more. This tool only works if User's workspace plan is Enterprise or higher, else tool will return an error.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Label echoed in the response for this action item. It does not select which action runs."
+                },
+                "add_well_known_file": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to add a well-known file."
+                    },
+                    "fileName": {
+                      "type": "string",
+                      "description": "The name of the well-known file (e.g., 'apple-app-site-association', 'assetlinks.json'). \".noext\" is a special file extension that removes other extensions. For example, apple-app-site-association.noext.txt will be uploaded as apple-app-site-association. Use this extension for tools that have trouble uploading extensionless files."
+                    },
+                    "fileData": {
+                      "type": "string",
+                      "description": "The content/data of the well-known file as a string."
+                    },
+                    "contentType": {
+                      "type": "string",
+                      "enum": [
+                        "application/json",
+                        "text/plain"
+                      ],
+                      "description": "The MIME type of the file content (application/json or text/plain)."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "fileName",
+                    "fileData",
+                    "contentType"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Add or update a well-known file to the site's /.well-known/ directory."
+                }
+              },
+              "required": [
+                "label",
+                "add_well_known_file"
+              ],
+              "additionalProperties": false,
+              "description": "Run add_well_known_file: Add or update a well-known file to the site's /.well-known/ directory."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "create_301_redirect": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to create a 301 redirect."
+                    },
+                    "fromUrl": {
+                      "type": "string",
+                      "description": "The source URL path that will be redirected (e.g., '/old-page')."
+                    },
+                    "toUrl": {
+                      "type": "string",
+                      "description": "The destination URL path where requests will be redirected to (e.g., '/new-page')."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "fromUrl",
+                    "toUrl"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a new 301 redirect for a site."
+                }
+              },
+              "required": [
+                "label",
+                "create_301_redirect"
+              ],
+              "additionalProperties": false,
+              "description": "Run create_301_redirect: Create a new 301 redirect for a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "delete_301_redirect": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to delete a 301 redirect."
+                    },
+                    "redirect_id": {
+                      "type": "string",
+                      "description": "The redirect's unique ID, used to identify which redirect to delete."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "redirect_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete a 301 redirect from a site."
+                }
+              },
+              "required": [
+                "label",
+                "delete_301_redirect"
+              ],
+              "additionalProperties": false,
+              "description": "Run delete_301_redirect: Delete a 301 redirect from a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "delete_robots_txt": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to remove entries from its robots.txt."
+                    },
+                    "rules": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "userAgent": {
+                            "type": "string",
+                            "description": "The user agent for the rule to remove (e.g., '*', 'Googlebot')."
+                          },
+                          "allow": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Allowed URL paths in the rule to remove."
+                          },
+                          "disallow": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Disallowed URL paths in the rule to remove."
+                          }
+                        },
+                        "required": [
+                          "userAgent",
+                          "allow",
+                          "disallow"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "description": "Rules to remove from robots.txt. Omit when removing only a sitemap URL."
+                    },
+                    "sitemap": {
+                      "type": "string",
+                      "description": "Sitemap URL to remove. Omit when removing only rules."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove specified rules and/or a sitemap URL from robots.txt. This does not delete the entire robots.txt file."
+                }
+              },
+              "required": [
+                "label",
+                "delete_robots_txt"
+              ],
+              "additionalProperties": false,
+              "description": "Run delete_robots_txt: Remove specified rules and/or a sitemap URL from robots.txt. This does not delete the entire robots.txt file."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_robots_txt": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to get its robots.txt configuration."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get the robots.txt configuration for a site."
+                }
+              },
+              "required": [
+                "label",
+                "get_robots_txt"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_robots_txt: Get the robots.txt configuration for a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_301_redirects": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to list its 301 redirects."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List all 301 redirects for a site."
+                }
+              },
+              "required": [
+                "label",
+                "list_301_redirects"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_301_redirects: List all 301 redirects for a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_site_activity_logs": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to list its activity log events."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "description": "Maximum number of records to return (max 100)."
+                    },
+                    "offset": {
+                      "type": "number",
+                      "description": "Offset used for pagination if the results have more than limit records."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List activity log events for a site. Requires Enterprise hosting plan. To get logs for multiple sites, include multiple actions in the array — each is handled independently so a failure for one site won't prevent results from others."
+                }
+              },
+              "required": [
+                "label",
+                "list_site_activity_logs"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_site_activity_logs: List activity log events for a site. Requires Enterprise hosting plan. To get logs for multiple sites, include multiple actions in the array — each is handled independently so a failure for one site won't prevent results from others."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "remove_well_known_files": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to remove well-known files."
+                    },
+                    "fileNames": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Array of file names to remove from the /.well-known/ directory."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "fileNames"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove one or more well-known files from the site."
+                }
+              },
+              "required": [
+                "label",
+                "remove_well_known_files"
+              ],
+              "additionalProperties": false,
+              "description": "Run remove_well_known_files: Remove one or more well-known files from the site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "replace_robots_txt": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to replace its robots.txt."
+                    },
+                    "rules": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "userAgent": {
+                            "type": "string",
+                            "description": "The user agent to apply rules to (e.g., '*', 'Googlebot')."
+                          },
+                          "allow": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Array of URL paths to allow."
+                          },
+                          "disallow": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Array of URL paths to disallow."
+                          }
+                        },
+                        "required": [
+                          "userAgent",
+                          "allow",
+                          "disallow"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Array of rules to apply to the robots.txt file."
+                    },
+                    "sitemap": {
+                      "type": "string",
+                      "description": "URL to the sitemap (e.g., 'https://example.com/sitemap.xml')."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Completely replace the robots.txt file (PUT operation)."
+                }
+              },
+              "required": [
+                "label",
+                "replace_robots_txt"
+              ],
+              "additionalProperties": false,
+              "description": "Run replace_robots_txt: Completely replace the robots.txt file (PUT operation)."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_301_redirect": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to update a 301 redirect."
+                    },
+                    "redirect_id": {
+                      "type": "string",
+                      "description": "The redirect's unique ID, used to identify which redirect to update."
+                    },
+                    "fromUrl": {
+                      "type": "string",
+                      "description": "The source URL path that will be redirected (e.g., '/old-page')."
+                    },
+                    "toUrl": {
+                      "type": "string",
+                      "description": "The destination URL path where requests will be redirected to (e.g., '/new-page')."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "redirect_id",
+                    "fromUrl",
+                    "toUrl"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update an existing 301 redirect."
+                }
+              },
+              "required": [
+                "label",
+                "update_301_redirect"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_301_redirect: Update an existing 301 redirect."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_robots_txt": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to update its robots.txt."
+                    },
+                    "rules": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "userAgent": {
+                            "type": "string",
+                            "description": "The user agent to apply rules to (e.g., '*', 'Googlebot')."
+                          },
+                          "allow": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Array of URL paths to allow."
+                          },
+                          "disallow": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Array of URL paths to disallow."
+                          }
+                        },
+                        "required": [
+                          "userAgent",
+                          "allow",
+                          "disallow"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Array of rules to apply to the robots.txt file."
+                    },
+                    "sitemap": {
+                      "type": "string",
+                      "description": "URL to the sitemap (e.g., 'https://example.com/sitemap.xml')."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Partially update the robots.txt file (PATCH operation)."
+                }
+              },
+              "required": [
+                "label",
+                "update_robots_txt"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_robots_txt: Partially update the robots.txt file (PATCH operation)."
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property: add_well_known_file, create_301_redirect, delete_301_redirect, delete_robots_txt, get_robots_txt, list_301_redirects, list_site_activity_logs, remove_well_known_files, replace_robots_txt, update_301_redirect, update_robots_txt."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

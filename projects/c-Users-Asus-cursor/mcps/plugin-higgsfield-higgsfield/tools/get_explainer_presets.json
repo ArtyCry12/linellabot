@@ -1,0 +1,64 @@
+{
+  "name": "get_explainer_presets",
+  "description": "Show the explainer video style presets (CMS-managed catalog). Returns preset ids, names, and preview media. When the user picks one, resolve it with resolve_explainer_preset to get the style reference media_id for generations.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "aspect": {
+              "type": "string",
+              "enum": [
+                "16:9",
+                "9:16"
+              ],
+              "description": "Target video orientation: 16:9 landscape or 9:16 vertical (Shorts)."
+            },
+            "image": {
+              "type": "string",
+              "description": "Preview image URL for the preset card."
+            },
+            "prompt": {
+              "type": "string",
+              "description": "Ready-to-use prompt the user drops into their prompt box when the card is picked."
+            }
+          },
+          "required": [
+            "id",
+            "title",
+            "aspect",
+            "image",
+            "prompt"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "error": {
+        "description": "Set when the preset catalog could not be loaded.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "items"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

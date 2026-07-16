@@ -1,0 +1,6 @@
+{
+  "uri": "ui://design/auto-resize-picker",
+  "name": "auto_resize_picker",
+  "description": "Auto Resize Picker Ui Resource",
+  "mimeType": "text/html;profile=mcp-app"
+}

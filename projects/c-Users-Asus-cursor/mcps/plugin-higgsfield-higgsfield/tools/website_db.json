@@ -1,0 +1,89 @@
+{
+  "name": "website_db",
+  "description": "Inspect the website's database (D1 / SQLite), READ-ONLY. The website has ONE database — the live site's real data. Pick an operation: 'tables' (list tables); 'schema' (a table's columns — needs table); 'rows' (a page of rows — needs table; optional filters, order_by + order_dir, limit (default 50) + offset); 'query' (one read-only SELECT/WITH — needs sql). Writes and DDL are rejected.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "website_id": {
+        "type": "string",
+        "description": "The website's id (returned by create_website)."
+      },
+      "operation": {
+        "type": "string",
+        "enum": [
+          "tables",
+          "schema",
+          "rows",
+          "query"
+        ],
+        "description": "What to read: tables | schema | rows | query."
+      },
+      "table": {
+        "description": "Table name. Required for 'schema' and 'rows'.",
+        "type": "string"
+      },
+      "filters": {
+        "description": "'rows' filters, each 'col:op[:value]' (eq ne gt gte lt lte like is_null).",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "order_by": {
+        "type": "string"
+      },
+      "order_dir": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc"
+        ]
+      },
+      "limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "offset": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "sql": {
+        "description": "A single read-only SELECT/WITH statement (operation 'query').",
+        "type": "string"
+      }
+    },
+    "required": [
+      "website_id",
+      "operation"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "result": {
+        "description": "The read result (shape depends on operation).",
+        "type": "object",
+        "propertyNames": {
+          "type": "string"
+        },
+        "additionalProperties": {}
+      },
+      "error": {
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

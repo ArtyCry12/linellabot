@@ -1,0 +1,57 @@
+{
+  "name": "manage_docs",
+  "description": "Read, write, insert, and find-replace text in Google Docs documents.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "operation": {
+        "type": "string",
+        "enum": [
+          "get",
+          "create",
+          "write",
+          "insertText",
+          "replaceText"
+        ],
+        "description": "get: get document content and metadata | create: create a new document | write: append text to the end of a document | insertText: insert text at a specific position in a document | replaceText: find and replace text in a document"
+      },
+      "email": {
+        "type": "string",
+        "description": "Account email address"
+      },
+      "documentId": {
+        "type": "string",
+        "description": "Document ID"
+      },
+      "title": {
+        "type": "string",
+        "description": "Document title (default: 'Untitled document')"
+      },
+      "text": {
+        "type": "string",
+        "description": "Text to append (plain text)"
+      },
+      "index": {
+        "type": "number",
+        "description": "Character index to insert at (1 = start of document body)"
+      },
+      "findText": {
+        "type": "string",
+        "description": "Text to find"
+      },
+      "replaceWith": {
+        "type": "string",
+        "description": "Replacement text"
+      },
+      "matchCase": {
+        "type": "boolean",
+        "description": "Case-sensitive match (default: true)"
+      }
+    },
+    "required": [
+      "operation",
+      "email"
+    ],
+    "additionalProperties": false
+  }
+}

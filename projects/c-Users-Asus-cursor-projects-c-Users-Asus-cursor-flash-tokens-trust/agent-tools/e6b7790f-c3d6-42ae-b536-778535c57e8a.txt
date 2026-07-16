@@ -1,0 +1,1124 @@
+
+> token-sale-frontend@1.0.0 build
+> node --max-old-space-size=4096 ./node_modules/next/dist/bin/next build
+
+  ▲ Next.js 14.2.18
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/41) ...
+   Generating static pages (10/41) 
+Error: Cannot find module './zh.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1319160506'
+}
+Error: Cannot find module './zh.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '107255668'
+}
+Error: Cannot find module './es.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2024410548'
+}
+Error: Cannot find module './es.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1049205498'
+}
+Error: Cannot find module './hi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1327284756'
+}
+Error: Cannot find module './hi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2341828570'
+}
+Error: Cannot find module './ar.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:38064
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:36707) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2113949851'
+}
+Error: Cannot find module './ar.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:38064
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:36707) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3757197013'
+}
+Error: Cannot find module './pt.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '308534068'
+}
+Error: Cannot find module './pt.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3445798650'
+}
+Error: Cannot find module './tr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1887216116'
+}
+Error: Cannot find module './tr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1961799226'
+}
+   Generating static pages (20/41) 
+Error: Cannot find module './vi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:38064
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:36707) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3812799515'
+}
+Error: Cannot find module './vi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:38064
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:36707) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2626944853'
+}
+Error: Cannot find module './id.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3946506132'
+}
+Error: Cannot find module './id.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3532191578'
+}
+Error: Cannot find module './uk.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1494609588'
+}
+Error: Cannot find module './uk.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2727686650'
+}
+Error: Cannot find module './de.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:38064
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:36707) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3117563227'
+}
+Error: Cannot find module './de.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:38064
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\page.js:1:36707) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '76046357'
+}
+Error: Cannot find module './fr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '127046580'
+}
+Error: Cannot find module './fr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1652923514'
+}
+Error
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7744.js:1:55734
+    at B (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9532.js:4:9962)
+    at nj (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:46251)
+    at nM (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47571)
+    at nM (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:61546)
+    at nN (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64546)
+    at nB (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67538)
+    at nD (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:66680)
+    at nN (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64853)
+    at nB (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67538) {
+  digest: '3654598095'
+}
+
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7744.js:1:55734
+    at B (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9532.js:4:9962)
+    at nj (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:46251)
+    at nM (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47571)
+    at nM (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:61546)
+    at nN (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64546)
+    at nB (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67538)
+    at nD (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:66680)
+    at nN (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64853)
+    at nB (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67538)
+Error: Cannot find module './zh.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2068973035'
+}
+Error: Cannot find module './zh.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3602345780'
+}
+Error: Cannot find module './zh.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1088007109'
+}
+Error: Cannot find module './zh.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1319160506'
+}
+Error: Cannot find module './zh.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1088007109'
+}
+
+Error occurred prerendering page "/zh". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './zh.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './es.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1202851243'
+}
+Error: Cannot find module './es.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '4278781556'
+}
+Error: Cannot find module './es.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1176961669'
+}
+Error: Cannot find module './es.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1049205498'
+}
+Error: Cannot find module './es.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1176961669'
+}
+
+Error occurred prerendering page "/es". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './es.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './ar.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1499505291'
+}
+Error: Cannot find module './ar.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2973077140'
+}
+Error: Cannot find module './ar.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2691580901'
+}
+Error: Cannot find module './ar.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3510083610'
+}
+Error: Cannot find module './ar.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2691580901'
+}
+
+Error occurred prerendering page "/ar". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './ar.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './hi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3089889355'
+}
+Error: Cannot find module './hi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1997313748'
+}
+Error: Cannot find module './hi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3342374181'
+}
+Error: Cannot find module './hi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2341828570'
+}
+Error: Cannot find module './hi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3342374181'
+}
+
+Error occurred prerendering page "/hi". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './hi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+   Generating static pages (30/41) 
+Error: Cannot find module './pt.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1657168517'
+}
+Error: Cannot find module './pt.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3445798650'
+}
+Error: Cannot find module './pt.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '963871019'
+}
+Error: Cannot find module './pt.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '49901812'
+}
+Error: Cannot find module './pt.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '963871019'
+}
+
+Error occurred prerendering page "/pt". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './pt.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './tr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2646284907'
+}
+Error: Cannot find module './tr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2406578868'
+}
+Error: Cannot find module './tr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1474497093'
+}
+Error: Cannot find module './tr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1961799226'
+}
+Error: Cannot find module './tr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1474497093'
+}
+
+Error occurred prerendering page "/tr". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './tr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './vi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2380105829'
+}
+Error: Cannot find module './vi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2109595034'
+}
+Error: Cannot find module './vi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2049674763'
+}
+Error: Cannot find module './vi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '287261972'
+}
+Error: Cannot find module './vi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2049674763'
+}
+
+Error occurred prerendering page "/vi". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './vi.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './id.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1361424587'
+}
+Error: Cannot find module './id.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '8559188'
+}
+Error: Cannot find module './id.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2519486373'
+}
+Error: Cannot find module './id.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3532191578'
+}
+Error: Cannot find module './id.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2519486373'
+}
+
+Error occurred prerendering page "/id". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './id.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './uk.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1732652203'
+}
+Error: Cannot find module './uk.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3748980596'
+}
+Error: Cannot find module './uk.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3793447813'
+}
+Error: Cannot find module './uk.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2727686650'
+}
+Error: Cannot find module './uk.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3793447813'
+}
+
+Error occurred prerendering page "/uk". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './uk.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './de.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '15032869'
+}
+Error: Cannot find module './de.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1374202586'
+}
+Error: Cannot find module './de.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2122263371'
+}
+Error: Cannot find module './de.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2964939732'
+}
+Error: Cannot find module './de.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '2122263371'
+}
+
+Error occurred prerendering page "/de". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './de.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+Error: Cannot find module './fr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '916286379'
+}
+Error: Cannot find module './fr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1247224948'
+}
+Error: Cannot find module './fr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3755490053'
+}
+Error: Cannot find module './fr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:47289
+    at async h (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:6448) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '1652923514'
+}
+Error: Cannot find module './fr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223) {
+  code: 'MODULE_NOT_FOUND',
+  digest: '3755490053'
+}
+
+Error occurred prerendering page "/fr". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Cannot find module './fr.json'
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:191
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:567:9)
+    at process.processTimers (node:internal/timers:541:7)
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:36118
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:45902
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46654
+    at async C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\9605.js:1:46986
+    at async x (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\app\[locale]\referral\page.js:1:7223)
+ReferenceError: indexedDB is not defined
+    at i (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:3926)
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4070
+    at om (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4207)
+    at getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4473)
+    at os (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:2727)
+    at Object.getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:6336)
+    at oy.getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:10715)
+    at oA (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:12076)
+    at new oI (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:12650)
+    at new cx (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:101970)
+ReferenceError: indexedDB is not defined
+    at i (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:3926)
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4070
+    at om (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4207)
+    at getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4473)
+    at os (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:2727)
+    at Object.getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:6336)
+    at oy.getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:10715)
+    at oA (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:12076)
+    at new oI (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:12650)
+    at new cx (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:101970)
+ReferenceError: indexedDB is not defined
+    at i (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:3926)
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4070
+    at om (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4207)
+    at getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4473)
+    at os (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:2727)
+    at Object.getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:6336)
+    at oy.getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:10715)
+    at oA (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:12076)
+    at new oI (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:12650)
+    at new cx (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:101970)
+ReferenceError: indexedDB is not defined
+    at i (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:3926)
+    at C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4070
+    at om (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4207)
+    at getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:4473)
+    at os (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:2727)
+    at Object.getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:6336)
+    at oy.getItem (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:10715)
+    at oA (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:12076)
+    at new oI (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:12650)
+    at new cx (C:\Users\Asus\.cursor\flash-tokens-trust\frontend\.next\server\chunks\7990.js:24:101970)
+ ✓ Generating static pages (41/41)
+
+> Export encountered errors on following paths:
+	/[locale]/page: /ar
+	/[locale]/page: /de
+	/[locale]/page: /es
+	/[locale]/page: /fr
+	/[locale]/page: /hi
+	/[locale]/page: /id
+	/[locale]/page: /pt
+	/[locale]/page: /tr
+	/[locale]/page: /uk
+	/[locale]/page: /vi
+	/[locale]/page: /zh
+	/page: /

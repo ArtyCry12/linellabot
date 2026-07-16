@@ -1,0 +1,6 @@
+{
+  "uri": "gitnexus://repos",
+  "name": "All Indexed Repositories",
+  "description": "List of all indexed repos with stats. Read this first to discover available repos.",
+  "mimeType": "text/yaml"
+}

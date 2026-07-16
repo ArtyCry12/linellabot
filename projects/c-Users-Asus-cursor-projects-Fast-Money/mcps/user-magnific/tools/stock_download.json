@@ -1,0 +1,39 @@
+{
+  "name": "stock_download",
+  "description": "Signed download URL for a stock item. Pass folder_reference to also save as a creation.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Freepik stock item ID.",
+        "type": "integer"
+      },
+      "type": {
+        "description": "Default: photo. Use \"icon\" for SVG.",
+        "enum": [
+          "photo",
+          "vector",
+          "video",
+          "icon",
+          "psd"
+        ],
+        "type": "string"
+      },
+      "format": {
+        "description": "Default: render (flattened image). vector/psd only: source = layered PSD/vector ZIP for editors.",
+        "enum": [
+          "render",
+          "source"
+        ],
+        "type": "string"
+      },
+      "folder_reference": {
+        "description": "Project folder UUID. When provided, creation saved to library.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

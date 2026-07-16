@@ -1,0 +1,30 @@
+{
+  "name": "search_icons",
+  "description": "Search icons",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string"
+      },
+      "limit": {
+        "type": "number",
+        "maximum": 999,
+        "default": 64
+      },
+      "start": {
+        "type": "number",
+        "description": "Start index of result"
+      },
+      "prefix": {
+        "type": "string",
+        "description": "Icon set prefix if you want to get result only for one icon set."
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

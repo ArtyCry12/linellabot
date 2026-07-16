@@ -1,0 +1,6 @@
+{
+  "uri": "skill://figma/figma-design-to-code/SKILL.md",
+  "name": "figma-design-to-code",
+  "description": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE implementing any Figma design as code (design → code, the read-FROM-Figma direction) and BEFORE calling `get_design_context` for that purpose. NEVER hand-write a screen from a Figma design or paste `get_design_context` output verbatim without loading this skill first — that yields code ignoring the project's real components, tokens, conventions, and Code Connect mappings. Trigger whenever the user wants to implement, build, port, or code up a Figma design as code — e.g. 'implement this Figma design', 'build this screen from Figma', 'turn this Figma into code', 'design to code'. Reads a node with get_design_context and adapts its reference output to the target project. Complements figma-code-connect and figma-generate-design / figma-use (the reverse, code → design direction).",
+  "mimeType": "text/markdown"
+}

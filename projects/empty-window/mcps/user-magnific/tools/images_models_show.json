@@ -1,0 +1,13 @@
+{
+  "name": "images_models_show",
+  "description": "Inline TTI model picker. User replies with slug.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "pendingPrompt": {
+        "description": "Prompt. Carried into picker for follow-up.",
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "flows_list",
+  "description": "Flows catalog as raw TOON text, no UI. Lean entries without preview URLs. For an inline picker use flows_show; for a single flow input/output spec use flows_get.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string"
+      },
+      "ownership": {
+        "description": "mine (default) = own + saved + shared. public = community.",
+        "enum": [
+          "mine",
+          "public"
+        ],
+        "type": "string"
+      },
+      "page": {
+        "type": "integer"
+      },
+      "perPage": {
+        "type": "integer"
+      }
+    }
+  }
+}

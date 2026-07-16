@@ -1,0 +1,21 @@
+{
+  "name": "stop_video_agent_session",
+  "description": "Halts an active agent run at its next checkpoint. Partial results are preserved.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "title": "Sessionid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "sessionId"
+    ],
+    "title": "StopVideoAgentSessionInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

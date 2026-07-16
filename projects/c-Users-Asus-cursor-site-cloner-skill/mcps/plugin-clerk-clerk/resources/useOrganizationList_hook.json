@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/use-organization-list",
+  "name": "useOrganizationList hook",
+  "description": "List and manage all organizations a user belongs to",
+  "mimeType": "text/markdown"
+}

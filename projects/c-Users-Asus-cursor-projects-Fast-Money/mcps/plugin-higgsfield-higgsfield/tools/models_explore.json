@@ -1,0 +1,1034 @@
+{
+  "name": "models_explore",
+  "description": "Find generation models. Use recommend with goal + input context; use get for model constraints.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": [
+          "list",
+          "search",
+          "get",
+          "recommend"
+        ],
+        "description": "The action to perform"
+      },
+      "model_id": {
+        "description": "Model ID (required for get)",
+        "type": "string"
+      },
+      "query": {
+        "description": "Model/use-case query; include input context like text-only, reference image, image-to-video, or product URL.",
+        "type": "string"
+      },
+      "type": {
+        "description": "Filter by output type (omit to include all)",
+        "type": "string",
+        "enum": [
+          "image",
+          "video",
+          "audio",
+          "3d"
+        ]
+      },
+      "input": {
+        "description": "Input filter: image = accepts reference media; text = text-only.",
+        "type": "string",
+        "enum": [
+          "text",
+          "image"
+        ]
+      },
+      "limit": {
+        "description": "Max results, default 20 for list/search, 5 for recommend",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100
+      },
+      "after": {
+        "description": "Pagination cursor (next_page_token from a previous list/search result; not used by recommend)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "action"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "provider_name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "output_type": {
+        "type": "string",
+        "enum": [
+          "image",
+          "video",
+          "audio",
+          "3d"
+        ]
+      },
+      "parameters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "required": {
+              "type": "string",
+              "enum": [
+                "required",
+                "optional"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "string",
+                "number",
+                "bool",
+                "string_array"
+              ]
+            },
+            "description": {
+              "type": "string"
+            },
+            "default": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "boolean"
+                }
+              ]
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "nullable": {
+              "type": "boolean"
+            },
+            "format": {
+              "description": "Format constraint for scalar string parameters, e.g. hex_color.",
+              "type": "string"
+            },
+            "pattern": {
+              "description": "Regex source for scalar string parameters.",
+              "type": "string"
+            },
+            "item_format": {
+              "description": "Format constraint for string_array items, e.g. hex_color.",
+              "type": "string"
+            },
+            "item_pattern": {
+              "description": "Regex source for string_array items.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "required",
+            "type"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "medias": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "image"
+            },
+            "description": {
+              "type": "string"
+            },
+            "max": {
+              "type": "number"
+            },
+            "required": {
+              "type": "boolean"
+            },
+            "roles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "name",
+            "type"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "aspect_ratios": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "durations": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "duration_range": {
+        "type": "object",
+        "properties": {
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "min",
+          "max"
+        ],
+        "additionalProperties": false
+      },
+      "credits_per_unit": {
+        "type": "number"
+      },
+      "credit_unit": {
+        "type": "string",
+        "enum": [
+          "per_image",
+          "per_second"
+        ]
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "provider_name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "output_type": {
+              "type": "string",
+              "enum": [
+                "image",
+                "video",
+                "audio",
+                "3d"
+              ]
+            },
+            "parameters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "required": {
+                    "type": "string",
+                    "enum": [
+                      "required",
+                      "optional"
+                    ]
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "string",
+                      "number",
+                      "bool",
+                      "string_array"
+                    ]
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "default": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "boolean"
+                      }
+                    ]
+                  },
+                  "options": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  },
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  },
+                  "nullable": {
+                    "type": "boolean"
+                  },
+                  "format": {
+                    "description": "Format constraint for scalar string parameters, e.g. hex_color.",
+                    "type": "string"
+                  },
+                  "pattern": {
+                    "description": "Regex source for scalar string parameters.",
+                    "type": "string"
+                  },
+                  "item_format": {
+                    "description": "Format constraint for string_array items, e.g. hex_color.",
+                    "type": "string"
+                  },
+                  "item_pattern": {
+                    "description": "Regex source for string_array items.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "required",
+                  "type"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "medias": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "image"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "max": {
+                    "type": "number"
+                  },
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "type"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "aspect_ratios": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "score": {
+              "type": "number"
+            },
+            "match_reason": {
+              "type": "string"
+            },
+            "durations": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "duration_range": {
+              "type": "object",
+              "properties": {
+                "min": {
+                  "type": "number"
+                },
+                "max": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "min",
+                "max"
+              ],
+              "additionalProperties": false
+            },
+            "credits_per_unit": {
+              "type": "number"
+            },
+            "credit_unit": {
+              "type": "string",
+              "enum": [
+                "per_image",
+                "per_second"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "provider_name",
+            "description",
+            "output_type",
+            "parameters",
+            "medias",
+            "aspect_ratios"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "next_page_token": {
+        "type": "string"
+      },
+      "has_more": {
+        "type": "boolean"
+      },
+      "related_tools": {
+        "description": "Standalone tools (not catalog models) relevant to the recommend query — e.g. motion_control for recast/puppeteer, upscale_image/upscale_video for enhance, outpaint_image for expand/uncrop, reframe for a video aspect-ratio change, remove_background for cutout. Call the named tool directly; it will not appear in items.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "tool": {
+              "type": "string"
+            },
+            "use_when": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "tool",
+            "use_when"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "error": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      },
+      "message": {
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      },
+      "upgrade_url": {
+        "description": "Upgrade URL. If present, you MUST show this exact upgrade link to the user so they can upgrade to continue working.",
+        "type": "string"
+      },
+      "monetization_intent": {
+        "description": "Purchase path selected for this recovery response.",
+        "type": "string",
+        "enum": [
+          "upgrade",
+          "topup",
+          "auto_refill",
+          "trial",
+          "general"
+        ]
+      },
+      "recovery_tool": {
+        "description": "Canonical recovery tool for host/client routing.",
+        "type": "string",
+        "enum": [
+          "show_plans_and_credits",
+          "media_import_url"
+        ]
+      },
+      "recovery_tool_args": {
+        "description": "Arguments for the recovery tool.",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "intent": {
+                "type": "string",
+                "enum": [
+                  "upgrade",
+                  "topup",
+                  "auto_refill",
+                  "trial",
+                  "general"
+                ]
+              }
+            },
+            "required": [
+              "intent"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "HTTPS media URL to import before retrying generation."
+              },
+              "type": {
+                "description": "Expected media type. Omit or use auto when unknown.",
+                "type": "string",
+                "enum": [
+                  "auto",
+                  "image",
+                  "video",
+                  "audio"
+                ]
+              }
+            },
+            "required": [
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "recovery_reason": {
+        "description": "Short reason for opening the recovery tool.",
+        "type": "string"
+      },
+      "media_recovery_context": {
+        "description": "Context for media import recovery before retrying a generation.",
+        "type": "object",
+        "properties": {
+          "media_index": {
+            "type": "number"
+          },
+          "role": {
+            "type": "string"
+          },
+          "original_url": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "billing_recovery_context": {
+        "description": "Optional context explaining why the billing recovery response was attached.",
+        "type": "object",
+        "properties": {
+          "submitted": {
+            "type": "number"
+          },
+          "requested": {
+            "type": "number"
+          },
+          "missing": {
+            "type": "number"
+          },
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video",
+              "audio"
+            ]
+          }
+        },
+        "additionalProperties": {}
+      },
+      "assistant_response": {
+        "description": "Ready-to-send promoter-style billing response. Generation tools prefer recovery_tool instead; billing tools use this for final sales copy with checkout URLs formatted as action-specific Markdown links, e.g. [Go to Checkout](url), [Higgsfield Upgrade](url), [Higgsfield Credit Top-up](url), or [Higgsfield Auto-refill](url).",
+        "type": "string"
+      },
+      "promotional_text": {
+        "description": "Short promoter-style recovery copy.",
+        "type": "string"
+      },
+      "sales_headline": {
+        "description": "Personalized seller-style headline for the recovery offer.",
+        "type": "string"
+      },
+      "recommendation_reason": {
+        "description": "Short rationale for why this recovery offer is being shown.",
+        "type": "string"
+      },
+      "primary_cta_text": {
+        "description": "Action-oriented CTA label for the primary recovery link.",
+        "type": "string"
+      },
+      "primary_purchase_link": {
+        "description": "Best single checkout/setup link for this recovery path. Out-of-credits recovery prioritizes auto-refill when eligible, then one-time top-ups.",
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "plan_monthly",
+              "plan_annual",
+              "credit_topup",
+              "auto_refill",
+              "team_top_up",
+              "team_auto_refill",
+              "free_trial"
+            ],
+            "description": "Purchase path this link completes. team_top_up / team_auto_refill deeplink to the team-plan modals on fnf-web (only present when workspace_kind=team_owner). free_trial opens the $0 hosted checkout for the 3-day MCP Plus trial (card required; auto-renews unless cancelled)."
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable link label to show to the user."
+          },
+          "url": {
+            "type": "string",
+            "description": "Direct checkout/setup URL. If present, show this exact link to users in clients that do not render widgets."
+          },
+          "price_cents": {
+            "description": "Final checkout price in cents, when known.",
+            "type": "number"
+          },
+          "original_price_cents": {
+            "description": "Original price in cents before discount, when known.",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "currency": {
+            "description": "ISO currency code (usd/eur/gbp) for the *_cents fields; absent means USD. Format displayed prices with the matching symbol ($/€/£).",
+            "type": "string"
+          },
+          "credits": {
+            "description": "Credits included by this purchase, when applicable.",
+            "type": "number"
+          },
+          "discount_percent": {
+            "description": "Displayed discount percent, when applicable.",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "recommended": {
+            "description": "True when this is the preferred or most popular checkout option.",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "Short promotional/context text for the purchase option.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "label",
+          "url"
+        ],
+        "additionalProperties": {}
+      },
+      "checkout_url": {
+        "description": "Direct URL for the primary checkout/setup action. Agents MUST show this exact link in text-only clients.",
+        "type": "string"
+      },
+      "checkout_label": {
+        "description": "CTA label for checkout_url.",
+        "type": "string"
+      },
+      "plan_purchase_links": {
+        "description": "Direct subscription upgrade links.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "plan_monthly",
+                "plan_annual",
+                "credit_topup",
+                "auto_refill",
+                "team_top_up",
+                "team_auto_refill",
+                "free_trial"
+              ],
+              "description": "Purchase path this link completes. team_top_up / team_auto_refill deeplink to the team-plan modals on fnf-web (only present when workspace_kind=team_owner). free_trial opens the $0 hosted checkout for the 3-day MCP Plus trial (card required; auto-renews unless cancelled)."
+            },
+            "label": {
+              "type": "string",
+              "description": "Human-readable link label to show to the user."
+            },
+            "url": {
+              "type": "string",
+              "description": "Direct checkout/setup URL. If present, show this exact link to users in clients that do not render widgets."
+            },
+            "price_cents": {
+              "description": "Final checkout price in cents, when known.",
+              "type": "number"
+            },
+            "original_price_cents": {
+              "description": "Original price in cents before discount, when known.",
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "currency": {
+              "description": "ISO currency code (usd/eur/gbp) for the *_cents fields; absent means USD. Format displayed prices with the matching symbol ($/€/£).",
+              "type": "string"
+            },
+            "credits": {
+              "description": "Credits included by this purchase, when applicable.",
+              "type": "number"
+            },
+            "discount_percent": {
+              "description": "Displayed discount percent, when applicable.",
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "recommended": {
+              "description": "True when this is the preferred or most popular checkout option.",
+              "type": "boolean"
+            },
+            "description": {
+              "description": "Short promotional/context text for the purchase option.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "label",
+            "url"
+          ],
+          "additionalProperties": {}
+        }
+      },
+      "credit_purchase_links": {
+        "description": "Direct one-time credit-pack links.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "plan_monthly",
+                "plan_annual",
+                "credit_topup",
+                "auto_refill",
+                "team_top_up",
+                "team_auto_refill",
+                "free_trial"
+              ],
+              "description": "Purchase path this link completes. team_top_up / team_auto_refill deeplink to the team-plan modals on fnf-web (only present when workspace_kind=team_owner). free_trial opens the $0 hosted checkout for the 3-day MCP Plus trial (card required; auto-renews unless cancelled)."
+            },
+            "label": {
+              "type": "string",
+              "description": "Human-readable link label to show to the user."
+            },
+            "url": {
+              "type": "string",
+              "description": "Direct checkout/setup URL. If present, show this exact link to users in clients that do not render widgets."
+            },
+            "price_cents": {
+              "description": "Final checkout price in cents, when known.",
+              "type": "number"
+            },
+            "original_price_cents": {
+              "description": "Original price in cents before discount, when known.",
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "currency": {
+              "description": "ISO currency code (usd/eur/gbp) for the *_cents fields; absent means USD. Format displayed prices with the matching symbol ($/€/£).",
+              "type": "string"
+            },
+            "credits": {
+              "description": "Credits included by this purchase, when applicable.",
+              "type": "number"
+            },
+            "discount_percent": {
+              "description": "Displayed discount percent, when applicable.",
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "recommended": {
+              "description": "True when this is the preferred or most popular checkout option.",
+              "type": "boolean"
+            },
+            "description": {
+              "description": "Short promotional/context text for the purchase option.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "label",
+            "url"
+          ],
+          "additionalProperties": {}
+        }
+      },
+      "auto_refill_purchase_link": {
+        "description": "Direct auto-refill setup link.",
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "plan_monthly",
+              "plan_annual",
+              "credit_topup",
+              "auto_refill",
+              "team_top_up",
+              "team_auto_refill",
+              "free_trial"
+            ],
+            "description": "Purchase path this link completes. team_top_up / team_auto_refill deeplink to the team-plan modals on fnf-web (only present when workspace_kind=team_owner). free_trial opens the $0 hosted checkout for the 3-day MCP Plus trial (card required; auto-renews unless cancelled)."
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable link label to show to the user."
+          },
+          "url": {
+            "type": "string",
+            "description": "Direct checkout/setup URL. If present, show this exact link to users in clients that do not render widgets."
+          },
+          "price_cents": {
+            "description": "Final checkout price in cents, when known.",
+            "type": "number"
+          },
+          "original_price_cents": {
+            "description": "Original price in cents before discount, when known.",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "currency": {
+            "description": "ISO currency code (usd/eur/gbp) for the *_cents fields; absent means USD. Format displayed prices with the matching symbol ($/€/£).",
+            "type": "string"
+          },
+          "credits": {
+            "description": "Credits included by this purchase, when applicable.",
+            "type": "number"
+          },
+          "discount_percent": {
+            "description": "Displayed discount percent, when applicable.",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "recommended": {
+            "description": "True when this is the preferred or most popular checkout option.",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "Short promotional/context text for the purchase option.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "label",
+          "url"
+        ],
+        "additionalProperties": {}
+      },
+      "purchase_links": {
+        "description": "All direct purchase/setup links returned for billing recovery.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "plan_monthly",
+                "plan_annual",
+                "credit_topup",
+                "auto_refill",
+                "team_top_up",
+                "team_auto_refill",
+                "free_trial"
+              ],
+              "description": "Purchase path this link completes. team_top_up / team_auto_refill deeplink to the team-plan modals on fnf-web (only present when workspace_kind=team_owner). free_trial opens the $0 hosted checkout for the 3-day MCP Plus trial (card required; auto-renews unless cancelled)."
+            },
+            "label": {
+              "type": "string",
+              "description": "Human-readable link label to show to the user."
+            },
+            "url": {
+              "type": "string",
+              "description": "Direct checkout/setup URL. If present, show this exact link to users in clients that do not render widgets."
+            },
+            "price_cents": {
+              "description": "Final checkout price in cents, when known.",
+              "type": "number"
+            },
+            "original_price_cents": {
+              "description": "Original price in cents before discount, when known.",
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "currency": {
+              "description": "ISO currency code (usd/eur/gbp) for the *_cents fields; absent means USD. Format displayed prices with the matching symbol ($/€/£).",
+              "type": "string"
+            },
+            "credits": {
+              "description": "Credits included by this purchase, when applicable.",
+              "type": "number"
+            },
+            "discount_percent": {
+              "description": "Displayed discount percent, when applicable.",
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "recommended": {
+              "description": "True when this is the preferred or most popular checkout option.",
+              "type": "boolean"
+            },
+            "description": {
+              "description": "Short promotional/context text for the purchase option.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "label",
+            "url"
+          ],
+          "additionalProperties": {}
+        }
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

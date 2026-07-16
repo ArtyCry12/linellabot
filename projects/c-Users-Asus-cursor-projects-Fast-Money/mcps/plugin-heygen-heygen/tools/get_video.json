@@ -1,0 +1,21 @@
+{
+  "name": "get_video",
+  "description": "Returns details for a video including status, video_url, thumbnail_url, duration, and failure info if applicable.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "videoId": {
+        "title": "Videoid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "videoId"
+    ],
+    "title": "GetVideoInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,101 @@
+{
+  "name": "get_workflow_instructions",
+  "description": "Discover and load multi-step content-generation workflows (each a bundled SKILL.md that orchestrates the generate_* tools). Call with NO argument to list available workflows and their triggers. Call with a workflow name to load that workflow's full SKILL.md plus the list of files readable via get_workflow_bundle_file. Use before building a narrated animated explainer video, a narrated / personal / philosophical story video, a faceless or AI-narrated video, or an animated explainer.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "workflow": {
+        "description": "Workflow name (a folder under the workflows resource root, e.g. 'video-explainer'). Omit to list all available workflows.",
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "mode": {
+        "type": "string",
+        "enum": [
+          "catalog",
+          "workflow",
+          "error"
+        ],
+        "description": "Whether the response lists workflows or loads one."
+      },
+      "source": {
+        "type": "string",
+        "const": "bundled_resource",
+        "description": "Where the content came from."
+      },
+      "workflows": {
+        "description": "Available workflows (catalog mode).",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "description"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "workflow": {
+        "description": "Loaded workflow name (workflow mode).",
+        "type": "string"
+      },
+      "version": {
+        "description": "Workflow version from SKILL.md frontmatter, if present.",
+        "type": "string"
+      },
+      "instructions_markdown": {
+        "description": "The workflow's SKILL.md entrypoint (workflow mode).",
+        "type": "string"
+      },
+      "available_paths": {
+        "description": "Files readable with get_workflow_bundle_file.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "available_directories": {
+        "description": "Directories readable with get_workflow_bundle_file.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "how_to_load_more": {
+        "description": "How to load detailed resource files.",
+        "type": "string"
+      },
+      "error": {
+        "description": "Error message if the request could not be served.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "mode",
+      "source"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

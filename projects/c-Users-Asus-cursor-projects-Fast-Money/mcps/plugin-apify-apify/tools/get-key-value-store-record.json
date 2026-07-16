@@ -1,0 +1,58 @@
+{
+  "name": "get-key-value-store-record",
+  "description": "Get a value stored in a key-value store under a specific key.\nThe response preserves the original Content-Encoding; most clients handle decompression automatically.\n\nUSAGE:\n- Use when you need to retrieve a specific record (JSON, text, or binary) from a store.\n\nUSAGE EXAMPLES:\n- user_input: Get record INPUT from store abc123\n- user_input: Get record data.json from store username~my-store",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "keyValueStoreId": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Key-value store ID or username~store-name"
+      },
+      "recordKey": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Key of the record to retrieve."
+      }
+    },
+    "required": [
+      "keyValueStoreId",
+      "recordKey"
+    ],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "keyValueStoreId": {
+        "type": "string",
+        "description": "Key-value store ID"
+      },
+      "key": {
+        "type": "string",
+        "description": "Record key"
+      },
+      "value": {
+        "description": "The stored value (JSON, text, or binary)"
+      },
+      "contentType": {
+        "type": "string",
+        "description": "MIME type of the stored value"
+      },
+      "summary": {
+        "type": "string",
+        "description": "Summary of the result"
+      }
+    },
+    "required": [
+      "keyValueStoreId",
+      "key",
+      "value",
+      "summary"
+    ]
+  },
+  "plugin": "apify",
+  "marketplace": "cursor-public",
+  "pluginId": "32913266",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "compose-template",
+  "description": "**Purpose:** Set the TipTap JSON content of a template, enabling it to be edited visually in the Resend dashboard editor. Automatically connects and disconnects from the editor. Can also update metadata (subject, name) in the same call.\n\n**This is the recommended way to set email content.** Content set via compose-template can be visually edited by the user in the dashboard.\n\n**Workflow:** get-tiptap-json-content (with include_schema: true) → compose-template\n\n**When to use:**\n- After create-template, to set the email body\n- When the user wants to write, edit, or style email content\n- When the user wants to collaborate on the email in the dashboard editor\n\n**Important:** Always call get-tiptap-json-content first to retrieve the existing TipTap JSON, then build your changes on top of it. Skipping this will overwrite all existing content.\n\n**Note:** Switching between compose (TipTap) and update (raw HTML) modes is lossy — some content or formatting may be lost. If the template already has HTML content, ask the user before switching to compose mode.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The template ID, alias, or Resend dashboard URL (e.g. https://resend.com/templates/<id>)"
+      },
+      "content": {
+        "description": "TipTap JSON content. Call get-tiptap-json-content (with include_schema: true) first to get the existing content and the schema reference.",
+        "type": "object",
+        "propertyNames": {
+          "type": "string"
+        },
+        "additionalProperties": {}
+      },
+      "subject": {
+        "description": "Update the default email subject.",
+        "type": "string"
+      },
+      "name": {
+        "description": "Update the template name.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

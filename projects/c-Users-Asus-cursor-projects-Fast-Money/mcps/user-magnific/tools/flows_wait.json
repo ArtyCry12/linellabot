@@ -1,0 +1,22 @@
+{
+  "name": "flows_wait",
+  "description": "Long-poll a `flows_run`. Terminal: one entry per output creation with real `identifier` for `creations_show`. In-progress: `poll_after_seconds`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "workflowRunIdentifier": {
+        "description": "Run identifier from `flows_run`.",
+        "type": "string"
+      },
+      "timeoutSeconds": {
+        "description": "Long-poll budget (default 25).",
+        "minimum": 0,
+        "maximum": 25,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "workflowRunIdentifier"
+    ]
+  }
+}

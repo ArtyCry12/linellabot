@@ -1,0 +1,57 @@
+{
+  "name": "update-broadcast",
+  "description": "Update broadcast metadata by ID or Resend dashboard URL (name, subject, from, html, text, segment, preview text, reply-to). To edit TipTap content, use compose-broadcast instead.\n\n**Important:** The API requires `from` and `segmentId` to be set on the broadcast. If the broadcast was created from the dashboard, these may be empty. Always call get-broadcast first to check, and include `from` and `segmentId` in your update if they are not already set. Use list-domains to find verified domains for the from address, and list-segments to find segment IDs.\n\n**Note on html/text fields:** Setting html or text via this tool replaces any content previously set via compose-broadcast. This switch is lossy — some content or formatting may be lost. Prefer compose-broadcast for content changes. If the broadcast was composed with TipTap content, ask the user before overwriting it with raw HTML.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "broadcastId": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Broadcast ID or Resend dashboard URL (e.g. https://resend.com/broadcasts/<id>)"
+      },
+      "name": {
+        "description": "Name for the broadcast",
+        "type": "string"
+      },
+      "segmentId": {
+        "description": "Segment ID to send to",
+        "type": "string"
+      },
+      "from": {
+        "description": "From email address (e.g. \"onboarding@resend.com\" or \"Resend <onboarding@resend.com>\")",
+        "type": "string"
+      },
+      "html": {
+        "description": "HTML content of the email.\n\nEmail HTML requirements — follow all of these without exception:\n\nSTRUCTURE\n- Always include <!DOCTYPE html>, <html>, <head>, <body>\n- Layout must be table-based: <table>, <tr>, <td> — never use <div> for layout\n- Outer wrapper table at width=\"100%\", inner content table at max 600px wide\n- Every table must have cellpadding=\"0\" cellspacing=\"0\" border=\"0\"\n\nCSS\n- All styles must be inline (style=\"...\") — no <style> tag, no external stylesheets\n- No flexbox, no grid, no CSS variables, no CSS shorthand (use padding-top not padding)\n- font-family must always include web-safe fallbacks (Arial, Helvetica, Georgia, sans-serif)\n- Always set font-size, line-height, and color explicitly on every text element\n\nIMAGES\n- Always set width, height, border=\"0\", display:block on every <img>\n- Use absolute URLs only — no relative paths\n- Always include alt text\n\nLINKS & BUTTONS\n- Never use <button> — use <a> styled as a button inside a <td>\n- No <video>, <form>, or <input> elements\n- No JavaScript of any kind\n\nOUTLOOK COMPATIBILITY\n- Use bgcolor attribute on <td> alongside CSS background-color\n- No CSS background-image (poor Outlook support)\n- Add <!--[if mso]> conditionals where needed for Outlook rendering\n\nMETA (in <head>)\n- <meta charset=\"UTF-8\">\n- <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">",
+        "type": "string"
+      },
+      "text": {
+        "description": "Plain text content of the email",
+        "type": "string"
+      },
+      "subject": {
+        "description": "Email subject",
+        "type": "string"
+      },
+      "replyTo": {
+        "description": "Reply-to email address(es)",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "previewText": {
+        "description": "Preview text for the email",
+        "type": "string"
+      }
+    },
+    "required": [
+      "broadcastId"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

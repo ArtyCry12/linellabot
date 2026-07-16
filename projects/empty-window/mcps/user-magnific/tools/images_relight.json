@@ -1,0 +1,94 @@
+{
+  "name": "images_relight",
+  "description": "AI relight. 1-4 lights with azimuth/elevation enums, type neutral|gel, intensity 1-10. Gel uses hex `color`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "creationIdentifier": {
+        "description": "Image creation identifier (import uploads first).",
+        "type": "string"
+      },
+      "lights": {
+        "description": "1-4 lights.",
+        "minItems": 1,
+        "maxItems": 4,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "azimuth": {
+              "description": "Horizontal degrees.",
+              "enum": [
+                -135,
+                -90,
+                -45,
+                0,
+                45,
+                90,
+                135,
+                180
+              ],
+              "type": "integer"
+            },
+            "elevation": {
+              "description": "Vertical degrees.",
+              "enum": [
+                -90,
+                -45,
+                0,
+                45,
+                90
+              ],
+              "type": "integer"
+            },
+            "type": {
+              "description": "Default neutral.",
+              "enum": [
+                "neutral",
+                "gel"
+              ],
+              "type": "string"
+            },
+            "color": {
+              "description": "Gel only; hex; default #ffffff.",
+              "type": "string"
+            },
+            "intensity": {
+              "description": "1-10; default 5.",
+              "minimum": 1,
+              "maximum": 10,
+              "type": "integer"
+            }
+          },
+          "type": "object",
+          "required": [
+            "azimuth",
+            "elevation"
+          ]
+        },
+        "type": "array"
+      },
+      "resolution": {
+        "description": "1k or 2k default.",
+        "enum": [
+          "1k",
+          "2k"
+        ],
+        "type": "string"
+      },
+      "numImages": {
+        "description": "Default 1.",
+        "minimum": 1,
+        "maximum": 2,
+        "type": "integer"
+      },
+      "folderReference": {
+        "description": "Optional project/folder reference from `folders_list` to place results in. Omit for the default.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "creationIdentifier",
+      "lights"
+    ]
+  }
+}

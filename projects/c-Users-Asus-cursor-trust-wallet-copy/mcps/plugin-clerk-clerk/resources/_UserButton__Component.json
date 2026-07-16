@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/user-button",
+  "name": "<UserButton> Component",
+  "description": "Pre-built user menu with sign out and profile management",
+  "mimeType": "text/markdown"
+}

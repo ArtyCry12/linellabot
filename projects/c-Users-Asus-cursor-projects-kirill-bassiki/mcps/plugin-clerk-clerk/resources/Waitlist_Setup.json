@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/use-waitlist",
+  "name": "Waitlist Setup",
+  "description": "Manage waitlist signups for beta/early access",
+  "mimeType": "text/markdown"
+}

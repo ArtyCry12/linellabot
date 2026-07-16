@@ -1,0 +1,952 @@
+{
+  "name": "data_pages_tool",
+  "description": "Data tool - Pages tool to perform actions like list pages, get page metadata, update page settings, create a page, bulk update page settings, manage branches (list, create, delete, list a branch's conflicts with main, pull main changes into a branch, merge a branch into main, publish a branch preview to staging, poll async branch tasks), and read or write JSON-LD schema markup for pages in bulk.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Label echoed in the response for this action item. It does not select which action runs."
+                },
+                "bulk_update_pages": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site whose pages are being updated. Use list_sites to discover available site IDs."
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "ID of the page to update. Required."
+                          },
+                          "localeId": {
+                            "type": "string",
+                            "description": "Secondary locale ID to write this item's changes to. Omit for the primary locale."
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "Page title."
+                          },
+                          "slug": {
+                            "type": "string",
+                            "description": "URL slug for the page (the path segment)."
+                          },
+                          "draft": {
+                            "type": "boolean",
+                            "description": "Whether the page is a draft (excluded from publishing)."
+                          },
+                          "parentFolderId": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "description": "ID of the folder to nest the page under. null moves the page to the site root."
+                          },
+                          "seo": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "description": "SEO title (page <title> / meta title)."
+                              },
+                              "description": {
+                                "type": "string",
+                                "description": "SEO meta description."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "SEO metadata for the page."
+                          },
+                          "openGraph": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "description": "Open Graph title (og:title)."
+                              },
+                              "titleCopied": {
+                                "type": "boolean",
+                                "description": "Whether the Open Graph title is copied from the SEO/page title."
+                              },
+                              "description": {
+                                "type": "string",
+                                "description": "Open Graph description (og:description)."
+                              },
+                              "descriptionCopied": {
+                                "type": "boolean",
+                                "description": "Whether the Open Graph description is copied from the SEO/page description."
+                              },
+                              "imageUrl": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "description": "Raw Open Graph image URL (og:image). null unsets the image. Mutually exclusive with imageAssetId — provide at most one."
+                              },
+                              "imageAssetId": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "description": "Site asset ID to use as the Open Graph image. null unsets the image. Mutually exclusive with imageUrl — provide at most one."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Open Graph metadata for the page."
+                          },
+                          "jsonLdSchema": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "description": "JSON-LD structured data as a raw string. null clears the page's existing JSON-LD schema markup."
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 100,
+                      "description": "Array of pages to update (1..100)."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "pages"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Updates settings for one or more pages in a site in a single request (write/side-effect: this updates existing pages; 1..100 pages per call). Each item targets a page by id and may set any subset of: localeId (write to a specific secondary locale), title, slug, draft, parentFolderId, seo, openGraph, and jsonLdSchema. parentFolderId nests the page under a folder; null moves it to the site root. For openGraph, imageUrl and imageAssetId are mutually exclusive (provide at most one); passing null for either unsets it. jsonLdSchema null clears the page's JSON-LD schema markup."
+                }
+              },
+              "required": [
+                "label",
+                "bulk_update_pages"
+              ],
+              "additionalProperties": false,
+              "description": "Run bulk_update_pages: Updates settings for one or more pages in a site in a single request (write/side-effect: this updates existing pages; 1..100 pages per call). Each item targets a page by id and may set any subset of: localeId (write to a specific secondary locale), title, slug, draft, parentFolderId, seo, openGraph, and jsonLdSchema. parentFolderId nests the page under a folder; null moves it to the site root. For openGraph, imageUrl and imageAssetId are mutually exclusive (provide at most one); passing null for either unsets it. jsonLdSchema null clears the page's JSON-LD schema markup."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "bulk_update_pages_schema_markup": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Page ID."
+                          },
+                          "localeId": {
+                            "type": "string",
+                            "description": "Secondary locale ID. Omit for the primary locale."
+                          },
+                          "jsonLdSchema": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "additionalProperties": {}
+                              },
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "description": "JSON-LD structured data as an object (e.g., { \"@context\": \"https://schema.org\", \"@type\": \"Article\", ... }), a raw JSON string, or null to clear existing markup."
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "jsonLdSchema"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 25,
+                      "description": "Array of pages to write (1..25)."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "pages"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Write or clear JSON-LD schema markup for one or more pages (1..25). Pass a 1-item array for a single page. Per-item: id (required), optional localeId, and jsonLdSchema (object, raw string, or null to clear). The action also accepts strings wrapped in <script type=\"application/ld+json\">…</script>."
+                }
+              },
+              "required": [
+                "label",
+                "bulk_update_pages_schema_markup"
+              ],
+              "additionalProperties": false,
+              "description": "Run bulk_update_pages_schema_markup: Write or clear JSON-LD schema markup for one or more pages (1..25). Pass a 1-item array for a single page. Per-item: id (required), optional localeId, and jsonLdSchema (object, raw string, or null to clear). The action also accepts strings wrapped in <script type=\"application/ld+json\">…</script>."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "create_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page to create a branch from."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an asynchronous task to create a new branch from a page on a site."
+                }
+              },
+              "required": [
+                "label",
+                "create_branch"
+              ],
+              "additionalProperties": false,
+              "description": "Run create_branch: Enqueue an asynchronous task to create a new branch from a page on a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "create_page": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site to create the page in. Use list_sites to discover available site IDs."
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Page title. Required."
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "URL slug for the page (the path segment). Required."
+                    },
+                    "parentFolderId": {
+                      "type": "string",
+                      "description": "ID of the folder to nest the page under. Omit to create the page at the site root."
+                    },
+                    "draft": {
+                      "type": "boolean",
+                      "description": "Whether the page is a draft (excluded from publishing). Defaults to false when omitted."
+                    },
+                    "duplicateOf": {
+                      "type": "string",
+                      "description": "ID of an existing page in the same site to duplicate. When set, the new page is created as a copy of that page."
+                    },
+                    "seo": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "description": "SEO title (page <title> / meta title)."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "SEO meta description."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "SEO metadata for the page."
+                    },
+                    "openGraph": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "description": "Open Graph title (og:title)."
+                        },
+                        "titleCopied": {
+                          "type": "boolean",
+                          "description": "Whether the Open Graph title is copied from the SEO/page title."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Open Graph description (og:description)."
+                        },
+                        "descriptionCopied": {
+                          "type": "boolean",
+                          "description": "Whether the Open Graph description is copied from the SEO/page description."
+                        },
+                        "imageUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Raw Open Graph image URL (og:image). null unsets the image. Mutually exclusive with imageAssetId — provide at most one."
+                        },
+                        "imageAssetId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Site asset ID to use as the Open Graph image. null unsets the image. Mutually exclusive with imageUrl — provide at most one."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Open Graph metadata for the page."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "title",
+                    "slug"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Creates a new page in a site (write/side-effect: this adds a new page). title and slug are required; everything else is optional. Optionally place the page under a folder, mark it as a draft, duplicate an existing page in the same site, and set SEO and Open Graph metadata. For openGraph, imageUrl and imageAssetId are mutually exclusive (provide at most one); passing null for either unsets it. parentFolderId places the page under a folder; omit it to create the page at the site root."
+                }
+              },
+              "required": [
+                "label",
+                "create_page"
+              ],
+              "additionalProperties": false,
+              "description": "Run create_page: Creates a new page in a site (write/side-effect: this adds a new page). title and slug are required; everything else is optional. Optionally place the page under a folder, mark it as a draft, duplicate an existing page in the same site, and set SEO and Open Graph metadata. For openGraph, imageUrl and imageAssetId are mutually exclusive (provide at most one); passing null for either unsets it. parentFolderId places the page under a folder; omit it to create the page at the site root."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "delete_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "branch_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the branch to delete."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an asynchronous task to delete a branch from a site."
+                }
+              },
+              "required": [
+                "label",
+                "delete_branch"
+              ],
+              "additionalProperties": false,
+              "description": "Run delete_branch: Enqueue an asynchronous task to delete a branch from a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_branch_conflicts": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "branch_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the branch to check for conflicts. Use list_branches to discover branch IDs."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read-only: list a branch's unresolved conflicts with the site's main pages, without attempting a merge. Returns { conflicts } where each entry is { id, name, type: \"style\" | \"component\", updatedAt?, updatedBy? } — id is a style-block or component ID and is not always an ObjectId (e.g. \"default-body\"); updatedAt/updatedBy are populated for style conflicts only. An empty conflicts array usually means the branch can be updated or merged without resolutions, but conflicts are computed against the last synced state; after very recent branch edits, re-check before update/merge. Each entry maps directly to a resolutions[] item for update_branch or merge_branch: pass the same id and type with resolution \"main\" or \"branch\". The entry shape matches the conflict list that merge_branch returns when it is called without resolutions. Returns 404 branch_not_found for an unknown branch."
+                }
+              },
+              "required": [
+                "label",
+                "get_branch_conflicts"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_branch_conflicts: Read-only: list a branch's unresolved conflicts with the site's main pages, without attempting a merge. Returns { conflicts } where each entry is { id, name, type: \"style\" | \"component\", updatedAt?, updatedBy? } — id is a style-block or component ID and is not always an ObjectId (e.g. \"default-body\"); updatedAt/updatedBy are populated for style conflicts only. An empty conflicts array usually means the branch can be updated or merged without resolutions, but conflicts are computed against the last synced state; after very recent branch edits, re-check before update/merge. Each entry maps directly to a resolutions[] item for update_branch or merge_branch: pass the same id and type with resolution \"main\" or \"branch\". The entry shape matches the conflict list that merge_branch returns when it is called without resolutions. Returns 404 branch_not_found for an unknown branch."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_branch_details": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "branch_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the branch."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Maximum number of records to return (max 100)."
+                    },
+                    "offset": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Number of records to skip for pagination."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get detailed information about a specific branch on a site."
+                }
+              },
+              "required": [
+                "label",
+                "get_branch_details"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_branch_details: Get detailed information about a specific branch on a site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_branch_task_status": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "task_id": {
+                      "type": "string",
+                      "description": "Identifier of the async branch task, from the taskId field of a create_branch or delete_branch response. This is a UUID, not an ObjectId."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "task_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Poll the status of an asynchronous branch task. Call this after any async branch mutation (create_branch, delete_branch) using the taskId from the mutation's response until status is \"finished\" or \"failed\". Returns { taskId, status, taskType, branchId, siteId, createdOn, error?, nextActions }: status is \"queued\", \"started\", \"finished\", or \"failed\"; taskType is one of \"branch_create\", \"branch_delete\", \"branch_merge\", \"branch_publish\", \"branch_update\". branchId is null until a create task finishes. When status is \"failed\", read error.message and error.code for the failure reason. Returns 404 branch_task_not_found for an unknown task ID, a task that is not a branch task, or a task belonging to a different site."
+                }
+              },
+              "required": [
+                "label",
+                "get_branch_task_status"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_branch_task_status: Poll the status of an asynchronous branch task. Call this after any async branch mutation (create_branch, delete_branch) using the taskId from the mutation's response until status is \"finished\" or \"failed\". Returns { taskId, status, taskType, branchId, siteId, createdOn, error?, nextActions }: status is \"queued\", \"started\", \"finished\", or \"failed\"; taskType is one of \"branch_create\", \"branch_delete\", \"branch_merge\", \"branch_publish\", \"branch_update\". branchId is null until a create task finishes. When status is \"failed\", read error.message and error.code for the failure reason. Returns 404 branch_task_not_found for an unknown task ID, a task that is not a branch task, or a task belonging to a different site."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_page_metadata": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Unique identifier for a specific locale. Applicable when using localization."
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get metadata for a specific page including SEO settings, Open Graph data, and page status (draft/published)."
+                }
+              },
+              "required": [
+                "label",
+                "get_page_metadata"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_page_metadata: Get metadata for a specific page including SEO settings, Open Graph data, and page status (draft/published)."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_branches": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 100,
+                      "description": "Maximum number of branches to return (max 100)."
+                    },
+                    "offset": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Number of branches to skip for pagination."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List all branches present on a site. Returns branch metadata with pagination support."
+                }
+              },
+              "required": [
+                "label",
+                "list_branches"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_branches: List all branches present on a site. Returns branch metadata with pagination support."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "list_pages": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "The site's unique ID, used to list its pages."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Unique identifier for a specific locale. Applicable when using localization."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "description": "Maximum number of records to be returned (max limit: 100)"
+                    },
+                    "offset": {
+                      "type": "number",
+                      "description": "Offset used for pagination if the results have more than limit records."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List all pages within a site. Returns page metadata including IDs, titles, and slugs."
+                }
+              },
+              "required": [
+                "label",
+                "list_pages"
+              ],
+              "additionalProperties": false,
+              "description": "Run list_pages: List all pages within a site. Returns page metadata including IDs, titles, and slugs."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "merge_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "branch_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the branch to merge into main."
+                    },
+                    "resolutions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "description": "Identifier of the conflicting style or component. This is a style-block ID and is not always an ObjectId (e.g. \"default-body\") — pass id and type from get_branch_conflicts (or from merge_branch's branch_merge_conflict conflicts[] list if you attempted without resolutions)."
+                          },
+                          "resolution": {
+                            "type": "string",
+                            "enum": [
+                              "main",
+                              "branch"
+                            ],
+                            "description": "Which side wins for this conflict: \"main\" keeps the main version, \"branch\" keeps the branch version."
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "style",
+                              "component"
+                            ],
+                            "description": "The kind of conflicting item."
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "resolution",
+                          "type"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Conflict resolutions. Discover the conflict list with get_branch_conflicts first; required when the branch conflicts with main; must cover every unresolved conflict. Omit on the first attempt only if you want merge_branch to return branch_merge_conflict with conflicts[] inline."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an asynchronous task that merges a branch INTO the site's main pages (branch -> main). The merge is not applied when this call returns — the response is { taskId, status: \"queued\", nextActions }; poll the task with get_branch_task_status until status is \"finished\" or \"failed\" (the taskType for this task is \"branch_merge\"). On success the branch is consumed and no longer appears in list_branches. When the branch has unresolved conflicts with main, call get_branch_conflicts first to discover the conflict list, then pass resolutions covering every conflict; alternatively, omit resolutions on the first attempt and the response contains code \"branch_merge_conflict\" with the conflict list in conflicts[] — retry with resolutions to resolve and merge in one step. Supplied resolutions are applied by the merge job itself, so a still-unresolved conflict surfaces as a failed task when polled. Returns 409 branch_merge_in_progress when a merge is already running for the site, and 404 branch_not_found for an unknown branch."
+                }
+              },
+              "required": [
+                "label",
+                "merge_branch"
+              ],
+              "additionalProperties": false,
+              "description": "Run merge_branch: Enqueue an asynchronous task that merges a branch INTO the site's main pages (branch -> main). The merge is not applied when this call returns — the response is { taskId, status: \"queued\", nextActions }; poll the task with get_branch_task_status until status is \"finished\" or \"failed\" (the taskType for this task is \"branch_merge\"). On success the branch is consumed and no longer appears in list_branches. When the branch has unresolved conflicts with main, call get_branch_conflicts first to discover the conflict list, then pass resolutions covering every conflict; alternatively, omit resolutions on the first attempt and the response contains code \"branch_merge_conflict\" with the conflict list in conflicts[] — retry with resolutions to resolve and merge in one step. Supplied resolutions are applied by the merge job itself, so a still-unresolved conflict surfaces as a failed task when polled. Returns 409 branch_merge_in_progress when a merge is already running for the site, and 404 branch_not_found for an unknown branch."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "publish_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "branch_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the branch to publish to its staging domain. Use list_branches to discover branch IDs."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an asynchronous task that publishes a branch's page to its configured staging domain for preview. This publishes ONLY the branch preview to staging — it does not publish the site's production domains and does not merge anything. The response is { taskId, status: \"queued\", stagingDomain, publishedOn, nextActions }; publishedOn is the publish trigger time, not job completion — poll the task with get_branch_task_status until status is \"finished\" or \"failed\" (the taskType for this task is \"branch_publish\"). Returns 409 branch_publish_failed when the branch has no staging domain configured, and 404 branch_not_found for an unknown branch. The staging domain is also visible on list_branches and get_branch_details responses."
+                }
+              },
+              "required": [
+                "label",
+                "publish_branch"
+              ],
+              "additionalProperties": false,
+              "description": "Run publish_branch: Enqueue an asynchronous task that publishes a branch's page to its configured staging domain for preview. This publishes ONLY the branch preview to staging — it does not publish the site's production domains and does not merge anything. The response is { taskId, status: \"queued\", stagingDomain, publishedOn, nextActions }; publishedOn is the publish trigger time, not job completion — poll the task with get_branch_task_status until status is \"finished\" or \"failed\" (the taskType for this task is \"branch_publish\"). Returns 409 branch_publish_failed when the branch has no staging domain configured, and 404 branch_not_found for an unknown branch. The staging domain is also visible on list_branches and get_branch_details responses."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "query_pages_schema_markup": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Page ID."
+                          },
+                          "localeId": {
+                            "type": "string",
+                            "description": "Secondary locale ID. Omit for the primary locale."
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 100,
+                      "description": "Array of pages to read (1..100)."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "pages"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read JSON-LD schema markup for one or more pages (1..100). Pass a 1-item array for a single page. Each item may specify localeId for a secondary locale override; omit for the primary locale."
+                }
+              },
+              "required": [
+                "label",
+                "query_pages_schema_markup"
+              ],
+              "additionalProperties": false,
+              "description": "Run query_pages_schema_markup: Read JSON-LD schema markup for one or more pages (1..100). Pass a 1-item array for a single page. Each item may specify localeId for a secondary locale override; omit for the primary locale."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_branch": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+                    },
+                    "branch_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the branch to update with the latest main changes."
+                    },
+                    "resolutions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "description": "Identifier of the conflicting style or component. This is a style-block ID and is not always an ObjectId (e.g. \"default-body\") — pass id and type from get_branch_conflicts."
+                          },
+                          "resolution": {
+                            "type": "string",
+                            "enum": [
+                              "main",
+                              "branch"
+                            ],
+                            "description": "Which side wins for this conflict: \"main\" keeps the main version, \"branch\" keeps the branch version."
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "style",
+                              "component"
+                            ],
+                            "description": "The kind of conflicting item."
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "resolution",
+                          "type"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Conflict resolutions. Discover the conflict list with get_branch_conflicts first; required only when the branch has conflicts with main; must cover every unresolved conflict."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "branch_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Enqueue an asynchronous task that pulls the latest changes from the site's main pages INTO a branch (main -> branch). This does NOT merge the branch back to main. The update is not applied when this call returns — the response is { taskId, status: \"queued\", nextActions }; poll the task with get_branch_task_status until status is \"finished\" or \"failed\" (the taskType for this task is \"branch_update\"). When the branch conflicts with main, call get_branch_conflicts first to discover the conflict list, then pass resolutions covering every conflict, choosing \"main\" or \"branch\" per conflicting style or component; a 400 invalid_resolution error means the resolutions do not cover the full conflict set. Returns 409 branch_update_in_progress when an update task is already running for the branch, and 404 branch_not_found for an unknown branch."
+                }
+              },
+              "required": [
+                "label",
+                "update_branch"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_branch: Enqueue an asynchronous task that pulls the latest changes from the site's main pages INTO a branch (main -> branch). This does NOT merge the branch back to main. The update is not applied when this call returns — the response is { taskId, status: \"queued\", nextActions }; poll the task with get_branch_task_status until status is \"finished\" or \"failed\" (the taskType for this task is \"branch_update\"). When the branch conflicts with main, call get_branch_conflicts first to discover the conflict list, then pass resolutions covering every conflict, choosing \"main\" or \"branch\" per conflicting style or component; a 400 invalid_resolution error means the resolutions do not cover the full conflict set. Returns 409 branch_update_in_progress when an update task is already running for the branch, and 404 branch_not_found for an unknown branch."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_page_settings": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page to update."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Secondary locale ID to write the changes to. Omit for the primary locale."
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Page title."
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "URL slug for the page (the path segment)."
+                    },
+                    "draft": {
+                      "type": "boolean",
+                      "description": "Whether the page is a draft (excluded from publishing)."
+                    },
+                    "parentFolderId": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "ID of the folder to nest the page under. null moves the page to the site root."
+                    },
+                    "seo": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "description": "SEO title (page <title> / meta title)."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "SEO meta description."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "SEO metadata for the page."
+                    },
+                    "openGraph": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "description": "Open Graph title (og:title)."
+                        },
+                        "titleCopied": {
+                          "type": "boolean",
+                          "description": "Whether the Open Graph title is copied from the SEO/page title."
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Open Graph description (og:description)."
+                        },
+                        "descriptionCopied": {
+                          "type": "boolean",
+                          "description": "Whether the Open Graph description is copied from the SEO/page description."
+                        },
+                        "imageUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Raw Open Graph image URL (og:image). null unsets the image. Mutually exclusive with imageAssetId — provide at most one."
+                        },
+                        "imageAssetId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Site asset ID to use as the Open Graph image. null unsets the image. Mutually exclusive with imageUrl — provide at most one."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Open Graph metadata for the page."
+                    },
+                    "jsonLdSchema": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "JSON-LD structured data as a raw string. null clears the page's existing JSON-LD schema markup."
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Updates settings for a single page (write/side-effect: this updates an existing page). Accepts any subset of: title, slug, draft (publishing status), parentFolderId, seo, openGraph, and jsonLdSchema. Pass localeId to write the changes to a specific secondary locale; omit it for the primary locale. parentFolderId nests the page under a folder; null moves it to the site root. For openGraph, imageUrl and imageAssetId are mutually exclusive (provide at most one); passing null for either unsets it. jsonLdSchema null clears the page's JSON-LD schema markup."
+                }
+              },
+              "required": [
+                "label",
+                "update_page_settings"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_page_settings: Updates settings for a single page (write/side-effect: this updates an existing page). Accepts any subset of: title, slug, draft (publishing status), parentFolderId, seo, openGraph, and jsonLdSchema. Pass localeId to write the changes to a specific secondary locale; omit it for the primary locale. parentFolderId nests the page under a folder; null moves it to the site root. For openGraph, imageUrl and imageAssetId are mutually exclusive (provide at most one); passing null for either unsets it. jsonLdSchema null clears the page's JSON-LD schema markup."
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property: bulk_update_pages, bulk_update_pages_schema_markup, create_branch, create_page, delete_branch, get_branch_conflicts, get_branch_details, get_branch_task_status, get_page_metadata, list_branches, list_pages, merge_branch, publish_branch, query_pages_schema_markup, update_branch, update_page_settings."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

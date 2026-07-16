@@ -1,0 +1,30 @@
+{
+  "name": "creations_comment",
+  "description": "Add a comment (or reply) to a user-owned creation.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "creationIdentifier": {
+        "description": "Creation identifier the comment will be attached to.",
+        "type": "string"
+      },
+      "folderReference": {
+        "description": "`folderReference` from `creations_search`/`creations_get`.",
+        "type": "string"
+      },
+      "text": {
+        "description": "Comment body (plain text, 1–5000 chars).",
+        "type": "string"
+      },
+      "replyToCommentId": {
+        "description": "Existing comment id to reply to; omit for new thread.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "creationIdentifier",
+      "folderReference",
+      "text"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "search_api_reference",
+  "description": "Search API references for exact method signatures, property types, and event definitions.\n\nAvailable engines: unity, unreal_ue4, unreal_ue5\n\nONLY use this when you already know a specific class or method name and need its exact signature, parameters, or return type.\nDo NOT use this for conceptual questions, tutorials, or 'how do I...' queries — use search_docs instead.\n\nReturns raw API surface: method signatures, property types, event handler signatures, and class inheritance info.\n\nExample: search_api_reference('OVRInput.Get button', engine='unity')\nExample: search_api_reference('AMRUKAnchor RayCast', engine='unreal_ue5')",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "engine": {
+        "default": "unity",
+        "description": "Which API index to search. Options: unity, unreal_ue4, unreal_ue5",
+        "type": "string"
+      },
+      "max_results": {
+        "default": null,
+        "description": "Maximum number of results to return (default: 20)",
+        "format": "uint32",
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "query": {
+        "description": "Search terms (e.g., 'HandGrabInteractable OnSelect', 'OVRInput.Get button')",
+        "type": "string"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "description": "Request parameters for search_api_reference.",
+    "title": "SearchApiRefRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

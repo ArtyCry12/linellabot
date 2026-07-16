@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/b2b-saas-setup",
+  "name": "B2B SaaS Setup Guide",
+  "description": "Complete guide to setting up Clerk for B2B SaaS with organizations",
+  "mimeType": "text/markdown"
+}

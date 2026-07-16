@@ -1,0 +1,22 @@
+{
+  "name": "list_enabled_zapier_actions",
+  "description": "CALL THIS FIRST before any execute_zapier_read_action or execute_zapier_write_action call. Lists all enabled apps and their actions. These apps handle OAuth authentication automatically - use them instead of generic URL fetching for authenticated services. Returns EXACT action keys you MUST use (action names are NOT guessable - always check here first). Also shows which execute tool to use and required parameters. IMPORTANT: If you don't find the app or action you need, you MUST call discover_zapier_actions next - NEVER say 'I can't do that' without checking discover_zapier_actions first.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "app": {
+        "description": "Filter by app name (e.g., 'gmail', 'jira', 'slack'). Omit to list all apps.",
+        "type": "string"
+      },
+      "action": {
+        "description": "Filter by action key. Omit to list all actions.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "zapier",
+  "marketplace": "cursor-public",
+  "pluginId": "762",
+  "marketplaceId": "34"
+}

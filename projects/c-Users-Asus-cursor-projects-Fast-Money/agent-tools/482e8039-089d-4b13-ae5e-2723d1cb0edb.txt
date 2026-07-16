@@ -1,0 +1,370 @@
+AI Accessibility Audit — $300 One-Time | Sprout Sage
+
+---
+
+About Us Process Contact Get a Custom Quote →
+
+Working time: Monday to Friday 9 AM – 5 PM
+
+Call for free consultation:+919729712388
+
+Menu
+
+menu
+
+Free Consultation
+
+9 years · 65+ SMBs shipped ● 216 keywords on page 1 of Google ● 96% retention at 18mo+ ● US · UK · CA · IL
+
+Roughly 15 to 20% of mid-market sites unintentionally block at least one AI crawler in their robots.txt. Many of the rest have no llms.txt, no schema stack, and no idea which AI bots are actually visiting their site. The result: invisible to ChatGPT, Claude, Perplexity, and Gemini at exactly the moment AI is taking 25% of search traffic by McKinsey’s projection. I run a five-day AI accessibility audit that finds the gaps and fixes them. $300 one-time. $150/mo continuous monitoring. No contracts, no markup on tools, no enterprise sales process.
+
+LIFT 20% From the data inside this post. SPROUT SAGE SOLUTIONS
+
+Book a free 15-min call →+91 97297 12388
+
+5 audit slots open this month.
+
+## Why I built this service
+
+About 18 months ago I started monitoring AI bot traffic across my client sites as a side experiment. The pattern that emerged within the first three months convinced me to spin this up as a productized service.
+
+Across roughly 40 client sites I audited, three findings repeated. First, about a third of sites had a robots.txt rule that was accidentally blocking OAI-SearchBot (the bot that powers ChatGPT search and citations) because the agency that wrote the file used a “block all bots with ‘Bot’ in the name” pattern. Second, almost none had an llms.txt file even though Claude and Perplexity publicly read it. Third, the schema stack was either thin (Article-only, no FAQPage, no Person, no Organization) or missing entirely on cornerstone pages.
+
+The fix in every case was the same: rewrite robots.txt with the correct AI bot allow/block matrix, ship an llms.txt, add the multi-schema stack to the top 10 pages, and check that the CDN was not overriding the changes at the edge. Five business days of work. The agencies and freelancers who could do this work were either pricing it at $1,500 to $3,000 (bundled into broader SEO retainers) or not doing it at all.
+
+$300 is what I think the work actually costs, priced as a lead-magnet entry into the GEO retainer for clients who want to keep going. About 70% of audit clients move to either the $150/mo monitoring or the GEO Foundation tier within 30 days. The other 30% take the audit, deploy the fixes themselves, and revisit later. Both outcomes are fine.
+
+## The reality of llms.txt adoption in 2026
+
+I want to be honest about what llms.txt does and does not do because the topic is full of hype.
+
+llms.txt was proposed on September 3, 2024 by Jeremy Howard (Answer.AI, fast.ai). The spec lives at llmstxt.org. Per the SE Ranking study of 300,000 domains, adoption sits at about 10.13% as of early 2026. That is roughly 1 in 10 sites after 18 months.
+
+Who reads it: Anthropic Claude and Perplexity publicly confirm reading llms.txt for retrieval prioritization. OpenAI is unconfirmed but observable correlation with SearchGPT citation patterns suggests they read it too. Mintlify auto-generates llms.txt for hosted docs which means Anthropic’s own docs, Cursor’s docs, Pinecone’s docs, and Windsurf’s docs all have one. IDE agents and MCP doc servers increasingly read llms.txt, which matters for B2B and SaaS clients.
+
+Who does not read it: Google. Gary Illyes (Google) confirmed publicly in July 2025 that Google does not support llms.txt and is not planning to. John Mueller compared it to the discredited keywords meta tag.
+
+So the honest bottom line: llms.txt alone is a modest citation lever. It is not a magic switch. The real value is the bundled package, llms.txt + correct robots.txt + multi-schema stack + brand entity hub, which is what this audit ships. That bundle is meaningful, and skipping llms.txt is a marker of a site that does not care about AI accessibility.
+
+## Pricing tiers
+
+| Tier | Price | What you get | Turnaround |
+| --- | --- | --- | --- |
+| AI Accessibility Audit | $300 one-time | Crawler log analysis, robots.txt audit + rewrite, llms.txt + llms-full.txt fully written, schema audit + JSON-LD pack, citation baseline (10 prompts × 4 engines), 30-day re-check included | 5 business days |
+| AI Crawler Monitoring (add-on) | $150/mo flat | Continuous bot traffic monitoring, monthly citation report, quarterly re-audit, alerting on accidental blocks, Slack access | Continuous |
+| Implementation (add-on) | +$200 one-time | I deploy everything live (robots.txt, llms.txt, schema, CDN config). For clients without a dev team or who want hands-off delivery. | 2-3 business days post-audit |
+
+Most common combo: audit + implementation = $500 total, hands-off, done in 7 to 8 business days. Add monitoring for $150/mo if you want continuous oversight.
+
+## What the $300 audit covers (day by day)
+
+### Day 1 — Access + baseline
+
+You grant me read access to your server logs (or set up a temporary log shipper if needed), CMS, and CDN console. I pull the last 30 days of access logs and run them through my parser to identify which AI bots have been hitting your site, how often, and which pages. I also run the citation baseline: 10 target prompts (you choose them during kickoff) across ChatGPT, Claude, Perplexity, and Gemini, recording for each prompt whether your brand appears, in what position, and what content the AI cited.
+
+### Day 2 — robots.txt + CDN audit
+
+I download your current robots.txt and audit it against the 2026 best-practice template. Common findings: blanket Disallow rules that accidentally catch OAI-SearchBot or PerplexityBot; missing entries for newer bots (Claude-SearchBot, Google-NotebookLM, MistralAI-User); CDN-level overrides on Cloudflare (“Block AI Bots” toggle is the most common gotcha) or Vercel or Netlify that return 403 at the edge before robots.txt is even read. I rewrite the robots.txt and document any CDN settings that need changing.
+
+### Day 3 — llms.txt + schema audit
+
+I write your llms.txt from scratch. Brand summary in blockquote form. Curated link list of 15 to 30 top pages organized by H2 sections. Optional companion llms-full.txt with full markdown export of top 30 pages for AI engines that want depth. Then I audit the current schema across your top 10 pages, identify gaps (FAQPage missing on FAQ-heavy pages, no Person schema on author bylines, no Organization at footer, no Service on service pages, no Speakable on conversational paragraphs), and assemble copy-paste JSON-LD for the top 5 pages.
+
+### Day 4 — Implementation pack assembly
+
+I package everything into a deliverable folder: rewritten robots.txt file ready to upload, llms.txt + llms-full.txt files, JSON-LD blocks for top 5 pages, CDN configuration notes, a one-page “what to deploy and where” guide for your dev team, and a written report covering findings and recommendations.
+
+### Day 5 — Walkthrough + delivery
+
+45-minute Loom or live call walking through every finding, the implementation pack, and the citation baseline. You leave the call with everything you need to deploy. If you bought the implementation add-on, I deploy in the next two to three business days.
+
+### Day 30 — Re-check (included)
+
+Free. Even if you did not buy monitoring, I re-run the citation baseline at the 30-day mark and email you the deltas. Most sites see citation movement within 30 to 60 days post-fix on non-competitive prompts.
+
+## What the $150/mo monitoring covers
+
+The audit is a snapshot. Monitoring exists because AI accessibility breaks. CDN settings get updated. New plugins or themes accidentally block bots. Schema gets stripped by caching plugins. New AI bots appear and need to be added to robots.txt.
+
+- Free Consultation
+- Continuous AI bot traffic monitoring. Custom log parsing identifies which AI bots are hitting your site each week. Per Cloudflare’s Jan 2026 data: Googlebot is 1.7x ClaudeBot, 1.76x GPTBot, 3.0x meta-externalagent, 167x PerplexityBot. The ratios on your site tell us where to optimize.
+- Monthly citation report. Same 10 target prompts re-checked across ChatGPT, Claude, Perplexity, Gemini. Share-of-voice trend over time.
+- Quarterly re-audit. Full re-run of robots.txt, llms.txt, schema, and CDN checks. Catches drift from theme updates, plugin updates, and CDN config changes.
+- Alerting. If a CDN update accidentally blocks an AI crawler, or a plugin strips schema, or robots.txt gets overwritten by a theme update, I notice and notify within 24 hours.
+- Slack or WhatsApp access. Ad-hoc questions. Four-business-hour response on weekdays.
+
+The pricing math: $150/mo is below the cost of a single SaaS monitoring tool seat at the agency tier. You get the human running it, the monthly report, the alerts, and the re-audit. For sites where AI citation matters, it pays for itself the first time a CDN update would have silently broken AI accessibility for 60 days before anyone noticed.
+
+If you want to know whether your site is currently blocking any AI crawlers, book a free 15-min call. I run a live robots.txt check during the call.
+
+## The AI bot allow/block matrix (what I actually deploy)
+
+From my research file. The 2026 best-practice template for a service business.
+
+| Bot | Operator | Category | Default for service business |
+| --- | --- | --- | --- |
+| Googlebot | Google | Search + AI Overviews | Never block |
+| bingbot | Microsoft | Search + Copilot | Always allow |
+| OAI-SearchBot | OpenAI | ChatGPT search | Always allow |
+| ChatGPT-User | OpenAI | User-triggered | Always allow |
+| GPTBot | OpenAI | Training | Allow (helps future ChatGPT recall) |
+| Claude-SearchBot | Anthropic | Search | Always allow |
+| Claude-User | Anthropic | User-triggered | Always allow |
+| anthropic-ai | Anthropic | Public search | Allow |
+| ClaudeBot | Anthropic | Training | Allow |
+| PerplexityBot | Perplexity | Search | Always allow (highest-value AI traffic) |
+| Perplexity-User | Perplexity | User-triggered | Always allow |
+| Google-Extended | Google | Gemini training opt-out | Allow (want Gemini visibility) |
+| Google-NotebookLM | Google | User-triggered | Allow |
+| Applebot | Apple | Siri / Apple Intelligence | Allow |
+| DuckAssistBot | DuckDuckGo | Search assistant | Allow |
+| Bytespider | ByteDance | Training (aggressive) | Block (bandwidth hog, zero citation) |
+| meta-externalagent | Meta | Training (high volume) | Block unless want Meta AI features |
+| FacebookBot | Meta | Training | Block |
+| CCBot | Common Crawl | Training (indirect) | Block (broad training inclusion) |
+
+The configuration changes by business model. Service businesses want training crawlers allowed because you want LLMs to learn your brand. Publishers may block training but allow search. Content sellers (course creators, paid newsletter operators, course platforms) block training, allow search and user agents. The audit gives you the right config for your specific case.
+
+## The common mistakes I find on almost every audit
+
+1. Blanket-blocking everything with “Bot” in the name. Kills OAI-SearchBot alongside GPTBot, removes brand from ChatGPT search entirely.
+2. Blocking GPTBot then wondering why ChatGPT does not recommend you. Most common 2026 mistake. GPTBot is training, OAI-SearchBot is citations. They are different bots.
+3. CDN overriding robots.txt. Cloudflare’s “Block AI Bots” toggle returns 403 at the edge before robots.txt is even read. Audit CDN config alongside robots.txt.
+4. Aggressive rate-limiting on AI crawler IPs. They back off and stop crawling, which means future updates miss your content.
+5. Forgetting llms.txt is a request, not a firewall. Bad actors ignore it entirely. It is a courtesy file for cooperative crawlers, not a security mechanism.
+6. No .md twin for content pages. LLMs prefer markdown over HTML. Stripe’s docs nail this pattern. Most sites do not.
+7. Static llms.txt that goes stale. Needs to be regenerated when site structure changes. The monitoring tier handles this.
+8. Listing every URL in llms.txt. Defeats the curation purpose. Pick the top 10 to 30 pages, not the full sitemap.
+9. Schema only on the home page. Per BrightEdge, pages with 3-4 complementary schema types get cited 2x more often. The combo that wins: Article + FAQPage + BreadcrumbList + Person.
+10. Schema stripped by caching plugins. WP Rocket, LiteSpeed Cache, and certain Cloudflare settings can strip JSON-LD if minification is too aggressive. The monitoring tier catches this.
+
+## How I work with adjacent services
+
+- The natural upgrade path is into the GEO service at $1,500/mo or $2,500/mo. The accessibility audit is the foundation; GEO is the ongoing citation-building work that sits on top of it.
+- If your underlying SEO is weak (ranked beyond position 30 for target keywords), AI accessibility alone will not move the needle because AI engines prefer to cite already-authoritative pages. Pair with SEO from $1,500/mo for the foundation.
+- For the conceptual deep-dive on llms.txt specifically, the llms.txt complete guide 2026 covers the spec, examples, anti-patterns, and tools.
+- For the decision framework on whether to block training crawlers, the should you block GPTBot post walks through it by business model.
+
+## How I am different from other AI accessibility offerings
+
+### Pricing transparency
+
+$300 audit. $150/mo monitoring. Most competitors either hide pricing, bundle this work into $3,000+ SEO retainers, or charge $1,500 to $2,500 for the same audit deliverable. Publishing the number means buyers self-qualify.
+
+### Founder-led, no junior handoff
+
+I run the audit, write the files, deploy them if you take the implementation add-on. There is no second person on the engagement. Clients are buying my pattern recognition from auditing ~40 sites in the last 18 months, not a SOP-trained junior.
+
+### No markup on tools
+
+Firecrawl, Mintlify, AIOSEO, Cloudflare Bot Analytics, AI-Ready Check: all free or low-cost tools I tell you to use directly. I do not resell any of them at markup.
+
+### Honest about what AI accessibility can and cannot do
+
+It is not a magic switch for citations. It is the foundation that GEO sits on. If your site is invisible to AI today, fixing accessibility makes you visible. If your site is already visible but has weak citations, accessibility is hygiene and GEO is the actual work. I tell clients which problem they have on the discovery call.
+
+### Real crawler data
+
+I run a custom log parsing pipeline that identifies which AI bots are actually hitting your site, how often, and which pages they prioritize. Most agencies skip this step because it requires server log access and most are not set up for it. The crawler data is the most useful artifact in the audit because it tells you where to focus.
+
+### 30-day re-check included
+
+I re-run the citation baseline at the 30-day mark even if you did not buy monitoring. Most $300 audits in the market are “deliver the report and disappear”. The free re-check is a credibility move and it surfaces the next layer of work organically for clients who want to keep going.
+
+## Real examples from recent audits (anonymized)
+
+### B2B SaaS — robots.txt was blocking 7 of the top 10 AI crawlers
+
+Mid-market B2B SaaS, ~$2M ARR. Existing SEO retainer with another agency. Position 4 on Google for primary keyword. Zero citation share in ChatGPT, Claude, or Perplexity. The robots.txt had been written 18 months earlier with a blanket User-agent: *Bot Disallow pattern intended to block scrapers, which had accidentally caught OAI-SearchBot, Claude-SearchBot, PerplexityBot, Claude-User, ChatGPT-User, and Perplexity-User. They were not in the AI conversation because they had locked the door.
+
+Audit shipped rewritten robots.txt allowing all citation-driving bots and blocking only Bytespider and meta-externalagent. llms.txt deployed with a curated 25-link map. JSON-LD multi-schema stack added to top 5 pages. Citation movement within 21 days: ChatGPT named the brand in 3 of 10 target prompts; Perplexity in 5 of 10. By day 60 the brand was named in 6 of 10 on Perplexity. That is the value of removing a single line from robots.txt.
+
+### Healthcare practice — Cloudflare was overriding robots.txt
+
+Multi-location dental practice. Existing robots.txt was clean and AI-friendly. But the Cloudflare “Block AI Bots” toggle had been enabled six months earlier when a marketing manager toggled it “to protect the site”. Result: 403 responses to all AI crawlers at the CDN edge before robots.txt was read.
+
+Audit found the override in 20 minutes via Cloudflare analytics review. Toggle off. Citation baseline re-run at day 14: brand now appearing in ChatGPT and Perplexity answers for two of the target prompts. Total fix time: 30 minutes of actual work. Total client impact: six months of invisibility recovered.
+
+### Ecommerce supplements — schema stripped by caching plugin
+
+Direct-to-consumer supplement brand on Shopify. Theme had JSON-LD multi-schema stack correctly in source. Cloudflare APO was minifying responses and stripping JSON-LD from the rendered HTML at the edge. Schema validators (Rich Results Test) returned “no schema found” while the source HTML showed valid schema. Fix: configure Cloudflare APO to preserve JSON-LD blocks, validate from the rendered HTML, confirm fix held over 7 days. Citation share lifted from 1 of 10 to 4 of 10 within 30 days, with no other changes.
+
+## FAQ
+
+What is an AI accessibility audit?
+
+A 5-business-day technical audit that checks whether your site is set up correctly to be read, indexed, and cited by AI engines (ChatGPT, Claude, Perplexity, Gemini). It covers three things: are AI crawlers allowed to fetch your pages (robots.txt + CDN check), is your content packaged in a way they prefer (llms.txt + schema), and are you currently being cited (baseline citation check across 10 prompts). The deliverable is a full audit plus an implementation pack that can be deployed by your dev team or by me as an add-on.
+
+Why does this matter? I already have SEO.
+
+Because SEO and AI accessibility are different problems. Sites that rank position 1 on Google often block GPTBot in robots.txt without realizing they have also lost ChatGPT visibility. Sites with strong content often have no llms.txt and no JSON-LD schema, which means AI engines have to work harder to extract their content. About 15 to 20% of mid-market sites unintentionally block one or more AI crawlers per the xseek and SiteGrade audits. If your site is one of them, you are invisible to the conversations that increasingly drive purchase decisions.
+
+What is llms.txt and do I actually need it?
+
+llms.txt is a plain-text/markdown file at your domain root (yourdomain.com/llms.txt) that gives AI crawlers a curated map of your most important content. It was proposed by Jeremy Howard (Answer.AI, fast.ai) in September 2024. Anthropic Claude and Perplexity publicly confirm reading it. Google’s Gary Illyes confirmed in July 2025 that Google does NOT support llms.txt. Adoption is ~10% across 300k domains per SE Ranking. Honest reality check: llms.txt alone is a modest citation lever. The real value is the bundled package — llms.txt + correct robots.txt + schema markup + brand hub — which is what this audit ships.
+
+What is in the $300 audit?
+
+AI crawler log analysis (last 30 days of access logs, which AI bots are visiting, how often, what pages). robots.txt audit + rewritten file based on the 2026 best-practice template. CDN audit checking that Cloudflare / Vercel / Netlify aren’t overriding robots.txt at the edge. Fully written llms.txt file with brand summary and curated link list. llms-full.txt with full markdown export of top 30 pages. Schema audit across top 10 pages. Copy-paste JSON-LD implementation pack for the top 5 pages. AI citation baseline report (10 target prompts × 4 AI engines). Plus a 30-day re-check at no additional cost.
+
+What is in the $150/mo monitoring?
+
+Continuous AI bot traffic monitoring (which crawlers hit your site, how often, which pages they prioritize, bandwidth they consume). Quarterly re-audit of robots.txt, llms.txt, and schema. Monthly AI citation report for your 10 target prompts. Alerting if a CDN update, theme change, or plugin update accidentally breaks AI accessibility. Slack or WhatsApp access for ad-hoc questions. This is the cheapest GEO-adjacent retainer I offer.
+
+Should I block GPTBot to protect my content?
+
+Probably not. GPTBot is a training crawler — blocking it doesn’t remove your existing content from ChatGPT, it just prevents future training updates from including new content. OAI-SearchBot is the bot that powers ChatGPT search and citations. Most sites that block “GPTBot” accidentally block OAI-SearchBot too (or block ChatGPT-User, the user-triggered bot), which removes the brand from ChatGPT search entirely. For service businesses, my default recommendation is allow everything except Bytespider and meta-externalagent. The audit gives you the right config for your specific business model.
+
+Which AI bots actually matter?
+
+The ones that drive citations and traffic. OAI-SearchBot (ChatGPT search), ChatGPT-User (user-triggered ChatGPT queries), Claude-SearchBot, Claude-User, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended (Gemini), Google-NotebookLM, Applebot (Siri / Apple Intelligence), bingbot (Copilot). Per Cloudflare’s Jan 2026 data, PerplexityBot crawls little but drives the most click-through traffic per crawl. Bytespider is high-volume and zero citation value — block it. meta-externalagent is high-volume with limited citation value — usually block.
+
+How long does the audit take?
+
+Five business days from kickoff to delivery. Day 1: access setup, log pull, citation baseline. Day 2-3: robots.txt audit, CDN audit, schema audit, llms.txt drafting. Day 4: implementation pack assembly. Day 5: walkthrough call and report delivery.
+
+Can you implement everything for me, or just write the audit?
+
+Both options. The base $300 includes the audit and the written/draft files (llms.txt, robots.txt, schema JSON-LD). Implementation (deploying everything to your live site) is a +$200 add-on. About 60% of clients take the implementation add-on; the other 40% have a dev team or internal capability.
+
+Does this work on WordPress, Shopify, Webflow, custom sites?
+
+Yes. The audit is platform-agnostic. The implementation work varies. On WordPress I use the AIOSEO plugin or manually upload llms.txt. On Shopify I create a page template for llms.txt and use Liquid to serve it correctly. On Webflow I use the custom-code section + a hidden CMS item. On custom and headless sites, files go to /public or equivalent. CDN config is platform-agnostic but tooling differs (Cloudflare, Vercel, Netlify each have their own settings to check).
+
+What if I block GPTBot now and want to unblock it later? Is the data gone?
+
+No. Allowing GPTBot from today forward lets training updates from this point on include your content. The historical training data is whatever it was on the date of the previous training cutoff. The bigger urgency is OAI-SearchBot and Perplexity, which fetch in real time for citations — blocking them today costs you citations today. Unblocking them returns citation potential within days to weeks.
+
+Can I just buy the monitoring without the audit?
+
+I prefer to do the audit first because the monitoring only makes sense once we know the baseline is correct. If your robots.txt is misconfigured and your llms.txt does not exist, monitoring tells you you’re getting no traffic, which is the wrong problem to solve. Audit first ($300), then monitoring ($150/mo) if you want continuous oversight.
+
+Do you sign 12-month contracts?
+
+No. The audit is one-time. Monitoring is month-to-month with 30 days notice. Cancel anytime.
+
+How do I get started?
+
+Book a free 15-minute call. I run a live robots.txt check on your domain, look at your existing schema, and tell you whether the $300 audit is worth it for your specific situation. Some sites are already well-configured and the honest answer is “skip the audit, do GEO instead”. Other sites have obvious accessibility issues that justify the audit immediately.
+
+## Book the audit
+
+Five business days. $300 one-time. $150/mo monitoring if you want continuous oversight after. Add $200 for implementation if you want me to deploy everything live. Most sites I audit have at least one fixable issue blocking AI citation. Some have several. The audit finds them, fixes them, and rechecks at day 30 to confirm citations are moving. No contracts.
+
+Book a free 15-min call → Call +91 97297 12388 WhatsApp
+
+5 audit slots open this month.
+
+FOUNDER NOTE I’d rather show real numbers than ship a polished pitch. — Mandeep Singh, founder, Sprout Sage Solutions
+
+## Frequently asked questions
+
+What is an AI accessibility audit?
+
+A 5-business-day technical audit that checks whether your site is set up correctly to be read, indexed, and cited by AI engines (ChatGPT, Claude, Perplexity, Gemini). It covers three things: are AI crawlers allowed to fetch your pages (robots.txt + CDN check), is your content packaged in a way they prefer (llms.txt + schema), and are you currently being cited (baseline citation check across 10 prompts). The deliverable is a full audit plus an implementation pack that can be deployed by your dev team or by me as an add-on.
+
+Why does this matter? I already have SEO.
+
+Because SEO and AI accessibility are different problems. Sites that rank position 1 on Google often block GPTBot in robots.txt without realizing they have also lost ChatGPT visibility. Sites with strong content often have no llms.txt and no JSON-LD schema, which means AI engines have to work harder to extract their content. About 15 to 20% of mid-market sites unintentionally block one or more AI crawlers per the xseek and SiteGrade audits. If your site is one of them, you are invisible to the conversations that increasingly drive purchase decisions.
+
+What is llms.txt and do I actually need it?
+
+llms.txt is a plain-text/markdown file at your domain root (yourdomain.com/llms.txt) that gives AI crawlers a curated map of your most important content. It was proposed by Jeremy Howard (Answer.AI, fast.ai) in September 2024. Anthropic Claude and Perplexity publicly confirm reading it. Google’s Gary Illyes confirmed in July 2025 that Google does NOT support llms.txt. Adoption is ~10% across 300k domains per SE Ranking. Honest reality check: llms.txt alone is a modest citation lever. The real value is the bundled package — llms.txt + correct robots.txt + schema markup + brand hub — which is what this audit ships.
+
+What is in the $300 audit?
+
+AI crawler log analysis (last 30 days of access logs, which AI bots are visiting, how often, what pages). robots.txt audit + rewritten file based on the 2026 best-practice template. CDN audit checking that Cloudflare / Vercel / Netlify aren’t overriding robots.txt at the edge. Fully written llms.txt file with brand summary and curated link list. llms-full.txt with full markdown export of top 30 pages. Schema audit across top 10 pages. Copy-paste JSON-LD implementation pack for the top 5 pages. AI citation baseline report (10 target prompts × 4 AI engines). Plus a 30-day re-check at no additional cost.
+
+What is in the $150/mo monitoring?
+
+Continuous AI bot traffic monitoring (which crawlers hit your site, how often, which pages they prioritize, bandwidth they consume). Quarterly re-audit of robots.txt, llms.txt, and schema. Monthly AI citation report for your 10 target prompts. Alerting if a CDN update, theme change, or plugin update accidentally breaks AI accessibility. Slack or WhatsApp access for ad-hoc questions. This is the cheapest GEO-adjacent retainer I offer.
+
+Should I block GPTBot to protect my content?
+
+Probably not. GPTBot is a training crawler — blocking it doesn’t remove your existing content from ChatGPT, it just prevents future training updates from including new content. OAI-SearchBot is the bot that powers ChatGPT search and citations. Most sites that block ‘GPTBot’ accidentally block OAI-SearchBot too (or block ChatGPT-User, the user-triggered bot), which removes the brand from ChatGPT search entirely. For service businesses, my default recommendation is allow everything except Bytespider and meta-externalagent. The audit gives you the right config for your specific business model.
+
+Which AI bots actually matter?
+
+The ones that drive citations and traffic. OAI-SearchBot (ChatGPT search), ChatGPT-User (user-triggered ChatGPT queries), Claude-SearchBot, Claude-User, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended (Gemini), Google-NotebookLM, Applebot (Siri / Apple Intelligence), bingbot (Copilot). Per Cloudflare’s Jan 2026 data, PerplexityBot crawls little but drives the most click-through traffic per crawl. Bytespider is high-volume and zero citation value — block it. meta-externalagent is high-volume with limited citation value — usually block.
+
+How long does the audit take?
+
+Five business days from kickoff to delivery. Day 1: access setup, log pull, citation baseline. Day 2-3: robots.txt audit, CDN audit, schema audit, llms.txt drafting. Day 4: implementation pack assembly. Day 5: walkthrough call and report delivery.
+
+Can you implement everything for me, or just write the audit?
+
+Both options. The base $300 includes the audit and the written/draft files (llms.txt, robots.txt, schema JSON-LD). Implementation (deploying everything to your live site) is a +$200 add-on. About 60% of clients take the implementation add-on; the other 40% have a dev team or internal capability.
+
+Does this work on WordPress, Shopify, Webflow, custom sites?
+
+Yes. The audit is platform-agnostic. The implementation work varies. On WordPress I use the AIOSEO plugin or manually upload llms.txt. On Shopify I create a page template for llms.txt and use Liquid to serve it correctly. On Webflow I use the custom-code section + a hidden CMS item. On custom and headless sites, files go to /public or equivalent. CDN config is platform-agnostic but tooling differs (Cloudflare, Vercel, Netlify each have their own settings to check).
+
+What if I block GPTBot now and want to unblock it later? Is the data gone?
+
+No. Allowing GPTBot from today forward lets training updates from this point on include your content. The historical training data is whatever it was on the date of the previous training cutoff. The bigger urgency is OAI-SearchBot and Perplexity, which fetch in real time for citations — blocking them today costs you citations today. Unblocking them returns citation potential within days to weeks.
+
+Can I just buy the monitoring without the audit?
+
+I prefer to do the audit first because the monitoring only makes sense once we know the baseline is correct. If your robots.txt is misconfigured and your llms.txt does not exist, monitoring tells you you’re getting no traffic, which is the wrong problem to solve. Audit first ($300), then monitoring ($150/mo) if you want continuous oversight.
+
+Do you sign 12-month contracts?
+
+No. The audit is one-time. Monitoring is month-to-month with 30 days notice. Cancel anytime.
+
+How do I get started?
+
+Book a free 15-minute call. I run a live robots.txt check on your domain, look at your existing schema, and tell you whether the $300 audit is worth it for your specific situation. Some sites are already well-configured and the honest answer is ‘skip the audit, do GEO instead’. Other sites have obvious accessibility issues that justify the audit immediately.
+
+Free Consult
+
+Spout Sage is a One-Stop Solution for all your Web Development needs to your business website.
+
+☰ Contents
+
+On this page
+
+×
+
+Want more leads from your website?
+
+I will review your site and give you 3 specific, actionable fixes — free, 30 minutes, no pitch.
+
+Book Free Strategy Call
+
+Free 30-minute strategy call — 3 specific fixes for your marketing. No pitch.
+
++91 97297 12388 Book Free Call×
+
+×
+
+Before you go —
+
+Get a free marketing audit
+
+I will review your website, SEO, and ads — and send you 3 specific fixes. Free, no pitch.
+
+Built by Mandeep — founder-led, 9 yrs. I do the work myself. No spam, unsubscribe anytime.
+
+How did you hear about me? (optional)Google searchChatGPT / AI searchReferralUpworkSocial mediaYour blog / a guideOther Get My Free Audit
+
+Sent! Check your inbox.
+
+Call Book Free Call
+
+WhatsApp
+
+##### phone
+
+#### +91 9729 712 388
+
+contact
+
+## Feel Free to Write Our Tecnology Experts
+
+ServicesWebsite DesignGraphic DesignBrand IdentityUI UX ServicesSearch Engine Optimisation
+
+✨ Get the answer → or book a free 30-min audit×
+
+Free 30-min SEO audit3 prioritized wins. No pitch.
+
+Book →×

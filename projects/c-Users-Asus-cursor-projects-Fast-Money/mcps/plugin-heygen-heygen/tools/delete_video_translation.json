@@ -1,0 +1,21 @@
+{
+  "name": "delete_video_translation",
+  "description": "Permanently deletes a video translation and its associated files. This action cannot be undone.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "videoTranslationId": {
+        "title": "Videotranslationid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "videoTranslationId"
+    ],
+    "title": "DeleteVideoTranslationInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

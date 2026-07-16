@@ -1,0 +1,12 @@
+{
+  "name": "firebase_get_project",
+  "description": "Use this to retrieve information about the currently active Firebase Project.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "firebase",
+  "marketplace": "cursor-public",
+  "pluginId": "3777",
+  "marketplaceId": "34"
+}

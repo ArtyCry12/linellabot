@@ -1,0 +1,137 @@
+{
+  "name": "confirm_billing_purchase",
+  "description": "INTERNAL — invoked ONLY by the plans widget on an explicit user Confirm click. Do NOT call this tool yourself; it charges the user's real saved payment method off-session. To help a user upgrade, top up, or set auto top-up, call `show_plans_and_credits` instead — it returns checkout links and, in UI clients, opens the widget where the user confirms the charge. Covers auto_topup and topup via the `action` field (upgrade_plan is temporarily disabled — plan upgrades use the hosted checkout link). The backend either charges the saved card (`result: \"charged\"`) or returns a `checkout_url` to redirect (`result: \"redirect\"`). Buying a brand-new subscription is not handled here — that uses the hosted checkout link.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": [
+          "upgrade_plan",
+          "auto_topup",
+          "topup"
+        ],
+        "description": "Billing action the user confirmed: upgrade_plan (needs plan_id+billing_period), topup (needs topup_id), auto_topup (enabled + top_up_amount_cents, or enabled:false to disable)."
+      },
+      "plan_id": {
+        "description": "Target plan tier (upgrade_plan).",
+        "type": "string",
+        "enum": [
+          "plus",
+          "ultra"
+        ]
+      },
+      "billing_period": {
+        "description": "Target billing cadence (upgrade_plan).",
+        "type": "string",
+        "enum": [
+          "monthly",
+          "annual"
+        ]
+      },
+      "topup_id": {
+        "description": "McpCreditTopupCard.id of the selected pack (topup).",
+        "type": "string"
+      },
+      "enabled": {
+        "description": "Enable (true, default) or disable (false) auto top-up (auto_topup).",
+        "type": "boolean"
+      },
+      "top_up_amount_cents": {
+        "description": "Auto top-up amount in cents (dollar amount) — one of auto_refill.options (auto_topup, when enabling).",
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "action"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "result": {
+        "description": "Discriminant. 'charged' = the operation succeeded (card charged or setting saved) — show success + close modal. 'redirect' = open checkout_url. 'error' = show error.",
+        "type": "string",
+        "enum": [
+          "charged",
+          "redirect",
+          "error"
+        ]
+      },
+      "charge_succeeded": {
+        "type": "boolean"
+      },
+      "action": {
+        "description": "Echo of the confirmed action.",
+        "type": "string",
+        "enum": [
+          "upgrade_plan",
+          "auto_topup",
+          "topup"
+        ]
+      },
+      "credits": {
+        "description": "Credits added by a top-up.",
+        "type": "number"
+      },
+      "price_cents": {
+        "description": "Top-up price charged, in cents.",
+        "type": "number"
+      },
+      "currency": {
+        "description": "ISO currency code (usd/eur/gbp) for the monetary fields in this response; absent means USD.",
+        "type": "string"
+      },
+      "due_today_amount": {
+        "description": "Prorated amount charged today, in cents (upgrade_plan).",
+        "type": "number"
+      },
+      "total_to_pay": {
+        "description": "Total to pay, in cents (upgrade_plan).",
+        "type": "number"
+      },
+      "additional_credits": {
+        "description": "Credits granted by the upgrade (upgrade_plan).",
+        "type": "number"
+      },
+      "new_plan": {
+        "description": "Resulting plan after an upgrade (tier, billing_period, credits_per_month, price_per_seat).",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": {}
+      },
+      "checkout_url": {
+        "description": "Hosted checkout/invoice URL when the charge could not complete off-session. Widget opens it; text clients relay it as a link.",
+        "type": "string"
+      },
+      "checkout_label": {
+        "description": "CTA label for checkout_url.",
+        "type": "string"
+      },
+      "success_message": {
+        "description": "Ready-to-show confirmation copy.",
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging.",
+        "type": "string"
+      },
+      "upgrade_url": {
+        "description": "Set by the shared error path on plan-required / out-of-credits errors.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

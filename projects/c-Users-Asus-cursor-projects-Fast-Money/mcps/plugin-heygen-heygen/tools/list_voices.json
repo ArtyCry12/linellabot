@@ -1,0 +1,82 @@
+{
+  "name": "list_voices",
+  "description": "Returns a paginated list of voices, filterable by type, engine, language, and gender. Use engine=starfish for voices compatible with the TTS endpoint.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "default": "public",
+        "description": "Voice type: 'public' for the shared library or 'private' for your cloned voices.",
+        "enum": [
+          "public",
+          "private"
+        ],
+        "title": "Type",
+        "type": "string"
+      },
+      "engine": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Filter by voice engine (e.g. 'starfish'). When set, only voices compatible with that engine are returned.",
+        "title": "Engine"
+      },
+      "language": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Filter by language (e.g. 'English').",
+        "title": "Language"
+      },
+      "gender": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Filter by gender ('male' or 'female').",
+        "title": "Gender"
+      },
+      "limit": {
+        "default": 20,
+        "description": "Results per page (1-100).",
+        "title": "Limit",
+        "type": "integer"
+      },
+      "token": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Opaque cursor token for the next page.",
+        "title": "Token"
+      }
+    },
+    "title": "ListVoicesInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

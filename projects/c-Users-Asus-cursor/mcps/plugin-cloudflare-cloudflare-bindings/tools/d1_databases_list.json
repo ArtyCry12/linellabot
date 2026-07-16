@@ -1,0 +1,44 @@
+{
+  "name": "d1_databases_list",
+  "description": "List all of the D1 databases in your Cloudflare account",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "page": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "per_page": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "cloudflare",
+  "marketplace": "cursor-public",
+  "pluginId": "407",
+  "marketplaceId": "34"
+}

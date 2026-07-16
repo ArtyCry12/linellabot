@@ -1,0 +1,75 @@
+{
+  "name": "ui_wait",
+  "description": "Wait for a UI element to appear (or disappear) on screen with a configurable timeout. Polls at regular intervals. Essential for robust automation -- use after tapping a button or launching an app to wait for the next screen to load. Set absent=true to wait for disappearance.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "absent": {
+        "description": "Wait for element to disappear instead of appear (default: false)",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "content_desc": {
+        "description": "Content-description (accessibility label) to wait for. Case-insensitive substring by default; set exact=true for full-string equality.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "device_id": {
+        "description": "Device ID (optional if only one device connected)",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "exact": {
+        "description": "Match id/text/content_desc by full-string equality (case-insensitive) instead of the default substring match.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "id": {
+        "description": "Resource ID of the element to wait for. Case-insensitive substring of the simple id (text after ':id/') by default; set exact=true for full-id equality.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "poll_interval_ms": {
+        "description": "Polling interval in milliseconds (default: 500)",
+        "format": "uint64",
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "text": {
+        "description": "Visible text to wait for. Case-insensitive substring by default; set exact=true for full-string equality.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "timeout_ms": {
+        "description": "Timeout in milliseconds (default: 10000 = 10 seconds)",
+        "format": "uint64",
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "description": "Generated MCP request struct for this tool.",
+    "title": "UiWaitRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

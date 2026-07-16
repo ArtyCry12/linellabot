@@ -1,0 +1,97 @@
+{
+  "name": "list_voices",
+  "description": "List available voices for speech and voice tools. Returns built-in preset voices plus the user's own custom voices. Each voice has a voice_id and a voice_type ('preset' or 'element'); pass that exact pair to the audio models (via generate_audio — seed_audio or text2speech_v2) and to the voice_change tool to select the speaking voice. Use the preview_url to hear a sample. Paginate with the returned next_cursor.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "size": {
+        "description": "Max voices to return, default 20.",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100
+      },
+      "cursor": {
+        "description": "Pagination cursor (next_cursor from a previous list_voices result).",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "voices": {
+        "description": "Available voices.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "voice_id": {
+              "type": "string",
+              "description": "Pass as voice_id to generate_audio (seed_audio / text2speech_v2) / voice_change."
+            },
+            "voice_type": {
+              "type": "string",
+              "enum": [
+                "preset",
+                "element"
+              ],
+              "description": "Pass as voice_type alongside voice_id."
+            },
+            "name": {
+              "type": "string"
+            },
+            "gender": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Voice gender if known, else null."
+            },
+            "preview_url": {
+              "description": "Sample audio URL.",
+              "type": "string"
+            },
+            "logo_url": {
+              "description": "Voice logo/orb image URL for display.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "voice_id",
+            "voice_type",
+            "name",
+            "gender"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "next_cursor": {
+        "description": "Pass back as cursor to fetch the next page.",
+        "type": "string"
+      },
+      "has_more": {
+        "description": "Whether more voices are available.",
+        "type": "boolean"
+      },
+      "error": {
+        "description": "Error message if voices could not be fetched.",
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

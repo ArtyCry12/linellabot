@@ -1,0 +1,133 @@
+{
+  "name": "component_builder",
+  "description": "Designer Tool - Component builder to insert component instances on the current active page. Supports inserting into an element (as a child) or into a component instance's slot. Use insert_in_element to add a component inside a container/div/section. Use insert_in_slot to add a component inside a specific slot of an existing component instance.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "The ID of the site. DO NOT ASSUME site id. ALWAYS ask user for site id if not already provided or known. use sites_list tool to fetch all sites and then ask user to select one of them."
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "build_label": {
+              "type": "string",
+              "description": "A label to identify this build action."
+            },
+            "action_type": {
+              "type": "string",
+              "enum": [
+                "insert_in_element",
+                "insert_in_slot"
+              ],
+              "description": "The type of insertion. insert_in_element: insert component as child of parent_element_id. insert_in_slot: insert component into a slot of a component instance identified by parent_element_id."
+            },
+            "parent_element_id": {
+              "type": "object",
+              "properties": {
+                "component": {
+                  "type": "string",
+                  "description": "The component id of the element to perform action on."
+                },
+                "element": {
+                  "type": "string",
+                  "description": "The element id of the element to perform action on."
+                }
+              },
+              "required": [
+                "component",
+                "element"
+              ],
+              "additionalProperties": false,
+              "description": "The id of the parent element (for insert_in_element) or the component instance (for insert_in_slot). e.g id:{component:123,element:456}."
+            },
+            "creation_position": {
+              "type": "string",
+              "enum": [
+                "append",
+                "prepend",
+                "before",
+                "after"
+              ],
+              "description": "The position to insert the component. append/prepend insert as child. before/after insert as sibling adjacent to the target element."
+            },
+            "component_schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the component to insert."
+                },
+                "slots": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the slot."
+                      },
+                      "children": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": true
+                        },
+                        "description": "Array of ComponentSchema objects (same shape: { name, slots? })."
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "children"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "description": "Slots to populate with child components."
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false,
+              "description": "The component schema to insert. Use name to specify which component, and optionally slots to populate child components in the instance's slots."
+            },
+            "slot_name": {
+              "type": "string",
+              "description": "The slot name to insert the component into. Required when action_type is insert_in_slot."
+            },
+            "return_component_info": {
+              "type": "boolean",
+              "description": "Whether to return the component instance info after insertion."
+            }
+          },
+          "required": [
+            "build_label",
+            "action_type",
+            "parent_element_id",
+            "creation_position",
+            "component_schema"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "siteId",
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

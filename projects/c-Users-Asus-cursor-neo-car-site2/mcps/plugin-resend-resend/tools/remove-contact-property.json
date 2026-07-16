@@ -1,0 +1,22 @@
+{
+  "name": "remove-contact-property",
+  "description": "Remove a contact property by ID from Resend. Before using this tool, you MUST double-check with the user that they want to remove this contact property. Reference the KEY of the property when double-checking, and warn the user that removing a contact property is irreversible and will remove the property from all contacts. You may only use this tool if the user explicitly confirms they want to remove the contact property after you double-check.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "contactPropertyId": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Contact property ID"
+      }
+    },
+    "required": [
+      "contactPropertyId"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

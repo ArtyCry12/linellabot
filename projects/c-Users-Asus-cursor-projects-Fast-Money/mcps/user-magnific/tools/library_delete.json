@@ -1,0 +1,16 @@
+{
+  "name": "library_delete",
+  "description": "Permanently delete an owned library asset by numeric `id`. Deletes its character variants too. Irreversible.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Numeric library asset id (from library_create / library_list).",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+---
+pid: 12804
+cwd: "C:\\Users\\Asus\\.cursor"
+command: "cd \"C:\\Users\\Asus\\.cursor\"\n$ErrorActionPreference = \"Continue\"\nWrite-Host \"=== aidoc n8n ===\"\nnpx.cmd skills add vladm3105/aidoc-flow-framework -l -y 2>&1 | Select-String -Pattern \"n8n|Available|- \"\nWrite-Host \"=== claude-mpm playwright ===\"\nnpx.cmd skills add bobmatnyc/claude-mpm-skills -l -y 2>&1 | Select-String -Pattern \"playwright|Available|- \"\nWrite-Host \"=== jwynia secrets ===\"\nnpx.cmd skills add jwynia/agent-skills -l -y 2>&1 | Select-String -Pattern \"secret|scan|Available|- \"\nWrite-Host \"=== firebase firestore check ===\"\nTest-Path \"$env:USERPROFILE\\.agents\\skills\\firestore-security-rules-auditor\\SKILL.md\"\nTest-Path \"$env:USERPROFILE\\.agents\\skills\\firebase-security-rules-auditor\\SKILL.md\"\n"
+started_at: 2026-07-16T16:12:24.445Z
+running_for_ms: 45263    
+---
+=== aidoc n8n ===
+
+o  Available Skills
+|      Create an Architecture Decision Record (ADR) - Layer 5 of the SDD flow, documenting one architecture decision wi
+th Context-Decision-Consequences. Use after BDD when an architectural choice needs recording. Single-document authoring
+ primitive; for end-to-end or batch generation the autopilot (`doc-adr-autopilot`) drives this skill.
+|      Audit an ADR - run declarative structural checks plus content review and produce a combined report for doc-adr-f
+ixer. Use for ADR quality gating before SPEC.
+|      Generate ADRs end-to-end from an upstream artifact (BRD/PRD/EARS/BDD), a prompt, or an IPLAN - detect input, sco
+pe the decision, generate, validate, and run the audit/fix cycle. Use to create or batch-create ADRs.
+|      Apply fixes to an ADR from the latest doc-adr-audit report - structure, links, element IDs, content, references,
+ and upstream drift. Use after an audit reports issues.
+|      Create Behavior-Driven Development (BDD) scenarios - Layer 4 of the SDD flow, translating EARS requirements into
+ executable Given-When-Then acceptance scenarios with req-to-SPEC trace links. Use after EARS, before ADR. Single-docum
+ent authoring primitive; for end-to-end or batch generation the autopilot (`doc-bdd-autopilot`) drives this skill.
+|      Audit a BDD suite - run declarative structural checks plus content review and produce a combined report for doc-
+bdd-fixer. Use for BDD quality gating before ADR.
+|      Generate BDD scenarios end-to-end from EARS, a prompt, or an IPLAN - detect input, generate YAML scenarios, vali
+date, and run the audit/fix cycle. Use to create or batch-create BDD suites.
+|      Apply fixes to a BDD suite from the latest doc-bdd-audit report - structure, links, element IDs, YAML scenario c
+ontent, references, and upstream drift. Use after an audit reports issues.
+|      Create a Business Requirements Document (BRD) - Layer 1 of the SDD flow, defining business needs, objectives, an
+d success criteria. Use when starting a new project or feature. Single-document authoring primitive; for end-to-end or 
+batch generation the autopilot (`doc-brd-autopilot`) drives this skill.
+|      Audit a BRD - run declarative structural checks plus content review and produce a combined report for doc-brd-fi
+xer. Use for BRD quality gating before PRD.
+|      Generate BRDs end-to-end from reference docs, a prompt, or an IPLAN - detect input, determine type, generate, va
+lidate, and run the audit/fix cycle. Use to create or batch-create BRDs.
+|      Apply fixes to a BRD from the latest doc-brd-audit report - structure, links, element IDs, content, references, 
+and upstream drift. Use after an audit reports issues.
+|      Author a Change Management (CHG) record - classify the change level, route by source to the entry gate, assess c
+ross-layer cascade impact, and register the change. Use when modifying an existing SDD artifact across any of the 8 lay
+ers. Single-document authoring primitive; for end-to-end or batch generation the autopilot (`doc-chg-autopilot`) drives
+ this skill.
+|      Audit a Change Management (CHG) record - run declarative schema, impact/cascade, gate-routing, and change-level 
+checks plus content review, then produce a pass/fail gate-readiness report (no numeric score) for doc-chg-fixer. Use to
+ validate a CHG before requesting gate approval.
+|      Drive a Change Management record end-to-end with minimal prompts - detect the change, classify the level, draft 
+the CHG, assess cross-layer cascade, and prep the entry gate. Use to author or batch CHGs hands-off.
+|      Apply fixes to a Change Management (CHG) record from the latest doc-chg-audit report - schema/required fields, c
+hange-level correctness, source-to-gate routing, impact/cascade completeness, conditional blocks, links, registry, and 
+lens-validated content remediations. Use after an audit reports a FAIL.
+|      Create EARS (Easy Approach to Requirements Syntax) formal requirements - Layer 3 of the SDD flow, translating PR
+D features into atomic, testable WHEN-THE-SHALL-WITHIN statements. Use after BRD and PRD exist. Single-document authori
+ng primitive; for end-to-end or batch generation the autopilot (`doc-ears-autopilot`) drives this skill.
+|      Audit an EARS document - run declarative structural checks plus content review and produce a combined report for
+ doc-ears-fixer. Use for EARS quality gating before BDD.
+|      Generate EARS documents end-to-end from a PRD, a prompt, or an IPLAN - detect input, validate readiness, generat
+e formal statements, validate, and run the audit/fix cycle. Use to create or batch-create EARS.
+|      Apply fixes to an EARS document from the latest doc-ears-audit report - structure, links, element IDs, EARS synt
+ax, references, and upstream drift. Use after an audit reports issues.
+|      Orchestrate the 8-layer SDD workflow - recommend the right skill for an intent, detect the current position and 
+next steps, explain the BRD→…→Code flow, and enforce the upstream-artifact policy. Use when unsure what to do or 
+which skill to run next.
+|      Create an Implementation Plan (IPLAN) - Layer 8 of the SDD flow, the mandatory execution bridge from SPEC/TDD to
+ source code via an executable, session-resumable file manifest. Use when ready to implement a SPEC component. Single-d
+ocument authoring primitive; for end-to-end or batch generation the autopilot (`doc-iplan-autopilot`) drives this skill
+.
+|      Audit an IPLAN - run declarative structural checks plus content review and produce a combined report for doc-ipl
+an-fixer. Use for IPLAN quality gating before code implementation.
+|      Generate IPLANs end-to-end from a SPEC/TDD, a prompt, or an existing IPLAN - detect input, plan a test-first fil
+e manifest, generate, validate, and run the audit/fix cycle. Use to create or batch-create IPLANs.
+|      Apply fixes to an IPLAN from the latest doc-iplan-audit report - structure, links, IDs, file manifest, session h
+andoff, implementation contracts, references, and upstream drift. Use after an audit reports issues.
+|      The ID and naming authority for the SDD flow - validates document IDs, 4-segment element IDs, threshold tags, an
+d flags removed/legacy patterns. Use before creating or editing any artifact.
+|      Create a Product Requirements Document (PRD) - Layer 2 of the SDD flow, defining product features, personas, suc
+cess metrics, and acceptance criteria from an upstream BRD. Use after a BRD exists and before EARS. Single-document aut
+horing primitive; for end-to-end or batch generation the autopilot (`doc-prd-autopilot`) drives this skill.
+|      Audit a PRD - run declarative structural checks plus content review and produce a combined report for doc-prd-fi
+xer. Use for PRD quality gating before EARS.
+|      Generate PRDs end-to-end from a BRD, a prompt, or an IPLAN - detect input, derive scope, generate, validate, and
+ run the audit/fix cycle. Use to create or batch-create PRDs.
+|      Apply fixes to a PRD from the latest doc-prd-audit report - structure, links, element IDs, content, references, 
+and upstream BRD drift. Use after an audit reports issues.
+|      Create Reference Documents (REF) - free-format supplements for BRD and ADR that sit outside the formal traceabil
+ity chain. Use for project overviews, strategic vision, or technology/infrastructure summaries.
+|      Create a Technical Specification (SPEC) - Layer 6 of the SDD flow, defining component interfaces, data models, a
+nd behavior contracts. Use when ADR decisions are settled and you need an implementation-ready spec before TDD. Single-
+document authoring primitive; for end-to-end or batch generation the autopilot (`doc-spec-autopilot`) drives this skill
+.
+|      Audit a SPEC - run declarative structural checks plus content review and produce a combined report for doc-spec-
+fixer. Use for SPEC quality gating before TDD.
+|      Generate SPECs end-to-end from BDD/ADR, a prompt, or an IPLAN - detect input, generate the component spec, valid
+ate, and run the audit/fix cycle. Use to create or batch-create SPECs.
+|      Apply fixes to a SPEC from the latest doc-spec-audit report - structure, YAML, links, IDs, content, references, 
+and upstream drift. Use after an audit reports issues.
+|      Create a Test-Driven Development guide (TDD) - Layer 7 of the SDD flow, defining test cases, BDD-to-test mapping
+, and quality thresholds from SPEC component contracts. Use after SPEC, before IPLAN. Single-document authoring primiti
+ve; for end-to-end or batch generation the autopilot (`doc-tdd-autopilot`) drives this skill.
+|      Audit a TDD - run declarative structural checks plus content review and produce a combined report for doc-tdd-fi
+xer. Use for TDD quality gating before IPLAN.
+|      Generate TDDs end-to-end from a SPEC, a prompt, or an IPLAN - detect input, plan the test pyramid, generate test
+ cases, validate, and run the audit/fix cycle. Use to create or batch-create TDDs.
+|      Apply fixes to a TDD from the latest doc-tdd-audit report - structure, links, element IDs, test-case content, re
+ferences, and upstream SPEC drift. Use after an audit reports issues.
+|      Validate the SDD corpus - cross-document references, orphans, cumulative-tag gaps, duplicate IDs, and full bidir
+ectional traceability (with optional repair), plus a prose/terminology pass. Use before releases, after batch generatio
+n, or to validate and repair the corpus.
+|      Run the correct CHG approval gate for a change - select the gate by affected layers, run its checks against the 
+error catalog, and prepare the gate approval form for human sign-off. Use when changing an existing SDD artifact via th
+e CHG process.
+|      Adopt the SDD flow into an existing (brownfield) codebase - detect code and docs, infer the domain, scaffold the
+ 8-layer structure, and reverse-engineer draft baseline artifacts. Use once on an existing project; then hand off to do
+c-flow and the per-layer audits.
+|      Initialize a new (greenfield) project for the SDD flow - domain selection, folder scaffolding, and index files. 
+Use once, before any artifact creation; then hand off to doc-flow.
+|      Create and maintain a project's adaptation profile (.aidoc/profile.yaml) - the closed set of preferences the SDD
+ skills honor. Use to tailor the flow to a project without forking the framework.
+|      Provide real-time quality guidance during artifact creation - section completion, anti-pattern detection, cumula
+tive-tag and naming checks - before an artifact is finished. Use while authoring or reviewing a single SDD document.
+|      Run a multi-persona review team over an SDD artifact - fan the crew out as parallel subagents that deposit findi
+ngs to a review blackboard, then reduce them into one scored, coverage-aware report. The shared mechanism behind the te
+am mode of doc-*-audit (review), doc-*-fixer (remediate), and doc-*-autopilot (create). Use at quality gates; falls bac
+k to single_pass when subagents are unavailable.
+=== claude-mpm playwright ===
+o  Available Skills
+|      ANTI-PATTERN - Example showing violations of self-containment (DO NOT COPY)
+|      MCP (Model Context Protocol) - Build AI-native servers with tools, resources, and prompts. TypeScript/Python SDK
+s for Claude Desktop integration.
+|      OpenRouter unified AI API - Access 200+ LLMs through single interface with intelligent routing, streaming, cost 
+optimization, and model fallbacks
+|      MongoDB - NoSQL document database with flexible schema design, aggregation pipelines, indexing strategies, and S
+pring Data integration
+|      Spring Boot 3.x - Java framework for production-ready applications with dependency injection, REST APIs, data ac
+cess, security, and actuator monitoring
+|      FlexLayout for React - Advanced docking layout manager with drag-and-drop, tabs, splitters, and complex window m
+anagement
+|      Hono on Cloudflare Workers - bindings, KV, D1, R2, Durable Objects, and edge deployment patterns
+|      Hono ultrafast web framework fundamentals - routing, context, handlers, and response patterns for multi-runtime 
+deployment
+|      Hono JSX - server-side rendering, streaming, async components, and HTML generation patterns
+|      Hono middleware patterns - creation, composition, built-in middleware, and execution order for web applications
+|      Hono RPC - end-to-end type-safe API client generation with hc client and TypeScript inference
+|      Hono testing patterns - app.request(), test client, mocking environment, and integration testing strategies
+|      Hono request validation with Zod, TypeBox, Valibot - type-safe input validation for JSON, forms, query params, a
+nd headers
+|      Modern React 19 platform features and rendering architecture - the React Compiler (auto-memoization) and how it 
+changes memoization guidance, concurrent rendering (useTransition/useDeferredValue/Suspense), the use() hook, Actions (
+useActionState/useOptimistic/useFormStatus), ref-as-prop and Context-as-provider changes, compound components, context 
+selectors, error boundaries, portals, virtualization, code-splitting, and the RSC/'use client' boundary.
+|      General React fundamentals - components and JSX, props and state, the core hooks (useState/useEffect/useRef/useM
+emo/useCallback/useContext), composition, conditional and list rendering, and controlled inputs. The canonical "depends
+ on React" reference.
+|      Advanced React hooks composition patterns - SWR integration, debounced search, memoized contexts, state machines
+, and performance optimization
+|      Svelte 5 - Reactive UI framework with compiler magic, Runes API, SvelteKit full-stack framework, SSR/SSG, minima
+l JavaScript
+|      SvelteKit - Full-stack Svelte framework with file-based routing, SSR/SSG, form actions, and adapters for deploym
+ent
+|      Vue 3 - Progressive JavaScript framework with Composition API, reactivity system, single-file components, Vite i
+ntegration, TypeScript support
+|    playwright
+|      Playwright modern end-to-end testing framework with cross-browser automation, auto-wait, and built-in test runne
+r
+|      Biome - Fast all-in-one toolchain for web projects (linter + formatter in Rust, 100x faster than ESLint)
+|      Comprehensive guide for developing on EspoCRM - metadata-driven CRM with service layer architecture
+|      Python asyncio - Modern concurrent programming with async/await, event loops, tasks, coroutines, primitives, aio
+http, and FastAPI async patterns
+|      Flask - Lightweight Python web framework for microservices, REST APIs, and flexible web applications with extens
+ive extension ecosystem
+|      pytest - Python's most powerful testing framework with fixtures, parametrization, plugins, and framework integra
+tion for FastAPI, Django, Flask
+|      mypy - Static type checker for Python with gradual typing, strict mode, Protocol support, and framework integrat
+ion
+|      Kysely type-safe SQL query builder - End-to-end type safety from schema to queries, migrations, transactions, pl
+ugins
+|      Prisma ORM for TypeScript - Type-safe database toolkit with schema-first development, auto-generated client, mig
+rations, relations, and Prisma Studio
+|      Jest with TypeScript - Industry standard testing framework with 70% market share, mature ecosystem, React Testin
+g Library integration
+|      Vitest - Modern TypeScript testing framework with Vite-native performance, ESM support, and TypeScript-first des
+ign
+|      Headless UI - Unstyled, fully accessible UI components for React and Vue with built-in ARIA patterns
+|      shadcn/ui component library for React with Tailwind CSS - copy-paste accessible components with full code owners
+hip
+|      Comprehensive web application testing patterns with Playwright selectors, wait strategies, and best practices
+=== jwynia secrets ===
+o  Available Skills
+=== firebase firestore check ===
+False
+True
+
+---
+exit_code: 0
+elapsed_ms: 47457
+ended_at: 2026-07-16T16:13:11.902Z
+---

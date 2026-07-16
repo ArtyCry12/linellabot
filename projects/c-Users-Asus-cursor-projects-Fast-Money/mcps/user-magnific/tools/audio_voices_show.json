@@ -1,0 +1,25 @@
+{
+  "name": "audio_voices_show",
+  "description": "Inline TTS voice picker. User replies with voiceId.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "provider": {
+        "description": "Default all.",
+        "enum": [
+          "elevenlabs",
+          "google"
+        ],
+        "type": "string"
+      },
+      "pendingText": {
+        "description": "Script for follow-up audio_tts.",
+        "type": "string"
+      },
+      "pendingModel": {
+        "description": "Model for follow-up audio_tts.",
+        "type": "string"
+      }
+    }
+  }
+}

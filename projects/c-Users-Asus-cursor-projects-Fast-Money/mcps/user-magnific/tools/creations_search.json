@@ -1,0 +1,64 @@
+{
+  "name": "creations_search",
+  "description": "Search user creations as raw TOON text. Use `creations_get` for one id. `reference` required with from=folder/project-root. Defaults: history, page 1.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "from": {
+        "description": "Default history; folder/project-root need `reference`.",
+        "enum": [
+          "history",
+          "folder",
+          "project-root",
+          "all-assets",
+          "favorites",
+          "downloads",
+          "trash",
+          "upload",
+          "v3-upload",
+          "v3-favorites",
+          "v3-trash"
+        ],
+        "type": "string"
+      },
+      "reference": {
+        "description": "Folder/project reference.",
+        "type": "string"
+      },
+      "query": {
+        "description": "Name filter.",
+        "type": "string"
+      },
+      "page": {
+        "type": "integer"
+      },
+      "folderReference": {
+        "description": "Folder/project filter.",
+        "type": "string"
+      },
+      "fileType": {
+        "description": "Media type.",
+        "enum": [
+          "image",
+          "video",
+          "audio"
+        ],
+        "type": "string"
+      },
+      "toolNames": {
+        "description": "Include tool slugs.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "excludeToolNames": {
+        "description": "Exclude tool slugs.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

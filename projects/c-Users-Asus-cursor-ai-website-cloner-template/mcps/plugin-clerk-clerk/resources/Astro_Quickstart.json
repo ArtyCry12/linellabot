@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://quickstarts/astro",
+  "name": "Astro Quickstart",
+  "description": "Quickstart guide for Astro Quickstart",
+  "mimeType": "text/markdown"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "CreateWixBusinessGuide",
+  "description": "**You MUST use this tool when the user asks to create a site from a template or with a template.** Do NOT use WixSiteBuilder for template-based site creation — use this tool instead.\n\nProvides comprehensive documentation for creating a new Wix Business (i.e site, app, etc.) using templates.\n\n## When to Use This Tool\n\nUse this tool when:\n- The user explicitly asks to create a site from a template or with a template\n- The WixSiteBuilder tool is not available\n\nFor all other site creation requests (no template mentioned), use WixSiteBuilder instead.\n\n## What This Tool Contains\n\nThis tool provides complete documentation including:\n- Template selection (empty sites or designed templates)\n- Wix Editor vs Wix Studio options\n- Regular vs Headless site creation\n- API endpoint details and parameters\n- Post-creation steps (OAuth for headless, publishing for regular sites)\n- App installation instructions\n\n## Important Notes\n\n**Do NOT use WixREADME or SearchWixRESTDocumentation before this tool.** If the user wants to create a Wix site from a template, call this tool directly. It contains ALL necessary documentation.\n\n**After reading this documentation:**\n1. Use ManageWixSite to create the site\n2. Use CallWixSiteAPI to install apps (if needed)\n\nIf the user wants to create a Wix site from a template, call this tool directly. It contains ALL necessary documentation. You don't need to search for additional documentation, read more articles, use the WixREADME tool etc unless the user asks you to do so explicitly or you encounter an error.\n\n**When calling this tool, always include the user's original prompt in the `userPrompt` parameter.**",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "userPrompt": {
+        "type": "string",
+        "description": "The user prompt that triggered this tool"
+      }
+    },
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "wix",
+  "marketplace": "cursor-public",
+  "pluginId": "761",
+  "marketplaceId": "34"
+}

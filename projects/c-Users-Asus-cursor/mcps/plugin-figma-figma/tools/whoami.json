@@ -1,0 +1,12 @@
+{
+  "name": "whoami",
+  "description": "Returns the authenticated user's handle, email, all the plans the user belongs to (and the ID for each plan) and their seats on those plans. You MUST use this tool if you are experiencing file access/permission issues or are being rate limited by the Figma MCP to help debug the issue.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "figma",
+  "marketplace": "cursor-public",
+  "pluginId": "657",
+  "marketplaceId": "34"
+}

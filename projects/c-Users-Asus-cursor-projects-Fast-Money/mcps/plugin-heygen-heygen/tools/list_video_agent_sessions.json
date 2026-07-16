@@ -1,0 +1,33 @@
+{
+  "name": "list_video_agent_sessions",
+  "description": "Returns a paginated list of video agent sessions for the authenticated user, sorted newest-first.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "limit": {
+        "default": 20,
+        "description": "Results per page (1-100).",
+        "title": "Limit",
+        "type": "integer"
+      },
+      "token": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Opaque cursor token for the next page. Obtained from next_token in a previous response.",
+        "title": "Token"
+      }
+    },
+    "title": "ListVideoAgentSessionsInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

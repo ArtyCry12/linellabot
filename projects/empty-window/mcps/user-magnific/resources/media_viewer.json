@@ -1,0 +1,6 @@
+{
+  "uri": "ui://media/viewer",
+  "name": "media_viewer",
+  "description": "Renders Pikaso async image and video generation results inline as an MCP App.",
+  "mimeType": "text/html;profile=mcp-app"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "flows_get",
+  "description": "Flow input/output spec as raw TOON text. Each input includes a normalized `kind`, `howToProvide`, and resolved `options`/`presetOptions` where applicable. Call before `flows_run`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "identifier": {
+        "description": "From flows_list/flows_show.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "identifier"
+    ]
+  }
+}

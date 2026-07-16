@@ -1,0 +1,8 @@
+{
+  "name": "account_profile",
+  "description": "Signed-in user identity for display: name, displayName, email, avatarUrl. avatarUrl always resolves to a usable image (falls back to a default avatar). No plan or credits — use account_balance for those.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  }
+}

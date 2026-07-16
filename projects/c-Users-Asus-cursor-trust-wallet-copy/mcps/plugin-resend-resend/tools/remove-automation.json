@@ -1,0 +1,22 @@
+{
+  "name": "remove-automation",
+  "description": "Remove an automation by ID or Resend dashboard URL. Before using this tool, you MUST double-check with the user that they want to remove this automation. Reference the NAME of the automation when confirming, and warn the user that removal is irreversible and will stop all future runs. You may only use this tool if the user explicitly confirms.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Automation ID or Resend dashboard URL (e.g. https://resend.com/automations/<id>)"
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

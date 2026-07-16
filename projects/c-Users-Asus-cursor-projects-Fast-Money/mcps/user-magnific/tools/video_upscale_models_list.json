@@ -1,0 +1,8 @@
+{
+  "name": "video_upscale_models_list",
+  "description": "Video upscale mode catalog as raw TOON text (topaz, magnific, magnific_precision) with required/optional params, ranges and enums. Read before calling `video_upscale`.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  }
+}

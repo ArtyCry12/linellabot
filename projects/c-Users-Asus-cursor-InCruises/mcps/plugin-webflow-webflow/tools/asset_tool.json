@@ -1,0 +1,136 @@
+{
+  "name": "asset_tool",
+  "description": "Designer Tool - Asset tool to perform actions like create folder, get all assets and folders, update assets and folders, and upload image by URL",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "The ID of the site. DO NOT ASSUME site id. ALWAYS ask user for site id if not already provided or known. use sites_list tool to fetch all sites and then ask user to select one of them."
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Label to identify this action in the response when sending multiple actions."
+            },
+            "create_folder": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the folder to create"
+                },
+                "parent_folder_id": {
+                  "type": "string",
+                  "description": "The id of the parent folder to move the folder to."
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false,
+              "description": "Create a folder on the site"
+            },
+            "get_all_assets_and_folders": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "string",
+                  "enum": [
+                    "all",
+                    "folders",
+                    "assets"
+                  ],
+                  "description": "Query to get all assets and folders on the site"
+                },
+                "filter_assets_by_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Filter assets by ids"
+                }
+              },
+              "required": [
+                "query"
+              ],
+              "additionalProperties": false,
+              "description": "Get all assets and folders on the site"
+            },
+            "update_asset": {
+              "type": "object",
+              "properties": {
+                "asset_id": {
+                  "type": "string",
+                  "description": "The id of the asset to update"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The name of the asset to update"
+                },
+                "alt_text": {
+                  "type": "string",
+                  "description": "The alt text of the asset to update"
+                },
+                "parent_folder_id": {
+                  "type": "string",
+                  "description": "The id of the parent folder to move the asset to."
+                }
+              },
+              "required": [
+                "asset_id"
+              ],
+              "additionalProperties": false,
+              "description": "Update an asset on the site"
+            },
+            "upload_image_by_url": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Publicly accessible image URL to add to the Webflow asset library. Must be reachable over http(s)."
+                },
+                "asset_name": {
+                  "type": "string",
+                  "description": "Optional display name for the new asset in the Webflow asset library. If omitted, the name is derived from the URL pathname."
+                },
+                "alt_text": {
+                  "type": "string",
+                  "description": "Optional alt text to set on the new asset for accessibility."
+                }
+              },
+              "required": [
+                "url"
+              ],
+              "additionalProperties": false,
+              "description": "Create a Webflow asset from a publicly accessible remote image URL. By default the asset's display name is derived from the URL (without extension). Optionally override the asset's display name and alt text. Returns the new asset's info (id, name, mimeType, url, altText)."
+            }
+          },
+          "required": [
+            "label"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "siteId",
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/server-auth-nextjs",
+  "name": "Server-Side Auth (Next.js App Router)",
+  "description": "Auth patterns for Next.js App Router server components and API routes",
+  "mimeType": "text/markdown"
+}

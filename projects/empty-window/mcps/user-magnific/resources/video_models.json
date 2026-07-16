@@ -1,0 +1,6 @@
+{
+  "uri": "models://video",
+  "name": "video_models",
+  "description": "Video-gen model catalog. Stable per session. Optional `search` query param filters by name, slug, description, or tags.",
+  "mimeType": "application/json"
+}

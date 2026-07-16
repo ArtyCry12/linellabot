@@ -1,0 +1,104 @@
+{
+  "name": "data_whtml_builder",
+  "description": "Data Tool - WHTML builder to insert elements from HTML and CSS strings on a page via the public-mcp headless surface. Accepts HTML markup and optional raw CSS rules, constructs WHTML, and inserts it into a parent element.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "Unique identifier for the Webflow site (e.g., '580e63e98c9a982ac9b8b741'). Use list_sites to discover available site IDs."
+      },
+      "pageId": {
+        "type": "string",
+        "description": "Any valid page id that exists in the site"
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "build_label": {
+              "type": "string",
+              "description": "A label to identify this build action in the results."
+            },
+            "parent_element_id": {
+              "type": "object",
+              "properties": {
+                "component": {
+                  "type": "string",
+                  "description": "The component id of the element to perform action on."
+                },
+                "element": {
+                  "type": "string",
+                  "description": "The element id of the element to perform action on."
+                },
+                "prop": {
+                  "type": "string",
+                  "description": "Optional text prop id. Set when the parent is an element inside a TextPropElement or RichTextPropElement of a component instance."
+                }
+              },
+              "required": [
+                "component",
+                "element"
+              ],
+              "additionalProperties": false,
+              "description": "The id of the parent element to insert WHTML into, you can find it from id field on element. e.g id:{component:123,element:456}."
+            },
+            "creation_position": {
+              "type": "string",
+              "enum": [
+                "append",
+                "prepend",
+                "before",
+                "after"
+              ],
+              "description": "The position to insert the element. append/prepend insert as child of the parent element. before/after insert as sibling adjacent to the target element."
+            },
+            "html": {
+              "type": "string",
+              "minLength": 1,
+              "description": "HTML markup string to insert. Must not contain <style> tags. CSS should be provided via the css parameter instead."
+            },
+            "css": {
+              "type": "string",
+              "description": "Optional CSS rules to apply. Must not contain <style> tags. Provide raw CSS rules only (e.g. '.my-class { color: red; }')."
+            },
+            "return_element_info": {
+              "type": "boolean",
+              "description": "Whether to return full element info for the inserted element. Defaults to false."
+            },
+            "scope_component_id": {
+              "type": "string",
+              "description": "Optional component id. When set, the parent_element_id lookup walks this component's tree instead of the page tree — required to insert into a component definition."
+            }
+          },
+          "required": [
+            "build_label",
+            "parent_element_id",
+            "creation_position",
+            "html"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "maxItems": 5,
+        "description": "WHTML insertion actions executed sequentially. Each item inserts one HTML/CSS fragment at the requested position."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "siteId",
+      "pageId",
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

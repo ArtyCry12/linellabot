@@ -1,0 +1,33 @@
+{
+  "name": "projects_move",
+  "description": "Move creations or spaces into `targetProjectReference`. Identifiers from `creations_search`/`spaces_list`. Target project must belong to user.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "elementType": {
+        "description": "`creation`|`space`.",
+        "enum": [
+          "creation",
+          "space"
+        ],
+        "type": "string"
+      },
+      "elementIdentifiers": {
+        "description": "Identifiers from `creations_search`/`spaces_list` (max 200). Foreign element → abort.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "targetProjectReference": {
+        "description": "Destination project ref. User-owned.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "elementType",
+      "elementIdentifiers",
+      "targetProjectReference"
+    ]
+  }
+}

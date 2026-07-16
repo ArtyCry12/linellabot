@@ -1,0 +1,61 @@
+{
+  "name": "ui_tap",
+  "description": "Tap a UI element on a connected device by resource-id, text, or content-description. First discovers elements via uiautomator dump, finds the matching element, then taps its center coordinates. Supports partial resource-id matching. Returns the tapped coordinates and matched element info.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "content_desc": {
+        "description": "Content-description (accessibility label) of the element to tap. Case-insensitive substring by default; set exact=true for full-string equality.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "coords": {
+        "description": "Direct [x, y] SCREEN-SPACE coordinates to tap, bypassing element search",
+        "items": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "device_id": {
+        "description": "Device ID (optional if only one device connected)",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "exact": {
+        "description": "Match id/text/content_desc by full-string equality (case-insensitive) instead of the default substring match.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "id": {
+        "description": "Resource ID of the element to tap. Case-insensitive substring of the simple id (text after ':id/') by default, e.g. 'search_input' matches 'com.android.app:id/search_input'. Set exact=true for full-id equality.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "text": {
+        "description": "Visible text of the element to tap. Case-insensitive substring by default (e.g. 'SAVE' also matches 'Saved notes:'); set exact=true for full-string equality.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "description": "Generated MCP request struct for this tool.",
+    "title": "UiTapRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

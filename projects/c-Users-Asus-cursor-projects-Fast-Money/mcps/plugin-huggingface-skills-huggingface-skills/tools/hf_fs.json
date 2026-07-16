@@ -1,0 +1,340 @@
+{
+  "name": "hf_fs",
+  "description": "List, read, find, or search Hugging Face repos, buckets, files, collections, and papers. Authenticated OWNER is arty56566.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "op": {
+        "type": "string",
+        "enum": [
+          "ls",
+          "cat",
+          "stat",
+          "find",
+          "search"
+        ],
+        "description": "Operation: ls lists a directory; cat reads a text-like file; stat checks one URI; find filters entries beneath a known directory; search discovers Hub resources from a supported discovery root."
+      },
+      "uri": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Hugging Face URI in the form hf://models|datasets|spaces|buckets/OWNER[/NAME[/PATH]] or hf://collections[/OWNER[/SLUG]] or hf://papers[/ARXIV_ID[/PATH]]."
+      },
+      "glob": {
+        "type": "string",
+        "description": "ls-only glob matched against entries in the listed directory."
+      },
+      "recursive": {
+        "type": "boolean",
+        "default": false,
+        "description": "ls-only recursive traversal; unsupported on unbounded discovery roots such as hf://papers."
+      },
+      "entry_type": {
+        "type": "string",
+        "enum": [
+          "file",
+          "dir",
+          "repo",
+          "bucket",
+          "collection",
+          "paper",
+          "link"
+        ],
+        "description": "Optional ls/find/search result-type filter; it does not change URI interpretation."
+      },
+      "name": {
+        "type": "string",
+        "description": "find-only glob matched against entry names/basenames."
+      },
+      "path": {
+        "type": "string",
+        "description": "find-only glob matched against paths relative to the requested directory URI."
+      },
+      "query": {
+        "type": "string",
+        "description": "search-only keyword or natural-language query. Use a discovery URI: hf://models, hf://datasets, hf://spaces, hf://collections, hf://collections/OWNER, or hf://papers. Paper search is supported only at exactly hf://papers."
+      },
+      "sort": {
+        "type": "string",
+        "enum": [
+          "createdAt",
+          "downloads",
+          "likes",
+          "lastModified",
+          "likes30d",
+          "trendingScore",
+          "mainSize",
+          "id",
+          "trending",
+          "upvotes"
+        ],
+        "description": "Optional sort for supported discovery listings/search only. Do not pass sort to hf://papers or dated Daily Papers listings; use ls hf://papers/trending for trending papers."
+      },
+      "max_bytes": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 80000,
+        "description": "cat max read length. 0 means the maximum allowed 80000 bytes."
+      },
+      "offset": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "cat read start offset."
+      },
+      "limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 10000,
+        "description": "ls/search maximum results. Default 1000 for ls and 100 for search. Paper listings are capped at 100."
+      }
+    },
+    "required": [
+      "op",
+      "uri"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "uri": {
+        "type": "string"
+      },
+      "op": {
+        "type": "string",
+        "enum": [
+          "ls",
+          "cat",
+          "stat",
+          "find",
+          "search"
+        ]
+      },
+      "entries": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "file",
+                "dir",
+                "repo",
+                "bucket",
+                "collection",
+                "paper",
+                "link"
+              ]
+            },
+            "path": {
+              "type": "string"
+            },
+            "uri": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "target_uri": {
+              "type": "string"
+            },
+            "repo_type": {
+              "type": "string",
+              "enum": [
+                "model",
+                "dataset",
+                "space",
+                "bucket"
+              ]
+            },
+            "size": {
+              "type": "number"
+            },
+            "total_files": {
+              "type": "number"
+            },
+            "lfs": {
+              "type": "boolean"
+            },
+            "private": {
+              "type": "boolean"
+            },
+            "gated": {
+              "anyOf": [
+                {
+                  "type": "boolean",
+                  "const": false
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "auto",
+                    "manual"
+                  ]
+                }
+              ]
+            },
+            "likes": {
+              "type": "number"
+            },
+            "downloads": {
+              "type": "number"
+            },
+            "task": {
+              "type": "string"
+            },
+            "library": {
+              "type": "string"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "trending_score": {
+              "type": "number"
+            },
+            "sdk": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "upvotes": {
+              "type": "number"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "published_at": {
+              "type": "string"
+            },
+            "daily_papers_date": {
+              "type": "string"
+            },
+            "daily_papers_uri": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "arxiv_url": {
+              "type": "string"
+            },
+            "observed_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "content_type": {
+              "type": "string",
+              "enum": [
+                "application/json",
+                "text/markdown"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "path": {
+        "type": "string"
+      },
+      "content": {
+        "type": "string"
+      },
+      "content_type": {
+        "type": "string",
+        "enum": [
+          "application/json",
+          "text/markdown"
+        ]
+      },
+      "bytes": {
+        "type": "number"
+      },
+      "exists": {
+        "type": "boolean"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "namespace",
+          "repo",
+          "dir",
+          "file",
+          "collection",
+          "paper",
+          "link",
+          "missing"
+        ]
+      },
+      "namespace": {
+        "type": "string"
+      },
+      "size": {
+        "type": "number"
+      },
+      "lfs": {
+        "type": "boolean"
+      },
+      "target_uri": {
+        "type": "string"
+      },
+      "published_at": {
+        "type": "string"
+      },
+      "daily_papers_date": {
+        "type": "string"
+      },
+      "daily_papers_uri": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      },
+      "arxiv_url": {
+        "type": "string"
+      },
+      "truncated": {
+        "type": "boolean"
+      },
+      "truncation_reason": {
+        "type": "string",
+        "enum": [
+          "entry_limit",
+          "max_bytes",
+          "limit",
+          "provider_limit"
+        ]
+      },
+      "truncation_message": {
+        "type": "string"
+      },
+      "next_offset": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "uri",
+      "op"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "huggingface-skills",
+  "marketplace": "cursor-public",
+  "pluginId": "735",
+  "marketplaceId": "34"
+}

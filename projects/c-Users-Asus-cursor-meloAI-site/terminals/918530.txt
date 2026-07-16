@@ -1,0 +1,41 @@
+---
+pid: 2952
+cwd: "c:\\Users\\Asus\\.cursor\\meloai-site"
+command: "Get-ChildItem -Path \"c:\\Users\\Asus\\.cursor\\meloai-site\\my-3d-site\" -Recurse -Include *.tsx,*.ts,*.css -File | Where-Object { $_.FullName -notmatch 'node_modules|\\.next' } | Select-Object -ExpandProperty FullName"
+started_at: 2026-05-02T14:04:37.761Z
+running_for_ms: 22629    
+---
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\app\globals.css
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\app\layout.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\app\page.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\home\melo-home.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\home\melo-test-drive-form.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\accordion.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\animated-shiny-text.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\avatar.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\background-gradient-animation.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\button.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\compare-table.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\dropdown-menu.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\footer.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\liquid-metal-button.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\navigation-menu.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\reviews-social-proof.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\separator.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\shadcnblocks-com-navbar1.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\sheet.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\sidebar.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\tooltip.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\web-gl-shader.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\components\ui\whatsapp-sidebar.tsx
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\constants\services.ts
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\lib\utils.ts
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\next-env.d.ts
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\next.config.ts
+C:\Users\Asus\.cursor\meloai-site\my-3d-site\tailwind.config.ts
+
+---
+exit_code: 0
+elapsed_ms: 23764
+ended_at: 2026-05-02T14:05:01.525Z
+---

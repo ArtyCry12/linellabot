@@ -1,0 +1,23 @@
+{
+  "name": "metavr_cli_help",
+  "description": "Help for the metavr CLI (Meta's `@meta-quest/hzdb`, the Quest device dev tool). Call BEFORE invoking a metavr subcommand from the shell — metavr gets new subcommands every release (perf capture, ovrmetrics, ui automation, sideload, meta-assets search, etc.) and your training data does not include them. Pass `topic` for one subcommand (e.g. 'perf', 'app', 'device', 'docs', 'ui'); omit for the full tree. Returns markdown.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "topic": {
+        "default": null,
+        "description": "Specific subcommand to get help docs for (e.g., 'adb', 'device'). If not specified, returns help docs for all top-level metavr commands.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "description": "Request parameters for `hzdb_cli_help`.",
+    "title": "MetavrCliHelpRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

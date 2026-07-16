@@ -1,0 +1,6 @@
+{
+  "uri": "models://video/upscale",
+  "name": "video_upscale_models",
+  "description": "Video upscale modes catalog. Stable per session.",
+  "mimeType": "application/json"
+}

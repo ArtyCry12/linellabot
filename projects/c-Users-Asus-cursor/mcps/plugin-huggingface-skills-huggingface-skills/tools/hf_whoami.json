@@ -1,0 +1,12 @@
+{
+  "name": "hf_whoami",
+  "description": "Hugging Face tools are being used by authenticated user 'arty56566'",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "huggingface-skills",
+  "marketplace": "cursor-public",
+  "pluginId": "735",
+  "marketplaceId": "34"
+}

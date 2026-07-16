@@ -1,0 +1,74 @@
+{
+  "name": "media_import_url",
+  "description": "Import an HTTPS image, video, or audio URL into Higgsfield storage and return a confirmed media_id. Use this before generate_image/generate_video when the user provides a web media URL; generation medias should receive the returned media_id, not the original URL. Max URL payload: 50 MB.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "HTTPS URL of the media file to import."
+      },
+      "type": {
+        "description": "Expected media type. Use auto or omit when unknown.",
+        "type": "string",
+        "enum": [
+          "auto",
+          "image",
+          "video",
+          "audio"
+        ]
+      }
+    },
+    "required": [
+      "url"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "media_id": {
+        "description": "Confirmed media ID. Pass this as medias[].value in generation tools.",
+        "type": "string"
+      },
+      "type": {
+        "description": "Imported media type inferred from content-type.",
+        "type": "string",
+        "enum": [
+          "image",
+          "video",
+          "audio"
+        ]
+      },
+      "content_type": {
+        "description": "Content-Type returned by the remote URL.",
+        "type": "string"
+      },
+      "source_url": {
+        "description": "Original imported URL.",
+        "type": "string"
+      },
+      "warning": {
+        "description": "Non-fatal warning, e.g. imported type differed from expected type.",
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      },
+      "upgrade_url": {
+        "description": "Upgrade URL. If present, you MUST show this exact upgrade link to the user so they can upgrade to continue working.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

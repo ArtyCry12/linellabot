@@ -1,0 +1,53 @@
+{
+  "name": "update-contact-topics",
+  "description": "Update topic subscriptions for a contact in Resend (by contact ID or email).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Contact ID",
+        "type": "string"
+      },
+      "email": {
+        "description": "Contact email address",
+        "type": "string",
+        "format": "email",
+        "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+      },
+      "topics": {
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Topic ID"
+            },
+            "subscription": {
+              "type": "string",
+              "enum": [
+                "opt_in",
+                "opt_out"
+              ],
+              "description": "Subscription preference for this topic"
+            }
+          },
+          "required": [
+            "id",
+            "subscription"
+          ]
+        },
+        "description": "Array of topic subscription configurations to update"
+      }
+    },
+    "required": [
+      "topics"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

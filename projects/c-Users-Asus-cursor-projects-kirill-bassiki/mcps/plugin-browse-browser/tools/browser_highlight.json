@@ -1,0 +1,22 @@
+{
+  "name": "browser_highlight",
+  "description": "Highlight an element on the page for visual debugging.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "ref": {
+        "type": "string",
+        "description": "Element ref or CSS selector to highlight"
+      }
+    },
+    "required": [
+      "ref"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

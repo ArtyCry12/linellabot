@@ -1,0 +1,50 @@
+{
+  "name": "creations_list",
+  "description": "Filterable gallery widget (image/video/audio). Use instead of `creations_search` when user wants to browse their library.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "from": {
+        "description": "Source section. Default history; folder/project-root need `reference`.",
+        "enum": [
+          "history",
+          "folder",
+          "project-root",
+          "all-assets",
+          "favorites",
+          "downloads",
+          "trash",
+          "upload",
+          "v3-upload",
+          "v3-favorites",
+          "v3-trash"
+        ],
+        "type": "string"
+      },
+      "reference": {
+        "description": "Folder or project reference (required when from=folder or from=project-root).",
+        "type": "string"
+      },
+      "query": {
+        "description": "Search text to pre-fill the search bar.",
+        "type": "string"
+      },
+      "fileType": {
+        "description": "Pre-select a media type filter.",
+        "enum": [
+          "image",
+          "video",
+          "audio"
+        ],
+        "type": "string"
+      },
+      "toolNames": {
+        "description": "Pre-filter to specific tool slugs.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

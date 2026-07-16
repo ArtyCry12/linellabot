@@ -1,0 +1,396 @@
+{
+  "name": "reveal_generation",
+  "description": "Confirm the user has rights to the content of an `ip_detected` generation and flip its status to `completed`. Backend accepts only seedance-family jobs (cs_3_0, seedance_2_0, ms_video, etc) and only while the job is still in `ip_detected` state. Returns the updated generation. Used by the job-list widget's Reveal button after the user accepts the rights confirmation modal.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "jobId": {
+        "type": "string",
+        "format": "uuid",
+        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+        "description": "Job ID of the `ip_detected` generation to reveal."
+      }
+    },
+    "required": [
+      "jobId"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "generation": {
+        "description": "Updated generation (status flipped to completed).",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video",
+              "audio",
+              "3d"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "waiting",
+              "queued",
+              "in_progress",
+              "ip_detect",
+              "completed",
+              "failed",
+              "canceled",
+              "nsfw",
+              "ip_detected"
+            ]
+          },
+          "model": {
+            "type": "string"
+          },
+          "params": {
+            "type": "object",
+            "properties": {
+              "prompt": {
+                "default": "",
+                "type": "string"
+              },
+              "aspect_ratio": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "duration": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "voice": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": {}
+                      }
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "reference_images": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": {}
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "input_images": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "medias": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "role": {
+                          "type": "string"
+                        },
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "image": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "soul_id": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {},
+                        "additionalProperties": {}
+                      }
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "custom_reference_id": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {},
+                        "additionalProperties": {}
+                      }
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "soul_reference": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "soul_id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "preview_url": {
+                        "type": "string"
+                      },
+                      "thumbnail_url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "soul_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "presetMeta": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "prompt"
+            ],
+            "additionalProperties": {}
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "rawUrl": {
+                "type": "string"
+              },
+              "minUrl": {
+                "type": "string"
+              },
+              "thumbnailUrl": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "vtt": {
+                "type": "string"
+              },
+              "waveformUrl": {
+                "type": "string"
+              },
+              "durationSec": {
+                "type": "number"
+              },
+              "autosprite": {
+                "type": "object",
+                "properties": {
+                  "atlasUrl": {
+                    "type": "string"
+                  },
+                  "audioUrl": {
+                    "type": "string"
+                  },
+                  "frameWidth": {
+                    "type": "number"
+                  },
+                  "frameHeight": {
+                    "type": "number"
+                  },
+                  "frameCount": {
+                    "type": "number"
+                  },
+                  "columns": {
+                    "type": "number"
+                  },
+                  "spritesheetId": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "rawUrl"
+            ],
+            "additionalProperties": false
+          },
+          "createdAt": {
+            "type": "number"
+          },
+          "batch_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "status",
+          "model",
+          "params"
+        ],
+        "additionalProperties": false
+      },
+      "success": {
+        "type": "boolean"
+      },
+      "error": {
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      },
+      "upgrade_url": {
+        "description": "Upgrade URL. If present, you MUST show this exact upgrade link to the user so they can upgrade to continue working.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

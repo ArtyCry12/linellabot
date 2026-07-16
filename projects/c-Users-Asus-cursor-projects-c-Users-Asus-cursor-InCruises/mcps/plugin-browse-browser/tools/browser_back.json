@@ -1,0 +1,12 @@
+{
+  "name": "browser_back",
+  "description": "Go back in browser history.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

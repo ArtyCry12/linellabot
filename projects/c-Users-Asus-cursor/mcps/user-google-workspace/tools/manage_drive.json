@@ -1,0 +1,133 @@
+{
+  "name": "manage_drive",
+  "description": "Search, upload, download, share, comment on, or manage files in Google Drive.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "operation": {
+        "type": "string",
+        "enum": [
+          "search",
+          "get",
+          "upload",
+          "viewImage",
+          "download",
+          "copy",
+          "update",
+          "delete",
+          "export",
+          "listPermissions",
+          "share",
+          "unshare",
+          "listComments",
+          "getComment",
+          "addComment",
+          "resolveComment",
+          "replyToComment"
+        ],
+        "description": "search: find files by query | get: get file metadata | upload: upload a local file to Drive | viewImage: view an image file inline without saving to workspace (png, jpg, gif, webp). Use for quick preview — use download to save. | download: download file content to local path | copy: create a copy of a file (set name to rename the copy; parentFolderId to place it in a folder) | update: rename a file (set name) and/or move it between folders (addParents / removeParents — to move, set both) | delete: permanently delete a file (cannot be undone) | export: export a Google Workspace document (Docs, Sheets, Slides) to a file format | listPermissions: list sharing permissions on a file | share: share a file with a user, group, domain, or anyone | unshare: remove sharing permission from a file | listComments: list comments on a file | getComment: get a specific comment by ID | addComment: add a comment to a file (optionally anchored to quoted text) | resolveComment: resolve or reopen a comment | replyToComment: reply to an existing comment"
+      },
+      "email": {
+        "type": "string",
+        "description": "Account email address"
+      },
+      "query": {
+        "type": "string",
+        "description": "Drive search query (e.g. \"name contains 'budget'\" or \"mimeType='application/pdf'\")"
+      },
+      "maxResults": {
+        "type": "number",
+        "description": "Max results (default: 10, max: 50)"
+      },
+      "fileId": {
+        "type": "string",
+        "description": "File ID"
+      },
+      "filePath": {
+        "type": "string",
+        "description": "Local file path to upload"
+      },
+      "name": {
+        "type": "string",
+        "description": "File name in Drive (defaults to local name)"
+      },
+      "parentFolderId": {
+        "type": "string",
+        "description": "Destination folder ID"
+      },
+      "outputPath": {
+        "type": "string",
+        "description": "Local path to save the file"
+      },
+      "addParents": {
+        "type": "string",
+        "description": "Comma-separated folder ID(s) to add as parents (move into a folder)"
+      },
+      "removeParents": {
+        "type": "string",
+        "description": "Comma-separated folder ID(s) to remove as parents (move out of a folder)"
+      },
+      "mimeType": {
+        "type": "string",
+        "description": "Target format (e.g. application/pdf, text/csv, text/plain, application/vnd.openxmlformats-officedocument.wordprocessingml.document)"
+      },
+      "shareEmail": {
+        "type": "string",
+        "description": "Email address (required when type is 'user' or 'group'). Omit for 'domain' (use 'domain' param) or 'anyone'."
+      },
+      "role": {
+        "type": "string",
+        "description": "Permission level",
+        "enum": [
+          "reader",
+          "commenter",
+          "writer",
+          "organizer"
+        ]
+      },
+      "type": {
+        "type": "string",
+        "description": "Permission type (default: 'user'). Use 'group' for Google Groups, 'domain' to share with an entire G Suite domain, 'anyone' for public links.",
+        "enum": [
+          "user",
+          "group",
+          "domain",
+          "anyone"
+        ]
+      },
+      "domain": {
+        "type": "string",
+        "description": "Domain name (required when type is 'domain')."
+      },
+      "permissionId": {
+        "type": "string",
+        "description": "Permission ID to remove (from listPermissions)"
+      },
+      "includeDeleted": {
+        "type": "boolean",
+        "description": "Include deleted comments (default: false)"
+      },
+      "commentId": {
+        "type": "string",
+        "description": "Comment ID"
+      },
+      "content": {
+        "type": "string",
+        "description": "Comment text"
+      },
+      "quotedText": {
+        "type": "string",
+        "description": "Text to anchor the comment to (optional — if provided, comment is anchored to first occurrence)"
+      },
+      "resolved": {
+        "type": "boolean",
+        "description": "true to resolve, false to reopen"
+      }
+    },
+    "required": [
+      "operation",
+      "email"
+    ],
+    "additionalProperties": false
+  }
+}

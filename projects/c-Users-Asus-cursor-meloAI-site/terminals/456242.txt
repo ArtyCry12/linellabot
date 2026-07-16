@@ -1,0 +1,41 @@
+---
+pid: 8796
+cwd: "C:\\Users\\Asus\\.cursor\\meloai-site\\my-3d-site"
+command: "Set-Location \"c:\\Users\\Asus\\.cursor\\meloai-site\\my-3d-site\"; npx.cmd next build; git add components/sections/melo-landing.tsx; git commit --trailer \"Co-authored-by: Cursor <cursoragent@cursor.com>\" -m \"chore: алиас MeloHome для обратной совместимости\""
+started_at: 2026-05-02T14:14:39.828Z
+running_for_ms: 70522    
+---
+▲ Next.js 16.2.4 (Turbopack)
+
+  Creating an optimized production build ...
+(node:17984) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Asus/.cursor/meloai-site/my-3d-site/tailwind.config.ts?id=1777731308628 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\Asus\.cursor\meloai-site\my-3d-site\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✓ Compiled successfully in 31.9s
+  Running TypeScript ...
+  Finished TypeScript in 20.1s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/4) ...
+  Generating static pages using 3 workers (1/4) 
+  Generating static pages using 3 workers (2/4) 
+  Generating static pages using 3 workers (3/4) 
+✓ Generating static pages using 3 workers (4/4) in 876ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+warning: in the working copy of 'my-3d-site/components/sections/melo-landing.tsx', LF will be replaced by CRLF the next time Git touches it
+[master 2a586b1] chore: алиас MeloHome для обратной совместимости
+ 1 file changed, 3 insertions(+)
+
+---
+exit_code: 0
+elapsed_ms: 72772
+ended_at: 2026-05-02T14:15:52.600Z
+---

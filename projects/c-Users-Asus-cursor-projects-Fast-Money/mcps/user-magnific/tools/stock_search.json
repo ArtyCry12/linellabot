@@ -1,0 +1,63 @@
+{
+  "name": "stock_search",
+  "description": "Search Freepik stock catalog by keyword. Returns items with IDs, titles, types, preview URLs. Use stock_get for full details, stock_download for file URL.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "description": "Search keywords.",
+        "type": "string"
+      },
+      "content_type": {
+        "description": "Filter by type. \"design\" = curated psd+vector. Omit for all types.",
+        "enum": [
+          "photo",
+          "vector",
+          "illustration",
+          "psd",
+          "design",
+          "video",
+          "icon"
+        ],
+        "type": "string"
+      },
+      "license": {
+        "description": "free or premium. Omit for both.",
+        "enum": [
+          "free",
+          "premium"
+        ],
+        "type": "string"
+      },
+      "ai_generated": {
+        "description": "only = AI-generated, excluded = no AI. Omit for both. Ignored for icons.",
+        "enum": [
+          "only",
+          "excluded"
+        ],
+        "type": "string"
+      },
+      "orientation": {
+        "description": "Image orientation; for video maps to aspect ratio. Ignored for icons.",
+        "enum": [
+          "portrait",
+          "landscape",
+          "square",
+          "panoramic"
+        ],
+        "type": "string"
+      },
+      "page": {
+        "description": "Default: 1.",
+        "type": "integer"
+      },
+      "per_page": {
+        "description": "1–50. Default: 20.",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

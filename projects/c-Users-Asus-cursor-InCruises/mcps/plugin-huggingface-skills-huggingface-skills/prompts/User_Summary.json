@@ -1,0 +1,11 @@
+{
+  "name": "User Summary",
+  "description": "Generate a summary of a Hugging Face user including their profile, models, datasets, spaces, and papers. Enter either a username (e.g., \"clem\") or a Hugging Face profile URL (e.g., \"hf.co/julien-c\" or \"huggingface.co/thomwolf\").",
+  "arguments": [
+    {
+      "name": "user_id",
+      "description": "Maximum length is 30 characters",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "get_website_creation_instructions",
+  "description": "REQUIRED before creating or editing any website with the website tools (create_website / website_repo_access / deploy_website / website_db / website_secrets). Reads the website-builder-flow SKILL.md resource — the stack, design contract, hard rules, and verify/deploy flow — and returns the current list of files available through get_website_creation_bundle_file.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "required": {
+        "type": "boolean",
+        "description": "Whether these instructions are mandatory for website creation workflows."
+      },
+      "version": {
+        "type": "string",
+        "description": "Website-builder-flow resource version."
+      },
+      "source": {
+        "type": "string",
+        "const": "bundled_resource",
+        "description": "Where the instruction text came from."
+      },
+      "resource_root": {
+        "type": "string",
+        "description": "Name of the website-builder-flow resource root."
+      },
+      "instructions_markdown": {
+        "type": "string",
+        "description": "The SKILL.md entrypoint for building Higgsfield websites."
+      },
+      "available_paths": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Safe text resource files readable with get_website_creation_bundle_file."
+      },
+      "available_directories": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Safe resource directories readable with get_website_creation_bundle_file."
+      },
+      "how_to_load_more": {
+        "type": "string",
+        "description": "Instruction for loading detailed resource files."
+      },
+      "error": {
+        "description": "Error message if the resource instructions could not be read.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "required",
+      "version",
+      "source",
+      "resource_root",
+      "instructions_markdown",
+      "available_paths",
+      "available_directories",
+      "how_to_load_more"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

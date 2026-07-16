@@ -1,0 +1,12 @@
+{
+  "name": "disconnect-from-editor",
+  "description": "Remove agent presence from the Resend dashboard editor. Call this when done editing.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

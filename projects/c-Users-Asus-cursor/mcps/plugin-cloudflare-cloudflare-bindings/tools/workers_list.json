@@ -1,0 +1,12 @@
+{
+  "name": "workers_list",
+  "description": "List all Workers in your Cloudflare account.\n\nIf you only need details of a single Worker, use workers_get_worker.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "cloudflare",
+  "marketplace": "cursor-public",
+  "pluginId": "407",
+  "marketplaceId": "34"
+}

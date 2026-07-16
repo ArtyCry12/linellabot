@@ -1,0 +1,130 @@
+{
+  "name": "create_prompt_avatar",
+  "description": "Creates a new avatar from an image, video footage, or a text prompt. Supports photo, digital_twin, and prompt types. Avatar training is asynchronous. (type: prompt)",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Name of the avatar.",
+        "title": "Name",
+        "type": "string"
+      },
+      "prompt": {
+        "description": "Prompt for avatar generation.",
+        "title": "Prompt",
+        "type": "string"
+      },
+      "referenceImages": {
+        "anyOf": [
+          {
+            "items": {
+              "discriminator": {
+                "mapping": {
+                  "asset_id": "#/$defs/AssetId",
+                  "url": "#/$defs/AssetUrl"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/AssetUrl"
+                },
+                {
+                  "$ref": "#/$defs/AssetId"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Reference images — each as {\"type\": \"url\", \"url\": \"https://...\"} or {\"type\": \"asset_id\", \"asset_id\": \"...\"}. Max 3.",
+        "title": "Referenceimages"
+      },
+      "avatarGroupId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Optional identity (group) to save the generated avatar to. By default a new identity is created. If avatar_id is also provided, it must belong to this group.",
+        "title": "Avatargroupid"
+      },
+      "avatarId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Optional avatar id to use as the visual reference for the generation. When provided without avatar_group_id, the new avatar is saved to the referenced avatar's group; when provided with avatar_group_id, the avatar must belong to that group and the result is saved there. The referenced avatar must exist and have a usable image, otherwise the request is rejected.",
+        "title": "Avatarid"
+      }
+    },
+    "required": [
+      "name",
+      "prompt"
+    ],
+    "$defs": {
+      "AssetId": {
+        "description": "Asset input via HeyGen asset ID from the asset upload endpoint.",
+        "properties": {
+          "type": {
+            "const": "asset_id",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "asset_id": {
+            "description": "HeyGen asset ID from the asset upload endpoint",
+            "title": "Asset Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "asset_id"
+        ],
+        "title": "AssetId",
+        "type": "object"
+      },
+      "AssetUrl": {
+        "description": "Asset input via publicly accessible HTTPS URL.",
+        "properties": {
+          "type": {
+            "const": "url",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "description": "Publicly accessible HTTPS URL for the asset",
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ],
+        "title": "AssetUrl",
+        "type": "object"
+      }
+    },
+    "title": "CreatePromptAvatarInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

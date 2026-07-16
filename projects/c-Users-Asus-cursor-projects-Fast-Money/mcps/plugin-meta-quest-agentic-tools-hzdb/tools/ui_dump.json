@@ -1,0 +1,22 @@
+{
+  "name": "ui_dump",
+  "description": "Dump the UI element hierarchy from a connected device. Returns JSON with all visible elements including text, resource-id, class, bounds, center coordinates, and clickable state. Use this to discover what's on screen before interacting with UI elements.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "device_id": {
+        "description": "Device ID (optional if only one device connected)",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "description": "Generated MCP request struct for this tool.",
+    "title": "UiDumpRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

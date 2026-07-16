@@ -1,0 +1,21 @@
+{
+  "name": "get_zapier_skill",
+  "description": "Fetch the full content of a Zapier Skill by name. ALWAYS call this before executing a skill — the response includes the skill instructions AND the schemas for all referenced tools so you know exactly how to call them. The \"zapier-mcp-onboarding\" skill is always available and should be used by default when onboarding a new user.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "The exact name of the skill to retrieve",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "zapier",
+  "marketplace": "cursor-public",
+  "pluginId": "762",
+  "marketplaceId": "34"
+}

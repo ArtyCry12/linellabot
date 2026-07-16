@@ -1,0 +1,21 @@
+{
+  "name": "delete_ai_clipping",
+  "description": "Soft-deletes an AI clip job and its clips.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "jobId": {
+        "title": "Jobid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "jobId"
+    ],
+    "title": "DeleteAiClippingInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

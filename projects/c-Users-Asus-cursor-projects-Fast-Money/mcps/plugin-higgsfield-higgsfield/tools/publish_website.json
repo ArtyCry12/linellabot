@@ -1,0 +1,110 @@
+{
+  "name": "publish_website",
+  "description": "Publish the website: lists the website's CURRENT LIVE production deploy on the Higgsfield community feed ('show in feed'), where other users can discover it. This does NOT deploy — deploy_website (which every build flow already runs) must have shipped the latest changes first; publishing with undeployed changes lists the OLD live build. BEFORE publishing, the page metadata in app/src/app-meta.json MUST be filled with real values — og_title, og_description, favicon_url, og_image_url — the feed card renders from them (read fresh from the pushed repo at publish time) and a website with an empty og_title is INVISIBLE on the feed; the live page's own head tags are baked at build time, so deploy AFTER changing them. Also OFFER the user a cover video for the card (og_video_url) — ask their permission first (video generation costs credits), never generate it unprompted. Commit and git push the metadata (and all other changes), then deploy, BEFORE calling this. Publish when the user asks to publish / share / go live on the feed, OR when they opted in to publishing at the start of the build — in that case publish automatically once the site is deployed with its metadata filled, without waiting to be asked again. For a plain deploy without a feed listing use deploy_website instead. EXCEPTION: a website whose production was never deployed (or was taken down by unpublish) falls back to deploying first — that returns status 'pending' while CI runs and the website is listed automatically once the deploy succeeds (check with website_status).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "website_id": {
+        "type": "string",
+        "description": "The website's id (returned by create_website)."
+      }
+    },
+    "required": [
+      "website_id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "description": "deployed / failed / pending (CI still running).",
+        "type": "string"
+      },
+      "url": {
+        "description": "The live production URL when the deploy succeeded.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "listed_in_community": {
+        "description": "Whether the website is now on the community feed.",
+        "type": "boolean"
+      },
+      "marketplace_url": {
+        "description": "The website's community-feed listing page on Higgsfield — show it to the user.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "error": {
+        "description": "Build log when the deploy failed.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "name": {
+        "description": "The published site's title (from its og:title / <title>).",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "favicon_url": {
+        "description": "The published site's favicon URL.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "og_image_url": {
+        "description": "The published site's OG banner image URL.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "website_id": {
+        "description": "Echo of the input id — the widget's publish/contest buttons need it.",
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

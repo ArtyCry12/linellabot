@@ -1,0 +1,29 @@
+{
+  "name": "hzdb_agentic_xr_install",
+  "description": "Install the Agentic XR MCP proxy into the user's LLM agent (currently only Claude Code is supported) so the LLM gains in-app XR runtime tools (head pose, controllers, image capture, spatial entities) on the next session restart. The Agentic XR proxy itself must be installed first via `hzdb tools install agentic-xr`. Defaults to dry-run (returns the install command text); pass `execute: true` to actually run `claude mcp add ...`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "execute": {
+        "default": false,
+        "description": "If true, execute the install command (`claude mcp add ...`). If false (default), return the install command text without running it (dry-run).",
+        "type": "boolean"
+      },
+      "name": {
+        "default": null,
+        "description": "Name to register the Agentic XR proxy under in Claude Code. Defaults to 'agentic-xr'.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Request parameters for `hzdb_agentic_xr_install`.",
+    "title": "HzdbAgenticXrInstallRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

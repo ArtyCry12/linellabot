@@ -1,0 +1,6 @@
+{
+  "uri": "gemini://models",
+  "name": "Available Gemini Models",
+  "description": "List of all available Gemini models and their capabilities",
+  "mimeType": "application/json"
+}

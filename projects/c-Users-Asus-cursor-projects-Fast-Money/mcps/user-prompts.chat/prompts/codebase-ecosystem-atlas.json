@@ -1,0 +1,4 @@
+{
+  "name": "codebase-ecosystem-atlas",
+  "description": "Run a read-only, static-first analysis across a multi-repository software ecosystem and generate architecture maps, service catalogs, business-flow documentation, security findings, CI/CD insights, code metrics, and cross-repository traceability."
+}

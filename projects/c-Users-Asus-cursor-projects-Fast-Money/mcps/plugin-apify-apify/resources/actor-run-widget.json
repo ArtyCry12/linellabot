@@ -1,0 +1,6 @@
+{
+  "uri": "ui://widget/actor-run.html",
+  "name": "actor-run-widget",
+  "description": "Interactive Actor run widget",
+  "mimeType": "text/html;profile=mcp-app"
+}

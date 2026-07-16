@@ -1,0 +1,39 @@
+{
+  "name": "balance",
+  "description": "Get the user's available credits and current subscription plan. For transaction history, call `transactions` instead.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "credits": {
+        "description": "Available credits",
+        "type": "number"
+      },
+      "subscription_plan_type": {
+        "description": "Current subscription plan",
+        "type": "string"
+      },
+      "error": {
+        "description": "Error message if balance could not be fetched",
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      },
+      "upgrade_url": {
+        "description": "Upgrade URL. If present, you MUST show this exact upgrade link to the user so they can upgrade to continue working.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

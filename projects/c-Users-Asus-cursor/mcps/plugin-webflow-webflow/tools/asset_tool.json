@@ -1,0 +1,68 @@
+{
+  "name": "asset_tool",
+  "description": "Designer Tool - Upload an image from a publicly accessible URL as a Webflow asset. Other asset and folder management is handled by data_assets_tool.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "Webflow site ID. Use list_sites to discover site IDs."
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Echoed in the response; does not select which action runs."
+            },
+            "upload_image_by_url": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Publicly accessible image URL to add to the Webflow asset library. Must be reachable over http(s)."
+                },
+                "asset_name": {
+                  "type": "string",
+                  "description": "Optional display name for the new asset in the Webflow asset library. If omitted, the name is derived from the URL pathname."
+                },
+                "alt_text": {
+                  "type": "string",
+                  "description": "Optional alt text to set on the new asset for accessibility."
+                }
+              },
+              "required": [
+                "url"
+              ],
+              "additionalProperties": false,
+              "description": "Create a Webflow asset from a publicly accessible remote image URL. By default the asset's display name is derived from the URL (without extension). Optionally override the asset's display name and alt text. Returns the new asset's info (id, name, mimeType, url, altText)."
+            }
+          },
+          "required": [
+            "label",
+            "upload_image_by_url"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "siteId",
+      "actions",
+      "context"
+    ]
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "open_file",
+  "description": "Open a file in the Obsidian UI. If the file does not exist, Obsidian will create a new document at that path. Set newLeaf to true to open in a new pane rather than the current one.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "File path relative to vault root"
+      },
+      "newLeaf": {
+        "type": "boolean",
+        "description": "Open in a new leaf/pane (default: false)"
+      }
+    },
+    "required": [
+      "path"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

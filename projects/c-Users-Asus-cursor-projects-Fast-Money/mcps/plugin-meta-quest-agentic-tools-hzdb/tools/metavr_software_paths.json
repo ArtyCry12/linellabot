@@ -1,0 +1,12 @@
+{
+  "name": "metavr_software_paths",
+  "description": "Report the on-disk paths of developer software detected on this machine: Meta tools installed via `metavr tools`, the Android SDK (standard locations and any copy bundled inside a Unity editor), Java (JDK/JRE), and installed Unity editors. Returns a human-readable manifest. Read-only — it does not install anything; to install or repair software, tell the user to run `metavr init` (guided setup) or `metavr tools install <name>`.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,75 @@
+{
+  "name": "search-apify-docs",
+  "description": "Search Apify and Crawlee documentation using full-text search.\n\nYou must explicitly select which documentation source to search using the docSource parameter:\n\n• docSource=\"apify\" - Apify:\n  Apify Platform documentation including: Platform features, SDKs (JS, Python), CLI, REST API, Academy (web scraping fundamentals), Actor development and deployment\n\n• docSource=\"crawlee-js\" - Crawlee (JavaScript):\n  Crawlee is a web scraping library for JavaScript. It handles blocking, crawling, proxies, and browsers for you.\n\n• docSource=\"crawlee-py\" - Crawlee (Python):\n  Crawlee is a web scraping library for Python. It handles blocking, crawling, proxies, and browsers for you.\n\nThe results will include the URL of the documentation page (which may include an anchor),\nand a limited piece of content that matches the search query.\n\nFetch the full content of the document using the fetch-apify-docs tool by providing the URL.\n\nWhen results contain both platform documentation (`docs.apify.com/platform`) and Academy content (`docs.apify.com/academy`) on the same topic, prefer the platform documentation.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "docSource": {
+        "default": "apify",
+        "description": "Documentation source to search. Defaults to \"apify\".\n• \"apify\" - Apify\n• \"crawlee-js\" - Crawlee (JavaScript)\n• \"crawlee-py\" - Crawlee (Python)",
+        "type": "string",
+        "enum": [
+          "apify",
+          "crawlee-js",
+          "crawlee-py"
+        ]
+      },
+      "query": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Algolia full-text search query to find relevant documentation pages.\nUse only keywords, do not use full sentences or questions.\nFor example, \"standby actor\" will return documentation pages that contain the words \"standby\" and \"actor\"."
+      },
+      "limit": {
+        "default": 5,
+        "description": "Maximum number of search results to return. Defaults to 5. Maximum is 20.\nYou can increase this limit if you need more results, but keep in mind that the search results are limited to the most relevant pages.",
+        "type": "number",
+        "minimum": 1,
+        "maximum": 20
+      },
+      "offset": {
+        "default": 0,
+        "description": "Offset for the search results. Defaults to 0.\nUse this to paginate through the search results. For example, if you want to get the next 5 results, set the offset to 5 and limit to 5.",
+        "type": "number"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "URL of the documentation page, may include anchor (e.g., #section-name)."
+            },
+            "content": {
+              "type": "string",
+              "description": "A limited piece of content that matches the search query."
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
+      },
+      "instructions": {
+        "type": "string",
+        "description": "Additional instructions for the LLM to follow when processing the search results."
+      }
+    },
+    "required": [
+      "results"
+    ]
+  },
+  "plugin": "apify",
+  "marketplace": "cursor-public",
+  "pluginId": "32913266",
+  "marketplaceId": "34"
+}

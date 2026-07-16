@@ -1,0 +1,467 @@
+{
+  "name": "data_localization_tool",
+  "description": "Data tool for localizing pages and components into secondary locales. Read and update static page content, component content, and component property overrides for any non-primary locale. Writes target secondary locales only — the primary (default) locale cannot be edited through this tool. Also includes list_components for discovering component IDs to localize.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_component_content": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "component_id": {
+                      "$ref": "#/$defs/component_id"
+                    },
+                    "localeId": {
+                      "$ref": "#/$defs/localeId"
+                    },
+                    "limit": {
+                      "$ref": "#/$defs/limit"
+                    },
+                    "offset": {
+                      "$ref": "#/$defs/offset"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "component_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read component content (text, images, nested components) for a given locale. Pass localeId to read a secondary locale; omit it to read the primary locale's content."
+                }
+              },
+              "required": [
+                "label",
+                "get_component_content"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_component_properties": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "component_id": {
+                      "$ref": "#/$defs/component_id"
+                    },
+                    "localeId": {
+                      "$ref": "#/$defs/localeId"
+                    },
+                    "limit": {
+                      "$ref": "#/$defs/limit"
+                    },
+                    "offset": {
+                      "$ref": "#/$defs/offset"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "component_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read component property definitions and current values for a given locale. Pass localeId to read overrides for a secondary locale."
+                }
+              },
+              "required": [
+                "label",
+                "get_component_properties"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_page_content": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Unique identifier for a specific locale. Applicable when using localization."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "description": "Maximum number of records to be returned (max limit: 100)"
+                    },
+                    "offset": {
+                      "type": "number",
+                      "description": "Offset used for pagination if the results have more than limit records."
+                    }
+                  },
+                  "required": [
+                    "page_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Read a page's content structure for a given locale. Pass localeId to read a secondary locale; omit it for the primary locale."
+                }
+              },
+              "required": [
+                "label",
+                "get_page_content"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "list_components": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Site."
+                    },
+                    "limit": {
+                      "type": "number",
+                      "description": "Maximum number of records to be returned (max limit: 100)"
+                    },
+                    "offset": {
+                      "type": "number",
+                      "description": "Offset used for pagination if the results have more than limit records."
+                    }
+                  },
+                  "required": [
+                    "site_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List all components in a site. Returns component metadata including IDs, names, and versions."
+                }
+              },
+              "required": [
+                "label",
+                "list_components"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_component_content": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Site."
+                    },
+                    "component_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Component."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Unique identifier for a specific locale. Applicable when using localization."
+                    },
+                    "nodes": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "nodeId": {
+                                "type": "string",
+                                "description": "Unique identifier for the node."
+                              },
+                              "text": {
+                                "type": "string",
+                                "description": "HTML content of the node, including the HTML tag."
+                              }
+                            },
+                            "required": [
+                              "nodeId",
+                              "text"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Text node to be updated."
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "nodeId": {
+                                "type": "string",
+                                "description": "Unique identifier for the node."
+                              },
+                              "propertyOverrides": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "propertyId": {
+                                      "type": "string",
+                                      "description": "Unique identifier for the property."
+                                    },
+                                    "text": {
+                                      "type": "string",
+                                      "description": "Value used to override a component property."
+                                    }
+                                  },
+                                  "required": [
+                                    "propertyId",
+                                    "text"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                "description": "Properties to override for this locale's component instances."
+                              }
+                            },
+                            "required": [
+                              "nodeId",
+                              "propertyOverrides"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Update text property overrides of a component instance."
+                          }
+                        ]
+                      },
+                      "description": "Array of node updates. Each item is either: (1) a text node { nodeId, text } where text is the HTML content including the wrapping tag, or (2) a property override { nodeId, propertyOverrides: [{ propertyId, text }] } for component instances. Obtain nodeIds from get_component_content."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "component_id",
+                    "localeId",
+                    "nodes"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Localize a component into a secondary locale by overriding text nodes and property values. Requires localeId — this action only writes to secondary locales. The primary (default) locale cannot be edited through this action."
+                }
+              },
+              "required": [
+                "label",
+                "update_component_content"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_component_properties": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Site."
+                    },
+                    "component_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the Component."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Unique identifier for a specific locale. Applicable when using localization."
+                    },
+                    "properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "propertyId": {
+                            "type": "string",
+                            "description": "Unique identifier for the property."
+                          },
+                          "text": {
+                            "type": "string",
+                            "description": "New value for the property in this locale."
+                          }
+                        },
+                        "required": [
+                          "propertyId",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Array of properties to update for this component."
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "component_id",
+                    "localeId",
+                    "properties"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Localize component property values into a secondary locale. Requires localeId — only secondary locales can be edited. The primary locale's property values are not editable through this action."
+                }
+              },
+              "required": [
+                "label",
+                "update_component_properties"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_static_content": {
+                  "type": "object",
+                  "properties": {
+                    "page_id": {
+                      "type": "string",
+                      "description": "Unique identifier for the page."
+                    },
+                    "localeId": {
+                      "type": "string",
+                      "description": "Unique identifier for a specific locale. Applicable when using localization."
+                    },
+                    "nodes": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "nodeId": {
+                                "type": "string",
+                                "description": "Unique identifier for the node."
+                              },
+                              "text": {
+                                "type": "string",
+                                "description": "HTML content of the node, including the HTML tag. The HTML tags must be the same as what’s returned from the Get Content endpoint."
+                              }
+                            },
+                            "required": [
+                              "nodeId",
+                              "text"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Text node to be updated."
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "nodeId": {
+                                "type": "string",
+                                "description": "Unique identifier for the node."
+                              },
+                              "propertyOverrides": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "propertyId": {
+                                      "type": "string",
+                                      "description": "Unique identifier for the property."
+                                    },
+                                    "text": {
+                                      "type": "string",
+                                      "description": "Value used to override a component property; must be type-compatible to prevent errors."
+                                    }
+                                  },
+                                  "required": [
+                                    "propertyId",
+                                    "text"
+                                  ],
+                                  "additionalProperties": false,
+                                  "description": "Properties to override for this locale’s component instances."
+                                }
+                              }
+                            },
+                            "required": [
+                              "nodeId",
+                              "propertyOverrides"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Update text property overrides of a component instance."
+                          }
+                        ]
+                      },
+                      "description": "Array of node updates. Each item is either: (1) a text node { nodeId, text } where text is the full HTML content including the wrapping tag, or (2) a property override { nodeId, propertyOverrides: [{ propertyId, text }] } for component instances. Obtain nodeIds from get_page_content."
+                    }
+                  },
+                  "required": [
+                    "page_id",
+                    "localeId",
+                    "nodes"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Localize a static page into a secondary locale by overriding its text nodes and property values. Requires localeId — only secondary locales can be edited. The primary locale's static content cannot be updated through this action."
+                }
+              },
+              "required": [
+                "label",
+                "update_static_content"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$defs": {
+      "label": {
+        "type": "string",
+        "description": "Echoed in the response; does not select which action runs."
+      },
+      "site_id": {
+        "type": "string",
+        "description": "Unique identifier for the Site."
+      },
+      "component_id": {
+        "type": "string",
+        "description": "Unique identifier for the Component."
+      },
+      "localeId": {
+        "type": "string",
+        "description": "Unique identifier for a specific locale. Applicable when using localization."
+      },
+      "limit": {
+        "type": "number",
+        "description": "Maximum number of records to be returned (max limit: 100)"
+      },
+      "offset": {
+        "type": "number",
+        "description": "Offset used for pagination if the results have more than limit records."
+      }
+    }
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

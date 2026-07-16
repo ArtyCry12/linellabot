@@ -1,0 +1,12 @@
+{
+  "name": "browser_reload",
+  "description": "Reload the current page.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

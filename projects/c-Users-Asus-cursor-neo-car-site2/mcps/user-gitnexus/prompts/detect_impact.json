@@ -1,0 +1,16 @@
+{
+  "name": "detect_impact",
+  "description": "Analyze the impact of your current changes before committing. Guides through scope selection, change detection, process analysis, and risk assessment.",
+  "arguments": [
+    {
+      "name": "scope",
+      "description": "What to analyze: unstaged, staged, all, or compare",
+      "required": false
+    },
+    {
+      "name": "base_ref",
+      "description": "Branch/commit for compare scope",
+      "required": false
+    }
+  ]
+}

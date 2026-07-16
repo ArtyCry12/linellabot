@@ -1,0 +1,39 @@
+{
+  "name": "developerknowledge_answer_query",
+  "description": "Use answer_query to get a grounded answer to a query about Google developer products. This tool has limited quota. This tool will synthesize information from the corpus to generate an answer to the query. answer_query grounds answers using the same corpus as search_documents. \nThis tool returns the generated answer_text and a list of document names (references) used to generate the answer. Use get_documents with the document names to fetch the entire document content if needed.\n\nIf you get a 429 out of quota error, use search_documents instead.\n",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "description": "Required. The query to answer.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "description": "Request message for AnswerQuery."
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "answerText": {
+        "description": "The answer to the query.",
+        "type": "string"
+      },
+      "references": {
+        "description": "Output only. The resource names of the documents used to generate the answer.",
+        "items": {
+          "type": "string"
+        },
+        "readOnly": true,
+        "type": "array"
+      }
+    },
+    "description": "Response message for AnswerQuery."
+  },
+  "plugin": "firebase",
+  "marketplace": "cursor-public",
+  "pluginId": "3777",
+  "marketplaceId": "34"
+}

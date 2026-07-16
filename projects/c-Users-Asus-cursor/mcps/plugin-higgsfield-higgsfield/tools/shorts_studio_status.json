@@ -1,0 +1,60 @@
+{
+  "name": "shorts_studio_status",
+  "description": "Poll one Shorts Studio session. Returns {id, status, job_ids}. status='completed' means every clip job is terminal (not necessarily successful). Poll each job_id via job_status for its clip video url and per-clip status.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "session_id": {
+        "type": "string",
+        "format": "uuid",
+        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+        "description": "Session id from shorts_studio_create or shorts_studio_list_sessions."
+      }
+    },
+    "required": [
+      "session_id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "queued",
+          "in_progress",
+          "completed"
+        ]
+      },
+      "source_video_id": {
+        "type": "string"
+      },
+      "resolution": {
+        "type": "string"
+      },
+      "job_ids": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "id",
+      "status",
+      "source_video_id",
+      "resolution",
+      "job_ids"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

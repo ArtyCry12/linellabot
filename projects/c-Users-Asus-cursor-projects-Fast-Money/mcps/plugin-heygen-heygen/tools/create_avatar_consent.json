@@ -1,0 +1,34 @@
+{
+  "name": "create_avatar_consent",
+  "description": "Initiates the consent flow for an avatar group and returns a URL for the user to complete approval in their browser. Required before a private avatar can be used for video generation.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "groupId": {
+        "title": "Groupid",
+        "type": "string"
+      },
+      "rerouteUrl": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Callback URL where the user is redirected after completing consent. Defaults to HeyGen's consent completion page.",
+        "title": "Rerouteurl"
+      }
+    },
+    "required": [
+      "groupId"
+    ],
+    "title": "CreateAvatarConsentInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

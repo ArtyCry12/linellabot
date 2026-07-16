@@ -1,0 +1,43 @@
+{
+  "name": "images_crop",
+  "description": "Crop to `aspectRatio`: center by default, or `auto=true` for AI focal-point crop that keeps the subject. Pixels: `images_resize`. AI upscale: `images_upscale`. Ratios: 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 21:9.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "creationIdentifier": {
+        "description": "Image creation identifier (import uploads first).",
+        "type": "string"
+      },
+      "aspectRatio": {
+        "description": "Target ratio.",
+        "enum": [
+          "1:1",
+          "16:9",
+          "9:16",
+          "4:3",
+          "3:4",
+          "3:2",
+          "2:3",
+          "21:9"
+        ],
+        "type": "string"
+      },
+      "auto": {
+        "description": "true = AI focal-point crop that keeps the subject. Default false = center-crop. Both cost 1 credit.",
+        "type": "boolean"
+      },
+      "prompt": {
+        "description": "Subject hint for auto crop, e.g. \"the dog\". Ignored unless auto.",
+        "type": "string"
+      },
+      "folderReference": {
+        "description": "Optional project/folder reference from `folders_list` to place results in. Omit for the default.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "creationIdentifier",
+      "aspectRatio"
+    ]
+  }
+}

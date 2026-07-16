@@ -1,0 +1,959 @@
+{
+  "name": "data_cms_tool",
+  "description": "Data tool - CMS tool to manage collections, collection fields (static/option/reference), collection field groups, and collection items (list, create, update, publish, unpublish, delete)",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_collection": {
+                  "type": "object",
+                  "properties": {
+                    "siteId": {
+                      "$ref": "#/$defs/siteId"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "displayName": {
+                          "type": "string",
+                          "description": "Collection name, unique within the site."
+                        },
+                        "singularName": {
+                          "type": "string",
+                          "description": "Singular name of the collection."
+                        },
+                        "slug": {
+                          "type": "string",
+                          "description": "Collection slug in the site URL structure."
+                        }
+                      },
+                      "required": [
+                        "displayName",
+                        "singularName"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "siteId",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a CMS collection in a site."
+                }
+              },
+              "required": [
+                "label",
+                "create_collection"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_collection_items": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "cmsLocaleIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "default": [],
+                          "description": "Locale IDs of the CMS item."
+                        },
+                        "isArchived": {
+                          "type": "boolean",
+                          "default": false,
+                          "description": "Whether the item is archived."
+                        },
+                        "isDraft": {
+                          "type": "boolean",
+                          "default": false,
+                          "description": "Whether the item is a draft."
+                        },
+                        "fieldData": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "additionalProperties": {}
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "$ref": "#/$defs/name"
+                                  },
+                                  "slug": {
+                                    "$ref": "#/$defs/slug"
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "slug"
+                                ]
+                              }
+                            ]
+                          },
+                          "description": "Item field data objects keyed by collection field slug (use get_collection to discover fields); 'name' and 'slug' are always required."
+                        }
+                      },
+                      "required": [
+                        "fieldData"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create CMS collection items as drafts."
+                }
+              },
+              "required": [
+                "label",
+                "create_collection_items"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_collection_option_field": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/$defs/id"
+                        },
+                        "isEditable": {
+                          "$ref": "#/$defs/isEditable"
+                        },
+                        "isRequired": {
+                          "$ref": "#/$defs/isRequired"
+                        },
+                        "type": {
+                          "type": "string",
+                          "const": "Option",
+                          "description": "The field type; must be \"Option\"."
+                        },
+                        "displayName": {
+                          "$ref": "#/$defs/displayName"
+                        },
+                        "helpText": {
+                          "$ref": "#/$defs/helpText"
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "options": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "description": "Name of the option."
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "description": "Unique identifier for the option."
+                                  }
+                                },
+                                "required": [
+                                  "name"
+                                ],
+                                "additionalProperties": false,
+                                "description": "Array of options for the field."
+                              }
+                            }
+                          },
+                          "required": [
+                            "options"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "displayName",
+                        "metadata"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create an option field with predefined choices in a CMS collection."
+                }
+              },
+              "required": [
+                "label",
+                "create_collection_option_field"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_collection_reference_field": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/$defs/id"
+                        },
+                        "isEditable": {
+                          "$ref": "#/$defs/isEditable"
+                        },
+                        "isRequired": {
+                          "$ref": "#/$defs/isRequired"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "MultiReference",
+                            "Reference"
+                          ],
+                          "description": "The field type."
+                        },
+                        "displayName": {
+                          "$ref": "#/$defs/displayName"
+                        },
+                        "helpText": {
+                          "$ref": "#/$defs/helpText"
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "collectionId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "collectionId"
+                          ],
+                          "additionalProperties": false,
+                          "description": "ID of the referenced collection."
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "displayName",
+                        "metadata"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a reference field that links to items in another collection."
+                }
+              },
+              "required": [
+                "label",
+                "create_collection_reference_field"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_collection_static_field": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/$defs/id"
+                        },
+                        "isEditable": {
+                          "$ref": "#/$defs/isEditable"
+                        },
+                        "isRequired": {
+                          "$ref": "#/$defs/isRequired"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "Color",
+                            "DateTime",
+                            "Email",
+                            "File",
+                            "Image",
+                            "Link",
+                            "MultiImage",
+                            "Number",
+                            "Phone",
+                            "PlainText",
+                            "RichText",
+                            "Switch",
+                            "VideoLink"
+                          ],
+                          "description": "The field type."
+                        },
+                        "displayName": {
+                          "$ref": "#/$defs/displayName"
+                        },
+                        "helpText": {
+                          "$ref": "#/$defs/helpText"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "displayName"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a static field (e.g., text, number, date) in a CMS collection."
+                }
+              },
+              "required": [
+                "label",
+                "create_collection_static_field"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "delete_collection_field": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "field_id": {
+                      "type": "string",
+                      "description": "ID of the field to delete."
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "field_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete a custom field in a CMS collection; bulk deletion is not supported."
+                }
+              },
+              "required": [
+                "label",
+                "delete_collection_field"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "delete_collection_items": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/request"
+                          },
+                          "description": "Items to delete."
+                        }
+                      },
+                      "required": [
+                        "items"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete CMS collection items as drafts."
+                }
+              },
+              "required": [
+                "label",
+                "delete_collection_items"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_collection_details": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    }
+                  },
+                  "required": [
+                    "collection_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get a CMS collection's schema and field definitions."
+                }
+              },
+              "required": [
+                "label",
+                "get_collection_details"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_collection_field_groups": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    }
+                  },
+                  "required": [
+                    "collection_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get a CMS collection's field groups, all public fields, and the groupableCollectionFields subset assignable to groups. Not available for Ecommerce collections."
+                }
+              },
+              "required": [
+                "label",
+                "get_collection_field_groups"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_collection_list": {
+                  "type": "object",
+                  "properties": {
+                    "siteId": {
+                      "$ref": "#/$defs/siteId"
+                    }
+                  },
+                  "required": [
+                    "siteId"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List a site's CMS collections with their IDs, names, and schemas."
+                }
+              },
+              "required": [
+                "label",
+                "get_collection_list"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "list_collection_items": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "cmsLocaleId": {
+                          "type": "string",
+                          "description": "Locale ID of the CMS item."
+                        },
+                        "limit": {
+                          "type": "number",
+                          "description": "Maximum records returned (max 100)."
+                        },
+                        "offset": {
+                          "type": "number",
+                          "description": "Pagination offset when results exceed limit."
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the field."
+                        },
+                        "slug": {
+                          "type": "string",
+                          "description": "URL slug of the item. Updating an item's slug breaks all links referencing the old slug."
+                        },
+                        "sortBy": {
+                          "type": "string",
+                          "enum": [
+                            "lastPublished",
+                            "name",
+                            "slug"
+                          ],
+                          "description": "Field to sort items by."
+                        },
+                        "sortOrder": {
+                          "type": "string",
+                          "enum": [
+                            "asc",
+                            "desc"
+                          ],
+                          "description": "Sort direction."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Filter, sort, and pagination options."
+                    }
+                  },
+                  "required": [
+                    "collection_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "List items in a CMS collection with optional filtering and sorting."
+                }
+              },
+              "required": [
+                "label",
+                "list_collection_items"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "publish_collection_items": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "itemIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "IDs of the items to publish."
+                        }
+                      },
+                      "required": [
+                        "itemIds"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Publish CMS collection items to the live site."
+                }
+              },
+              "required": [
+                "label",
+                "publish_collection_items"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "unpublish_collection_items": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/request"
+                          },
+                          "description": "Items to unpublish."
+                        }
+                      },
+                      "required": [
+                        "items"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Unpublish up to 100 live CMS items per call: removes them from the live site and reverts them to draft (isDraft=true)."
+                }
+              },
+              "required": [
+                "label",
+                "unpublish_collection_items"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_collection_field": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "field_id": {
+                      "$ref": "#/$defs/id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "isRequired": {
+                          "$ref": "#/$defs/isRequired"
+                        },
+                        "displayName": {
+                          "$ref": "#/$defs/displayName"
+                        },
+                        "helpText": {
+                          "$ref": "#/$defs/helpText"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "field_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update a field's properties in a CMS collection."
+                }
+              },
+              "required": [
+                "label",
+                "update_collection_field"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_collection_field_groups": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "field_groups": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "displayName": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64,
+                            "description": "Group display name; 1-64 characters, unique within the collection ignoring case."
+                          },
+                          "fieldIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "description": "A groupable collection field ID."
+                            },
+                            "description": "Ordered field IDs in this group. Each field ID can appear in at most one group; omit or pass an empty array for a group with no fields."
+                          },
+                          "description": {
+                            "type": "string",
+                            "maxLength": 256,
+                            "description": "Optional group description (max 256 characters)."
+                          }
+                        },
+                        "required": [
+                          "displayName"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 50,
+                      "description": "Full ordered field groups array. An empty array removes all field groups. Max 50 groups."
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "field_groups"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Replace a CMS collection's field groups. Field IDs must come from get_collection_field_groups groupableCollectionFields. Not available for Ecommerce collections."
+                }
+              },
+              "required": [
+                "label",
+                "update_collection_field_groups"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "update_collection_items": {
+                  "type": "object",
+                  "properties": {
+                    "collection_id": {
+                      "$ref": "#/$defs/collection_id"
+                    },
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "description": "The item ID."
+                              },
+                              "cmsLocaleId": {
+                                "type": "string",
+                                "description": "Locale ID of the CMS item."
+                              },
+                              "lastPublished": {
+                                "type": "string"
+                              },
+                              "lastUpdated": {
+                                "type": "string"
+                              },
+                              "createdOn": {
+                                "type": "string"
+                              },
+                              "isArchived": {
+                                "type": "boolean"
+                              },
+                              "isDraft": {
+                                "type": "boolean"
+                              },
+                              "fieldData": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "additionalProperties": {}
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "$ref": "#/$defs/name"
+                                      },
+                                      "slug": {
+                                        "$ref": "#/$defs/slug"
+                                      }
+                                    }
+                                  }
+                                ],
+                                "description": "Item field data keyed by collection field slug (use get_collection to discover fields); 'name' and 'slug' are optional for updates."
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "fieldData"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Items to update."
+                    }
+                  },
+                  "required": [
+                    "collection_id",
+                    "request"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update CMS collection items as drafts."
+                }
+              },
+              "required": [
+                "label",
+                "update_collection_items"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$defs": {
+      "label": {
+        "type": "string",
+        "description": "Echoed in the response; does not select which action runs."
+      },
+      "collection_id": {
+        "type": "string",
+        "description": "The collection ID. Use get_collection_list to discover collection IDs."
+      },
+      "id": {
+        "type": "string",
+        "description": "The field ID."
+      },
+      "isEditable": {
+        "type": "boolean",
+        "description": "Whether the field is editable."
+      },
+      "isRequired": {
+        "type": "boolean",
+        "description": "Whether the field is required."
+      },
+      "displayName": {
+        "type": "string",
+        "description": "Name of the field."
+      },
+      "helpText": {
+        "type": "string",
+        "description": "Help text for the field."
+      },
+      "siteId": {
+        "type": "string",
+        "description": "Webflow site ID. Use list_sites to discover site IDs."
+      },
+      "request": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The item ID."
+          },
+          "cmsLocaleIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Locale IDs of the CMS item."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "name": {
+        "type": "string",
+        "description": "Display name for the CMS item."
+      },
+      "slug": {
+        "type": "string",
+        "description": "URL slug, unique within the collection. Changing it breaks all links referencing the old slug."
+      }
+    }
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

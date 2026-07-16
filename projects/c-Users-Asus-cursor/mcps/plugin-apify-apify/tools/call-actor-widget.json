@@ -1,0 +1,289 @@
+{
+  "name": "call-actor-widget",
+  "description": "Render an interactive UI element (widget) that displays live Actor run progress for the user.\n\nUse this tool ONLY when the user explicitly wants to see run progress visually\n(e.g., \"run apify/rag-web-browser and show progress\", \"start this Actor with a progress view\").\nThe response renders as an interactive widget that automatically tracks run status until\ncompletion — do NOT poll or call any other tool after this.\n\nFor silent async starts where no UI is needed (e.g., \"start this in the background\",\nor when your next step is to fetch results via get-dataset-items), use\ncall-actor instead — it returns the same runId without rendering a widget.\n\nWORKFLOW:\n1. Use fetch-actor-details to get the Actor's input schema\n2. Call this tool with the actor name and proper input based on the schema\n\nIf the actor name is not in \"username/name\" format, use search-actors to resolve the correct Actor first.\n\nInput: actor name and input JSON; callOptions (memory, timeout) are optional.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actor": {
+        "type": "string",
+        "description": "The name of the Actor to call. Format: \"username/name\" (e.g., \"apify/rag-web-browser\")."
+      },
+      "input": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": {},
+        "description": "The input JSON to pass to the Actor. Required."
+      },
+      "callOptions": {
+        "description": "Optional run config: memory (MB), timeout (s), build, maxItems (pay-per-result cap), maxTotalChargeUsd (pay-per-event cap).",
+        "type": "object",
+        "properties": {
+          "memory": {
+            "description": "Memory per run in MB. Power of 2 from 128 to 32768.\nApify also caps total memory across all your concurrent runs (account plan limit); if a run is rejected because that quota would be exceeded, retry with a smaller value.",
+            "type": "number",
+            "minimum": 128,
+            "maximum": 32768
+          },
+          "timeout": {
+            "description": "Maximum runtime for the Actor in seconds. After this time elapses, the Actor will be automatically terminated.\nUse 0 for infinite timeout (no time limit).",
+            "type": "number",
+            "minimum": 0
+          },
+          "build": {
+            "description": "Tag or number of the Actor build to run (e.g., \"latest\", \"beta\", \"1.2.345\"). If omitted, the Actor's default build is used.",
+            "type": "string"
+          },
+          "maxItems": {
+            "description": "Pay-per-result Actors only — ignored otherwise.\nCaps billed dataset items; does NOT limit production. Prefer the Actor's own input fields (e.g. maxResults) to bound work.",
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "maxTotalChargeUsd": {
+            "description": "Pay-per-event Actors only — ignored otherwise.\nCaps total USD billed; does NOT limit work. Prefer the Actor's own input fields to bound work.",
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "actor",
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "runId": {
+        "type": "string",
+        "description": "Actor run ID"
+      },
+      "apifyConsoleUrl": {
+        "type": "string",
+        "description": "Personalized Apify Console link to the run; present only for Console sessions"
+      },
+      "actorId": {
+        "type": "string",
+        "description": "Stable Apify Actor ID from the run record"
+      },
+      "actorName": {
+        "type": "string",
+        "description": "\"username/actor-name\""
+      },
+      "status": {
+        "type": "string",
+        "description": "Run status: READY | RUNNING | TIMING-OUT | TIMED-OUT | ABORTING | ABORTED | SUCCEEDED | FAILED"
+      },
+      "statusMessage": {
+        "type": "string",
+        "description": "Pass-through from Apify run.statusMessage"
+      },
+      "exitCode": {
+        "type": "number",
+        "description": "Actor process exit code; populated for terminal states (especially FAILED)"
+      },
+      "startedAt": {
+        "type": "string",
+        "description": "ISO timestamp when the run started"
+      },
+      "finishedAt": {
+        "type": "string",
+        "description": "ISO timestamp when the run finished (terminal states only)"
+      },
+      "stats": {
+        "type": "object",
+        "description": "Run statistics",
+        "properties": {
+          "runTimeSecs": {
+            "type": "number"
+          },
+          "computeUnits": {
+            "type": "number"
+          },
+          "memMaxBytes": {
+            "type": "number"
+          }
+        }
+      },
+      "storages": {
+        "type": "object",
+        "description": "Dataset and key-value store metadata, keyed by alias. \"default\" is always the primary entry.",
+        "properties": {
+          "datasets": {
+            "type": "object",
+            "description": "Map of dataset alias → metadata. Key \"default\" is always the run's primary dataset.",
+            "properties": {
+              "default": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Dataset ID"
+                  },
+                  "apifyConsoleUrl": {
+                    "type": "string",
+                    "description": "Personalized Apify Console link to the dataset; present only for Console sessions"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "itemCount": {
+                    "type": "number"
+                  },
+                  "inflatedBytes": {
+                    "type": "number",
+                    "description": "Approximate uncompressed byte size of the dataset. Use with itemCount to pick limit/fields before fetching."
+                  },
+                  "fields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Dataset field paths in dot notation (e.g. [\"metadata.url\"])"
+                  }
+                },
+                "required": [
+                  "id"
+                ]
+              }
+            },
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Dataset ID"
+                },
+                "apifyConsoleUrl": {
+                  "type": "string",
+                  "description": "Personalized Apify Console link to the dataset; present only for Console sessions"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "itemCount": {
+                  "type": "number"
+                },
+                "inflatedBytes": {
+                  "type": "number",
+                  "description": "Approximate uncompressed byte size of the dataset. Use with itemCount to pick limit/fields before fetching."
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Dataset field paths in dot notation (e.g. [\"metadata.url\"])"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "keyValueStores": {
+            "type": "object",
+            "description": "Map of key-value store alias → metadata. Key \"default\" is always the run's primary store.",
+            "properties": {
+              "default": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Key-value store ID"
+                  },
+                  "apifyConsoleUrl": {
+                    "type": "string",
+                    "description": "Personalized Apify Console link to the store; present only for Console sessions"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "keyCount": {
+                    "type": "number",
+                    "description": "Total number of keys (omitted when truncated)"
+                  },
+                  "keys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Up to 50 key names"
+                  }
+                },
+                "required": [
+                  "id"
+                ]
+              }
+            },
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Key-value store ID"
+                },
+                "apifyConsoleUrl": {
+                  "type": "string",
+                  "description": "Personalized Apify Console link to the store; present only for Console sessions"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "keyCount": {
+                  "type": "number",
+                  "description": "Total number of keys (omitted when truncated)"
+                },
+                "keys": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Up to 50 key names"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        }
+      },
+      "summary": {
+        "type": "string",
+        "description": "Past-tense summary of the run state"
+      },
+      "nextStep": {
+        "type": "string",
+        "description": "One primary follow-up action with identifiers interpolated"
+      }
+    },
+    "required": [
+      "runId",
+      "actorId",
+      "status",
+      "storages",
+      "summary",
+      "nextStep"
+    ]
+  },
+  "plugin": "apify",
+  "marketplace": "cursor-public",
+  "pluginId": "32913266",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "take_screenshot",
+  "description": "Capture a screenshot from a connected Meta Quest device via ADB. Returns the screenshot as an MCP image content block (mime_type 'image/jpeg' for the default Meta Cam path, 'image/png' for the screencap fallback). Default dimensions are 1024x1024; override with width/height. Use this when you need to see the current state of the device screen.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "height": {
+        "default": 1024,
+        "description": "Screenshot height in pixels (default: 1024)",
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "method": {
+        "default": "metacam",
+        "description": "Screenshot capture method - 'metacam' uses Meta's camera service, 'screencap' uses Android's screencap as fallback",
+        "type": "string"
+      },
+      "width": {
+        "default": 1024,
+        "description": "Screenshot width in pixels (default: 1024)",
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "description": "Request parameters for take_screenshot.",
+    "title": "TakeScreenshotRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

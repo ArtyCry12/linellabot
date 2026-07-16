@@ -1,0 +1,14 @@
+---
+pid: 13712
+cwd: |
+  C:\Users\Asus\.cursor\neo-car-site
+last_command: |
+  git config --global user.name "Arty_Cry12"
+  
+  git config --global user.email "artyomka.com@gmail.com"
+last_exit_code: 0
+---
+PS C:\Users\Asus\.cursor\neo-car-site> git config --global user.name "Arty_Cry12"
+>>
+>> git config --global user.email "artyomka.com@gmail.com"
+PS C:\Users\Asus\.cursor\neo-car-site>

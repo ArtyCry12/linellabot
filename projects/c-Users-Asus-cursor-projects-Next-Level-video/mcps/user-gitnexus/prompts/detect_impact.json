@@ -1,0 +1,4 @@
+{
+  "name": "detect_impact",
+  "description": "Analyze the impact of your current changes before committing. Guides through scope selection, change detection, process analysis, and risk assessment."
+}

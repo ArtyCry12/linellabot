@@ -1,0 +1,38 @@
+{
+  "name": "send-event",
+  "description": "**Purpose:** Fire an event to trigger automations for a specific contact.\n\n**When to use:**\n- User wants to trigger an automation workflow for a contact\n- Testing an automation by sending a test event\n\n**Workflow:** create-event (if needed) → create-automation (if needed) → send-event\n\n**Important:**\n- The event name must match the trigger event name in an automation for it to fire.\n- Identify the contact by either contactId OR email, not both.\n- The payload is optional and can contain any key-value data that the automation steps can reference via event.* variables.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "event": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The event name (e.g., \"user.created\", \"payment.failed\")"
+      },
+      "contactId": {
+        "description": "The contact ID to associate with the event. Use either contactId or email, not both.",
+        "type": "string"
+      },
+      "email": {
+        "description": "The contact email to associate with the event. Use either contactId or email, not both.",
+        "type": "string"
+      },
+      "payload": {
+        "description": "Optional key-value data passed to the automation. Accessible in steps via event.* variables.",
+        "type": "object",
+        "propertyNames": {
+          "type": "string"
+        },
+        "additionalProperties": {}
+      }
+    },
+    "required": [
+      "event"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

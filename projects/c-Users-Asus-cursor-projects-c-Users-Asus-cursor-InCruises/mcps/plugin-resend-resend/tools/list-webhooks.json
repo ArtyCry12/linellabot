@@ -1,0 +1,12 @@
+{
+  "name": "list-webhooks",
+  "description": "List all webhooks from Resend. Use to get webhook IDs and see which endpoints and events are configured. Not for listing emails, segments, or broadcasts.",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "get_api_details",
+  "description": "Get full API details for a specific class or member by exact name.\n\nAvailable engines: unity, unreal_ue4, unreal_ue5\n\nReturns the complete API documentation for a section matching the name — method signatures, parameters, return types.\nUse this AFTER search_api_reference to drill into a specific class or member you already identified.\nDo NOT use this for conceptual questions — use search_docs instead.\n\nExample: get_api_details('OVRInput', engine='unity')\nExample: get_api_details('AMRUKRoom', engine='unreal_ue5')",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "engine": {
+        "default": "unity",
+        "description": "Which API index to search. Options: unity, unreal_ue4, unreal_ue5",
+        "type": "string"
+      },
+      "name": {
+        "description": "The section name to look up (e.g., 'HandGrabInteractable', 'AMRUKRoom')",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "description": "Request parameters for get_api_details.",
+    "title": "GetApiDetailsRequest"
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

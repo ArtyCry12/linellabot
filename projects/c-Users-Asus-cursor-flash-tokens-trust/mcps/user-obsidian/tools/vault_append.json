@@ -1,0 +1,23 @@
+{
+  "name": "vault_append",
+  "description": "Append content to the end of a vault file. Creates the file if it does not already exist.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "File path relative to vault root"
+      },
+      "content": {
+        "type": "string",
+        "description": "Content to append"
+      }
+    },
+    "required": [
+      "path",
+      "content"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

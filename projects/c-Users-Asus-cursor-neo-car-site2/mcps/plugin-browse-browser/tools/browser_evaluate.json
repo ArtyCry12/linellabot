@@ -1,0 +1,22 @@
+{
+  "name": "browser_evaluate",
+  "description": "Run JavaScript in the browser page context. Returns the result as a string.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "script": {
+        "type": "string",
+        "description": "JavaScript code to execute in the page context"
+      }
+    },
+    "required": [
+      "script"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

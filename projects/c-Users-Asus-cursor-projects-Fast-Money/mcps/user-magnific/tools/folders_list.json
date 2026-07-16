@@ -1,0 +1,20 @@
+{
+  "name": "folders_list",
+  "description": "List folders/projects as raw TOON text. No params=top level; `onlyProjects`=projects; `parentReference`=children. Refs work with creations/folder tools.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "parentReference": {
+        "description": "List children; exclusive with `onlyProjects`.",
+        "type": "string"
+      },
+      "onlyProjects": {
+        "description": "Top-level projects only.",
+        "type": "boolean"
+      },
+      "page": {
+        "type": "integer"
+      }
+    }
+  }
+}

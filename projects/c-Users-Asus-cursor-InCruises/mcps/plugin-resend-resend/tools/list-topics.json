@@ -1,0 +1,13 @@
+{
+  "name": "list-topics",
+  "description": "List all topics from Resend. This tool is useful for getting topic IDs to use with other tools like send-email.",
+  "arguments": {
+    "type": "object",
+    "properties": {},
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

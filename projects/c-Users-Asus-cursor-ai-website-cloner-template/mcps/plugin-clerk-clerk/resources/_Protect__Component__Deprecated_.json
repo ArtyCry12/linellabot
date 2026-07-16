@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/protect-component",
+  "name": "<Protect> Component (Deprecated)",
+  "description": "DEPRECATED: Use <Show> instead. Conditionally render content based on auth/role state",
+  "mimeType": "text/markdown"
+}

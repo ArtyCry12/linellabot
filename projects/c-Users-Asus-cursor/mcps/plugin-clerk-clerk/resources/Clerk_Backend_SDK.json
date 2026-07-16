@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/clerk-client-backend",
+  "name": "Clerk Backend SDK",
+  "description": "Server-side operations using the Clerk Backend SDK",
+  "mimeType": "text/markdown"
+}

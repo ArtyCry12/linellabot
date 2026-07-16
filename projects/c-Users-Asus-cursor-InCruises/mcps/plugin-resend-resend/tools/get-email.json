@@ -1,0 +1,21 @@
+{
+  "name": "get-email",
+  "description": "Retrieve full details of a specific sent transactional email by ID, including HTML and plain text content.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "The email ID to retrieve"
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

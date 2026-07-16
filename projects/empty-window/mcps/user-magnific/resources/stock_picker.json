@@ -1,0 +1,6 @@
+{
+  "uri": "ui://stock/picker",
+  "name": "stock_picker",
+  "description": "Renders the Freepik stock library inline as an MCP App so the user can visually browse and select photos, vectors, videos, or icons.",
+  "mimeType": "text/html;profile=mcp-app"
+}

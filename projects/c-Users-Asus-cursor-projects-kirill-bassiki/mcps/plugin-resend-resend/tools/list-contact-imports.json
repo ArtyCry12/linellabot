@@ -1,0 +1,38 @@
+{
+  "name": "list-contact-imports",
+  "description": "List contact imports from Resend. Optionally filter by status. Use to discover import IDs or review past imports.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "limit": {
+        "description": "Number of contact imports to retrieve. Default: 10, Max: 100, Min: 1",
+        "type": "number",
+        "minimum": 1,
+        "maximum": 100
+      },
+      "after": {
+        "description": "Contact import ID after which to retrieve more (for forward pagination). Cannot be used with \"before\".",
+        "type": "string"
+      },
+      "before": {
+        "description": "Contact import ID before which to retrieve more (for backward pagination). Cannot be used with \"after\".",
+        "type": "string"
+      },
+      "status": {
+        "description": "Filter imports by status.",
+        "type": "string",
+        "enum": [
+          "queued",
+          "in_progress",
+          "completed",
+          "failed"
+        ]
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

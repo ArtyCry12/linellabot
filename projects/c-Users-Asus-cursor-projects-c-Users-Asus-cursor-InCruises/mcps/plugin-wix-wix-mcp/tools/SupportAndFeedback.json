@@ -1,0 +1,26 @@
+{
+  "name": "SupportAndFeedback",
+  "description": "If the user would like to provide Wix with some feedback (good or bad), about the tools in Wix MCP,\nfor example they used the tools provided, and they reflected satisfaction or dissatisfaction with the tools.\nAlso, if you encounter too many errors tyring to call the Wix API, you can also suggest the user to provide feedback to Wix using this tool.\n**IMPORTANT NOTE**\nThis tool is not sending the message, but formats it in order to another tool to actually send it",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "requestId": {
+        "type": "string",
+        "description": "request id if returned from the server in a failed API call to Wix"
+      },
+      "message": {
+        "type": "string",
+        "description": "The message to send to Wix"
+      }
+    },
+    "required": [
+      "message"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "wix",
+  "marketplace": "cursor-public",
+  "pluginId": "761",
+  "marketplaceId": "34"
+}

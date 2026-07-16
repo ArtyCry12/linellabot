@@ -1,0 +1,376 @@
+{
+  "name": "data_component_variants_tool",
+  "description": "Data tool - Component variants tool to manage variants and per-variant style overrides.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "Webflow site ID. Use list_sites to discover site IDs."
+      },
+      "pageId": {
+        "type": "string",
+        "description": "Any valid page id exists in the site"
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "create_variant": {
+                  "type": "object",
+                  "properties": {
+                    "component_id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "component_id",
+                    "name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a new variant on a component."
+                }
+              },
+              "required": [
+                "label",
+                "create_variant"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "duplicate_variant": {
+                  "type": "object",
+                  "properties": {
+                    "component_id": {
+                      "type": "string"
+                    },
+                    "source_variant_id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Name for the new variant."
+                    }
+                  },
+                  "required": [
+                    "component_id",
+                    "source_variant_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Duplicate a variant, copying its settings and styles."
+                }
+              },
+              "required": [
+                "label",
+                "duplicate_variant"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "delete_variant": {
+                  "type": "object",
+                  "properties": {
+                    "component_id": {
+                      "type": "string"
+                    },
+                    "variant_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "component_id",
+                    "variant_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Delete a variant. The base variant cannot be deleted."
+                }
+              },
+              "required": [
+                "label",
+                "delete_variant"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "reorder_variants": {
+                  "type": "object",
+                  "properties": {
+                    "component_id": {
+                      "type": "string"
+                    },
+                    "variant_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Ordered variant ids, including 'base'. A partial list moves those variants as a block to the first's current position; the rest keep their relative order. The response echoes the input, not the resulting order — pass the full list for a deterministic total order."
+                    }
+                  },
+                  "required": [
+                    "component_id",
+                    "variant_ids"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Reorder a component's variants."
+                }
+              },
+              "required": [
+                "label",
+                "reorder_variants"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "set_variant_name": {
+                  "type": "object",
+                  "properties": {
+                    "component_id": {
+                      "type": "string"
+                    },
+                    "variant_id": {
+                      "type": "string",
+                      "description": "Use 'base' to rename the base variant."
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "component_id",
+                    "variant_id",
+                    "name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Rename a variant."
+                }
+              },
+              "required": [
+                "label",
+                "set_variant_name"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_variant_settings": {
+                  "type": "object",
+                  "properties": {
+                    "component_id": {
+                      "type": "string"
+                    },
+                    "variant_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "component_id",
+                    "variant_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get a variant's settings (id, name, selection state)."
+                }
+              },
+              "required": [
+                "label",
+                "get_variant_settings"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_variant_styles": {
+                  "type": "object",
+                  "properties": {
+                    "variant_id": {
+                      "type": "string"
+                    },
+                    "style_name": {
+                      "type": "string"
+                    },
+                    "breakpoint_id": {
+                      "$ref": "#/$defs/breakpoint_id"
+                    },
+                    "pseudo": {
+                      "$ref": "#/$defs/pseudo"
+                    }
+                  },
+                  "required": [
+                    "variant_id",
+                    "style_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get styles scoped to a variant, independent of the base component styles."
+                }
+              },
+              "required": [
+                "label",
+                "get_variant_styles"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "set_variant_styles": {
+                  "type": "object",
+                  "properties": {
+                    "variant_id": {
+                      "type": "string"
+                    },
+                    "style_name": {
+                      "type": "string"
+                    },
+                    "breakpoint_id": {
+                      "$ref": "#/$defs/breakpoint_id"
+                    },
+                    "pseudo": {
+                      "$ref": "#/$defs/pseudo"
+                    },
+                    "properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property_name": {
+                            "type": "string",
+                            "description": "CSS property name."
+                          },
+                          "property_value": {
+                            "type": "string",
+                            "description": "Static value."
+                          },
+                          "variable_as_value": {
+                            "type": "string",
+                            "description": "Variable id to use as the value."
+                          }
+                        },
+                        "required": [
+                          "property_name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "remove_properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "CSS property names to remove."
+                    }
+                  },
+                  "required": [
+                    "variant_id",
+                    "style_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Set or update styles scoped to a variant; the base component and other variants are unaffected."
+                }
+              },
+              "required": [
+                "label",
+                "set_variant_styles"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "siteId",
+      "pageId",
+      "actions",
+      "context"
+    ],
+    "$defs": {
+      "label": {
+        "type": "string",
+        "description": "Echoed in the response; does not select which action runs."
+      },
+      "breakpoint_id": {
+        "type": "string",
+        "enum": [
+          "xxl",
+          "xl",
+          "large",
+          "main",
+          "medium",
+          "small",
+          "tiny"
+        ],
+        "description": "Breakpoint scope."
+      },
+      "pseudo": {
+        "type": "string",
+        "enum": [
+          "noPseudo",
+          "nth-child(odd)",
+          "nth-child(even)",
+          "first-child",
+          "last-child",
+          "hover",
+          "active",
+          "visited",
+          "focus",
+          "focus-visible",
+          "focus-within",
+          "placeholder",
+          "empty",
+          "before",
+          "after"
+        ],
+        "description": "Pseudo-state scope."
+      }
+    }
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

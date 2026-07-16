@@ -1,0 +1,70 @@
+{
+  "name": "manage_tasks",
+  "description": "Manage task lists and tasks in Google Tasks.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "operation": {
+        "type": "string",
+        "enum": [
+          "listTaskLists",
+          "getTaskList",
+          "createTaskList",
+          "deleteTaskList",
+          "list",
+          "get",
+          "create",
+          "update",
+          "complete",
+          "delete"
+        ],
+        "description": "listTaskLists: list all task lists | getTaskList: get a task list by ID | createTaskList: create a new task list | deleteTaskList: delete a task list and all its tasks | list: list tasks in a task list | get: get a specific task | create: create a new task | update: update a task (patch semantics — only the fields you pass are changed) | complete: mark a task as completed | delete: delete a task"
+      },
+      "email": {
+        "type": "string",
+        "description": "Account email address"
+      },
+      "taskListId": {
+        "type": "string",
+        "description": "Task list ID"
+      },
+      "title": {
+        "type": "string",
+        "description": "Task list name"
+      },
+      "showCompleted": {
+        "type": "boolean",
+        "description": "Include completed tasks (default: true)"
+      },
+      "maxResults": {
+        "type": "number",
+        "description": "Max tasks to return (default: 20, max: 100)"
+      },
+      "taskId": {
+        "type": "string",
+        "description": "Task ID"
+      },
+      "notes": {
+        "type": "string",
+        "description": "Task notes / details"
+      },
+      "due": {
+        "type": "string",
+        "description": "Due date (RFC 3339, e.g. 2026-07-20T00:00:00.000Z — Google stores the date, not the time)"
+      },
+      "status": {
+        "type": "string",
+        "description": "Task status",
+        "enum": [
+          "needsAction",
+          "completed"
+        ]
+      }
+    },
+    "required": [
+      "operation",
+      "email"
+    ],
+    "additionalProperties": false
+  }
+}

@@ -1,0 +1,609 @@
+{
+  "name": "data_analyze_tool",
+  "description": "Read Webflow Analyze report data for a site, including traffic timeseries, ranked pages, ranked dimensions, ranked engagement events, and aggregate or bucketed time on page. Includes guide actions for building Analyze queries and resolving engagement event rows to page elements, component instances, and CMS context.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_query_guide": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false,
+                  "description": "Returns static guidance for constructing data_analyze_tool queries — how to resolve site IDs, date ranges, page path, CMS collection/item, and dimension filter values from other tools before filtering. Takes no arguments and makes no API calls. The same guidance is available as the MCP resource webflow://guides/analyze-query."
+                }
+              },
+              "required": [
+                "label",
+                "get_query_guide"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_resolve_event_element_guide": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false,
+                  "description": "Returns static guidance for connecting get_top_events_report rows with the Webflow elements, component instances, and CMS content behind those events. Takes no arguments and makes no API calls. The same guidance is available as the MCP resource webflow://guides/resolve-event-element."
+                }
+              },
+              "required": [
+                "label",
+                "get_resolve_event_element_guide"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_time_on_page_report": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "startTime": {
+                      "$ref": "#/$defs/startTime"
+                    },
+                    "endTime": {
+                      "$ref": "#/$defs/endTime"
+                    },
+                    "metricScope": {
+                      "type": "string",
+                      "enum": [
+                        "session",
+                        "user",
+                        "pageview"
+                      ],
+                      "description": "Which metric to base time-on-page on: 'session', 'user', or 'pageview'."
+                    },
+                    "timeseries": {
+                      "type": "object",
+                      "properties": {
+                        "granularityPeriod": {
+                          "type": "string",
+                          "enum": [
+                            "day",
+                            "week"
+                          ],
+                          "description": "Bucket size for a time_on_page timeseries. Use 'day' for daily buckets or 'week' for weekly buckets."
+                        },
+                        "bucketTimeZone": {
+                          "$ref": "#/$defs/bucketTimeZone"
+                        }
+                      },
+                      "required": [
+                        "granularityPeriod",
+                        "bucketTimeZone"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Optional timeseries options. When provided, returns bucketed average time data using the supplied granularity and IANA time zone. Omit for one aggregate value over the window."
+                    },
+                    "deviceType": {
+                      "$ref": "#/$defs/deviceType"
+                    },
+                    "country": {
+                      "$ref": "#/$defs/country"
+                    },
+                    "pagePath": {
+                      "$ref": "#/$defs/pagePath"
+                    },
+                    "trafficSource": {
+                      "$ref": "#/$defs/trafficSource"
+                    },
+                    "browser": {
+                      "$ref": "#/$defs/browser"
+                    },
+                    "utmCampaign": {
+                      "$ref": "#/$defs/utmCampaign"
+                    },
+                    "utmMedium": {
+                      "$ref": "#/$defs/utmMedium"
+                    },
+                    "utmSource": {
+                      "$ref": "#/$defs/utmSource"
+                    },
+                    "referrer": {
+                      "$ref": "#/$defs/referrer"
+                    },
+                    "filter": {
+                      "$ref": "#/$defs/filter"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "startTime",
+                    "endTime",
+                    "metricScope"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get the average time visitors spend on the site or a specific page. Omit timeseries for an aggregate value over the window; provide timeseries for a daily or weekly trend."
+                }
+              },
+              "required": [
+                "label",
+                "get_time_on_page_report"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_top_dimensions_report": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "startTime": {
+                      "$ref": "#/$defs/startTime"
+                    },
+                    "endTime": {
+                      "$ref": "#/$defs/endTime"
+                    },
+                    "dimension": {
+                      "type": "string",
+                      "enum": [
+                        "country",
+                        "region",
+                        "deviceType",
+                        "os",
+                        "browser",
+                        "language",
+                        "locale",
+                        "referrer",
+                        "trafficSource",
+                        "utmCampaign",
+                        "utmContent",
+                        "utmMedium",
+                        "utmSource",
+                        "utmTerm",
+                        "audienceIds"
+                      ],
+                      "description": "The dimension to rank top values for."
+                    },
+                    "metricScope": {
+                      "type": "string",
+                      "enum": [
+                        "session",
+                        "user"
+                      ],
+                      "description": "Which metric to count: 'session' or 'user'. Pageview is not supported for top_dimensions."
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Maximum number of dimension values to return."
+                    },
+                    "deviceType": {
+                      "$ref": "#/$defs/deviceType"
+                    },
+                    "country": {
+                      "$ref": "#/$defs/country"
+                    },
+                    "pagePath": {
+                      "$ref": "#/$defs/pagePath"
+                    },
+                    "trafficSource": {
+                      "$ref": "#/$defs/trafficSource"
+                    },
+                    "browser": {
+                      "$ref": "#/$defs/browser"
+                    },
+                    "utmCampaign": {
+                      "$ref": "#/$defs/utmCampaign"
+                    },
+                    "utmMedium": {
+                      "$ref": "#/$defs/utmMedium"
+                    },
+                    "utmSource": {
+                      "$ref": "#/$defs/utmSource"
+                    },
+                    "referrer": {
+                      "$ref": "#/$defs/referrer"
+                    },
+                    "filter": {
+                      "$ref": "#/$defs/filter"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "startTime",
+                    "endTime",
+                    "dimension",
+                    "metricScope",
+                    "limit"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get the top values for a single dimension (e.g. country, browser, utmSource) on a site, ranked by session or user count."
+                }
+              },
+              "required": [
+                "label",
+                "get_top_dimensions_report"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_top_events_report": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "startTime": {
+                      "$ref": "#/$defs/startTime"
+                    },
+                    "endTime": {
+                      "$ref": "#/$defs/endTime"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 250,
+                      "default": 25,
+                      "description": "Maximum number of events to return (1..250)."
+                    },
+                    "timeseries": {
+                      "$ref": "#/$defs/timeseries"
+                    },
+                    "deviceType": {
+                      "$ref": "#/$defs/deviceType"
+                    },
+                    "country": {
+                      "$ref": "#/$defs/country"
+                    },
+                    "pagePath": {
+                      "$ref": "#/$defs/pagePath"
+                    },
+                    "trafficSource": {
+                      "$ref": "#/$defs/trafficSource"
+                    },
+                    "browser": {
+                      "$ref": "#/$defs/browser"
+                    },
+                    "utmCampaign": {
+                      "$ref": "#/$defs/utmCampaign"
+                    },
+                    "utmMedium": {
+                      "$ref": "#/$defs/utmMedium"
+                    },
+                    "utmSource": {
+                      "$ref": "#/$defs/utmSource"
+                    },
+                    "filter": {
+                      "$ref": "#/$defs/filter"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "startTime",
+                    "endTime"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get the top engagement events on a site ranked by frequency, with page context, over a given window. Events are implicitly ranked by frequency (no metricScope or sortBy)."
+                }
+              },
+              "required": [
+                "label",
+                "get_top_events_report"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_top_pages_report": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "startTime": {
+                      "$ref": "#/$defs/startTime"
+                    },
+                    "endTime": {
+                      "$ref": "#/$defs/endTime"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Maximum number of pages to return. A public cap is enforced by the API."
+                    },
+                    "sortBy": {
+                      "type": "string",
+                      "enum": [
+                        "session",
+                        "user",
+                        "pageview"
+                      ],
+                      "description": "Metric to sort the top pages by."
+                    },
+                    "timeseries": {
+                      "$ref": "#/$defs/timeseries",
+                      "description": "Optional timeseries options. When provided, each row includes a daily pageview timeseries bucketed in the supplied IANA time zone."
+                    },
+                    "deviceType": {
+                      "$ref": "#/$defs/deviceType"
+                    },
+                    "country": {
+                      "$ref": "#/$defs/country"
+                    },
+                    "pagePath": {
+                      "$ref": "#/$defs/pagePath"
+                    },
+                    "trafficSource": {
+                      "$ref": "#/$defs/trafficSource"
+                    },
+                    "browser": {
+                      "$ref": "#/$defs/browser"
+                    },
+                    "utmCampaign": {
+                      "$ref": "#/$defs/utmCampaign"
+                    },
+                    "utmMedium": {
+                      "$ref": "#/$defs/utmMedium"
+                    },
+                    "utmSource": {
+                      "$ref": "#/$defs/utmSource"
+                    },
+                    "referrer": {
+                      "$ref": "#/$defs/referrer"
+                    },
+                    "filter": {
+                      "$ref": "#/$defs/filter"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "startTime",
+                    "endTime",
+                    "limit"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get the top pages on a site ranked by session, user, or pageview count over a given window."
+                }
+              },
+              "required": [
+                "label",
+                "get_top_pages_report"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/label"
+                },
+                "get_traffic_report": {
+                  "type": "object",
+                  "properties": {
+                    "site_id": {
+                      "$ref": "#/$defs/site_id"
+                    },
+                    "startTime": {
+                      "$ref": "#/$defs/startTime"
+                    },
+                    "endTime": {
+                      "$ref": "#/$defs/endTime"
+                    },
+                    "metricScope": {
+                      "type": "string",
+                      "enum": [
+                        "session",
+                        "user",
+                        "pageview"
+                      ],
+                      "description": "Which metric to count: 'session', 'user', or 'pageview'."
+                    },
+                    "bucketTimeZone": {
+                      "$ref": "#/$defs/bucketTimeZone"
+                    },
+                    "deviceType": {
+                      "$ref": "#/$defs/deviceType"
+                    },
+                    "country": {
+                      "$ref": "#/$defs/country"
+                    },
+                    "pagePath": {
+                      "$ref": "#/$defs/pagePath"
+                    },
+                    "trafficSource": {
+                      "$ref": "#/$defs/trafficSource"
+                    },
+                    "browser": {
+                      "$ref": "#/$defs/browser"
+                    },
+                    "utmCampaign": {
+                      "$ref": "#/$defs/utmCampaign"
+                    },
+                    "utmMedium": {
+                      "$ref": "#/$defs/utmMedium"
+                    },
+                    "utmSource": {
+                      "$ref": "#/$defs/utmSource"
+                    },
+                    "referrer": {
+                      "$ref": "#/$defs/referrer"
+                    },
+                    "filter": {
+                      "$ref": "#/$defs/filter"
+                    }
+                  },
+                  "required": [
+                    "site_id",
+                    "startTime",
+                    "endTime",
+                    "metricScope",
+                    "bucketTimeZone"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get a time-series of session, user, or pageview counts for a site over a given window."
+                }
+              },
+              "required": [
+                "label",
+                "get_traffic_report"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "actions",
+      "context"
+    ],
+    "$defs": {
+      "label": {
+        "type": "string",
+        "description": "Echoed in the response; does not select which action runs."
+      },
+      "site_id": {
+        "type": "string",
+        "description": "Unique identifier for the Webflow site. Use list_sites to discover available site IDs."
+      },
+      "startTime": {
+        "type": "string",
+        "description": "ISO 8601 datetime as a UTC timestamp ending in Z, for example 2026-04-01T00:00:00Z. Numeric offsets such as -04:00 or +00:00 are not accepted. Must be on or after 2025-04-09T00:00:00.000Z. The range from startTime to endTime must not exceed 100 days."
+      },
+      "endTime": {
+        "type": "string",
+        "description": "ISO 8601 datetime as a UTC timestamp ending in Z, for example 2026-04-08T00:00:00Z. Numeric offsets such as -04:00 or +00:00 are not accepted. Must be greater than startTime. The range from startTime to endTime must not exceed 100 days."
+      },
+      "deviceType": {
+        "type": "string",
+        "enum": [
+          "desktop",
+          "mobile",
+          "tablet"
+        ],
+        "description": "Filter results to a single device type."
+      },
+      "country": {
+        "type": "string",
+        "description": "ISO 3166-1 alpha-2 country code (2 letters). Auto-uppercased by the API."
+      },
+      "pagePath": {
+        "type": "string",
+        "description": "Filter results to a single page path."
+      },
+      "trafficSource": {
+        "type": "string",
+        "description": "Filter results to a single traffic source."
+      },
+      "browser": {
+        "type": "string",
+        "description": "Filter results to a single browser."
+      },
+      "utmCampaign": {
+        "type": "string",
+        "description": "Filter results to a single utm_campaign value."
+      },
+      "utmMedium": {
+        "type": "string",
+        "description": "Filter results to a single utm_medium value."
+      },
+      "utmSource": {
+        "type": "string",
+        "description": "Filter results to a single utm_source value."
+      },
+      "referrer": {
+        "type": "string",
+        "description": "Filter results to a single referrer."
+      },
+      "filter": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "eq": {
+              "type": "string",
+              "description": "Match rows where the dimension equals this value."
+            },
+            "ne": {
+              "type": "string",
+              "description": "Exclude rows where the dimension equals this value."
+            },
+            "in": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 50,
+              "description": "Match rows where the dimension is any of these values (1-50 items)."
+            },
+            "nin": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 50,
+              "description": "Exclude rows where the dimension is any of these values (1-50 items)."
+            }
+          },
+          "additionalProperties": false
+        },
+        "description": "Optional general-purpose filter. Each key is a dimension name and each value is an operator object with optional eq/ne/in/nin (in/nin arrays must have 1-50 items). Allowed dimensions: country, region, deviceType, deviceBrand, os, browser, language, locale, referrer, trafficSource, domain, timezone, pageId, pagePath, collectionId, itemSlug, visitStatus, dayOfWeek, timeOfDay, previousPageId, nextPageId, previousCollectionId, nextCollectionId, previousItemSlug, nextItemSlug, utmCampaign, utmContent, utmMedium, utmSource, utmTerm, audienceIds. Unknown dimensions are rejected by the API."
+      },
+      "bucketTimeZone": {
+        "type": "string",
+        "description": "Valid IANA time zone used to align time bucket boundaries, such as UTC or America/New_York. Bucket timestamps are returned as UTC instants for local bucket starts in this time zone."
+      },
+      "timeseries": {
+        "type": "object",
+        "properties": {
+          "bucketTimeZone": {
+            "$ref": "#/$defs/bucketTimeZone"
+          }
+        },
+        "required": [
+          "bucketTimeZone"
+        ],
+        "additionalProperties": false,
+        "description": "Optional timeseries options. When provided, each row includes a daily event-count timeseries bucketed in the supplied IANA time zone."
+      }
+    }
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

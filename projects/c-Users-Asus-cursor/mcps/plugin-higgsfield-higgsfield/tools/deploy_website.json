@@ -1,0 +1,94 @@
+{
+  "name": "deploy_website",
+  "description": "Build and deploy the website via CI, then return its live URL. Every deploy ships the live site at the website's public URL (there is no separate preview stage). IMPORTANT: commit and git push ALL your changes BEFORE calling this — the build runs from the pushed repo. Deploy again after ANY later change: publish_website does NOT deploy (it only lists the already-live build on the community feed), so this tool is the only way changes ship. A failed build returns the log; a still-running build returns status 'pending' — call website_status to check.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "website_id": {
+        "type": "string",
+        "description": "The website's id (returned by create_website)."
+      }
+    },
+    "required": [
+      "website_id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "description": "deployed / failed / pending",
+        "type": "string"
+      },
+      "url": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "error": {
+        "description": "Build log when the deploy failed.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "name": {
+        "description": "The deployed site's title (from its og:title / <title>).",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "favicon_url": {
+        "description": "The deployed site's favicon URL.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "og_image_url": {
+        "description": "The deployed site's OG banner image URL.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "website_id": {
+        "description": "Echo of the input id — the widget's publish/contest buttons need it.",
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

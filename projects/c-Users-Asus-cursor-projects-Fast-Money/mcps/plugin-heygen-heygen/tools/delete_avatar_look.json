@@ -1,0 +1,21 @@
+{
+  "name": "delete_avatar_look",
+  "description": "Deletes an avatar look and its backing resource. Supported types: photo_avatar, digital_twin, and kit-based looks. Studio avatar (model_index) types cannot be deleted via the API. Deleting the last look in a group does not auto-delete the parent group.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "lookId": {
+        "title": "Lookid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "lookId"
+    ],
+    "title": "DeleteAvatarLookInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,140 @@
+{
+  "name": "get_workflow_bundle_file",
+  "description": "Read a safe text file or directory from a workflow's resource folder. Use this after get_workflow_instructions when the SKILL.md requires a template, reference, or script file.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "workflow": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Workflow name whose folder holds the file, e.g. 'video-explainer'."
+      },
+      "path": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Whitelisted path INSIDE that workflow folder, e.g. 'references/prompts.md' or 'scripts/assemble_blocks.sh'."
+      },
+      "include_contents": {
+        "description": "For directory paths, include the content of every allowed file under that directory. Defaults to false.",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "workflow",
+      "path"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "kind": {
+        "type": "string",
+        "enum": [
+          "file",
+          "directory",
+          "error"
+        ],
+        "description": "Whether the response is a single file, directory listing, or error."
+      },
+      "workflow": {
+        "type": "string",
+        "description": "Workflow name."
+      },
+      "path": {
+        "type": "string",
+        "description": "Normalized path inside the workflow folder."
+      },
+      "mime_type": {
+        "description": "MIME type for file responses.",
+        "type": "string"
+      },
+      "content": {
+        "description": "File content for file responses.",
+        "type": "string"
+      },
+      "size_bytes": {
+        "description": "File size for file responses.",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "entries": {
+        "description": "Direct child entries for directory responses.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "files": {
+        "description": "Recursive file contents when include_contents is true for a directory.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "path",
+            "mime_type",
+            "content",
+            "size_bytes"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "file_count": {
+        "description": "Number of files included or available in a directory response.",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "total_bytes": {
+        "description": "Total bytes included or available in a directory response.",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "max_file_bytes": {
+        "description": "Maximum allowed single file size.",
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991
+      },
+      "max_directory_bytes": {
+        "description": "Maximum allowed directory content size.",
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991
+      },
+      "error": {
+        "description": "Error message for error responses.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "kind",
+      "workflow",
+      "path"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

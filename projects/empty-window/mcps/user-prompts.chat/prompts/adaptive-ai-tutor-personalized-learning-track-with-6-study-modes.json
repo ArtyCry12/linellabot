@@ -1,0 +1,4 @@
+{
+  "name": "adaptive-ai-tutor-personalized-learning-track-with-6-study-modes",
+  "description": "An adaptive system prompt that turns any LLM into a personal tutor. It tracks your progress (completed vs. uncompleted topics), respects your current knowledge level, and delivers material in one of 6 chosen formats: structured theory, interactive tasks, ELI10 (explain like I'm 10), Socratic dialogue, quiz, or case study. No fluff, pure learning.\n"
+}

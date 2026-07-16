@@ -1,0 +1,75 @@
+---
+pid: 11712
+cwd: "C:\\Users\\Asus\\.cursor\\trust wallet copy"
+command: "cd \"c:/Users/Asus/.cursor/trust wallet copy\"; npm run lint"
+started_at: 2026-05-29T13:10:32.523Z
+running_for_ms: 241965   
+---
+
+> ai-website-clone-template@0.3.1 lint
+> eslint
+
+
+C:\Users\Asus\.cursor\trust wallet copy\src\lib\i18n\context.tsx
+  32:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Asus\.cursor\trust wallet copy\src\lib\i18n\context.tsx:32:7
+  30 |     const stored = localStorage.getItem("tk-locale") as Locale | null;
+  31 |     if (stored === "en" || stored === "ru") {
+> 32 |       setLocaleState(stored);
+     |       ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  33 |       return;
+  34 |     }
+  35 |     setLocaleState(detectLocale());  react-hooks/set-state-in-effect
+
+C:\Users\Asus\.cursor\trust wallet copy\src\lib\theme\context.tsx
+  27:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Asus\.cursor\trust wallet copy\src\lib\theme\context.tsx:27:7
+  25 |     const stored = localStorage.getItem("tk-theme") as ThemeMode | null;
+  26 |     if (stored === "dark" || stored === "light") {
+> 27 |       setThemeState(stored);
+     |       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  28 |       return;
+  29 |     }
+  30 |     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;  react-hooks/set-state-in-effect
+
+C:\Users\Asus\.cursor\trust wallet copy\src\lib\wallet\store.tsx
+  36:10  warning  'sheetStack' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  41:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Asus\.cursor\trust wallet copy\src\lib\wallet\store.tsx:41:7
+  39 |     const ready = localStorage.getItem("tk-wallet-ready") === "1";
+  40 |     if (ready) {
+> 41 |       setWalletReady(true);
+     |       ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  42 |       setScreen("home");
+  43 |     }
+  44 |     const fs = localStorage.getItem("tk-fullscreen") === "1";  react-hooks/set-state-in-effect
+
+✖ 4 problems (3 errors, 1 warning)
+
+
+---
+exit_code: 1
+elapsed_ms: 243527
+ended_at: 2026-05-29T13:14:36.050Z
+---

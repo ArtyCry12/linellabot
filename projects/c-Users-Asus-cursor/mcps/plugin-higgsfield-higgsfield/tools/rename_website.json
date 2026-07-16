@@ -1,0 +1,65 @@
+{
+  "name": "rename_website",
+  "description": "Rename the website's SUBDOMAIN (the slug in its public URL). The site is re-deployed under the new subdomain and the OLD subdomain STOPS WORKING — anyone holding the old URL must be given the new one. Storage (database, files, config) and the code repo are KEPT; only the public address changes. Runs a full re-deploy and can take a couple of minutes; returns once the site is live at the new URL. Fails if the new subdomain is already taken or reserved, or if a deploy is already in flight — pick another subdomain and retry.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "website_id": {
+        "type": "string",
+        "description": "The website's id (returned by create_website)."
+      },
+      "new_slug": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 64,
+        "description": "The new subdomain (the slug in the public URL). Lowercase letters, digits and hyphens; must be globally unique and not a reserved name."
+      }
+    },
+    "required": [
+      "website_id",
+      "new_slug"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "slug": {
+        "description": "The website's subdomain after the rename.",
+        "type": "string"
+      },
+      "old_slug": {
+        "description": "The subdomain it had before (that URL no longer works).",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "url": {
+        "description": "Live URL under the new subdomain.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging. If present, show it to the user.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,107 @@
+{
+  "name": "clone_voice",
+  "description": "Creates a voice clone from an audio file. Returns a voice_clone_id that can be polled via GET /v3/voices/{voice_clone_id} until the status is 'complete'. The resulting voice can be used with POST /v3/voices/speech and POST /v3/videos.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "audio": {
+        "description": "Audio file for voice cloning. Provide as {type: 'url', url: '...'}, {type: 'asset_id', asset_id: '...'}, or {type: '', media_type: '...', data: '...'}.",
+        "discriminator": {
+          "mapping": {
+            "asset_id": "#/$defs/AssetId",
+            "url": "#/$defs/AssetUrl"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/AssetUrl"
+          },
+          {
+            "$ref": "#/$defs/AssetId"
+          }
+        ],
+        "title": "Audio"
+      },
+      "voiceName": {
+        "description": "Display name for the cloned voice.",
+        "title": "Voicename",
+        "type": "string"
+      },
+      "language": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Language hint for the voice (e.g., 'en', 'es'). Auto-detected if omitted.",
+        "title": "Language"
+      },
+      "removeBackgroundNoise": {
+        "default": true,
+        "description": "Remove background noise from the audio before cloning.",
+        "title": "Removebackgroundnoise",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "audio",
+      "voiceName"
+    ],
+    "$defs": {
+      "AssetId": {
+        "description": "Asset input via HeyGen asset ID from the asset upload endpoint.",
+        "properties": {
+          "type": {
+            "const": "asset_id",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "asset_id": {
+            "description": "HeyGen asset ID from the asset upload endpoint",
+            "title": "Asset Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "asset_id"
+        ],
+        "title": "AssetId",
+        "type": "object"
+      },
+      "AssetUrl": {
+        "description": "Asset input via publicly accessible HTTPS URL.",
+        "properties": {
+          "type": {
+            "const": "url",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "description": "Publicly accessible HTTPS URL for the asset",
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ],
+        "title": "AssetUrl",
+        "type": "object"
+      }
+    },
+    "title": "CloneVoiceInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

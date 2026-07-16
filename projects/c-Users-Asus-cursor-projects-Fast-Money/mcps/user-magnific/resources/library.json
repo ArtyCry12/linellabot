@@ -1,0 +1,6 @@
+{
+  "uri": "library://",
+  "name": "library",
+  "description": "Library picker catalog with preview assets, grouped by source. Agent reasoning uses library_list.",
+  "mimeType": "application/json"
+}

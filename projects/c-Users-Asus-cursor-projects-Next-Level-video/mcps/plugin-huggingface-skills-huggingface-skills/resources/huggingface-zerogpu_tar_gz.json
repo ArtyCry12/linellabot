@@ -1,0 +1,5 @@
+{
+  "uri": "skill://huggingface-zerogpu.tar.gz",
+  "name": "huggingface-zerogpu.tar.gz",
+  "mimeType": "application/gzip"
+}

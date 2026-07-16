@@ -1,0 +1,78 @@
+{
+  "name": "create-domain",
+  "description": "Create a new domain in Resend. Returns DNS records that must be configured with your DNS provider for verification. You MUST display the DNS records to the user so they can set them up.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The domain name (e.g., example.com)"
+      },
+      "region": {
+        "description": "Deployment region. Defaults to \"us-east-1\".",
+        "type": "string",
+        "enum": [
+          "us-east-1",
+          "eu-west-1",
+          "sa-east-1",
+          "ap-northeast-1"
+        ]
+      },
+      "customReturnPath": {
+        "description": "Subdomain for the Return-Path address. Defaults to \"send\".",
+        "type": "string"
+      },
+      "openTracking": {
+        "description": "Enable email open rate tracking.",
+        "type": "boolean"
+      },
+      "clickTracking": {
+        "description": "Enable click tracking in HTML emails.",
+        "type": "boolean"
+      },
+      "tls": {
+        "description": "TLS mode. \"opportunistic\" attempts secure connection with fallback. \"enforced\" requires TLS or fails. Defaults to \"opportunistic\".",
+        "type": "string",
+        "enum": [
+          "opportunistic",
+          "enforced"
+        ]
+      },
+      "trackingSubdomain": {
+        "description": "Custom subdomain for tracking links (e.g., \"track\" for track.example.com). When set, click and open tracking URLs will use this subdomain instead of the default.",
+        "type": "string"
+      },
+      "capabilities": {
+        "description": "Domain capabilities configuration.",
+        "type": "object",
+        "properties": {
+          "sending": {
+            "description": "Enable or disable sending. Defaults to \"enabled\".",
+            "type": "string",
+            "enum": [
+              "enabled",
+              "disabled"
+            ]
+          },
+          "receiving": {
+            "description": "Enable or disable receiving. Defaults to \"disabled\".",
+            "type": "string",
+            "enum": [
+              "enabled",
+              "disabled"
+            ]
+          }
+        }
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

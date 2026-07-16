@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/organization-switcher",
+  "name": "<OrganizationSwitcher> Component",
+  "description": "Pre-built component for switching between organizations",
+  "mimeType": "text/markdown"
+}

@@ -1,0 +1,6 @@
+{
+  "uri": "clerk://sdk/use-auth",
+  "name": "useAuth hook",
+  "description": "Access auth state and session tokens for API calls",
+  "mimeType": "text/markdown"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "delete_asset",
+  "description": "Permanently deletes an asset. The asset must belong to the caller's workspace and not already be deleted.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "assetId": {
+        "title": "Assetid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "assetId"
+    ],
+    "title": "DeleteAssetInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

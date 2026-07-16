@@ -1,0 +1,30 @@
+{
+  "name": "spaces_list",
+  "description": "Lean spaces catalog as raw TOON text. Share each `webUrl`; call `spaces_show` only for inline canvas preview. Do not use `creations_search`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "description": "Name filter.",
+        "type": "string"
+      },
+      "ownership": {
+        "description": "Default all.",
+        "enum": [
+          "all",
+          "mine",
+          "shared"
+        ],
+        "type": "string"
+      },
+      "page": {
+        "description": "Default 1, max 1000.",
+        "type": "integer"
+      },
+      "perPage": {
+        "description": "Default 25, max 100.",
+        "type": "integer"
+      }
+    }
+  }
+}

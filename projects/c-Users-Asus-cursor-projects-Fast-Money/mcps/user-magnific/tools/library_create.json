@@ -1,0 +1,57 @@
+{
+  "name": "library_create",
+  "description": "Create a reusable library asset (character/product/location) from 1-6 images. Use the returned numeric `id` in generation refs (same id Spaces uses). No LoRA training.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Unique A-Z/0-9/_/- name, max 50.",
+        "type": "string"
+      },
+      "type": {
+        "description": "character=people/animals/avatars; product=objects; locations=places.",
+        "enum": [
+          "character",
+          "product",
+          "locations"
+        ],
+        "type": "string"
+      },
+      "description": {
+        "description": "Max 1000.",
+        "type": "string"
+      },
+      "gender": {
+        "description": "Character only.",
+        "type": "string"
+      },
+      "productType": {
+        "description": "Product only.",
+        "type": "string"
+      },
+      "images": {
+        "description": "1-6 JPEG/PNG/WebP images; first is cover.",
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "creationIdentifier": {
+              "description": "Creation identifier. Exclusive with `url`.",
+              "type": "string"
+            },
+            "url": {
+              "description": "Public HTTPS URL. Exclusive with `creationIdentifier`.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "name",
+      "type",
+      "images"
+    ]
+  }
+}

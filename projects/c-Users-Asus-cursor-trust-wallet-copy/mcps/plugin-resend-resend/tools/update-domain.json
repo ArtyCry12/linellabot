@@ -1,0 +1,64 @@
+{
+  "name": "update-domain",
+  "description": "Update an existing domain in Resend. Allows changing tracking settings, TLS mode, and capabilities.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Domain ID"
+      },
+      "clickTracking": {
+        "description": "Track clicks within the body of each HTML email.",
+        "type": "boolean"
+      },
+      "openTracking": {
+        "description": "Track the open rate of each email.",
+        "type": "boolean"
+      },
+      "tls": {
+        "description": "TLS mode. \"opportunistic\" attempts secure connection with fallback. \"enforced\" requires TLS or fails.",
+        "type": "string",
+        "enum": [
+          "opportunistic",
+          "enforced"
+        ]
+      },
+      "trackingSubdomain": {
+        "description": "Custom subdomain for tracking links (e.g., \"track\" for track.example.com). When set, click and open tracking URLs will use this subdomain instead of the default.",
+        "type": "string"
+      },
+      "capabilities": {
+        "description": "Domain capabilities. At least one capability must remain enabled.",
+        "type": "object",
+        "properties": {
+          "sending": {
+            "description": "Enable or disable sending.",
+            "type": "string",
+            "enum": [
+              "enabled",
+              "disabled"
+            ]
+          },
+          "receiving": {
+            "description": "Enable or disable receiving.",
+            "type": "string",
+            "enum": [
+              "enabled",
+              "disabled"
+            ]
+          }
+        }
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

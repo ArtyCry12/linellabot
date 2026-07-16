@@ -1,0 +1,544 @@
+---
+pid: 12120
+cwd: "C:\\Users\\Asus\\.cursor"
+command: "cd \"C:\\Users\\Asus\\.cursor\"\n$ErrorActionPreference = \"Continue\"\n# Complement only — skip rows marked Skip\n$jobs = @(\n  @{ pkg=\"resciencelab/opc-skills\"; skills=@(\"seo-geo\") },\n  @{ pkg=\"coreyhaines31/marketingskills\"; skills=@(\"seo-audit\",\"programmatic-seo\",\"copywriting\",\"content-strategy\",\"marketing-psychology\",\"marketing-ideas\") },\n  @{ pkg=\"dirnbauer/webconsulting-skills\"; skills=@(\"ai-search-optimization\") },\n  @{ pkg=\"tech-leads-club/agent-skills\"; skills=@(\"core-web-vitals\") },\n  @{ pkg=\"kostja94/marketing-skills\"; skills=@(\"growth-funnel\") },\n  @{ pkg=\"vladm3105/aidoc-flow-framework\"; skills=@(\"n8n\") },\n  @{ pkg=\"sundial-org/awesome-openclaw-skills\"; skills=@(\"n8n-workflow-automation\") },\n  @{ pkg=\"promptadvisers/n8n-powerhouse\"; skills=@(\"n8n-workflow-architect\") },\n  @{ pkg=\"bobmatnyc/claude-mpm-skills\"; skills=@(\"playwright-e2e-testing\") },\n  @{ pkg=\"manutej/luxor-claude-marketplace\"; skills=@(\"playwright-visual-testing\") },\n  @{ pkg=\"onewave-ai/claude-skills\"; skills=@(\"code-review-pro\") },\n  @{ pkg=\"petrkindlmann/qa-skills\"; skills=@(\"qa-start\") },\n  @{ pkg=\"firebase/agent-skills\"; skills=@(\"firebase-security-rules-auditor\",\"firestore-security-rules-auditor\") },\n  @{ pkg=\"cloudflare/security-audit-skill\"; skills=@(\"security-audit\") },\n  @{ pkg=\"jwynia/agent-skills\"; skills=@(\"secrets-scan\") },\n  @{ pkg=\"martinholovsky/claude-skills-generator\"; skills=@(\"devsecops-expert\") }\n)\n$log = @()\nforeach ($j in $jobs) {\n  $skillArgs = @()\n  foreach ($s in $j.skills) { $skillArgs += @(\"-s\", $s) }\n  Write-Host \"`n===== $($j.pkg) [$($j.skills -join ',')] =====\"\n  $out = & npx.cmd skills add $j.pkg @skillArgs -g -y --agent cursor 2>&1 | Out-String\n  $code = $LASTEXITCODE\n  Write-Host $out.Substring([Math]::Max(0, $out.Length - 800))\n  Write-Host \"exit=$code\"\n  $log += [PSCustomObject]@{ pkg=$j.pkg; skills=($j.skills -join ','); exit=$code }\n}\n$log | Format-Table -AutoSize | Out-String | Write-Host\n$log | ConvertTo-Json | Set-Content \"ai-tracking/other-skills-install-log-s2.json\" -Encoding UTF8\nWrite-Host \"DONE installs\"\nGet-ChildItem \"$env:USERPROFILE\\.agents\\skills\" -Directory | Select-Object -ExpandProperty Name | Sort-Object\n"
+started_at: 2026-07-16T16:06:56.728Z
+running_for_ms: 281939   
+---
+
+===== resciencelab/opc-skills [seo-geo] =====
+-------------+
+|                                                         |
+|           Gen               Socket            Snyk      |
+|  seo-geo  Safe              0 alerts          Med Risk  |
+|                                                         |
+|  Details: https://skills.sh/resciencelab/opc-skills     |
+|                                                         |
++---------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ------------+
+|                                |
+|  ✓ seo-geo (copied)            |
+|    → ~\.agents\skills\seo-geo  |
+|                                |
++--------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== coreyhaines31/marketingskills [seo-audit,programmatic-seo,copywriting,content-strategy,marketing-psychology,marketing-ideas] =====
+   |
+|  ✓ content-strategy (copied)                |
+|    → ~\.agents\skills\content-strategy      |
+|  ✓ copywriting (copied)                     |
+|    → ~\.agents\skills\copywriting           |
+|  ✓ marketing-ideas (copied)                 |
+|    → ~\.agents\skills\marketing-ideas       |
+|  ✓ marketing-psychology (copied)            |
+|    → ~\.agents\skills\marketing-psychology  |
+|  ✓ programmatic-seo (copied)                |
+|    → ~\.agents\skills\programmatic-seo      |
+|  ✓ seo-audit (copied)                       |
+|    → ~\.agents\skills\seo-audit             |
+|                                             |
++---------------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== dirnbauer/webconsulting-skills [ai-search-optimization] =====
+Safe              0 alerts          Low Risk  |
+|                                                                        |
+|  Details: https://skills.sh/dirnbauer/webconsulting-skills             |
+|                                                                        |
++------------------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ---------------------------+
+|                                               |
+|  ✓ ai-search-optimization (copied)            |
+|    → ~\.agents\skills\ai-search-optimization  |
+|                                               |
++-----------------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== tech-leads-club/agent-skills [core-web-vitals] =====
+ Gen               Socket            Snyk      |
+|  core-web-vitals  Safe              0 alerts          Low Risk  |
+|                                                                 |
+|  Details: https://skills.sh/tech-leads-club/agent-skills        |
+|                                                                 |
++-----------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill --------------------+
+|                                        |
+|  ✓ core-web-vitals (copied)            |
+|    → ~\.agents\skills\core-web-vitals  |
+|                                        |
++----------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== kostja94/marketing-skills [growth-funnel] =====
+G[JO  Cloning repository…..[1G[J0  Cloning repository…..[1G[J•  Cloning repository…..[1G[Jo  Repository cloned
+[?25h[?25l|
+[1G[J•  Discovering skills…[1G[Jo  Found 20 skills
+[?25h|
+x  No matching skills found for: growth-funnel
+|
+•  Available skills:
+|
+|    - analytics-tracking
+|
+|    - article-content
+|
+|    - copywriting
+|
+|    - podcast-marketing
+|
+|    - translation
+|
+|    - video-marketing
+|
+|    - visual-content
+|
+|    - github
+|
+|    - grokipedia-recommendations
+|
+|    - linkedin-posts
+|
+|    - medium-posts
+|
+|    - pinterest-posts
+|
+|    - reddit-posts
+|
+|    - tiktok-captions
+|
+|    - twitter-x-posts
+|
+|    - youtube-seo
+|
+|    - entity-seo
+|
+|    - local-seo
+|
+|    - parasite-seo
+|
+|    - programmatic-seo
+
+exit=1
+
+===== vladm3105/aidoc-flow-framework [n8n] =====
+it
+|
+|    - doc-ears-autopilot
+|
+|    - doc-ears-fixer
+|
+|    - doc-flow
+|
+|    - doc-iplan
+|
+|    - doc-iplan-audit
+|
+|    - doc-iplan-autopilot
+|
+|    - doc-iplan-fixer
+|
+|    - doc-naming
+|
+|    - doc-prd
+|
+|    - doc-prd-audit
+|
+|    - doc-prd-autopilot
+|
+|    - doc-prd-fixer
+|
+|    - doc-ref
+|
+|    - doc-review
+|
+|    - doc-spec
+|
+|    - doc-spec-audit
+|
+|    - doc-spec-autopilot
+|
+|    - doc-spec-fixer
+|
+|    - doc-tdd
+|
+|    - doc-tdd-audit
+|
+|    - doc-tdd-autopilot
+|
+|    - doc-tdd-fixer
+|
+|    - doc-validator
+|
+|    - gate-check
+|
+|    - knowledge-extractor
+|
+|    - project-adopt
+|
+|    - project-init
+|
+|    - project-profile
+|
+|    - quality-advisor
+|
+|    - review-team
+|
+|    - security-audit
+|
+|    - trace-check
+
+exit=1
+
+===== sundial-org/awesome-openclaw-skills [n8n-workflow-automation] =====
+        0 alerts          Low Risk  |
+|                                                                         |
+|  Details: https://skills.sh/sundial-org/awesome-openclaw-skills         |
+|                                                                         |
++-------------------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ----------------------------+
+|                                                |
+|  ✓ n8n-workflow-automation (copied)            |
+|    → ~\.agents\skills\n8n-workflow-automation  |
+|                                                |
++------------------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== promptadvisers/n8n-powerhouse [n8n-workflow-architect] =====
+Safe              0 alerts          Low Risk  |
+|                                                                        |
+|  Details: https://skills.sh/promptadvisers/n8n-powerhouse              |
+|                                                                        |
++------------------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ---------------------------+
+|                                               |
+|  ✓ n8n-workflow-architect (copied)            |
+|    → ~\.agents\skills\n8n-workflow-architect  |
+|                                               |
++-----------------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== bobmatnyc/claude-mpm-skills [playwright-e2e-testing] =====
+acing
+|
+|    - systematic-debugging
+|
+|    - verification-before-completion
+|
+|    - env-manager
+|
+|    - kubernetes
+|
+|    - terraform
+|
+|    - artifacts-builder
+|
+|    - internal-comms
+|
+|    - model-context-builder
+|
+|    - skill-creator
+|
+|    - opentelemetry
+|
+|    - mpm-orchestration-demo
+|
+|    - code-production-process
+|
+|    - code-review-standards
+|
+|    - code-quality-scoring
+|
+|    - security-scanning
+|
+|    - threat-modeling
+|
+|    - condition-based-waiting
+|
+|    - test-driven-development
+|
+|    - test-quality-inspector
+|
+|    - testing-anti-patterns
+|
+|    - webapp-testing
+|
+|    - bug-fix
+|
+|    - pre-merge
+|
+|    - screenshot
+|
+|    - api-design-patterns
+|
+|    - api-documentation
+|
+|    - web-performance-optimization
+
+exit=1
+
+===== manutej/luxor-claude-marketplace [playwright-visual-testing] =====
+ High Risk  |
+|                                                                            |
+|  Details: https://skills.sh/manutej/luxor-claude-marketplace               |
+|                                                                            |
++----------------------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ------------------------------+
+|                                                  |
+|  ✓ playwright-visual-testing (copied)            |
+|    → ~\.agents\skills\playwright-visual-testing  |
+|                                                  |
++--------------------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== onewave-ai/claude-skills [code-review-pro] =====
+             Socket            Snyk       |
+|  code-review-pro  Low Risk          0 alerts          High Risk  |
+|                                                                  |
+|  Details: https://skills.sh/onewave-ai/claude-skills             |
+|                                                                  |
++------------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill --------------------+
+|                                        |
+|  ✓ code-review-pro (copied)            |
+|    → ~\.agents\skills\code-review-pro  |
+|                                        |
++----------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== petrkindlmann/qa-skills [qa-start] =====
++
+|                                                          |
+|            Gen               Socket            Snyk      |
+|  qa-start  Safe              0 alerts          Low Risk  |
+|                                                          |
+|  Details: https://skills.sh/petrkindlmann/qa-skills      |
+|                                                          |
++----------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill -------------+
+|                                 |
+|  ✓ qa-start (copied)            |
+|    → ~\.agents\skills\qa-start  |
+|                                 |
++---------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== firebase/agent-skills [firebase-security-rules-auditor,firestore-security-rules-auditor] =====
+                                                     |
+|  Details: https://skills.sh/firebase/agent-skills                           |
+|                                                                             |
++-----------------------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ------------------------------------+
+|                                                        |
+|  ✓ firebase-security-rules-auditor (copied)            |
+|    → ~\.agents\skills\firebase-security-rules-auditor  |
+|                                                        |
++--------------------------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== cloudflare/security-audit-skill [security-audit] =====
+            Gen               Socket            Snyk      |
+|  security-audit  Safe              1 alert           Low Risk  |
+|                                                                |
+|  Details: https://skills.sh/cloudflare/security-audit-skill    |
+|                                                                |
++----------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill -------------------+
+|                                       |
+|  ✓ security-audit (copied)            |
+|    → ~\.agents\skills\security-audit  |
+|                                       |
++---------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+===== jwynia/agent-skills [secrets-scan] =====
+ing repository…..[1G[J•  Cloning repository…...[1G[Jo  Cloning repository…...[1G[JO  Cloning repository…...[1G[J0  Cloning repository…...[1G[J•  Cloning repository…...[1G[Jo  Cloning repository…...[1G[JO  Cloning repository…...[1G[J0  Cloning repository…...[1G[J•  Cloning repository…...[1G[Jo  Cloning repository…[1G[JO  Cloning repository…[1G[J0  Cloning repository…[1G[J•  Cloning repository…[1G[Jo  Cloning repository…[1G[JO  Cloning repository…[1G[J0  Cloning repository…[1G[J•  Cloning repository…[1G[Jo  Cloning repository….[1G[Jo  Repository cloned
+[?25h[?25l|
+[1G[Jo  Found 1 skill
+[?25h|
+x  No matching skills found for: secrets-scan
+|
+•  Available skills:
+|
+|    - document-to-narration
+
+exit=1
+
+===== martinholovsky/claude-skills-generator [devsecops-expert] =====
+        Snyk         |
+|  devsecops-expert  Safe              0 alerts          High Risk    |
+|                                                                     |
+|  Details: https://skills.sh/martinholovsky/claude-skills-generator  |
+|                                                                     |
++---------------------------------------------------------------------+
+[?25l|
+[1G[Jo  Installation complete
+[?25h
+|
+o  Installed 1 skill ---------------------+
+|                                         |
+|  ✓ devsecops-expert (copied)            |
+|    → ~\.agents\skills\devsecops-expert  |
+|                                         |
++-----------------------------------------+
+
+|
+—  Done!  Review skills before use; they run with full agent permissions.
+
+
+exit=0
+
+pkg                                    skills                                                                          
+---                                    ------                                                                          
+resciencelab/opc-skills                seo-geo                                                                         
+coreyhaines31/marketingskills          seo-audit,programmatic-seo,copywriting,content-strategy,marketing-psychology,...
+dirnbauer/webconsulting-skills         ai-search-optimization                                                          
+tech-leads-club/agent-skills           core-web-vitals                                                                 
+kostja94/marketing-skills              growth-funnel                                                                   
+vladm3105/aidoc-flow-framework         n8n                                                                             
+sundial-org/awesome-openclaw-skills    n8n-workflow-automation                                                         
+promptadvisers/n8n-powerhouse          n8n-workflow-architect                                                          
+bobmatnyc/claude-mpm-skills            playwright-e2e-testing                                                          
+manutej/luxor-claude-marketplace       playwright-visual-testing                                                       
+onewave-ai/claude-skills               code-review-pro                                                                 
+petrkindlmann/qa-skills                qa-start                                                                        
+firebase/agent-skills                  firebase-security-rules-auditor,firestore-security-rules-auditor                
+cloudflare/security-audit-skill        security-audit                                                                  
+jwynia/agent-skills                    secrets-scan                                                                    
+martinholovsky/claude-skills-generator devsecops-expert                                                                
+
+
+
+DONE installs
+agentmemory-main
+ai-search-optimization
+andrej-karpathy-skills-main
+clone-website
+code-review-pro
+content-strategy
+copywriting
+core-web-vitals
+design-taste-frontend
+devsecops-expert
+firebase-security-rules-auditor
+huashu-design
+humanizer-main
+impeccable
+marketing-ideas
+marketing-psychology
+marketingskills-main
+n8n-workflow-architect
+n8n-workflow-automation
+obsidian-mcp
+playwright-visual-testing
+programmatic-seo
+qa-start
+security-audit
+seo-audit
+seo-geo
+seo-geo-claude-skills-main
+shadcn
+shadcn-ui
+skills-main
+web-design-guidelines
+
+---
+exit_code: 0
+elapsed_ms: 285793
+ended_at: 2026-07-16T16:11:42.521Z
+---

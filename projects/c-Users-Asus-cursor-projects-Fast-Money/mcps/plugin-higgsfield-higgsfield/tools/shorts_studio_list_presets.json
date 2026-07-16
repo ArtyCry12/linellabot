@@ -1,0 +1,174 @@
+{
+  "name": "shorts_studio_list_presets",
+  "description": "Browse Shorts Studio style presets — the visual STYLE a short is restyled toward. Use this when the user wants to make a short and needs to choose a look: they can pick one of these or create their own style with shorts_studio_create_preset. Returns the user's own presets first, then the CMS library; each item carries a `preset_source` to pass straight into shorts_studio_create. Paginated: if next_cursor is not null, pass it as cursor to get the next page.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "cursor": {
+        "description": "Pass next_cursor from a previous response to get the next page.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string",
+              "enum": [
+                "user",
+                "preset"
+              ]
+            },
+            "preset_source": {
+              "type": "string",
+              "enum": [
+                "user",
+                "cms"
+              ]
+            },
+            "thumbnail": {
+              "anyOf": [
+                {},
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "video_medias": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "duration": {
+                    "type": "number"
+                  },
+                  "thumbnail_url": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": {}
+              }
+            },
+            "image_medias": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "duration": {
+                    "type": "number"
+                  },
+                  "thumbnail_url": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": {}
+              }
+            },
+            "prompt": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "usage_count": {
+              "type": "number"
+            },
+            "is_published": {
+              "type": "boolean"
+            },
+            "pinned_at": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "source",
+            "preset_source",
+            "video_medias",
+            "image_medias"
+          ],
+          "additionalProperties": {}
+        }
+      },
+      "next_cursor": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "has_more": {
+        "type": "boolean"
+      },
+      "can_create_preset": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "items",
+      "next_cursor",
+      "has_more",
+      "can_create_preset"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

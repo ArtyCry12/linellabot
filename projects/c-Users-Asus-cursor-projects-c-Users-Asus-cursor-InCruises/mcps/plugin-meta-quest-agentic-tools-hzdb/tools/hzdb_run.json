@@ -1,0 +1,171 @@
+{
+  "name": "hzdb_run",
+  "description": "Invoke any hzdb (Meta's Quest dev CLI) subcommand that isn't exposed as a dedicated MCP tool. hzdb is the standard CLI for Meta Quest VR/MR headset dev — like `gcloud` for GCP.\n\nPrefer a DEDICATED tool when one fits — they have richer schemas: hzdb_app (apps), hzdb_device (devices), hzdb_files (files), meta_docs_search / meta_docs_get_page (docs), get_device_logcat (logs), take_screenshot (screenshots).\n\nUse this catch-all for everything else: `perf` (capture / analyze / simpleperf), `ovrmetrics`, UI automation, audio control, casting, window mgmt, Unity editors, sideload, asset search, config, etc. The `subcommand` enum lists every reachable subcommand path; pass it as an array of segments (e.g. [\"perf\",\"capture\"]) along with an `args` object keyed by long-flag name. For per-subcommand argument help, call hzdb_cli_help (topic=<group>).",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "args": {
+        "additionalProperties": true,
+        "description": "Arguments for the chosen subcommand, keyed by long-flag name (or arg id for positionals). Boolean flags use true/false; repeatable flags (clap `Append`) use arrays. Validated by hzdb's CLI parser at invocation time.",
+        "type": "object"
+      },
+      "format": {
+        "default": "json",
+        "description": "Output format passed to hzdb as --format.",
+        "enum": [
+          "json",
+          "table",
+          "plain"
+        ],
+        "type": "string"
+      },
+      "subcommand": {
+        "description": "Subcommand path as an array of segments (e.g. [\"perf\",\"capture\"]). Must be one of the listed paths. Call `hzdb_cli_help` for per-subcommand argument help.",
+        "enum": [
+          [
+            "init"
+          ],
+          [
+            "adb",
+            "shell"
+          ],
+          [
+            "adb",
+            "forward"
+          ],
+          [
+            "adb",
+            "reverse"
+          ],
+          [
+            "adb",
+            "root"
+          ],
+          [
+            "adb",
+            "getprop"
+          ],
+          [
+            "adb",
+            "setprop"
+          ],
+          [
+            "adb",
+            "tcpip"
+          ],
+          [
+            "adb",
+            "usb"
+          ],
+          [
+            "adb",
+            "version"
+          ],
+          [
+            "asset",
+            "search"
+          ],
+          [
+            "audio",
+            "status"
+          ],
+          [
+            "audio",
+            "set"
+          ],
+          [
+            "audio",
+            "mute"
+          ],
+          [
+            "audio",
+            "unmute"
+          ],
+          [
+            "config",
+            "get"
+          ],
+          [
+            "config",
+            "set"
+          ],
+          [
+            "config",
+            "reset"
+          ],
+          [
+            "config",
+            "list"
+          ],
+          [
+            "perf",
+            "capture"
+          ],
+          [
+            "perf",
+            "context"
+          ],
+          [
+            "perf",
+            "gpu-counters"
+          ],
+          [
+            "perf",
+            "analyze-trace"
+          ],
+          [
+            "perf",
+            "hex-to-datetime"
+          ],
+          [
+            "perf",
+            "load"
+          ],
+          [
+            "perf",
+            "open"
+          ],
+          [
+            "perf",
+            "query"
+          ],
+          [
+            "perf",
+            "start"
+          ],
+          [
+            "perf",
+            "stop"
+          ],
+          [
+            "perf",
+            "thread-state"
+          ],
+          [
+            "perf",
+            "compare"
+          ],
+          [
+            "perf",
+            "traces"
+          ],
+          [
+            "shell"
+          ]
+        ],
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "subcommand"
+    ],
+    "additionalProperties": false
+  },
+  "plugin": "meta-quest-agentic-tools",
+  "marketplace": "cursor-public",
+  "pluginId": "1293",
+  "marketplaceId": "34"
+}

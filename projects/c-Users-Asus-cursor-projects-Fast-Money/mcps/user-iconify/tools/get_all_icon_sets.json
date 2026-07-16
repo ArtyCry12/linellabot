@@ -1,0 +1,8 @@
+{
+  "name": "get_all_icon_sets",
+  "description": "Get all icon sets",
+  "arguments": {
+    "type": "object",
+    "properties": {}
+  }
+}

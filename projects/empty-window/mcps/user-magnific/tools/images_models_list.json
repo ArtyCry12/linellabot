@@ -1,0 +1,17 @@
+{
+  "name": "images_models_list",
+  "description": "TTI model catalog as lean TOON text. `search` filters by name, slug, family (gpt, seedream, flux…), description, or tags.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "search": {
+        "description": "Case-insensitive filter on name, slug, description, or tags.",
+        "type": "string"
+      },
+      "onlyRecommended": {
+        "description": "When true, returns only models with an `agentRecommendation`.",
+        "type": "boolean"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "fetch-apify-docs",
+  "description": "Fetch the full content of an Apify or Crawlee documentation page by its URL.\nUse this after finding a relevant page with the search-apify-docs tool.\n\nUSAGE:\n- Use when you need the complete content of a specific docs page for detailed answers.\n\nUSAGE EXAMPLES:\n- user_input: Fetch https://docs.apify.com/platform/actors/running#builds\n- user_input: Fetch https://docs.apify.com/academy\n- user_input: Fetch https://crawlee.dev/docs/guides/basic-concepts",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "minLength": 1,
+        "description": "URL of the Apify documentation page to fetch. This should be the full URL, including the protocol (e.g., https://docs.apify.com/)."
+      }
+    },
+    "required": [
+      "url"
+    ],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "The documentation URL that was fetched"
+      },
+      "content": {
+        "type": "string",
+        "description": "The full markdown content of the documentation page"
+      }
+    },
+    "required": [
+      "url",
+      "content"
+    ]
+  },
+  "plugin": "apify",
+  "marketplace": "cursor-public",
+  "pluginId": "32913266",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "delete_lipsync",
+  "description": "Permanently deletes a lipsync job and its associated files. This action cannot be undone.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "lipsyncId": {
+        "title": "Lipsyncid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "lipsyncId"
+    ],
+    "title": "DeleteLipsyncInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "list-segments",
+  "description": "**Purpose:** List all segments in the account. Use to get segment IDs required by create-contact, create-broadcast, list-contacts.\n\n**NOT for:** Listing contacts inside a segment (use list-contacts with segmentId). Not for listing broadcasts (use list-broadcasts).\n\n**Returns:** For each segment: name, id, created_at. Use pagination (limit, after/before) for large lists.\n\n**When to use:** User says \"show my segments\", \"what lists do I have?\", or before create-contact/create-broadcast when segmentId is unknown.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "limit": {
+        "description": "Number of segments to retrieve. Default: 20, Max: 100, Min: 1",
+        "type": "number",
+        "minimum": 1,
+        "maximum": 100
+      },
+      "after": {
+        "description": "Segment ID after which to retrieve more (for forward pagination). Cannot be used with \"before\".",
+        "type": "string"
+      },
+      "before": {
+        "description": "Segment ID before which to retrieve more (for backward pagination). Cannot be used with \"after\".",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

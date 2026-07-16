@@ -1,0 +1,35 @@
+{
+  "name": "browser_wait",
+  "description": "Wait for a load state, CSS selector, or fixed timeout.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": [
+          "load",
+          "selector",
+          "timeout"
+        ],
+        "description": "What to wait for: load state, CSS selector, or timeout"
+      },
+      "value": {
+        "type": "string",
+        "description": "For load: state name (load/domcontentloaded/networkidle). For selector: CSS selector. For timeout: milliseconds."
+      },
+      "timeout": {
+        "type": "number",
+        "description": "Maximum wait time in milliseconds"
+      }
+    },
+    "required": [
+      "type"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "browse",
+  "marketplace": "cursor-public",
+  "pluginId": "675",
+  "marketplaceId": "34"
+}

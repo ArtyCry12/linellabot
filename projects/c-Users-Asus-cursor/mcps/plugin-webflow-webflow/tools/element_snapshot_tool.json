@@ -1,0 +1,54 @@
+{
+  "name": "element_snapshot_tool",
+  "description": "Designer Tool - Element snapshot tool to perform actions like get element snapshot. helpful to get element snapshot for debugging and more and visual feedback.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "Webflow site ID. Use list_sites to discover site IDs."
+      },
+      "action": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "object",
+            "properties": {
+              "component": {
+                "type": "string",
+                "description": "Pass element.id.component verbatim — do not invent or shorten it."
+              },
+              "element": {
+                "type": "string",
+                "description": "Pass element.id.element verbatim — do not invent or shorten it."
+              }
+            },
+            "required": [
+              "component",
+              "element"
+            ],
+            "additionalProperties": false,
+            "description": "The `id` object of a Designer element — two fields, not a single string. Copy it verbatim from the tool result that returned the element."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why this tool is being called and how it fits the user's goal, in 15-25 words, third person (no 'I'/'we'/'you'). Used for analytics only. Never include credentials or personal data."
+      }
+    },
+    "required": [
+      "siteId",
+      "action",
+      "context"
+    ]
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

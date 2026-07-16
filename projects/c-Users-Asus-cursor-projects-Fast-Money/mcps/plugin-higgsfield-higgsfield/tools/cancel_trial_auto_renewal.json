@@ -1,0 +1,106 @@
+{
+  "name": "cancel_trial_auto_renewal",
+  "description": "Cancel the auto-renewal of the Higgsfield MCP 3-day free Plus trial. Call this when the user asks to cancel the trial, cancel auto-renewal, stop the upcoming charge, or asks how to cancel. IMPORTANT SEMANTICS: cancelling stops the automatic charge at the end of the trial ONLY — the user KEEPS trial access and remaining trial credits until the trial ends; nothing is charged. First call WITHOUT `confirm` (or confirm=false): in UI clients this opens a confirmation card with 'Keep trial with auto-renewal' and 'Cancel auto-renewal' buttons; in text-only clients relay `assistant_response` verbatim and wait for the user's explicit confirmation. Only call again with `confirm=true` after the user explicitly confirmed the cancellation in chat. Never pass confirm=true on the first call.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "confirm": {
+        "default": false,
+        "description": "false (default): show the cancellation confirmation (widget in UI clients, question in text clients) — always start here. true: actually cancel auto-renewal — pass ONLY after the user explicitly confirmed the cancellation in chat (text-only clients; in UI clients the widget button confirms).",
+        "type": "boolean"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "initial_view": {
+        "description": "Tells the plans widget to render the cancel-confirmation card.",
+        "type": "string",
+        "enum": [
+          "cancel_trial"
+        ]
+      },
+      "trial_status": {
+        "description": "Current trial state backing the confirmation copy.",
+        "type": "object",
+        "properties": {
+          "eligible": {
+            "type": "boolean",
+            "description": "True when the user can still start the trial."
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Trial lifecycle state, e.g. 'active'. Null when the user never interacted with the trial."
+          },
+          "trial_ends_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "ISO timestamp when the trial ends / the saved card is auto-charged."
+          },
+          "trial_credits": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Remaining MCP-only trial credits. Null when no trial was ever started."
+          }
+        },
+        "required": [
+          "eligible",
+          "status",
+          "trial_ends_at",
+          "trial_credits"
+        ],
+        "additionalProperties": {}
+      },
+      "then_price_cents": {
+        "description": "Price that would be auto-charged after the trial, in cents.",
+        "type": "number"
+      },
+      "currency": {
+        "description": "ISO currency code for then_price_cents; absent means USD.",
+        "type": "string"
+      },
+      "cancelled": {
+        "description": "True when auto-renewal was cancelled by this call (confirm=true path).",
+        "type": "boolean"
+      },
+      "assistant_response": {
+        "description": "Ready-to-send response. Relay verbatim in text-only clients.",
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      },
+      "request_id": {
+        "description": "MCP server HTTP request ID for support/debugging.",
+        "type": "string"
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "plugin": "higgsfield",
+  "marketplace": "cursor-public",
+  "pluginId": "5420454",
+  "marketplaceId": "34"
+}

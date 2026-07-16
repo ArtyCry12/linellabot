@@ -1,0 +1,98 @@
+{
+  "name": "create-template",
+  "description": "Create a new email template in Resend. Templates are created in draft status. Use publish-template to make them available for sending. Variables use triple-brace syntax in HTML: {{{VAR_NAME}}}.\n\n**Workflow:** create-template → get-tiptap-json-content (with include_schema: true) → compose-template → publish-template.\n\n**Content options after creating:**\n- **compose-template** (recommended): Sets TipTap content that the user can visually edit in the Resend dashboard. Use this when the user wants to collaborate on or refine the template in the editor.\n- **update-template with html/text**: Sets static HTML/text content. Use this only when the user explicitly wants to set raw HTML. Switching between compose and html/text modes is lossy — some content or formatting may be lost. Ask the user before switching.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The name of the template."
+      },
+      "html": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The HTML content of the template. Use triple-brace syntax for variables: {{{VARIABLE_NAME}}}.\n\nEmail HTML requirements — follow all of these without exception:\n\nSTRUCTURE\n- Always include <!DOCTYPE html>, <html>, <head>, <body>\n- Layout must be table-based: <table>, <tr>, <td> — never use <div> for layout\n- Outer wrapper table at width=\"100%\", inner content table at max 600px wide\n- Every table must have cellpadding=\"0\" cellspacing=\"0\" border=\"0\"\n\nCSS\n- All styles must be inline (style=\"...\") — no <style> tag, no external stylesheets\n- No flexbox, no grid, no CSS variables, no CSS shorthand (use padding-top not padding)\n- font-family must always include web-safe fallbacks (Arial, Helvetica, Georgia, sans-serif)\n- Always set font-size, line-height, and color explicitly on every text element\n\nIMAGES\n- Always set width, height, border=\"0\", display:block on every <img>\n- Use absolute URLs only — no relative paths\n- Always include alt text\n\nLINKS & BUTTONS\n- Never use <button> — use <a> styled as a button inside a <td>\n- No <video>, <form>, or <input> elements\n- No JavaScript of any kind\n\nOUTLOOK COMPATIBILITY\n- Use bgcolor attribute on <td> alongside CSS background-color\n- No CSS background-image (poor Outlook support)\n- Add <!--[if mso]> conditionals where needed for Outlook rendering\n\nMETA (in <head>)\n- <meta charset=\"UTF-8\">\n- <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">"
+      },
+      "subject": {
+        "description": "Default email subject. Can be overridden when sending.",
+        "type": "string"
+      },
+      "from": {
+        "description": "Sender email address (e.g., \"Your Name <sender@example.com>\"). Can be overridden when sending.",
+        "type": "string"
+      },
+      "replyTo": {
+        "description": "Default Reply-to email address(es). Can be overridden when sending.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "text": {
+        "description": "Plain text version of the message. If not provided, HTML will be used to generate it.",
+        "type": "string"
+      },
+      "alias": {
+        "description": "An alias for the template. Can be used instead of the ID to reference the template.",
+        "type": "string"
+      },
+      "variables": {
+        "description": "Array of template variables (up to 50 per template).",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The variable key. Recommend capitalizing (e.g., PRODUCT_NAME). NEVER include reserved names in this list: FIRST_NAME, LAST_NAME, EMAIL, RESEND_UNSUBSCRIBE_URL — they are automatically available and will cause a validation error if added."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "string",
+                "number"
+              ],
+              "description": "The variable type — either \"string\" or \"number\"."
+            },
+            "fallbackValue": {
+              "description": "Default value used if the variable is not provided when sending.",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "key",
+            "type"
+          ]
+        }
+      }
+    },
+    "required": [
+      "name",
+      "html"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "resend",
+  "marketplace": "cursor-public",
+  "pluginId": "5188",
+  "marketplaceId": "34"
+}

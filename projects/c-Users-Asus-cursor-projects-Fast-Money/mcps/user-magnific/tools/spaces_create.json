@@ -1,0 +1,20 @@
+{
+  "name": "spaces_create",
+  "description": "Create empty Space. Share `space.webUrl`; only call `spaces_show` when inline preview is requested.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Display name.",
+        "type": "string"
+      },
+      "description": {
+        "description": "Max 1000 chars.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "spaces_edit",
+  "description": "External MCP only. Start headless Space edit. Poll `spaces_edit_status` until allTerminal, then verify with `spaces_state`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "description": "Edit request.",
+        "type": "string"
+      },
+      "spaceId": {
+        "description": "Space UUID. Preferred; boardId accepted.",
+        "type": "string"
+      },
+      "boardId": {
+        "description": "Legacy alias for spaceId.",
+        "type": "string"
+      },
+      "threadId": {
+        "description": "Legacy grouping id.",
+        "type": "string"
+      },
+      "selectedElementIds": {
+        "description": "Selected node ids.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "selectedConnectionIds": {
+        "description": "Selected connection ids.",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "anchorElementId": {
+        "description": "Element to extend from.",
+        "type": "string"
+      },
+      "anchorDirection": {
+        "description": "Direction from anchorElementId.",
+        "enum": [
+          "left",
+          "right",
+          "up",
+          "down"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

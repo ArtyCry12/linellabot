@@ -1,0 +1,37 @@
+---
+pid: 8996
+cwd: "C:\\Users\\Asus\\.cursor\\neo-car-site"
+command: "Set-Location \"c:\\Users\\Asus\\.cursor\\neo-car-site\"; npm.cmd install"
+started_at: 2026-05-06T19:52:41.720Z
+running_for_ms: 688949   
+---
+npm warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat 'C:\Users\Asus\.cursor\neo-car-site\node_modules\next\dist'
+npm warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat 'C:\Users\Asus\.cursor\neo-car-site\node_modules\lucide-react\dist\esm'
+npm warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat 'C:\Users\Asus\.cursor\neo-car-site\node_modules\next\dist\shared\lib'
+npm warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat 'C:\Users\Asus\.cursor\neo-car-site\node_modules\next\dist'
+npm warn tar TAR_ENTRY_ERROR ENOENT: no such file or directory, lstat 'C:\Users\Asus\.cursor\neo-car-site\node_modules\next\dist'
+npm warn cleanup Failed to remove some directories [
+npm warn cleanup   [
+npm warn cleanup     '\\\\?\\C:\\Users\\Asus\\.cursor\\neo-car-site\\node_modules',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir 'C:\Users\Asus\.cursor\neo-car-site\node_modules\stats-gl\node_modules\three\examples\jsm\libs'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'C:\\Users\\Asus\\.cursor\\neo-car-site\\node_modules\\stats-gl\\node_modules\\three\\examples\\jsm\\libs'
+npm warn cleanup     }
+npm warn cleanup   ]
+npm warn cleanup ]
+npm error code ENOENT
+npm error syscall spawn C:\WINDOWS\system32\cmd.exe
+npm error path C:\Users\Asus\.cursor\neo-car-site\node_modules\unrs-resolver
+npm error errno -4058
+npm error enoent spawn C:\WINDOWS\system32\cmd.exe ENOENT
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: C:\Users\Asus\AppData\Local\npm-cache\_logs\2026-05-06T19_53_02_037Z-debug-0.log
+
+---
+exit_code: 4294963238
+elapsed_ms: 690672
+ended_at: 2026-05-06T20:04:12.392Z
+---

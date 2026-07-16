@@ -1,0 +1,55 @@
+---
+pid: 1204
+cwd: "c:\\Users\\Asus\\.cursor\\meloai-site\\my-3d-site"
+command: "Set-Location \"c:\\Users\\Asus\\.cursor\\meloai-site\\my-3d-site\"; npm install 2>&1; npx.cmd next build 2>&1"
+started_at: 2026-05-02T14:09:13.366Z
+running_for_ms: 158111   
+---
+
+added 5 packages, removed 32 packages, and audited 403 packages in 9s
+
+144 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+▲ Next.js 16.2.4 (Turbopack)
+
+  Creating an optimized production build ...
+npx.cmd : (node:5744) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Asus/.cursor/meloai-site/
+my-3d-site/tailwind.config.ts?id=1777731041485 is not specified and it doesn't parse as CommonJS.
+C:\Users\Asus\AppData\Local\Temp\ps-script-b5a5fd09-71ea-4860-90a4-93872f813f7f.ps1:75 ����:80
++ ... or\meloai-site\my-3d-site"; npm install 2>&1; npx.cmd next build 2>&1
++                                                   ~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:5744) [MO...se as CommonJS.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\Asus\.cursor\meloai-site\my-3d-site\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✓ Compiled successfully in 55s
+  Running TypeScript ...
+Failed to type check.
+./components/sections/melo-landing.tsx:32:94
+Type error: The type 'readonly [{ readonly title: "Главная"; readonly href: "#hero"; }, { readonly title: "Ры�
+�ок"; readonly href: "#market"; }, { readonly title: "Сравнение"; readonly href: "#compare"; }, { readonly t
+itle: "Услуги"; readonly href: "#services"; }, { ...; }, { ...; }]' is 'readonly' and cannot be assigned to the m
+utable type '{ title: string; href: string; }[]'.
+  [90m30 |[0m ...
+  [90m31 |[0m ...
+[31m[1m>[0m [90m32 |[0m ...[32m-melo-bg pb-16 pt-14 text-melo-foreground"[0m navLinks={[33mMELO_FOOTER_LINKS[0m} />
+  [90m   |[0m                                               [31m[1m^[0m
+  [90m33 |[0m ...
+  [90m34 |[0m ...
+  [90m35 |[0m ...
+Next.js build worker exited with code: 1 and signal: null
+
+---
+exit_code: 1
+elapsed_ms: 160748
+ended_at: 2026-05-02T14:11:54.114Z
+---

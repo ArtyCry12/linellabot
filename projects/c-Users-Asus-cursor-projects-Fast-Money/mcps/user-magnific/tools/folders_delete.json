@@ -1,0 +1,16 @@
+{
+  "name": "folders_delete",
+  "description": "Move a folder and its files to trash.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "reference": {
+        "description": "Folder reference.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference"
+    ]
+  }
+}

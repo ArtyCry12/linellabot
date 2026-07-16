@@ -1,0 +1,47 @@
+{
+  "name": "create_asset_upload",
+  "description": "Begin a direct-to-S3 upload. Returns an asset_id and a presigned upload_url; PUT the file bytes to upload_url, then call POST /v3/assets/{asset_id}/complete. Unlike POST /v3/assets (which proxies the bytes), this never sends the file through the API.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "filename": {
+        "description": "Original filename for reference/metadata. The stored object's extension is derived from content_type.",
+        "title": "Filename",
+        "type": "string"
+      },
+      "contentType": {
+        "description": "Declared MIME type (e.g. 'video/mp4'). Verified against the stored bytes at completion.",
+        "title": "Contenttype",
+        "type": "string"
+      },
+      "sizeBytes": {
+        "description": "Exact byte size of the file. Signed into the upload URL so it cannot be exceeded.",
+        "title": "Sizebytes",
+        "type": "integer"
+      },
+      "checksumSha256": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Optional SHA256 of the file as hex. When provided, S3 enforces it on upload.",
+        "title": "Checksumsha256"
+      }
+    },
+    "required": [
+      "filename",
+      "contentType",
+      "sizeBytes"
+    ],
+    "title": "CreateAssetUploadInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

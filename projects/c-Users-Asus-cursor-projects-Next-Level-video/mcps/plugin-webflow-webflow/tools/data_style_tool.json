@@ -1,0 +1,839 @@
+{
+  "name": "data_style_tool",
+  "description": "Data Tool - Style tool to perform actions like get all styles, create a new style, update a style, query styles, remove a style, and manage style variable modes",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "siteId": {
+        "type": "string",
+        "description": "Unique identifier for the Webflow site (e.g., '580e63e98c9a982ac9b8b741'). Use list_sites to discover available site IDs."
+      },
+      "pageId": {
+        "type": "string",
+        "description": "Any valid page id exists in the site"
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Label echoed in the response for this action item. It does not select which action runs."
+                },
+                "create_style": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the style"
+                    },
+                    "properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property_name": {
+                            "type": "string",
+                            "description": "The name of the property"
+                          },
+                          "property_value": {
+                            "type": "string",
+                            "description": "The value of the property"
+                          },
+                          "variable_as_value": {
+                            "type": "string",
+                            "description": "The variable id to use as the value"
+                          }
+                        },
+                        "required": [
+                          "property_name"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "The properties of the style. if you are looking to link a variable as the value, then use the variable_as_value field. but do not use both property_value and variable_as_value"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The name of the parent style to create the new style in. this will use to create combo class"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "properties"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Create a new style"
+                }
+              },
+              "required": [
+                "label",
+                "create_style"
+              ],
+              "additionalProperties": false,
+              "description": "Run create_style: Create a new style"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_style_variable_modes": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The name of the style to read variable modes from"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names (for combo class)"
+                    },
+                    "variant_id": {
+                      "type": "string",
+                      "description": "The component variant id to target. Use 'base' or omit for the base variant."
+                    },
+                    "breakpoint_id": {
+                      "type": "string",
+                      "enum": [
+                        "main",
+                        "small",
+                        "medium",
+                        "large",
+                        "xl",
+                        "xxl",
+                        "tiny"
+                      ],
+                      "description": "The breakpoint to get variable modes for"
+                    },
+                    "pseudo": {
+                      "type": "string",
+                      "enum": [
+                        "noPseudo",
+                        "nth-child(odd)",
+                        "nth-child(even)",
+                        "first-child",
+                        "last-child",
+                        "hover",
+                        "active",
+                        "visited",
+                        "focus",
+                        "focus-visible",
+                        "focus-within",
+                        "placeholder",
+                        "empty",
+                        "before",
+                        "after"
+                      ],
+                      "description": "The pseudo class to get variable modes for"
+                    }
+                  },
+                  "required": [
+                    "style_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get the variable modes applied to a style. Returns a map of collection IDs to mode IDs. Optionally scoped to a breakpoint or pseudo state."
+                }
+              },
+              "required": [
+                "label",
+                "get_style_variable_modes"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_style_variable_modes: Get the variable modes applied to a style. Returns a map of collection IDs to mode IDs. Optionally scoped to a breakpoint or pseudo state."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "get_styles": {
+                  "type": "object",
+                  "properties": {
+                    "include_properties": {
+                      "type": "boolean",
+                      "description": "Include style properties in results. Default: false."
+                    },
+                    "include_breakpoints": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "main",
+                          "small",
+                          "medium",
+                          "large",
+                          "xl",
+                          "xxl",
+                          "tiny"
+                        ]
+                      },
+                      "description": "Breakpoints to include in results. Omit for the base (desktop/main) breakpoint only. Pass an explicit list to opt into additional breakpoints — data intensive."
+                    },
+                    "include_base_pseudos": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "noPseudo",
+                          "nth-child(odd)",
+                          "nth-child(even)",
+                          "first-child",
+                          "last-child",
+                          "hover",
+                          "active",
+                          "visited",
+                          "focus",
+                          "focus-visible",
+                          "focus-within",
+                          "placeholder",
+                          "empty",
+                          "before",
+                          "after"
+                        ]
+                      },
+                      "description": "Pseudo states to fetch at the base (no-breakpoint) level. Omit for the base/no-pseudo only."
+                    },
+                    "include_breakpoints_pseudos": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "noPseudo",
+                          "nth-child(odd)",
+                          "nth-child(even)",
+                          "first-child",
+                          "last-child",
+                          "hover",
+                          "active",
+                          "visited",
+                          "focus",
+                          "focus-visible",
+                          "focus-within",
+                          "placeholder",
+                          "empty",
+                          "before",
+                          "after"
+                        ]
+                      },
+                      "description": "Pseudo states to fetch inside each breakpoint listed in include_breakpoints. Omit for no per-breakpoint pseudo overrides."
+                    },
+                    "query": {
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "filtered"
+                      ],
+                      "description": "The query to get all styles or filtered styles"
+                    },
+                    "filter_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The ids of the styles to filter by. should be used with query filtered"
+                    }
+                  },
+                  "required": [
+                    "query"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Get all styles"
+                }
+              },
+              "required": [
+                "label",
+                "get_styles"
+              ],
+              "additionalProperties": false,
+              "description": "Run get_styles: Get all styles"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "query_styles": {
+                  "type": "object",
+                  "properties": {
+                    "queries": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "description": "A label to identify this query in the results."
+                          },
+                          "style_id": {
+                            "type": "string",
+                            "description": "Filter by style ID. Exact match. Bypasses other filters."
+                          },
+                          "name_path": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Filter by style name path. Single-segment (e.g. ['button']) matches any style whose own name contains the segment (case-insensitive substring) — combo classes are NOT walked. Multi-segment (e.g. ['base', 'combo']) targets a combo-class chain of that exact depth; each segment is a case-insensitive substring match against the corresponding name in the chain. Pass the full chain if you want to match combos whose tail equals a given name."
+                          },
+                          "properties": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "CSS property name. Case-insensitive substring match."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "CSS property value. Case-insensitive substring match."
+                                }
+                              },
+                              "required": [
+                                "name"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "description": "Filter styles that have ALL listed CSS properties matching. Each entry checks name (and optionally value)."
+                          },
+                          "include_properties": {
+                            "type": "boolean",
+                            "description": "Include style properties in results. Default: false."
+                          },
+                          "include_breakpoints": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "main",
+                                "small",
+                                "medium",
+                                "large",
+                                "xl",
+                                "xxl",
+                                "tiny"
+                              ]
+                            },
+                            "description": "Breakpoints to include in results. Omit for the base (desktop/main) breakpoint only. Pass an explicit list to opt into additional breakpoints — data intensive."
+                          },
+                          "include_base_pseudos": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "noPseudo",
+                                "nth-child(odd)",
+                                "nth-child(even)",
+                                "first-child",
+                                "last-child",
+                                "hover",
+                                "active",
+                                "visited",
+                                "focus",
+                                "focus-visible",
+                                "focus-within",
+                                "placeholder",
+                                "empty",
+                                "before",
+                                "after"
+                              ]
+                            },
+                            "description": "Pseudo states to fetch at the base (no-breakpoint) level. Omit for the base/no-pseudo only."
+                          },
+                          "include_breakpoints_pseudos": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "noPseudo",
+                                "nth-child(odd)",
+                                "nth-child(even)",
+                                "first-child",
+                                "last-child",
+                                "hover",
+                                "active",
+                                "visited",
+                                "focus",
+                                "focus-visible",
+                                "focus-within",
+                                "placeholder",
+                                "empty",
+                                "before",
+                                "after"
+                              ]
+                            },
+                            "description": "Pseudo states to fetch inside each breakpoint listed in include_breakpoints. Omit for no per-breakpoint pseudo overrides."
+                          },
+                          "limit": {
+                            "type": "number",
+                            "minimum": 1,
+                            "maximum": 200,
+                            "description": "Max results for this query. Default: 50, Max: 200."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "queries"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Query styles by name path, ID, or CSS properties"
+                }
+              },
+              "required": [
+                "label",
+                "query_styles"
+              ],
+              "additionalProperties": false,
+              "description": "Run query_styles: Query styles by name path, ID, or CSS properties"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "remove_all_style_variable_modes": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The name of the style to update"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names (for combo class)"
+                    },
+                    "variant_id": {
+                      "type": "string",
+                      "description": "The component variant id to target. Use 'base' or omit for the base variant."
+                    },
+                    "breakpoint_id": {
+                      "type": "string",
+                      "enum": [
+                        "main",
+                        "small",
+                        "medium",
+                        "large",
+                        "xl",
+                        "xxl",
+                        "tiny"
+                      ],
+                      "description": "The breakpoint to remove variable modes for"
+                    },
+                    "pseudo": {
+                      "type": "string",
+                      "enum": [
+                        "noPseudo",
+                        "nth-child(odd)",
+                        "nth-child(even)",
+                        "first-child",
+                        "last-child",
+                        "hover",
+                        "active",
+                        "visited",
+                        "focus",
+                        "focus-visible",
+                        "focus-within",
+                        "placeholder",
+                        "empty",
+                        "before",
+                        "after"
+                      ],
+                      "description": "The pseudo class to remove variable modes for"
+                    }
+                  },
+                  "required": [
+                    "style_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove all variable mode overrides from a style, reverting to inherited/default modes for all collections."
+                }
+              },
+              "required": [
+                "label",
+                "remove_all_style_variable_modes"
+              ],
+              "additionalProperties": false,
+              "description": "Run remove_all_style_variable_modes: Remove all variable mode overrides from a style, reverting to inherited/default modes for all collections."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "remove_style": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The name of the style to remove"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names (for combo class)"
+                    }
+                  },
+                  "required": [
+                    "style_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove a style"
+                }
+              },
+              "required": [
+                "label",
+                "remove_style"
+              ],
+              "additionalProperties": false,
+              "description": "Run remove_style: Remove a style"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "remove_style_variable_mode": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The name of the style to update"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names (for combo class)"
+                    },
+                    "variant_id": {
+                      "type": "string",
+                      "description": "The component variant id to target. Use 'base' or omit for the base variant."
+                    },
+                    "variable_collection_id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "The id of the variable collection whose mode override should be removed"
+                    },
+                    "breakpoint_id": {
+                      "type": "string",
+                      "enum": [
+                        "main",
+                        "small",
+                        "medium",
+                        "large",
+                        "xl",
+                        "xxl",
+                        "tiny"
+                      ],
+                      "description": "The breakpoint to remove the variable mode for"
+                    },
+                    "pseudo": {
+                      "type": "string",
+                      "enum": [
+                        "noPseudo",
+                        "nth-child(odd)",
+                        "nth-child(even)",
+                        "first-child",
+                        "last-child",
+                        "hover",
+                        "active",
+                        "visited",
+                        "focus",
+                        "focus-visible",
+                        "focus-within",
+                        "placeholder",
+                        "empty",
+                        "before",
+                        "after"
+                      ],
+                      "description": "The pseudo class to remove the variable mode for"
+                    }
+                  },
+                  "required": [
+                    "style_name",
+                    "variable_collection_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Remove the variable mode for a specific collection from a style, reverting that collection to its inherited/default mode."
+                }
+              },
+              "required": [
+                "label",
+                "remove_style_variable_mode"
+              ],
+              "additionalProperties": false,
+              "description": "Run remove_style_variable_mode: Remove the variable mode for a specific collection from a style, reverting that collection to its inherited/default mode."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "rename_style": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The current name of the style to rename"
+                    },
+                    "new_name": {
+                      "type": "string",
+                      "description": "The new name for the style"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names (for renaming a combo class)"
+                    }
+                  },
+                  "required": [
+                    "style_name",
+                    "new_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Rename an existing style (class)"
+                }
+              },
+              "required": [
+                "label",
+                "rename_style"
+              ],
+              "additionalProperties": false,
+              "description": "Run rename_style: Rename an existing style (class)"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "set_style_variable_mode": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The name of the style to update"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names (for combo class)"
+                    },
+                    "variant_id": {
+                      "type": "string",
+                      "description": "The component variant id to target. Use 'base' or omit for the base variant."
+                    },
+                    "variable_collection_id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "The id of the variable collection to apply a mode from"
+                    },
+                    "mode_id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "The id of the mode to apply within the variable collection"
+                    },
+                    "breakpoint_id": {
+                      "type": "string",
+                      "enum": [
+                        "main",
+                        "small",
+                        "medium",
+                        "large",
+                        "xl",
+                        "xxl",
+                        "tiny"
+                      ],
+                      "description": "The breakpoint to set the variable mode for"
+                    },
+                    "pseudo": {
+                      "type": "string",
+                      "enum": [
+                        "noPseudo",
+                        "nth-child(odd)",
+                        "nth-child(even)",
+                        "first-child",
+                        "last-child",
+                        "hover",
+                        "active",
+                        "visited",
+                        "focus",
+                        "focus-visible",
+                        "focus-within",
+                        "placeholder",
+                        "empty",
+                        "before",
+                        "after"
+                      ],
+                      "description": "The pseudo class to set the variable mode for"
+                    }
+                  },
+                  "required": [
+                    "style_name",
+                    "variable_collection_id",
+                    "mode_id"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Apply a variable mode to a style. Sets the active mode for a variable collection, allowing different design tokens per breakpoint or pseudo state."
+                }
+              },
+              "required": [
+                "label",
+                "set_style_variable_mode"
+              ],
+              "additionalProperties": false,
+              "description": "Run set_style_variable_mode: Apply a variable mode to a style. Sets the active mode for a variable collection, allowing different design tokens per breakpoint or pseudo state."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "$ref": "#/properties/actions/items/anyOf/0/properties/label"
+                },
+                "update_style": {
+                  "type": "object",
+                  "properties": {
+                    "style_name": {
+                      "type": "string",
+                      "description": "The name of the style to update"
+                    },
+                    "breakpoint_id": {
+                      "type": "string",
+                      "enum": [
+                        "main",
+                        "small",
+                        "medium",
+                        "large",
+                        "xl",
+                        "xxl",
+                        "tiny"
+                      ],
+                      "description": "The breakpoint to update the style for"
+                    },
+                    "pseudo": {
+                      "type": "string",
+                      "enum": [
+                        "noPseudo",
+                        "nth-child(odd)",
+                        "nth-child(even)",
+                        "first-child",
+                        "last-child",
+                        "hover",
+                        "active",
+                        "visited",
+                        "focus",
+                        "focus-visible",
+                        "focus-within",
+                        "placeholder",
+                        "empty",
+                        "before",
+                        "after"
+                      ],
+                      "description": "The pseudo class to update the style for"
+                    },
+                    "properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property_name": {
+                            "type": "string",
+                            "description": "The name of the property"
+                          },
+                          "property_value": {
+                            "type": "string",
+                            "description": "The value of the property"
+                          },
+                          "variable_as_value": {
+                            "type": "string",
+                            "description": "The variable id to use as the value"
+                          }
+                        },
+                        "required": [
+                          "property_name"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "The properties to update or add to the style for"
+                    },
+                    "remove_properties": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The properties to remove from the style"
+                    },
+                    "parent_style_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The parent style names to update the style for (for combo class)"
+                    }
+                  },
+                  "required": [
+                    "style_name"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Update a style"
+                }
+              },
+              "required": [
+                "label",
+                "update_style"
+              ],
+              "additionalProperties": false,
+              "description": "Run update_style: Update a style"
+            }
+          ]
+        },
+        "minItems": 1,
+        "description": "Actions to execute sequentially. Each array item must include label and exactly one action property: create_style, get_style_variable_modes, get_styles, query_styles, remove_all_style_variable_modes, remove_style, remove_style_variable_mode, rename_style, set_style_variable_mode, update_style."
+      },
+      "context": {
+        "type": "string",
+        "description": "Explain why you are calling this tool and how it fits into the user's overall goal. This parameter is used for analytics and user intent tracking. YOU MUST provide 15-25 words (count carefully). NEVER use first person ('I', 'we', 'you') - maintain third-person perspective. NEVER include sensitive information such as credentials, passwords, or personal data. Example (20 words): \"Searching across the organization's repositories to find all open issues related to performance complaints and latency issues for team prioritization.\""
+      }
+    },
+    "required": [
+      "siteId",
+      "pageId",
+      "actions",
+      "context"
+    ],
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "plugin": "webflow",
+  "marketplace": "cursor-public",
+  "pluginId": "1090",
+  "marketplaceId": "34"
+}

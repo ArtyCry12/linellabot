@@ -1,0 +1,6 @@
+{
+  "uri": "ui://widget/search-actors.html",
+  "name": "search-actors-widget",
+  "description": "Interactive Actor search results widget",
+  "mimeType": "text/html;profile=mcp-app"
+}

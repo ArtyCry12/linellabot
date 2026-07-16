@@ -1,0 +1,6 @@
+{
+  "uri": "webflow://guides/mcp-guide",
+  "name": "webflow_mcp_guide",
+  "description": "Guidelines and best practices for effectively using the Webflow MCP tools. Same content as the webflow_guide_tool, exposed as a resource so clients can prefetch and pin it in context without making a tool call.",
+  "mimeType": "text/markdown"
+}

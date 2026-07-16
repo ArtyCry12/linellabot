@@ -1,0 +1,57 @@
+{
+  "name": "search_audio_sounds",
+  "description": "Semantically search the audio catalog by natural-language description — set type=music (the default) for background music (e.g. 'upbeat lofi hip-hop', 'tense cinematic riser') or type=sound_effects for SFX (e.g. 'whoosh for a scene change', 'cash register cha-ching'). Returns tracks ranked by similarity, each with a pre-signed download URL, plus cursor-based pagination.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "description": "Natural-language description of the audio you want, e.g. 'upbeat lofi hip-hop' or 'tense cinematic riser'. Results are ranked by semantic similarity to this text.",
+        "title": "Query",
+        "type": "string"
+      },
+      "type": {
+        "default": "music",
+        "description": "Audio content type to search: 'music' (background-music catalog) or 'sound_effects' (SFX catalog). Defaults to 'music'.",
+        "enum": [
+          "music",
+          "sound_effects"
+        ],
+        "title": "Type",
+        "type": "string"
+      },
+      "limit": {
+        "default": 10,
+        "description": "Maximum number of results to return (1-50).",
+        "title": "Limit",
+        "type": "integer"
+      },
+      "minScore": {
+        "default": 0.7,
+        "description": "Minimum semantic similarity score (0-1). Tracks scoring below this are omitted.",
+        "title": "Minscore",
+        "type": "number"
+      },
+      "token": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Opaque cursor token for the next page, taken from 'next_token' in a prior response.",
+        "title": "Token"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "title": "SearchAudioSoundsInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

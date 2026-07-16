@@ -1,0 +1,15 @@
+---
+pid: 412
+cwd: "C:\\Users\\Asus\\.cursor\\neo-car-site"
+command: "Set-Location \"c:\\Users\\Asus\\.cursor\\neo-car-site\"; npm.cmd view react-leaflet-cluster name version 2>&1"
+started_at: 2026-05-06T19:50:49.647Z
+running_for_ms: 128446   
+---
+name = 'react-leaflet-cluster'
+version = '4.1.3'
+
+---
+exit_code: 0
+elapsed_ms: 129167
+ended_at: 2026-05-06T19:52:58.814Z
+---

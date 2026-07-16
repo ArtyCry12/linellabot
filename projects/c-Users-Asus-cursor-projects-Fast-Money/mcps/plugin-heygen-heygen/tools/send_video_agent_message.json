@@ -1,0 +1,142 @@
+{
+  "name": "send_video_agent_message",
+  "description": "Sends a follow-up message to an existing session. Use to answer agent questions, add context, or request edits to a generated video. Only valid for sessions created in chat mode.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "title": "Sessionid",
+        "type": "string"
+      },
+      "message": {
+        "description": "Text message to the agent",
+        "title": "Message",
+        "type": "string"
+      },
+      "avatarId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Override avatar for this message",
+        "title": "Avatarid"
+      },
+      "voiceId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Override voice for this message",
+        "title": "Voiceid"
+      },
+      "brandKitId": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Brand kit ID to apply for this message",
+        "title": "Brandkitid"
+      },
+      "files": {
+        "anyOf": [
+          {
+            "items": {
+              "discriminator": {
+                "mapping": {
+                  "asset_id": "#/$defs/AssetId",
+                  "url": "#/$defs/AssetUrl"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/AssetUrl"
+                },
+                {
+                  "$ref": "#/$defs/AssetId"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Optional file attachments (max 20 files)",
+        "title": "Files"
+      }
+    },
+    "required": [
+      "sessionId",
+      "message"
+    ],
+    "$defs": {
+      "AssetId": {
+        "description": "Asset input via HeyGen asset ID from the asset upload endpoint.",
+        "properties": {
+          "type": {
+            "const": "asset_id",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "asset_id": {
+            "description": "HeyGen asset ID from the asset upload endpoint",
+            "title": "Asset Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "asset_id"
+        ],
+        "title": "AssetId",
+        "type": "object"
+      },
+      "AssetUrl": {
+        "description": "Asset input via publicly accessible HTTPS URL.",
+        "properties": {
+          "type": {
+            "const": "url",
+            "description": "Input type discriminator",
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "description": "Publicly accessible HTTPS URL for the asset",
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ],
+        "title": "AssetUrl",
+        "type": "object"
+      }
+    },
+    "title": "SendVideoAgentMessageInput"
+  },
+  "plugin": "heygen",
+  "marketplace": "cursor-public",
+  "pluginId": "14372196",
+  "marketplaceId": "34"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "spaces_edit_status",
+  "description": "Wait for `spaces_edit` like `creations_wait`: long-polls up to `timeoutSeconds` (default 25, max 25). Snapshot-only when 0. Terminal → `spaces_state`.",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "operationId": {
+        "description": "From `spaces_edit`; preferred.",
+        "type": "string"
+      },
+      "threadId": {
+        "description": "Legacy thread_id from `spaces_edit`.",
+        "type": "string"
+      },
+      "runId": {
+        "description": "Specific run_id.",
+        "type": "string"
+      },
+      "timeoutSeconds": {
+        "description": "Long-poll seconds (default 25, max 25). 0 = snapshot only + poll_after_seconds hint.",
+        "minimum": 0,
+        "maximum": 25,
+        "type": "integer"
+      }
+    }
+  }
+}
