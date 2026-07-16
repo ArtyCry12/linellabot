@@ -17,10 +17,13 @@ function walkSkills(root, label) {
     for (const ent of readdirSync(dir, { withFileTypes: true })) {
       const p = join(dir, ent.name);
       if (ent.isDirectory()) {
-        if (['node_modules', 'library', 'template', '.git'].includes(ent.name)) continue;
+        if (['node_modules', 'library', 'template', '.git', '_archive'].includes(ent.name)) continue;
         scan(p);
       } else if (ent.name === 'SKILL.md') {
         const rel = relative(HUB, p).replace(/\\/g, '/');
+        // Skip nested clone paths: skills/foo/foo/SKILL.md (prefer skills/foo/SKILL.md)
+        const parts = rel.split('/');
+        if (parts.length >= 4 && parts[parts.length - 2] === parts[parts.length - 3]) continue;
         const text = readFileSync(p, 'utf8');
         const name = text.match(/^name:\s*(.+)$/m)?.[1]?.trim()
           || relative(join(root, '..'), join(dir, '')).replace(/\\/g, '/');

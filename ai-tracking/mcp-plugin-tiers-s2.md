@@ -1,5 +1,7 @@
 # MCP + Plugins tiers (Session 2 · 2026-07-16)
 
+> **Post-S3 note (2026-07-16 / S4):** no tier drift. Always memory+gitnexus; Exa research primary; firecrawl kept; tavily/browse/obsidian disable-archive. Operator still disables plugins in Settings UI.
+
 Aligned with user: always-on minimal · Exa research primary · keep **firecrawl** · archive tavily/browse · disable-archive list.
 
 ## always-on (agents should expect)

@@ -26,7 +26,7 @@ import {
 
 type RowTone = "success" | "danger" | "warning" | "info" | "neutral";
 
-const CANVAS_VERSION = "v3.1 · 14.07.2026 20:25";
+const CANVAS_VERSION = "v4.0 · 16.07.2026 S4";
 
 function dataTable(
   headers: string[],
@@ -314,14 +314,19 @@ const SATISFACTION = [
 ];
 
 const ACTION_ITEMS = [
-  { id: "reload", content: "Reload Window после правок hooks.json", status: "pending" as const },
-  { id: "sync-models", content: "Синхронизировать model: в agents/squad-*.md (таблица п.2)", status: "pending" as const },
-  { id: "design-refs", content: "Design refs: добавить 3 сайта-референса когда будут", status: "pending" as const },
-  { id: "design-gate", content: "Design gate: huashu + humanizer обязательны до build", status: "pending" as const },
-  { id: "route-ui", content: "Показывать [TASK ROUTE] блок в начале ответа агента", status: "pending" as const },
-  { id: "ask-full", content: "AskQuestion полным списком до крупных задач", status: "pending" as const },
-  { id: "models-trim", content: "В Settings включить 8–10 моделей, не все 25+", status: "pending" as const },
-  { id: "deferred", content: "Закрыть Cursor → cursor-system-refresh-deferred.ps1", status: "pending" as const },
+  { id: "models-trim", content: "Settings: 8–10 моделей ON (Boss сделал)", status: "completed" as const },
+  { id: "explore", content: "Explore Subagent → Composer 2.5 (Boss сделал)", status: "completed" as const },
+  { id: "design-gate", content: "Design gate: frontend-design + matrix (design-stack / squad-design) до build", status: "completed" as const },
+  { id: "route-ui", content: "Route echo «Подключил: …» в rules/task-router.mdc", status: "completed" as const },
+  { id: "ask-full", content: "AskQuestion полным списком — rules/user-profile.mdc", status: "completed" as const },
+  { id: "cleanup", content: "hub-safe-cleanup Apply (markitdown sacred)", status: "completed" as const },
+  { id: "s1-s3", content: "S1–S3 hub refactor COMPLETE (find-skills → installs → deep-dive)", status: "completed" as const },
+  { id: "s4", content: "S4: canvas v4 + markers + _INDEX dedupe + gate-smoke", status: "completed" as const },
+  { id: "sync-models", content: "НЕ синхронизировать agents/*.md model lines (trust_manual lock)", status: "cancelled" as const },
+  { id: "reload", content: "Reload Window — только если правили hooks.json (S3 не трогал)", status: "cancelled" as const },
+  { id: "deferred", content: "Boss: закрыть Cursor → cursor-system-refresh-deferred.ps1", status: "pending" as const },
+  { id: "design-refs", content: "P3: Design refs — 3 сайта-референса когда будут", status: "pending" as const },
+  { id: "p3-rest", content: "P3: budget / Notion publish / model-map unlock", status: "pending" as const },
 ];
 
 const SQUAD_MODELS = [
@@ -355,13 +360,14 @@ const COMPARE_FORMATS = [
 ];
 
 const CLEANUP_DO = [
-  { step: "1", action: "Settings → Models: оставить 8–10 ON (см. таблицу п.2)", time: "5 мин" },
-  { step: "2", action: "Sync agents/squad-*.md model: с model-map.md (7 drift)", time: "10 мин" },
-  { step: "3", action: "powershell -File commands/hub-safe-cleanup.ps1 -SafeNow", time: "2 мин" },
-  { step: "4", action: "Закрыть Cursor → cursor-system-refresh-deferred.ps1", time: "после сессии" },
-  { step: "5", action: "Таксономия skills: ACTIVE (20) / ON-DEMAND / ARCHIVE в SYSTEM-TAXONOMY", time: "30 мин" },
-  { step: "6", action: "Отключить always-on agency rules — только @tag по задаче", time: "15 мин" },
-  { step: "7", action: "Reload Window после любых правок hooks.json", time: "1 мин" },
+  { step: "1", action: "Settings → Models: 8–10 ON — DONE (Boss)", time: "DONE" },
+  { step: "2", action: "НЕ sync agents model lines — trust_manual lock", time: "LOCK" },
+  { step: "3", action: "hub-safe-cleanup Apply (markitdown sacred) — DONE S3", time: "DONE" },
+  { step: "4", action: "Закрыть Cursor → cursor-system-refresh-deferred.ps1", time: "Boss TBD" },
+  { step: "5", action: "Таксономия ACTIVE/ON-DEMAND/ARCHIVE — DONE S2", time: "DONE" },
+  { step: "6", action: "Agency alwaysApply false (66/66) — DONE", time: "DONE" },
+  { step: "7", action: "Reload Window — только если правили hooks (S3–S4 не трогали)", time: "N/A" },
+  { step: "8", action: "S4: canvas sync + _INDEX dedupe + stale markers — DONE", time: "DONE" },
 ];
 
 export default function HubDeepDiveAudit() {
@@ -374,8 +380,6 @@ export default function HubDeepDiveAudit() {
       ? MODELS
       : MODELS.filter((m) => m.tier.toLowerCase() === modelFilter);
 
-  const mismatchCount = SQUAD.filter((s) => !s.modelOk).length;
-
   return (
     <Stack gap={16} style={{ padding: 16, maxWidth: 960, color: theme.text.primary }}>
       <Stack gap={4}>
@@ -386,10 +390,10 @@ export default function HubDeepDiveAudit() {
       </Stack>
 
       <Grid columns={4} gap={12}>
-        <Stat label="Always-on rules" value="6" />
+        <Stat label="Routes" value="69" />
         <Stat label="Squad agents" value="10" />
-        <Stat label="Model drift" value={String(mismatchCount)} tone={mismatchCount > 3 ? "warning" : undefined} />
-        <Stat label="Hooks chain" value="6+RTK" />
+        <Stat label="S1–S3" value="DONE" tone="success" />
+        <Stat label="S4 open" value="P0–P1" tone="warning" />
       </Grid>
 
       <UsageBar
@@ -430,19 +434,17 @@ export default function HubDeepDiveAudit() {
 
       {section === "overview" && (
         <Stack gap={12}>
-          <Callout tone="warning">
-            Главная проблема не в количестве скиллов — в разрыве между инфраструктурой (hooks, routes, 78+ skills) и
-            исполнением агента. Ты строишь «автопилот», но видишь ручной чат без huashu, без route-блока, без полных
-            вопросов.
+          <Callout tone="info">
+            Post S1–S3 (2026-07-16): find-skills, taxonomy, MCP tiers, design matrix, route echo «Подключил», dual
+            review, cleanup, digest — wired. S4 = sync canvas/markers + hygiene (_INDEX), не новый стек.
           </Callout>
           <Card>
-            <CardHeader title="Диагноз в одном абзаце" />
+            <CardHeader title="Диагноз (обновлён)" />
             <CardBody>
               <Text>
-                Система перегружена конфигом, недогружена enforcement. Hooks инжектят текст в промпт, но агент не обязан
-                читать SKILL.md. Squad model-map расходится с agents/*.md. Design-задачи идут без skill-gate → серый AI
-                slop. Токен-экономия в hooks есть, но в коротких чатах незаметна. Нужен не ещё один слой — нужны 5
-                жёстких gates и меньше always-on rules.
+                Инфраструктура после S3 заметно ближе к enforcement: task-router echo + design-stack gate в rules.
+                Остаётся измерять proof in chat (smoke Applied / Подключил) и не трогать model-map lock. Главный долг
+                UI-аудита был stale canvas v3.1 — **починен в S4** (v4.0). P3: design-refs, budget, Notion.
               </Text>
             </CardBody>
           </Card>
@@ -721,19 +723,18 @@ export default function HubDeepDiveAudit() {
 
       {section === "honest" && (
         <Stack gap={12}>
-          <Callout tone="danger">
-            Жёстко: ты строишь operating system для агента, но проверяешь её глазами пользователя продукта. 80% файлов
-            — meta (rules, skills, hooks). Реальных «пользователь увидел huashu-deck» кейсов мало. Без enforcement hooks
-            — это документация, не поведение.
+          <Callout tone="warning">
+            После S3 wiring сильнее, но proof in chat всё ещё нужно мерить (gate-smoke). Model-map ↔ agents — сознательный
+            lock (trust_manual), не баг. Skills discovery = find-skills + taxonomy, не «загрузить всё».
           </Callout>
-          <CollapsibleSection title="Что не так" defaultOpen>
+          <CollapsibleSection title="Что ещё слабо" defaultOpen>
             <Stack gap={4}>
-              <Text>1. Configuration theater — много слоёв, мало proof in chat.</Text>
-              <Text>2. Model-map и agents/*.md живут разными жизнями.</Text>
-              <Text>3. 1191+ skills в paths — agent physically cannot load them.</Text>
-              <Text>4. profile.json снова mojibake в entrepreneur fields.</Text>
-              <Text>5. Landing benchmark цифры ≠ твой реальный usage.</Text>
-              <Text>6. Squad marketing route не закрыт — growth без landing-brief.md.</Text>
+              <Text>1. Enforcement smoke: echo + Applied checklist (S4 gate-smoke).</Text>
+              <Text>2. Model drift accepted under trust_manual — не sync без OK.</Text>
+              <Text>3. _INDEX дубли / шум discovery — чистка в S4.</Text>
+              <Text>4. Canvas был stale до S4 sync.</Text>
+              <Text>5. P3: design-refs, budget, Notion — нет данных.</Text>
+              <Text>6. Growth landing-brief — вне этого sprint.</Text>
             </Stack>
           </CollapsibleSection>
           <CollapsibleSection title="Чего ты не понимаешь при постановке задач">
@@ -772,8 +773,8 @@ export default function HubDeepDiveAudit() {
               <Divider />
               <Text weight="medium">Короткий ответ:</Text>
               <Text tone="secondary">
-                Plan+Auto = Boss планирует на Auto-модели. Каждый squad-* работает на своей модели из профиля файла
-                (сейчас частично drift). Чтобы исправить — sync agents/*.md ↔ model-map.md и явно писать Model: при spawn.
+                Plan+Auto = Boss планирует на Auto-модели. Каждый squad-* берёт model из frontmatter. Drift vs model-map
+                — lock trust_manual: не sync агентов. Override: «Model: …» при spawn, если нужно.
               </Text>
             </Stack>
           </CardBody>
@@ -823,9 +824,9 @@ export default function HubDeepDiveAudit() {
               <Text tone="secondary">{body}</Text>
             </CollapsibleSection>
           ))}
-          <Callout tone="warning">
-            Исправление подхода: меньше строить, больше измерять. Каждая фича hub = test script + user-visible signal
-            в чате. Нет signal → feature не считается работающей.
+          <Callout tone="info">
+            Post-S3: route echo rule в task-router.mdc есть; design gate в design-stack + squad-design. Дальше —
+            измерять signal в чате (gate-smoke), не наращивать слои. Hooks.json в S3–S4 не трогали.
           </Callout>
         </Stack>
       )}
@@ -913,16 +914,16 @@ export default function HubDeepDiveAudit() {
 
       {section === "auto-route" && (
         <Stack gap={12}>
-          <H2>14. Автоподбор без @ — целевая архитектура</H2>
+          <H2>14. Автоподбор без @ — статус post-S3</H2>
           <Card>
-            <CardHeader title="Flow который ты хочешь (и который можно сделать)" />
+            <CardHeader title="Flow (1–3 wired; 4–5 — compliance)" />
             <CardBody>
               <Stack gap={8}>
-                <Text>1. Ты пишешь простой промпт</Text>
-                <Text>2. task-router.ps1 → [TASK ROUTE] compact block</Text>
-                <Text>3. Boss echo: «Подключил: skill X, MCP Y, subagent Z» + TL;DR каждого</Text>
-                <Text>4. AskQuestion: «Ок или заменить?» (2–3 варианта)</Text>
-                <Text>5. Execute with gates</Text>
+                <Text>1. Ты пишешь простой промпт — OK</Text>
+                <Text>2. task-router.ps1 → [TASK ROUTE] — OK (69 routes, tests PASS)</Text>
+                <Text>3. Boss echo «Подключил: …» — rule DONE; smoke в S4</Text>
+                <Text>4. AskQuestion полный список — policy в user-profile</Text>
+                <Text>5. Execute with design gate Applied — matrix DONE; smoke в S4</Text>
               </Stack>
             </CardBody>
           </Card>

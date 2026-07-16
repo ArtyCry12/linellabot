@@ -1,4 +1,7 @@
-﻿# Session 3 Re-Audit вЂ” Cursor Hub (post S1+S2)
+﻿# Session 3 Re-Audit — Cursor Hub (post S1+S2)
+
+> **SUPERSEDED for open gaps:** live status → [`SESSION-4-REAUDIT.md`](SESSION-4-REAUDIT.md) (2026-07-16).  
+> Historical snapshot only. TODO rows below that still say open on route-echo / dual-review / digest were **closed in S3**; canvas/plan gaps closed in **S4**.
 
 **Date:** 2026-07-16  
 **Hub root:** `C:\Users\Asus\.cursor`  
@@ -17,12 +20,12 @@
 | Route echo in agent rule | **DONE (S3)** |
 | Agency off always-on | **DONE** |
 | Sacred seo-geo pack | **DONE** (present, routed) |
-| Hub-safe-cleanup Apply | **DONE (S3)**
+| Hub-safe-cleanup Apply | **DONE (S3)** |
 | Dual review (GPT+Sonnet fanout) | **DONE (S3)** |
 | Chat digest | **DONE (S3)** |
 | Full design matrix (plan P0) | **DONE (S3)** |
-| Canvas ACTION_ITEMS update | **TODO** |
-| Deep-dive plan file (`2026-07-15-hub-deep-dive-fixes.md`) | **TODO** |
+| Canvas ACTION_ITEMS / body sync | **DONE (S4)** — see SESSION-4 |
+| Deep-dive plan file | **DONE** — `plans/hub-deep-dive-fixes.md` |
 
 ---
 

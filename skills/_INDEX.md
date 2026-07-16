@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-07-16T16:24:16.089Z
+Generated: 2026-07-16T17:57:57.768Z
 
 | Skill | Path | Description |
 |-------|------|-------------|
@@ -23,7 +23,6 @@ Generated: 2026-07-16T16:24:16.089Z
 | statusline | `skills-cursor/statusline/SKILL.md` | >- |
 | update-cli-config | `skills-cursor/update-cli-config/SKILL.md` | >- |
 | update-cursor-settings | `skills-cursor/update-cursor-settings/SKILL.md` | >- |
-| game-studios-multiagent | `skills/_archive/game-studios-multiagent/SKILL.md` | >- |
 | 21st-design | `skills/21st-design/SKILL.md` | >- |
 | agency-agents | `skills/agency-agents/SKILL.md` | >- |
 | ai-search-optimization | `skills/ai-search-optimization/SKILL.md` | >- |
@@ -54,7 +53,6 @@ Generated: 2026-07-16T16:24:16.089Z
 | entity-seo | `skills/entity-seo/SKILL.md` | >- |
 | find-skills | `skills/find-skills/SKILL.md` | >- |
 | firebase-security-rules-auditor | `skills/firebase-security-rules-auditor/SKILL.md` | >- |
-| frontend-design | `skills/frontend-design/frontend-design/SKILL.md` | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to  |
 | frontend-design | `skills/frontend-design/SKILL.md` | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to  |
 | graphify | `skills/graphify/SKILL.md` | >- |
 | hermes-agent | `skills/hermes-agent/SKILL.md` | >- |
@@ -125,4 +123,4 @@ Generated: 2026-07-16T16:24:16.089Z
 | web-design-guidelines | `skills/web-design-guidelines/SKILL.md` | >- |
 | writing-plans | `skills/writing-plans/SKILL.md` | "Write implementation plans: bite-sized tasks, paths, code." |
 
-Total: 120 skills
+Total: 118 skills

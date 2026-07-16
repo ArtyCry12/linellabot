@@ -1,28 +1,28 @@
 ---
 name: 3 Sessions Hub Refactor
-overview: "MVP на 2–3 недели: 3 изолированные сессии (каждое окно = Plan+Auto). Session 1 сейчас — wire-only интеграция skills.sh/find-skills. Session 2–3 стартуют только после твоего «готово» по предыдущей. Deep-dive plan трогаем только в Session 3."
+overview: "S1–S3 COMPLETE. Deep-dive next work → plans/hub-deep-dive-fixes.md (S4)."
 todos:
   - id: s1-install-upstream
     content: "S1: npx skills add vercel-labs/skills -s find-skills → ~/.agents/skills/find-skills"
-    status: pending
+    status: completed
   - id: s1-hub-wrapper
     content: "S1: skills/find-skills/SKILL.md + rules/find-skills.mdc (on-demand) — gap→find→ask once→install"
-    status: pending
+    status: completed
   - id: s1-route-registry
     content: "S1: route find-skills в routes.json + SYSTEM-REGISTRY + optional find-skills.ps1"
-    status: pending
+    status: completed
   - id: s1-tests
     content: "S1: find-skills-test.ps1 + sample task-router-test; smoke npx skills find"
-    status: pending
+    status: completed
   - id: s1-handoff
     content: "S1: summary + маркер SESSION 1 COMPLETE (S2 только после твоего «готово»)"
-    status: pending
+    status: completed
   - id: s2-deferred
     content: "S2 (новое окно): skills index → cleanup/replace asks → MCP tiers asks → image JSON → full commit"
-    status: pending
+    status: completed
   - id: s3-deferred
     content: "S3 (новое окно): deep re-audit → canvas fixes → self-audit → rebuild hub_deep_dive_fixes plan"
-    status: pending
+    status: completed
 isProject: false
 ---
 

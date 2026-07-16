@@ -1,5 +1,8 @@
 # Skills lifecycle tiers (Session 2 · 2026-07-16)
 
+> **Post-S3 note (2026-07-16 / S4):** tiers unchanged. Sacred + design replace-eligible policy still valid.  
+> Index hygiene: nested `skills/foo/foo/SKILL.md` skipped by `generate-skill-index.mjs`. Live audit: `SESSION-4-REAUDIT.md`.
+
 Policy: **ACTIVE ≈ routed day-to-day · ON-DEMAND = wired but infrequent · ARCHIVE = out of discovery**
 
 Sacred (do not delete): project-squad + coding chain; markitdown; find-skills; prompt-coach; awesome-prompts; seo-geo; agency-agents; production-studio; dev-os; writing-plans; systematic-debugging.  
