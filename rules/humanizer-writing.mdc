@@ -1,0 +1,21 @@
+---
+description: >-
+  Plain-language writing for user-facing and learning text. Apply humanizer-main
+  skill when building docs, audits, lessons, landing copy for the user.
+globs:
+alwaysApply: false
+---
+
+# Humanizer writing (user preference — strict for coach)
+
+When writing **for the user** (audits, lessons, landing, onboarding, quiz labels, Notion drafts):
+
+1. Read `~/.agents/skills/humanizer-main/humanizer-main/SKILL.md` (or `@humanizer-main`)
+2. Use **simple Russian**, short sentences, no corporate AI words
+3. No em dashes, no bold spam, no "pivotal/vibrant/showcase"
+4. Explain terms on first use (MCP, hook, skill) in plain words
+5. **Prompt coach lessons** — run humanizer pass before save/publish; trim filler; one idea per paragraph
+
+Skip for: code, commit messages, JSON keys, English API docs.
+
+User wants learning materials to feel **human and easy**, not like a chatbot report.

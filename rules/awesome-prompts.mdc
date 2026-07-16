@@ -1,0 +1,21 @@
+---
+description: >-
+  Local prompt template matcher from awesome-chatgpt-prompts / prompts.chat.
+  Activate on vague prompts or explicit template/improve requests.
+globs:
+alwaysApply: false
+---
+
+# Awesome Prompts
+
+When the user prompt is **vague**, asks to **improve a prompt**, or wants an **"act as"** role template:
+
+1. Run `commands/awesome-prompts-match.ps1` (or `Find-PromptTemplates`) — **top 3 only**
+2. Load **one** full template by id if score warrants it
+3. **Adapt** to user's language and task — do not paste raw template
+
+If local match fails (score 0): optional `search_prompts` / `improve_prompt` via **prompts.chat** MCP.
+
+Do **not** read `prompt-corpus.jsonl` or CSV wholesale into context.
+
+Index build: `commands/build-awesome-prompts-index.ps1`

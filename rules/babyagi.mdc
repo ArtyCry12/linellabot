@@ -1,0 +1,19 @@
+---
+description: >-
+  BabyAGI creative task loop for open-ended ideation and self-expanding task
+  lists. File-backed sessions in ai-tracking/creative-loop/.
+globs:
+alwaysApply: false
+---
+
+# BabyAGI creative loop
+
+When the user wants **creative brainstorming**, **agent creativity**, **babyagi**, or an **open-ended objective** without a fixed single-step deliverable:
+
+1. Read `skills/babyagi/SKILL.md`
+2. `creative-loop.ps1 -Action init` then loop: next → work → complete → expand
+3. Stop at max tasks or when user approves a direction
+
+Do **not** install Python `babyagi` package in the hub workspace.
+
+For finalized multi-step execution, hand off to `crew-ai` (`crew-plan.ps1`).

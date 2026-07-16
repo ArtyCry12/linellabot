@@ -1,0 +1,19 @@
+---
+description: >-
+  LLM Council — 3-stage multi-perspective reasoning when discussing tasks,
+  architecture, or hard decisions. Adapted from karpathy/llm-council.
+globs:
+alwaysApply: false
+---
+
+# LLM Council
+
+When the user **discusses a task**, asks for **multiple perspectives**, mentions **council** / **совет моделей**, or faces **non-trivial trade-offs**:
+
+1. Read `skills/llm-council/SKILL.md`
+2. Run Stage 1 → 2 → 3 (parallel opinions, anonymized review, chairman synthesis)
+3. Do not substitute a single quick answer when council was explicitly requested
+
+Skip council for trivial edits, single-file fixes, or when user wants speed over depth.
+
+Source repo: https://github.com/karpathy/llm-council (pattern only — no OpenRouter app in hub).
