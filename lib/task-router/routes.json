@@ -555,8 +555,8 @@
     {
       "id": "secret-scanning",
       "label": "GitHub secret scanning",
-      "keywords": ["secret scanning", "push protection", "leaked secret", "custom secret pattern", "blocked push secret"],
-      "phrases": ["enable secret scanning", "github push protection", "triage secret alert"],
+      "keywords": ["secret scanning", "secrets scan", "push protection", "leaked secret", "custom secret pattern", "blocked push secret"],
+      "phrases": ["secret scanning", "secrets scan", "enable secret scanning", "github push protection", "triage secret alert"],
       "tags": ["@secret-scanning"],
       "skill": "skills/secret-scanning/SKILL.md",
       "mode": "agent",
