@@ -20,7 +20,7 @@
       "keywords": ["youtube", "reels", "tiktok", "shorts", "видео", "транскрипт", "сводка по ссылке"],
       "phrases": ["video summary", "разбери видео", "learn from video"],
       "skill": "skills/video-learning/SKILL.md",
-      "mcp": ["plugin-exa-exa", "user-fetch"],
+      "mcp": ["plugin-exa-exa"],
       "commands": ["commands/ensure-markitdown.ps1"],
       "mode": "agent"
     },
@@ -31,6 +31,7 @@
       "phrases": ["notion task", "sync notion", "notion page"],
       "skill": "skills/notion-tasks/SKILL.md",
       "mcp": ["user-notion"],
+      "profile": "ops",
       "rule": "rules/notion-workspace.mdc",
       "mode": "agent"
     },
@@ -52,6 +53,18 @@
       "subagent": ["squad-memory"],
       "templates": ["templates/squad-handoff.md"],
       "mode": "agent"
+    },
+    {
+      "id": "openrouter-free",
+      "label": "OpenRouter free GLM / TTS",
+      "keywords": ["openrouter", "glm-5.2:free", "nemotron-3-ultra", "fish-audio", "flux-tts", "бесплатн модел", "бесплатные модели"],
+      "phrases": ["бесплатные модели", "озвучь", "озвучка текста", "openrouter free", "glm 5.2 free"],
+      "tags": ["@openrouter-free"],
+      "skill": "skills/openrouter-free/SKILL.md",
+      "rule": "rules/openrouter-free-routing.mdc",
+      "commands": ["commands/openrouter-free-test.ps1"],
+      "mode": "agent",
+      "note": "Wrapper only; do not Override OpenAI Base URL. Subagent: replace map model with OpenRouter chat or Task glm-5.2-high. Canon: ai-tracking/openrouter-free.md."
     },
     {
       "id": "seo-geo",
@@ -151,14 +164,17 @@
       "mode": "agent"
     },
     {
-      "id": "huashu-design",
-      "label": "HTML prototype / deck / motion",
-      "keywords": ["прототип", "prototype", "deck", "pptx", "motion", "infographic", "слайд", "озвучк"],
-      "phrases": ["html prototype", "huashu"],
-      "tags": ["@huashu"],
-      "skill": "skills/huashu-design/SKILL.md",
-      "rule": "rules/huashu-design.mdc",
-      "mode": "agent"
+      "id": "open-design",
+      "label": "HTML prototype / deck / motion (Open Design)",
+      "keywords": ["прототип", "prototype", "deck", "pptx", "motion", "infographic", "слайд", "озвучк", "open-design", "hyperframes"],
+      "phrases": ["html prototype", "huashu", "open design"],
+      "tags": ["@open-design", "@od", "@huashu"],
+      "skill": "skills/open-design/SKILL.md",
+      "rule": "rules/open-design.mdc",
+      "mcp": ["user-open-design"],
+      "mode": "agent",
+      "profile": "design",
+      "note": "Primary HTML/deck/motion path. MCP: user-open-design (daemon). Legacy @huashu alias."
     },
     {
       "id": "21st-design",
@@ -167,8 +183,9 @@
       "tags": ["@21st"],
       "skill": "skills/21st-design/SKILL.md",
       "rule": "rules/21st-design.mdc",
-      "mcp": ["user-@21st-dev/magic"],
-      "mode": "agent"
+      "mcp": ["user-21st"],
+      "mode": "agent",
+      "profile": "design"
     },
     {
       "id": "design-stack",
@@ -177,8 +194,9 @@
       "tags": ["@design-stack"],
       "skill": "skills/design-stack/SKILL.md",
       "rule": "rules/design-stack.mdc",
-      "mcp": ["user-context7", "user-@21st-dev/magic"],
-      "mode": "agent"
+      "mcp": ["user-context7", "user-21st"],
+      "mode": "agent",
+      "profile": "design"
     },
     {
       "id": "production-studio",
@@ -187,8 +205,9 @@
       "phrases": ["/storyboard", "/production-studio", "production studio", "storyboard for"],
       "skill": "skills/production-studio/SKILL.md",
       "commands": ["commands/storyboard.md", "commands/production-studio.md", "commands/lvm-segment.md"],
-      "mcp": ["user-magnific", "plugin-apify-apify"],
-      "mode": "agent"
+      "mcp": ["plugin-apify-apify"],
+      "mode": "agent",
+      "note": "user-magnific parked; mcp-profile.ps1 -Name full then Reload"
     },
     {
       "id": "project-squad",
@@ -220,7 +239,7 @@
       "rule": "rules/design-stack.mdc",
       "subagent": ["squad-design", "squad-build"],
       "mode": "agent",
-      "note": "Deck/HTML/motion -> huashu-design route. Web app -> this route. Pair taste/impeccable/guidelines as needed."
+      "note": "Deck/HTML/motion -> open-design route. Web app -> this route. Pair taste/impeccable/guidelines as needed."
     },
     {
       "id": "web-design-guidelines",
@@ -248,7 +267,8 @@
       "tags": ["@stitch-shadcn"],
       "skill": "skills/stitch-shadcn-ui/SKILL.md",
       "mcp": ["user-stitch"],
-      "mode": "agent"
+      "mode": "agent",
+      "profile": "design"
     },
     {
       "id": "design-taste-frontend",
@@ -382,8 +402,10 @@
       "phrases": ["write playwright test", "playwright e2e", "end to end test code"],
       "tags": ["@playwright"],
       "skill": "skills/playwright/SKILL.md",
+      "mcp": ["user-playwright"],
       "subagent": ["squad-qa"],
       "mode": "agent",
+      "profile": "qa",
       "note": "Test code; live browser -> browser-e2e route"
     },
     {
@@ -395,7 +417,8 @@
       "skill": "skills/playwright-visual-testing/SKILL.md",
       "mcp": ["cursor-ide-browser", "user-playwright"],
       "subagent": ["squad-qa"],
-      "mode": "agent"
+      "mode": "agent",
+      "profile": "qa"
     },
     {
       "id": "apify-crawl",
@@ -412,7 +435,8 @@
       "skill": "skills/notion-workspace/SKILL.md",
       "rule": "rules/notion-workspace.mdc",
       "mcp": ["user-notion", "plugin-notion-workspace-notion"],
-      "mode": "agent"
+      "mode": "agent",
+      "profile": "ops"
     },
     {
       "id": "google-workspace",
@@ -420,7 +444,8 @@
       "keywords": ["gmail", "google drive", "calendar", "почт", "gsc", "search console"],
       "mcp": ["user-google-workspace"],
       "commands": ["commands/gsc-audit.ps1", "commands/ensure-google-mcp.ps1"],
-      "mode": "agent"
+      "mode": "agent",
+      "profile": "ops"
     },
     {
       "id": "markitdown",
@@ -442,7 +467,8 @@
       "mcp": ["user-n8n-mcp"],
       "commands": ["commands/n8n-mcp.md", "commands/n8n-workflow.md", "commands/n8n-templates-match.ps1"],
       "docs": ["skills/n8n-templates/SKILL.md"],
-      "mode": "agent"
+      "mode": "agent",
+      "profile": "ops"
     },
     {
       "id": "n8n-workflow-automation",
@@ -453,6 +479,7 @@
       "skill": "skills/n8n-workflow-automation/SKILL.md",
       "mcp": ["user-n8n-mcp"],
       "mode": "agent",
+      "profile": "ops",
       "note": "Recipes; JSON authoring -> n8n-workflow skill"
     },
     {
@@ -480,9 +507,10 @@
       "id": "figma-design",
       "label": "Figma design-to-code",
       "keywords": ["figma", "design context", "code connect"],
-      "mcp": ["plugin-figma-figma", "user-figma"],
+      "mcp": ["plugin-figma-figma"],
       "commands": ["commands/figma-mcp.md"],
-      "mode": "agent"
+      "mode": "agent",
+      "note": "user-figma parked; mcp-profile.ps1 -Name full then Reload"
     },
     {
       "id": "stitch-design",
@@ -490,7 +518,8 @@
       "keywords": ["stitch", "google stitch"],
       "mcp": ["user-stitch"],
       "commands": ["commands/stitch-mcp.md", "commands/ensure-stitch.ps1"],
-      "mode": "agent"
+      "mode": "agent",
+      "profile": "design"
     },
     {
       "id": "gitnexus-refactor",
@@ -511,15 +540,41 @@
       "mode": "debug"
     },
     {
+      "id": "ponytail",
+      "label": "Ponytail / YAGNI minimal code",
+      "keywords": ["ponytail", "yagni", "over-engineer", "overengineer", "будь ленив", "минимальный код", "lazy mode", "do less"],
+      "phrases": ["be lazy", "simplest solution", "shortest path", "stop over-engineering", "/ponytail"],
+      "tags": ["@ponytail"],
+      "skill": "skills/ponytail/SKILL.md",
+      "rule": "rules/ponytail.mdc",
+      "commands": ["commands/ponytail-status.ps1"],
+      "mode": "agent",
+      "note": "Code volume; pair with caveman for prose, RTK for shell"
+    },
+    {
+      "id": "security-hub",
+      "label": "Security Hub orchestrator",
+      "keywords": ["security hub", "dast", "recon", "nuclei", "owasp zap", "zap scan", "httpx", "subfinder", "semgrep", "trivy", "checkov"],
+      "phrases": ["security hub", "run dast", "run nuclei", "zap baseline", "authorized scan"],
+      "tags": ["@security-hub", "@cybersecurity"],
+      "skill": "skills/security-hub/SKILL.md",
+      "rule": "rules/cybersecurity.mdc",
+      "commands": ["commands/ensure-security-tools.ps1", "commands/security-scan.ps1"],
+      "subagent": ["security-review"],
+      "mode": "agent"
+    },
+    {
       "id": "security-audit",
       "label": "Security audit",
       "keywords": ["security", "уязвим", "cve", "secrets scan", "gitleaks", "supply chain"],
       "tags": ["@cybersecurity"],
-      "skill": "skills/cybersecurity/SKILL.md",
+      "skill": "skills/security-hub/SKILL.md",
+      "skills": ["skills/cybersecurity/SKILL.md"],
       "rule": "rules/cybersecurity.mdc",
-      "commands": ["commands/bumblebee-scan.ps1", "commands/hub-supply-scan.ps1"],
+      "commands": ["commands/ensure-security-tools.ps1", "commands/security-scan.ps1", "commands/bumblebee-scan.ps1", "commands/hub-supply-scan.ps1"],
       "subagent": ["security-review"],
-      "mode": "agent"
+      "mode": "agent",
+      "note": "Front: security-hub; backend playbooks: cybersecurity library"
     },
     {
       "id": "firebase-security-rules",
@@ -639,6 +694,57 @@
       "mode": "agent"
     },
     {
+      "id": "site-compliance-audit",
+      "label": "Site legal / docs / licenses gap scan",
+      "keywords": [
+        "юридический аудит",
+        "юрдокумент",
+        "политик конфиденциальности",
+        "privacy policy",
+        "cookie banner",
+        "cookie policy",
+        "imprint",
+        "impressum",
+        "ПДн",
+        "law 195",
+        "закон 195",
+        "лицензии шрифт",
+        "license registry",
+        "site-compliance",
+        "compliance pour",
+        "legal pages",
+        "oss-review",
+        "license-compliance",
+        "gdpr-ccpa",
+        "openrouter dpa"
+      ],
+      "phrases": [
+        "юридический аудит сайта",
+        "перепроверь юридическое",
+        "проверь лицензии сайта",
+        "legal audit website",
+        "gap scan legal",
+        "залей юрдокументы",
+        "site compliance audit"
+      ],
+      "tags": ["@site-compliance", "/site-compliance"],
+      "skill": "skills/site-compliance-audit/SKILL.md",
+      "skills": [
+        "~/.agents/skills/gdpr-ccpa-privacy-auditor/SKILL.md",
+        "~/.agents/skills/license-compliance-auditor/SKILL.md",
+        "~/.agents/skills/oss-review/SKILL.md",
+        "~/.agents/skills/wcag-accessibility-audit/SKILL.md"
+      ],
+      "rule": "rules/site-compliance-audit.mdc",
+      "mcp": ["plugin-exa-exa"],
+      "commands": ["commands/site-compliance.md"],
+      "docs": [
+        "skills/site-compliance-audit/references/sources.md"
+      ],
+      "mode": "agent",
+      "note": "Primary orchestrator. Supporting catalog skills in skills[]. Live-refetch official sources every run. Not SEO. Default profile md-eu."
+    },
+    {
       "id": "find-skills",
       "label": "skills.sh catalog — find / gap-check / install",
       "keywords": [
@@ -673,9 +779,9 @@
       "tags": ["@awesome-prompts"],
       "skill": "skills/awesome-prompts/SKILL.md",
       "rule": "rules/awesome-prompts.mdc",
-      "mcp": ["user-prompts.chat"],
       "commands": ["commands/awesome-prompts-match.ps1", "commands/build-awesome-prompts-index.ps1"],
-      "mode": "agent"
+      "mode": "agent",
+      "note": "user-prompts.chat parked; mcp-profile.ps1 -Name full then Reload"
     },
     {
       "id": "llm-council",
@@ -686,6 +792,16 @@
       "rule": "rules/llm-council.mdc",
       "subagent": ["squad-architect", "generalPurpose"],
       "mode": "plan"
+    },
+    {
+      "id": "ecosystem-architect",
+      "label": "Ecosystem Architect (hub governance)",
+      "keywords": ["ecosystem architect", "governance", "quarantine", "hub architecture", "taxonomy skills"],
+      "phrases": ["@ecosystem-architect", "/ecosystem-architect", "architect экосистем"],
+      "tags": ["@ecosystem-architect"],
+      "skill": "skills/ecosystem-architect/SKILL.md",
+      "subagent": ["ecosystem-architect"],
+      "mode": "agent"
     },
     {
       "id": "ecosystem-audit",

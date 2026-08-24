@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-24T19:40:00+03:00",
+  "status": "bootstrap",
+  "approvals": {
+    "track": "A-governance-first",
+    "graph": "research-graphify-then-registry-plus-gitnexus",
+    "permanentGovernanceAgent": "ecosystem-architect",
+    "autoSquad": false,
+    "askSquadOnNewProject": true,
+    "w1WithoutReask": true,
+    "deletes": {
+      "npm-cache": "YES",
+      "CursorMigrate": "YES",
+      "cursor-logs": "LATER"
+    },
+    "firstBlockAfterSkeleton": "SEO-GEO-AIO",
+    "sentry": "ops-or-qa-on-W6",
+    "commitGovernanceLocal": true,
+    "push": false
+  },
+  "planes": {
+    "codeGraph": "gitnexus",
+    "entityRegistry": "this-file",
+    "graphify": "experimental-pilot-not-installed"
+  },
+  "keep": [
+    "task-router",
+    "markitdown-hook",
+    "rtk",
+    "user-profile",
+    "memory-mcp",
+    "gitnexus-linellabot",
+    "ponytail",
+    "caveman"
+  ],
+  "agents": {
+    "ecosystem-architect": {
+      "tier": "CORE",
+      "path": "agents/ecosystem-architect.md",
+      "skill": "skills/ecosystem-architect/SKILL.md",
+      "status": "active"
+    }
+  },
+  "mcp": {
+    "liveProfileExpected": "design-or-core",
+    "gitnexusHeapMb": 1536,
+    "storeHeapMb": 1536,
+    "sentry": "not-installed"
+  },
+  "quarantineRoot": "skills/_quarantine",
+  "blocks": {
+    "governance": { "status": "active" },
+    "seo-geo-aio": { "status": "planned-after-skeleton" }
+  },
+  "entities": []
+}

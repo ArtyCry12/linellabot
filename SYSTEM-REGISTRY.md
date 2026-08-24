@@ -1,6 +1,8 @@
 # Cursor Agent Hub — System Registry
 
-Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or MCP servers.
+Canonical map of `C:\Users\artyo\.cursor`. Update when adding rules, skills, or MCP servers.
+
+**Нагрузка / навигация (2026-08-15):** [`SYSTEM-VISIBILITY-MAP.md`](SYSTEM-VISIBILITY-MAP.md) · баги: [`ai-tracking/hub-load-audit.md`](ai-tracking/hub-load-audit.md) · сырой скан: [`ai-tracking/hub-load-inventory.json`](ai-tracking/hub-load-inventory.json) · бэкап MCP (фаза 1): [`ai-tracking/mcp-backup-index.json`](ai-tracking/mcp-backup-index.json) · индекс скиллов: `skills/_INDEX.md` (hub-only, 112) · плагины UI: [`ai-tracking/plugin-disable-checklist.md`](ai-tracking/plugin-disable-checklist.md) · `.cursorignore` (фаза 3)
 
 ## Layers (priority order)
 
@@ -35,6 +37,9 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | `rules/task-router.mdc` | Auto intent → skill/MCP/subagent (hook-backed) |
 | `rules/prompt-engineering-coach.mdc` | Post-session prompt lessons (DEC-058) |
 | `rules/markitdown.mdc` | Document intake always-on |
+| `rules/rtk-token-economy.mdc` | RTK, compress Shell output |
+| `rules/ponytail.mdc` | YAGNI / minimal code |
+| `rules/openrouter-free-routing.mdc` | Draft work → OpenRouter free; subagent model replace |
 
 ## Task Router (DEC-057)
 
@@ -92,7 +97,7 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | Health | `commands/mcp-health.ps1` |
 | Stack install | `commands/ensure-mcp-stack.ps1` |
 | Playwright | `commands/ensure-playwright-mcp.ps1` |
-| MarkItDown MCP | `markitdown-mcp` in mcp.json (always-on) |
+| MarkItDown MCP | в профиле `docs`; hook always-on |
 | Repo index | `docs/knowledge-base/REPO-INTAKE-INDEX.md` |
 | Memory protocol | `docs/knowledge-base/USER-MEMORY-PROTOCOL.md` |
 
@@ -116,6 +121,22 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | Understand-Anything | `skills/understand-anything/SKILL.md` |
 | Ruflo bridge | `docs/knowledge-base/RUFLO-SQUAD-BRIDGE.md` |
 
+## Site compliance audit (legal / docs / licenses)
+
+| Resource | Path |
+|----------|------|
+| Skill | `skills/site-compliance-audit/SKILL.md` |
+| Sources (re-fetch every run) | `skills/site-compliance-audit/references/sources.md` |
+| Modules | `skills/site-compliance-audit/references/modules.md` |
+| Handoff (NLMedia chat, generalized) | `skills/site-compliance-audit/references/handoff.md` |
+| Rule | `rules/site-compliance-audit.mdc` (on-demand) |
+| Route | one id `site-compliance-audit` in `lib/task-router/routes.json` (`skills[]` helpers; no competing ids for oss-review / privacy-auditor / wcag) |
+| Command | `commands/site-compliance.md` · `/site-compliance` |
+| Catalog helpers | `~/.agents/skills/{oss-review,gdpr-ccpa-privacy-auditor,license-compliance-auditor,wcag-accessibility-audit}` |
+| Tree | `rules/auto-orchestrator.mdc` · taxonomy domain 2 |
+
+Default profile: MD + EU. Universal via `--profile eu|us|generic`. Not legal advice.
+
 ## Find Skills / skills.sh (Session 1 wire)
 
 | Resource | Path |
@@ -129,6 +150,22 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | Catalog | https://www.skills.sh/ |
 | Install policy | Ask once → then `npx skills add … -g -y` |
 | Liquidity | Prefer high installs; Design/UI exception |
+
+## OpenRouter free models (cost routing)
+
+| Resource | Path |
+|----------|------|
+| Canon (search here) | `ai-tracking/openrouter-free.md` |
+| Skill | `skills/openrouter-free/SKILL.md` |
+| Wrapper | `skills/openrouter-free/scripts/openrouter.ps1` |
+| Rule (always-on) | `rules/openrouter-free-routing.mdc` |
+| Squad override | `skills/project-squad/reference/model-map.md` (Free-model override) |
+| Test | `commands/openrouter-free-test.ps1` |
+| Health | `ai-tracking/openrouter-free-health.json` |
+| Route | `openrouter-free` in `lib/task-router/routes.json` |
+| AGENTS.md | `<!-- openrouter-free:start -->` |
+
+Draft/routine → wrapper. Subagent map slugs are replaced. Do not Override OpenAI Base URL. Key: `OPENROUTER_API_KEY` user env.
 
 ## Skills / MCP Session 2 artifacts
 
@@ -192,7 +229,7 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | **Localhost landing** | `docs/ecosystem-audit/index.html` → `http://localhost:8765` |
 | Server | `commands/ecosystem-audit-server.ps1` |
 | Full audit (md) | `ai-tracking/FULL-SYSTEM-AUDIT.md` |
-| Canvas (alt) | `projects/c-Users-Asus-cursor/canvases/ecosystem-audit.canvas.tsx` |
+| Canvas (alt) | `projects/c-Users-artyo-cursor/canvases/ecosystem-audit.canvas.tsx` |
 | Ingest | `commands/quiz-ingest.ps1` · `lib/quiz-channel/QuizChannel.ps1` |
 | Profile store | `ai-tracking/user-profile/` (profile, fixes, **automation** quizzes) |
 | Writing prefs | `ai-tracking/user-profile/writing-preferences.json` · `rules/humanizer-writing.mdc` |
@@ -230,6 +267,8 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 
 ## RTK + token economy
 
+Three complementary layers: **RTK** (shell) · **Caveman** (prose) · **Ponytail** (code volume).
+
 | Resource | Path |
 |----------|------|
 | Binary | `tools/rtk/rtk.exe` |
@@ -242,6 +281,27 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | tiktoken | `lib/prompt-coach/count_tokens.py` |
 | Health | `ai-tracking/rtk-health.json` |
 | KB | `docs/knowledge-base/TOKEN-OPTIMIZATION-SOURCES.md`, `AI-STACK-MAP.md` |
+| Ponytail rule | `rules/ponytail.mdc` (always-on YAGNI) |
+| Ponytail skill | `skills/ponytail/SKILL.md` (+ review/audit/debt) |
+| Ponytail status | `commands/ponytail-status.ps1` |
+| Caveman | `skills/caveman/SKILL.md` |
+
+## Security Hub
+
+| Resource | Path |
+|----------|------|
+| Skill | `skills/security-hub/SKILL.md` |
+| Tool matrix | `skills/security-hub/tool-matrix.json` |
+| Findings schema | `skills/security-hub/findings.schema.json` |
+| Auth gate | `skills/security-hub/references/auth-gate.md` |
+| Diff AI prompts | `skills/security-hub/prompts/` |
+| Ensure | `commands/ensure-security-tools.ps1` |
+| Scan | `commands/security-scan.ps1` |
+| DAST / recon wrappers | `commands/security-dast.ps1`, `security-recon.ps1` |
+| CI templates | `templates/security-ci/` |
+| Health | `ai-tracking/security-tools-health.json` |
+| Smoke test | `commands/security-hub-test.ps1` |
+| Library | `skills/cybersecurity/` |
 
 ## On-demand rules
 
@@ -249,7 +309,7 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 |------|---------|
 | `rules/auto-orchestrator.mdc` | Decision tree: task → MCP → skill → subagent |
 | `rules/mcp-routing.mdc` | MCP conflicts, web dedup |
-| `rules/huashu-design.mdc` | `@huashu`, prototypes, motion, decks |
+| `rules/open-design.mdc` | `@open-design` / `@od` / `@huashu`, prototypes, motion, decks |
 | `rules/21st-design.mdc` | `@21st`, 21st.dev components |
 | `rules/clone-website.mdc` | Site clone, pixel-perfect rebuild |
 | `rules/cybersecurity.mdc` | Security audit, Anthropic cyber skills |
@@ -262,27 +322,21 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | `rules/notion-workspace.mdc` | Notion MCP + task UX |
 | `rules/design-stack.mdc` | shadcn, CRO, design deps |
 | `rules/ai-coding-security.mdc` | REQ-067–068 blindspots |
-| `rules/rtk-token-economy.mdc` | RTK, terminal compression, token savings |
-| `rules/markitdown.mdc` | always-on — see MarkItDown section |
 
 ## User MCP (`mcp.json`, gitignored)
 
-**Setup:** copy `mcp.json.example` → `mcp.json` and fill keys. Never commit `mcp.json`.
+**Setup:** copy `mcp.json.example` → `mcp.json` (ядро). Полный каталог без секретов: `lib/mcp-router/mcp.json.example-full.json`. Живые ключи: `mcp.json.store`.
 
-| Server | Role |
-|--------|------|
-| `memory` | **Primary** session facts |
-| `gitnexus` | Code graph (indexed repos) |
-| `fetch` | Single URL fallback |
-| `@21st-dev/magic` | UI components from 21st.dev |
-| `stitch` | Google Stitch — UI design (stdio proxy, 14 tools) |
-| `figma` | Figma design MCP — OAuth via Settings → Connect |
-| `prompts.chat` | Prompt library MCP (optional) — https://prompts.chat/api/mcp |
-| `notion` | Notion workspace — OAuth https://mcp.notion.com/mcp |
-| `context7` | Up-to-date library docs — `@upstash/context7-mcp` (stdio) |
-| `iconify` | Icon search — `iconify-mcp-server` (stdio) |
-| `gemini` | Google AI Studio — Gemini models via `@anzchy/mcp-server-gemini` (stdio) |
-| `n8n-mcp` | n8n instance MCP — workflows, SDK builder, data tables (HTTP + JWT) |
+**Профили:** `powershell -File commands/mcp-profile.ps1 -Name core|design|qa|docs|ops|full` затем Reload Window. Статус: `commands/mcp-profile.ps1 status`. Heap GitNexus: 1536. Ignore индекса: `.gitnexusignore`.
+
+| Сервер | Роль | Профиль |
+|--------|------|---------|
+| `memory` | Сессионные факты | core |
+| `gitnexus` | Граф кода | core |
+| `open-design` · `stitch` · `21st` · `context7` | Дизайн / UI / доки | design |
+| `playwright` | E2E-код | qa |
+| `markitdown-mcp` | Конвертация MCP (hook отдельно) | docs |
+| `notion` · `n8n-mcp` · `google-workspace` | Второй мозг / автоматизация | ops |
 
 ## Plugin MCP (enable on demand)
 
@@ -314,20 +368,23 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | `notion` | `user-notion` / `plugin-notion-notion` |
 | `context7` | `user-context7` (after first connect) |
 | `iconify` | `user-iconify` (after first connect) |
-| `@21st-dev/magic` | check `mcps/` for magic/21st server id |
+| `@21st-dev/magic` / **`21st`** | `user-21st` (канон в mcp.json: `21st`) |
 
 ## Top personal skills
 
 | Skill | Path |
 |-------|------|
 | clone-website | `skills/clone-website/SKILL.md` |
-| huashu-design | `skills/huashu-design/SKILL.md` |
+| open-design | `skills/open-design/SKILL.md` · repo `skills/open-design/repo/` |
 | 21st-design | `skills/21st-design/SKILL.md` |
 | seo-geo | `skills/seo-geo/SKILL.md` |
 | project-squad | `skills/project-squad/SKILL.md` |
 | n8n-workflow | `skills/n8n-workflow/SKILL.md` — JSON authoring, expressions, validation |
 | dev-os | `skills/dev-os/SKILL.md` — research-first meta-layer, bootstrap gate |
-| cybersecurity | `skills/cybersecurity/SKILL.md` |
+| cybersecurity | `skills/cybersecurity/SKILL.md` — library playbooks |
+| security-hub | `skills/security-hub/SKILL.md` — orchestrator + scans |
+| **site-compliance-audit** | `skills/site-compliance-audit/SKILL.md` — legal/docs/licenses gap scan |
+| ponytail | `skills/ponytail/SKILL.md` — YAGNI code ladder |
 | **agency-agents** | `skills/agency-agents/SKILL.md` — 66 personas in `rules/agency/` |
 | **production-studio** | `skills/production-studio/SKILL.md` — storyboard, LVM shorts |
 | **notion-workspace** | `skills/notion-workspace/SKILL.md` — Notion T3 cleanup, tasks |
@@ -342,7 +399,7 @@ Canonical map of `C:\Users\Asus\.cursor`. Update when adding rules, skills, or M
 | Pre-implementation gates | `ai-tracking/PRE-IMPLEMENTATION-RULES.md` |
 | Rebuild script | `commands/build-combined-notion-prompt.mjs` |
 
-Auto index: `skills/_INDEX.md` (generated by `commands/generate-skill-index.mjs`).
+Auto index: `skills/_INDEX.md` (**112** hub-only, `commands/generate-skill-index.mjs`). Не включает Open Design `repo/`.
 
 ## Subagents
 
@@ -370,7 +427,16 @@ Operating model: Candidate A. **Evolution:** permanent 10-principle policy. **Au
 
 New agents require DEC log + emergence checklist. Gate: `understanding.md` → `research_complete`.
 
-### Project Squad v2 (`agents/squad-*.md`) — execution layer
+### Ecosystem Architect (`agents/ecosystem-architect.md`) — governance layer
+
+| Agent | Role |
+|-------|------|
+| `ecosystem-architect` | Sole permanent hub governance agent: architecture drift, skill taxonomy/quarantine, MCP profiles, registry/graph health, tech research. **Not** Project Squad. |
+
+Skill: `skills/ecosystem-architect/SKILL.md` · Canon: `ai-tracking/ecosystem-governance/` · Route: `ecosystem-architect`  
+**Policy (2026-08-24):** do not auto-create Squad; on new project ask Boss if personal Squad is needed.
+
+### Project Squad v2 (`agents/squad-*.md`) — execution layer (opt-in per project)
 
 | Agent | Model | Role |
 |-------|-------|------|
@@ -384,6 +450,7 @@ New agents require DEC log + emergence checklist. Gate: `understanding.md` → `
 | `squad-ship` | Sonnet 4.6 | Deploy (gated) |
 | `squad-memory` | Haiku 4.5 | user-memory + AGENTS.md |
 | `squad-cleanup` | Composer 2.5 | Cache / hub refresh |
+| `squad-marketing` | Sonnet 4.6 | Copy / content / ads |
 
 Boss (parent chat): **Opus 4.7**. Skill: `skills/project-squad/SKILL.md` · Command: `/project-squad`
 
@@ -415,6 +482,7 @@ Boss (parent chat): **Opus 4.7**. Skill: `skills/project-squad/SKILL.md` · Comm
 | `commands/cursor-system-audit.ps1` | Hub health report → `ai-tracking/` |
 | `commands/cursor-system-cleanup.ps1` | Move repos, delete caches (`-Apply`, `-SkipLocked`, `-Force`) |
 | `commands/huashu-sync-workspace-rules.py` | Push rules to workspaces |
+| `commands/ensure-open-design.ps1` | Sparse-clone/update nexu-io/open-design |
 | `commands/generate-skill-index.mjs` | Regenerate `skills/_INDEX.md` |
 | `commands/foundation-refresh.md` | Taxonomy / knowledge-base update checklist |
 | `commands/install-agency-agents.ps1` | Sync agency-agents → `rules/agency/` |
@@ -443,4 +511,4 @@ Boss (parent chat): **Opus 4.7**. Skill: `skills/project-squad/SKILL.md` · Comm
 
 ## External projects
 
-Client repos live in `C:\Users\Asus\projects\` — open as separate Cursor workspaces, not embedded in hub.
+Client repos live in `C:\Users\artyo\projects\` — open as separate Cursor workspaces, not embedded in hub.

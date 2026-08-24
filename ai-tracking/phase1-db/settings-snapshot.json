@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-17T16:46:00+03:00",
+  "sources": {
+    "cursorUserSettings": "C:\\Users\\artyo\\AppData\\Roaming\\Cursor\\User\\settings.json",
+    "hubMcp": "C:\\Users\\artyo\\.cursor\\mcp.json",
+    "hubHooks": "C:\\Users\\artyo\\.cursor\\hooks.json"
+  },
+  "cursorUserSettings": {
+    "keyCount": 13,
+    "keys": [
+      { "key": "githubPullRequests.remotes", "redacted": false },
+      { "key": "cursor.cpp.enablePartialAccepts", "redacted": false },
+      { "key": "cursor.composer.shouldChimeAfterChatFinishes", "redacted": false },
+      { "key": "claudeCode.preferredLocation", "redacted": false },
+      { "key": "git.openRepositoryInParentFolders", "redacted": false },
+      { "key": "git.enableSmartCommit", "redacted": false },
+      { "key": "redhat.telemetry.enabled", "redacted": false },
+      { "key": "window.autoDetectColorScheme", "redacted": false },
+      { "key": "diffEditor.maxComputationTime", "redacted": false },
+      { "key": "update.releaseTrack", "redacted": false },
+      { "key": "cursor.composer.codeBlockWordWrap", "redacted": false },
+      { "key": "cursor.general.glassShowWarningNotifications", "redacted": false },
+      { "key": "workbench.colorTheme", "redacted": false }
+    ],
+    "secretKeysRedacted": 0
+  },
+  "mcpJson": {
+    "serverCount": 6,
+    "profileNote": "live ids match design profile (memory+gitnexus+open-design+stitch+21st+context7); not core. Command/url IDs only, env key names omitted",
+    "servers": [
+      { "id": "memory", "transport": "command", "hasEnv": false },
+      { "id": "gitnexus", "transport": "command", "hasEnv": true, "envKeyNamesRedacted": true },
+      { "id": "open-design", "transport": "command", "hasEnv": true, "envKeyNamesRedacted": true },
+      { "id": "stitch", "transport": "command", "hasEnv": true, "envKeyNamesRedacted": true },
+      { "id": "21st", "transport": "url", "hasEnv": false },
+      { "id": "context7", "transport": "command", "hasEnv": false }
+    ]
+  },
+  "hooksJson": {
+    "version": 1,
+    "events": [
+      {
+        "event": "beforeSubmitPrompt",
+        "hookCount": 6,
+        "scripts": [
+          "hooks/autopilot.ps1",
+          "hooks/user-profile-intake.ps1",
+          "hooks/task-router.ps1",
+          "hooks/prompt-coach-capture.ps1",
+          "hooks/repo-intake.ps1",
+          "hooks/markitdown-intake.ps1"
+        ],
+        "timeoutsSec": [5, 5, 5, 5, 5, 12]
+      },
+      {
+        "event": "stop",
+        "hookCount": 2,
+        "scripts": [
+          "hooks/prompt-coach-stop.ps1",
+          "hooks/notion-autowrite-stop.ps1"
+        ],
+        "timeoutsSec": [5, 5]
+      },
+      {
+        "event": "preToolUse",
+        "hookCount": 2,
+        "matchers": ["Shell", null],
+        "scripts": [
+          "hooks/rtk-cursor-hook.ps1",
+          "skills/impeccable/scripts/hook-before-edit.mjs"
+        ],
+        "timeoutsSec": [null, 5]
+      }
+    ],
+    "eventNames": ["beforeSubmitPrompt", "stop", "preToolUse"]
+  },
+  "summary": {
+    "totalSettingsKeys": 13,
+    "totalMcpServersInMcpJson": 6,
+    "totalHookEvents": 3,
+    "totalHookScripts": 10
+  },
+  "gaps": [
+    "Cursor User settings minimal (13 keys); no explicit MCP allowlist or model overrides captured here",
+    "mcp.json is core-only (6 servers); plugin MCPs managed separately via Cursor plugins",
+    "Env var names inside mcp.json gitnexus/open-design/stitch not exported (redacted by policy)",
+    "No Cursor state.vscdb or keybindings.json in this snapshot"
+  ]
+}
