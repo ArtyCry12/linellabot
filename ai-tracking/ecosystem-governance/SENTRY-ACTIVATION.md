@@ -6,10 +6,11 @@
 Live `mcp.json` servers: memory, gitnexus, notion, n8n-mcp, google-workspace, **sentry**  
 Sentry URL: `https://mcp.sentry.dev/mcp` (OAuth)
 
-## Remaining (Boss / Reload only)
+## OAuth result (2026-08-25)
 
-1. **Reload Window** in Cursor (drop old MCP processes).
-2. When Sentry prompts — complete OAuth in browser (no token in git).
-3. Optional check: Sentry tools appear under MCP; try list issues once.
+| Surface | Status |
+|---------|--------|
+| `plugin-sentry-sentry` (Cursor plugin) | **Authenticated** — `find_organizations` → org **`nlmedia`** (`https://nlmedia.sentry.io`, region `de`) |
+| `user-sentry` (ops `mcp.json` URL `https://mcp.sentry.dev/mcp`) | discovery **error** — duplicate of plugin; safe to ignore or remove from ops later |
 
-Cannot finish OAuth from agent alone — needs interactive browser session.
+Working path for tools: **plugin-sentry-sentry** (not the broken user-sentry duplicate).

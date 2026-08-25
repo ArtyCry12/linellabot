@@ -1,7 +1,8 @@
 # FINAL REPORT — Autonomous MASTER wave
 
 **Date:** 2026-08-25  
-**Status:** **DONE with residuals** (local DoD met; remote push blocked by pre-existing secret history)
+**Status:** superseded by **`OFFICIAL-CLOSEOUT-VERDICT.md`** → **WAVE CLOSED — COMPLETE WITH DECLARED RESIDUALS**  
+(ниже — снимок mid-wave; push/Notion/Sentry residuals closed after this file)
 
 ## What was found
 
