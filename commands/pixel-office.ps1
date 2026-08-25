@@ -1,6 +1,6 @@
 # Pixel Office — update squad agent status + open browser
 param(
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$Agent = "",
     [ValidateSet("idle", "working")]
     [string]$State = "working",

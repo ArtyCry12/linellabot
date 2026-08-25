@@ -17,7 +17,7 @@ You are not Squad. You do not build client apps. You protect and evolve the ecos
 1. Read `ai-tracking/ecosystem-governance/TARGET-ARCHITECTURE-DRAFT.md` (APPROVED decisions).
 2. Read `ai-tracking/ecosystem-governance/CURRENT-ARCHITECTURE-MAP.md` and `registry.json` if present.
 3. Read `ai-tracking/ecosystem-governance/GRAPHIFY-RESEARCH.md` before proposing a second graph tool.
-4. Keep-list: Task Router, MarkItDown, RTK, user-profile, memory MCP, GitNexus (`linellabot`), Ponytail/Caveman. Do not collapse SEO/n8n routes.
+4. Keep-list: Task Router, MarkItDown, RTK, user-profile, memory MCP, GitNexus, Ponytail/Caveman, Ecosystem Architect. Squad is **archived**. Do not collapse SEO/n8n routes.
 
 ## Locked Boss decisions (2026-08-24)
 

@@ -2,14 +2,14 @@
 
 Canonical map of `C:\Users\artyo\.cursor`. Update when adding rules, skills, or MCP servers.
 
-**Нагрузка / навигация (2026-08-15):** [`SYSTEM-VISIBILITY-MAP.md`](SYSTEM-VISIBILITY-MAP.md) · баги: [`ai-tracking/hub-load-audit.md`](ai-tracking/hub-load-audit.md) · сырой скан: [`ai-tracking/hub-load-inventory.json`](ai-tracking/hub-load-inventory.json) · бэкап MCP (фаза 1): [`ai-tracking/mcp-backup-index.json`](ai-tracking/mcp-backup-index.json) · индекс скиллов: `skills/_INDEX.md` (hub-only, 112) · плагины UI: [`ai-tracking/plugin-disable-checklist.md`](ai-tracking/plugin-disable-checklist.md) · `.cursorignore` (фаза 3)
+**Нагрузка / навигация (2026-08-25):** [`SYSTEM-VISIBILITY-MAP.md`](SYSTEM-VISIBILITY-MAP.md) · индекс: `skills/_INDEX.md` (hub + `blocks/*/skills`) · `.cursorignore` · блоки `blocks/<id>/`
 
 ## Layers (priority order)
 
 1. **User Rules** (Cursor Settings) — highest priority
 2. **Always-on local rules** — `00-agent-orchestrator.mdc` (compact only)
 3. **On-demand rules** — domain triggers (`mcp-routing`, `clone-website`, `system-taxonomy`, `karpathy-guidelines`, …)
-4. **Skills** — `skills/`, `skills-cursor/`, plugin cache skills
+4. **Skills** — `skills/` (hub) + `blocks/<id>/skills/` (domain); `skills-cursor/`; plugin cache
 5. **MCP tools** — read one descriptor JSON before first call
 6. **Subagents** (Task tool) — parallel only when independent
 7. **GitNexus** — symbol edits in indexed repos only
@@ -159,7 +159,7 @@ Default profile: MD + EU. Universal via `--profile eu|us|generic`. Not legal adv
 | Skill | `skills/openrouter-free/SKILL.md` |
 | Wrapper | `skills/openrouter-free/scripts/openrouter.ps1` |
 | Rule (always-on) | `rules/openrouter-free-routing.mdc` |
-| Squad override | `skills/project-squad/reference/model-map.md` (Free-model override) |
+| Squad override (archived) | `skills/_archive/squad/project-squad/reference/model-map.md` |
 | Test | `commands/openrouter-free-test.ps1` |
 | Health | `ai-tracking/openrouter-free-health.json` |
 | Route | `openrouter-free` in `lib/task-router/routes.json` |
@@ -201,7 +201,7 @@ Draft/routine → wrapper. Subagent map slugs are replaced. Do not Override Open
 | Plan expander | `lib/crew-ai/Expand-CrewPlan.ps1` |
 | CLI | `commands/crew-plan.ps1` |
 | Test | `commands/crew-ai-test.ps1` |
-| Squad bridge | `skills/project-squad/reference/crew-ai-bridge.md` |
+| Squad bridge (archived) | `skills/_archive/squad/project-squad/reference/crew-ai-bridge.md` |
 
 ## BabyAGI creative loop (DEC-064)
 
@@ -434,25 +434,13 @@ New agents require DEC log + emergence checklist. Gate: `understanding.md` → `
 | `ecosystem-architect` | Sole permanent hub governance agent: architecture drift, skill taxonomy/quarantine, MCP profiles, registry/graph health, tech research. **Not** Project Squad. |
 
 Skill: `skills/ecosystem-architect/SKILL.md` · Canon: `ai-tracking/ecosystem-governance/` · Route: `ecosystem-architect`  
-**Policy (2026-08-24):** do not auto-create Squad; on new project ask Boss if personal Squad is needed.
+**Policy (2026-08-25):** Project Squad **archived** at `agents/_archive/` + `skills/_archive/squad`. Restore a copy into a client project only after explicit Boss yes. Hub delivery: parent agent + block skill + ephemeral Task; Architect may spawn ephemeral workers.
 
-### Project Squad v2 (`agents/squad-*.md`) — execution layer (opt-in per project)
+Skill: `skills/ecosystem-architect/SKILL.md` · Canon: `ai-tracking/ecosystem-governance/` · Route: `ecosystem-architect`
 
-| Agent | Model | Role |
-|-------|-------|------|
-| `squad-scout` | Composer 2.5 | Audit / inventory |
-| `squad-architect` | Sonnet 4.6 | Tech plan |
-| `squad-design` | Sonnet 4.6 | UI/UX / motion |
-| `squad-build` | Codex 5.3 High | Code |
-| `squad-qa` | Sonnet 4.6 | Tests / Playwright |
-| `squad-review` | GPT-5.5 | Code review |
-| `squad-growth` | Sonnet 4.6 | SEO / GEO / perf |
-| `squad-ship` | Sonnet 4.6 | Deploy (gated) |
-| `squad-memory` | Haiku 4.5 | user-memory + AGENTS.md |
-| `squad-cleanup` | Composer 2.5 | Cache / hub refresh |
-| `squad-marketing` | Sonnet 4.6 | Copy / content / ads |
+### Project Squad v2 — ARCHIVED
 
-Boss (parent chat): **Opus 4.7**. Skill: `skills/project-squad/SKILL.md` · Command: `/project-squad`
+Files: `agents/_archive/squad-*.md` · `skills/_archive/squad/`. Not in live `routes.json` subagent lists. Slash `/project-squad` should point at archive note if kept.
 
 ### Built-in Task types (fallback)
 
@@ -471,7 +459,7 @@ Boss (parent chat): **Opus 4.7**. Skill: `skills/project-squad/SKILL.md` · Comm
 | `commands/cursor-system-refresh-quick.cmd` | **Quick:** sync rules + skill index + audit only |
 | `commands/cursor-system-refresh.ps1` | Orchestrator (`-Quick`, `-Deferred`, `-SkipCyber`) |
 | `commands/cursor-system-refresh-deferred.ps1` | Heavy cleanup after Cursor exits (auto-spawned) |
-| `commands/project-squad.md` | **Project Squad** — `/project-squad` multi-agent team |
+| `commands/project-squad.md` | **archived** — restore `/project-squad` only after Boss yes |
 | `commands/stitch-mcp.md` | **Stitch MCP** — proxy + 14 UI design tools |
 | `commands/n8n-mcp.md` | **n8n MCP** — instance workflows + Workflow SDK |
 | `commands/n8n-workflow.md` | **n8n Workflow skill** — offline JSON authoring knowledge |

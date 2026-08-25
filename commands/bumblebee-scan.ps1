@@ -1,6 +1,6 @@
 # Supply-chain inventory scan via bumblebee (download binary if Go missing)
 param(
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [ValidateSet("baseline", "project", "deep")]
     [string]$Profile = "project"
 )

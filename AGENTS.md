@@ -1,7 +1,7 @@
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **linellabot** (13898 symbols, 24318 relationships, 300 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **cursor-hub-artyom** (3642 symbols, 4203 relationships, 28 execution flows after 2026-08-25 reindex). Local folder stays `.cursor`. Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
 > Index stale? Run `node .gitnexus/run.cjs analyze` from the project root — it auto-selects an available runner. No `.gitnexus/run.cjs` yet? `npx gitnexus analyze` (npm 11 crash → `npm i -g gitnexus`; #1939).
 
@@ -25,10 +25,10 @@ This project is indexed by GitNexus as **linellabot** (13898 symbols, 24318 rela
 
 | Resource | Use for |
 |----------|---------|
-| `gitnexus://repo/linellabot/context` | Codebase overview, check index freshness |
-| `gitnexus://repo/linellabot/clusters` | All functional areas |
-| `gitnexus://repo/linellabot/processes` | All execution flows |
-| `gitnexus://repo/linellabot/process/{name}` | Step-by-step execution trace |
+| `gitnexus://repo/cursor-hub-artyom/context` | Codebase overview, check index freshness |
+| `gitnexus://repo/cursor-hub-artyom/clusters` | All functional areas |
+| `gitnexus://repo/cursor-hub-artyom/processes` | All execution flows |
+| `gitnexus://repo/cursor-hub-artyom/process/{name}` | Step-by-step execution trace |
 
 ## CLI
 
@@ -61,7 +61,7 @@ Front door: `skills/security-hub/SKILL.md`. Library playbooks: `skills/cybersecu
 
 ## Memory stack (DEC-009)
 
-Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev OS corpus). Obsidian removed from hub. Route memory via `squad-memory` + `skills/dev-os/memory/SKILL.md`.
+Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev OS corpus). Route memory via parent agent + `blocks/dev-os` (or hub `skills/dev-os` until split). Project Squad archived.
 
 ## 21st Design (21st.dev UI registry)
 

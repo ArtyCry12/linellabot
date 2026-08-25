@@ -44,7 +44,16 @@ else {
 }
 
 Write-Host "Smoke: npx skills find seo"
-$cliOut = & npx.cmd skills find "seo" 2>&1 | Out-String
+$cliOut = ""
+try {
+    $prevEap = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $cliOut = & npx.cmd skills find "seo" 2>&1 | Out-String
+    $ErrorActionPreference = $prevEap
+} catch {
+    $ErrorActionPreference = "Stop"
+    Write-Host "WARN npx skills find threw - wiring still OK"
+}
 $len = 0
 if ($cliOut) { $len = $cliOut.Length }
 if ($LASTEXITCODE -ne 0 -and [string]::IsNullOrWhiteSpace($cliOut)) {

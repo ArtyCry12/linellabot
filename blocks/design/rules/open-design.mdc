@@ -1,0 +1,24 @@
+---
+description: >-
+  Open Design — HTML prototypes, decks/PPTX, dashboards, mobile frames,
+  HyperFrames motion MP4, DESIGN.md brand systems, critique. Triggers:
+  @open-design, @od, @huashu (legacy), prototype, deck, infographic, motion,
+  voiceover, pptx.
+alwaysApply: false
+---
+
+# Open Design — по запросу / по релевантности
+
+**Skill:** `C:/Users/artyo/.cursor/skills/open-design/SKILL.md` — **прочитай перед работой**, если задача про визуальный HTML-выход (прототип / deck / motion), не production backend-only.
+
+**Каталог templates/skills:** `C:/Users/artyo/.cursor/skills/open-design/repo/`  
+**Repo:** https://github.com/nexu-io/open-design  
+**Обновление:** `powershell -File commands/ensure-open-design.ps1`
+
+**MCP:** `user-open-design` (ready). App: `C:\Users\artyo\AppData\Local\Programs\OpenDesign\`. CLI: `~\.local\bin\od.cmd`.
+
+**Триггеры:** `@open-design`, `@od`, `@huashu` (legacy), prototype / deck / infographic / motion / PPTX / MP4 / ревью дизайна.
+
+После выбора режима прочитай конкретный `design-templates/<name>/SKILL.md` из `repo/` — не импровизируй seed с нуля. Для генерации через daemon — `list_skills` / `start_run` (не запускай skill вручную, если идёшь через MCP).
+
+**Синхронизация правил в другие папки:** `python commands/huashu-sync-workspace-rules.py` из `C:/Users/artyo/.cursor`.

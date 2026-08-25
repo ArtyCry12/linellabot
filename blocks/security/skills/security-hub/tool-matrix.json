@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "phase": 1,
+  "tiers": [
+    {
+      "id": "diff-ai",
+      "tools": ["claude-code-security-review"],
+      "cli": null,
+      "librarySkills": ["testing-api-security-with-owasp-top-10"],
+      "prompts": ["prompts/audit.md", "prompts/false-positive-filter.md"],
+      "ciTemplate": "templates/security-ci/security-ai-review.yml",
+      "requiresAuth": false,
+      "phase": 1
+    },
+    {
+      "id": "secrets",
+      "tools": ["gitleaks", "trufflehog", "detect-secrets"],
+      "cli": ["gitleaks"],
+      "fallback": ["trufflehog"],
+      "librarySkills": ["implementing-secret-scanning-with-gitleaks", "implementing-secrets-scanning-in-ci-cd"],
+      "ciTemplate": "templates/security-ci/security-secrets.yml",
+      "requiresAuth": false,
+      "phase": 1
+    },
+    {
+      "id": "sast",
+      "tools": ["semgrep", "bandit", "gosec"],
+      "cli": ["semgrep"],
+      "librarySkills": ["integrating-sast-into-github-actions-pipeline", "implementing-devsecops-security-scanning"],
+      "ciTemplate": "templates/security-ci/security-sast.yml",
+      "requiresAuth": false,
+      "phase": 1
+    },
+    {
+      "id": "sca",
+      "tools": ["trivy", "grype"],
+      "cli": ["trivy"],
+      "fallback": ["grype"],
+      "librarySkills": ["performing-sca-dependency-scanning-with-snyk", "analyzing-sbom-for-supply-chain-vulnerabilities"],
+      "ciTemplate": "templates/security-ci/security-sca.yml",
+      "requiresAuth": false,
+      "phase": 1
+    },
+    {
+      "id": "iac",
+      "tools": ["checkov"],
+      "cli": ["checkov"],
+      "librarySkills": ["implementing-infrastructure-as-code-security-scanning", "auditing-terraform-infrastructure-for-security"],
+      "ciTemplate": "templates/security-ci/security-iac.yml",
+      "requiresAuth": false,
+      "phase": 1
+    },
+    {
+      "id": "dast",
+      "tools": ["zaproxy", "playwright"],
+      "cli": ["docker"],
+      "dockerImage": "ghcr.io/zaproxy/zaproxy:stable",
+      "librarySkills": ["integrating-dast-with-owasp-zap-in-pipeline", "performing-web-application-vulnerability-triage"],
+      "ciTemplate": "templates/security-ci/security-dast.yml",
+      "requiresAuth": true,
+      "phase": 1
+    },
+    {
+      "id": "recon",
+      "tools": ["subfinder", "httpx", "nuclei"],
+      "cli": ["subfinder", "httpx", "nuclei"],
+      "librarySkills": ["building-vulnerability-scanning-workflow"],
+      "ciTemplate": null,
+      "requiresAuth": true,
+      "phase": 1,
+      "note": "Agent/manual only by default; no CI template"
+    },
+    {
+      "id": "offensive",
+      "tools": ["metasploit-framework", "sqlmap", "caldera", "atomic-red-team"],
+      "cli": null,
+      "requires": "written_authorization",
+      "phase": 2,
+      "note": "Not wired in Phase 1"
+    },
+    {
+      "id": "lab",
+      "tools": ["juice-shop", "DVWA"],
+      "phase": 2,
+      "note": "Safe lab targets only"
+    }
+  ]
+}

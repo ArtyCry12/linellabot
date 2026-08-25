@@ -1,6 +1,6 @@
 # Safe cleanup while Cursor may be running — caches, old logs, skip locked paths
 param(
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [switch]$Apply,
     [int]$LogDays = 30,
     # MarkItDown cache is sacred by default (DEC + always-on hook). Opt-in only.

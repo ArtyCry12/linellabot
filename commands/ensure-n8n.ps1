@@ -1,7 +1,7 @@
 # Ensure n8n MCP (instance-level HTTP) + descriptors are healthy
 
 $ErrorActionPreference = "Stop"
-$Hub = "C:\Users\Asus\.cursor"
+$Hub = (Split-Path $PSScriptRoot -Parent)
 $Test = Join-Path $Hub "commands\test-n8n-mcp.mjs"
 $Sync = Join-Path $Hub "commands\sync-n8n-mcp-descriptors.mjs"
 $McpJson = Join-Path $Hub "mcp.json"

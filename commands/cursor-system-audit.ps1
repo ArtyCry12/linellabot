@@ -1,7 +1,7 @@
 # Cursor hub system audit — dry-run report (JSON + Markdown)
 param(
     [switch]$Apply,
-    [string]$HubRoot = "C:\Users\Asus\.cursor"
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent)
 )
 
 $ErrorActionPreference = "Continue"

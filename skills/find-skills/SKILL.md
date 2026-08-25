@@ -65,7 +65,7 @@ powershell -File commands/find-skills.ps1 -Query "<domain keywords>"
 |------|---------|
 | Search | `powershell -File commands/find-skills.ps1 -Query "..."` |
 | Smoke test | `powershell -File commands/find-skills-test.ps1` |
-| Install (after user OK) | `npx.cmd skills add <owner/repo@skill> -g -y` |
+| Install (after user OK) | Copy or wrap into `hub` or `blocks/<id>/skills/` (target required). Do not leave only `npx skills add -g` orphans in `~/.agents`. |
 | Update catalog skills | `npx.cmd skills update` |
 
 ## Do not

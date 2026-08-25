@@ -7,8 +7,20 @@
     {
       "id": "clarify-first",
       "label": "Clarify before big task",
-      "keywords": ["большая задача", "полный план", "с нуля", "неясно", "уточни", "вопросы"],
-      "phrases": ["clarify first", "ask questions first", "полный список вопросов", "сначала вопросы"],
+      "keywords": [
+        "большая задача",
+        "полный план",
+        "с нуля",
+        "неясно",
+        "уточни",
+        "вопросы"
+      ],
+      "phrases": [
+        "clarify first",
+        "ask questions first",
+        "полный список вопросов",
+        "сначала вопросы"
+      ],
       "skill": "skills/prompt-engineering-coach/SKILL.md",
       "rule": "rules/user-profile.mdc",
       "mode": "plan",
@@ -17,174 +29,437 @@
     {
       "id": "video-learning",
       "label": "Video / Reels / YouTube learning",
-      "keywords": ["youtube", "reels", "tiktok", "shorts", "видео", "транскрипт", "сводка по ссылке"],
-      "phrases": ["video summary", "разбери видео", "learn from video"],
-      "skill": "skills/video-learning/SKILL.md",
-      "mcp": ["plugin-exa-exa"],
-      "commands": ["commands/ensure-markitdown.ps1"],
+      "keywords": [
+        "youtube",
+        "reels",
+        "tiktok",
+        "shorts",
+        "видео",
+        "транскрипт",
+        "сводка по ссылке"
+      ],
+      "phrases": [
+        "video summary",
+        "разбери видео",
+        "learn from video"
+      ],
+      "skill": "blocks/media/skills/video-learning/SKILL.md",
+      "mcp": [
+        "plugin-exa-exa"
+      ],
+      "commands": [
+        "commands/ensure-markitdown.ps1"
+      ],
       "mode": "agent"
     },
     {
       "id": "notion-tasks",
       "label": "Notion task sync",
-      "keywords": ["notion", "задач", "галочк", "чеклист", "notion.so"],
-      "phrases": ["notion task", "sync notion", "notion page"],
-      "skill": "skills/notion-tasks/SKILL.md",
-      "mcp": ["user-notion"],
+      "keywords": [
+        "notion",
+        "задач",
+        "галочк",
+        "чеклист",
+        "notion.so"
+      ],
+      "phrases": [
+        "notion task",
+        "sync notion",
+        "notion page"
+      ],
+      "skill": "blocks/integrations/skills/notion-tasks/SKILL.md",
+      "mcp": [
+        "user-notion"
+      ],
       "profile": "ops",
-      "rule": "rules/notion-workspace.mdc",
+      "rule": "blocks/integrations/rules/notion-workspace.mdc",
       "mode": "agent"
     },
     {
       "id": "autopilot",
       "label": "Full automation",
-      "phrases": ["!auto", "/autopilot"],
-      "tags": ["!auto", "/autopilot"],
+      "phrases": [
+        "!auto",
+        "/autopilot"
+      ],
+      "tags": [
+        "!auto",
+        "/autopilot"
+      ],
       "mode": "agent",
       "note": "Handled by hooks/autopilot.ps1; do not double-inject"
     },
     {
       "id": "memory",
       "label": "Session memory",
-      "keywords": ["запомни", "remember", "recall", "handoff", "сохрани в память"],
-      "phrases": ["remember this", "remember we"],
-      "skill": "skills/project-squad/SKILL.md",
-      "mcp": ["user-memory"],
-      "subagent": ["squad-memory"],
-      "templates": ["templates/squad-handoff.md"],
+      "keywords": [
+        "запомни",
+        "remember",
+        "recall",
+        "handoff",
+        "сохрани в память"
+      ],
+      "phrases": [
+        "remember this",
+        "remember we"
+      ],
+      "skill": "skills/_archive/squad/project-squad/SKILL.md",
+      "mcp": [
+        "user-memory"
+      ],
+      "templates": [
+        "templates/squad-handoff.md"
+      ],
       "mode": "agent"
     },
     {
       "id": "openrouter-free",
       "label": "OpenRouter free GLM / TTS",
-      "keywords": ["openrouter", "glm-5.2:free", "nemotron-3-ultra", "fish-audio", "flux-tts", "бесплатн модел", "бесплатные модели"],
-      "phrases": ["бесплатные модели", "озвучь", "озвучка текста", "openrouter free", "glm 5.2 free"],
-      "tags": ["@openrouter-free"],
+      "keywords": [
+        "openrouter",
+        "glm-5.2:free",
+        "nemotron-3-ultra",
+        "fish-audio",
+        "flux-tts",
+        "бесплатн модел",
+        "бесплатные модели"
+      ],
+      "phrases": [
+        "бесплатные модели",
+        "озвучь",
+        "озвучка текста",
+        "openrouter free",
+        "glm 5.2 free"
+      ],
+      "tags": [
+        "@openrouter-free"
+      ],
       "skill": "skills/openrouter-free/SKILL.md",
       "rule": "rules/openrouter-free-routing.mdc",
-      "commands": ["commands/openrouter-free-test.ps1"],
+      "commands": [
+        "commands/openrouter-free-test.ps1"
+      ],
       "mode": "agent",
       "note": "Wrapper only; do not Override OpenAI Base URL. Subagent: replace map model with OpenRouter chat or Task glm-5.2-high. Canon: ai-tracking/openrouter-free.md."
     },
     {
       "id": "seo-geo",
       "label": "SEO / GEO audit",
-      "keywords": ["seo", "geo", "serp", "sitemap", "meta tag", "core web vitals", "ранжир", "индексац", "бэклинк", "schema markup"],
-      "phrases": ["seo audit", "seo-geo", "geo audit", "аудит seo", "проверь seo", "аудит сайта", "оптимизация сайта", "check seo", "run seo", "seo for"],
-      "tags": ["@seo-geo"],
-      "skill": "skills/seo-geo/SKILL.md",
-      "rule": "rules/seo-geo.mdc",
-      "mcp": ["plugin-exa-exa"],
-      "commands": ["commands/seo-audit.ps1", "commands/seo-stack-verify.ps1", "commands/gsc-audit.ps1"],
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "seo",
+        "geo",
+        "serp",
+        "sitemap",
+        "meta tag",
+        "core web vitals",
+        "ранжир",
+        "индексац",
+        "бэклинк",
+        "schema markup"
+      ],
+      "phrases": [
+        "seo audit",
+        "seo-geo",
+        "geo audit",
+        "аудит seo",
+        "проверь seo",
+        "аудит сайта",
+        "оптимизация сайта",
+        "check seo",
+        "run seo",
+        "seo for"
+      ],
+      "tags": [
+        "@seo-geo"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/seo-geo/SKILL.md",
+      "rule": "blocks/seo-geo-aio/rules/seo-geo.mdc",
+      "mcp": [
+        "plugin-exa-exa"
+      ],
+      "commands": [
+        "blocks/seo-geo-aio/commands/seo-audit.ps1",
+        "blocks/seo-geo-aio/commands/seo-stack-verify.ps1",
+        "blocks/seo-geo-aio/commands/gsc-audit.ps1"
+      ],
       "mode": "agent"
     },
     {
       "id": "seo-geo-aio-block",
       "label": "SEO+GEO+AIO block foundation",
-      "keywords": ["seo geo aio", "geo aio", "aio engine", "content engine seo", "google business", "gmb", "maps seo"],
-      "phrases": ["seo+geo+aio", "блок seo", "seo geo aio block"],
-      "tags": ["@seo-geo-aio"],
-      "skill": "skills/seo-geo/SKILL.md",
-      "rule": "rules/seo-geo.mdc",
-      "commands": ["commands/seo-audit.ps1", "commands/seo-stack-verify.ps1", "commands/gsc-audit.ps1"],
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "seo geo aio",
+        "geo aio",
+        "aio engine",
+        "content engine seo",
+        "google business",
+        "gmb",
+        "maps seo"
+      ],
+      "phrases": [
+        "seo+geo+aio",
+        "блок seo",
+        "seo geo aio block"
+      ],
+      "tags": [
+        "@seo-geo-aio"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/seo-geo/SKILL.md",
+      "rule": "blocks/seo-geo-aio/rules/seo-geo.mdc",
+      "commands": [
+        "blocks/seo-geo-aio/commands/seo-audit.ps1",
+        "blocks/seo-geo-aio/commands/seo-stack-verify.ps1",
+        "blocks/seo-geo-aio/commands/gsc-audit.ps1"
+      ],
       "mode": "agent",
       "note": "Canon: ai-tracking/ecosystem-governance/blocks/seo-geo-aio/CHARTER.md"
     },
     {
       "id": "opc-seo-geo",
       "label": "OPC / resciencelab SEO-GEO",
-      "keywords": ["opc seo", "resciencelab", "generative engine", "ai visibility quick", "geo optimization"],
-      "phrases": ["opc-seo-geo", "@opc-seo-geo", "resciencelab seo"],
-      "tags": ["@opc-seo-geo"],
-      "skill": "skills/opc-seo-geo/SKILL.md",
-      "rule": "rules/seo-geo.mdc",
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "opc seo",
+        "resciencelab",
+        "generative engine",
+        "ai visibility quick",
+        "geo optimization"
+      ],
+      "phrases": [
+        "opc-seo-geo",
+        "@opc-seo-geo",
+        "resciencelab seo"
+      ],
+      "tags": [
+        "@opc-seo-geo"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/opc-seo-geo/SKILL.md",
+      "rule": "blocks/seo-geo-aio/rules/seo-geo.mdc",
       "mode": "agent",
       "note": "Complement to skills/seo-geo/ library; fast opc/resciencelab layer"
     },
     {
       "id": "seo-audit-ms",
       "label": "SEO audit (marketingskills)",
-      "keywords": ["technical seo", "seo health", "on-page seo", "crawl errors", "indexing issues", "почему не ранжиру", "трафик упал"],
-      "phrases": ["seo audit", "technical seo audit", "why not ranking", "seo issues"],
-      "tags": ["@seo-audit"],
-      "skill": "skills/seo-audit/SKILL.md",
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "technical seo",
+        "seo health",
+        "on-page seo",
+        "crawl errors",
+        "indexing issues",
+        "почему не ранжиру",
+        "трафик упал"
+      ],
+      "phrases": [
+        "seo audit",
+        "technical seo audit",
+        "why not ranking",
+        "seo issues"
+      ],
+      "tags": [
+        "@seo-audit"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/seo-audit/SKILL.md",
       "mode": "agent",
       "note": "Fast audit; deep CORE-EEAT -> seo-geo route"
     },
     {
       "id": "programmatic-seo",
       "label": "Programmatic SEO / pSEO",
-      "keywords": ["programmatic seo", "pseo", "template pages", "location pages", "directory pages", "страницы по шаблону"],
-      "phrases": ["pages at scale", "programmatic landing", "keyword city pages"],
-      "tags": ["@programmatic-seo"],
-      "skill": "skills/programmatic-seo/SKILL.md",
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "programmatic seo",
+        "pseo",
+        "template pages",
+        "location pages",
+        "directory pages",
+        "страницы по шаблону"
+      ],
+      "phrases": [
+        "pages at scale",
+        "programmatic landing",
+        "keyword city pages"
+      ],
+      "tags": [
+        "@programmatic-seo"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/programmatic-seo/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "ai-search-optimization",
       "label": "AEO / GEO / AI search visibility",
-      "keywords": ["aeo", "llms.txt", "ai crawler", "ai overviews", "perplexity", "chatgpt search", "answer engine", "geo citation"],
-      "phrases": ["ai search optimization", "llms txt", "make site citable"],
-      "tags": ["@ai-search-optimization"],
-      "skill": "skills/ai-search-optimization/SKILL.md",
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "aeo",
+        "llms.txt",
+        "ai crawler",
+        "ai overviews",
+        "perplexity",
+        "chatgpt search",
+        "answer engine",
+        "geo citation"
+      ],
+      "phrases": [
+        "ai search optimization",
+        "llms txt",
+        "make site citable"
+      ],
+      "tags": [
+        "@ai-search-optimization"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/ai-search-optimization/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "entity-seo",
       "label": "Entity SEO / Knowledge Graph",
-      "keywords": ["entity seo", "knowledge graph", "knowledge panel", "entity signals", "brand entity"],
-      "phrases": ["entity optimization", "entity-first content"],
-      "tags": ["@entity-seo"],
-      "skill": "skills/entity-seo/SKILL.md",
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "entity seo",
+        "knowledge graph",
+        "knowledge panel",
+        "entity signals",
+        "brand entity"
+      ],
+      "phrases": [
+        "entity optimization",
+        "entity-first content"
+      ],
+      "tags": [
+        "@entity-seo"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/entity-seo/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "pagespeed",
       "label": "PageSpeed / performance",
-      "keywords": ["pagespeed", "lighthouse", "core web vitals", "cwv", "performance audit"],
-      "phrases": ["page speed", "скорость сайта"],
-      "commands": ["commands/pagespeed-audit.ps1"],
-      "subagent": ["performance-optimizer", "squad-growth"],
+      "keywords": [
+        "pagespeed",
+        "lighthouse",
+        "core web vitals",
+        "cwv",
+        "performance audit"
+      ],
+      "phrases": [
+        "page speed",
+        "скорость сайта"
+      ],
+      "commands": [
+        "blocks/seo-geo-aio/commands/pagespeed-audit.ps1"
+      ],
+      "subagent": [
+        "performance-optimizer"
+      ],
       "mode": "agent"
     },
     {
       "id": "core-web-vitals",
       "label": "Core Web Vitals (LCP/INP/CLS)",
-      "keywords": ["lcp", "inp", "cls", "layout shift", "largest contentful paint", "interaction to next paint"],
-      "phrases": ["fix core web vitals", "improve cwv", "reduce cls", "fix lcp"],
-      "tags": ["@core-web-vitals"],
-      "skill": "skills/core-web-vitals/SKILL.md",
-      "subagent": ["performance-optimizer", "squad-growth"],
+      "keywords": [
+        "lcp",
+        "inp",
+        "cls",
+        "layout shift",
+        "largest contentful paint",
+        "interaction to next paint"
+      ],
+      "phrases": [
+        "fix core web vitals",
+        "improve cwv",
+        "reduce cls",
+        "fix lcp"
+      ],
+      "tags": [
+        "@core-web-vitals"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/core-web-vitals/SKILL.md",
+      "subagent": [
+        "performance-optimizer"
+      ],
       "mode": "agent",
       "note": "Targeted CWV fixes; Lighthouse CLI -> pagespeed route"
     },
     {
+      "id": "web-quality-audit",
+      "label": "Addy Osmani web quality / Lighthouse audit",
+      "keywords": [
+        "web quality",
+        "addy osmani",
+        "page quality",
+        "agentic browsing audit"
+      ],
+      "phrases": [
+        "web-quality-audit",
+        "review web quality",
+        "run lighthouse audit",
+        "lighthouse insights audit"
+      ],
+      "tags": [
+        "@web-quality"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/web-quality-audit/SKILL.md",
+      "mode": "agent",
+      "note": "Cherry-pick web-quality-audit only; sibling performance/a11y/seo skills from that repo not installed. Existing seo-geo + core-web-vitals stay primary for generic SEO/CWV."
+    },
+    {
       "id": "clone-website",
       "label": "Clone / rebuild website",
-      "keywords": ["клон", "clone", "копия сайта", "reverse engineer", "pixel perfect", "скопируй сайт", "лендинг", "landing"],
-      "phrases": ["clone website", "clone-website", "/clone-website", "clone landing", "клонируй"],
-      "tags": ["@clone-website"],
-      "skill": "skills/clone-website/SKILL.md",
-      "rule": "rules/clone-website.mdc",
-      "mcp": ["cursor-ide-browser", "plugin-exa-exa"],
+      "keywords": [
+        "клон",
+        "clone",
+        "копия сайта",
+        "reverse engineer",
+        "pixel perfect",
+        "скопируй сайт",
+        "лендинг",
+        "landing"
+      ],
+      "phrases": [
+        "clone website",
+        "clone-website",
+        "/clone-website",
+        "clone landing",
+        "клонируй"
+      ],
+      "tags": [
+        "@clone-website"
+      ],
+      "skill": "blocks/design/skills/clone-website/SKILL.md",
+      "rule": "blocks/design/rules/clone-website.mdc",
+      "mcp": [
+        "cursor-ide-browser",
+        "plugin-exa-exa"
+      ],
       "mode": "agent"
     },
     {
       "id": "open-design",
       "label": "HTML prototype / deck / motion (Open Design)",
-      "keywords": ["прототип", "prototype", "deck", "pptx", "motion", "infographic", "слайд", "озвучк", "open-design", "hyperframes"],
-      "phrases": ["html prototype", "huashu", "open design"],
-      "tags": ["@open-design", "@od", "@huashu"],
-      "skill": "skills/open-design/SKILL.md",
-      "rule": "rules/open-design.mdc",
-      "mcp": ["user-open-design"],
+      "keywords": [
+        "прототип",
+        "prototype",
+        "deck",
+        "pptx",
+        "motion",
+        "infographic",
+        "слайд",
+        "озвучк",
+        "open-design",
+        "hyperframes"
+      ],
+      "phrases": [
+        "html prototype",
+        "huashu",
+        "open design"
+      ],
+      "tags": [
+        "@open-design",
+        "@od",
+        "@huashu"
+      ],
+      "skill": "blocks/design/skills/open-design/SKILL.md",
+      "rule": "blocks/design/rules/open-design.mdc",
+      "mcp": [
+        "user-open-design"
+      ],
       "mode": "agent",
       "profile": "design",
       "note": "Primary HTML/deck/motion path. MCP: user-open-design (daemon). Legacy @huashu alias."
@@ -192,83 +467,230 @@
     {
       "id": "21st-design",
       "label": "21st.dev / shadcn UI",
-      "keywords": ["21st", "shadcn", "ui component", "magic mcp"],
-      "tags": ["@21st"],
-      "skill": "skills/21st-design/SKILL.md",
-      "rule": "rules/21st-design.mdc",
-      "mcp": ["user-21st"],
+      "keywords": [
+        "21st",
+        "shadcn",
+        "ui component",
+        "magic mcp"
+      ],
+      "tags": [
+        "@21st"
+      ],
+      "skill": "blocks/design/skills/21st-design/SKILL.md",
+      "rule": "blocks/design/rules/21st-design.mdc",
+      "mcp": [
+        "user-21st"
+      ],
       "mode": "agent",
       "profile": "design"
     },
     {
       "id": "design-stack",
       "label": "Design stack / CRO review",
-      "keywords": ["cro", "hero review", "design stack", "shadcn block", "ui review"],
-      "tags": ["@design-stack"],
-      "skill": "skills/design-stack/SKILL.md",
-      "rule": "rules/design-stack.mdc",
-      "mcp": ["user-context7", "user-21st"],
+      "keywords": [
+        "cro",
+        "hero review",
+        "design stack",
+        "shadcn block",
+        "ui review"
+      ],
+      "tags": [
+        "@design-stack"
+      ],
+      "skill": "blocks/design/skills/design-stack/SKILL.md",
+      "rule": "blocks/design/rules/design-stack.mdc",
+      "mcp": [
+        "user-context7",
+        "user-21st"
+      ],
       "mode": "agent",
       "profile": "design"
     },
     {
       "id": "production-studio",
       "label": "Video / storyboard / LVM",
-      "keywords": ["storyboard", "раскадров", "lvm", "shorts", "reels", "b-roll", "davinci", "сегмент", "viral"],
-      "phrases": ["/storyboard", "/production-studio", "production studio", "storyboard for"],
-      "skill": "skills/production-studio/SKILL.md",
-      "commands": ["commands/storyboard.md", "commands/production-studio.md", "commands/lvm-segment.md"],
-      "mcp": ["plugin-apify-apify"],
+      "keywords": [
+        "storyboard",
+        "раскадров",
+        "lvm",
+        "shorts",
+        "reels",
+        "b-roll",
+        "davinci",
+        "сегмент",
+        "viral"
+      ],
+      "phrases": [
+        "/storyboard",
+        "/production-studio",
+        "production studio",
+        "storyboard for"
+      ],
+      "skill": "blocks/media/skills/production-studio/SKILL.md",
+      "commands": [
+        "commands/storyboard.md",
+        "commands/production-studio.md",
+        "commands/lvm-segment.md"
+      ],
+      "mcp": [
+        "plugin-apify-apify"
+      ],
       "mode": "agent",
       "note": "user-magnific parked; mcp-profile.ps1 -Name full then Reload"
     },
     {
       "id": "project-squad",
-      "label": "Multi-agent Squad execution",
-      "keywords": ["squad", "project squad", "субагент", "subagent", "оркестрац", "маркетинг", "landing", "лендинг", "reels", "копирайт", "кейс"],
-      "phrases": ["/project-squad", "squad-build", "squad-qa", "squad-scout", "squad-growth", "marketing squad"],
-      "skill": "skills/project-squad/SKILL.md",
-      "rule": "rules/project-squad.mdc",
-      "subagent": ["squad-scout", "squad-architect", "squad-build", "squad-qa", "squad-review", "squad-ship"],
-      "mode": "agent"
+      "label": "Squad archive (restore only after explicit yes)",
+      "keywords": [
+        "restore project-squad",
+        "restore squad from archive"
+      ],
+      "phrases": [
+        "/project-squad",
+        "/project-squad restore",
+        "restore project-squad"
+      ],
+      "skill": "skills/_archive/squad/project-squad/SKILL.md",
+      "rule": "skills/_archive/squad/project-squad.mdc",
+      "mode": "agent",
+      "note": "Archived 2026-08-25. No live squad-* subagents. Copy into a project only after Boss yes."
     },
     {
       "id": "coding-discipline",
       "label": "Plan-first coding (Superpowers bridge)",
-      "keywords": ["implement", "refactor", "fix bug", "добавь фичу", "исправь", "tdd", "debug", "отладк", "рефактор"],
-      "phrases": ["implement feature", "fix the bug", "systematic debug", "subagent driven", "before coding"],
+      "keywords": [
+        "implement",
+        "refactor",
+        "fix bug",
+        "добавь фичу",
+        "исправь",
+        "tdd",
+        "debug",
+        "отладк",
+        "рефактор"
+      ],
+      "phrases": [
+        "implement feature",
+        "fix the bug",
+        "systematic debug",
+        "subagent driven",
+        "before coding"
+      ],
       "skill": "skills/brainstorming/SKILL.md",
-      "subagent": ["squad-architect", "squad-build", "squad-qa"],
       "mode": "plan",
       "note": "Chain: brainstorming -> writing-plans -> tdd -> subagent-driven-development. Squad executes after approve."
     },
     {
       "id": "frontend-design-web",
       "label": "Web UI anti-slop (frontend-design)",
-      "keywords": ["web app", "dashboard", "landing page", "ui page", "компонент", "интерфейс", "сайт", "next.js page"],
-      "phrases": ["build a page", "web interface", "production ui", "anti slop", "не серый дизайн"],
-      "tags": ["@frontend-design"],
+      "keywords": [
+        "web app",
+        "dashboard",
+        "landing page",
+        "ui page",
+        "компонент",
+        "интерфейс",
+        "сайт",
+        "next.js page"
+      ],
+      "phrases": [
+        "build a page",
+        "web interface",
+        "production ui",
+        "anti slop",
+        "не серый дизайн"
+      ],
+      "tags": [
+        "@frontend-design"
+      ],
       "skill": "skills/frontend-design/SKILL.md",
-      "rule": "rules/design-stack.mdc",
-      "subagent": ["squad-design", "squad-build"],
+      "rule": "blocks/design/rules/design-stack.mdc",
       "mode": "agent",
       "note": "Deck/HTML/motion -> open-design route. Web app -> this route. Pair taste/impeccable/guidelines as needed."
     },
     {
+      "id": "vercel-react-best-practices",
+      "label": "Vercel React / Next.js performance rules",
+      "keywords": [
+        "react performance",
+        "next.js performance",
+        "vercel react",
+        "waterfall fetch",
+        "bundle react",
+        "rerender"
+      ],
+      "phrases": [
+        "vercel-react-best-practices",
+        "react best practices vercel",
+        "optimize react bundle"
+      ],
+      "tags": [
+        "@vercel-react"
+      ],
+      "skill": "blocks/design/skills/vercel-react-best-practices/SKILL.md",
+      "mode": "agent"
+    },
+    {
+      "id": "vercel-composition-patterns",
+      "label": "Vercel React composition patterns",
+      "keywords": [
+        "compound components",
+        "boolean props",
+        "composition patterns",
+        "react composition",
+        "render props"
+      ],
+      "phrases": [
+        "vercel-composition-patterns",
+        "compound component",
+        "boolean prop proliferation"
+      ],
+      "tags": [
+        "@vercel-composition"
+      ],
+      "skill": "blocks/design/skills/vercel-composition-patterns/SKILL.md",
+      "mode": "agent"
+    },
+    {
       "id": "web-design-guidelines",
       "label": "Vercel Web Interface Guidelines audit",
-      "keywords": ["web guidelines", "interface guidelines", "a11y audit", "accessibility audit", "review my ui", "audit design"],
-      "phrases": ["check against guidelines", "web interface guidelines"],
-      "tags": ["@web-design-guidelines"],
+      "keywords": [
+        "web guidelines",
+        "interface guidelines",
+        "a11y audit",
+        "accessibility audit",
+        "review my ui",
+        "audit design"
+      ],
+      "phrases": [
+        "check against guidelines",
+        "web interface guidelines"
+      ],
+      "tags": [
+        "@web-design-guidelines"
+      ],
       "skill": "skills/web-design-guidelines/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "shadcn",
       "label": "Official shadcn/ui CLI skill",
-      "keywords": ["shadcn", "shadcn init", "components.json", "shadcn add", "shadcn preset"],
-      "phrases": ["shadcn init", "add shadcn component", "shadcn cli", "shadcn ui"],
-      "tags": ["@shadcn"],
+      "keywords": [
+        "shadcn",
+        "shadcn init",
+        "components.json",
+        "shadcn add",
+        "shadcn preset"
+      ],
+      "phrases": [
+        "shadcn init",
+        "add shadcn component",
+        "shadcn cli",
+        "shadcn ui"
+      ],
+      "tags": [
+        "@shadcn"
+      ],
       "skill": "skills/shadcn/SKILL.md",
       "mode": "agent",
       "note": "Official shadcn/ui. Stitch path -> stitch-shadcn-ui. 21st Magic -> 21st-design."
@@ -276,147 +698,320 @@
     {
       "id": "stitch-shadcn-ui",
       "label": "Stitch + shadcn-ui (Google Labs)",
-      "keywords": ["stitch shadcn", "stitch ui", "stitch component"],
-      "tags": ["@stitch-shadcn"],
-      "skill": "skills/stitch-shadcn-ui/SKILL.md",
-      "mcp": ["user-stitch"],
+      "keywords": [
+        "stitch shadcn",
+        "stitch ui",
+        "stitch component"
+      ],
+      "tags": [
+        "@stitch-shadcn"
+      ],
+      "skill": "blocks/design/skills/stitch-shadcn-ui/SKILL.md",
+      "mcp": [
+        "user-stitch"
+      ],
       "mode": "agent",
       "profile": "design"
     },
     {
       "id": "design-taste-frontend",
       "label": "Taste skill anti-slop (landings/portfolios)",
-      "keywords": ["design taste", "taste skill", "анти-слоп", "anti-slop landing", "portfolio redesign"],
-      "tags": ["@design-taste"],
-      "skill": "skills/design-taste-frontend/SKILL.md",
-      "subagent": ["squad-design"],
+      "keywords": [
+        "design taste",
+        "taste skill",
+        "анти-слоп",
+        "anti-slop landing",
+        "portfolio redesign"
+      ],
+      "tags": [
+        "@design-taste"
+      ],
+      "skill": "blocks/design/skills/design-taste-frontend/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "impeccable",
       "label": "Impeccable craft / polish / critique",
-      "keywords": ["impeccable", "polish ui", "design critique", "craft ui", "shape ui"],
-      "phrases": ["impeccable polish", "impeccable audit"],
-      "tags": ["@impeccable"],
-      "skill": "skills/impeccable/SKILL.md",
-      "subagent": ["squad-design"],
+      "keywords": [
+        "impeccable",
+        "polish ui",
+        "design critique",
+        "craft ui",
+        "shape ui"
+      ],
+      "phrases": [
+        "impeccable polish",
+        "impeccable audit"
+      ],
+      "tags": [
+        "@impeccable"
+      ],
+      "skill": "blocks/design/skills/impeccable/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "pr-review",
       "label": "PR review confidence scoring",
-      "keywords": ["pull request", "pr review", "code review pr", "pre-merge", "review pr"],
-      "phrases": ["/pr-review", "review this pr", "review pull request"],
+      "keywords": [
+        "pull request",
+        "pr review",
+        "code review pr",
+        "pre-merge",
+        "review pr"
+      ],
+      "phrases": [
+        "/pr-review",
+        "review this pr",
+        "review pull request"
+      ],
       "skill": "skills/pr-review/SKILL.md",
-      "subagent": ["squad-review"],
-      "commands": ["commands/pr-review.ps1"],
+      "commands": [
+        "commands/pr-review.ps1"
+      ],
       "mode": "agent",
       "note": "Requires gh auth; posts only issues confidence >= 80 after user OK"
     },
     {
       "id": "code-review-pro",
       "label": "Deep code review (local)",
-      "keywords": ["deep code review", "code audit", "security review code", "performance review code", "refactor review"],
-      "phrases": ["review this code", "audit this code", "code review pro"],
-      "tags": ["@code-review-pro"],
+      "keywords": [
+        "deep code review",
+        "code audit",
+        "security review code",
+        "performance review code",
+        "refactor review"
+      ],
+      "phrases": [
+        "review this code",
+        "audit this code",
+        "code review pro"
+      ],
+      "tags": [
+        "@code-review-pro"
+      ],
       "skill": "skills/code-review-pro/SKILL.md",
-      "subagent": ["squad-review", "security-review"],
+      "subagent": [
+        "security-review"
+      ],
       "mode": "agent",
       "note": "Local/ad-hoc; GitHub PR -> pr-review route"
     },
     {
       "id": "qa-start",
       "label": "QA bootstrap from scratch",
-      "keywords": ["qa from scratch", "setup qa", "test strategy greenfield", "no tests yet", "bootstrap qa"],
-      "phrases": ["set up qa", "qa start", "/qa-start", "qa with no coverage"],
-      "tags": ["@qa-start"],
-      "skill": "skills/qa-start/SKILL.md",
-      "subagent": ["squad-qa"],
+      "keywords": [
+        "qa from scratch",
+        "setup qa",
+        "test strategy greenfield",
+        "no tests yet",
+        "bootstrap qa"
+      ],
+      "phrases": [
+        "set up qa",
+        "qa start",
+        "/qa-start",
+        "qa with no coverage"
+      ],
+      "tags": [
+        "@qa-start"
+      ],
+      "skill": "blocks/qa/skills/qa-start/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "automation-audit",
       "label": "Automation recommendations (scout)",
-      "keywords": ["recommend automations", "what hooks", "automation audit", "claude code setup", "что автоматизировать"],
-      "phrases": ["recommend automations for", "automation audit", "audit automations"],
-      "skill": "skills/project-squad/SKILL.md",
-      "subagent": ["squad-scout"],
+      "keywords": [
+        "recommend automations",
+        "what hooks",
+        "automation audit",
+        "claude code setup",
+        "что автоматизировать"
+      ],
+      "phrases": [
+        "recommend automations for",
+        "automation audit",
+        "audit automations"
+      ],
+      "skill": "skills/_archive/squad/project-squad/SKILL.md",
       "mode": "agent",
-      "note": "Read-only; claude-code-setup pattern via squad-scout"
+      "note": "Archived. Restore project-squad only after Boss yes."
     },
     {
       "id": "agency-persona",
       "label": "Agency marketing persona",
-      "keywords": ["копирайт", "copywriting", "linkedin post", "tiktok", "контент-план", "growth hack", "paid media"],
-      "tags": ["@content-creator", "@seo-specialist", "@brand-guardian", "@ui-designer"],
-      "skill": "skills/agency-agents/SKILL.md",
+      "keywords": [
+        "копирайт",
+        "copywriting",
+        "linkedin post",
+        "tiktok",
+        "контент-план",
+        "growth hack",
+        "paid media"
+      ],
+      "tags": [
+        "@content-creator",
+        "@seo-specialist",
+        "@brand-guardian",
+        "@ui-designer"
+      ],
+      "skill": "blocks/agency/skills/agency-agents/SKILL.md",
       "rule": "rules/agency-agents.mdc",
       "mode": "agent"
     },
     {
       "id": "copywriting",
       "label": "Conversion copywriting",
-      "keywords": ["headline", "hero copy", "cta copy", "value proposition", "tagline", "above the fold", "лендинг текст"],
-      "phrases": ["write copy", "improve copy", "marketing copy", "rewrite landing"],
-      "tags": ["@copywriting"],
-      "skill": "skills/copywriting/SKILL.md",
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "headline",
+        "hero copy",
+        "cta copy",
+        "value proposition",
+        "tagline",
+        "above the fold",
+        "лендинг текст"
+      ],
+      "phrases": [
+        "write copy",
+        "improve copy",
+        "marketing copy",
+        "rewrite landing"
+      ],
+      "tags": [
+        "@copywriting"
+      ],
+      "skill": "blocks/agency/skills/copywriting/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "content-strategy",
       "label": "Content strategy / calendar",
-      "keywords": ["content strategy", "editorial calendar", "topic cluster", "content pillar", "blog strategy", "контент-план"],
-      "phrases": ["what should i write", "content ideas plan", "content roadmap"],
-      "tags": ["@content-strategy"],
-      "skill": "skills/content-strategy/SKILL.md",
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "content strategy",
+        "editorial calendar",
+        "topic cluster",
+        "content pillar",
+        "blog strategy",
+        "контент-план"
+      ],
+      "phrases": [
+        "what should i write",
+        "content ideas plan",
+        "content roadmap"
+      ],
+      "tags": [
+        "@content-strategy"
+      ],
+      "skill": "blocks/agency/skills/content-strategy/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "marketing-psychology",
       "label": "Marketing psychology / persuasion",
-      "keywords": ["persuasion", "mental model", "cognitive bias", "social proof", "scarcity", "loss aversion", "поведен"],
-      "phrases": ["marketing psychology", "why people buy", "behavioral science marketing"],
-      "tags": ["@marketing-psychology"],
-      "skill": "skills/marketing-psychology/SKILL.md",
+      "keywords": [
+        "persuasion",
+        "mental model",
+        "cognitive bias",
+        "social proof",
+        "scarcity",
+        "loss aversion",
+        "поведен"
+      ],
+      "phrases": [
+        "marketing psychology",
+        "why people buy",
+        "behavioral science marketing"
+      ],
+      "tags": [
+        "@marketing-psychology"
+      ],
+      "skill": "blocks/agency/skills/marketing-psychology/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "marketing-ideas",
       "label": "Marketing ideas backlog",
-      "keywords": ["marketing ideas", "growth ideas", "channel ideas", "go-to-market ideas", "идеи маркетинг"],
-      "phrases": ["marketing ideas for", "growth tactics list"],
-      "tags": ["@marketing-ideas"],
-      "skill": "skills/marketing-ideas/SKILL.md",
-      "subagent": ["squad-growth"],
+      "keywords": [
+        "marketing ideas",
+        "growth ideas",
+        "channel ideas",
+        "go-to-market ideas",
+        "идеи маркетинг"
+      ],
+      "phrases": [
+        "marketing ideas for",
+        "growth tactics list"
+      ],
+      "tags": [
+        "@marketing-ideas"
+      ],
+      "skill": "blocks/agency/skills/marketing-ideas/SKILL.md",
       "mode": "agent"
     },
     {
       "id": "web-research",
       "label": "Web research / fact-check",
-      "keywords": ["найди", "research", "fact check", "latest", "документац", "что нового", "сравни"],
-      "phrases": ["web search", "поищи в интернете"],
-      "mcp": ["plugin-exa-exa"],
+      "keywords": [
+        "найди",
+        "research",
+        "fact check",
+        "latest",
+        "документац",
+        "что нового",
+        "сравни"
+      ],
+      "phrases": [
+        "web search",
+        "поищи в интернете"
+      ],
+      "mcp": [
+        "plugin-exa-exa"
+      ],
       "mode": "agent"
     },
     {
       "id": "browser-e2e",
       "label": "Live browser / E2E UI",
-      "keywords": ["открой сайт", "кликни", "snapshot", "браузер", "e2e", "playwright", "side panel"],
-      "phrases": ["open in browser", "click sign in"],
-      "mcp": ["cursor-ide-browser"],
+      "keywords": [
+        "открой сайт",
+        "кликни",
+        "snapshot",
+        "браузер",
+        "e2e",
+        "playwright",
+        "side panel"
+      ],
+      "phrases": [
+        "open in browser",
+        "click sign in"
+      ],
+      "mcp": [
+        "cursor-ide-browser"
+      ],
       "mode": "agent"
     },
     {
       "id": "playwright-e2e",
       "label": "Playwright E2E tests",
-      "keywords": ["playwright test", "e2e spec", "test automation", "cross-browser test", "playwright config"],
-      "phrases": ["write playwright test", "playwright e2e", "end to end test code"],
-      "tags": ["@playwright"],
-      "skill": "skills/playwright/SKILL.md",
-      "mcp": ["user-playwright"],
-      "subagent": ["squad-qa"],
+      "keywords": [
+        "playwright test",
+        "e2e spec",
+        "test automation",
+        "cross-browser test",
+        "playwright config"
+      ],
+      "phrases": [
+        "write playwright test",
+        "playwright e2e",
+        "end to end test code"
+      ],
+      "tags": [
+        "@playwright"
+      ],
+      "skill": "blocks/qa/skills/playwright/SKILL.md",
+      "mcp": [
+        "user-playwright"
+      ],
       "mode": "agent",
       "profile": "qa",
       "note": "Test code; live browser -> browser-e2e route"
@@ -424,73 +1019,164 @@
     {
       "id": "playwright-visual-testing",
       "label": "Playwright visual regression",
-      "keywords": ["visual regression", "screenshot test", "visual diff", "baseline screenshot", "ui regression"],
-      "phrases": ["visual testing playwright", "screenshot comparison"],
-      "tags": ["@playwright-visual-testing"],
-      "skill": "skills/playwright-visual-testing/SKILL.md",
-      "mcp": ["cursor-ide-browser", "user-playwright"],
-      "subagent": ["squad-qa"],
+      "keywords": [
+        "visual regression",
+        "screenshot test",
+        "visual diff",
+        "baseline screenshot",
+        "ui regression"
+      ],
+      "phrases": [
+        "visual testing playwright",
+        "screenshot comparison"
+      ],
+      "tags": [
+        "@playwright-visual-testing"
+      ],
+      "skill": "blocks/qa/skills/playwright-visual-testing/SKILL.md",
+      "mcp": [
+        "cursor-ide-browser",
+        "user-playwright"
+      ],
       "mode": "agent",
       "profile": "qa"
     },
     {
       "id": "apify-crawl",
       "label": "Scale crawl / Apify actors",
-      "keywords": ["apify", "crawl", "scrape", "парсинг", "actor", "anti-bot"],
-      "mcp": ["plugin-apify-apify"],
-      "docs": ["ai-tracking/APIFY-POLICY.md"],
+      "keywords": [
+        "apify",
+        "crawl",
+        "scrape",
+        "парсинг",
+        "actor",
+        "anti-bot"
+      ],
+      "mcp": [
+        "plugin-apify-apify"
+      ],
+      "docs": [
+        "ai-tracking/APIFY-POLICY.md"
+      ],
       "mode": "agent"
     },
     {
       "id": "notion-workspace",
       "label": "Notion tasks / workspace",
-      "keywords": ["notion", "страницу notion", "t3 cleanup", "обнови статус"],
-      "skill": "skills/notion-workspace/SKILL.md",
-      "rule": "rules/notion-workspace.mdc",
-      "mcp": ["user-notion", "plugin-notion-workspace-notion"],
+      "keywords": [
+        "notion",
+        "страницу notion",
+        "t3 cleanup",
+        "обнови статус"
+      ],
+      "skill": "blocks/integrations/skills/notion-workspace/SKILL.md",
+      "rule": "blocks/integrations/rules/notion-workspace.mdc",
+      "mcp": [
+        "user-notion",
+        "plugin-notion-workspace-notion"
+      ],
       "mode": "agent",
       "profile": "ops"
     },
     {
       "id": "google-workspace",
       "label": "Gmail / Drive / Calendar",
-      "keywords": ["gmail", "google drive", "calendar", "почт", "gsc", "search console"],
-      "mcp": ["user-google-workspace"],
-      "commands": ["commands/gsc-audit.ps1", "commands/ensure-google-mcp.ps1"],
+      "keywords": [
+        "gmail",
+        "google drive",
+        "calendar",
+        "почт",
+        "gsc",
+        "search console"
+      ],
+      "mcp": [
+        "user-google-workspace"
+      ],
+      "commands": [
+        "blocks/seo-geo-aio/commands/gsc-audit.ps1",
+        "commands/ensure-google-mcp.ps1"
+      ],
       "mode": "agent",
       "profile": "ops"
     },
     {
       "id": "markitdown",
       "label": "Document to Markdown",
-      "keywords": ["markitdown", "pdf", "docx", "pptx", "xlsx", "convert to markdown", "экономия токенов", "markdown conversion"],
-      "phrases": ["convert pdf", "read pdf", "extract from pdf", "office to md"],
-      "tags": ["@markitdown"],
+      "keywords": [
+        "markitdown",
+        "pdf",
+        "docx",
+        "pptx",
+        "xlsx",
+        "convert to markdown",
+        "экономия токенов",
+        "markdown conversion"
+      ],
+      "phrases": [
+        "convert pdf",
+        "read pdf",
+        "extract from pdf",
+        "office to md"
+      ],
+      "tags": [
+        "@markitdown"
+      ],
       "skill": "skills/markitdown/SKILL.md",
       "rule": "rules/markitdown.mdc",
-      "commands": ["commands/ensure-markitdown.ps1", "commands/markitdown-drain.ps1"],
+      "commands": [
+        "commands/ensure-markitdown.ps1",
+        "commands/markitdown-drain.ps1"
+      ],
       "mode": "agent"
     },
     {
       "id": "n8n-automation",
       "label": "n8n workflows",
-      "keywords": ["n8n", "workflow", "автоматизац", "n8n template"],
-      "tags": ["@n8n"],
-      "skill": "skills/n8n-workflow/SKILL.md",
-      "mcp": ["user-n8n-mcp"],
-      "commands": ["commands/n8n-mcp.md", "commands/n8n-workflow.md", "commands/n8n-templates-match.ps1"],
-      "docs": ["skills/n8n-templates/SKILL.md"],
+      "keywords": [
+        "n8n",
+        "workflow",
+        "автоматизац",
+        "n8n template"
+      ],
+      "tags": [
+        "@n8n"
+      ],
+      "skill": "blocks/integrations/skills/n8n-workflow/SKILL.md",
+      "mcp": [
+        "user-n8n-mcp"
+      ],
+      "commands": [
+        "commands/n8n-mcp.md",
+        "commands/n8n-workflow.md",
+        "commands/n8n-templates-match.ps1"
+      ],
+      "docs": [
+        "skills/n8n-templates/SKILL.md"
+      ],
       "mode": "agent",
       "profile": "ops"
     },
     {
       "id": "n8n-workflow-automation",
       "label": "n8n production workflows",
-      "keywords": ["n8n retry", "n8n error handling", "n8n idempotent", "review queue", "n8n logging"],
-      "phrases": ["harden n8n workflow", "n8n production json"],
-      "tags": ["@n8n-workflow-automation"],
-      "skill": "skills/n8n-workflow-automation/SKILL.md",
-      "mcp": ["user-n8n-mcp"],
+      "keywords": [
+        "n8n retry",
+        "n8n error handling",
+        "n8n idempotent",
+        "review queue",
+        "n8n logging"
+      ],
+      "phrases": [
+        "harden n8n workflow",
+        "n8n production json"
+      ],
+      "tags": [
+        "@n8n-workflow-automation"
+      ],
+      "skill": "blocks/integrations/skills/n8n-workflow-automation/SKILL.md",
+      "mcp": [
+        "user-n8n-mcp"
+      ],
       "mode": "agent",
       "profile": "ops",
       "note": "Recipes; JSON authoring -> n8n-workflow skill"
@@ -498,212 +1184,493 @@
     {
       "id": "n8n-workflow-architect",
       "label": "n8n automation architecture",
-      "keywords": ["n8n architect", "automation architecture", "shopify n8n", "hubspot n8n", "n8n vs python"],
-      "phrases": ["plan n8n automation", "n8n workflow architect", "automation feasibility"],
-      "tags": ["@n8n-workflow-architect"],
-      "skill": "skills/n8n-workflow-architect/SKILL.md",
+      "keywords": [
+        "n8n architect",
+        "automation architecture",
+        "shopify n8n",
+        "hubspot n8n",
+        "n8n vs python"
+      ],
+      "phrases": [
+        "plan n8n automation",
+        "n8n workflow architect",
+        "automation feasibility"
+      ],
+      "tags": [
+        "@n8n-workflow-architect"
+      ],
+      "skill": "blocks/integrations/skills/n8n-workflow-architect/SKILL.md",
       "mode": "plan",
       "note": "Strategic design; implementation -> n8n-automation route"
     },
     {
       "id": "dev-os",
       "label": "Dev OS / research-first bootstrap",
-      "keywords": ["dev os", "dev-os", "bootstrap", "research sprint", "emergence"],
-      "tags": ["@dev-os"],
-      "skill": "skills/dev-os/SKILL.md",
-      "rule": "rules/dev-os.mdc",
-      "subagent": ["dev-os-research"],
-      "commands": ["commands/dev-os.md"],
+      "keywords": [
+        "dev os",
+        "dev-os",
+        "bootstrap",
+        "research sprint",
+        "emergence"
+      ],
+      "tags": [
+        "@dev-os"
+      ],
+      "skill": "blocks/dev-os/skills/dev-os/SKILL.md",
+      "rule": "blocks/dev-os/rules/dev-os.mdc",
+      "subagent": [
+        "dev-os-research"
+      ],
+      "commands": [
+        "commands/dev-os.md"
+      ],
       "mode": "plan"
     },
     {
       "id": "figma-design",
       "label": "Figma design-to-code",
-      "keywords": ["figma", "design context", "code connect"],
-      "mcp": ["plugin-figma-figma"],
-      "commands": ["commands/figma-mcp.md"],
+      "keywords": [
+        "figma",
+        "design context",
+        "code connect"
+      ],
+      "mcp": [
+        "plugin-figma-figma"
+      ],
+      "commands": [
+        "commands/figma-mcp.md"
+      ],
       "mode": "agent",
       "note": "user-figma parked; mcp-profile.ps1 -Name full then Reload"
     },
     {
       "id": "stitch-design",
       "label": "Google Stitch UI",
-      "keywords": ["stitch", "google stitch"],
-      "mcp": ["user-stitch"],
-      "commands": ["commands/stitch-mcp.md", "commands/ensure-stitch.ps1"],
+      "keywords": [
+        "stitch",
+        "google stitch"
+      ],
+      "mcp": [
+        "user-stitch"
+      ],
+      "commands": [
+        "commands/stitch-mcp.md",
+        "commands/ensure-stitch.ps1"
+      ],
       "mode": "agent",
       "profile": "design"
     },
     {
       "id": "gitnexus-refactor",
       "label": "Symbol-safe refactor",
-      "keywords": ["rename", "refactor", "impact analysis", "gitnexus", "call graph"],
-      "mcp": ["user-gitnexus"],
+      "keywords": [
+        "rename",
+        "refactor",
+        "impact analysis",
+        "gitnexus",
+        "call graph"
+      ],
+      "mcp": [
+        "user-gitnexus"
+      ],
       "rule": "rules/karpathy-guidelines.mdc",
-      "subagent": ["explore"],
+      "subagent": [
+        "explore"
+      ],
       "mode": "agent"
     },
     {
       "id": "ci-debug",
       "label": "CI / failing checks",
-      "keywords": ["ci fail", "github check", "pipeline", "failing test", "падает тест", "ошибка сборки"],
-      "phrases": ["fix ci", "why is build failing", "why is ci failing", "ci failing"],
-      "subagent": ["ci-investigator", "shell"],
-      "skills": ["skills-cursor/review-bugbot/SKILL.md"],
+      "keywords": [
+        "ci fail",
+        "github check",
+        "pipeline",
+        "failing test",
+        "падает тест",
+        "ошибка сборки"
+      ],
+      "phrases": [
+        "fix ci",
+        "why is build failing",
+        "why is ci failing",
+        "ci failing"
+      ],
+      "subagent": [
+        "ci-investigator",
+        "shell"
+      ],
+      "skills": [
+        "skills-cursor/review-bugbot/SKILL.md"
+      ],
       "mode": "debug"
     },
     {
       "id": "ponytail",
       "label": "Ponytail / YAGNI minimal code",
-      "keywords": ["ponytail", "yagni", "over-engineer", "overengineer", "будь ленив", "минимальный код", "lazy mode", "do less"],
-      "phrases": ["be lazy", "simplest solution", "shortest path", "stop over-engineering", "/ponytail"],
-      "tags": ["@ponytail"],
+      "keywords": [
+        "ponytail",
+        "yagni",
+        "over-engineer",
+        "overengineer",
+        "будь ленив",
+        "минимальный код",
+        "lazy mode",
+        "do less"
+      ],
+      "phrases": [
+        "be lazy",
+        "simplest solution",
+        "shortest path",
+        "stop over-engineering",
+        "/ponytail"
+      ],
+      "tags": [
+        "@ponytail"
+      ],
       "skill": "skills/ponytail/SKILL.md",
       "rule": "rules/ponytail.mdc",
-      "commands": ["commands/ponytail-status.ps1"],
+      "commands": [
+        "commands/ponytail-status.ps1"
+      ],
       "mode": "agent",
       "note": "Code volume; pair with caveman for prose, RTK for shell"
     },
     {
       "id": "security-hub",
       "label": "Security Hub orchestrator",
-      "keywords": ["security hub", "dast", "recon", "nuclei", "owasp zap", "zap scan", "httpx", "subfinder", "semgrep", "trivy", "checkov"],
-      "phrases": ["security hub", "run dast", "run nuclei", "zap baseline", "authorized scan"],
-      "tags": ["@security-hub", "@cybersecurity"],
-      "skill": "skills/security-hub/SKILL.md",
-      "rule": "rules/cybersecurity.mdc",
-      "commands": ["commands/ensure-security-tools.ps1", "commands/security-scan.ps1"],
-      "subagent": ["security-review"],
+      "keywords": [
+        "security hub",
+        "dast",
+        "recon",
+        "nuclei",
+        "owasp zap",
+        "zap scan",
+        "httpx",
+        "subfinder",
+        "semgrep",
+        "trivy",
+        "checkov"
+      ],
+      "phrases": [
+        "security hub",
+        "run dast",
+        "run nuclei",
+        "zap baseline",
+        "authorized scan"
+      ],
+      "tags": [
+        "@security-hub",
+        "@cybersecurity"
+      ],
+      "skill": "blocks/security/skills/security-hub/SKILL.md",
+      "rule": "blocks/security/rules/cybersecurity.mdc",
+      "commands": [
+        "commands/ensure-security-tools.ps1",
+        "blocks/security/commands/security-scan.ps1"
+      ],
+      "subagent": [
+        "security-review"
+      ],
       "mode": "agent"
     },
     {
       "id": "security-audit",
       "label": "Security audit",
-      "keywords": ["security", "уязвим", "cve", "secrets scan", "gitleaks", "supply chain"],
-      "tags": ["@cybersecurity"],
-      "skill": "skills/security-hub/SKILL.md",
-      "skills": ["skills/cybersecurity/SKILL.md"],
-      "rule": "rules/cybersecurity.mdc",
-      "commands": ["commands/ensure-security-tools.ps1", "commands/security-scan.ps1", "commands/bumblebee-scan.ps1", "commands/hub-supply-scan.ps1"],
-      "subagent": ["security-review"],
+      "keywords": [
+        "security",
+        "уязвим",
+        "cve",
+        "secrets scan",
+        "gitleaks",
+        "supply chain"
+      ],
+      "tags": [
+        "@cybersecurity"
+      ],
+      "skill": "blocks/security/skills/security-hub/SKILL.md",
+      "skills": [
+        "blocks/security/skills/cybersecurity/SKILL.md"
+      ],
+      "rule": "blocks/security/rules/cybersecurity.mdc",
+      "commands": [
+        "commands/ensure-security-tools.ps1",
+        "blocks/security/commands/security-scan.ps1",
+        "commands/bumblebee-scan.ps1",
+        "commands/hub-supply-scan.ps1"
+      ],
+      "subagent": [
+        "security-review"
+      ],
       "mode": "agent",
       "note": "Front: security-hub; backend playbooks: cybersecurity library"
     },
     {
       "id": "firebase-security-rules",
       "label": "Firebase / Firestore security rules",
-      "keywords": ["firestore rules", "firebase rules", "security rules audit", "firestore rls"],
-      "phrases": ["audit firestore rules", "firebase security rules"],
-      "tags": ["@firebase-security-rules-auditor"],
-      "skill": "skills/firebase-security-rules-auditor/SKILL.md",
-      "subagent": ["security-review"],
+      "keywords": [
+        "firestore rules",
+        "firebase rules",
+        "security rules audit",
+        "firestore rls"
+      ],
+      "phrases": [
+        "audit firestore rules",
+        "firebase security rules"
+      ],
+      "tags": [
+        "@firebase-security-rules-auditor"
+      ],
+      "skill": "blocks/security/skills/firebase-security-rules-auditor/SKILL.md",
+      "subagent": [
+        "security-review"
+      ],
       "mode": "agent"
     },
     {
       "id": "cloudflare-security-audit",
       "label": "Exploitable code security audit",
-      "keywords": ["pen test code", "exploitable vulnerability", "security review codebase", "cloudflare audit"],
-      "phrases": ["audit codebase security", "find security bugs in code"],
-      "tags": ["@cloudflare-security-audit"],
-      "skill": "skills/cloudflare-security-audit/SKILL.md",
-      "subagent": ["security-review"],
+      "keywords": [
+        "pen test code",
+        "exploitable vulnerability",
+        "security review codebase",
+        "cloudflare audit"
+      ],
+      "phrases": [
+        "audit codebase security",
+        "find security bugs in code"
+      ],
+      "tags": [
+        "@cloudflare-security-audit"
+      ],
+      "skill": "blocks/security/skills/cloudflare-security-audit/SKILL.md",
+      "subagent": [
+        "security-review"
+      ],
       "mode": "agent",
       "note": "Cloudflare skill; broad library -> cybersecurity route"
     },
     {
       "id": "devsecops-expert",
       "label": "DevSecOps / secure CI/CD",
-      "keywords": ["devsecops", "secure pipeline", "sast", "dast", "container scan", "slsa", "supply chain security"],
-      "phrases": ["secure ci cd", "security gates pipeline", "devsecops expert"],
-      "tags": ["@devsecops-expert"],
-      "skill": "skills/devsecops-expert/SKILL.md",
-      "subagent": ["security-review", "ci-investigator"],
+      "keywords": [
+        "devsecops",
+        "secure pipeline",
+        "sast",
+        "dast",
+        "container scan",
+        "slsa",
+        "supply chain security"
+      ],
+      "phrases": [
+        "secure ci cd",
+        "security gates pipeline",
+        "devsecops expert"
+      ],
+      "tags": [
+        "@devsecops-expert"
+      ],
+      "skill": "blocks/security/skills/devsecops-expert/SKILL.md",
+      "subagent": [
+        "security-review",
+        "ci-investigator"
+      ],
       "mode": "agent"
     },
     {
       "id": "secret-scanning",
       "label": "GitHub secret scanning",
-      "keywords": ["secret scanning", "secrets scan", "push protection", "leaked secret", "custom secret pattern", "blocked push secret"],
-      "phrases": ["secret scanning", "secrets scan", "enable secret scanning", "github push protection", "triage secret alert"],
-      "tags": ["@secret-scanning"],
-      "skill": "skills/secret-scanning/SKILL.md",
+      "keywords": [
+        "secret scanning",
+        "secrets scan",
+        "push protection",
+        "leaked secret",
+        "custom secret pattern",
+        "blocked push secret"
+      ],
+      "phrases": [
+        "secret scanning",
+        "secrets scan",
+        "enable secret scanning",
+        "github push protection",
+        "triage secret alert"
+      ],
+      "tags": [
+        "@secret-scanning"
+      ],
+      "skill": "blocks/security/skills/secret-scanning/SKILL.md",
       "mode": "agent",
       "note": "GitHub config; pre-commit hub scan -> security-audit commands"
     },
     {
       "id": "deploy-vercel",
       "label": "Deploy / Vercel",
-      "keywords": ["deploy", "vercel", "preview url", "production promote"],
-      "mcp": ["plugin-vercel-vercel"],
-      "subagent": ["deployment-expert", "squad-ship"],
+      "keywords": [
+        "deploy",
+        "vercel",
+        "preview url",
+        "production promote"
+      ],
+      "mcp": [
+        "plugin-vercel-vercel"
+      ],
+      "subagent": [
+        "deployment-expert"
+      ],
       "mode": "agent"
     },
     {
       "id": "supabase-db",
       "label": "Supabase / database",
-      "keywords": ["supabase", "postgres", "rls", "migration"],
-      "mcp": ["plugin-supabase-supabase"],
+      "keywords": [
+        "supabase",
+        "postgres",
+        "rls",
+        "migration"
+      ],
+      "mcp": [
+        "plugin-supabase-supabase"
+      ],
       "mode": "agent"
     },
     {
       "id": "hub-refresh",
       "label": "Hub refresh / taxonomy",
-      "keywords": ["refresh hub", "system refresh", "taxonomy", "foundation", "p2 refresh"],
-      "phrases": ["cursor-system-refresh", "hub supply"],
-      "commands": ["commands/cursor-system-refresh.cmd", "commands/foundation-refresh.md", "commands/p2-refresh.ps1"],
+      "keywords": [
+        "refresh hub",
+        "system refresh",
+        "taxonomy",
+        "foundation",
+        "p2 refresh"
+      ],
+      "phrases": [
+        "cursor-system-refresh",
+        "hub supply"
+      ],
+      "commands": [
+        "commands/cursor-system-refresh.cmd",
+        "commands/foundation-refresh.md",
+        "commands/p2-refresh.ps1"
+      ],
       "rule": "rules/system-taxonomy.mdc",
-      "docs": ["SYSTEM-TAXONOMY.md"],
+      "docs": [
+        "SYSTEM-TAXONOMY.md"
+      ],
       "mode": "agent"
     },
     {
       "id": "prompt-coach",
       "label": "Prompt engineering lesson",
-      "keywords": ["урок промта", "prompt lesson", "prompt engineering", "как писать промт", "prompt coach"],
-      "phrases": ["/prompt-lesson", "prompt-coach-status", "мой prompt engineering"],
+      "keywords": [
+        "урок промта",
+        "prompt lesson",
+        "prompt engineering",
+        "как писать промт",
+        "prompt coach"
+      ],
+      "phrases": [
+        "/prompt-lesson",
+        "prompt-coach-status",
+        "мой prompt engineering"
+      ],
       "skill": "skills/prompt-engineering-coach/SKILL.md",
       "mode": "ask"
     },
     {
       "id": "explain-only",
       "label": "Explain / no edits",
-      "keywords": ["объясни", "что такое", "как работает", "расскажи", "explain"],
-      "phrases": ["what is", "how does"],
+      "keywords": [
+        "объясни",
+        "что такое",
+        "как работает",
+        "расскажи",
+        "explain"
+      ],
+      "phrases": [
+        "what is",
+        "how does"
+      ],
       "mode": "ask"
     },
     {
       "id": "repo-intake",
       "label": "Repository drop-in analysis",
-      "keywords": ["репозитор", "repository", "github.com", "gitlab.com", ".zip"],
-      "phrases": ["/repo", "разбери репо", "этот репозиторий"],
-      "tags": ["@repo"],
+      "keywords": [
+        "репозитор",
+        "repository",
+        "github.com",
+        "gitlab.com",
+        ".zip"
+      ],
+      "phrases": [
+        "/repo",
+        "разбери репо",
+        "этот репозиторий"
+      ],
+      "tags": [
+        "@repo"
+      ],
       "skill": "skills/repo-intake/SKILL.md",
       "rule": "rules/repo-intake.mdc",
-      "subagent": ["squad-scout"],
-      "commands": ["commands/repo.md"],
+      "commands": [
+        "commands/repo.md"
+      ],
       "mode": "agent"
     },
     {
       "id": "babyagi",
       "label": "Creative task loop (BabyAGI)",
-      "keywords": ["babyagi", "baby agi", "creative loop", "brainstorm tasks", "agent creativity"],
-      "phrases": ["creative loop", "expand tasks", "open ended ideation"],
-      "tags": ["@babyagi"],
+      "keywords": [
+        "babyagi",
+        "baby agi",
+        "creative loop",
+        "brainstorm tasks",
+        "agent creativity"
+      ],
+      "phrases": [
+        "creative loop",
+        "expand tasks",
+        "open ended ideation"
+      ],
+      "tags": [
+        "@babyagi"
+      ],
       "skill": "skills/_quarantine/babyagi/SKILL.md",
       "rule": "rules/babyagi.mdc",
-      "commands": ["commands/creative-loop.ps1", "commands/babyagi-test.ps1"],
-      "subagent": ["generalPurpose", "squad-design"],
+      "commands": [
+        "commands/creative-loop.ps1",
+        "commands/babyagi-test.ps1"
+      ],
+      "subagent": [
+        "generalPurpose"
+      ],
       "mode": "agent"
     },
     {
       "id": "crew-ai",
       "label": "CrewAI marketing / production pipeline",
-      "keywords": ["crewai", "crew ai", "marketing crew", "production crew", "multi-agent workflow"],
-      "phrases": ["crew plan", "marketing pipeline", "production pipeline", "crew marketing"],
-      "tags": ["@crew-ai"],
+      "keywords": [
+        "crewai",
+        "crew ai",
+        "marketing crew",
+        "production crew",
+        "multi-agent workflow"
+      ],
+      "phrases": [
+        "crew plan",
+        "marketing pipeline",
+        "production pipeline",
+        "crew marketing"
+      ],
+      "tags": [
+        "@crew-ai"
+      ],
       "skill": "skills/_quarantine/crew-ai/SKILL.md",
       "rule": "rules/crew-ai.mdc",
-      "commands": ["commands/crew-plan.ps1", "commands/crew-ai-test.ps1"],
-      "subagent": ["squad-growth", "squad-design", "squad-qa"],
+      "commands": [
+        "commands/crew-plan.ps1",
+        "commands/crew-ai-test.ps1"
+      ],
       "mode": "agent"
     },
     {
@@ -740,8 +1707,11 @@
         "залей юрдокументы",
         "site compliance audit"
       ],
-      "tags": ["@site-compliance", "/site-compliance"],
-      "skill": "skills/site-compliance-audit/SKILL.md",
+      "tags": [
+        "@site-compliance",
+        "/site-compliance"
+      ],
+      "skill": "blocks/seo-geo-aio/skills/site-compliance-audit/SKILL.md",
       "skills": [
         "~/.agents/skills/gdpr-ccpa-privacy-auditor/SKILL.md",
         "~/.agents/skills/license-compliance-auditor/SKILL.md",
@@ -749,8 +1719,12 @@
         "~/.agents/skills/wcag-accessibility-audit/SKILL.md"
       ],
       "rule": "rules/site-compliance-audit.mdc",
-      "mcp": ["plugin-exa-exa"],
-      "commands": ["commands/site-compliance.md"],
+      "mcp": [
+        "plugin-exa-exa"
+      ],
+      "commands": [
+        "commands/site-compliance.md"
+      ],
       "docs": [
         "skills/site-compliance-audit/references/sources.md"
       ],
@@ -777,59 +1751,126 @@
         "npx skills find",
         "каких скиллов не хватает"
       ],
-      "tags": ["@find-skills"],
+      "tags": [
+        "@find-skills"
+      ],
       "skill": "skills/find-skills/SKILL.md",
       "rule": "rules/find-skills.mdc",
-      "commands": ["commands/find-skills.ps1", "commands/find-skills-test.ps1"],
+      "commands": [
+        "commands/find-skills.ps1",
+        "commands/find-skills-test.ps1"
+      ],
       "mode": "agent",
       "note": "Gap-check mandatory on Plan/Phase0. Ask once before install. Prefer high installs; Design/UI exception."
     },
     {
       "id": "awesome-prompts",
       "label": "Prompt template match + adapt",
-      "keywords": ["улучши промт", "prompt template", "act as", "awesome-prompts", "шаблон промта"],
-      "phrases": ["improve my prompt", "match prompt", "prompt library", "как написать промт"],
-      "tags": ["@awesome-prompts"],
+      "keywords": [
+        "улучши промт",
+        "prompt template",
+        "act as",
+        "awesome-prompts",
+        "шаблон промта"
+      ],
+      "phrases": [
+        "improve my prompt",
+        "match prompt",
+        "prompt library",
+        "как написать промт"
+      ],
+      "tags": [
+        "@awesome-prompts"
+      ],
       "skill": "skills/awesome-prompts/SKILL.md",
       "rule": "rules/awesome-prompts.mdc",
-      "commands": ["commands/awesome-prompts-match.ps1", "commands/build-awesome-prompts-index.ps1"],
+      "commands": [
+        "commands/awesome-prompts-match.ps1",
+        "commands/build-awesome-prompts-index.ps1"
+      ],
       "mode": "agent",
       "note": "user-prompts.chat parked; mcp-profile.ps1 -Name full then Reload"
     },
     {
       "id": "llm-council",
       "label": "LLM Council — multi-perspective task discussion",
-      "keywords": ["council", "совет моделей", "несколько мнений", "llm-council", "cross-review"],
-      "phrases": ["llm council", "обсудим задачу", "совет llm", "rank opinions"],
+      "keywords": [
+        "council",
+        "совет моделей",
+        "несколько мнений",
+        "llm-council",
+        "cross-review"
+      ],
+      "phrases": [
+        "llm council",
+        "обсудим задачу",
+        "совет llm",
+        "rank opinions"
+      ],
       "skill": "skills/_quarantine/llm-council/SKILL.md",
       "rule": "rules/llm-council.mdc",
-      "subagent": ["squad-architect", "generalPurpose"],
+      "subagent": [
+        "generalPurpose"
+      ],
       "mode": "plan"
     },
     {
       "id": "ecosystem-architect",
       "label": "Ecosystem Architect (hub governance)",
-      "keywords": ["ecosystem architect", "governance", "quarantine", "hub architecture", "taxonomy skills"],
-      "phrases": ["@ecosystem-architect", "/ecosystem-architect", "architect экосистем"],
-      "tags": ["@ecosystem-architect"],
+      "keywords": [
+        "ecosystem architect",
+        "governance",
+        "quarantine",
+        "hub architecture",
+        "taxonomy skills"
+      ],
+      "phrases": [
+        "@ecosystem-architect",
+        "/ecosystem-architect",
+        "architect экосистем"
+      ],
+      "tags": [
+        "@ecosystem-architect"
+      ],
       "skill": "skills/ecosystem-architect/SKILL.md",
-      "subagent": ["ecosystem-architect"],
+      "subagent": [
+        "ecosystem-architect"
+      ],
       "mode": "agent"
     },
     {
       "id": "ecosystem-audit",
       "label": "Hub ecosystem audit + quizzes",
-      "keywords": ["аудит экосистем", "ecosystem audit", "issuess-index", "quiz-ingest"],
-      "phrases": ["ecosystem-audit", "hub audit", "квиз профиль"],
-      "commands": ["commands/quiz-ingest.ps1"],
+      "keywords": [
+        "аудит экосистем",
+        "ecosystem audit",
+        "issuess-index",
+        "quiz-ingest"
+      ],
+      "phrases": [
+        "ecosystem-audit",
+        "hub audit",
+        "квиз профиль"
+      ],
+      "commands": [
+        "commands/quiz-ingest.ps1"
+      ],
       "mode": "agent"
     },
     {
       "id": "architecture-plan",
       "label": "Architecture / trade-offs",
-      "keywords": ["архитектур", "trade-off", "сравни redis", "vs postgres", "спроектируй"],
+      "keywords": [
+        "архитектур",
+        "trade-off",
+        "сравни redis",
+        "vs postgres",
+        "спроектируй"
+      ],
       "rule": "rules/mode-routing.mdc",
-      "subagent": ["squad-architect", "plugin-architect"],
+      "subagent": [
+        "plugin-architect"
+      ],
       "mode": "plan"
     }
   ]

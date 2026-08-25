@@ -1,7 +1,7 @@
 # Deferred hub refresh — wait for Cursor exit, then heavy cleanup.
 # Or run safe cleanup now while Cursor is open: -SafeNow
 param(
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [int]$WaitMinutes = 30,
     [switch]$SafeNow,
     [switch]$SkipCyberLibrary

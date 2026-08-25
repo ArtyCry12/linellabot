@@ -6,8 +6,7 @@
     "gitnexus",
     "notion",
     "n8n-mcp",
-    "google-workspace",
-    "sentry"
+    "google-workspace"
   ],
   "gitnexusHeapMb": 1536
 }

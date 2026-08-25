@@ -1,5 +1,5 @@
 param(
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [int]$PollSeconds = 15,
     [int]$MaxMinutes = 30
 )

@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory = $true)]
     [string]$LessonPath,
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$Voice = "ru-RU-DmitryNeural",
     [switch]$Json
 )

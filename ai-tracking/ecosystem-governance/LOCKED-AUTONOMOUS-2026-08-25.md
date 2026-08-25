@@ -18,4 +18,6 @@ Boss answers (final clarifications). Stage closed. Full autonomy to DoD.
 | 12 | Keep-list / critical restrictions only |
 | 13 | Done = full DoD + test gate with real verification |
 
-Keep: Task Router, Squad files, MarkItDown, RTK, memory MCP, GitNexus linellabot, secrets, Aikido lock, no wholesale skill delete.
+Keep: Task Router, MarkItDown, RTK, memory MCP, GitNexus, secrets, Aikido lock, no wholesale skill delete.
+
+**2026-08-25 closeout overlay:** Project Squad **archived** (not deleted); restore per-project only on Boss yes. Sentry = **plugin only**. Domain files in `blocks/<id>/`. GitHub repo target `cursor-hub-artyom` (local folder stays `.cursor`).

@@ -4,7 +4,7 @@ param(
     [switch]$Deferred,
     [switch]$SkipCyber,
     [switch]$NoDeferredQueue,
-    [string]$HubRoot = "C:\Users\Asus\.cursor"
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent)
 )
 
 $ErrorActionPreference = "Continue"

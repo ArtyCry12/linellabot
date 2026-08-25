@@ -46,30 +46,39 @@ projects/*/*
 # User-level cursor rules
 !rules/
 !rules/**
-# Hub agents, hooks, tracking, templates, docs, lib
+# <<< CURSOR MANAGED BLOCK <<<
+
+# Hub OS + domain blocks (Cursor `*` would hide new trees)
+!blocks/
+!blocks/**
 !agents/
 !agents/**
+!lib/
+!lib/**
 !hooks/
 !hooks/**
 !hooks.json
 !ai-tracking/
 !ai-tracking/**
-!templates/
-!templates/**
-!docs/
-!docs/**
-!lib/
-!lib/**
+!.cursor/
+!.cursor/rules/
+!.cursor/rules/**
+!AGENTS.md
 !SYSTEM-REGISTRY.md
 !SYSTEM-TAXONOMY.md
-!AGENTS.md
+!SYSTEM-VISIBILITY-MAP.md
 !CLAUDE.md
-!mcp.json.example
 !.gitignore
-# Canvas artifacts
-!projects/*/canvases/
-!projects/*/canvases/**
-# <<< CURSOR MANAGED BLOCK <<<
+
+# Nested libraries: keep on disk, do not commit
+blocks/*/library/
+blocks/**/library/**
+blocks/design/skills/open-design/repo/
+blocks/design/skills/clone-website/template/
+blocks/seo-geo-aio/skills/seo-geo/library/
+blocks/security/skills/cybersecurity/library/
+mcp.json.store
+
 
 
 

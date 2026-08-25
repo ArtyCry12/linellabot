@@ -1,0 +1,11 @@
+{
+  "appliedAt": "2026-08-25T13:50:27.783Z",
+  "profile": "core",
+  "ids": [
+    "memory",
+    "gitnexus"
+  ],
+  "gitnexusHeapMb": 1536,
+  "store": "mcp.json.store",
+  "reloadWindow": true
+}

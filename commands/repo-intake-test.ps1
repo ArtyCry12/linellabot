@@ -1,4 +1,4 @@
-param([string]$HubRoot = "C:\Users\Asus\.cursor")
+param([string]$HubRoot = (Split-Path $PSScriptRoot -Parent))
 
 $ErrorActionPreference = "Stop"
 $fail = 0

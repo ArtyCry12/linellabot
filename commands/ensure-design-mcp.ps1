@@ -1,6 +1,6 @@
 # Ensure Stitch + Figma MCP are configured and descriptors synced
 $ErrorActionPreference = "Stop"
-$Hub = "C:\Users\Asus\.cursor"
+$Hub = (Split-Path $PSScriptRoot -Parent)
 $Commands = Join-Path $Hub "commands"
 
 Write-Host "=== Design MCP health (Stitch + Figma) ===" -ForegroundColor Cyan

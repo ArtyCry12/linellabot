@@ -1,18 +1,13 @@
 {
-  "schemaVersion": 2,
-  "updatedAt": "2026-08-25T01:36:52.785Z",
+  "schemaVersion": 3,
+  "updatedAt": "2026-08-25T13:30:00.000Z",
   "status": "live",
   "approvals": {
-    "autonomousDoD": "D-maximum-MASTER",
-    "graphifyPilot": "refused-see-GRAPHIFY-PILOT-DECISION",
-    "sentry": "ops-qa-oauth",
-    "telegram": "reports-files-only",
-    "notionVideo": "full-pass-or-residual"
-  },
-  "planes": {
-    "codeGraph": "gitnexus",
-    "entityRegistry": "this-file",
-    "graphify": "experimental-skill-on-disk-hub-pilot-refused"
+    "squad": "archived-restore-on-yes",
+    "sentry": "plugin-only",
+    "githubRepo": "cursor-hub-artyom",
+    "localFolder": ".cursor-do-not-rename",
+    "graphifyPilot": "refused"
   },
   "keep": [
     "task-router",
@@ -20,70 +15,43 @@
     "rtk",
     "user-profile",
     "memory-mcp",
-    "gitnexus-linellabot",
+    "gitnexus",
     "ponytail",
     "caveman",
-    "squad-agents-opt-in"
+    "ecosystem-architect"
   ],
+  "planes": {
+    "codeGraph": "gitnexus",
+    "entityRegistry": "this-file",
+    "archive": "skills/_archive",
+    "quarantine": "skills/_quarantine"
+  },
+  "hubRoot": "C:/Users/artyo/.cursor",
   "blocks": {
-    "governance": {
-      "status": "active",
-      "path": "ai-tracking/ecosystem-governance/"
-    },
-    "seo-geo-aio": {
-      "status": "active",
-      "path": "ai-tracking/ecosystem-governance/blocks/seo-geo-aio/",
-      "coreSkill": "skills/seo-geo/SKILL.md",
-      "route": "seo-geo-aio-block"
-    }
+    "seo-geo-aio": { "path": "blocks/seo-geo-aio/" },
+    "design": { "path": "blocks/design/" },
+    "security": { "path": "blocks/security/" },
+    "integrations": { "path": "blocks/integrations/" },
+    "agency": { "path": "blocks/agency/" },
+    "media": { "path": "blocks/media/" },
+    "qa": { "path": "blocks/qa/" },
+    "dev-os": { "path": "blocks/dev-os/" }
   },
   "agents": {
     "ecosystem-architect": {
       "tier": "CORE",
       "path": "agents/ecosystem-architect.md",
       "status": "active"
+    },
+    "squad": {
+      "status": "archived",
+      "path": "agents/_archive/"
     }
   },
   "mcp": {
-    "sentry": {
-      "profiles": [
-        "ops",
-        "qa"
-      ],
-      "alwaysOn": false
-    },
-    "gitnexusHeapMb": 1536
+    "sentry": { "mode": "plugin-only", "alwaysOn": false },
+    "gitnexusHeapMb": 1536,
+    "core": ["memory", "gitnexus"]
   },
-  "quarantineRoot": "skills/_quarantine",
-  "quarantineCounts": {
-    "soft1": 26,
-    "soft2": 3,
-    "note": "plus earlier restores of rule-backed skills"
-  },
-  "skillTiersHint": {
-    "CORE": [
-      "ecosystem-architect",
-      "seo-geo",
-      "security-hub",
-      "markitdown",
-      "project-squad",
-      "open-design",
-      "ponytail",
-      "caveman"
-    ],
-    "EXPERIMENTAL_ON_DISK": [
-      "graphify"
-    ],
-    "QUARANTINED_EXPERIMENTAL": [
-      "babyagi",
-      "crew-ai",
-      "llm-council"
-    ]
-  },
-  "lastClassifyDryRun": {
-    "path": "ai-tracking/ecosystem-governance/skills-classify-dry-run.json",
-    "quarantineCandidates": 0,
-    "quarantineSoftCandidates": 4,
-    "hubTop": 58
-  }
+  "quarantineRoot": "skills/_quarantine"
 }

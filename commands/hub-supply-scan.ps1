@@ -1,6 +1,6 @@
 # Lightweight supply-chain inventory when bumblebee.exe unavailable (Windows)
 param(
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [string[]]$Roots = @("C:\Users\Asus\.cursor", "C:\Users\Asus\projects")
 )
 

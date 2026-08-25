@@ -1,0 +1,17 @@
+---
+description: >-
+  Site legal/docs/licenses gap scan — privacy vs processors, cookies, imprint,
+  fonts/JS licenses, MD Law 195/GDPR, AI data flows. Triggers: юридический аудит
+  сайта, юрдокументы, ПДн, cookie banner, imprint, license registry, @site-compliance.
+alwaysApply: false
+---
+
+# Site compliance audit
+
+Load skill: `skills/site-compliance-audit/SKILL.md`
+
+Каждый запуск: живое чтение [references/sources.md](../skills/site-compliance-audit/references/sources.md), затем модули A–J.
+
+Не SEO-аудит (`seo-geo`). Не security DAST (`security-hub`) без отдельного запроса.
+
+Slash: `/site-compliance`

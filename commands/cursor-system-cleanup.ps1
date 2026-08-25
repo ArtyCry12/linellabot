@@ -3,7 +3,7 @@ param(
     [switch]$Apply,
     [switch]$SkipLocked,
     [switch]$Force,
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$ProjectsDest = "C:\Users\Asus\projects"
 )
 

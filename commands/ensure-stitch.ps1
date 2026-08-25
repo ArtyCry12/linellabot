@@ -1,7 +1,7 @@
 # Ensure Stitch MCP proxy + descriptors are healthy
 
 $ErrorActionPreference = "Stop"
-$Hub = "C:\Users\Asus\.cursor"
+$Hub = (Split-Path $PSScriptRoot -Parent)
 $Proxy = Join-Path $Hub "commands\stitch-mcp-proxy.mjs"
 $Sync = Join-Path $Hub "commands\sync-stitch-mcp-descriptors.mjs"
 $McpJson = Join-Path $Hub "mcp.json"

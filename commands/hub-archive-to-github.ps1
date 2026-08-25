@@ -1,5 +1,5 @@
 param(
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$RepoName = "cursor-hub-archive",
     [string]$Owner = "",
     [switch]$DryRun,

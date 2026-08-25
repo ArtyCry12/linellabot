@@ -4,8 +4,7 @@
   "ids": [
     "memory",
     "gitnexus",
-    "playwright",
-    "sentry"
+    "playwright"
   ],
   "gitnexusHeapMb": 1536
 }

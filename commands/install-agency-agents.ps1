@@ -1,7 +1,7 @@
 # Sync agency-agents Cursor rules into hub (selected divisions)
 param(
     [string]$RepoRoot = "C:\Users\Asus\projects\agency-agents",
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$Divisions = "marketing,sales,design,product,paid-media",
     [switch]$Convert
 )

@@ -1,7 +1,7 @@
 # Chat session digest (no hooks.json).
 # Writes short markdown under ai-tracking/chat-digests/ — not full transcripts.
 param(
-    [string]$HubRoot = "C:\Users\Asus\.cursor",
+    [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$Title = "",
     [string]$Summary = "",
     [string[]]$Done = @(),

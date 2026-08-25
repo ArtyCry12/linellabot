@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hub.local/security-hub/findings.schema.json",
+  "title": "SecurityHubFindings",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "tier", "findings", "summary"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "tier": {
+      "type": "string",
+      "enum": ["diff-ai", "secrets", "sast", "sca", "iac", "dast", "recon", "mixed"]
+    },
+    "target": { "type": ["string", "null"] },
+    "authorized": { "type": "boolean" },
+    "tool": { "type": "string" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "title", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "file": { "type": ["string", "null"] },
+          "line": { "type": ["integer", "null"] },
+          "severity": { "type": "string", "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO"] },
+          "category": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "recommendation": { "type": ["string", "null"] },
+          "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+          "rawRef": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["total", "bySeverity"],
+      "properties": {
+        "total": { "type": "integer" },
+        "bySeverity": { "type": "object" },
+        "missingTools": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
