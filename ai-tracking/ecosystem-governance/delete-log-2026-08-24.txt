@@ -1,0 +1,6 @@
+=== START 2026-08-24T22:44:25.3080323+03:00 ===
+Removing npm-cache...
+FAIL npm-cache still exists
+Removing CursorMigrate...
+OK CursorMigrate removed
+=== END 2026-08-24T23:00:18.8065831+03:00 ===

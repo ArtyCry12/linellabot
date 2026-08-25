@@ -1,0 +1,5082 @@
+{
+  "generatedAt": "2026-08-25T01:36:52.785Z",
+  "dryRun": true,
+  "moved": false,
+  "scope": "hub-top SKILL.md + archive/od-repo inventory counts",
+  "counts": {
+    "totalScanned": 411,
+    "hubTop": 58,
+    "byTier": {
+      "SECONDARY": 43,
+      "CORE": 14,
+      "EXPERIMENTAL": 278,
+      "DEPRECATED": 76
+    },
+    "byAction": {
+      "keep_routed": 39,
+      "quarantine_soft_candidate": 4,
+      "keep_active": 14,
+      "keep_experimental": 1,
+      "already_archived": 76,
+      "keep_on_disk_not_index": 277
+    },
+    "quarantineCandidates": 0,
+    "quarantineSoftCandidates": 4,
+    "indexNames": 125,
+    "routeSkillRefs": 57
+  },
+  "keepFromRegistry": [
+    "task-router",
+    "markitdown-hook",
+    "rtk",
+    "user-profile",
+    "memory-mcp",
+    "gitnexus-linellabot",
+    "ponytail",
+    "caveman",
+    "squad-agents-opt-in"
+  ],
+  "quarantineCandidates": [],
+  "quarantineSoftCandidates": [
+    {
+      "name": "awesome-design-md",
+      "path": "skills/awesome-design-md/SKILL.md",
+      "reasons": [
+        "listed in skills/_INDEX.md",
+        "not referenced in routes.json — soft quarantine review"
+      ],
+      "proposedDest": "skills/_quarantine/awesome-design-md/"
+    },
+    {
+      "name": "n8n-templates",
+      "path": "skills/n8n-templates/SKILL.md",
+      "reasons": [
+        "listed in skills/_INDEX.md",
+        "not referenced in routes.json — soft quarantine review"
+      ],
+      "proposedDest": "skills/_quarantine/n8n-templates/"
+    },
+    {
+      "name": "remotion",
+      "path": "skills/remotion/SKILL.md",
+      "reasons": [
+        "listed in skills/_INDEX.md",
+        "not referenced in routes.json — soft quarantine review"
+      ],
+      "proposedDest": "skills/_quarantine/remotion/"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "path": "skills/ui-ux-pro-max/SKILL.md",
+      "reasons": [
+        "listed in skills/_INDEX.md",
+        "not referenced in routes.json — soft quarantine review"
+      ],
+      "proposedDest": "skills/_quarantine/ui-ux-pro-max/"
+    }
+  ],
+  "hubTopByTier": {
+    "SECONDARY": [
+      "21st-design",
+      "agency-agents",
+      "ai-search-optimization",
+      "awesome-design-md",
+      "awesome-prompts",
+      "brainstorming",
+      "cloudflare-security-audit",
+      "code-review-pro",
+      "content-strategy",
+      "copywriting",
+      "core-web-vitals",
+      "design-stack",
+      "design-taste-frontend",
+      "devsecops-expert",
+      "entity-seo",
+      "firebase-security-rules-auditor",
+      "frontend-design",
+      "impeccable",
+      "marketing-ideas",
+      "marketing-psychology",
+      "n8n-templates",
+      "n8n-workflow",
+      "n8n-workflow-architect",
+      "n8n-workflow-automation",
+      "notion-tasks",
+      "notion-workspace",
+      "opc-seo-geo",
+      "playwright",
+      "playwright-visual-testing",
+      "pr-review",
+      "production-studio",
+      "programmatic-seo",
+      "qa-start",
+      "remotion",
+      "repo-intake",
+      "secret-scanning",
+      "seo-audit",
+      "shadcn",
+      "site-compliance-audit",
+      "stitch-shadcn-ui",
+      "ui-ux-pro-max",
+      "video-learning",
+      "web-design-guidelines"
+    ],
+    "CORE": [
+      "caveman",
+      "clone-website",
+      "cybersecurity",
+      "dev-os",
+      "ecosystem-architect",
+      "find-skills",
+      "markitdown",
+      "open-design",
+      "openrouter-free",
+      "ponytail",
+      "project-squad",
+      "prompt-engineering-coach",
+      "security-hub",
+      "seo-geo"
+    ],
+    "EXPERIMENTAL": [
+      "graphify"
+    ]
+  },
+  "items": [
+    {
+      "name": "21st-design",
+      "path": "skills/21st-design/SKILL.md",
+      "dir": "skills/21st-design",
+      "bucket": "hub-top",
+      "sizeBytes": 5290,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "agency-agents",
+      "path": "skills/agency-agents/SKILL.md",
+      "dir": "skills/agency-agents",
+      "bucket": "hub-top",
+      "sizeBytes": 2563,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "ai-search-optimization",
+      "path": "skills/ai-search-optimization/SKILL.md",
+      "dir": "skills/ai-search-optimization",
+      "bucket": "hub-top",
+      "sizeBytes": 789,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "awesome-design-md",
+      "path": "skills/awesome-design-md/SKILL.md",
+      "dir": "skills/awesome-design-md",
+      "bucket": "hub-top",
+      "sizeBytes": 5522,
+      "tier": "SECONDARY",
+      "action": "quarantine_soft_candidate",
+      "reasons": [
+        "listed in skills/_INDEX.md",
+        "not referenced in routes.json — soft quarantine review"
+      ]
+    },
+    {
+      "name": "awesome-prompts",
+      "path": "skills/awesome-prompts/SKILL.md",
+      "dir": "skills/awesome-prompts",
+      "bucket": "hub-top",
+      "sizeBytes": 3390,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "brainstorming",
+      "path": "skills/brainstorming/SKILL.md",
+      "dir": "skills/brainstorming",
+      "bucket": "hub-top",
+      "sizeBytes": 10435,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "caveman",
+      "path": "skills/caveman/SKILL.md",
+      "dir": "skills/caveman",
+      "bucket": "hub-top",
+      "sizeBytes": 1916,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "clone-website",
+      "path": "skills/clone-website/SKILL.md",
+      "dir": "skills/clone-website",
+      "bucket": "hub-top",
+      "sizeBytes": 31729,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "cloudflare-security-audit",
+      "path": "skills/cloudflare-security-audit/SKILL.md",
+      "dir": "skills/cloudflare-security-audit",
+      "bucket": "hub-top",
+      "sizeBytes": 906,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "code-review-pro",
+      "path": "skills/code-review-pro/SKILL.md",
+      "dir": "skills/code-review-pro",
+      "bucket": "hub-top",
+      "sizeBytes": 754,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "content-strategy",
+      "path": "skills/content-strategy/SKILL.md",
+      "dir": "skills/content-strategy",
+      "bucket": "hub-top",
+      "sizeBytes": 639,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "copywriting",
+      "path": "skills/copywriting/SKILL.md",
+      "dir": "skills/copywriting",
+      "bucket": "hub-top",
+      "sizeBytes": 727,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "core-web-vitals",
+      "path": "skills/core-web-vitals/SKILL.md",
+      "dir": "skills/core-web-vitals",
+      "bucket": "hub-top",
+      "sizeBytes": 737,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "cybersecurity",
+      "path": "skills/cybersecurity/SKILL.md",
+      "dir": "skills/cybersecurity",
+      "bucket": "hub-top",
+      "sizeBytes": 7261,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "design-stack",
+      "path": "skills/design-stack/SKILL.md",
+      "dir": "skills/design-stack",
+      "bucket": "hub-top",
+      "sizeBytes": 1898,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "design-taste-frontend",
+      "path": "skills/design-taste-frontend/SKILL.md",
+      "dir": "skills/design-taste-frontend",
+      "bucket": "hub-top",
+      "sizeBytes": 926,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "dev-os",
+      "path": "skills/dev-os/SKILL.md",
+      "dir": "skills/dev-os",
+      "bucket": "hub-top",
+      "sizeBytes": 2197,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "devsecops-expert",
+      "path": "skills/devsecops-expert/SKILL.md",
+      "dir": "skills/devsecops-expert",
+      "bucket": "hub-top",
+      "sizeBytes": 754,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "ecosystem-architect",
+      "path": "skills/ecosystem-architect/SKILL.md",
+      "dir": "skills/ecosystem-architect",
+      "bucket": "hub-top",
+      "sizeBytes": 1403,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "entity-seo",
+      "path": "skills/entity-seo/SKILL.md",
+      "dir": "skills/entity-seo",
+      "bucket": "hub-top",
+      "sizeBytes": 715,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "find-skills",
+      "path": "skills/find-skills/SKILL.md",
+      "dir": "skills/find-skills",
+      "bucket": "hub-top",
+      "sizeBytes": 2802,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "firebase-security-rules-auditor",
+      "path": "skills/firebase-security-rules-auditor/SKILL.md",
+      "dir": "skills/firebase-security-rules-auditor",
+      "bucket": "hub-top",
+      "sizeBytes": 815,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "frontend-design",
+      "path": "skills/frontend-design/SKILL.md",
+      "dir": "skills/frontend-design",
+      "bucket": "hub-top",
+      "sizeBytes": 4274,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "graphify",
+      "path": "skills/graphify/SKILL.md",
+      "dir": "skills/graphify",
+      "bucket": "hub-top",
+      "sizeBytes": 33013,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_experimental",
+      "reasons": [
+        "experimental hint"
+      ]
+    },
+    {
+      "name": "impeccable",
+      "path": "skills/impeccable/SKILL.md",
+      "dir": "skills/impeccable",
+      "bucket": "hub-top",
+      "sizeBytes": 10421,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "marketing-ideas",
+      "path": "skills/marketing-ideas/SKILL.md",
+      "dir": "skills/marketing-ideas",
+      "bucket": "hub-top",
+      "sizeBytes": 598,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "marketing-psychology",
+      "path": "skills/marketing-psychology/SKILL.md",
+      "dir": "skills/marketing-psychology",
+      "bucket": "hub-top",
+      "sizeBytes": 655,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "markitdown",
+      "path": "skills/markitdown/SKILL.md",
+      "dir": "skills/markitdown",
+      "bucket": "hub-top",
+      "sizeBytes": 3804,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "n8n-templates",
+      "path": "skills/n8n-templates/SKILL.md",
+      "dir": "skills/n8n-templates",
+      "bucket": "hub-top",
+      "sizeBytes": 2278,
+      "tier": "SECONDARY",
+      "action": "quarantine_soft_candidate",
+      "reasons": [
+        "listed in skills/_INDEX.md",
+        "not referenced in routes.json — soft quarantine review"
+      ]
+    },
+    {
+      "name": "n8n-workflow",
+      "path": "skills/n8n-workflow/SKILL.md",
+      "dir": "skills/n8n-workflow",
+      "bucket": "hub-top",
+      "sizeBytes": 4417,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "n8n-workflow-architect",
+      "path": "skills/n8n-workflow-architect/SKILL.md",
+      "dir": "skills/n8n-workflow-architect",
+      "bucket": "hub-top",
+      "sizeBytes": 831,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "n8n-workflow-automation",
+      "path": "skills/n8n-workflow-automation/SKILL.md",
+      "dir": "skills/n8n-workflow-automation",
+      "bucket": "hub-top",
+      "sizeBytes": 802,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "notion-tasks",
+      "path": "skills/notion-tasks/SKILL.md",
+      "dir": "skills/notion-tasks",
+      "bucket": "hub-top",
+      "sizeBytes": 1344,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "notion-workspace",
+      "path": "skills/notion-workspace/SKILL.md",
+      "dir": "skills/notion-workspace",
+      "bucket": "hub-top",
+      "sizeBytes": 2834,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "opc-seo-geo",
+      "path": "skills/opc-seo-geo/SKILL.md",
+      "dir": "skills/opc-seo-geo",
+      "bucket": "hub-top",
+      "sizeBytes": 776,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "open-design",
+      "path": "skills/open-design/SKILL.md",
+      "dir": "skills/open-design",
+      "bucket": "hub-top",
+      "sizeBytes": 4218,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "openrouter-free",
+      "path": "skills/openrouter-free/SKILL.md",
+      "dir": "skills/openrouter-free",
+      "bucket": "hub-top",
+      "sizeBytes": 3102,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "playwright",
+      "path": "skills/playwright/SKILL.md",
+      "dir": "skills/playwright",
+      "bucket": "hub-top",
+      "sizeBytes": 738,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "playwright-visual-testing",
+      "path": "skills/playwright-visual-testing/SKILL.md",
+      "dir": "skills/playwright-visual-testing",
+      "bucket": "hub-top",
+      "sizeBytes": 812,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "ponytail",
+      "path": "skills/ponytail/SKILL.md",
+      "dir": "skills/ponytail",
+      "bucket": "hub-top",
+      "sizeBytes": 2954,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "pr-review",
+      "path": "skills/pr-review/SKILL.md",
+      "dir": "skills/pr-review",
+      "bucket": "hub-top",
+      "sizeBytes": 2905,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "production-studio",
+      "path": "skills/production-studio/SKILL.md",
+      "dir": "skills/production-studio",
+      "bucket": "hub-top",
+      "sizeBytes": 2863,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "programmatic-seo",
+      "path": "skills/programmatic-seo/SKILL.md",
+      "dir": "skills/programmatic-seo",
+      "bucket": "hub-top",
+      "sizeBytes": 618,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "project-squad",
+      "path": "skills/project-squad/SKILL.md",
+      "dir": "skills/project-squad",
+      "bucket": "hub-top",
+      "sizeBytes": 4262,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "prompt-engineering-coach",
+      "path": "skills/prompt-engineering-coach/SKILL.md",
+      "dir": "skills/prompt-engineering-coach",
+      "bucket": "hub-top",
+      "sizeBytes": 2808,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "qa-start",
+      "path": "skills/qa-start/SKILL.md",
+      "dir": "skills/qa-start",
+      "bucket": "hub-top",
+      "sizeBytes": 695,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "remotion",
+      "path": "skills/remotion/SKILL.md",
+      "dir": "skills/remotion",
+      "bucket": "hub-top",
+      "sizeBytes": 10253,
+      "tier": "SECONDARY",
+      "action": "quarantine_soft_candidate",
+      "reasons": [
+        "listed in skills/_INDEX.md",
+        "not referenced in routes.json — soft quarantine review"
+      ]
+    },
+    {
+      "name": "repo-intake",
+      "path": "skills/repo-intake/SKILL.md",
+      "dir": "skills/repo-intake",
+      "bucket": "hub-top",
+      "sizeBytes": 3261,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "secret-scanning",
+      "path": "skills/secret-scanning/SKILL.md",
+      "dir": "skills/secret-scanning",
+      "bucket": "hub-top",
+      "sizeBytes": 732,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "security-hub",
+      "path": "skills/security-hub/SKILL.md",
+      "dir": "skills/security-hub",
+      "bucket": "hub-top",
+      "sizeBytes": 3838,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "seo-audit",
+      "path": "skills/seo-audit/SKILL.md",
+      "dir": "skills/seo-audit",
+      "bucket": "hub-top",
+      "sizeBytes": 719,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "seo-geo",
+      "path": "skills/seo-geo/SKILL.md",
+      "dir": "skills/seo-geo",
+      "bucket": "hub-top",
+      "sizeBytes": 6717,
+      "tier": "CORE",
+      "action": "keep_active",
+      "reasons": [
+        "CORE allowlist"
+      ]
+    },
+    {
+      "name": "shadcn",
+      "path": "skills/shadcn/SKILL.md",
+      "dir": "skills/shadcn",
+      "bucket": "hub-top",
+      "sizeBytes": 767,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "site-compliance-audit",
+      "path": "skills/site-compliance-audit/SKILL.md",
+      "dir": "skills/site-compliance-audit",
+      "bucket": "hub-top",
+      "sizeBytes": 7671,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "stitch-shadcn-ui",
+      "path": "skills/stitch-shadcn-ui/SKILL.md",
+      "dir": "skills/stitch-shadcn-ui",
+      "bucket": "hub-top",
+      "sizeBytes": 752,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "path": "skills/ui-ux-pro-max/SKILL.md",
+      "dir": "skills/ui-ux-pro-max",
+      "bucket": "hub-top",
+      "sizeBytes": 11532,
+      "tier": "SECONDARY",
+      "action": "quarantine_soft_candidate",
+      "reasons": [
+        "listed in skills/_INDEX.md",
+        "not referenced in routes.json — soft quarantine review"
+      ]
+    },
+    {
+      "name": "video-learning",
+      "path": "skills/video-learning/SKILL.md",
+      "dir": "skills/video-learning",
+      "bucket": "hub-top",
+      "sizeBytes": 1539,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "web-design-guidelines",
+      "path": "skills/web-design-guidelines/SKILL.md",
+      "dir": "skills/web-design-guidelines",
+      "bucket": "hub-top",
+      "sizeBytes": 1056,
+      "tier": "SECONDARY",
+      "action": "keep_routed",
+      "reasons": [
+        "referenced in routes.json"
+      ]
+    },
+    {
+      "name": "game-studios-multiagent",
+      "path": "skills/_archive/game-studios-multiagent/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent",
+      "bucket": "archive",
+      "sizeBytes": 9058,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "adopt",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/adopt/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/adopt",
+      "bucket": "archive",
+      "sizeBytes": 18016,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "architecture-decision",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/architecture-decision/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/architecture-decision",
+      "bucket": "archive",
+      "sizeBytes": 19331,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "architecture-review",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/architecture-review/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/architecture-review",
+      "bucket": "archive",
+      "sizeBytes": 26723,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "art-bible",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/art-bible/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/art-bible",
+      "bucket": "archive",
+      "sizeBytes": 14837,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "asset-audit",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/asset-audit/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/asset-audit",
+      "bucket": "archive",
+      "sizeBytes": 2786,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "asset-spec",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/asset-spec/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/asset-spec",
+      "bucket": "archive",
+      "sizeBytes": 16401,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "balance-check",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/balance-check/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/balance-check",
+      "bucket": "archive",
+      "sizeBytes": 4476,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "brainstorm",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/brainstorm/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/brainstorm",
+      "bucket": "archive",
+      "sizeBytes": 20121,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "bug-report",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/bug-report/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/bug-report",
+      "bucket": "archive",
+      "sizeBytes": 5980,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "bug-triage",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/bug-triage/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/bug-triage",
+      "bucket": "archive",
+      "sizeBytes": 7897,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "changelog",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/changelog/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/changelog",
+      "bucket": "archive",
+      "sizeBytes": 5919,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "code-review",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/code-review/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/code-review",
+      "bucket": "archive",
+      "sizeBytes": 7643,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "consistency-check",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/consistency-check/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/consistency-check",
+      "bucket": "archive",
+      "sizeBytes": 10698,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "content-audit",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/content-audit/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/content-audit",
+      "bucket": "archive",
+      "sizeBytes": 7173,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "create-architecture",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/create-architecture/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/create-architecture",
+      "bucket": "archive",
+      "sizeBytes": 18906,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "create-control-manifest",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/create-control-manifest/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/create-control-manifest",
+      "bucket": "archive",
+      "sizeBytes": 9819,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "create-epics",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/create-epics/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/create-epics",
+      "bucket": "archive",
+      "sizeBytes": 9029,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "create-stories",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/create-stories/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/create-stories",
+      "bucket": "archive",
+      "sizeBytes": 14278,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "day-one-patch",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/day-one-patch/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/day-one-patch",
+      "bucket": "archive",
+      "sizeBytes": 8475,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "design-review",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/design-review/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/design-review",
+      "bucket": "archive",
+      "sizeBytes": 14058,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "design-system",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/design-system/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/design-system",
+      "bucket": "archive",
+      "sizeBytes": 41609,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "dev-story",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/dev-story/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/dev-story",
+      "bucket": "archive",
+      "sizeBytes": 17324,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "estimate",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/estimate/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/estimate",
+      "bucket": "archive",
+      "sizeBytes": 4271,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "gate-check",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/gate-check/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/gate-check",
+      "bucket": "archive",
+      "sizeBytes": 30442,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "help",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/help/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/help",
+      "bucket": "archive",
+      "sizeBytes": 8315,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "hotfix",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/hotfix/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/hotfix",
+      "bucket": "archive",
+      "sizeBytes": 6330,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "launch-checklist",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/launch-checklist/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/launch-checklist",
+      "bucket": "archive",
+      "sizeBytes": 7906,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "localize",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/localize/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/localize",
+      "bucket": "archive",
+      "sizeBytes": 18977,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "map-systems",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/map-systems/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/map-systems",
+      "bucket": "archive",
+      "sizeBytes": 16168,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "milestone-review",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/milestone-review/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/milestone-review",
+      "bucket": "archive",
+      "sizeBytes": 5384,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "onboard",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/onboard/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/onboard",
+      "bucket": "archive",
+      "sizeBytes": 2743,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "patch-notes",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/patch-notes/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/patch-notes",
+      "bucket": "archive",
+      "sizeBytes": 6037,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "perf-profile",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/perf-profile/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/perf-profile",
+      "bucket": "archive",
+      "sizeBytes": 4107,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "playtest-report",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/playtest-report/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/playtest-report",
+      "bucket": "archive",
+      "sizeBytes": 5080,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "project-stage-detect",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/project-stage-detect/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/project-stage-detect",
+      "bucket": "archive",
+      "sizeBytes": 6411,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "propagate-design-change",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/propagate-design-change/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/propagate-design-change",
+      "bucket": "archive",
+      "sizeBytes": 7845,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "prototype",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/prototype/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/prototype",
+      "bucket": "archive",
+      "sizeBytes": 29193,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "qa-plan",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/qa-plan/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/qa-plan",
+      "bucket": "archive",
+      "sizeBytes": 12765,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "quick-design",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/quick-design/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/quick-design",
+      "bucket": "archive",
+      "sizeBytes": 10632,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "regression-suite",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/regression-suite/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/regression-suite",
+      "bucket": "archive",
+      "sizeBytes": 9232,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "release-checklist",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/release-checklist/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/release-checklist",
+      "bucket": "archive",
+      "sizeBytes": 6157,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "retrospective",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/retrospective/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/retrospective",
+      "bucket": "archive",
+      "sizeBytes": 8754,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "reverse-document",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/reverse-document/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/reverse-document",
+      "bucket": "archive",
+      "sizeBytes": 9007,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "review-all-gdds",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/review-all-gdds/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/review-all-gdds",
+      "bucket": "archive",
+      "sizeBytes": 27115,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "scope-check",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/scope-check/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/scope-check",
+      "bucket": "archive",
+      "sizeBytes": 4326,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "security-audit",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/security-audit/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/security-audit",
+      "bucket": "archive",
+      "sizeBytes": 8751,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "setup-engine",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/setup-engine/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/setup-engine",
+      "bucket": "archive",
+      "sizeBytes": 34407,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "skill-improve",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/skill-improve/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/skill-improve",
+      "bucket": "archive",
+      "sizeBytes": 4718,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "skill-test",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/skill-test/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/skill-test",
+      "bucket": "archive",
+      "sizeBytes": 13159,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "smoke-check",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/smoke-check/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/smoke-check",
+      "bucket": "archive",
+      "sizeBytes": 15984,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "soak-test",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/soak-test/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/soak-test",
+      "bucket": "archive",
+      "sizeBytes": 9488,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "sprint-plan",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/sprint-plan/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/sprint-plan",
+      "bucket": "archive",
+      "sizeBytes": 11555,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "sprint-status",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/sprint-status/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/sprint-status",
+      "bucket": "archive",
+      "sizeBytes": 8407,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "start",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/start/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/start",
+      "bucket": "archive",
+      "sizeBytes": 13501,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "story-done",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/story-done/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/story-done",
+      "bucket": "archive",
+      "sizeBytes": 20823,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "story-readiness",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/story-readiness/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/story-readiness",
+      "bucket": "archive",
+      "sizeBytes": 16119,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-audio",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-audio/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-audio",
+      "bucket": "archive",
+      "sizeBytes": 7753,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-combat",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-combat/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-combat",
+      "bucket": "archive",
+      "sizeBytes": 7689,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-level",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-level/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-level",
+      "bucket": "archive",
+      "sizeBytes": 11405,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-live-ops",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-live-ops/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-live-ops",
+      "bucket": "archive",
+      "sizeBytes": 9733,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-narrative",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-narrative/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-narrative",
+      "bucket": "archive",
+      "sizeBytes": 7781,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-polish",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-polish/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-polish",
+      "bucket": "archive",
+      "sizeBytes": 7507,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-qa",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-qa/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-qa",
+      "bucket": "archive",
+      "sizeBytes": 12037,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-release",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-release/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-release",
+      "bucket": "archive",
+      "sizeBytes": 9871,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "team-ui",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-ui/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/team-ui",
+      "bucket": "archive",
+      "sizeBytes": 11851,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "tech-debt",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/tech-debt/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/tech-debt",
+      "bucket": "archive",
+      "sizeBytes": 5239,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "test-evidence-review",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/test-evidence-review/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/test-evidence-review",
+      "bucket": "archive",
+      "sizeBytes": 8978,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "test-flakiness",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/test-flakiness/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/test-flakiness",
+      "bucket": "archive",
+      "sizeBytes": 8163,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "test-helpers",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/test-helpers/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/test-helpers",
+      "bucket": "archive",
+      "sizeBytes": 12441,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "test-setup",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/test-setup/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/test-setup",
+      "bucket": "archive",
+      "sizeBytes": 12243,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "ux-design",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/ux-design/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/ux-design",
+      "bucket": "archive",
+      "sizeBytes": 33660,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "ux-review",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/ux-review/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/ux-review",
+      "bucket": "archive",
+      "sizeBytes": 10626,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "vertical-slice",
+      "path": "skills/_archive/game-studios-multiagent/template/.claude/skills/vertical-slice/SKILL.md",
+      "dir": "skills/_archive/game-studios-multiagent/template/.claude/skills/vertical-slice",
+      "bucket": "archive",
+      "sizeBytes": 16893,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "huashu-design",
+      "path": "skills/_archive/huashu-design/SKILL.md",
+      "dir": "skills/_archive/huashu-design",
+      "bucket": "archive",
+      "sizeBytes": 61429,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "huashu-design-agents",
+      "path": "skills/_archive/huashu-design-agents/SKILL.md",
+      "dir": "skills/_archive/huashu-design-agents",
+      "bucket": "archive",
+      "sizeBytes": 61429,
+      "tier": "DEPRECATED",
+      "action": "already_archived",
+      "reasons": [
+        "under skills/_archive"
+      ]
+    },
+    {
+      "name": "audio-jingle",
+      "path": "skills/open-design/repo/design-templates/audio-jingle/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/audio-jingle",
+      "bucket": "od-repo",
+      "sizeBytes": 4570,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "blog-post",
+      "path": "skills/open-design/repo/design-templates/blog-post/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/blog-post",
+      "bucket": "od-repo",
+      "sizeBytes": 2979,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "clinical-case-report",
+      "path": "skills/open-design/repo/design-templates/clinical-case-report/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/clinical-case-report",
+      "bucket": "od-repo",
+      "sizeBytes": 9063,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "contact-widget",
+      "path": "skills/open-design/repo/design-templates/contact-widget/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/contact-widget",
+      "bucket": "od-repo",
+      "sizeBytes": 6477,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "critique",
+      "path": "skills/open-design/repo/design-templates/critique/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/critique",
+      "bucket": "od-repo",
+      "sizeBytes": 9942,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "dashboard",
+      "path": "skills/open-design/repo/design-templates/dashboard/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/dashboard",
+      "bucket": "od-repo",
+      "sizeBytes": 2847,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "dating-web",
+      "path": "skills/open-design/repo/design-templates/dating-web/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/dating-web",
+      "bucket": "od-repo",
+      "sizeBytes": 3997,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "dcf-valuation",
+      "path": "skills/open-design/repo/design-templates/dcf-valuation/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/dcf-valuation",
+      "bucket": "od-repo",
+      "sizeBytes": 4849,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "digital-eguide",
+      "path": "skills/open-design/repo/design-templates/digital-eguide/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/digital-eguide",
+      "bucket": "od-repo",
+      "sizeBytes": 3802,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "docs-page",
+      "path": "skills/open-design/repo/design-templates/docs-page/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/docs-page",
+      "bucket": "od-repo",
+      "sizeBytes": 3095,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "email-marketing",
+      "path": "skills/open-design/repo/design-templates/email-marketing/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/email-marketing",
+      "bucket": "od-repo",
+      "sizeBytes": 3572,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "eng-runbook",
+      "path": "skills/open-design/repo/design-templates/eng-runbook/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/eng-runbook",
+      "bucket": "od-repo",
+      "sizeBytes": 1591,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "finance-report",
+      "path": "skills/open-design/repo/design-templates/finance-report/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/finance-report",
+      "bucket": "od-repo",
+      "sizeBytes": 2199,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "flowai-live-dashboard-template",
+      "path": "skills/open-design/repo/design-templates/flowai-live-dashboard-template/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/flowai-live-dashboard-template",
+      "bucket": "od-repo",
+      "sizeBytes": 3609,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gamified-app",
+      "path": "skills/open-design/repo/design-templates/gamified-app/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/gamified-app",
+      "bucket": "od-repo",
+      "sizeBytes": 4611,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "github-dashboard",
+      "path": "skills/open-design/repo/design-templates/github-dashboard/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/github-dashboard",
+      "bucket": "od-repo",
+      "sizeBytes": 7493,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "guizang-ppt",
+      "path": "skills/open-design/repo/design-templates/guizang-ppt/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/guizang-ppt",
+      "bucket": "od-repo",
+      "sizeBytes": 19637,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "hr-onboarding",
+      "path": "skills/open-design/repo/design-templates/hr-onboarding/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/hr-onboarding",
+      "bucket": "od-repo",
+      "sizeBytes": 1647,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt",
+      "path": "skills/open-design/repo/design-templates/html-ppt/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt",
+      "bucket": "od-repo",
+      "sizeBytes": 16505,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-course-module",
+      "path": "skills/open-design/repo/design-templates/html-ppt-course-module/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-course-module",
+      "bucket": "od-repo",
+      "sizeBytes": 5754,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-graphify-dark-graph",
+      "path": "skills/open-design/repo/design-templates/html-ppt-graphify-dark-graph/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-graphify-dark-graph",
+      "bucket": "od-repo",
+      "sizeBytes": 5726,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-hermes-cyber-terminal",
+      "path": "skills/open-design/repo/design-templates/html-ppt-hermes-cyber-terminal/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-hermes-cyber-terminal",
+      "bucket": "od-repo",
+      "sizeBytes": 5663,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-knowledge-arch-blueprint",
+      "path": "skills/open-design/repo/design-templates/html-ppt-knowledge-arch-blueprint/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-knowledge-arch-blueprint",
+      "bucket": "od-repo",
+      "sizeBytes": 5776,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-obsidian-claude-gradient",
+      "path": "skills/open-design/repo/design-templates/html-ppt-obsidian-claude-gradient/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-obsidian-claude-gradient",
+      "bucket": "od-repo",
+      "sizeBytes": 5736,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-pitch-deck",
+      "path": "skills/open-design/repo/design-templates/html-ppt-pitch-deck/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-pitch-deck",
+      "bucket": "od-repo",
+      "sizeBytes": 5659,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-presenter-mode-reveal",
+      "path": "skills/open-design/repo/design-templates/html-ppt-presenter-mode-reveal/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-presenter-mode-reveal",
+      "bucket": "od-repo",
+      "sizeBytes": 5643,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-product-launch",
+      "path": "skills/open-design/repo/design-templates/html-ppt-product-launch/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-product-launch",
+      "bucket": "od-repo",
+      "sizeBytes": 5579,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-taste-brutalist",
+      "path": "skills/open-design/repo/design-templates/html-ppt-taste-brutalist/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-taste-brutalist",
+      "bucket": "od-repo",
+      "sizeBytes": 4931,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-taste-editorial",
+      "path": "skills/open-design/repo/design-templates/html-ppt-taste-editorial/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-taste-editorial",
+      "bucket": "od-repo",
+      "sizeBytes": 4344,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-tech-sharing",
+      "path": "skills/open-design/repo/design-templates/html-ppt-tech-sharing/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-tech-sharing",
+      "bucket": "od-repo",
+      "sizeBytes": 5561,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-testing-safety-alert",
+      "path": "skills/open-design/repo/design-templates/html-ppt-testing-safety-alert/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-testing-safety-alert",
+      "bucket": "od-repo",
+      "sizeBytes": 5873,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-weekly-report",
+      "path": "skills/open-design/repo/design-templates/html-ppt-weekly-report/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-weekly-report",
+      "bucket": "od-repo",
+      "sizeBytes": 5567,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-xhs-pastel-card",
+      "path": "skills/open-design/repo/design-templates/html-ppt-xhs-pastel-card/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-xhs-pastel-card",
+      "bucket": "od-repo",
+      "sizeBytes": 5609,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-xhs-white-editorial",
+      "path": "skills/open-design/repo/design-templates/html-ppt-xhs-white-editorial/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-xhs-white-editorial",
+      "bucket": "od-repo",
+      "sizeBytes": 5743,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-8-bit-orbit",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-8-bit-orbit/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-8-bit-orbit",
+      "bucket": "od-repo",
+      "sizeBytes": 4954,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-biennale-yellow",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-biennale-yellow/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-biennale-yellow",
+      "bucket": "od-repo",
+      "sizeBytes": 5073,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-block-frame",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-block-frame/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-block-frame",
+      "bucket": "od-repo",
+      "sizeBytes": 5036,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-blue-professional",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-blue-professional/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-blue-professional",
+      "bucket": "od-repo",
+      "sizeBytes": 5020,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-bold-poster",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-bold-poster/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-bold-poster",
+      "bucket": "od-repo",
+      "sizeBytes": 4988,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-broadside",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-broadside/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-broadside",
+      "bucket": "od-repo",
+      "sizeBytes": 5021,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-capsule",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-capsule/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-capsule",
+      "bucket": "od-repo",
+      "sizeBytes": 4894,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-cartesian",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-cartesian/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-cartesian",
+      "bucket": "od-repo",
+      "sizeBytes": 5157,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-cobalt-grid",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-cobalt-grid/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-cobalt-grid",
+      "bucket": "od-repo",
+      "sizeBytes": 5101,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-coral",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-coral/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-coral",
+      "bucket": "od-repo",
+      "sizeBytes": 4943,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-creative-mode",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-creative-mode/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-creative-mode",
+      "bucket": "od-repo",
+      "sizeBytes": 5512,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-daisy-days",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-daisy-days/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-daisy-days",
+      "bucket": "od-repo",
+      "sizeBytes": 5205,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-editorial-tri-tone",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-editorial-tri-tone/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-editorial-tri-tone",
+      "bucket": "od-repo",
+      "sizeBytes": 5493,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-grove",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-grove/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-grove",
+      "bucket": "od-repo",
+      "sizeBytes": 5114,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-long-table",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-long-table/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-long-table",
+      "bucket": "od-repo",
+      "sizeBytes": 4984,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-mat",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-mat/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-mat",
+      "bucket": "od-repo",
+      "sizeBytes": 5076,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-monochrome",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-monochrome/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-monochrome",
+      "bucket": "od-repo",
+      "sizeBytes": 4998,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-neo-grid-bold",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-neo-grid-bold/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-neo-grid-bold",
+      "bucket": "od-repo",
+      "sizeBytes": 5408,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-peoples-platform",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-peoples-platform/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-peoples-platform",
+      "bucket": "od-repo",
+      "sizeBytes": 5579,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-pin-and-paper",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-pin-and-paper/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-pin-and-paper",
+      "bucket": "od-repo",
+      "sizeBytes": 5677,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-pink-script",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-pink-script/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-pink-script",
+      "bucket": "od-repo",
+      "sizeBytes": 5501,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-playful",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-playful/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-playful",
+      "bucket": "od-repo",
+      "sizeBytes": 5036,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-raw-grid",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-raw-grid/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-raw-grid",
+      "bucket": "od-repo",
+      "sizeBytes": 5030,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-retro-windows",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-retro-windows/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-retro-windows",
+      "bucket": "od-repo",
+      "sizeBytes": 5010,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-retro-zine",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-retro-zine/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-retro-zine",
+      "bucket": "od-repo",
+      "sizeBytes": 4922,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-sakura-chroma",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-sakura-chroma/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-sakura-chroma",
+      "bucket": "od-repo",
+      "sizeBytes": 5258,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-scatterbrain",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-scatterbrain/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-scatterbrain",
+      "bucket": "od-repo",
+      "sizeBytes": 5175,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-signal",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-signal/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-signal",
+      "bucket": "od-repo",
+      "sizeBytes": 4972,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-soft-editorial",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-soft-editorial/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-soft-editorial",
+      "bucket": "od-repo",
+      "sizeBytes": 5462,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-stencil-tablet",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-stencil-tablet/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-stencil-tablet",
+      "bucket": "od-repo",
+      "sizeBytes": 5634,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-studio",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-studio/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-studio",
+      "bucket": "od-repo",
+      "sizeBytes": 4977,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-zhangzara-vellum",
+      "path": "skills/open-design/repo/design-templates/html-ppt-zhangzara-vellum/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/html-ppt-zhangzara-vellum",
+      "bucket": "od-repo",
+      "sizeBytes": 5042,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "hyperframes",
+      "path": "skills/open-design/repo/design-templates/hyperframes/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/hyperframes",
+      "bucket": "od-repo",
+      "sizeBytes": 28614,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "ib-pitch-book",
+      "path": "skills/open-design/repo/design-templates/ib-pitch-book/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/ib-pitch-book",
+      "bucket": "od-repo",
+      "sizeBytes": 8292,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "image-poster",
+      "path": "skills/open-design/repo/design-templates/image-poster/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/image-poster",
+      "bucket": "od-repo",
+      "sizeBytes": 3709,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "invoice",
+      "path": "skills/open-design/repo/design-templates/invoice/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/invoice",
+      "bucket": "od-repo",
+      "sizeBytes": 1444,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "kami-deck",
+      "path": "skills/open-design/repo/design-templates/kami-deck/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/kami-deck",
+      "bucket": "od-repo",
+      "sizeBytes": 9092,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "kami-landing",
+      "path": "skills/open-design/repo/design-templates/kami-landing/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/kami-landing",
+      "bucket": "od-repo",
+      "sizeBytes": 9773,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "kanban-board",
+      "path": "skills/open-design/repo/design-templates/kanban-board/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/kanban-board",
+      "bucket": "od-repo",
+      "sizeBytes": 1606,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "last30days",
+      "path": "skills/open-design/repo/design-templates/last30days/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/last30days",
+      "bucket": "od-repo",
+      "sizeBytes": 5158,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "live-artifact",
+      "path": "skills/open-design/repo/design-templates/live-artifact/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/live-artifact",
+      "bucket": "od-repo",
+      "sizeBytes": 9034,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "live-dashboard",
+      "path": "skills/open-design/repo/design-templates/live-dashboard/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/live-dashboard",
+      "bucket": "od-repo",
+      "sizeBytes": 8593,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "magazine-poster",
+      "path": "skills/open-design/repo/design-templates/magazine-poster/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/magazine-poster",
+      "bucket": "od-repo",
+      "sizeBytes": 3687,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "meeting-notes",
+      "path": "skills/open-design/repo/design-templates/meeting-notes/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/meeting-notes",
+      "bucket": "od-repo",
+      "sizeBytes": 1354,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "mobile-app",
+      "path": "skills/open-design/repo/design-templates/mobile-app/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/mobile-app",
+      "bucket": "od-repo",
+      "sizeBytes": 3962,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "mobile-onboarding",
+      "path": "skills/open-design/repo/design-templates/mobile-onboarding/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/mobile-onboarding",
+      "bucket": "od-repo",
+      "sizeBytes": 1635,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "motion-frames",
+      "path": "skills/open-design/repo/design-templates/motion-frames/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/motion-frames",
+      "bucket": "od-repo",
+      "sizeBytes": 3783,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "open-design-landing",
+      "path": "skills/open-design/repo/design-templates/open-design-landing/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/open-design-landing",
+      "bucket": "od-repo",
+      "sizeBytes": 13859,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "open-design-landing-deck",
+      "path": "skills/open-design/repo/design-templates/open-design-landing-deck/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/open-design-landing-deck",
+      "bucket": "od-repo",
+      "sizeBytes": 10267,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "orbit-general",
+      "path": "skills/open-design/repo/design-templates/orbit-general/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/orbit-general",
+      "bucket": "od-repo",
+      "sizeBytes": 11475,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "orbit-github",
+      "path": "skills/open-design/repo/design-templates/orbit-github/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/orbit-github",
+      "bucket": "od-repo",
+      "sizeBytes": 7640,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "orbit-gmail",
+      "path": "skills/open-design/repo/design-templates/orbit-gmail/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/orbit-gmail",
+      "bucket": "od-repo",
+      "sizeBytes": 7848,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "orbit-linear",
+      "path": "skills/open-design/repo/design-templates/orbit-linear/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/orbit-linear",
+      "bucket": "od-repo",
+      "sizeBytes": 8122,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "orbit-notion",
+      "path": "skills/open-design/repo/design-templates/orbit-notion/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/orbit-notion",
+      "bucket": "od-repo",
+      "sizeBytes": 8621,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "pm-spec",
+      "path": "skills/open-design/repo/design-templates/pm-spec/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/pm-spec",
+      "bucket": "od-repo",
+      "sizeBytes": 1607,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "pricing-page",
+      "path": "skills/open-design/repo/design-templates/pricing-page/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/pricing-page",
+      "bucket": "od-repo",
+      "sizeBytes": 2926,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "replit-deck",
+      "path": "skills/open-design/repo/design-templates/replit-deck/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/replit-deck",
+      "bucket": "od-repo",
+      "sizeBytes": 13526,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "saas-landing",
+      "path": "skills/open-design/repo/design-templates/saas-landing/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/saas-landing",
+      "bucket": "od-repo",
+      "sizeBytes": 4742,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "simple-deck",
+      "path": "skills/open-design/repo/design-templates/simple-deck/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/simple-deck",
+      "bucket": "od-repo",
+      "sizeBytes": 5815,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "social-carousel",
+      "path": "skills/open-design/repo/design-templates/social-carousel/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/social-carousel",
+      "bucket": "od-repo",
+      "sizeBytes": 3974,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "social-media-dashboard",
+      "path": "skills/open-design/repo/design-templates/social-media-dashboard/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/social-media-dashboard",
+      "bucket": "od-repo",
+      "sizeBytes": 5770,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "social-media-matrix-tracker-template",
+      "path": "skills/open-design/repo/design-templates/social-media-matrix-tracker-template/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/social-media-matrix-tracker-template",
+      "bucket": "od-repo",
+      "sizeBytes": 4954,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "sprite-animation",
+      "path": "skills/open-design/repo/design-templates/sprite-animation/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/sprite-animation",
+      "bucket": "od-repo",
+      "sizeBytes": 4335,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "team-okrs",
+      "path": "skills/open-design/repo/design-templates/team-okrs/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/team-okrs",
+      "bucket": "od-repo",
+      "sizeBytes": 1363,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "trading-analysis-dashboard-template",
+      "path": "skills/open-design/repo/design-templates/trading-analysis-dashboard-template/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/trading-analysis-dashboard-template",
+      "bucket": "od-repo",
+      "sizeBytes": 2537,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "tweaks",
+      "path": "skills/open-design/repo/design-templates/tweaks/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/tweaks",
+      "bucket": "od-repo",
+      "sizeBytes": 11820,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "video-shortform",
+      "path": "skills/open-design/repo/design-templates/video-shortform/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/video-shortform",
+      "bucket": "od-repo",
+      "sizeBytes": 4607,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "waitlist-page",
+      "path": "skills/open-design/repo/design-templates/waitlist-page/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/waitlist-page",
+      "bucket": "od-repo",
+      "sizeBytes": 14189,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "web-prototype",
+      "path": "skills/open-design/repo/design-templates/web-prototype/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/web-prototype",
+      "bucket": "od-repo",
+      "sizeBytes": 4521,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "web-prototype-taste-brutalist",
+      "path": "skills/open-design/repo/design-templates/web-prototype-taste-brutalist/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/web-prototype-taste-brutalist",
+      "bucket": "od-repo",
+      "sizeBytes": 4103,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "web-prototype-taste-editorial",
+      "path": "skills/open-design/repo/design-templates/web-prototype-taste-editorial/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/web-prototype-taste-editorial",
+      "bucket": "od-repo",
+      "sizeBytes": 3365,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "web-prototype-taste-soft",
+      "path": "skills/open-design/repo/design-templates/web-prototype-taste-soft/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/web-prototype-taste-soft",
+      "bucket": "od-repo",
+      "sizeBytes": 4222,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "webgl-experience",
+      "path": "skills/open-design/repo/design-templates/webgl-experience/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/webgl-experience",
+      "bucket": "od-repo",
+      "sizeBytes": 3741,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "weekly-update",
+      "path": "skills/open-design/repo/design-templates/weekly-update/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/weekly-update",
+      "bucket": "od-repo",
+      "sizeBytes": 2834,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "wireframe-annotated",
+      "path": "skills/open-design/repo/design-templates/wireframe-annotated/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/wireframe-annotated",
+      "bucket": "od-repo",
+      "sizeBytes": 4022,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "wireframe-greybox",
+      "path": "skills/open-design/repo/design-templates/wireframe-greybox/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/wireframe-greybox",
+      "bucket": "od-repo",
+      "sizeBytes": 3942,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "wireframe-mobile-flow",
+      "path": "skills/open-design/repo/design-templates/wireframe-mobile-flow/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/wireframe-mobile-flow",
+      "bucket": "od-repo",
+      "sizeBytes": 4365,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "wireframe-sketch",
+      "path": "skills/open-design/repo/design-templates/wireframe-sketch/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/wireframe-sketch",
+      "bucket": "od-repo",
+      "sizeBytes": 4127,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "worker-visualizer",
+      "path": "skills/open-design/repo/design-templates/worker-visualizer/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/worker-visualizer",
+      "bucket": "od-repo",
+      "sizeBytes": 4116,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "x-research",
+      "path": "skills/open-design/repo/design-templates/x-research/SKILL.md",
+      "dir": "skills/open-design/repo/design-templates/x-research",
+      "bucket": "od-repo",
+      "sizeBytes": 4036,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "saas-landing-skill",
+      "path": "skills/open-design/repo/docs/examples/saas-landing-skill/SKILL.md",
+      "dir": "skills/open-design/repo/docs/examples/saas-landing-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 4617,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "8-bit-orbit-video-template",
+      "path": "skills/open-design/repo/skills/8-bit-orbit-video-template/SKILL.md",
+      "dir": "skills/open-design/repo/skills/8-bit-orbit-video-template",
+      "bucket": "od-repo",
+      "sizeBytes": 2418,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "ad-creative",
+      "path": "skills/open-design/repo/skills/ad-creative/SKILL.md",
+      "dir": "skills/open-design/repo/skills/ad-creative",
+      "bucket": "od-repo",
+      "sizeBytes": 1261,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "after-hours-editorial-template",
+      "path": "skills/open-design/repo/skills/after-hours-editorial-template/SKILL.md",
+      "dir": "skills/open-design/repo/skills/after-hours-editorial-template",
+      "bucket": "od-repo",
+      "sizeBytes": 2576,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "agent-browser",
+      "path": "skills/open-design/repo/skills/agent-browser/SKILL.md",
+      "dir": "skills/open-design/repo/skills/agent-browser",
+      "bucket": "od-repo",
+      "sizeBytes": 8929,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "ai-music-album",
+      "path": "skills/open-design/repo/skills/ai-music-album/SKILL.md",
+      "dir": "skills/open-design/repo/skills/ai-music-album",
+      "bucket": "od-repo",
+      "sizeBytes": 1358,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "algorithmic-art",
+      "path": "skills/open-design/repo/skills/algorithmic-art/SKILL.md",
+      "dir": "skills/open-design/repo/skills/algorithmic-art",
+      "bucket": "od-repo",
+      "sizeBytes": 1454,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "apple-hig",
+      "path": "skills/open-design/repo/skills/apple-hig/SKILL.md",
+      "dir": "skills/open-design/repo/skills/apple-hig",
+      "bucket": "od-repo",
+      "sizeBytes": 1370,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "article-magazine",
+      "path": "skills/open-design/repo/skills/article-magazine/SKILL.md",
+      "dir": "skills/open-design/repo/skills/article-magazine",
+      "bucket": "od-repo",
+      "sizeBytes": 2571,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "artifacts-builder",
+      "path": "skills/open-design/repo/skills/artifacts-builder/SKILL.md",
+      "dir": "skills/open-design/repo/skills/artifacts-builder",
+      "bucket": "od-repo",
+      "sizeBytes": 1430,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "brainstorming",
+      "path": "skills/open-design/repo/skills/brainstorming/SKILL.md",
+      "dir": "skills/open-design/repo/skills/brainstorming",
+      "bucket": "od-repo",
+      "sizeBytes": 1244,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "brand-extract",
+      "path": "skills/open-design/repo/skills/brand-extract/SKILL.md",
+      "dir": "skills/open-design/repo/skills/brand-extract",
+      "bucket": "od-repo",
+      "sizeBytes": 12755,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "brand-guidelines",
+      "path": "skills/open-design/repo/skills/brand-guidelines/SKILL.md",
+      "dir": "skills/open-design/repo/skills/brand-guidelines",
+      "bucket": "od-repo",
+      "sizeBytes": 1427,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "brandkit",
+      "path": "skills/open-design/repo/skills/brandkit/SKILL.md",
+      "dir": "skills/open-design/repo/skills/brandkit",
+      "bucket": "od-repo",
+      "sizeBytes": 17339,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "brutalist-skill",
+      "path": "skills/open-design/repo/skills/brutalist-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/brutalist-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 9125,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "canvas-design",
+      "path": "skills/open-design/repo/skills/canvas-design/SKILL.md",
+      "dir": "skills/open-design/repo/skills/canvas-design",
+      "bucket": "od-repo",
+      "sizeBytes": 1405,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "card-twitter",
+      "path": "skills/open-design/repo/skills/card-twitter/SKILL.md",
+      "dir": "skills/open-design/repo/skills/card-twitter",
+      "bucket": "od-repo",
+      "sizeBytes": 1877,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "card-xiaohongshu",
+      "path": "skills/open-design/repo/skills/card-xiaohongshu/SKILL.md",
+      "dir": "skills/open-design/repo/skills/card-xiaohongshu",
+      "bucket": "od-repo",
+      "sizeBytes": 2397,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "chat-motion-overlay",
+      "path": "skills/open-design/repo/skills/chat-motion-overlay/SKILL.md",
+      "dir": "skills/open-design/repo/skills/chat-motion-overlay",
+      "bucket": "od-repo",
+      "sizeBytes": 4895,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "color-expert",
+      "path": "skills/open-design/repo/skills/color-expert/SKILL.md",
+      "dir": "skills/open-design/repo/skills/color-expert",
+      "bucket": "od-repo",
+      "sizeBytes": 1368,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "competitive-ads-extractor",
+      "path": "skills/open-design/repo/skills/competitive-ads-extractor/SKILL.md",
+      "dir": "skills/open-design/repo/skills/competitive-ads-extractor",
+      "bucket": "od-repo",
+      "sizeBytes": 1417,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "copywriting",
+      "path": "skills/open-design/repo/skills/copywriting/SKILL.md",
+      "dir": "skills/open-design/repo/skills/copywriting",
+      "bucket": "od-repo",
+      "sizeBytes": 1236,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "creative-director",
+      "path": "skills/open-design/repo/skills/creative-director/SKILL.md",
+      "dir": "skills/open-design/repo/skills/creative-director",
+      "bucket": "od-repo",
+      "sizeBytes": 2929,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "d3-visualization",
+      "path": "skills/open-design/repo/skills/d3-visualization/SKILL.md",
+      "dir": "skills/open-design/repo/skills/d3-visualization",
+      "bucket": "od-repo",
+      "sizeBytes": 2154,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "data-report",
+      "path": "skills/open-design/repo/skills/data-report/SKILL.md",
+      "dir": "skills/open-design/repo/skills/data-report",
+      "bucket": "od-repo",
+      "sizeBytes": 2663,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "deck-guizang-editorial",
+      "path": "skills/open-design/repo/skills/deck-guizang-editorial/SKILL.md",
+      "dir": "skills/open-design/repo/skills/deck-guizang-editorial",
+      "bucket": "od-repo",
+      "sizeBytes": 4766,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "deck-open-slide-canvas",
+      "path": "skills/open-design/repo/skills/deck-open-slide-canvas/SKILL.md",
+      "dir": "skills/open-design/repo/skills/deck-open-slide-canvas",
+      "bucket": "od-repo",
+      "sizeBytes": 4032,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "deck-swiss-international",
+      "path": "skills/open-design/repo/skills/deck-swiss-international/SKILL.md",
+      "dir": "skills/open-design/repo/skills/deck-swiss-international",
+      "bucket": "od-repo",
+      "sizeBytes": 5999,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "design-brief",
+      "path": "skills/open-design/repo/skills/design-brief/SKILL.md",
+      "dir": "skills/open-design/repo/skills/design-brief",
+      "bucket": "od-repo",
+      "sizeBytes": 14066,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "design-consultation",
+      "path": "skills/open-design/repo/skills/design-consultation/SKILL.md",
+      "dir": "skills/open-design/repo/skills/design-consultation",
+      "bucket": "od-repo",
+      "sizeBytes": 1294,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "design-md",
+      "path": "skills/open-design/repo/skills/design-md/SKILL.md",
+      "dir": "skills/open-design/repo/skills/design-md",
+      "bucket": "od-repo",
+      "sizeBytes": 1217,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "design-review",
+      "path": "skills/open-design/repo/skills/design-review/SKILL.md",
+      "dir": "skills/open-design/repo/skills/design-review",
+      "bucket": "od-repo",
+      "sizeBytes": 1247,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "digits-fintech-swiss-template",
+      "path": "skills/open-design/repo/skills/digits-fintech-swiss-template/SKILL.md",
+      "dir": "skills/open-design/repo/skills/digits-fintech-swiss-template",
+      "bucket": "od-repo",
+      "sizeBytes": 1969,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "doc",
+      "path": "skills/open-design/repo/skills/doc/SKILL.md",
+      "dir": "skills/open-design/repo/skills/doc",
+      "bucket": "od-repo",
+      "sizeBytes": 1107,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "doc-kami-parchment",
+      "path": "skills/open-design/repo/skills/doc-kami-parchment/SKILL.md",
+      "dir": "skills/open-design/repo/skills/doc-kami-parchment",
+      "bucket": "od-repo",
+      "sizeBytes": 4892,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "docx",
+      "path": "skills/open-design/repo/skills/docx/SKILL.md",
+      "dir": "skills/open-design/repo/skills/docx",
+      "bucket": "od-repo",
+      "sizeBytes": 1324,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "domain-name-brainstormer",
+      "path": "skills/open-design/repo/skills/domain-name-brainstormer/SKILL.md",
+      "dir": "skills/open-design/repo/skills/domain-name-brainstormer",
+      "bucket": "od-repo",
+      "sizeBytes": 1413,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "ecommerce-image-workflow",
+      "path": "skills/open-design/repo/skills/ecommerce-image-workflow/SKILL.md",
+      "dir": "skills/open-design/repo/skills/ecommerce-image-workflow",
+      "bucket": "od-repo",
+      "sizeBytes": 9983,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "editorial-burgundy-principles-template",
+      "path": "skills/open-design/repo/skills/editorial-burgundy-principles-template/SKILL.md",
+      "dir": "skills/open-design/repo/skills/editorial-burgundy-principles-template",
+      "bucket": "od-repo",
+      "sizeBytes": 1973,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "emil-design-eng",
+      "path": "skills/open-design/repo/skills/emil-design-eng/SKILL.md",
+      "dir": "skills/open-design/repo/skills/emil-design-eng",
+      "bucket": "od-repo",
+      "sizeBytes": 28833,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "emilkowalski-motion",
+      "path": "skills/open-design/repo/skills/emilkowalski-motion/SKILL.md",
+      "dir": "skills/open-design/repo/skills/emilkowalski-motion",
+      "bucket": "od-repo",
+      "sizeBytes": 2642,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "enhance-prompt",
+      "path": "skills/open-design/repo/skills/enhance-prompt/SKILL.md",
+      "dir": "skills/open-design/repo/skills/enhance-prompt",
+      "bucket": "od-repo",
+      "sizeBytes": 1247,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "export-download-debugging",
+      "path": "skills/open-design/repo/skills/export-download-debugging/SKILL.md",
+      "dir": "skills/open-design/repo/skills/export-download-debugging",
+      "bucket": "od-repo",
+      "sizeBytes": 2967,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-3d",
+      "path": "skills/open-design/repo/skills/fal-3d/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-3d",
+      "bucket": "od-repo",
+      "sizeBytes": 1205,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-generate",
+      "path": "skills/open-design/repo/skills/fal-generate/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-generate",
+      "bucket": "od-repo",
+      "sizeBytes": 1267,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-image-edit",
+      "path": "skills/open-design/repo/skills/fal-image-edit/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-image-edit",
+      "bucket": "od-repo",
+      "sizeBytes": 1246,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-kling-o3",
+      "path": "skills/open-design/repo/skills/fal-kling-o3/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-kling-o3",
+      "bucket": "od-repo",
+      "sizeBytes": 1150,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-lip-sync",
+      "path": "skills/open-design/repo/skills/fal-lip-sync/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-lip-sync",
+      "bucket": "od-repo",
+      "sizeBytes": 1274,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-realtime",
+      "path": "skills/open-design/repo/skills/fal-realtime/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-realtime",
+      "bucket": "od-repo",
+      "sizeBytes": 1249,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-restore",
+      "path": "skills/open-design/repo/skills/fal-restore/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-restore",
+      "bucket": "od-repo",
+      "sizeBytes": 1254,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-train",
+      "path": "skills/open-design/repo/skills/fal-train/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-train",
+      "bucket": "od-repo",
+      "sizeBytes": 1213,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-tryon",
+      "path": "skills/open-design/repo/skills/fal-tryon/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-tryon",
+      "bucket": "od-repo",
+      "sizeBytes": 1269,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-upscale",
+      "path": "skills/open-design/repo/skills/fal-upscale/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-upscale",
+      "bucket": "od-repo",
+      "sizeBytes": 1188,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-video-edit",
+      "path": "skills/open-design/repo/skills/fal-video-edit/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-video-edit",
+      "bucket": "od-repo",
+      "sizeBytes": 1252,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "fal-vision",
+      "path": "skills/open-design/repo/skills/fal-vision/SKILL.md",
+      "dir": "skills/open-design/repo/skills/fal-vision",
+      "bucket": "od-repo",
+      "sizeBytes": 1228,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "faq-page",
+      "path": "skills/open-design/repo/skills/faq-page/SKILL.md",
+      "dir": "skills/open-design/repo/skills/faq-page",
+      "bucket": "od-repo",
+      "sizeBytes": 4198,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "field-notes-editorial-template",
+      "path": "skills/open-design/repo/skills/field-notes-editorial-template/SKILL.md",
+      "dir": "skills/open-design/repo/skills/field-notes-editorial-template",
+      "bucket": "od-repo",
+      "sizeBytes": 2455,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "figma-code-connect-components",
+      "path": "skills/open-design/repo/skills/figma-code-connect-components/SKILL.md",
+      "dir": "skills/open-design/repo/skills/figma-code-connect-components",
+      "bucket": "od-repo",
+      "sizeBytes": 1248,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "figma-create-design-system-rules",
+      "path": "skills/open-design/repo/skills/figma-create-design-system-rules/SKILL.md",
+      "dir": "skills/open-design/repo/skills/figma-create-design-system-rules",
+      "bucket": "od-repo",
+      "sizeBytes": 1276,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "figma-create-new-file",
+      "path": "skills/open-design/repo/skills/figma-create-new-file/SKILL.md",
+      "dir": "skills/open-design/repo/skills/figma-create-new-file",
+      "bucket": "od-repo",
+      "sizeBytes": 1175,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "figma-generate-design",
+      "path": "skills/open-design/repo/skills/figma-generate-design/SKILL.md",
+      "dir": "skills/open-design/repo/skills/figma-generate-design",
+      "bucket": "od-repo",
+      "sizeBytes": 1248,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "figma-generate-library",
+      "path": "skills/open-design/repo/skills/figma-generate-library/SKILL.md",
+      "dir": "skills/open-design/repo/skills/figma-generate-library",
+      "bucket": "od-repo",
+      "sizeBytes": 1290,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "figma-implement-design",
+      "path": "skills/open-design/repo/skills/figma-implement-design/SKILL.md",
+      "dir": "skills/open-design/repo/skills/figma-implement-design",
+      "bucket": "od-repo",
+      "sizeBytes": 1238,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "figma-use",
+      "path": "skills/open-design/repo/skills/figma-use/SKILL.md",
+      "dir": "skills/open-design/repo/skills/figma-use",
+      "bucket": "od-repo",
+      "sizeBytes": 1224,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "flutter-animating-apps",
+      "path": "skills/open-design/repo/skills/flutter-animating-apps/SKILL.md",
+      "dir": "skills/open-design/repo/skills/flutter-animating-apps",
+      "bucket": "od-repo",
+      "sizeBytes": 1211,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frame-data-chart-nyt",
+      "path": "skills/open-design/repo/skills/frame-data-chart-nyt/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frame-data-chart-nyt",
+      "bucket": "od-repo",
+      "sizeBytes": 3966,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frame-flowchart-sticky",
+      "path": "skills/open-design/repo/skills/frame-flowchart-sticky/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frame-flowchart-sticky",
+      "bucket": "od-repo",
+      "sizeBytes": 3800,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frame-glitch-title",
+      "path": "skills/open-design/repo/skills/frame-glitch-title/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frame-glitch-title",
+      "bucket": "od-repo",
+      "sizeBytes": 3800,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frame-light-leak-cinema",
+      "path": "skills/open-design/repo/skills/frame-light-leak-cinema/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frame-light-leak-cinema",
+      "bucket": "od-repo",
+      "sizeBytes": 4087,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frame-liquid-bg-hero",
+      "path": "skills/open-design/repo/skills/frame-liquid-bg-hero/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frame-liquid-bg-hero",
+      "bucket": "od-repo",
+      "sizeBytes": 4182,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frame-logo-outro",
+      "path": "skills/open-design/repo/skills/frame-logo-outro/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frame-logo-outro",
+      "bucket": "od-repo",
+      "sizeBytes": 3951,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frame-macos-notification",
+      "path": "skills/open-design/repo/skills/frame-macos-notification/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frame-macos-notification",
+      "bucket": "od-repo",
+      "sizeBytes": 3948,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frontend-design",
+      "path": "skills/open-design/repo/skills/frontend-design/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frontend-design",
+      "bucket": "od-repo",
+      "sizeBytes": 5329,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frontend-dev",
+      "path": "skills/open-design/repo/skills/frontend-dev/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frontend-dev",
+      "bucket": "od-repo",
+      "sizeBytes": 1257,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frontend-skill",
+      "path": "skills/open-design/repo/skills/frontend-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frontend-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 1212,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "frontend-slides",
+      "path": "skills/open-design/repo/skills/frontend-slides/SKILL.md",
+      "dir": "skills/open-design/repo/skills/frontend-slides",
+      "bucket": "od-repo",
+      "sizeBytes": 1304,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "full-page-screenshot",
+      "path": "skills/open-design/repo/skills/full-page-screenshot/SKILL.md",
+      "dir": "skills/open-design/repo/skills/full-page-screenshot",
+      "bucket": "od-repo",
+      "sizeBytes": 1316,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gif-sticker-maker",
+      "path": "skills/open-design/repo/skills/gif-sticker-maker/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gif-sticker-maker",
+      "bucket": "od-repo",
+      "sizeBytes": 1269,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gpt-tasteskill",
+      "path": "skills/open-design/repo/skills/gpt-tasteskill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gpt-tasteskill",
+      "bucket": "od-repo",
+      "sizeBytes": 8589,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gsap-core",
+      "path": "skills/open-design/repo/skills/gsap-core/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gsap-core",
+      "bucket": "od-repo",
+      "sizeBytes": 15342,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gsap-frameworks",
+      "path": "skills/open-design/repo/skills/gsap-frameworks/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gsap-frameworks",
+      "bucket": "od-repo",
+      "sizeBytes": 10831,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gsap-performance",
+      "path": "skills/open-design/repo/skills/gsap-performance/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gsap-performance",
+      "bucket": "od-repo",
+      "sizeBytes": 4549,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gsap-plugins",
+      "path": "skills/open-design/repo/skills/gsap-plugins/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gsap-plugins",
+      "bucket": "od-repo",
+      "sizeBytes": 22355,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gsap-react",
+      "path": "skills/open-design/repo/skills/gsap-react/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gsap-react",
+      "bucket": "od-repo",
+      "sizeBytes": 7015,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gsap-scrolltrigger",
+      "path": "skills/open-design/repo/skills/gsap-scrolltrigger/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gsap-scrolltrigger",
+      "bucket": "od-repo",
+      "sizeBytes": 19109,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gsap-timeline",
+      "path": "skills/open-design/repo/skills/gsap-timeline/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gsap-timeline",
+      "bucket": "od-repo",
+      "sizeBytes": 4821,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "gsap-utils",
+      "path": "skills/open-design/repo/skills/gsap-utils/SKILL.md",
+      "dir": "skills/open-design/repo/skills/gsap-utils",
+      "bucket": "od-repo",
+      "sizeBytes": 12700,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "hand-drawn-diagrams",
+      "path": "skills/open-design/repo/skills/hand-drawn-diagrams/SKILL.md",
+      "dir": "skills/open-design/repo/skills/hand-drawn-diagrams",
+      "bucket": "od-repo",
+      "sizeBytes": 1391,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "hatch-pet",
+      "path": "skills/open-design/repo/skills/hatch-pet/SKILL.md",
+      "dir": "skills/open-design/repo/skills/hatch-pet",
+      "bucket": "od-repo",
+      "sizeBytes": 24198,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "html-ppt-retro-quarterly-review",
+      "path": "skills/open-design/repo/skills/html-ppt-retro-quarterly-review/SKILL.md",
+      "dir": "skills/open-design/repo/skills/html-ppt-retro-quarterly-review",
+      "bucket": "od-repo",
+      "sizeBytes": 2346,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "image-enhancer",
+      "path": "skills/open-design/repo/skills/image-enhancer/SKILL.md",
+      "dir": "skills/open-design/repo/skills/image-enhancer",
+      "bucket": "od-repo",
+      "sizeBytes": 1371,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "image-to-code-skill",
+      "path": "skills/open-design/repo/skills/image-to-code-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/image-to-code-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 38267,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "imagegen",
+      "path": "skills/open-design/repo/skills/imagegen/SKILL.md",
+      "dir": "skills/open-design/repo/skills/imagegen",
+      "bucket": "od-repo",
+      "sizeBytes": 1246,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "imagegen-frontend-mobile",
+      "path": "skills/open-design/repo/skills/imagegen-frontend-mobile/SKILL.md",
+      "dir": "skills/open-design/repo/skills/imagegen-frontend-mobile",
+      "bucket": "od-repo",
+      "sizeBytes": 42354,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "imagegen-frontend-web",
+      "path": "skills/open-design/repo/skills/imagegen-frontend-web/SKILL.md",
+      "dir": "skills/open-design/repo/skills/imagegen-frontend-web",
+      "bucket": "od-repo",
+      "sizeBytes": 38445,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "imagen",
+      "path": "skills/open-design/repo/skills/imagen/SKILL.md",
+      "dir": "skills/open-design/repo/skills/imagen",
+      "bucket": "od-repo",
+      "sizeBytes": 1159,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "impeccable-design-polish",
+      "path": "skills/open-design/repo/skills/impeccable-design-polish/SKILL.md",
+      "dir": "skills/open-design/repo/skills/impeccable-design-polish",
+      "bucket": "od-repo",
+      "sizeBytes": 3010,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "library-curator",
+      "path": "skills/open-design/repo/skills/library-curator/SKILL.md",
+      "dir": "skills/open-design/repo/skills/library-curator",
+      "bucket": "od-repo",
+      "sizeBytes": 2370,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "login-flow",
+      "path": "skills/open-design/repo/skills/login-flow/SKILL.md",
+      "dir": "skills/open-design/repo/skills/login-flow",
+      "bucket": "od-repo",
+      "sizeBytes": 1431,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "marketing-psychology",
+      "path": "skills/open-design/repo/skills/marketing-psychology/SKILL.md",
+      "dir": "skills/open-design/repo/skills/marketing-psychology",
+      "bucket": "od-repo",
+      "sizeBytes": 1310,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "minimalist-skill",
+      "path": "skills/open-design/repo/skills/minimalist-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/minimalist-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 8572,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "minimax-docx",
+      "path": "skills/open-design/repo/skills/minimax-docx/SKILL.md",
+      "dir": "skills/open-design/repo/skills/minimax-docx",
+      "bucket": "od-repo",
+      "sizeBytes": 1251,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "minimax-pdf",
+      "path": "skills/open-design/repo/skills/minimax-pdf/SKILL.md",
+      "dir": "skills/open-design/repo/skills/minimax-pdf",
+      "bucket": "od-repo",
+      "sizeBytes": 1227,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "mockup-device-3d",
+      "path": "skills/open-design/repo/skills/mockup-device-3d/SKILL.md",
+      "dir": "skills/open-design/repo/skills/mockup-device-3d",
+      "bucket": "od-repo",
+      "sizeBytes": 4532,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "nanobanana-ppt",
+      "path": "skills/open-design/repo/skills/nanobanana-ppt/SKILL.md",
+      "dir": "skills/open-design/repo/skills/nanobanana-ppt",
+      "bucket": "od-repo",
+      "sizeBytes": 1280,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "output-skill",
+      "path": "skills/open-design/repo/skills/output-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/output-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 3195,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "paywall-upgrade-cro",
+      "path": "skills/open-design/repo/skills/paywall-upgrade-cro/SKILL.md",
+      "dir": "skills/open-design/repo/skills/paywall-upgrade-cro",
+      "bucket": "od-repo",
+      "sizeBytes": 1283,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "pdf",
+      "path": "skills/open-design/repo/skills/pdf/SKILL.md",
+      "dir": "skills/open-design/repo/skills/pdf",
+      "bucket": "od-repo",
+      "sizeBytes": 1243,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "pixelbin-media",
+      "path": "skills/open-design/repo/skills/pixelbin-media/SKILL.md",
+      "dir": "skills/open-design/repo/skills/pixelbin-media",
+      "bucket": "od-repo",
+      "sizeBytes": 1205,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "plan-design-review",
+      "path": "skills/open-design/repo/skills/plan-design-review/SKILL.md",
+      "dir": "skills/open-design/repo/skills/plan-design-review",
+      "bucket": "od-repo",
+      "sizeBytes": 1298,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "platform-design",
+      "path": "skills/open-design/repo/skills/platform-design/SKILL.md",
+      "dir": "skills/open-design/repo/skills/platform-design",
+      "bucket": "od-repo",
+      "sizeBytes": 1326,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "poster-hero",
+      "path": "skills/open-design/repo/skills/poster-hero/SKILL.md",
+      "dir": "skills/open-design/repo/skills/poster-hero",
+      "bucket": "od-repo",
+      "sizeBytes": 2055,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "ppt-keynote",
+      "path": "skills/open-design/repo/skills/ppt-keynote/SKILL.md",
+      "dir": "skills/open-design/repo/skills/ppt-keynote",
+      "bucket": "od-repo",
+      "sizeBytes": 2272,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "pptx",
+      "path": "skills/open-design/repo/skills/pptx/SKILL.md",
+      "dir": "skills/open-design/repo/skills/pptx",
+      "bucket": "od-repo",
+      "sizeBytes": 1265,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "pptx-generator",
+      "path": "skills/open-design/repo/skills/pptx-generator/SKILL.md",
+      "dir": "skills/open-design/repo/skills/pptx-generator",
+      "bucket": "od-repo",
+      "sizeBytes": 1160,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "pptx-html-fidelity-audit",
+      "path": "skills/open-design/repo/skills/pptx-html-fidelity-audit/SKILL.md",
+      "dir": "skills/open-design/repo/skills/pptx-html-fidelity-audit",
+      "bucket": "od-repo",
+      "sizeBytes": 14423,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "pr-feedback-quality-gate",
+      "path": "skills/open-design/repo/skills/pr-feedback-quality-gate/SKILL.md",
+      "dir": "skills/open-design/repo/skills/pr-feedback-quality-gate",
+      "bucket": "od-repo",
+      "sizeBytes": 2339,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "redesign-skill",
+      "path": "skills/open-design/repo/skills/redesign-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/redesign-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 15855,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "reference-design-contract",
+      "path": "skills/open-design/repo/skills/reference-design-contract/SKILL.md",
+      "dir": "skills/open-design/repo/skills/reference-design-contract",
+      "bucket": "od-repo",
+      "sizeBytes": 5497,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "release-notes-one-pager",
+      "path": "skills/open-design/repo/skills/release-notes-one-pager/SKILL.md",
+      "dir": "skills/open-design/repo/skills/release-notes-one-pager",
+      "bucket": "od-repo",
+      "sizeBytes": 3857,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "remotion",
+      "path": "skills/open-design/repo/skills/remotion/SKILL.md",
+      "dir": "skills/open-design/repo/skills/remotion",
+      "bucket": "od-repo",
+      "sizeBytes": 1248,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "replicate",
+      "path": "skills/open-design/repo/skills/replicate/SKILL.md",
+      "dir": "skills/open-design/repo/skills/replicate",
+      "bucket": "od-repo",
+      "sizeBytes": 1221,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "research-decision-room",
+      "path": "skills/open-design/repo/skills/research-decision-room/SKILL.md",
+      "dir": "skills/open-design/repo/skills/research-decision-room",
+      "bucket": "od-repo",
+      "sizeBytes": 6477,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "resume-modern",
+      "path": "skills/open-design/repo/skills/resume-modern/SKILL.md",
+      "dir": "skills/open-design/repo/skills/resume-modern",
+      "bucket": "od-repo",
+      "sizeBytes": 2166,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "review-animations",
+      "path": "skills/open-design/repo/skills/review-animations/SKILL.md",
+      "dir": "skills/open-design/repo/skills/review-animations",
+      "bucket": "od-repo",
+      "sizeBytes": 8952,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "screenshot",
+      "path": "skills/open-design/repo/skills/screenshot/SKILL.md",
+      "dir": "skills/open-design/repo/skills/screenshot",
+      "bucket": "od-repo",
+      "sizeBytes": 1205,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "screenshots-marketing",
+      "path": "skills/open-design/repo/skills/screenshots-marketing/SKILL.md",
+      "dir": "skills/open-design/repo/skills/screenshots-marketing",
+      "bucket": "od-repo",
+      "sizeBytes": 1245,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "shadcn-ui",
+      "path": "skills/open-design/repo/skills/shadcn-ui/SKILL.md",
+      "dir": "skills/open-design/repo/skills/shadcn-ui",
+      "bucket": "od-repo",
+      "sizeBytes": 1204,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "shader-dev",
+      "path": "skills/open-design/repo/skills/shader-dev/SKILL.md",
+      "dir": "skills/open-design/repo/skills/shader-dev",
+      "bucket": "od-repo",
+      "sizeBytes": 1242,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "slack-gif-creator",
+      "path": "skills/open-design/repo/skills/slack-gif-creator/SKILL.md",
+      "dir": "skills/open-design/repo/skills/slack-gif-creator",
+      "bucket": "od-repo",
+      "sizeBytes": 1305,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "slides",
+      "path": "skills/open-design/repo/skills/slides/SKILL.md",
+      "dir": "skills/open-design/repo/skills/slides",
+      "bucket": "od-repo",
+      "sizeBytes": 1193,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "social-reddit-card",
+      "path": "skills/open-design/repo/skills/social-reddit-card/SKILL.md",
+      "dir": "skills/open-design/repo/skills/social-reddit-card",
+      "bucket": "od-repo",
+      "sizeBytes": 3614,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "social-spotify-card",
+      "path": "skills/open-design/repo/skills/social-spotify-card/SKILL.md",
+      "dir": "skills/open-design/repo/skills/social-spotify-card",
+      "bucket": "od-repo",
+      "sizeBytes": 3917,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "social-x-post-card",
+      "path": "skills/open-design/repo/skills/social-x-post-card/SKILL.md",
+      "dir": "skills/open-design/repo/skills/social-x-post-card",
+      "bucket": "od-repo",
+      "sizeBytes": 3754,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "soft-skill",
+      "path": "skills/open-design/repo/skills/soft-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/soft-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 11253,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "sora",
+      "path": "skills/open-design/repo/skills/sora/SKILL.md",
+      "dir": "skills/open-design/repo/skills/sora",
+      "bucket": "od-repo",
+      "sizeBytes": 1201,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "speech",
+      "path": "skills/open-design/repo/skills/speech/SKILL.md",
+      "dir": "skills/open-design/repo/skills/speech",
+      "bucket": "od-repo",
+      "sizeBytes": 1205,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "stitch-loop",
+      "path": "skills/open-design/repo/skills/stitch-loop/SKILL.md",
+      "dir": "skills/open-design/repo/skills/stitch-loop",
+      "bucket": "od-repo",
+      "sizeBytes": 1237,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "stitch-skill",
+      "path": "skills/open-design/repo/skills/stitch-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/stitch-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 12670,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "swiftui-design",
+      "path": "skills/open-design/repo/skills/swiftui-design/SKILL.md",
+      "dir": "skills/open-design/repo/skills/swiftui-design",
+      "bucket": "od-repo",
+      "sizeBytes": 1363,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "swiss-creative-mode-template",
+      "path": "skills/open-design/repo/skills/swiss-creative-mode-template/SKILL.md",
+      "dir": "skills/open-design/repo/skills/swiss-creative-mode-template",
+      "bucket": "od-repo",
+      "sizeBytes": 2401,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "swiss-user-research-video-template",
+      "path": "skills/open-design/repo/skills/swiss-user-research-video-template/SKILL.md",
+      "dir": "skills/open-design/repo/skills/swiss-user-research-video-template",
+      "bucket": "od-repo",
+      "sizeBytes": 2797,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "taste-skill",
+      "path": "skills/open-design/repo/skills/taste-skill/SKILL.md",
+      "dir": "skills/open-design/repo/skills/taste-skill",
+      "bucket": "od-repo",
+      "sizeBytes": 89148,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "taste-skill-v1",
+      "path": "skills/open-design/repo/skills/taste-skill-v1/SKILL.md",
+      "dir": "skills/open-design/repo/skills/taste-skill-v1",
+      "bucket": "od-repo",
+      "sizeBytes": 22034,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "theme-factory",
+      "path": "skills/open-design/repo/skills/theme-factory/SKILL.md",
+      "dir": "skills/open-design/repo/skills/theme-factory",
+      "bucket": "od-repo",
+      "sizeBytes": 1357,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "threejs",
+      "path": "skills/open-design/repo/skills/threejs/SKILL.md",
+      "dir": "skills/open-design/repo/skills/threejs",
+      "bucket": "od-repo",
+      "sizeBytes": 1213,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "ui-skills",
+      "path": "skills/open-design/repo/skills/ui-skills/SKILL.md",
+      "dir": "skills/open-design/repo/skills/ui-skills",
+      "bucket": "od-repo",
+      "sizeBytes": 1203,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "path": "skills/open-design/repo/skills/ui-ux-pro-max/SKILL.md",
+      "dir": "skills/open-design/repo/skills/ui-ux-pro-max",
+      "bucket": "od-repo",
+      "sizeBytes": 1997,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "venice-audio-music",
+      "path": "skills/open-design/repo/skills/venice-audio-music/SKILL.md",
+      "dir": "skills/open-design/repo/skills/venice-audio-music",
+      "bucket": "od-repo",
+      "sizeBytes": 1229,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "venice-audio-speech",
+      "path": "skills/open-design/repo/skills/venice-audio-speech/SKILL.md",
+      "dir": "skills/open-design/repo/skills/venice-audio-speech",
+      "bucket": "od-repo",
+      "sizeBytes": 1225,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "venice-image-edit",
+      "path": "skills/open-design/repo/skills/venice-image-edit/SKILL.md",
+      "dir": "skills/open-design/repo/skills/venice-image-edit",
+      "bucket": "od-repo",
+      "sizeBytes": 1091,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "venice-image-generate",
+      "path": "skills/open-design/repo/skills/venice-image-generate/SKILL.md",
+      "dir": "skills/open-design/repo/skills/venice-image-generate",
+      "bucket": "od-repo",
+      "sizeBytes": 1091,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "venice-video",
+      "path": "skills/open-design/repo/skills/venice-video/SKILL.md",
+      "dir": "skills/open-design/repo/skills/venice-video",
+      "bucket": "od-repo",
+      "sizeBytes": 1061,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "vfx-text-cursor",
+      "path": "skills/open-design/repo/skills/vfx-text-cursor/SKILL.md",
+      "dir": "skills/open-design/repo/skills/vfx-text-cursor",
+      "bucket": "od-repo",
+      "sizeBytes": 3760,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "video-downloader",
+      "path": "skills/open-design/repo/skills/video-downloader/SKILL.md",
+      "dir": "skills/open-design/repo/skills/video-downloader",
+      "bucket": "od-repo",
+      "sizeBytes": 1398,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "video-hyperframes",
+      "path": "skills/open-design/repo/skills/video-hyperframes/SKILL.md",
+      "dir": "skills/open-design/repo/skills/video-hyperframes",
+      "bucket": "od-repo",
+      "sizeBytes": 2753,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "web-artifacts-builder",
+      "path": "skills/open-design/repo/skills/web-artifacts-builder/SKILL.md",
+      "dir": "skills/open-design/repo/skills/web-artifacts-builder",
+      "bucket": "od-repo",
+      "sizeBytes": 1390,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "web-clone",
+      "path": "skills/open-design/repo/skills/web-clone/SKILL.md",
+      "dir": "skills/open-design/repo/skills/web-clone",
+      "bucket": "od-repo",
+      "sizeBytes": 21037,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "web-design-guidelines",
+      "path": "skills/open-design/repo/skills/web-design-guidelines/SKILL.md",
+      "dir": "skills/open-design/repo/skills/web-design-guidelines",
+      "bucket": "od-repo",
+      "sizeBytes": 2483,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "weread-year-in-review-video-template",
+      "path": "skills/open-design/repo/skills/weread-year-in-review-video-template/SKILL.md",
+      "dir": "skills/open-design/repo/skills/weread-year-in-review-video-template",
+      "bucket": "od-repo",
+      "sizeBytes": 3307,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "wpds",
+      "path": "skills/open-design/repo/skills/wpds/SKILL.md",
+      "dir": "skills/open-design/repo/skills/wpds",
+      "bucket": "od-repo",
+      "sizeBytes": 1174,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "writing-guidelines",
+      "path": "skills/open-design/repo/skills/writing-guidelines/SKILL.md",
+      "dir": "skills/open-design/repo/skills/writing-guidelines",
+      "bucket": "od-repo",
+      "sizeBytes": 2429,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    },
+    {
+      "name": "youtube-clipper",
+      "path": "skills/open-design/repo/skills/youtube-clipper/SKILL.md",
+      "dir": "skills/open-design/repo/skills/youtube-clipper",
+      "bucket": "od-repo",
+      "sizeBytes": 1234,
+      "tier": "EXPERIMENTAL",
+      "action": "keep_on_disk_not_index",
+      "reasons": [
+        "Open Design template/repo — not active hub skill"
+      ]
+    }
+  ]
+}

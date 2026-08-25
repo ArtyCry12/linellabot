@@ -1,0 +1,11 @@
+{
+  "id": "qa",
+  "label": "Playwright E2E (IDE browser is a plugin, not here)",
+  "ids": [
+    "memory",
+    "gitnexus",
+    "playwright",
+    "sentry"
+  ],
+  "gitnexusHeapMb": 1536
+}

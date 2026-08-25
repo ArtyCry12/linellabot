@@ -1,0 +1,7 @@
+START 2026-08-25T02:18:17.3634245+03:00
+END exists=True 2026-08-25T02:18:45.4579752+03:00
+beforeBytes=171632
+after exists=True leftBytes=171632 2026-08-25T02:19:28.8189977+03:00
+bulk_already_purged=true
+locked_residue_bytes=171632
+locked_by=Aikido MCP keytar.node + npm debug logs

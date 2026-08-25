@@ -72,7 +72,7 @@ uv pip install crewai
 crewai create crew my_project
 ```
 
-Hub docs only — run in `C:\Users\Asus\projects\`, not in `.cursor`.
+Hub docs only — run in `C:\Users\artyo\`, not in `.cursor`.
 
 ## Связи
 

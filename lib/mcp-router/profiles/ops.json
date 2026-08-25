@@ -1,0 +1,13 @@
+{
+  "id": "ops",
+  "label": "Notion / n8n / Google Workspace",
+  "ids": [
+    "memory",
+    "gitnexus",
+    "notion",
+    "n8n-mcp",
+    "google-workspace",
+    "sentry"
+  ],
+  "gitnexusHeapMb": 1536
+}

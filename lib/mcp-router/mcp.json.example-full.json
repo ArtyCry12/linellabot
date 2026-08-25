@@ -1,0 +1,142 @@
+{
+  "_comment": "Catalog only. Keys are placeholders. Switch with commands/mcp-profile.ps1. Live secrets live in mcp.json.store (gitignored).",
+  "mcpServers": {
+    "gitnexus": {
+      "command": "gitnexus",
+      "args": [
+        "mcp"
+      ],
+      "env": {
+        "NODE_OPTIONS": "--max-old-space-size=1536"
+      }
+    },
+    "memory": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "fetch": {
+      "command": "C:/Users/artyo/.cursor/.venv-markitdown/Scripts/python.exe",
+      "args": [
+        "-m",
+        "mcp_server_fetch"
+      ],
+      "env": {
+        "PYTHONIOENCODING": "utf-8"
+      }
+    },
+    "markitdown-mcp": {
+      "command": "C:/Users/artyo/.cursor/.venv-markitdown/Scripts/markitdown-mcp.exe",
+      "args": []
+    },
+    "playwright": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ]
+    },
+    "chrome-devtools": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
+    },
+    "21st": {
+      "url": "https://21st.dev/api/mcp",
+      "headers": {
+        "x-api-key": "YOUR_21ST_API_KEY"
+      }
+    },
+    "stitch": {
+      "command": "node",
+      "args": [
+        "C:/Users/artyo/.cursor/commands/stitch-mcp-proxy.mjs"
+      ],
+      "env": {
+        "STITCH_API_KEY": "YOUR_STITCH_API_KEY"
+      }
+    },
+    "figma": {
+      "url": "https://mcp.figma.com/mcp"
+    },
+    "gemini": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@anzchy/mcp-server-gemini"
+      ],
+      "env": {
+        "GEMINI_API_KEY": "YOUR_GOOGLE_AI_STUDIO_API_KEY",
+        "GOOGLE_API_KEY": "YOUR_GOOGLE_AI_STUDIO_API_KEY",
+        "GEMINI_DEFAULT_MODEL": "gemini-flash-latest"
+      }
+    },
+    "n8n-mcp": {
+      "url": "https://YOUR_INSTANCE.app.n8n.cloud/mcp-server/http",
+      "headers": {
+        "Authorization": "Bearer YOUR_N8N_MCP_JWT"
+      }
+    },
+    "prompts.chat": {
+      "url": "https://prompts.chat/api/mcp"
+    },
+    "notion": {
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "context7": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
+    },
+    "iconify": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "iconify-mcp-server"
+      ]
+    },
+    "apify": {
+      "url": "https://mcp.apify.com/?tools=actors,docs,apify/rag-web-browser"
+    },
+    "magnific": {
+      "url": "https://mcp.magnific.com"
+    },
+    "google-workspace": {
+      "command": "node",
+      "args": [
+        "C:/Users/artyo/.cursor/commands/google-workspace-mcp-wrapper.mjs"
+      ]
+    },
+    "google-maps": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@googlemaps/code-assist-mcp@latest"
+      ]
+    },
+    "braintrust": {
+      "url": "https://api.braintrust.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_BRAINTRUST_API_KEY"
+      }
+    },
+    "open-design": {
+      "command": "C:\\Users\\artyo\\AppData\\Local\\Programs\\OpenDesign\\Open Design.exe",
+      "args": [
+        "C:\\Users\\artyo\\AppData\\Local\\Programs\\OpenDesign\\resources\\app\\prebundled\\daemon\\daemon-cli.mjs",
+        "mcp"
+      ],
+      "type": "stdio"
+    },
+    "sentry": {
+      "url": "https://mcp.sentry.dev/mcp",
+      "_comment": "OAuth in Cursor; ops/qa profiles only; never core"
+    }
+  }
+}

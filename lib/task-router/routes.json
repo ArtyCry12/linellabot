@@ -80,6 +80,19 @@
       "mode": "agent"
     },
     {
+      "id": "seo-geo-aio-block",
+      "label": "SEO+GEO+AIO block foundation",
+      "keywords": ["seo geo aio", "geo aio", "aio engine", "content engine seo", "google business", "gmb", "maps seo"],
+      "phrases": ["seo+geo+aio", "блок seo", "seo geo aio block"],
+      "tags": ["@seo-geo-aio"],
+      "skill": "skills/seo-geo/SKILL.md",
+      "rule": "rules/seo-geo.mdc",
+      "commands": ["commands/seo-audit.ps1", "commands/seo-stack-verify.ps1", "commands/gsc-audit.ps1"],
+      "subagent": ["squad-growth"],
+      "mode": "agent",
+      "note": "Canon: ai-tracking/ecosystem-governance/blocks/seo-geo-aio/CHARTER.md"
+    },
+    {
       "id": "opc-seo-geo",
       "label": "OPC / resciencelab SEO-GEO",
       "keywords": ["opc seo", "resciencelab", "generative engine", "ai visibility quick", "geo optimization"],
@@ -675,7 +688,7 @@
       "keywords": ["babyagi", "baby agi", "creative loop", "brainstorm tasks", "agent creativity"],
       "phrases": ["creative loop", "expand tasks", "open ended ideation"],
       "tags": ["@babyagi"],
-      "skill": "skills/babyagi/SKILL.md",
+      "skill": "skills/_quarantine/babyagi/SKILL.md",
       "rule": "rules/babyagi.mdc",
       "commands": ["commands/creative-loop.ps1", "commands/babyagi-test.ps1"],
       "subagent": ["generalPurpose", "squad-design"],
@@ -687,7 +700,7 @@
       "keywords": ["crewai", "crew ai", "marketing crew", "production crew", "multi-agent workflow"],
       "phrases": ["crew plan", "marketing pipeline", "production pipeline", "crew marketing"],
       "tags": ["@crew-ai"],
-      "skill": "skills/crew-ai/SKILL.md",
+      "skill": "skills/_quarantine/crew-ai/SKILL.md",
       "rule": "rules/crew-ai.mdc",
       "commands": ["commands/crew-plan.ps1", "commands/crew-ai-test.ps1"],
       "subagent": ["squad-growth", "squad-design", "squad-qa"],
@@ -788,7 +801,7 @@
       "label": "LLM Council — multi-perspective task discussion",
       "keywords": ["council", "совет моделей", "несколько мнений", "llm-council", "cross-review"],
       "phrases": ["llm council", "обсудим задачу", "совет llm", "rank opinions"],
-      "skill": "skills/llm-council/SKILL.md",
+      "skill": "skills/_quarantine/llm-council/SKILL.md",
       "rule": "rules/llm-council.mdc",
       "subagent": ["squad-architect", "generalPurpose"],
       "mode": "plan"

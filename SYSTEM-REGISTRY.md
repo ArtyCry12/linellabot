@@ -512,3 +512,8 @@ Boss (parent chat): **Opus 4.7**. Skill: `skills/project-squad/SKILL.md` · Comm
 ## External projects
 
 Client repos live in `C:\Users\artyo\projects\` — open as separate Cursor workspaces, not embedded in hub.
+
+### SEO+GEO+AIO block
+
+Charter: `ai-tracking/ecosystem-governance/blocks/seo-geo-aio/CHARTER.md` · Route: `seo-geo-aio-block` · Sentry: ops/qa (see `SENTRY-MCP.md`).
+
