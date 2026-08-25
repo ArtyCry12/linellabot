@@ -103,3 +103,7 @@ ai-tracking/ai-code-tracking.db
 ai-tracking/**/*.db
 ai-tracking/cleanup-log-*.txt
 ai-tracking/.deferred-refresh-pending.json
+
+# Hub policy: never commit agent-transcripts (secrets in chat dumps)
+projects/**/agent-transcripts/
+**/agent-transcripts/
