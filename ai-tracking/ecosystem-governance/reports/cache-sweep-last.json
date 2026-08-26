@@ -1,13 +1,13 @@
 ﻿{
-    "checkedAt":  "2026-08-26T11:47:10.8638825Z",
+    "checkedAt":  "2026-08-26T12:31:52.9133634Z",
     "tier":  "T0",
-    "applyRequested":  false,
-    "applyEffective":  false,
+    "applyRequested":  true,
+    "applyEffective":  true,
     "stopReason":  null,
-    "elapsedSec":  60.9,
-    "freedMb":  0,
+    "elapsedSec":  12.5,
+    "freedMb":  4.7,
     "rowCount":  214,
-    "orphanCount":  0,
+    "orphanCount":  1,
     "orphanReport":  "C:\\Users\\artyo\\.cursor\\ai-tracking\\ecosystem-governance\\reports\\orphan-processes-last.json",
     "rows":  [
                  {
@@ -16,1067 +16,1067 @@
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-mcp-cwd",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-sandbox-cache",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787601888242-28041b4f74c76.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787601888244-3c72a70606c918.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787601888246-1f9097f9bc0938.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787601977904-442b851484125.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787601977906-4b287a0a5142d.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602038854-37d0681e1deb88.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602038856-d8377e1c265b9.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602038859-3e8452c3e5fa18.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602038861-46da3944e4a23.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602038863-82b18ceab8e3b8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602038866-09043261b91ea.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107142-77fda2aaa59ea8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107145-5fd202e828ae38.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107146-b9e1d5dc1d6f4.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107149-c6c2293eab716.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107151-af87655db62.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107153-cfcf2df20c0278.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107155-ad8ae92679289.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107157-6fa57aa4156b3.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107158-e4128bbc30704.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107161-ea70ad24087ca8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602107164-c7ff9392b52208.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602114891-7530f6f0bc0088.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602199726-52bb2ae4939f88.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602199729-dcd3aa61c7ed18.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602199736-af6da82991e7b.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602279363-730211257835a8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602311282-3ab5792aff8e28.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602311287-56d28bb590c788.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602311289-ca7c195bba6968.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602409735-e6b5697b178238.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602409737-d441938421dc8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602409739-c0934529fa2208.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602498104-7789d0fc99274.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602498106-f18ee9b8f8ed9.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602498108-165c1b36cecd08.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602627877-524c0741868358.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602627879-f2f8df24f08278.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602627889-725a581c9d887.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602731962-0911ce4e98b9a.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602731963-b1b02b09063c38.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602731965-ad28d5f9abd508.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602840971-6694a83d7c85.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602840973-ce7bfbac50243.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602840975-118135efd452e8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602949135-0c77f82786b3c8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602949137-443e9618cf0bf8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787602949140-5e521acdef3e6.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603038133-9f5c404f412d7.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603038135-162b2594983728.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603038137-0a60b0a91cd24.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603054634-47400fe651f878.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603054635-f88bea8cad69a8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603054637-437c2cbc5eb6a8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603205052-00779391c5e49.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603205055-ab225687ef3c38.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603205056-8aea9bbf7e9a88.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603283231-d8c29bf2ac147.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603283233-c7874640f5f7d8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603283237-96d7d3cfd5bbb.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603373840-8434c3b19c5bd8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603373846-b348903235b3a8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603373849-b72da6f02bfe1.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603474093-ac42c3626c445.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603474098-603b23330ca7e8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603474101-580a8138278ee.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603527255-54fe92c39eed98.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603527256-f7a02cfabeda08.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603527257-3da6bb3672e35.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603566885-4460b900458c6.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603566888-8340a7068053c8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603566889-801e5d827c9fb8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603613711-2d25f49fa53708.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603613712-b1d16fd7c96c88.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603613713-d15f949e5811c.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603613715-7e45e33eaf5b58.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603613716-bf7eb3d5d10748.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603613717-8cde4068b6df18.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603647076-1b5bbae8741ae.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603647077-e004d3be759e58.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603647078-4f4b426d4b8e.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603676648-b070602892dbd.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603676649-2abe282d2ccf98.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-12684-1787603676650-d3f7c5d2b47cd8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-18248-1787306426929-a81f1f3ff121f8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-18248-1787306426930-24d9adfd7a2488.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-18248-1787306426933-ede277194f6ba8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787342747084-374da95b8088e8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787342918145-04db2fe02aa908.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787342918148-603019e48a769.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787342918152-ccc9631ed7a5b.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787343025188-eac572e5dd1338.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787343025191-c025cb567ff13.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787343025193-c54c031fc9dc9.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787343088185-2558fb503c6a9.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787343125457-9c43af7ca13948.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787343438446-0b55418fcf1888.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787343498494-632dc14eef0728.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787344790649-0f6e1b3182f64.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787344790650-95c2389848cfa8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787344797404-747c1b9caf2938.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787344874861-6d6dae8ee3e448.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787344874862-9276eb79dbb51.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787344874864-c9a5b6c849d2c.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787346400325-9097ebe503a6b.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787346763296-3e4ce433645e78.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787346763299-6bc6814df7acb8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787346763307-8b10293739da4.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787346921825-575364b2e65748.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787346921832-4165729ad6df4.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787346921834-b7c89d5c7db2f8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350596196-805df7c8dec668.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350596200-8185164fad613.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350596204-c25cd073a0d92.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350596222-255d742902b4d.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350596226-8c1dd25639b5b8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350596231-111056fba372d.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350733863-cdc409fb757dc.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350733866-58b6eec2bbcc18.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350733871-a29d382f952d68.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350928485-ae8eb7ee90ee2.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350928490-f4f631539147d8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787350928494-fac6d867c2883.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787351028969-ca29156e98b14.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787351028974-4f48a59fe978b.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787351028976-03bf93033f80b.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787351158160-d4fec23b12021.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787351248925-bb4c00fdacb69.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787351248928-38beca467efde.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787351248933-54c584745b17e8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787351391211-bae1130d91a8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787352968552-62176ba643fdf.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787352968560-a9a7c7b2dcfa7.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787353183962-341aa926b919f.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354418228-b6ebffd34a473.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354418233-696700571aac6.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354418237-d3b3d9bb71fd28.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354444023-d228dcf03861c8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354444034-01b9900eab6748.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354444047-5b203fb8e3c5.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354663776-9008bb9d3dcc68.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354677696-b486ffeb20f1b.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354924886-aaf9d6fecbbe9.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354924893-c800930517edf8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354924898-f88bdf68f12bf.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787354924902-f67a2593e1a078.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787355080509-48f0acb83be31.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787355180757-4dc98aa3e1045.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787355183713-8cee39df881d48.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787355229982-6e23dd29514c28.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787355504724-5c89781e9a561.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787355504727-252ca8b548b588.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787355504732-6631693add4488.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358074923-611aa4027d5008.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358090170-8345769a1a12f8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358501051-c2a58d6e55f4e8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358501057-b38e23d708704.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358501060-43d01af02c8fd8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358501063-dd179072e3576.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358627450-d849f6c2c714a.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358627452-5deeae2d46a45.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358627454-3d78b070978f3.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358724029-931f220b6f7248.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358724033-40e8fa5b4f9dc8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358724037-fe3b945f5455f8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787358816755-f6303477f20ad.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787359191217-60cb4af2505c78.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787359191220-81763e65a47d98.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787359191222-2df3fbed922fa8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787359331017-aed49bdb7f659.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787359331019-75f99c72779718.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787359868957-950c9c349244c.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787360138946-49eaacaf078ba8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787360138949-90dc2b26ec0f68.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787360138953-6bf6c949e50f7.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787360138955-05ca57dadc7bb.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787360251362-562bc845e6086.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787361633463-c48195cd82a108.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787361633478-c25cf2d99495.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787361633480-7226d5198caa1.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787361633481-958fd5f654af68.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787361908909-57c13583735f78.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787361981957-6955df7cce7b68.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787361981958-d03b97ae178c9.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787361981959-3e2c95508da428.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362101412-a69470ca236a3.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362101429-04638ff10accf.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362159217-3acf5bbd0d798.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362159219-d86c03555fcff.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362159222-a780540c4912f.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362325278-9c1bed5cfd21b.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362325280-27a9a2bfb43738.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362391605-28993a5aa85778.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362391606-fcb0f0f68188f.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362391607-6f79b8d63cd7f8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362460220-a018fa800de9e.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362460222-772e206eabfa5.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362460224-ec6e2c39c63d48.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787362667245-6a1ed020e4c2e8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787363296672-dc1d1bda003b9.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787363330339-8b5713939e5278.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787363923822-9bc80447917c5.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787363939611-44edee1defdff8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787363939620-e7f53dfcca7fe8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787364479249-38c027dd037a08.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787364634380-d13f09fd1ae48.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787364634381-cb651d5a77aee.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-hook-payload-20652-1787364713877-b8c27f7417c2c8.json",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "temp/cursor-inno-updater-1787217404.log",
                      "mb":  4.7
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "t0/app\\test-results",
                      "mb":  0
                  },
                  {
-                     "action":  "DRY",
+                     "action":  "DEL",
                      "label":  "t0/test-results",
                      "mb":  0
                  }

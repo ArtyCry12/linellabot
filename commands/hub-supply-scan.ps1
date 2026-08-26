@@ -1,7 +1,10 @@
 # Lightweight supply-chain inventory when bumblebee.exe unavailable (Windows)
 param(
     [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
-    [string[]]$Roots = @("C:\Users\Asus\.cursor", "C:\Users\Asus\projects")
+    [string[]]$Roots = @(
+        (Split-Path $PSScriptRoot -Parent),
+        (Join-Path $env:USERPROFILE "projects")
+    )
 )
 
 $out = Join-Path $HubRoot "ai-tracking\hub-supply-scan.json"

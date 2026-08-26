@@ -42,7 +42,7 @@ Assert ($found.Count -ge 0) "Find-DocumentPathsInText runs"
 
 $attachSample = @"
 <attached_files>
-<code_selection path="file:///c%3A/Users/Asus/test/report.pdf" lines="1-10">
+<code_selection path="file:///c%3A/Users/artyo/test/report.pdf" lines="1-10">
 </code_selection>
 </attached_files>
 "@

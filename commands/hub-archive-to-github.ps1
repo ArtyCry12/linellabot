@@ -130,7 +130,7 @@ try {
     @"
 # cursor-hub-archive
 
-Private archive of large embedded sources from ``C:\Users\Asus\.cursor``.
+Private archive of large embedded sources from ``$HubRoot``.
 
 | Path | Note |
 |------|------|

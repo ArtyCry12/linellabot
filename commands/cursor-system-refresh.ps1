@@ -1,6 +1,6 @@
 # Cursor hub refresh orchestrator — safe now + deferred heavy cleanup
 # In-session cleanup = cache-auto-sweep T0 only. Do not call cursor-system-cleanup.ps1 here
-# (that script moves repos / takeown; dest still Asus — deferred path only).
+# (cursor-system-cleanup.ps1 moves repos / takeown — deferred path only; ProjectsDest = USERPROFILE\projects).
 param(
     [switch]$Quick,
     [switch]$Deferred,

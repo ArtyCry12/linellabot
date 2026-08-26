@@ -15,7 +15,7 @@ n8n cloud **Instance-level MCP** exposes workflow automation tools to Cursor via
 
 Get URL + token: n8n → **Settings → Instance-level MCP** → Connection details.
 
-Descriptor folder: `projects/c-Users-Asus-cursor/mcps/user-n8n-mcp/`
+Descriptor folder: `projects/c-Users-artyo-cursor/mcps/user-n8n-mcp/`
 
 ## Health check
 

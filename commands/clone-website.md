@@ -8,9 +8,9 @@
 
 | Resource | Path |
 |----------|------|
-| Skill root | `C:/Users/Asus/.cursor/skills/clone-website/` |
-| Next.js scaffold | `C:/Users/Asus/.cursor/skills/clone-website/template/` |
-| Bootstrap script | `C:/Users/Asus/.cursor/skills/clone-website/scripts/init-clone-project.mjs` |
+| Skill root | `C:/Users/artyo/.cursor/blocks/design/skills/clone-website/` |
+| Next.js scaffold | `C:/Users/artyo/.cursor/blocks/design/skills/clone-website/template/` |
+| Bootstrap script | `C:/Users/artyo/.cursor/blocks/design/skills/clone-website/scripts/init-clone-project.mjs` |
 
 ### Where work happens
 
@@ -21,7 +21,7 @@ Create all clone artifacts (`docs/research/`, `docs/design-references/`, `src/`,
 If there is no Next.js `package.json` in the target directory:
 
 ```bash
-node C:/Users/Asus/.cursor/skills/clone-website/scripts/init-clone-project.mjs .
+node C:/Users/artyo/.cursor/blocks/design/skills/clone-website/scripts/init-clone-project.mjs .
 ```
 
 Or: `node .../init-clone-project.mjs "D:/path/to/new-project"` then `cd` there, `npm install`, `npm run build`.

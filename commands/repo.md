@@ -12,7 +12,7 @@
 
 ```
 /repo https://github.com/user/some-skill
-@C:\Users\Asus\Downloads\thing.zip
+@C:\Users\artyo\Downloads\thing.zip
 https://github.com/foo/bar — разбери
 ```
 

@@ -21,7 +21,7 @@ Direct URL `https://stitch.googleapis.com/mcp` shows **Connected** in Cursor but
 ```json
 "stitch": {
   "command": "node",
-  "args": ["C:/Users/Asus/.cursor/commands/stitch-mcp-proxy.mjs"],
+  "args": ["C:/Users/artyo/.cursor/commands/stitch-mcp-proxy.mjs"],
   "env": {
     "STITCH_API_KEY": "YOUR_STITCH_API_KEY"
   }
@@ -37,9 +37,9 @@ Direct URL `https://stitch.googleapis.com/mcp` shows **Connected** in Cursor but
 ## Verify
 
 ```powershell
-C:\Users\Asus\.cursor\commands\ensure-stitch.ps1
+C:\Users\artyo\.cursor\commands\ensure-stitch.ps1
 # or both Stitch + Figma:
-C:\Users\Asus\.cursor\commands\ensure-design-mcp.ps1
+C:\Users\artyo\.cursor\commands\ensure-design-mcp.ps1
 ```
 
 Then **Reload Window** (`commands\cursor-reload-window.ps1`) → Settings → MCP → stitch should show **14 tools**.

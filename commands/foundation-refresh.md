@@ -10,13 +10,13 @@ Run after studying external repos or adding hub routing.
 4. Run quick refresh:
 
 ```powershell
-C:\Users\Asus\.cursor\commands\cursor-system-refresh-quick.cmd
+C:\Users\artyo\.cursor\commands\cursor-system-refresh-quick.cmd
 ```
 
 5. Optional: regenerate skill index only
 
 ```powershell
-node C:\Users\Asus\.cursor\commands\generate-skill-index.mjs
+node C:\Users\artyo\.cursor\commands\generate-skill-index.mjs
 ```
 
 ## Selective external installs (manual)

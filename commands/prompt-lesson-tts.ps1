@@ -55,7 +55,7 @@ $result = [ordered]@{
     chars    = $text.Length
     ok       = $ok
     error    = $err
-    fallback = "skills/huashu-design/references/voiceover-pipeline.md"
+    fallback = "edge-tts (markitdown venv); no separate voiceover skill required"
 }
 
 if ($Json) {
@@ -69,5 +69,5 @@ if ($ok) {
     exit 0
 }
 Write-Host "FAIL: $err" -ForegroundColor Red
-Write-Host "Fallback: huashu voiceover skill" -ForegroundColor Yellow
+Write-Host "Fallback: install edge-tts into .venv-markitdown" -ForegroundColor Yellow
 exit 1

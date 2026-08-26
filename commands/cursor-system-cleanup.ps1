@@ -4,7 +4,7 @@ param(
     [switch]$SkipLocked,
     [switch]$Force,
     [string]$HubRoot = (Split-Path $PSScriptRoot -Parent),
-    [string]$ProjectsDest = "C:\Users\Asus\projects"
+    [string]$ProjectsDest = (Join-Path $env:USERPROFILE "projects")
 )
 
 $ErrorActionPreference = "Continue"
@@ -16,6 +16,7 @@ $actions = [System.Collections.Generic.List[string]]::new()
 $excludeGitScan = @(
     (Join-Path $HubRoot ".git"),
     (Join-Path $HubRoot "projects\c-Users-Asus-cursor"),
+    (Join-Path $HubRoot "projects\c-Users-artyo-cursor"),
     (Join-Path $HubRoot "skills\cybersecurity\library"),
     (Join-Path $HubRoot "plugins\cache")
 )
@@ -129,8 +130,8 @@ function Get-RepoRootsFromGitScan {
         if ($gitPath -eq (Join-Path $HubRoot ".git")) { continue }
 
         $repoRoot = Split-Path $gitPath -Parent
-        # Skip Cursor workspace metadata under projects/c-Users-Asus-cursor-*
-        if ($repoRoot -match '\\projects\\c-Users-Asus-cursor-[^\\]+$' -and -not (Test-Path (Join-Path $repoRoot "package.json"))) {
+        # Skip Cursor workspace metadata under projects/c-Users-*-cursor-*
+        if ($repoRoot -match '\\projects\\c-Users-(Asus|artyo)-cursor-[^\\]+$' -and -not (Test-Path (Join-Path $repoRoot "package.json"))) {
             continue
         }
         [void]$roots.Add($repoRoot)
@@ -157,7 +158,7 @@ if (Test-Path $projectsDir) {
     Get-ChildItem -LiteralPath $projectsDir -Directory -ErrorAction SilentlyContinue |
         Where-Object {
             $_.Name -match '^\d+$' -or
-            $_.Name -match '^C-Users-Asus-AppData-Local-Temp-'
+            $_.Name -match '^C-Users-(Asus|artyo)-AppData-Local-Temp-'
         } |
         ForEach-Object { Remove-IfExists $_.FullName "projects/$($_.Name)" }
 }

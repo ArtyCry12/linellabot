@@ -8,7 +8,7 @@ param(
 $toolsDir = Join-Path $HubRoot "tools\bumblebee"
 $exe = Join-Path $toolsDir "bumblebee.exe"
 $out = Join-Path $HubRoot "ai-tracking\bumblebee-inventory.ndjson"
-$roots = @($HubRoot, "C:\Users\Asus\projects")
+$roots = @($HubRoot, (Join-Path $env:USERPROFILE "projects"))
 
 function Ensure-Bumblebee {
     if (Test-Path $exe) { return $true }
@@ -46,7 +46,8 @@ if (Get-Command wsl.exe -ErrorAction SilentlyContinue) {
         $p = ($_.Replace('\','/') -replace '^C:','/mnt/c')
         "--root `"$p`""
     }) -join ' '
-    wsl.exe -- bash -lc "chmod +x '/mnt/c/Users/Asus/.cursor/tools/bumblebee/bumblebee-linux' && '/mnt/c/Users/Asus/.cursor/tools/bumblebee/bumblebee-linux' scan --profile $Profile $wslRootArgs" | Set-Content $out -Encoding UTF8
+    $linuxBash = ($linuxBin.Replace('\', '/') -replace '^C:', '/mnt/c')
+    wsl.exe -- bash -lc "chmod +x '$linuxBash' && '$linuxBash' scan --profile $Profile $wslRootArgs" | Set-Content $out -Encoding UTF8
     Write-Host "Wrote $out (via WSL + linux bumblebee)"
     exit 0
 }

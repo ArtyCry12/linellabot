@@ -98,7 +98,7 @@ $report = [ordered]@{
         if ($sizes.extensions -gt 100) { "DELETE extensions/ (~$($sizes.extensions) MB misplaced)" }
         if ($sizes.'skills-libraries' -gt 50) { "DELETE skills-libraries/ after skills installed" }
         if ($sizes.libraries -gt 10) { "DELETE libraries/huashu-design duplicate" }
-        if ($nestedGit.Count -gt 5) { "MOVE embedded repos to C:\Users\Asus\projects\" }
+        if ($nestedGit.Count -gt 5) { "MOVE embedded repos to $($env:USERPROFILE)\projects\" }
         if ($brokenJunctions.Count -gt 0) { "RUN node skills/cybersecurity/scripts/ensure-library.mjs" }
         if ($gitnexusStale) { "RUN npx gitnexus analyze" }
         if ($deferredPending) { "Deferred cleanup pending (closes when Cursor exits)" }

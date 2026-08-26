@@ -91,7 +91,7 @@ if (Test-Path $projectsDir) {
     Get-ChildItem -LiteralPath $projectsDir -Directory -ErrorAction SilentlyContinue |
         Where-Object {
             $_.Name -match '^\d+$' -or
-            $_.Name -match '^C-Users-Asus-AppData-Local-Temp-'
+            $_.Name -match '^C-Users-(Asus|artyo)-AppData-Local-Temp-'
         } |
         ForEach-Object { Try-Delete $_.FullName ("projects/" + $_.Name) }
 }
