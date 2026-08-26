@@ -33,7 +33,7 @@ User query
   ├─ Live page / form / E2E UI               → cursor-ide-browser
   ├─ Scale crawl / Actors / anti-bot         → Apify (APIFY-POLICY — ok when best tool; confirm if >$1)
   ├─ Clone / rebuild website                 → clone-website skill + browser
-  ├─ HTML prototype / motion / deck          → huashu-design skill
+  ├─ HTML prototype / motion / deck          → open-design skill (@huashu = legacy alias)
   ├─ 21st.dev / shadcn registry UI           → 21st-design + @21st-dev/magic
   ├─ SEO / GEO audit                         → seo-geo skill pack
   ├─ Dev OS / bootstrap / research-first     → dev-os skill; research sprints → dev-os-research agent

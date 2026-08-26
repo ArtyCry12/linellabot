@@ -1,4 +1,6 @@
 # Cursor hub refresh orchestrator — safe now + deferred heavy cleanup
+# In-session cleanup = cache-auto-sweep T0 only. Do not call cursor-system-cleanup.ps1 here
+# (that script moves repos / takeown; dest still Asus — deferred path only).
 param(
     [switch]$Quick,
     [switch]$Deferred,
@@ -56,7 +58,7 @@ Invoke-Step "RTK (terminal token economy)" {
 }
 
 Invoke-Step "Sync workspace rules" {
-    python (Join-Path $commands "huashu-sync-workspace-rules.py")
+    python (Join-Path $commands "cursor-sync-workspace-rules.py")
 }
 
 Invoke-Step "Skill index" {
@@ -64,8 +66,8 @@ Invoke-Step "Skill index" {
 }
 
 if (-not $Quick) {
-    Invoke-Step "Cleanup (unlocked only)" {
-        & (Join-Path $commands "cursor-system-cleanup.ps1") -Apply -SkipLocked -HubRoot $HubRoot
+    Invoke-Step "Cache sweep T0 (obvious junk, skip locked)" {
+        & (Join-Path $commands "cache-auto-sweep.ps1") -HubRoot $HubRoot -Tier T0 -Apply
     }
 }
 

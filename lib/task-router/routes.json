@@ -589,28 +589,31 @@
     },
     {
       "id": "coding-discipline",
-      "label": "Plan-first coding (Superpowers bridge)",
+      "label": "Plan-first coding (Superpowers SECONDARY)",
       "keywords": [
-        "implement",
-        "refactor",
-        "fix bug",
-        "добавь фичу",
-        "исправь",
-        "tdd",
-        "debug",
-        "отладк",
-        "рефактор"
+        "superpowers",
+        "writing-plans",
+        "subagent-driven",
+        "systematic-debugging",
+        "план реализации",
+        "red-green",
+        "план сначала"
       ],
       "phrases": [
-        "implement feature",
-        "fix the bug",
-        "systematic debug",
+        "using superpowers",
+        "plan-first coding",
+        "brainstorm this feature",
         "subagent driven",
-        "before coding"
+        "before coding",
+        "systematic debug"
+      ],
+      "tags": [
+        "@superpowers"
       ],
       "skill": "skills/brainstorming/SKILL.md",
+      "rule": "rules/superpowers-adapter.mdc",
       "mode": "plan",
-      "note": "Chain: brainstorming -> writing-plans -> tdd -> subagent-driven-development. Squad executes after approve."
+      "note": "Plugin plane is canon (obra/superpowers). Hub bridge only. Do not restore quarantined TDD/SDD/writing-plans as CORE. Ponytail + confirm-writes win. No auto-commit, no Squad."
     },
     {
       "id": "frontend-design-web",

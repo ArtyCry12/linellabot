@@ -17,6 +17,8 @@ alwaysApply: true
 
 Записать: `Register-MiniScore` в `lib/prompt-coach/PromptCoach.ps1`.
 
+**WBS gap (метрика only, без урока):** если сессия была Plan / mega-task / новый проект / `!auto` с Deliverables и **не** появился WBS (`docs/wbs/` или схема в `.cursor/plans`), в `Register-MiniScore` добавь `-Flags @('wbs-gap')` и коротко укажи это в reason. Не останавливай работу ради этого.
+
 ## После крупной доставки
 
 ```

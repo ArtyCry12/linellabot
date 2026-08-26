@@ -53,7 +53,7 @@ Front door: `skills/security-hub/SKILL.md`. Library playbooks: `skills/cybersecu
 
 ## Open Design
 
-Скилл: `C:/Users/artyo/.cursor/skills/open-design/SKILL.md` (или `~/.agents/skills/open-design`). Каталог templates: `skills/open-design/repo/`. Обновление: `powershell -File commands/ensure-open-design.ps1` · upstream https://github.com/nexu-io/open-design. Правило в `.cursor/rules/open-design.mdc` подключается **по релевантности** (не always-on). Legacy `@huashu` → тот же скилл. Архив: `skills/_archive/huashu-design/`.
+Скилл: `C:/Users/artyo/.cursor/blocks/design/skills/open-design/SKILL.md` (hub bridge: `skills/huashu-design` → open-design). Каталог templates: `blocks/design/skills/open-design/repo/` или `skills/open-design/repo/` если vendored. Обновление: `powershell -File commands/ensure-open-design.ps1` · upstream https://github.com/nexu-io/open-design. Правило: `blocks/design/rules/open-design.mdc` (on-demand). Legacy `@huashu` → тот же скилл. Архив: `skills/_archive/huashu-design/`.
 
 ## Clone Website (AI Website Cloner)
 
@@ -71,7 +71,7 @@ Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev O
 
 **Registry:** `SYSTEM-REGISTRY.md` · **Decision tree:** `rules/auto-orchestrator.mdc`
 
-Лёгкое правило-оркестратор: `rules/00-agent-orchestrator.mdc`. Детали MCP — `rules/mcp-routing.mdc`. Синхрон rules: `python commands/huashu-sync-workspace-rules.py`. One-click refresh: `commands/cursor-system-refresh.cmd`.
+Лёгкое правило-оркестратор: `rules/00-agent-orchestrator.mdc`. Детали MCP — `rules/mcp-routing.mdc`. Синхрон rules: `python commands/cursor-sync-workspace-rules.py` (legacy shim: `huashu-sync-workspace-rules.py`). One-click refresh: `commands/cursor-system-refresh.cmd`.
 
 Текст для **User Rules** (весь Cursor): `open-design-USER-RULES.txt` — компактный блок.
 

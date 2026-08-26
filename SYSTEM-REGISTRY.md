@@ -62,6 +62,7 @@ SECONDARY. Not always-on. Do not restore `skills/_quarantine/writing-plans`.
 | Route | `task-decomposition` in `lib/task-router/routes.json` |
 | Artifact | `{project}/docs/wbs/{slug}.md` (or existing `.cursor/plans/*.plan.md`) |
 | Policy | Skip empty levels · L5 `verify:` required · TodoWrite = 1–3 package window · approve then implement (`!auto`+contract → first epic) |
+| Coach metric | `Register-MiniScore -Flags @('wbs-gap')` when large Plan/mega had no WBS (score only, no lesson) |
 
 ## Prompt Engineering Coach (DEC-058)
 
@@ -365,6 +366,8 @@ Three complementary layers: **RTK** (shell) · **Caveman** (prose) · **Ponytail
 | Automation | `plugin-zapier-zapier` |
 | Crawl (only if Exa insufficient) | `plugin-tavily-tavily` |
 
+**Skills plugin (not MCP):** `superpowers` (obra) — SECONDARY. Adapter `rules/superpowers-adapter.mdc`. Leave enabled in Plugins UI. Update marketplace → **6.3.0** (cache may still be 6.1.1). Do not clone git into `skills/`.
+
 **Web dedup:** use **Exa** first; `user-fetch` for one known URL; avoid parallel Exa+Tavily+Firecrawl.
 
 ## MCP naming map (config id ↔ descriptor folder)
@@ -447,9 +450,8 @@ New agents require DEC log + emergence checklist. Gate: `understanding.md` → `
 | `ecosystem-architect` | Sole permanent hub governance agent: architecture drift, skill taxonomy/quarantine, MCP profiles, registry/graph health, tech research. **Not** Project Squad. |
 
 Skill: `skills/ecosystem-architect/SKILL.md` · Canon: `ai-tracking/ecosystem-governance/` · Route: `ecosystem-architect`  
+Cache: [`CACHE-POLICY.md`](ai-tracking/ecosystem-governance/CACHE-POLICY.md) · `commands/cache-auto-sweep.ps1` (T0/T1, dry-run default) · install `commands/cache-auto-sweep-install.ps1` (idle + 03:00, Apply only after Boss YES). Do not auto-call `cursor-system-cleanup.ps1`.  
 **Policy (2026-08-25):** Project Squad **archived** at `agents/_archive/` + `skills/_archive/squad`. Restore a copy into a client project only after explicit Boss yes. Hub delivery: parent agent + block skill + ephemeral Task; Architect may spawn ephemeral workers.
-
-Skill: `skills/ecosystem-architect/SKILL.md` · Canon: `ai-tracking/ecosystem-governance/` · Route: `ecosystem-architect`
 
 ### Project Squad v2 — ARCHIVED
 
@@ -468,10 +470,12 @@ Files: `agents/_archive/squad-*.md` · `skills/_archive/squad/`. Not in live `ro
 
 | Script | Purpose |
 |--------|---------|
-| `commands/cursor-system-refresh.cmd` | **Full refresh:** audit → cyber library → sync → index → cleanup (unlocked) → queue deferred |
+| `commands/cursor-system-refresh.cmd` | **Full refresh:** audit → cyber library → sync → index → cache-auto-sweep T0 → queue deferred |
 | `commands/cursor-system-refresh-quick.cmd` | **Quick:** sync rules + skill index + audit only |
 | `commands/cursor-system-refresh.ps1` | Orchestrator (`-Quick`, `-Deferred`, `-SkipCyber`) |
 | `commands/cursor-system-refresh-deferred.ps1` | Heavy cleanup after Cursor exits (auto-spawned) |
+| `commands/cache-auto-sweep.ps1` | Cold cache T0/T1 + orphan process report (never kill). Dry-run unless `-Apply` |
+| `commands/cache-auto-sweep-install.ps1` | User Scheduled Tasks (idle T0 + 03:00 T1). Default dry-run; `-Apply` after Boss YES |
 | `commands/project-squad.md` | **archived** — restore `/project-squad` only after Boss yes |
 | `commands/stitch-mcp.md` | **Stitch MCP** — proxy + 14 UI design tools |
 | `commands/n8n-mcp.md` | **n8n MCP** — instance workflows + Workflow SDK |
@@ -482,7 +486,8 @@ Files: `agents/_archive/squad-*.md` · `skills/_archive/squad/`. Not in live `ro
 | `commands/ensure-n8n.ps1` | n8n MCP health check + descriptor sync |
 | `commands/cursor-system-audit.ps1` | Hub health report → `ai-tracking/` |
 | `commands/cursor-system-cleanup.ps1` | Move repos, delete caches (`-Apply`, `-SkipLocked`, `-Force`) |
-| `commands/huashu-sync-workspace-rules.py` | Push rules to workspaces |
+| `commands/cursor-sync-workspace-rules.py` | Push hub `rules/*.mdc` to workspaces (canon) |
+| `commands/huashu-sync-workspace-rules.py` | Legacy shim → cursor-sync-workspace-rules.py |
 | `commands/ensure-open-design.ps1` | Sparse-clone/update nexu-io/open-design |
 | `commands/generate-skill-index.mjs` | Regenerate `skills/_INDEX.md` |
 | `commands/foundation-refresh.md` | Taxonomy / knowledge-base update checklist |
@@ -503,11 +508,18 @@ Files: `agents/_archive/squad-*.md` · `skills/_archive/squad/`. Not in live `ro
 | `commands/n8n-templates-match.ps1` | Top-3 template match by query |
 | `commands/route.md` | `/route` — preview auto-routing |
 
+### Cache auto-sweep
+
+1. Policy: `ai-tracking/ecosystem-governance/CACHE-POLICY.md`.
+2. Manual dry-run: `powershell -File commands/cache-auto-sweep.ps1 -Tier T0` (add `-Apply` to delete T0 junk).
+3. Nightly T1 + idle T0: `powershell -File commands/cache-auto-sweep-install.ps1` (dry-run until `-Apply`).
+4. Full refresh in-session uses T0 `-Apply` only — not `cursor-system-cleanup.ps1`.
+
 ### Deferred cleanup flow
 
 1. Run `cursor-system-refresh.cmd` (safe while Cursor is open).
 2. Script spawns hidden `cursor-system-refresh-deferred.ps1` and writes `ai-tracking/.deferred-refresh-pending.json`.
-3. After you **close Cursor**, deferred job deletes `extensions/`, moves embedded repos, refreshes cyber library if needed.
+3. After you **close Cursor**, deferred job still runs `cursor-system-cleanup.ps1` (repo moves / locked paths). That is not the daily cache sweep.
 4. Log: `ai-tracking/deferred-refresh-*.txt`.
 
 ## External projects

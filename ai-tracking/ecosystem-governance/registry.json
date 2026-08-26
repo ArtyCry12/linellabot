@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-25T13:30:00.000Z",
+  "updatedAt": "2026-08-26T11:35:00.000Z",
   "status": "live",
   "approvals": {
     "squad": "archived-restore-on-yes",
@@ -52,6 +52,35 @@
     "sentry": { "mode": "plugin-only", "alwaysOn": false },
     "gitnexusHeapMb": 1536,
     "core": ["memory", "gitnexus"]
+  },
+  "plugins": {
+    "superpowers": {
+      "tier": "SECONDARY",
+      "plane": "cursor-plugin",
+      "upstream": "https://github.com/obra/superpowers",
+      "install": "/add-plugin superpowers",
+      "adapter": "rules/superpowers-adapter.mdc",
+      "route": "coding-discipline",
+      "doNot": [
+        "clone-into-skills",
+        "restore-quarantine-tdd-sdd-writing-plans-as-core",
+        "session-bootstrap-as-os"
+      ],
+      "telemetry": "SUPERPOWERS_DISABLE_TELEMETRY=1",
+      "cachedVersionSeen": "6.1.1",
+      "upstreamVersion": "6.3.0",
+      "status": "adapter-2026-08-25"
+    }
+  },
+  "cacheSweep": {
+    "command": "commands/cache-auto-sweep.ps1",
+    "install": "commands/cache-auto-sweep-install.ps1",
+    "policy": "ai-tracking/ecosystem-governance/CACHE-POLICY.md",
+    "reports": "ai-tracking/ecosystem-governance/reports/",
+    "scheduledApply": false,
+    "neverCallFromSweep": "commands/cursor-system-cleanup.ps1",
+    "refreshInSession": "T0-Apply",
+    "status": "dry-run-until-boss-yes"
   },
   "quarantineRoot": "skills/_quarantine"
 }

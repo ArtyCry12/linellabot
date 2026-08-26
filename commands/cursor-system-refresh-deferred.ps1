@@ -72,7 +72,7 @@ if (Test-CursorRunning) {
     exit 1
 }
 
-Write-Log "Cursor not running - full cleanup"
+Write-Log "Cursor not running - full cleanup (cursor-system-cleanup; not cache-auto-sweep)"
 $cleanup = Join-Path $HubRoot "commands\cursor-system-cleanup.ps1"
 if (Test-Path $cleanup) {
     & $cleanup -Apply -Force -SkipLocked -HubRoot $HubRoot 2>&1 | ForEach-Object { Write-Log ("FULL: {0}" -f $_) }

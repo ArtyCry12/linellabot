@@ -89,6 +89,20 @@ $cap = Add-PromptCapture -Prompt "Deliverables: test`nDone when: water metrics w
 if ($cap.WaterLevel) { Write-Host "OK  capture waterLevel=$($cap.WaterLevel)" -ForegroundColor Green }
 else { Write-Host "FAIL capture water metrics" -ForegroundColor Red; $fail++ }
 
+# Wave3: Register-MiniScore -Flags writes into scores jsonl (test marker then scrub)
+$scoresPath = Join-Path $HubRoot $cfg.scoresFile
+Register-MiniScore -Score 7 -Reason "coach-test-wbs-gap-flag" -Flags @('wbs-gap') -HubRoot $HubRoot
+$tail = Get-Content $scoresPath -Tail 1 -Encoding UTF8
+if ($tail -match '"flags"' -and $tail -match 'wbs-gap' -and $tail -match 'coach-test-wbs-gap-flag') {
+    Write-Host "OK  Register-MiniScore Flags=wbs-gap" -ForegroundColor Green
+} else {
+    Write-Host "FAIL Register-MiniScore Flags" -ForegroundColor Red
+    $fail++
+}
+# Scrub test marker so prod scores stay clean
+$kept = @(Get-Content $scoresPath -Encoding UTF8 | Where-Object { $_ -notmatch 'coach-test-wbs-gap-flag' })
+Set-Content -Path $scoresPath -Value $kept -Encoding utf8
+
 Write-Host ""
 if ($fail -eq 0) {
     Write-Host "Summary: 0 FAIL" -ForegroundColor Green

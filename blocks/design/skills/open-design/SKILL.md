@@ -18,7 +18,7 @@ user-invocable: true
 Медиум = артефакт (прототип / deck / motion), HTML — инструмент.
 
 **Upstream:** https://github.com/nexu-io/open-design  
-**Локальный каталог:** `skills/open-design/repo/`  
+**Локальный каталог:** `blocks/design/skills/open-design/repo/`  
 **Обновление:** `powershell -File commands/ensure-open-design.ps1`
 
 ## Когда читать что
@@ -40,7 +40,7 @@ user-invocable: true
 | Brand extract | `skills/brand-extract/SKILL.md` |
 | Протокол каталога | `docs/skills-protocol.md` |
 
-Корень шаблона: `C:/Users/artyo/.cursor/skills/open-design/repo/`.
+Корень шаблона: `C:/Users/artyo/.cursor/blocks/design/skills/open-design/repo/`.
 
 ## Workflow (кратко)
 

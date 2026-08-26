@@ -22,6 +22,7 @@ Settings → Cursor Settings → Plugins (`Ctrl+Shift+J` → Plugins). Enabled =
 - **Exa**
 - **Vercel** / **Supabase**, если пользуешься
 - **Aikido**, если нужен скан кода
+- **Superpowers** (skills, без MCP) — SECONDARY, не OS. Обновить в marketplace до 6.3.0. Не клонировать git.
 
 Потом Reload Window. Кэш `plugins/cache/` не удалять.
 

@@ -22,10 +22,12 @@ alwaysApply: true
 
 MCP для MarkItDown **не нужен** — hook быстрее и без дубля. n8n-templates подключается через router при задачах n8n.
 
+**Superpowers** (Cursor plugin `obra/superpowers`) — **SECONDARY**, не OS. Если SessionStart вставил `using-superpowers` / EXTREMELY_IMPORTANT — не делать skill-before-any-reply. Канон: `rules/superpowers-adapter.mdc`. Не клонировать git в `skills/`.
+
 ## Принципы
 
 1. Не подтягивай все MCP/скиллы в каждый ответ — только по задаче.
-2. Перед первым вызовом MCP с нового сервера — **один** JSON из `projects/c-Users-Asus-cursor/mcps/<server>/tools/`.
+2. Перед первым вызовом MCP с нового сервера — **один** JSON из `projects/c-Users-artyo-cursor/mcps/<server>/tools/`.
 3. Скиллы: `skills/`, `skills-cursor/`, `~/.agents/skills/`, plugin cache — по триггеру или `@tag`.
 4. User Rules в Cursor — приоритет выше этого файла.
 5. GitNexus блок в `AGENTS.md` — для правок символов; не дублируй здесь.
@@ -57,7 +59,7 @@ MCP для MarkItDown **не нужен** — hook быстрее и без ду
 | Задача | Скилл |
 |--------|-------|
 | Клон сайта | `clone-website` + browser |
-| HTML/motion/deck | `huashu-design` |
+| HTML/motion/deck | `open-design` (`@huashu` legacy) |
 | 21st UI | `21st-design` |
 | SEO/GEO | `seo-geo` |
 | Security | `cybersecurity` |

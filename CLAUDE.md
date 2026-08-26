@@ -42,26 +42,26 @@ This project is indexed by GitNexus as **.cursor** (11 symbols, 4 relationships,
 
 <!-- gitnexus:end -->
 
-## Huashu Design (花叔 Design)
+## Open Design (canon; legacy Huashu)
 
-Скилл: `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md` (или `~/.agents/skills/`). Обновление: `npx.cmd skills add alchaincyf/huashu-design`. Правило в `.cursor/rules/huashu-design.mdc` подключается **по релевантности** (не always-on), чтобы не раздувать контекст.
+Скилл: `C:/Users/artyo/.cursor/blocks/design/skills/open-design/SKILL.md` (hub bridge: `skills/huashu-design` → open-design). Каталог templates: `blocks/design/skills/open-design/repo/` или `skills/open-design/repo/` если vendored. Обновление: `powershell -File commands/ensure-open-design.ps1` · upstream https://github.com/nexu-io/open-design. Правило: `blocks/design/rules/open-design.mdc` (on-demand). Legacy `@huashu` → тот же скилл. Архив: `skills/_archive/huashu-design/`.
 
 ## Clone Website (AI Website Cloner)
 
-Скилл: `C:/Users/Asus/.cursor/skills/clone-website/SKILL.md`. Шаблон Next.js: `skills/clone-website/template/`. Bootstrap в любую папку: `node skills/clone-website/scripts/init-clone-project.mjs <dir>`. Триггеры: `@clone-website`, `/clone-website`, клон/копия сайта. Требует **cursor-ide-browser** MCP.
+Скилл: `C:/Users/artyo/.cursor/skills/clone-website/SKILL.md`. Шаблон Next.js: `skills/clone-website/template/`. Bootstrap в любую папку: `node skills/clone-website/scripts/init-clone-project.mjs <dir>`. Триггеры: `@clone-website`, `/clone-website`, клон/копия сайта. Требует **cursor-ide-browser** MCP.
 
 ## Memory stack (DEC-009)
 
-Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev OS corpus). Obsidian removed from hub. Route memory via `squad-memory` + `skills/dev-os/memory/SKILL.md`.
+Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev OS corpus). Obsidian removed from hub. Route memory via parent agent + `blocks/dev-os` (or hub `skills/dev-os` until split).
 
 ## 21st Design (21st.dev UI registry)
 
-Скилл: `C:/Users/Asus/.cursor/skills/21st-design/SKILL.md`. Локальный каталог: `lib/21st/search_results.json` (обновление: `node skills/21st-design/scripts/ensure-library.mjs`). Триггеры: `@21st`, 21st.dev, Magic MCP `/ui`, установка компонентов через `shadcn add https://21st.dev/r/...`. MCP: `@21st-dev/magic` (ключ: https://21st.dev/magic/console).
+Скилл: `C:/Users/artyo/.cursor/skills/21st-design/SKILL.md`. Локальный каталог: `lib/21st/search_results.json` (обновление: `node skills/21st-design/scripts/ensure-library.mjs`). Триггеры: `@21st`, 21st.dev, Magic MCP `/ui`, установка компонентов через `shadcn add https://21st.dev/r/...`. MCP: **`21st`** → дескриптор `user-21st` (профиль `design`).
 
 ## Оркестрация MCP и скиллов
 
 **Registry:** `SYSTEM-REGISTRY.md` · **Decision tree:** `rules/auto-orchestrator.mdc`
 
-Лёгкое правило-оркестратор: `rules/00-agent-orchestrator.mdc`. Детали MCP — `rules/mcp-routing.mdc`. Синхрон rules: `python commands/huashu-sync-workspace-rules.py`. One-click refresh: `commands/cursor-system-refresh.cmd`.
+Лёгкое правило-оркестратор: `rules/00-agent-orchestrator.mdc`. Детали MCP — `rules/mcp-routing.mdc`. Синхрон rules: `python commands/cursor-sync-workspace-rules.py` (legacy shim: `huashu-sync-workspace-rules.py`). One-click refresh: `commands/cursor-system-refresh.cmd`.
 
-Текст для **User Rules** (весь Cursor): `huashu-design-USER-RULES.txt` — компактный блок.
+Текст для **User Rules** (весь Cursor): `open-design-USER-RULES.txt` — компактный блок. Legacy stub: `huashu-design-USER-RULES.txt`.

@@ -9,9 +9,9 @@ alwaysApply: false
 
 # Open Design — по запросу / по релевантности
 
-**Skill:** `C:/Users/artyo/.cursor/skills/open-design/SKILL.md` — **прочитай перед работой**, если задача про визуальный HTML-выход (прототип / deck / motion), не production backend-only.
+**Skill:** `C:/Users/artyo/.cursor/blocks/design/skills/open-design/SKILL.md` — **прочитай перед работой**, если задача про визуальный HTML-выход (прототип / deck / motion), не production backend-only.
 
-**Каталог templates/skills:** `C:/Users/artyo/.cursor/skills/open-design/repo/`  
+**Каталог templates/skills:** `C:/Users/artyo/.cursor/blocks/design/skills/open-design/repo/`  
 **Repo:** https://github.com/nexu-io/open-design  
 **Обновление:** `powershell -File commands/ensure-open-design.ps1`
 
@@ -21,4 +21,4 @@ alwaysApply: false
 
 После выбора режима прочитай конкретный `design-templates/<name>/SKILL.md` из `repo/` — не импровизируй seed с нуля. Для генерации через daemon — `list_skills` / `start_run` (не запускай skill вручную, если идёшь через MCP).
 
-**Синхронизация правил в другие папки:** `python commands/huashu-sync-workspace-rules.py` из `C:/Users/artyo/.cursor`.
+**Синхронизация правил в другие папки:** `python commands/cursor-sync-workspace-rules.py` из `C:/Users/artyo/.cursor`.

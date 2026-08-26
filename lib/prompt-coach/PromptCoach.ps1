@@ -354,7 +354,9 @@ function Register-MiniScore {
         [int]$Score,
         [Parameter(Mandatory = $true)]
         [string]$Reason,
-        [string]$HubRoot = ""
+        [string]$HubRoot = "",
+        # Optional markers for analytics only (no lesson/nudge). Example: @('wbs-gap')
+        [string[]]$Flags = @()
     )
     if ($Score -lt 1) { $Score = 1 }
     if ($Score -gt 10) { $Score = 10 }
@@ -367,8 +369,12 @@ function Register-MiniScore {
         t      = (Get-Date).ToString("o")
         score  = $Score
         reason = $Reason
-    } | ConvertTo-Json -Compress
-    Add-Content -Path $scoresPath -Value $entry -Encoding UTF8
+    }
+    if ($Flags -and $Flags.Count -gt 0) {
+        $entry.flags = @($Flags | Where-Object { $_ -and $_.Trim() } | Select-Object -Unique)
+    }
+    $json = $entry | ConvertTo-Json -Compress
+    Add-Content -Path $scoresPath -Value $json -Encoding UTF8
 }
 
 function Get-TopHooksFromCaptures {

@@ -52,6 +52,8 @@ Complete-CoachLesson -Slug "YYYY-MM-DD-slug"
 Формат: `**Промт 7/10** — одна причина.`  
 Не путать с полным уроком. Лог: `_scores.jsonl`.
 
+Опционально: `Register-MiniScore -Score N -Reason "..." -Flags @('wbs-gap')` когда крупный Plan/mega шёл **без** WBS-файла (метрика only, без урока).
+
 ## Cheatsheet
 
 ```powershell

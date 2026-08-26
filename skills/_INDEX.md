@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-08-26T11:47:02.071Z
+Generated: 2026-08-26T12:18:57.914Z
 
 Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo/` are in LIBRARY-INDEX, not here.
 
@@ -82,7 +82,7 @@ Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo
 | find-skills | `skills/find-skills/SKILL.md` | hub | >- |
 | frontend-design | `skills/frontend-design/SKILL.md` | hub | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to  |
 | graphify | `skills/graphify/SKILL.md` | hub | >- |
-| huashu-design | `skills/huashu-design/SKILL.md` | hub | 花叔Design（Huashu-Design）——用HTML做高保真原型、交互Demo、幻灯片、动画、设计变体探索+设计方向顾问+专家评审的一体化设计能力。HTML是工具不是媒介，根据任务embody不同专家（UX设计师/动画师/幻灯片设计 |
+| huashu-design | `skills/huashu-design/SKILL.md` | hub | >- |
 | markitdown | `skills/markitdown/SKILL.md` | hub | Converts PDF, Office, HTML, audio, images, ZIP, EPUB, and more to token-efficient Markdown using Microsoft MarkItDown be |
 | openrouter-free | `skills/openrouter-free/SKILL.md` | hub | >- |
 | ponytail | `skills/ponytail/SKILL.md` | hub | > |

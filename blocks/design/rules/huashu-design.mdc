@@ -1,14 +1,15 @@
 ---
-description: Huashu / 花叔 Design — HTML-прототипы, слайды и PPTX, motion MP4/GIF, инфографика, дизайн-направления, эксперт-ревью, озвучка; триггеры @huashu, prototype, deck, infographic, motion, voiceover.
+description: >-
+  Legacy @huashu alias — redirect to open-design. Do not use Asus paths.
+  Triggers: @huashu, huashu (legacy only).
 alwaysApply: false
 ---
 
-# Huashu Design (花叔) — по запросу / по релевантности
+# Huashu → Open Design (legacy)
 
-**Skill:** `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md` или `C:/Users/Asus/.agents/skills/huashu-design/SKILL.md` — **прочитай перед работой**, если задача про визуальный HTML-выход (не production backend-only).
+**Canon skill:** `blocks/design/skills/open-design/SKILL.md`  
+**Canon rule:** `blocks/design/rules/open-design.mdc`
 
-**Repo / обновление:** https://github.com/alchaincyf/huashu-design — `npx.cmd skills add alchaincyf/huashu-design`
+`@huashu` / «huashu» → open-design. Archive: `skills/_archive/huashu-design/`.
 
-**Триггеры:** `@huashu`, «по huashu», prototype/deck/infographic/motion/PPTX/MP4/ревью дизайна — см. полный список в `SKILL.md`.
-
-**Синхронизация правила в другие папки:** `python commands/huashu-sync-workspace-rules.py` из `C:/Users/Asus/.cursor`.
+**Sync rules:** `python commands/cursor-sync-workspace-rules.py` from `C:/Users/artyo/.cursor`.

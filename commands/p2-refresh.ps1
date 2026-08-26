@@ -6,7 +6,7 @@ $ErrorActionPreference = "Continue"
 Write-Host "=== P2 refresh ===" -ForegroundColor Cyan
 
 # Rules sync
-$sync = Join-Path $HubRoot "commands\huashu-sync-workspace-rules.py"
+$sync = Join-Path $HubRoot "commands\cursor-sync-workspace-rules.py"
 if (Test-Path $sync) {
     python $sync
 }
