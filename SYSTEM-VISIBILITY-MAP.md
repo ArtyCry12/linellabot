@@ -140,7 +140,7 @@ Plugin MCP **не в mcp.json** (включаются плагином): `plugin
 
 ### Дубль
 
-`rules/` (**23** `.mdc`) и хаб `.cursor/rules/` (**9** stubs, `alwaysApply: false`). Always-on канон лежит в `rules/`. `cursor-sync-workspace-rules.py` (legacy shim: `huashu-sync-workspace-rules.py`) **пропускает** hub root (не плющит stubs) и копирует полный набор `.mdc` в другие workspace.
+`rules/` (**25** `.mdc`) и хаб `.cursor/rules/` (**11** stubs, `alwaysApply: false`). Always-on канон лежит в `rules/`. `cursor-sync-workspace-rules.py` (legacy shim: `huashu-sync-workspace-rules.py`) **пропускает** hub root (не плющит stubs) и копирует полный набор `.mdc` в другие workspace.
 
 ---
 

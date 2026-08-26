@@ -1,0 +1,15 @@
+---
+description: >-
+  Legacy @huashu alias — redirect to open-design. Do not use Asus paths.
+  Triggers: @huashu, huashu (legacy only).
+alwaysApply: false
+---
+
+# Huashu → Open Design (legacy)
+
+**Canon skill:** `blocks/design/skills/open-design/SKILL.md`  
+**Canon rule:** `blocks/design/rules/open-design.mdc`
+
+`@huashu` / «huashu» → open-design. Archive: `skills/_archive/huashu-design/`.
+
+**Sync rules:** `python commands/cursor-sync-workspace-rules.py` from `C:/Users/artyo/.cursor`.
