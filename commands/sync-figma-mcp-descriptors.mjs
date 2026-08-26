@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const HUB = join(__dir, "..");
-const OUT = join(HUB, "projects/c-Users-Asus-cursor/mcps/plugin-figma-figma");
+const OUT = join(HUB, "projects/c-Users-artyo-cursor/mcps/plugin-figma-figma");
 const TOOLS = join(OUT, "tools");
 
 const PLUGIN_MCP = join(

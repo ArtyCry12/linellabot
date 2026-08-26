@@ -1,0 +1,18 @@
+# GitNexus — index hub logic only (2026-08-15)
+# Rebuild: powershell -File commands/gitnexus-reindex.ps1
+
+skills/open-design/repo/
+blocks/design/skills/open-design/repo/
+skills/_archive/
+plugins/cache/
+lib/ecc-src/
+projects/
+.venv-markitdown/
+.venv*/
+ai-tracking/
+plans/
+.cache/
+node_modules/
+.gitnexus/
+extensions/
+**/*.db

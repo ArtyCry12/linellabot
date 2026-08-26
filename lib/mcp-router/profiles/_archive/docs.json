@@ -1,0 +1,6 @@
+{
+  "id": "docs",
+  "label": "MarkItDown MCP (hook stays always-on separately)",
+  "ids": ["memory", "gitnexus", "markitdown-mcp"],
+  "gitnexusHeapMb": 1536
+}

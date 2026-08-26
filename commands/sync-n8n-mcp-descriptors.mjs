@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Sync n8n MCP tool descriptors to projects/c-Users-Asus-cursor/mcps/user-n8n-mcp/
+ * Sync n8n MCP tool descriptors to projects/c-Users-artyo-cursor/mcps/user-n8n-mcp/
  * Tries live tools/list; falls back to official tool manifest if stream resets.
  */
 
@@ -12,7 +12,7 @@ import { loadN8nConfig, n8nMcpSession, n8nRpc } from "./n8n-mcp-utils.mjs";
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const HUB = join(__dir, "..");
-const OUT = join(HUB, "projects/c-Users-Asus-cursor/mcps/user-n8n-mcp");
+const OUT = join(HUB, "projects/c-Users-artyo-cursor/mcps/user-n8n-mcp");
 const TOOLS = join(OUT, "tools");
 const MANIFEST = join(__dir, "n8n-mcp-tools-manifest.json");
 

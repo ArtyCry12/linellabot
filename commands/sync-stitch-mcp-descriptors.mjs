@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Sync Stitch MCP tool descriptors to projects/c-Users-Asus-cursor/mcps/user-stitch/
+ * Sync Stitch MCP tool descriptors to projects/c-Users-artyo-cursor/mcps/user-stitch/
  * Uses STITCH_API_KEY env or reads from mcp.json (local only).
  */
 
@@ -12,7 +12,7 @@ import { request } from "node:https";
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const HUB = join(__dir, "..");
-const OUT = join(HUB, "projects/c-Users-Asus-cursor/mcps/user-stitch");
+const OUT = join(HUB, "projects/c-Users-artyo-cursor/mcps/user-stitch");
 const TOOLS = join(OUT, "tools");
 
 function loadApiKey() {

@@ -3,12 +3,12 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const hub = process.argv[2] || "C:/Users/Asus/.cursor";
+const hub = process.argv[2] || "C:/Users/artyo/.cursor";
 const out = path.join(hub, "ai-tracking/COMBINED-NOTION-PROMPT.md");
 
 const p1Path = path.join(
   hub,
-  "projects/c-Users-Asus-cursor/agent-tools/e763ab39-6794-45bf-b26e-7752cdedc70f.txt"
+  "projects/c-Users-artyo-cursor/agent-tools/e763ab39-6794-45bf-b26e-7752cdedc70f.txt"
 );
 const p1 = JSON.parse(fs.readFileSync(p1Path, "utf8"));
 

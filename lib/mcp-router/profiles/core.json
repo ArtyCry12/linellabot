@@ -1,0 +1,6 @@
+{
+  "id": "core",
+  "label": "Fast boot",
+  "ids": ["memory", "gitnexus"],
+  "gitnexusHeapMb": 1536
+}

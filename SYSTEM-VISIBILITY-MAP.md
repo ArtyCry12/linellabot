@@ -149,7 +149,7 @@ Plugin MCP **не в mcp.json** (включаются плагином): `plugin
 | Метрика | Число | Смысл |
 |---------|-------|--------|
 | `skills/**/SKILL.md` (глубокий обход) | 1246 | все копии, library, repo |
-| Open Design vendored `skills/open-design/repo` | 277 | каталог OD, не хаб-скиллы |
+| Open Design vendored `blocks/design/skills/open-design/repo` | 277 | каталог OD, не хаб-скиллы |
 | `skills/_archive` | 76 | архив, не грузить в индекс |
 | `skills/_INDEX.md` Total | **112** | hub-only; OD repo / archive / library / template не в списке |
 | Верхний уровень `skills/<name>/SKILL.md` в индексе | 85 | полка хаба |
@@ -196,7 +196,7 @@ Squad (11): `squad-scout`, `squad-architect`, `squad-design`, `squad-build`, `sq
 
 Impeccable (4) + `dev-os-research`.
 
-Скилл Squad: `skills/project-squad/SKILL.md` · правило `rules/project-squad.mdc` (on-demand).
+Скилл Squad: `skills/_archive/squad/project-squad/SKILL.md` (archived). Rule removed from live sync.
 
 Роутер ссылается на Squad: scout / architect / design / build / qa / review / growth / ship / memory — cleanup и marketing слабо вшиты в keywords.
 
@@ -238,7 +238,7 @@ Impeccable (4) + `dev-os-research`.
 ## 9. GitNexus
 
 - MCP в ядре `core`, heap **1536 МБ** (в store был 4096)
-- `.gitnexusignore` отсекает `projects/`, `skills/open-design/repo`, `_archive`, `plugins/cache`, `ai-tracking`, venv
+- `.gitnexusignore` отсекает `projects/`, `blocks/design/skills/open-design/repo`, `_archive`, `plugins/cache`, `ai-tracking`, venv
 - Старый индекс пока на диске (~12 614 файлов) — `analyze` в этой сессии упал: воркеры не стартовали, пока старые MCP ещё живы
 - После Reload: `powershell -File commands/gitnexus-reindex.ps1`
 
@@ -264,7 +264,7 @@ Impeccable (4) + `dev-os-research`.
 ## 11. Что не ломаем при оптимизации
 
 - Autorouter: `hooks/task-router.ps1` + `routes.json`
-- Squad файлы и `skills/project-squad`
+- Squad файлы: `skills/_archive/squad/` (не live)
 - Always-on семёрка rules выше
 - MarkItDown **hook** (MCP — отдельно)
 - RTK hook

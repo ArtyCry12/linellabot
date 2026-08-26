@@ -1,0 +1,16 @@
+---
+description: >-
+  Anthropic Cybersecurity Skills (754 playbooks) — project/repo security, DevSecOps,
+  SAST/SCA/secrets, IaC, K8s, API/OWASP, VM, DFIR. Triggers @cybersecurity, secure
+  this project, security audit, CI/CD security, dependency scan, Terraform audit.
+globs:
+alwaysApply: false
+---
+
+# Cybersecurity (project & defensive)
+
+Load skill: `C:/Users/Asus/.cursor/skills/cybersecurity/SKILL.md` when the user tags **@cybersecurity**, asks to **secure this project/repo**, **security audit**, **DevSecOps**, **SAST/SCA/secrets**, **Terraform/K8s hardening**, **OWASP/API security**, or **IOC/incident** triage.
+
+For repo work, start at `skills/cybersecurity/project-security-index.md`. Search skills: `node skills/cybersecurity/scripts/find-skill.mjs <keywords>`.
+
+Do not run offensive testing without explicit authorization. Do not load for generic coding unrelated to security.

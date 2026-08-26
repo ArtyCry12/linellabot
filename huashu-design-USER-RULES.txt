@@ -2,6 +2,6 @@
 
 ---CUT BELOW---
 
-Оркестрация: не подгружай все MCP/скиллы сразу. Перед вызовом инструмента с нового MCP-сервера прочитай один JSON-дескриптор из `C:/Users/Asus/.cursor/projects/c-Users-Asus-cursor/mcps/<сервер>/tools/`. Читай `SKILL.md` только если задача совпадает с описанием скилла. Расширенная маршрутизация и таблицы — в project rules `00-agent-orchestrator.mdc` и `mcp-routing.mdc` в репо `C:/Users/Asus/.cursor` (синхрон: `python commands/huashu-sync-workspace-rules.py`). Приоритет: явные User Rules и текст задачи. Для визуального HTML pipelines — по запросу читай `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md`.
+Оркестрация: не подгружай все MCP/скиллы сразу. Перед вызовом инструмента с нового MCP-сервера прочитай один JSON-дескриптор из `C:/Users/Asus/.cursor/projects/c-Users-artyo-cursor/mcps/<сервер>/tools/`. Читай `SKILL.md` только если задача совпадает с описанием скилла. Расширенная маршрутизация и таблицы — в project rules `00-agent-orchestrator.mdc` и `mcp-routing.mdc` в репо `C:/Users/Asus/.cursor` (синхрон: `python commands/cursor-sync-workspace-rules.py`). Приоритет: явные User Rules и текст задачи. Для визуального HTML pipelines — по запросу читай `C:/Users/Asus/.cursor/skills/huashu-design/SKILL.md`.
 
 ---CUT ABOVE---

@@ -1,0 +1,16 @@
+---
+description: >-
+  Клонирование сайтов в Next.js — @clone-website, /clone-website, replicate,
+  rebuild page, pixel-perfect clone. Читать skills/clone-website/SKILL.md;
+  браузер MCP обязателен.
+alwaysApply: false
+---
+
+# clone-website
+
+При запросе на клон/копию/реверс сайта:
+
+1. Прочитай `C:/Users/Asus/.cursor/skills/clone-website/SKILL.md`.
+2. Рабочая директория — **текущий workspace**, не папка скилла.
+3. Нет Next.js scaffold → `node C:/Users/Asus/.cursor/skills/clone-website/scripts/init-clone-project.mjs .` затем `npm install`.
+4. Инспекция — **cursor-ide-browser** MCP.

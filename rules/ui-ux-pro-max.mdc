@@ -1,0 +1,25 @@
+---
+description: >-
+  UI/UX Pro Max — дизайн-интеллект, палитры, типографика, UX-гайды, design
+  system generator. Триггеры @ui-ux, @ui-ux-pro-max, glassmorphism, bento,
+  design system, landing page UI, dashboard UI, a11y review.
+alwaysApply: false
+---
+
+# UI/UX Pro Max — по запросу / по релевантности
+
+**Skill:** `C:/Users/Asus/.cursor/skills/ui-ux-pro-max/SKILL.md` — **прочитай перед UI/UX задачами** (дизайн, вёрстка, компоненты, ревью интерфейса).
+
+**Триггеры:** `@ui-ux`, `@ui-ux-pro-max`, design system, style/color/font choice, glassmorphism, bento grid, landing/dashboard UI, UX/a11y review.
+
+**Первый шаг (обязательно для новых экранов):**
+
+```bash
+python C:/Users/Asus/.cursor/skills/ui-ux-pro-max/scripts/search.py "<product> <industry> <keywords>" --design-system -p "Project Name"
+```
+
+**Стек:** если пользователь не указал — `--stack html-tailwind`; для Next.js в репо — `--stack nextjs`.
+
+**Не смешивать с:** `@21st` (компоненты 21st.dev), `@huashu` (HTML-прототипы/motion).
+
+**Обновление:** `npx.cmd uipro-cli update` из `C:/Users/Asus/.cursor` или переустановка из [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill).

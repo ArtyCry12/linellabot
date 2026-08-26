@@ -133,10 +133,6 @@
         "mcp"
       ],
       "type": "stdio"
-    },
-    "sentry": {
-      "url": "https://mcp.sentry.dev/mcp",
-      "_comment": "OAuth in Cursor; ops/qa profiles only; never core"
     }
   }
 }

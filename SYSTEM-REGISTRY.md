@@ -139,11 +139,11 @@ SECONDARY. Not always-on. Do not restore `skills/_quarantine/writing-plans`.
 
 | Resource | Path |
 |----------|------|
-| Skill | `skills/site-compliance-audit/SKILL.md` |
-| Sources (re-fetch every run) | `skills/site-compliance-audit/references/sources.md` |
-| Modules | `skills/site-compliance-audit/references/modules.md` |
-| Handoff (NLMedia chat, generalized) | `skills/site-compliance-audit/references/handoff.md` |
-| Rule | `rules/site-compliance-audit.mdc` (on-demand) |
+| Skill | `blocks/seo-geo-aio/skills/site-compliance-audit/SKILL.md` |
+| Sources (re-fetch every run) | `blocks/seo-geo-aio/skills/site-compliance-audit/references/sources.md` |
+| Modules | `blocks/seo-geo-aio/skills/site-compliance-audit/references/modules.md` |
+| Handoff (NLMedia chat, generalized) | `blocks/seo-geo-aio/skills/site-compliance-audit/references/handoff.md` |
+| Rule | `blocks/security/rules/site-compliance-audit.mdc` (mirrored → `rules/`) |
 | Route | one id `site-compliance-audit` in `lib/task-router/routes.json` (`skills[]` helpers; no competing ids for oss-review / privacy-auditor / wcag) |
 | Command | `commands/site-compliance.md` · `/site-compliance` |
 | Catalog helpers | `~/.agents/skills/{oss-review,gdpr-ccpa-privacy-auditor,license-compliance-auditor,wcag-accessibility-audit}` |
@@ -277,7 +277,7 @@ Draft/routine → wrapper. Subagent map slugs are replaced. Do not Override Open
 | Build | `commands/build-n8n-templates-index.ps1` |
 | Match CLI | `commands/n8n-templates-match.ps1` |
 | Test | `commands/n8n-templates-test.ps1` |
-| Pair with | `skills/n8n-workflow/`, MCP `n8n-mcp` |
+| Pair with | `blocks/integrations/skills/n8n-workflow/`, MCP `n8n-mcp` |
 
 ## RTK + token economy
 
@@ -304,18 +304,18 @@ Three complementary layers: **RTK** (shell) · **Caveman** (prose) · **Ponytail
 
 | Resource | Path |
 |----------|------|
-| Skill | `skills/security-hub/SKILL.md` |
-| Tool matrix | `skills/security-hub/tool-matrix.json` |
-| Findings schema | `skills/security-hub/findings.schema.json` |
-| Auth gate | `skills/security-hub/references/auth-gate.md` |
-| Diff AI prompts | `skills/security-hub/prompts/` |
+| Skill | `blocks/security/skills/security-hub/SKILL.md` |
+| Tool matrix | `blocks/security/skills/security-hub/tool-matrix.json` |
+| Findings schema | `blocks/security/skills/security-hub/findings.schema.json` |
+| Auth gate | `blocks/security/skills/security-hub/references/auth-gate.md` |
+| Diff AI prompts | `blocks/security/skills/security-hub/prompts/` |
 | Ensure | `commands/ensure-security-tools.ps1` |
 | Scan | `commands/security-scan.ps1` |
 | DAST / recon wrappers | `commands/security-dast.ps1`, `security-recon.ps1` |
 | CI templates | `templates/security-ci/` |
 | Health | `ai-tracking/security-tools-health.json` |
 | Smoke test | `commands/security-hub-test.ps1` |
-| Library | `skills/cybersecurity/` |
+| Library | `blocks/security/skills/cybersecurity/` |
 
 ## On-demand rules
 
@@ -341,7 +341,7 @@ Three complementary layers: **RTK** (shell) · **Caveman** (prose) · **Ponytail
 
 **Setup:** copy `mcp.json.example` → `mcp.json` (ядро). Полный каталог без секретов: `lib/mcp-router/mcp.json.example-full.json`. Живые ключи: `mcp.json.store`.
 
-**Профили:** `powershell -File commands/mcp-profile.ps1 -Name core|design|qa|docs|ops|full` затем Reload Window. Статус: `commands/mcp-profile.ps1 status`. Heap GitNexus: 1536. Ignore индекса: `.gitnexusignore`.
+**Профили (live):** `powershell -File commands/mcp-profile.ps1 -Name core|design|qa|ops` затем Reload Window. Статус: `commands/mcp-profile.ps1 status`. Архив `docs`/`full`: `lib/mcp-router/profiles/_archive/`. Heap GitNexus: 1536. Ignore индекса: `.gitnexusignore`.
 
 | Сервер | Роль | Профиль |
 |--------|------|---------|
@@ -390,20 +390,20 @@ Three complementary layers: **RTK** (shell) · **Caveman** (prose) · **Ponytail
 
 | Skill | Path |
 |-------|------|
-| clone-website | `skills/clone-website/SKILL.md` |
-| open-design | `skills/open-design/SKILL.md` · repo `skills/open-design/repo/` |
-| 21st-design | `skills/21st-design/SKILL.md` |
-| seo-geo | `skills/seo-geo/SKILL.md` |
-| project-squad | `skills/project-squad/SKILL.md` |
-| n8n-workflow | `skills/n8n-workflow/SKILL.md` — JSON authoring, expressions, validation |
-| dev-os | `skills/dev-os/SKILL.md` — research-first meta-layer, bootstrap gate |
-| cybersecurity | `skills/cybersecurity/SKILL.md` — library playbooks |
-| security-hub | `skills/security-hub/SKILL.md` — orchestrator + scans |
-| **site-compliance-audit** | `skills/site-compliance-audit/SKILL.md` — legal/docs/licenses gap scan |
+| clone-website | `blocks/design/skills/clone-website/SKILL.md` |
+| open-design | `blocks/design/skills/open-design/SKILL.md` · repo `blocks/design/skills/open-design/repo/` |
+| 21st-design | `blocks/design/skills/21st-design/SKILL.md` |
+| seo-geo | `blocks/seo-geo-aio/skills/seo-geo/SKILL.md` |
+| project-squad | `skills/_archive/squad/project-squad/SKILL.md` (archived) |
+| n8n-workflow | `blocks/integrations/skills/n8n-workflow/SKILL.md` — JSON authoring, expressions, validation |
+| dev-os | `blocks/dev-os/skills/dev-os/SKILL.md` — research-first meta-layer, bootstrap gate |
+| cybersecurity | `blocks/security/skills/cybersecurity/SKILL.md` — library playbooks |
+| security-hub | `blocks/security/skills/security-hub/SKILL.md` — orchestrator + scans |
+| **site-compliance-audit** | `blocks/seo-geo-aio/skills/site-compliance-audit/SKILL.md` — legal/docs/licenses gap scan |
 | ponytail | `skills/ponytail/SKILL.md` — YAGNI code ladder |
-| **agency-agents** | `skills/agency-agents/SKILL.md` — 66 personas in `rules/agency/` |
-| **production-studio** | `skills/production-studio/SKILL.md` — storyboard, LVM shorts |
-| **notion-workspace** | `skills/notion-workspace/SKILL.md` — Notion T3 cleanup, tasks |
+| **agency-agents** | `blocks/agency/skills/agency-agents/SKILL.md` — 66 personas in `rules/agency/` |
+| **production-studio** | `blocks/media/skills/production-studio/SKILL.md` — storyboard, LVM shorts |
+| **notion-workspace** | `blocks/integrations/skills/notion-workspace/SKILL.md` — Notion T3 cleanup, tasks |
 | **prompt-engineering-coach** | `skills/prompt-engineering-coach/SKILL.md` — post-session lessons |
 
 ## Notion mega-prompt (Jul 2026)
@@ -425,12 +425,12 @@ Operating model: Candidate A. **Evolution:** permanent 10-principle policy. **Au
 
 | Resource | Path |
 |----------|------|
-| Skill | `skills/dev-os/SKILL.md` |
+| Skill | `blocks/dev-os/skills/dev-os/SKILL.md` |
 | Executive charter | `docs/dev-os/EXECUTIVE.md` |
-| Execution lifecycle | `skills/dev-os/execution/SKILL.md` |
-| Evolution | `skills/dev-os/evolution/SKILL.md` · `policies/evolution-principles.md` |
-| Autonomy | `skills/dev-os/autonomy/SKILL.md` |
-| Emergence | `skills/dev-os/emergence/SKILL.md` |
+| Execution lifecycle | `blocks/dev-os/skills/dev-os/execution/SKILL.md` |
+| Evolution | `blocks/dev-os/skills/dev-os/evolution/SKILL.md` · `policies/evolution-principles.md` |
+| Autonomy | `blocks/dev-os/skills/dev-os/autonomy/SKILL.md` |
+| Emergence | `blocks/dev-os/skills/dev-os/emergence/SKILL.md` |
 | Structure | `ai-tracking/dev-os/synthesis/structure-emergence.md` |
 | Canon | `docs/dev-os/BOOTSTRAP.md` |
 | Corpus | `ai-tracking/dev-os/` |

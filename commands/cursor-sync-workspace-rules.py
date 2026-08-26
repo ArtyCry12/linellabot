@@ -54,10 +54,26 @@ def collect_uris() -> set[str]:
     return out
 
 
+def refresh_block_rule_mirrors() -> int:
+    """Keep hub rules/ mirrors of blocks/*/rules/*.mdc fresh for sync."""
+    blocks = HUB_ROOT / "blocks"
+    if not blocks.is_dir():
+        return 0
+    n = 0
+    for mdc in blocks.glob("*/rules/*.mdc"):
+        # Only top-level block rules (not agency personas under rules/agency/)
+        if mdc.parent.name != "rules":
+            continue
+        shutil.copy2(mdc, RULES_DIR / mdc.name)
+        n += 1
+    return n
+
+
 def main() -> int:
     if not RULES_DIR.is_dir():
         print("No rules dir:", RULES_DIR, file=sys.stderr)
         return 1
+    mirrored = refresh_block_rule_mirrors()
     files = sorted(RULES_DIR.glob("*.mdc"))
     if not files:
         print("No .mdc files in", RULES_DIR)
@@ -81,7 +97,8 @@ def main() -> int:
             copied += 1
         done += 1
     print(
-        f"Copied {len(files)} rule file(s) from {RULES_DIR} to {done} workspace roots "
+        f"Mirrored {mirrored} block rules -> {RULES_DIR}; "
+        f"copied {len(files)} rule file(s) to {done} workspace roots "
         f"({copied} total copies; {skipped} roots missing/skipped)"
     )
     return 0

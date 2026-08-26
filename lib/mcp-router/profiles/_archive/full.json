@@ -1,0 +1,6 @@
+{
+  "id": "full",
+  "label": "All servers from mcp.json.store (not the dated bak)",
+  "ids": ["*"],
+  "gitnexusHeapMb": 1536
+}

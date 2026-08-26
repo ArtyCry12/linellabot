@@ -3,7 +3,7 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const HUB = 'C:/Users/Asus/.cursor';
+const HUB = 'C:/Users/artyo/.cursor';
 const dir = join(HUB, 'rules/agency');
 const files = readdirSync(dir).filter((f) => f.endsWith('.mdc')).sort();
 

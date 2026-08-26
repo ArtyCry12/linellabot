@@ -103,14 +103,12 @@
         "remember this",
         "remember we"
       ],
-      "skill": "skills/_archive/squad/project-squad/SKILL.md",
+      "skill": "blocks/dev-os/skills/dev-os/SKILL.md",
       "mcp": [
         "user-memory"
       ],
-      "templates": [
-        "templates/squad-handoff.md"
-      ],
-      "mode": "agent"
+      "mode": "agent",
+      "note": "Primary: user-memory MCP + AGENTS.md / ai-tracking. Squad archived — do not load project-squad."
     },
     {
       "id": "openrouter-free",
@@ -235,7 +233,7 @@
       "skill": "blocks/seo-geo-aio/skills/opc-seo-geo/SKILL.md",
       "rule": "blocks/seo-geo-aio/rules/seo-geo.mdc",
       "mode": "agent",
-      "note": "Complement to skills/seo-geo/ library; fast opc/resciencelab layer"
+      "note": "Complement to blocks/seo-geo-aio/skills/seo-geo library; fast opc/resciencelab layer"
     },
     {
       "id": "seo-audit-ms",
@@ -868,9 +866,9 @@
         "automation audit",
         "audit automations"
       ],
-      "skill": "skills/_archive/squad/project-squad/SKILL.md",
+      "skill": "skills/repo-intake/SKILL.md",
       "mode": "agent",
-      "note": "Archived. Restore project-squad only after Boss yes."
+      "note": "Automation recommendations via repo-intake. Squad archived — restore only after Boss yes."
     },
     {
       "id": "agency-persona",
@@ -891,7 +889,7 @@
         "@ui-designer"
       ],
       "skill": "blocks/agency/skills/agency-agents/SKILL.md",
-      "rule": "rules/agency-agents.mdc",
+      "rule": "blocks/agency/rules/agency-agents.mdc",
       "mode": "agent"
     },
     {
@@ -1186,7 +1184,7 @@
         "commands/n8n-templates-match.ps1"
       ],
       "docs": [
-        "skills/n8n-templates/SKILL.md"
+        "blocks/integrations/skills/n8n-templates/SKILL.md"
       ],
       "mode": "agent",
       "profile": "ops"
@@ -1753,7 +1751,7 @@
         "~/.agents/skills/oss-review/SKILL.md",
         "~/.agents/skills/wcag-accessibility-audit/SKILL.md"
       ],
-      "rule": "rules/site-compliance-audit.mdc",
+      "rule": "blocks/security/rules/site-compliance-audit.mdc",
       "mcp": [
         "plugin-exa-exa"
       ],
@@ -1761,7 +1759,7 @@
         "commands/site-compliance.md"
       ],
       "docs": [
-        "skills/site-compliance-audit/references/sources.md"
+        "blocks/seo-geo-aio/skills/site-compliance-audit/references/sources.md"
       ],
       "mode": "agent",
       "note": "Primary orchestrator. Supporting catalog skills in skills[]. Live-refetch official sources every run. Not SEO. Default profile md-eu."

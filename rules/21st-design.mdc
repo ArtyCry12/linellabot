@@ -1,0 +1,13 @@
+---
+description: >-
+  21st.dev React UI registry — shadcn installs, Magic MCP /ui generation, local
+  catalog search. Triggers @21st, 21st.dev, Magic MCP, registry component install.
+globs:
+alwaysApply: false
+---
+
+# 21st Design
+
+Load skill: `C:/Users/Asus/.cursor/skills/21st-design/SKILL.md` when the user tags **@21st**, names **21st.dev**, wants a **registry component**, or uses **Magic `/ui`**.
+
+Do not load for HTML-only prototypes (`huashu-design`) or palette/UX-only tasks (`ui-ux-pro-max`).

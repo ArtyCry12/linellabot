@@ -5,7 +5,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HUB = join(dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = join(HUB, 'projects/c-Users-Asus-cursor/mcps/plugin-notion-notion');
+const OUT = join(HUB, 'projects/c-Users-artyo-cursor/mcps/plugin-notion-notion');
 const TOOLS = join(OUT, 'tools');
 
 const INSTRUCTIONS = `Notion official hosted MCP — https://mcp.notion.com/mcp

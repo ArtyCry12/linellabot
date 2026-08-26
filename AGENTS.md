@@ -49,23 +49,23 @@ This project is indexed by GitNexus as **cursor-hub-artyom** (3642 symbols, 4203
 
 ## Security Hub
 
-Front door: `skills/security-hub/SKILL.md`. Library playbooks: `skills/cybersecurity/`. CI templates: `templates/security-ci/`. Scans: `commands/security-scan.ps1` (DAST/recon need `-Authorized`).
+Front door: `blocks/security/skills/security-hub/SKILL.md`. Library playbooks: `blocks/security/skills/cybersecurity/`. CI templates: `templates/security-ci/`. Scans: `commands/security-scan.ps1` (DAST/recon need `-Authorized`).
 
 ## Open Design
 
-Скилл: `C:/Users/artyo/.cursor/blocks/design/skills/open-design/SKILL.md` (hub bridge: `skills/huashu-design` → open-design). Каталог templates: `blocks/design/skills/open-design/repo/` или `skills/open-design/repo/` если vendored. Обновление: `powershell -File commands/ensure-open-design.ps1` · upstream https://github.com/nexu-io/open-design. Правило: `blocks/design/rules/open-design.mdc` (on-demand). Legacy `@huashu` → тот же скилл. Архив: `skills/_archive/huashu-design/`.
+Скилл: `C:/Users/artyo/.cursor/blocks/design/skills/open-design/SKILL.md` (hub bridge: `skills/huashu-design` → open-design). Каталог templates: `blocks/design/skills/open-design/repo/`. Обновление: `powershell -File commands/ensure-open-design.ps1` · upstream https://github.com/nexu-io/open-design. Правило: `blocks/design/rules/open-design.mdc` (on-demand; mirrored into `rules/` for sync). Legacy `@huashu` → тот же скилл. Архив: `skills/_archive/huashu-design/`.
 
 ## Clone Website (AI Website Cloner)
 
-Скилл: `C:/Users/artyo/.cursor/skills/clone-website/SKILL.md`. Шаблон Next.js: `skills/clone-website/template/`. Bootstrap в любую папку: `node skills/clone-website/scripts/init-clone-project.mjs <dir>`. Триггеры: `@clone-website`, `/clone-website`, клон/копия сайта. Требует **cursor-ide-browser** MCP.
+Скилл: `C:/Users/artyo/.cursor/blocks/design/skills/clone-website/SKILL.md`. Шаблон Next.js: `blocks/design/skills/clone-website/template/`. Bootstrap: `node blocks/design/skills/clone-website/scripts/init-clone-project.mjs <dir>`. Триггеры: `@clone-website`, `/clone-website`. Требует **cursor-ide-browser** MCP.
 
 ## Memory stack (DEC-009)
 
-Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev OS corpus). Route memory via parent agent + `blocks/dev-os` (or hub `skills/dev-os` until split). Project Squad archived.
+Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev OS corpus). Route memory via parent agent + `blocks/dev-os/skills/dev-os`. Project Squad archived.
 
 ## 21st Design (21st.dev UI registry)
 
-Скилл: `C:/Users/artyo/.cursor/skills/21st-design/SKILL.md`. Локальный каталог: `lib/21st/search_results.json` (обновление: `node skills/21st-design/scripts/ensure-library.mjs`). Триггеры: `@21st`, 21st.dev, Magic MCP `/ui`, установка компонентов через `shadcn add https://21st.dev/r/...`. MCP: **`21st`** → дескриптор `user-21st` (профиль `design`).
+Скилл: `C:/Users/artyo/.cursor/blocks/design/skills/21st-design/SKILL.md`. Локальный каталог: `lib/21st/search_results.json` (обновление: `node blocks/design/skills/21st-design/scripts/ensure-library.mjs`). Триггеры: `@21st`, 21st.dev, Magic MCP `/ui`. MCP: **`21st`** → дескриптор `user-21st` (профиль `design`).
 
 ## Оркестрация MCP и скиллов
 
@@ -88,5 +88,5 @@ Key: Windows user env `OPENROUTER_API_KEY`. Do **not** Override OpenAI Base URL.
 <!-- seo-geo-aio:start -->
 ## SEO + GEO + AIO block
 
-Canon: [i-tracking/ecosystem-governance/blocks/seo-geo-aio/CHARTER.md](ai-tracking/ecosystem-governance/blocks/seo-geo-aio/CHARTER.md) · route seo-geo-aio-block · skill skills/seo-geo.
+Canon: [`ai-tracking/ecosystem-governance/blocks/seo-geo-aio/CHARTER.md`](ai-tracking/ecosystem-governance/blocks/seo-geo-aio/CHARTER.md) · route seo-geo-aio-block · skill `blocks/seo-geo-aio/skills/seo-geo/SKILL.md`.
 <!-- seo-geo-aio:end -->
