@@ -67,6 +67,8 @@ projects/*/*
 !SYSTEM-REGISTRY.md
 !SYSTEM-TAXONOMY.md
 !SYSTEM-VISIBILITY-MAP.md
+!templates/
+!templates/**
 !CLAUDE.md
 !.gitignore
 

@@ -22,6 +22,7 @@ User query
   ├─ Multi-agent / Squad spawn              → subagent-guardrails.mdc + project-squad
   ├─ Google mail/drive/calendar/GSC       → google-workspace MCP (OAuth on reload) · gsc-audit.ps1 CSV
   ├─ Maps / geo MCP                       → google-maps endpoint · gemini fallback
+  ├─ Mega-task / WBS / эпики / декомпозиция → task-decomposition (Plan, then Boss yes)
   ├─ Refactor / review / surgical edit     → karpathy-guidelines.mdc + gitnexus if symbols
   ├─ Supply-chain / extension inventory    → bumblebee scan → cybersecurity
   ├─ Prompt templates library              → prompts.chat MCP (if configured)

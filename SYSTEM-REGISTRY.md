@@ -50,6 +50,19 @@ Canonical map of `C:\Users\artyo\.cursor`. Update when adding rules, skills, or 
 | Hook (every prompt) | `hooks/task-router.ps1` |
 | Test | `commands/task-router-test.ps1` · `/route` |
 
+## Task decomposition / WBS (2026-08-26)
+
+SECONDARY. Not always-on. Do not restore `skills/_quarantine/writing-plans`.
+
+| Resource | Path |
+|----------|------|
+| Skill | `skills/task-decomposition/SKILL.md` |
+| Rule | `rules/task-decomposition.mdc` (on-demand) |
+| Template | `templates/wbs/WBS-TEMPLATE.md` |
+| Route | `task-decomposition` in `lib/task-router/routes.json` |
+| Artifact | `{project}/docs/wbs/{slug}.md` (or existing `.cursor/plans/*.plan.md`) |
+| Policy | Skip empty levels · L5 `verify:` required · TodoWrite = 1–3 package window · approve then implement (`!auto`+contract → first epic) |
+
 ## Prompt Engineering Coach (DEC-058)
 
 | Resource | Path |

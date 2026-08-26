@@ -42,5 +42,6 @@ Primary + Secondary routes both apply; sequence Primary first unless user order 
 | «раскадровка для reels» | production-studio |
 | «запомни для Dev OS» | user-memory + squad-memory |
 | «почему падает CI» | ci-debug + ci-investigator |
+| «разложи на эпики / WBS» | task-decomposition |
 
 Test: `powershell -File commands/task-router-test.ps1`

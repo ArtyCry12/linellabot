@@ -1,0 +1,27 @@
+---
+description: >-
+  Proportional 5-level WBS on Plan/mega-task/new project: project → epic →
+  story → task → work package. Skip empty levels. L5 must have verify.
+  Triggers: WBS, эпик, user story, декомпозиция, разложи, иерархия задач, @wbs.
+alwaysApply: false
+---
+
+# Task decomposition (WBS)
+
+On-demand. Canon: `skills/task-decomposition/SKILL.md` · template: `templates/wbs/WBS-TEMPLATE.md`.
+
+## Do
+
+1. Qualifying work → write one WBS file in the **project** (`docs/wbs/{slug}.md` or existing `.cursor/plans/*.plan.md`).
+2. Skip empty levels. Do not invent dummy epics.
+3. Every L5 has `verify:` (code/SEO/design/n8n/governance — see skill).
+4. Stop and ask «Утвердить дерево?» before L4/L5 work.
+5. `!auto` + Deliverables contract → write WBS, run **first epic only**.
+6. TodoWrite = current 1–3 packages. File = source of status.
+
+## Do not
+
+- Five floors on a one-line fix
+- Restore quarantined `writing-plans`
+- Always-on hierarchy
+- Parallel Task unless epics are file-independent

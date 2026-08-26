@@ -23,6 +23,7 @@ Switch mode **silently** when task type is clear. Do not ask "switch to Plan?".
 2. **Plan** first only when >3 architectural decisions AND no `/autopilot`.
 3. **Debug** overrides Plan when stack trace or CI failure is present.
 4. Never block implementation to debate mode — pick best fit and proceed.
+5. Qualifying Plan / mega-task / new project → write WBS (`skills/task-decomposition`), then wait for Boss «да». `!auto` + Deliverables: first epic only, no extra pause.
 
 ## Examples
 

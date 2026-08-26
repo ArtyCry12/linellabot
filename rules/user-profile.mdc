@@ -19,7 +19,7 @@ Source: [`ai-tracking/user-profile/profile.json`](ai-tracking/user-profile/profi
 ## Questions policy
 
 - **До старта крупной задачи** — полный список уточняющих вопросов с вариантами (как AskQuestion)
-- **В середине длинного протокола** — НЕ останавливаться, кроме: commit, push, deploy, delete, secrets, mcp write
+- **В середине длинного протокола** — НЕ останавливаться, кроме: commit, push, deploy, delete, secrets, mcp write, **утверждение WBS** (`skills/task-decomposition`; `!auto`+контракт → первый эпик без паузы)
 - После ответов на вопросы — работать до конца без лишних пауз
 
 ## Automation (from quiz)

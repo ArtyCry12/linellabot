@@ -556,6 +556,38 @@
       "note": "Archived 2026-08-25. No live squad-* subagents. Copy into a project only after Boss yes."
     },
     {
+      "id": "task-decomposition",
+      "label": "5-level WBS (project → epic → story → task → package)",
+      "keywords": [
+        "wbs",
+        "эпик",
+        "эпики",
+        "декомпозиц",
+        "work package",
+        "подзадач",
+        "иерарх",
+        "атомарн"
+      ],
+      "phrases": [
+        "декомпозиция задач",
+        "разложи на эпики",
+        "разложи задачу",
+        "work breakdown",
+        "иерархия задач",
+        "пять уровней",
+        "user stories",
+        "user story"
+      ],
+      "tags": [
+        "@wbs",
+        "@task-decomposition"
+      ],
+      "skill": "skills/task-decomposition/SKILL.md",
+      "rule": "rules/task-decomposition.mdc",
+      "mode": "plan",
+      "note": "SECONDARY. Skip empty levels. L5 verify required. TodoWrite is a 1–3 package window. Do not restore quarantined writing-plans. Approval gate except !auto+Deliverables (first epic only)."
+    },
+    {
       "id": "coding-discipline",
       "label": "Plan-first coding (Superpowers bridge)",
       "keywords": [

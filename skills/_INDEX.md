@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-08-25T14:37:34.692Z
+Generated: 2026-08-26T11:47:02.071Z
 
 Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo/` are in LIBRARY-INDEX, not here.
 
@@ -75,7 +75,7 @@ Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo
 | update-cli-config | `skills-cursor/update-cli-config/SKILL.md` | skills-cursor | >- |
 | update-cursor-settings | `skills-cursor/update-cursor-settings/SKILL.md` | skills-cursor | >- |
 | awesome-prompts | `skills/awesome-prompts/SKILL.md` | hub | >- |
-| brainstorming | `skills/brainstorming/SKILL.md` | hub | "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying |
+| brainstorming | `skills/brainstorming/SKILL.md` | hub | "Hub bridge for Superpowers plan-first coding. Use when route coding-discipline or user says @superpowers / план сначала |
 | caveman | `skills/caveman/SKILL.md` | hub | > |
 | code-review-pro | `skills/code-review-pro/SKILL.md` | hub | >- |
 | ecosystem-architect | `skills/ecosystem-architect/SKILL.md` | hub | >- |
@@ -90,6 +90,7 @@ Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo
 | prompt-engineering-coach | `skills/prompt-engineering-coach/SKILL.md` | hub | >- |
 | repo-intake | `skills/repo-intake/SKILL.md` | hub | >- |
 | shadcn | `skills/shadcn/SKILL.md` | hub | >- |
+| task-decomposition | `skills/task-decomposition/SKILL.md` | hub | "Builds a proportional 5-level WBS (project, epic, story, task, atomic work package) for Plan/mega-task/new project/!aut |
 | web-design-guidelines | `skills/web-design-guidelines/SKILL.md` | hub | >- |
 
-Total: 85 skills
+Total: 86 skills
