@@ -153,11 +153,11 @@ if ($report.ok) {
 }
 
 if ($report.stale) {
-    Write-Host "`nSTALE — run: powershell -File commands/gitnexus-reindex.ps1" -ForegroundColor Yellow
+    Write-Host "`nSTALE - run: powershell -File commands/gitnexus-reindex.ps1" -ForegroundColor Yellow
     $fail++
 }
 if (-not $ignoreOk) {
-    Write-Host "`nIGNORE CANON MISSING — see .gitnexusignore (incident 2026-09-01)" -ForegroundColor Yellow
+    Write-Host "`nIGNORE CANON MISSING - see .gitnexusignore (incident 2026-09-01)" -ForegroundColor Yellow
     $fail++
 }
 
