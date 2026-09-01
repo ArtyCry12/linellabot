@@ -1,9 +1,14 @@
 ---
 name: brainstorming
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: "Hub bridge for Superpowers plan-first coding. Use when route coding-discipline or user says @superpowers / план сначала — not before every creative task."
 ---
 
 # Brainstorming Ideas Into Designs
+
+**Hub:** this file is a bridge. Canon = Cursor plugin `superpowers`. Adapter: `rules/superpowers-adapter.mdc`. HARD-GATE below applies only on that route — not to SEO/design/one-line fixes. Do not auto-commit specs. Questions: full list before a large task (user-profile), not one-by-one. After design → plan mode; do not load quarantined `writing-plans` / TDD / SDD as CORE.
+
+> **Note (2026-09-01):** Boss large / from-scratch использует `blocks/dev-os/skills/grill-rounds/SKILL.md` — раунды фронтира (весь фронтир в одном сообщении), **не** one-at-a-time. Этот skill — bridge для Superpowers route; для нового проекта сначала `wayfinder`, затем grill-rounds, затем `task-decomposition`.
+
 
 Help turn ideas into fully formed designs and specs through natural collaborative dialogue.
 

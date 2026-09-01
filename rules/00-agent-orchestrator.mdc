@@ -24,6 +24,8 @@ MCP для MarkItDown **не нужен** — hook быстрее и без ду
 
 **Superpowers** (Cursor plugin `obra/superpowers`) — **SECONDARY**, не OS. Если SessionStart вставил `using-superpowers` / EXTREMELY_IMPORTANT — не делать skill-before-any-reply. Канон: `rules/superpowers-adapter.mdc`. Не клонировать git в `skills/`.
 
+**Remotion** (plugin `remotion-dev/cursor-plugin`) — **SECONDARY**, motion-as-code, не видеоредактор. Канон: `rules/remotion-adapter.mdc`. Простой trim/формат → ffmpeg. Не копировать 12 скиллов в `blocks/media`.
+
 ## Принципы
 
 1. Не подтягивай все MCP/скиллы в каждый ответ — только по задаче.

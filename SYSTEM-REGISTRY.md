@@ -337,6 +337,19 @@ Three complementary layers: **RTK** (shell) · **Caveman** (prose) · **Ponytail
 | `rules/design-stack.mdc` | shadcn, CRO, design deps |
 | `rules/ai-coding-security.mdc` | REQ-067–068 blindspots |
 
+## GitNexus (code graph)
+
+| Resource | Path |
+|----------|------|
+| Index | `.gitnexus/` (run via `node .gitnexus/run.cjs`) |
+| Ignore canon | `.gitnexusignore` |
+| Test (freshness + ignore gate) | `commands/gitnexus-test.ps1` |
+| Reindex (after Reload if MCP RAM heavy) | `commands/gitnexus-reindex.ps1` |
+| Health | `ai-tracking/gitnexus-health.json` |
+| Last incident | `ai-tracking/ecosystem-governance/reports/2026-09-01-gitnexus-reindex-incident.md` |
+
+Reindex only if `gitnexus-test.ps1` reports stale. Long shell jobs may show `error` while analyze succeeds — verify with the test, not the wrapper exit code.
+
 ## User MCP (`mcp.json`, gitignored)
 
 **Setup:** copy `mcp.json.example` → `mcp.json` (ядро). Полный каталог без секретов: `lib/mcp-router/mcp.json.example-full.json`. Живые ключи: `mcp.json.store`.
@@ -368,6 +381,8 @@ Three complementary layers: **RTK** (shell) · **Caveman** (prose) · **Ponytail
 
 **Skills plugin (not MCP):** `superpowers` (obra) — SECONDARY. Adapter `rules/superpowers-adapter.mdc`. Leave enabled in Plugins UI. Update marketplace → **6.3.0** (cache may still be 6.1.1). Do not clone git into `skills/`.
 
+**Remotion plugin (not MCP):** `remotion` — SECONDARY, media block. Local `plugins/local/remotion` (gitignored). Adapter `rules/remotion-adapter.mdc`. Enable in Plugins UI + Reload. Not a CapCut substitute.
+
 **Web dedup:** use **Exa** first; `user-fetch` for one known URL; avoid parallel Exa+Tavily+Firecrawl.
 
 ## MCP naming map (config id ↔ descriptor folder)
@@ -397,6 +412,7 @@ Three complementary layers: **RTK** (shell) · **Caveman** (prose) · **Ponytail
 | project-squad | `skills/_archive/squad/project-squad/SKILL.md` (archived) |
 | n8n-workflow | `blocks/integrations/skills/n8n-workflow/SKILL.md` — JSON authoring, expressions, validation |
 | dev-os | `blocks/dev-os/skills/dev-os/SKILL.md` — research-first meta-layer, bootstrap gate |
+| dev-os adapters (Matt Pocock, MIT) | `grill-rounds` · `project-context` · `wayfinder` — `blocks/dev-os/skills/<name>/SKILL.md` (SECONDARY, not core) |
 | cybersecurity | `blocks/security/skills/cybersecurity/SKILL.md` — library playbooks |
 | security-hub | `blocks/security/skills/security-hub/SKILL.md` — orchestrator + scans |
 | **site-compliance-audit** | `blocks/seo-geo-aio/skills/site-compliance-audit/SKILL.md` — legal/docs/licenses gap scan |

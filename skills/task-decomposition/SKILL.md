@@ -7,6 +7,8 @@ description: "Builds a proportional 5-level WBS (project, epic, story, task, ato
 
 Hub canon for plan trees. SECONDARY. Not always-on. Not a Jira clone.
 
+> **Note (2026-09-01):** Для «с нуля» / нового проекта — если в целевом репо уже есть wayfinder-карта (`docs/wayfinder.md` от `blocks/dev-os/skills/wayfinder/SKILL.md`), WBS строится **после** неё. Wayfinder закрывает решения, WBS — пакует реализацию.
+
 Read `templates/wbs/WBS-TEMPLATE.md` once, then write **one** file in the **project repo**.
 
 ## When

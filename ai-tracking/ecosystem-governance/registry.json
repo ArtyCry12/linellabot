@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-26T11:35:00.000Z",
+  "updatedAt": "2026-09-01T16:10:00.000Z",
   "status": "live",
   "approvals": {
     "squad": "archived-restore-on-yes",
@@ -35,7 +35,41 @@
     "agency": { "path": "blocks/agency/" },
     "media": { "path": "blocks/media/" },
     "qa": { "path": "blocks/qa/" },
-    "dev-os": { "path": "blocks/dev-os/" }
+    "dev-os": {
+      "path": "blocks/dev-os/",
+      "adapters": {
+        "grill-rounds": {
+          "tier": "SECONDARY",
+          "upstream": "https://github.com/mattpocock/skills",
+          "upstreamSkill": "productivity/grilling",
+          "license": "MIT",
+          "path": "blocks/dev-os/skills/grill-rounds/SKILL.md",
+          "rule": "blocks/dev-os/rules/grill-rounds.mdc",
+          "route": "clarify-first",
+          "status": "adapter-2026-09-01"
+        },
+        "project-context": {
+          "tier": "SECONDARY",
+          "upstream": "https://github.com/mattpocock/skills",
+          "upstreamSkill": "engineering/domain-modeling",
+          "license": "MIT",
+          "path": "blocks/dev-os/skills/project-context/SKILL.md",
+          "scope": "glossary-only",
+          "route": "project-context",
+          "status": "adapter-2026-09-01"
+        },
+        "wayfinder": {
+          "tier": "SECONDARY",
+          "upstream": "https://github.com/mattpocock/skills",
+          "upstreamSkill": "engineering/wayfinder",
+          "license": "MIT",
+          "path": "blocks/dev-os/skills/wayfinder/SKILL.md",
+          "route": "from-scratch",
+          "tracker": "local-md",
+          "status": "adapter-2026-09-01"
+        }
+      }
+    }
   },
   "agents": {
     "ecosystem-architect": {
@@ -52,6 +86,12 @@
     "sentry": { "mode": "plugin-only", "alwaysOn": false },
     "gitnexusHeapMb": 1536,
     "core": ["memory", "gitnexus"]
+  },
+  "gitnexus": {
+    "test": "commands/gitnexus-test.ps1",
+    "reindex": "commands/gitnexus-reindex.ps1",
+    "ignore": ".gitnexusignore",
+    "lastIncident": "ai-tracking/ecosystem-governance/reports/2026-09-01-gitnexus-reindex-incident.md"
   },
   "plugins": {
     "superpowers": {
@@ -70,6 +110,24 @@
       "cachedVersionSeen": "6.1.1",
       "upstreamVersion": "6.3.0",
       "status": "adapter-2026-08-25"
+    },
+    "remotion": {
+      "tier": "SECONDARY",
+      "plane": "cursor-plugin",
+      "upstream": "https://github.com/remotion-dev/cursor-plugin",
+      "install": "plugins/local/remotion (git clone) or marketplace remotion",
+      "adapter": "rules/remotion-adapter.mdc",
+      "route": "remotion-code",
+      "block": "media",
+      "doNot": [
+        "clone-12-skills-into-blocks",
+        "treat-as-nle",
+        "commit-renders-to-hub"
+      ],
+      "versionSeen": "4.0.518",
+      "hooks": false,
+      "mcp": false,
+      "status": "adapter-2026-08-27"
     }
   },
   "cacheSweep": {

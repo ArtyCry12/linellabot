@@ -54,7 +54,8 @@ Other domains (SEO, n8n, engineering, content, security) — list only: **`ai-tr
 | Layer | Hub | External pattern |
 |-------|-----|------------------|
 | Meta / research | `dev-os` · `dev-os-research` | [ECC](https://github.com/affaan-m/ECC) harness OS |
-| Execution | `project-squad` (10 agents) | [agency-agents](https://github.com/msitarzewski/agency-agents) (232 specialists) |
+| From-scratch / grill | `grill-rounds` · `wayfinder` · `project-context` (block `dev-os`, routes `clarify-first` / `from-scratch` / `project-context`) | mattpocock/skills adapters, pack stays quarantined |
+| Execution | `project-squad` (archived roster) | [agency-agents](https://github.com/msitarzewski/agency-agents) (232 specialists) |
 | Frameworks | Task tool fallbacks | [crewAI](https://github.com/joaomdmoura/crewAI) · [langchain](https://github.com/langchain-ai/langchain) · [openclaw](https://github.com/openclaw/openclaw) |
 
 **Rule:** Boss (Opus) → Squad for build/ship · Dev OS for bootstrap · Agency agents **by division** on demand (see `AGENCY-PORTFOLIO-MAP.md`).

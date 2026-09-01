@@ -43,5 +43,8 @@ Primary + Secondary routes both apply; sequence Primary first unless user order 
 | «запомни для Dev OS» | user-memory + squad-memory |
 | «почему падает CI» | ci-debug + ci-investigator |
 | «разложи на эпики / WBS» | task-decomposition |
+| «согласовать план / grill me» | grill-rounds (clarify-first) |
+| «новый проект с нуля» | wayfinder (from-scratch) → WBS |
+| «глоссарий / CONTEXT.md» | project-context |
 
 Test: `powershell -File commands/task-router-test.ps1`

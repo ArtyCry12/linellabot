@@ -6,25 +6,79 @@
   "routes": [
     {
       "id": "clarify-first",
-      "label": "Clarify before big task",
+      "label": "Clarify before big task (grill-rounds)",
       "keywords": [
         "большая задача",
         "полный план",
         "с нуля",
         "неясно",
         "уточни",
-        "вопросы"
+        "вопросы",
+        "grill",
+        "допрос",
+        "согласовать план"
       ],
       "phrases": [
         "clarify first",
         "ask questions first",
         "полный список вопросов",
-        "сначала вопросы"
+        "сначала вопросы",
+        "grill me",
+        "допроси",
+        "согласовать план",
+        "большая задача",
+        "с нуля"
       ],
-      "skill": "skills/prompt-engineering-coach/SKILL.md",
-      "rule": "rules/user-profile.mdc",
+      "skill": "blocks/dev-os/skills/grill-rounds/SKILL.md",
+      "rule": "blocks/dev-os/rules/grill-rounds.mdc",
       "mode": "plan",
-      "note": "Ask full question list BEFORE work; user answered quiz preference"
+      "note": "Grill-rounds adapter (mattpocock/skills MIT). Rounds only BEFORE start. user-profile.mdc is always-on. prompt-coach stays on its own route."
+    },
+    {
+      "id": "from-scratch",
+      "label": "New project / from scratch (wayfinder)",
+      "keywords": [
+        "новый проект",
+        "с нуля",
+        "greenfield",
+        "wayfinder",
+        "карта решений",
+        "с чистого листа"
+      ],
+      "phrases": [
+        "from scratch",
+        "new project",
+        "greenfield",
+        "wayfinder map",
+        "карта решений",
+        "с нуля",
+        "новый проект",
+        "с чистого листа"
+      ],
+      "skill": "blocks/dev-os/skills/wayfinder/SKILL.md",
+      "mode": "plan",
+      "note": "Wayfinder adapter (mattpocock/skills MIT). Sequence if dual-match with clarify-first: map first, then grill-rounds, then WBS. Then project-context if client repo. No squad."
+    },
+    {
+      "id": "project-context",
+      "label": "Client repo glossary (CONTEXT.md)",
+      "keywords": [
+        "глоссарий",
+        "glossary",
+        "термины проекта",
+        "domain terms",
+        "ubiquitous language"
+      ],
+      "phrases": [
+        "CONTEXT.md",
+        "context.md",
+        "глоссарий проекта",
+        "термины проекта",
+        "domain glossary"
+      ],
+      "skill": "blocks/dev-os/skills/project-context/SKILL.md",
+      "mode": "agent",
+      "note": "Writes CONTEXT.md only outside hub. Never AGENTS.md replacement."
     },
     {
       "id": "video-learning",
@@ -534,7 +588,33 @@
         "plugin-apify-apify"
       ],
       "mode": "agent",
-      "note": "user-magnific parked; mcp-profile.ps1 -Name full then Reload"
+      "note": "user-magnific parked; mcp-profile.ps1 -Name full then Reload. Motion-as-code → remotion-code route, not this."
+    },
+    {
+      "id": "remotion-code",
+      "label": "Remotion video-as-code",
+      "keywords": [
+        "remotion",
+        "ремоушен",
+        "npx remotion",
+        "useCurrentFrame"
+      ],
+      "phrases": [
+        "remotion",
+        "ремоушен",
+        "/remotion",
+        "video as code",
+        "remotion captions",
+        "remotion studio",
+        "useCurrentFrame"
+      ],
+      "tags": [
+        "@remotion"
+      ],
+      "skill": "blocks/media/skills/remotion/SKILL.md",
+      "rule": "rules/remotion-adapter.mdc",
+      "mode": "agent",
+      "note": "Plugin plane canon (plugins/local/remotion). Not CapCut. Simple ffmpeg trim stays outside this route."
     },
     {
       "id": "project-squad",

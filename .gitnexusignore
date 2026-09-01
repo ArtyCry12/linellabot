@@ -4,6 +4,8 @@
 skills/open-design/repo/
 blocks/design/skills/open-design/repo/
 skills/_archive/
+skills/_quarantine/
+skills/skills-main-top-coding/
 plugins/cache/
 lib/ecc-src/
 projects/
@@ -16,3 +18,5 @@ node_modules/
 .gitnexus/
 extensions/
 **/*.db
+# Parser hang 2026-09-01 (worker cumulative timeout on impeccable scripts)
+blocks/design/skills/impeccable/scripts/

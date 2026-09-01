@@ -1,6 +1,6 @@
 # Skills index (auto-generated)
 
-Generated: 2026-08-26T12:18:57.914Z
+Generated: 2026-09-01T11:43:19.195Z
 
 Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo/` are in LIBRARY-INDEX, not here.
 
@@ -23,6 +23,9 @@ Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo
 | vercel-composition-patterns | `blocks/design/skills/vercel-composition-patterns/SKILL.md` | block:design | React composition patterns that scale. Use when refactoring components with |
 | vercel-react-best-practices | `blocks/design/skills/vercel-react-best-practices/SKILL.md` | block:design | React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, r |
 | dev-os | `blocks/dev-os/skills/dev-os/SKILL.md` | block:dev-os | >- |
+| grill-rounds | `blocks/dev-os/skills/grill-rounds/SKILL.md` | block:dev-os | >- |
+| project-context | `blocks/dev-os/skills/project-context/SKILL.md` | block:dev-os | >- |
+| wayfinder | `blocks/dev-os/skills/wayfinder/SKILL.md` | block:dev-os | >- |
 | n8n-templates | `blocks/integrations/skills/n8n-templates/SKILL.md` | block:integrations | >- |
 | n8n-workflow-architect | `blocks/integrations/skills/n8n-workflow-architect/SKILL.md` | block:integrations | >- |
 | n8n-workflow-automation | `blocks/integrations/skills/n8n-workflow-automation/SKILL.md` | block:integrations | >- |
@@ -57,6 +60,7 @@ Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo
 | create-rule | `skills-cursor/create-rule/SKILL.md` | skills-cursor | >- |
 | create-skill | `skills-cursor/create-skill/SKILL.md` | skills-cursor | >- |
 | create-subagent | `skills-cursor/create-subagent/SKILL.md` | skills-cursor | >- |
+| deploy-with-vercel | `skills-cursor/deploy-with-vercel/SKILL.md` | skills-cursor | >- |
 | goal | `skills-cursor/goal/SKILL.md` | skills-cursor | Set a goal that Cursor will pursue to completion. |
 | loop | `skills-cursor/loop/SKILL.md` | skills-cursor | >- |
 | migrate-to-skills | `skills-cursor/migrate-to-skills/SKILL.md` | skills-cursor | >- |
@@ -93,4 +97,4 @@ Hub-only roots + `blocks/<id>/skills/<name>/SKILL.md`. Nested `library/` / `repo
 | task-decomposition | `skills/task-decomposition/SKILL.md` | hub | "Builds a proportional 5-level WBS (project, epic, story, task, atomic work package) for Plan/mega-task/new project/!aut |
 | web-design-guidelines | `skills/web-design-guidelines/SKILL.md` | hub | >- |
 
-Total: 86 skills
+Total: 90 skills

@@ -19,6 +19,8 @@ Source: [`ai-tracking/user-profile/profile.json`](ai-tracking/user-profile/profi
 ## Questions policy
 
 - **До старта крупной задачи** — полный список уточняющих вопросов с вариантами (как AskQuestion)
+- **Крупное / с нуля** → `blocks/dev-os/skills/grill-rounds/SKILL.md` (раунды фронтира, не по одному). Для «с нуля» сначала `wayfinder` (карта решений), затем grill, затем WBS.
+- **Раунды только до старта.** После «поняли друг друга» — без пауз.
 - **В середине длинного протокола** — НЕ останавливаться, кроме: commit, push, deploy, delete, secrets, mcp write, **утверждение WBS** (`skills/task-decomposition`; `!auto`+контракт → первый эпик без паузы)
 - После ответов на вопросы — работать до конца без лишних пауз
 

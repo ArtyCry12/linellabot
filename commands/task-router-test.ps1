@@ -18,8 +18,22 @@ $samples = @(
     "what is DEC-056",
     "/project-squad audit this repo",
     "find skill for react performance on skills.sh",
-    "разложи задачу на эпики и user stories с work packages"
+    "разложи задачу на эпики и user stories с work packages",
+    "открой remotion studio",
+    "собери композицию remotion",
+    "grill me before we start the plan",
+    "build a new project from scratch",
+    "write domain glossary CONTEXT.md for the client"
 )
+
+$expectTop = @{
+    "storyboard for reels short video" = "production-studio"
+    "открой remotion studio"           = "remotion-code"
+    "собери композицию remotion"       = "remotion-code"
+    "grill me before we start the plan" = "clarify-first"
+    "build a new project from scratch"  = "from-scratch"
+    "write domain glossary CONTEXT.md for the client" = "project-context"
+}
 
 Write-Host "=== Task Router test ===" -ForegroundColor Cyan
 
@@ -39,14 +53,29 @@ foreach ($s in $samples) {
     $top = if ($r.Matches.Count -gt 0) { $r.Matches[0].Id } else { "(none)" }
     $score = if ($r.Matches.Count -gt 0) { $r.Matches[0].Score } else { "" }
     $color = if ($top -eq "(none)") { "Yellow" } else { "Green" }
-    if ($top -eq "(none)") { $fail++ }
+    $wrong = $expectTop.ContainsKey($s) -and $top -ne $expectTop[$s]
+    if ($top -eq "(none)" -or $wrong) {
+        $fail++
+        if ($wrong) { $color = "Red" }
+    }
     Write-Host "`n> $s" -ForegroundColor White
-    Write-Host "  -> $top (score $score)" -ForegroundColor $color
+    if ($wrong) {
+        Write-Host "  -> $top (score $score) expected $($expectTop[$s])" -ForegroundColor $color
+    }
+    else {
+        Write-Host "  -> $top (score $score)" -ForegroundColor $color
+    }
     if ($r.Matches.Count -gt 1) {
         Write-Host "  + $($r.Matches[1].Id)" -ForegroundColor DarkGreen
     }
 }
 
-Write-Host "`nSamples with no route: $fail / $($samples.Count)" -ForegroundColor $(if ($fail -eq 0) { "Green" } else { "Yellow" })
+Write-Host "`nFailures: $fail / $($samples.Count)" -ForegroundColor $(if ($fail -eq 0) { "Green" } else { "Yellow" })
+
+$utf8 = Join-Path $HubRoot "commands/task-router-utf8-check.py"
+Write-Host "`n=== UTF-8 route probes ===" -ForegroundColor Cyan
+python $utf8
+if ($LASTEXITCODE -ne 0) { $fail++ }
+
 if ($fail -gt 0) { exit 1 }
 exit 0

@@ -17,11 +17,15 @@ User query
   ├─ Taxonomy / hub refresh / new skill    → SYSTEM-TAXONOMY.md + foundation-refresh
   ├─ Notion pages / T3 cleanup              → notion-workspace skill + user-notion MCP
   ├─ Video / storyboard / LVM               → production-studio skill
+  ├─ Remotion / video-as-code / композиция  → remotion-code (plugin SECONDARY)
   ├─ shadcn blocks / docs for libs          → design-stack skill + context7 + @21st-dev/magic
   ├─ Repo patterns (vibe, swarm, visual)    → docs/knowledge-base/P2-REPOS.md
   ├─ Multi-agent / Squad spawn              → subagent-guardrails.mdc + project-squad
   ├─ Google mail/drive/calendar/GSC       → google-workspace MCP (OAuth on reload) · gsc-audit.ps1 CSV
   ├─ Maps / geo MCP                       → google-maps endpoint · gemini fallback
+  ├─ Grill / согласовать план / большая задача → grill-rounds (route clarify-first)
+  ├─ New project / с нуля / wayfinder         → wayfinder then WBS (route from-scratch)
+  ├─ Client glossary / CONTEXT.md             → project-context (never in hub)
   ├─ Mega-task / WBS / эпики / декомпозиция → task-decomposition (Plan, then Boss yes)
   ├─ Refactor / review / surgical edit     → karpathy-guidelines.mdc + gitnexus if symbols
   ├─ Supply-chain / extension inventory    → bumblebee scan → cybersecurity
@@ -74,3 +78,7 @@ User query
 | "SEO audit full stack" | seo-audit.ps1 + seo-geo on-page + technical |
 | "P2 refresh" | commands/p2-refresh.ps1 |
 | "Prompt lesson" | prompt-engineering-coach → prompt-lessons/ |
+| "Grill me / согласовать план" | grill-rounds (clarify-first) |
+| "Новый проект с нуля" | wayfinder → WBS (from-scratch) |
+| "Глоссарий CONTEXT.md" | project-context (client repo only) |
+| "собери композицию remotion" | remotion-code + remotion-adapter (не production-studio) |
