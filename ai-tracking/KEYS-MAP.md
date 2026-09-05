@@ -46,7 +46,7 @@ Live `mcp.json` (core) сейчас без gemini. Пример: `mcp.json.examp
 
 ## Router (парковка)
 
-`lib/task-router/routes.json` route `openrouter-free` ещё может упоминать `glm-5.2-high` в note — **не чинить здесь**. Отдельная deep dive сессия Task Router.
+`lib/task-router/routes.json` route `openrouter-free` aligned 2026-09-06: volume = `composer-2.5-fast`, never Task `glm-5.2-high` as free; mid/STT = `-BossYes`.
 
 ## Куда класть OR ключ руками
 

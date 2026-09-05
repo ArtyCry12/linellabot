@@ -178,7 +178,7 @@ Default profile: MD + EU. Universal via `--profile eu|us|generic`. Not legal adv
 | Squad override (archived) | `skills/_archive/squad/project-squad/reference/model-map.md` |
 | Test | `commands/openrouter-free-test.ps1` |
 | Health | `ai-tracking/openrouter-free-health.json` |
-| Route | `openrouter-free` in `lib/task-router/routes.json` (note may be stale until Router wave) |
+| Route | `openrouter-free` in `lib/task-router/routes.json` (aligned 2026-09-06: Composer volume, `-BossYes`) |
 | AGENTS.md | `<!-- openrouter-free:start -->` |
 
 Draft text → wrapper Rank 3. Volume Task → `composer-2.5-fast`. Never `inherit`. Never Task `glm-5.2-high` as free. Rank 2 only after Boss yes + wrapper `-BossYes`. Do not Override OpenAI Base URL. Key: `OPENROUTER_API_KEY` user env. Map: `ai-tracking/KEYS-MAP.md`.

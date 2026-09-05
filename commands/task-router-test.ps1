@@ -23,7 +23,8 @@ $samples = @(
     "собери композицию remotion",
     "grill me before we start the plan",
     "build a new project from scratch",
-    "write domain glossary CONTEXT.md for the client"
+    "write domain glossary CONTEXT.md for the client",
+    "openrouter free models"
 )
 
 $expectTop = @{
@@ -33,6 +34,7 @@ $expectTop = @{
     "grill me before we start the plan" = "clarify-first"
     "build a new project from scratch"  = "from-scratch"
     "write domain glossary CONTEXT.md for the client" = "project-context"
+    "openrouter free models" = "openrouter-free"
 }
 
 Write-Host "=== Task Router test ===" -ForegroundColor Cyan

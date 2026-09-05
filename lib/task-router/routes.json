@@ -166,13 +166,12 @@
     },
     {
       "id": "openrouter-free",
-      "label": "OpenRouter free GLM / TTS",
+      "label": "OpenRouter free / TTS / STT (wrapper)",
       "keywords": [
         "openrouter",
         "glm-5.2:free",
-        "nemotron-3-ultra",
         "fish-audio",
-        "flux-tts",
+        "mai-transcribe",
         "бесплатн модел",
         "бесплатные модели"
       ],
@@ -181,7 +180,8 @@
         "озвучь",
         "озвучка текста",
         "openrouter free",
-        "glm 5.2 free"
+        "glm 5.2 free",
+        "mai-transcribe"
       ],
       "tags": [
         "@openrouter-free"
@@ -192,7 +192,7 @@
         "commands/openrouter-free-test.ps1"
       ],
       "mode": "agent",
-      "note": "Wrapper only; do not Override OpenAI Base URL. Subagent: replace map model with OpenRouter chat or Task glm-5.2-high. Canon: ai-tracking/openrouter-free.md."
+      "note": "Wrapper only; do not Override OpenAI Base URL. Subagent volume: Task composer-2.5-fast (never Task glm-5.2-high as free). Mid/STT need Boss yes + -BossYes. Canon: ai-tracking/openrouter-free.md + ai-tracking/KEYS-MAP.md."
     },
     {
       "id": "seo-geo",
