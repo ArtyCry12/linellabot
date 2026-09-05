@@ -1,0 +1,38 @@
+﻿{
+    "checkedAt":  "2026-09-05T22:50:53.0915046Z",
+    "ok":  true,
+    "keyPresent":  true,
+    "keyScopes":  {
+                      "Machine":  false,
+                      "User":  true,
+                      "Process":  true
+                  },
+    "pingOk":  true,
+    "pingLabel":  "set",
+    "chatOk":  true,
+    "chatModel":  "z-ai/glm-5.2:free",
+    "chatError":  null,
+    "ttsOk":  true,
+    "lastAction":  "stt",
+    "sttSkipped":  false,
+    "keyStatus":  "ok",
+    "models":  {
+                   "fish-audio/s2.1-pro-free:free":  {
+                                                         "status":  "ok",
+                                                         "lastError":  ""
+                                                     },
+                   "microsoft/mai-transcribe-2":  {
+                                                      "status":  "ok",
+                                                      "lastError":  ""
+                                                  },
+                   "z-ai/glm-5.2:free":  {
+                                             "status":  "ok",
+                                             "lastError":  ""
+                                         }
+               },
+    "errors":  [
+
+               ],
+    "repeating":  false,
+    "notes":  "Key never stored. keyStatus=ok after Boss rotate 2026-09-05. R3 429 = free retry. R3 403 = model/provider forbid. R2 429 = stop-ask Boss. ProbeMid/STT need -BossYes. -NoPlay on TTS test."
+}

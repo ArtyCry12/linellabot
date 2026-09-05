@@ -1,7 +1,7 @@
 # Adversarial pipeplan — hub closeout 2026-08-25
 
 **Auditor:** `agents/adversarial-hub-auditor.md`  
-**Model:** `cursor-grok-4.6-xhigh`  
+**Model:** `cursor-grok-4.6-high`  
 **Edits:** none. Index paths. List findings. Stop.
 
 ## Pass 1 — plan lock (before/at start of execute)

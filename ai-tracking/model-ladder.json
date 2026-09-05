@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04T16:56:00.000Z",
+  "notes": "Catalog SoT. Health runtime lives in openrouter-free-health.json. Mirrors copy this file. Never inherit parent Task model. Rank2/STT need Boss yes (semi-auto).",
+  "aliases": {
+    "boss.top": "rank1.top",
+    "boss.default": "rank1.daily",
+    "boss.altGpt": "rank1.altGpt",
+    "boss.altKimi": "rank1.altKimi",
+    "worker.volume": "cursor.volume",
+    "review.adversarial": "cursor.review"
+  },
+  "cursor": {
+    "volume": {
+      "pickerName": "Composer 2.5 Fast",
+      "cursorTaskSlug": "composer-2.5-fast",
+      "status": "live"
+    },
+    "review": {
+      "pickerName": "Grok 4.6 High",
+      "cursorTaskSlug": "cursor-grok-4.6-high",
+      "status": "live"
+    },
+    "glmWorker": {
+      "cursorTaskSlug": "glm-5.2-high",
+      "status": "banned",
+      "reason": "Not free OpenRouter. Not volume worker."
+    }
+  },
+  "rank1": {
+    "top": {
+      "pickerName": "latest Opus",
+      "cursorTaskSlug": "claude-opus-5-thinking-high",
+      "status": "live",
+      "versionRule": "On 5.1/5.5/6 update slug manually"
+    },
+    "daily": {
+      "pickerName": "Grok 4.6 High",
+      "cursorTaskSlug": "cursor-grok-4.6-high",
+      "status": "live"
+    },
+    "altGpt": {
+      "pickerName": "GPT 5.6 Sol",
+      "cursorTaskSlug": "gpt-5.6-sol-medium",
+      "status": "live",
+      "note": "Do not substitute luna"
+    },
+    "altKimi": {
+      "pickerName": "Kimi K3 Max",
+      "cursorTaskSlug": "kimi-k3-max",
+      "status": "live"
+    }
+  },
+  "rank2": {
+    "policy": "semi-auto-ask-parent-only",
+    "chatOrder": [
+      "deepseek/deepseek-v4-pro-0813",
+      "z-ai/glm-5.3",
+      "deepseek/deepseek-v4-flash-0731",
+      "z-ai/glm-5.3-flash",
+      "google/gemini-3.8-flash"
+    ],
+    "models": {
+      "deepseek/deepseek-v4-pro-0813": { "status": "live", "modality": ["text"], "role": "mid-strong", "probedAt": "2026-09-05" },
+      "z-ai/glm-5.3": { "status": "unknown", "modality": ["text"], "role": "mid" },
+      "deepseek/deepseek-v4-flash-0731": { "status": "unknown", "modality": ["text"], "role": "mid-fast" },
+      "z-ai/glm-5.3-flash": { "status": "unknown", "modality": ["text"], "role": "mid-fast" },
+      "google/gemini-3.8-flash": { "status": "unknown", "modality": ["text"], "role": "mid-fast", "note": "OpenRouter slug, not Google Studio" },
+      "microsoft/mai-transcribe-2": { "status": "live", "modality": ["audio-in"], "role": "stt", "endpoint": "audio/transcriptions", "probedAt": "2026-09-06", "note": "JSON base64 input_audio; -BossYes" }
+    }
+  },
+  "rank3": {
+    "textOrder": [
+      "z-ai/glm-5.2:free",
+      "minimax/minimax-m3:free",
+      "thinkingmachines/inkling:free"
+    ],
+    "models": {
+      "z-ai/glm-5.2:free": { "status": "live", "modality": ["text"], "role": "text-primary", "probedAt": "2026-09-06", "note": "Earlier 429 is rate-limit, not auth" },
+      "minimax/minimax-m3:free": { "status": "unknown", "modality": ["text", "image-in", "video-in"], "role": "multimodal" },
+      "thinkingmachines/inkling:free": { "status": "unknown", "modality": ["text", "image-in", "audio-in"], "role": "multimodal", "note": "403 on exhausted fallback ≠ dead key; do not mark dead for key auth" },
+      "fish-audio/s2.1-pro-free:free": { "status": "live", "modality": ["tts"], "role": "tts", "endpoint": "audio/speech", "probedAt": "2026-09-05" }
+    },
+    "removedDefaults": [
+      "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "deepgram/flux-tts:free"
+    ]
+  },
+  "semiAuto": {
+    "askParentOnly": true,
+    "taskMustNotCallMid": true,
+    "template": "Задача похожа на Rank N. Предлагаю: <slug> — <одна строка>. Берём / другой slug / этот ранг не используем?",
+    "standingNoAsk": ["composer-2.5-fast", "cursor-grok-4.6-high"],
+    "neverInherit": true
+  }
+}

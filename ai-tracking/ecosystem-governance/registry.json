@@ -1,13 +1,14 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-01T16:10:00.000Z",
+  "updatedAt": "2026-09-04T16:58:00.000Z",
   "status": "live",
   "approvals": {
     "squad": "archived-restore-on-yes",
     "sentry": "plugin-only",
     "githubRepo": "cursor-hub-artyom",
     "localFolder": ".cursor-do-not-rename",
-    "graphifyPilot": "refused"
+    "graphifyPilot": "refused",
+    "strix": "deferred-docs-only"
   },
   "keep": [
     "task-router",
@@ -27,10 +28,33 @@
     "quarantine": "skills/_quarantine"
   },
   "hubRoot": "C:/Users/artyo/.cursor",
+  "canon": {
+    "modelLadder": "ai-tracking/model-ladder.json",
+    "openrouter": "ai-tracking/openrouter-free.md",
+    "openrouterHealth": "ai-tracking/openrouter-free-health.json"
+  },
   "blocks": {
     "seo-geo-aio": { "path": "blocks/seo-geo-aio/" },
     "design": { "path": "blocks/design/" },
-    "security": { "path": "blocks/security/" },
+    "security": {
+      "path": "blocks/security/",
+      "research": {
+        "strix": {
+          "tier": "deferred",
+          "upstream": "https://github.com/usestrix/strix",
+          "report": "ai-tracking/ecosystem-governance/reports/2026-09-02-strix-research.md",
+          "status": "docs-only-2026-09-02",
+          "chosen": "postpone-engine",
+          "pocBoundary": "later",
+          "doNot": [
+            "npx-skills-add-to-hub-root",
+            "mcp-json",
+            "hub-mcp-into-strix",
+            "replace-phase1"
+          ]
+        }
+      }
+    },
     "integrations": { "path": "blocks/integrations/" },
     "agency": { "path": "blocks/agency/" },
     "media": { "path": "blocks/media/" },

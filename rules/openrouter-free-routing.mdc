@@ -1,0 +1,46 @@
+---
+description: >-
+  Черновик без тулов — OpenRouter Rank 3. Volume-Task — Composer.
+  Never inherit. Rank 2 только после да Boss. Не Override OpenAI Base URL.
+alwaysApply: true
+---
+
+# OpenRouter / иерархия моделей (расход)
+
+Канон: `ai-tracking/openrouter-free.md` · лестница `ai-tracking/model-ladder.json` · карта ключей `ai-tracking/KEYS-MAP.md` · скилл `skills/openrouter-free/SKILL.md`.
+
+## Субагент — never inherit
+
+Даже если в model-map / роли стоит GPT/Claude/Grok — **не** `inherit` модель чата на субагента.
+
+1. Текст без инструментов Cursor → `openrouter.ps1 -Action chat` (live slug из ladder, текст: `z-ai/glm-5.2:free` → MiniMax → Inkling). Нет ключа / 401 → стоп, сказать Boss.
+2. Нужны инструменты Cursor (объём) → Task `model: "composer-2.5-fast"`. **Не** `glm-5.2-high` (запрещён как worker, это не free API).
+3. Review / adversarial → Task `model: "cursor-grok-4.6-high"`.
+4. Юртексты, пиксель 1:1, финальный QA, always-on канон → модель босса (R1), не дешевить без явного «да».
+
+## Полуавто (только parent)
+
+Спрашивает **этот** чат, не Task-субагент:
+
+```text
+Задача похожа на Rank N.
+Предлагаю: <slug> — <одна строка>.
+Берём / другой slug / этот ранг не используем?
+```
+
+- Rank 2 (DeepSeek/GLM5.3/Gemini-OR/STT): нет ответа = нет HTTP.
+- Task не вызывает mid/STT. Нужен mid — стоп, вернуть parent.
+- Standing без вопроса: Composer volume; Grok review.
+- После «да» в этом чате parent может вызвать wrapper с **`-BossYes`**. Без `-BossYes` mid/STT/Rank2-`-Model` → отказ скрипта.
+
+## Запреты
+
+- Override OpenAI Base URL — нет.
+- Печатать `OPENROUTER_API_KEY` — нет.
+- Маскировать Cursor GLM под «бесплатный OpenRouter» — нет.
+- Эскалировать R2 429 на Opus самим — нет (стоп и спросить).
+- Mid/STT без `-BossYes` — нет.
+
+Перед пачкой вызовов: `openrouter.ps1 -Action ping`. Нет ключа / 401 — не жечь Cursor на черновик.
+
+Ключи (имена, не значения): `ai-tracking/KEYS-MAP.md`.

@@ -1,6 +1,6 @@
 ---
 name: ecosystem-architect
-model: inherit
+model: cursor-grok-4.6-high
 description: >-
   Sole permanent ecosystem governance agent. Watches hub architecture, skills
   taxonomy, quarantine, MCP profiles, graph/registry health, cache safety, and

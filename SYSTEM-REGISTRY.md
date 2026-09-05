@@ -39,7 +39,7 @@ Canonical map of `C:\Users\artyo\.cursor`. Update when adding rules, skills, or 
 | `rules/markitdown.mdc` | Document intake always-on |
 | `rules/rtk-token-economy.mdc` | RTK, compress Shell output |
 | `rules/ponytail.mdc` | YAGNI / minimal code |
-| `rules/openrouter-free-routing.mdc` | Draft work → OpenRouter free; subagent model replace |
+| `rules/openrouter-free-routing.mdc` | Draft text → OR Rank3 wrapper; volume Task → Composer; never inherit; Rank2 ask Boss |
 
 ## Task Router (DEC-057)
 
@@ -165,10 +165,12 @@ Default profile: MD + EU. Universal via `--profile eu|us|generic`. Not legal adv
 | Install policy | Ask once → then `npx skills add … -g -y` |
 | Liquidity | Prefer high installs; Design/UI exception |
 
-## OpenRouter free models (cost routing)
+## OpenRouter models (cost routing)
 
 | Resource | Path |
 |----------|------|
+| Ladder (catalog SoT) | `ai-tracking/model-ladder.json` |
+| Keys map (no secrets) | `ai-tracking/KEYS-MAP.md` |
 | Canon (search here) | `ai-tracking/openrouter-free.md` |
 | Skill | `skills/openrouter-free/SKILL.md` |
 | Wrapper | `skills/openrouter-free/scripts/openrouter.ps1` |
@@ -176,10 +178,10 @@ Default profile: MD + EU. Universal via `--profile eu|us|generic`. Not legal adv
 | Squad override (archived) | `skills/_archive/squad/project-squad/reference/model-map.md` |
 | Test | `commands/openrouter-free-test.ps1` |
 | Health | `ai-tracking/openrouter-free-health.json` |
-| Route | `openrouter-free` in `lib/task-router/routes.json` |
+| Route | `openrouter-free` in `lib/task-router/routes.json` (note may be stale until Router wave) |
 | AGENTS.md | `<!-- openrouter-free:start -->` |
 
-Draft/routine → wrapper. Subagent map slugs are replaced. Do not Override OpenAI Base URL. Key: `OPENROUTER_API_KEY` user env.
+Draft text → wrapper Rank 3. Volume Task → `composer-2.5-fast`. Never `inherit`. Never Task `glm-5.2-high` as free. Rank 2 only after Boss yes + wrapper `-BossYes`. Do not Override OpenAI Base URL. Key: `OPENROUTER_API_KEY` user env. Map: `ai-tracking/KEYS-MAP.md`.
 
 ## Skills / MCP Session 2 artifacts
 

@@ -76,13 +76,13 @@ Primary: **`user-memory` MCP** → **`AGENTS.md`** → **`ai-tracking/`** (Dev O
 Текст для **User Rules** (весь Cursor): `open-design-USER-RULES.txt` — компактный блок.
 
 <!-- openrouter-free:start -->
-## OpenRouter free models
+## OpenRouter models (cost routing)
 
-Canon (find in hub): [`ai-tracking/openrouter-free.md`](ai-tracking/openrouter-free.md) · skill `skills/openrouter-free/SKILL.md` · rule `rules/openrouter-free-routing.mdc` · test `commands/openrouter-free-test.ps1`.
+Canon: [`ai-tracking/openrouter-free.md`](ai-tracking/openrouter-free.md) · ladder [`ai-tracking/model-ladder.json`](ai-tracking/model-ladder.json) · keys [`ai-tracking/KEYS-MAP.md`](ai-tracking/KEYS-MAP.md) · skill `skills/openrouter-free/SKILL.md` · rule `rules/openrouter-free-routing.mdc` · test `commands/openrouter-free-test.ps1`.
 
-Key: Windows user env `OPENROUTER_API_KEY`. Do **not** Override OpenAI Base URL. Not the cancelled Vercel eve promo.
+Key: Windows user env `OPENROUTER_API_KEY`. Do **not** Override OpenAI Base URL.
 
-**Subagent:** even if the role file/`model-map` names GPT/Claude/Grok, boss **replaces** it for draft/routine: OpenRouter wrapper for text; Task `glm-5.2-high` only if Cursor tools are required. Never `inherit` a paid parent for draft work.
+**Subagent:** never `inherit` the chat model. Text draft → OpenRouter wrapper (Rank 3). Volume tools → Task `composer-2.5-fast`. Review → `cursor-grok-4.6-high`. **Do not** use Task `glm-5.2-high` as a free/volume worker. Rank 2 mid/STT → parent asks Boss first; wrapper needs `-BossYes` (no answer = no HTTP).
 <!-- openrouter-free:end -->
 
 <!-- seo-geo-aio:start -->
