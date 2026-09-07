@@ -20,7 +20,7 @@ User query
   ├─ Remotion / video-as-code / композиция  → remotion-code (plugin SECONDARY)
   ├─ shadcn blocks / docs for libs          → design-stack skill + context7 + @21st-dev/magic
   ├─ Repo patterns (vibe, swarm, visual)    → docs/knowledge-base/P2-REPOS.md
-  ├─ Multi-agent / Squad spawn              → subagent-guardrails.mdc + project-squad
+  ├─ Multi-agent analysis                    → up to 3 ephemeral specialists; no nested spawn
   ├─ Google mail/drive/calendar/GSC       → google-workspace MCP (OAuth on reload) · gsc-audit.ps1 CSV
   ├─ Maps / geo MCP                       → google-maps endpoint · gemini fallback
   ├─ Grill / согласовать план / большая задача → grill-rounds (route clarify-first)
@@ -41,7 +41,7 @@ User query
   ├─ 21st.dev / shadcn registry UI           → 21st-design + @21st-dev/magic
   ├─ SEO / GEO audit                         → seo-geo skill pack
   ├─ Dev OS / bootstrap / research-first     → dev-os skill; research sprints → dev-os-research agent
-  ├─ Project execution (build/QA/ship)       → project-squad (provisional roster)
+  ├─ Project execution (build/QA/ship)       → domain skill + ephemeral build/review/QA roles
   ├─ Security audit                          → cybersecurity skill
   ├─ Symbol edit in indexed repo             → gitnexus impact → edit → detect_changes
   ├─ CI / PR checks failing                  → fix-ci / ci-investigator / shell
@@ -58,10 +58,33 @@ User query
 3. One **MCP descriptor JSON** before first tool call on that server
 4. **Subagent** only if steps are independent or scope is large
 
+## 2.1 Semantic preflight
+
+The hook emits `stage`, confidence and `REQUIRED` actions. Treat them as a
+state machine, not suggestions:
+
+```
+social → no-op
+clear-small → matched skill/tool
+ambiguous → route-advisor once
+decisions → grill-rounds
+research → current external evidence
+tradeoff → LLM Council
+systemic → options + architecture + WBS
+high-risk → confirmation before action
+```
+
+The user does not need to name a skill. Simple action/object/context language is
+enough. Execute each applicable required stage or report a concrete blocker.
+Maximum three ephemeral agents; never restore Project Squad automatically.
+
 ## 3. After substantive work
 
-- **Memory:** `user-memory` + `AGENTS.md` + `ai-tracking/` via squad-memory when durable facts exist
+- **Memory:** contextual read via `user-memory`; propose durable write to Boss
+  before mutating memory. Project Squad/squad-memory remain archived.
 - **Git commit:** `gitnexus_detect_changes()` if hub code symbols changed
+- **Aikido:** scan first-party source changes before completion
+- **Receipt:** report only systems actually used and what evidence they added
 
 ## Examples
 

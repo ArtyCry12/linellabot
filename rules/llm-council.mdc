@@ -10,7 +10,7 @@ alwaysApply: false
 
 When the user **discusses a task**, asks for **multiple perspectives**, mentions **council** / **совет моделей**, or faces **non-trivial trade-offs**:
 
-1. Read `skills/llm-council/SKILL.md`
+1. Read `blocks/dev-os/skills/llm-council/SKILL.md`
 2. Run Stage 1 → 2 → 3 (parallel opinions, anonymized review, chairman synthesis)
 3. Do not substitute a single quick answer when council was explicitly requested
 

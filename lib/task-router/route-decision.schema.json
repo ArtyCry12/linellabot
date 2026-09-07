@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cursor-hub.local/task-router/route-decision.schema.json",
+  "title": "Task Router Semantic Decision",
+  "type": "object",
+  "required": [
+    "version",
+    "substantive",
+    "social",
+    "stage",
+    "confidence",
+    "advisorRequired",
+    "matches",
+    "requiredActions",
+    "expectedReceipts",
+    "latencyMs"
+  ],
+  "properties": {
+    "version": {"const": 1},
+    "substantive": {"type": "boolean"},
+    "social": {"type": "boolean"},
+    "stage": {
+      "enum": [
+        "social",
+        "clear-small",
+        "ambiguous",
+        "decisions",
+        "research",
+        "tradeoff",
+        "systemic",
+        "high-risk",
+        "code",
+        "review",
+        "validate",
+        "document",
+        "build",
+        "audit",
+        "design",
+        "content",
+        "context",
+        "discovery"
+      ]
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "advisorRequired": {"type": "boolean"},
+    "matches": {"type": "array"},
+    "requiredActions": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "expectedReceipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["action", "status"],
+        "properties": {
+          "action": {"type": "string"},
+          "status": {"const": "required"}
+        }
+      }
+    },
+    "latencyMs": {"type": "number", "minimum": 0}
+  }
+}

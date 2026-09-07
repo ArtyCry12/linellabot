@@ -16,9 +16,13 @@ alwaysApply: true
 | **MarkItDown** | hook `markitdown-intake.ps1` | Читать `.md` из `.cache/markitdown/`, не бинарник |
 | **RTK** | hook `rtk-cursor-hook.ps1` (preToolUse Shell) | Не обходить; узкие shell-команды |
 | **Task Router** | hook `task-router.ps1` | Следовать `[TASK ROUTE]` (skill/MCP/subagent) |
+| **Semantic preflight** | Task Router `stage/REQUIRED` | Выполнить обязательные стадии или дать blocker + receipt |
 | **Repo intake** | hook `repo-intake.ps1` | Учитывать контекст репо из hook |
 | **Prompt coach** | capture + stop hooks | Метрики water; уроки после сессии |
 | **Autopilot** | hook `autopilot.ps1` | `!auto` / контракт Deliverables |
+| **GitNexus** | code/architecture task | Freshness once → impact/context до symbol edit → detect_changes после |
+| **Memory** | ссылка на прошлые решения | Авточтение; запись только после подтверждения Boss |
+| **Aikido** | изменён first-party source | Scan до финального заявления о готовности |
 
 MCP для MarkItDown **не нужен** — hook быстрее и без дубля. n8n-templates подключается через router при задачах n8n.
 
@@ -29,12 +33,16 @@ MCP для MarkItDown **не нужен** — hook быстрее и без ду
 ## Принципы
 
 1. Не подтягивай все MCP/скиллы в каждый ответ — только по задаче.
-2. Перед первым вызовом MCP с нового сервера — **один** JSON из `projects/c-Users-artyo-cursor/mcps/<server>/tools/`.
-3. Скиллы: `skills/`, `skills-cursor/`, `~/.agents/skills/`, plugin cache — по триггеру или `@tag`.
-4. User Rules в Cursor — приоритет выше этого файла.
-5. GitNexus блок в `AGENTS.md` — для правок символов; не дублируй здесь.
-6. **Код-ревью / рефакторинг** — `rules/karpathy-guidelines.mdc` (on-demand).
-7. **Классификация / refresh базы** — `SYSTEM-TAXONOMY.md` + `docs/knowledge-base/`.
+2. Роутер сам выбирает безопасный preflight. Пользователь не обязан знать
+   профессиональные названия skills, MCP и агентов.
+3. Показывай только фактическую работу: `Подключил / Почему / Дало`. Route echo
+   без вызова инструмента или чтения skill не считается выполнением.
+4. Перед первым вызовом MCP с нового сервера — **один** JSON из `projects/c-Users-artyo-cursor/mcps/<server>/tools/`.
+5. Скиллы: `skills/`, `skills-cursor/`, `~/.agents/skills/`, plugin cache — по триггеру или `@tag`.
+6. User Rules в Cursor — приоритет выше этого файла.
+7. GitNexus блок в `AGENTS.md` — канон для symbol edits.
+8. **Код-ревью / рефакторинг** — `rules/karpathy-guidelines.mdc` (on-demand).
+9. **Классификация / refresh базы** — `SYSTEM-TAXONOMY.md` + `docs/knowledge-base/`.
 
 ## MCP (быстрый выбор)
 

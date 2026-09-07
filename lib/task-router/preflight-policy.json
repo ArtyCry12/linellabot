@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "stages": {
+    "social": {
+      "requiredActions": [],
+      "description": "No task. Do not route or invent work."
+    },
+    "clear-small": {
+      "requiredActions": [],
+      "description": "Use the matched capability and keep the response proportional."
+    },
+    "ambiguous": {
+      "requiredActions": ["route_advisor"],
+      "description": "A substantive task without a confident local route."
+    },
+    "decisions": {
+      "requiredActions": ["grill_rounds"],
+      "description": "Close the current decision frontier before implementation."
+    },
+    "research": {
+      "requiredActions": ["web_research"],
+      "description": "Gather current external evidence before deciding."
+    },
+    "tradeoff": {
+      "requiredActions": ["llm_council"],
+      "description": "Compare consequential alternatives with independent opinions."
+    },
+    "systemic": {
+      "requiredActions": [
+        "architecture_options",
+        "architecture_plan",
+        "wbs",
+        "validate_plan_contract"
+      ],
+      "description": "Produce alternatives, architecture and verifiable decomposition."
+    },
+    "high-risk": {
+      "requiredActions": ["risk_confirmation"],
+      "description": "Stop before destructive, external-write or sensitive action."
+    },
+    "code": {
+      "requiredActions": ["gitnexus_freshness", "gitnexus_impact"],
+      "description": "Inspect code graph before symbol edits."
+    },
+    "review": {
+      "requiredActions": ["code_review"],
+      "description": "Review the actual diff with evidence."
+    },
+    "validate": {
+      "requiredActions": ["qa"],
+      "description": "Run proportional verification before completion."
+    }
+  },
+  "alwaysOnGates": {
+    "gitnexus": "code_or_architecture",
+    "memory": "past_decisions",
+    "aikido": "first_party_source_changed",
+    "markitdown": "document_input",
+    "rtk": "shell_use"
+  },
+  "limits": {
+    "maxEphemeralAgents": 3,
+    "nestedSpawn": false,
+    "advisorPerTask": 1,
+    "localLatencyBudgetMs": 250
+  },
+  "receipt": {
+    "requiredFields": ["system", "why", "evidence", "status"],
+    "allowedStatus": ["done", "skipped", "blocked"],
+    "forbidUnusedClaims": true
+  }
+}

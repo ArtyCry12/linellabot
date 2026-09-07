@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cursor-hub.local/task-router/agent-report.schema.json",
+  "title": "Ephemeral Agent Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["goal", "evidence", "decision", "risks", "files", "nextAction"],
+  "properties": {
+    "goal": {"type": "string", "minLength": 1},
+    "evidence": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "decision": {"type": "string", "minLength": 1},
+    "risks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "files": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "nextAction": {"type": "string", "minLength": 1}
+  }
+}

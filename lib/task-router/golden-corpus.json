@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "cases": [
+    {"prompt":"Сначала помоги мне понять, что именно мы вообще хотим получить","expect":["clarify-first"],"stage":"decisions"},
+    {"prompt":"Я пока расскажу идею, а ты задай все важные вопросы","expect":["clarify-first"],"stage":"decisions"},
+    {"prompt":"Не начинай работу, пока мы не договоримся о деталях","expect":["clarify-first"],"stage":"decisions"},
+    {"prompt":"Разберись в моей задумке и сначала уточни требования","expect":["clarify-first"],"stage":"decisions"},
+    {"prompt":"Давай до старта обсудим, чего не хватает в описании","expect":["clarify-first"],"stage":"decisions"},
+
+    {"prompt":"Хочу запустить новый сервис, пока есть только идея","expect":["from-scratch"],"stage":"systemic"},
+    {"prompt":"Помоги придумать приложение с самого начала","expect":["from-scratch"],"stage":"systemic"},
+    {"prompt":"Начинаем новый продукт с чистого листа","expect":["from-scratch"],"stage":"systemic"},
+    {"prompt":"У меня идея платформы, нужно построить всё с нуля","expect":["from-scratch"],"stage":"systemic"},
+
+    {"prompt":"Продумай, как всё будет связано и из каких частей состоять","expect":["architecture-plan"],"stage":"systemic"},
+    {"prompt":"Разложи будущую систему на понятные блоки","expect":["architecture-plan"],"stage":"systemic"},
+    {"prompt":"Сначала реши, как правильно устроить это решение целиком","expect":["architecture-plan"],"stage":"systemic"},
+    {"prompt":"Определи структуру и связи между основными частями","expect":["architecture-plan"],"stage":"systemic"},
+    {"prompt":"Спроектируй основу до того, как мы начнём писать код","expect":["architecture-plan"],"stage":"systemic"},
+
+    {"prompt":"Разбей работу на маленькие проверяемые шаги","expect":["task-decomposition"],"stage":"systemic"},
+    {"prompt":"Составь подробный порядок выполнения с зависимостями","expect":["task-decomposition"],"stage":"systemic"},
+    {"prompt":"Разложи задачу по этапам: что сначала, что потом","expect":["task-decomposition"],"stage":"systemic"},
+    {"prompt":"Нужен план работ с понятной проверкой каждого шага","expect":["task-decomposition"],"stage":"systemic"},
+
+    {"prompt":"Пусть несколько умных агентов поспорят и выберут лучший вариант","expect":["llm-council"],"stage":"tradeoff"},
+    {"prompt":"Собери независимые мнения с разных сторон и дай общий вердикт","expect":["llm-council"],"stage":"tradeoff"},
+    {"prompt":"Сравните несколько решений, а потом выберите сильнейшее","expect":["llm-council"],"stage":"tradeoff"},
+    {"prompt":"Хочу, чтобы разные модели оценили плюсы и минусы подходов","expect":["llm-council"],"stage":"tradeoff"},
+
+    {"prompt":"Перед работой посмотри, как это сейчас делают другие","expect":["web-research"],"stage":"research"},
+    {"prompt":"Поищи свежую информацию по теме в интернете","expect":["web-research"],"stage":"research"},
+    {"prompt":"Проверь это по актуальной официальной документации","expect":["web-research"],"stage":"research"},
+    {"prompt":"Сравни современные решения, которые уже есть на рынке","expect":["web-research"],"stage":"research"},
+    {"prompt":"Сначала собери данные и хорошие практики, потом предлагай решение","expect":["dev-os","web-research"],"stage":"research"},
+    {"prompt":"Проведи исследование существующих систем перед проектированием","expect":["dev-os"],"stage":"research"},
+    {"prompt":"Изучи, почему похожие продукты устроены именно так","expect":["dev-os"],"stage":"research"},
+
+    {"prompt":"Вспомни, что мы раньше решили по этой теме","expect":["memory"],"stage":"context"},
+    {"prompt":"Найди наши прошлые договорённости","expect":["memory"],"stage":"context"},
+    {"prompt":"Сохрани это решение на будущее","expect":["memory"],"stage":"context"},
+
+    {"prompt":"Покажи, что может сломаться, если изменить эту функцию","expect":["gitnexus-refactor"],"stage":"code"},
+    {"prompt":"Найди все места кода, которые зависят от этого метода","expect":["gitnexus-refactor"],"stage":"code"},
+    {"prompt":"Безопасно переделай общий кусок и проверь связи","expect":["gitnexus-refactor"],"stage":"code"},
+
+    {"prompt":"Проверь изменения и найди проблемы в коде","expect":["code-review-pro"],"stage":"review"},
+    {"prompt":"Посмотри, не сломал ли я что-нибудь этими правками","expect":["code-review-pro"],"stage":"review"},
+    {"prompt":"Дай независимую оценку качества изменений","expect":["code-review-pro"],"stage":"review"},
+
+    {"prompt":"Проверь, что всё действительно работает после изменений","expect":["qa-start"],"stage":"validate"},
+    {"prompt":"Прогони тесты перед завершением задачи","expect":["qa-start"],"stage":"validate"},
+    {"prompt":"Убедись, что результат работает и ничего не отвалилось","expect":["qa-start"],"stage":"validate"},
+
+    {"prompt":"Проверь, нет ли здесь опасных мест и уязвимостей","expect":["security-audit"],"stage":"high-risk"},
+    {"prompt":"Убедись, что ключи и личные данные защищены","expect":["security-audit"],"stage":"high-risk"},
+    {"prompt":"Посмотри, безопасно ли выпускать эти изменения","expect":["security-audit"],"stage":"high-risk"},
+
+    {"prompt":"Вот документ, прочитай его и сделай понятную сводку","expect":["markitdown"],"stage":"document"},
+    {"prompt":"Разбери приложенный PDF и вытащи главное","expect":["markitdown"],"stage":"document"},
+    {"prompt":"Сделай конспект из этого файла для обучения","expect":["markitdown"],"stage":"document"},
+
+    {"prompt":"Сделай такой же сайт, как по этой ссылке","expect":["clone-website"],"stage":"build"},
+    {"prompt":"Повтори эту страницу один в один","expect":["clone-website"],"stage":"build"},
+    {"prompt":"Воссоздай внешний вид лендинга у нас","expect":["clone-website"],"stage":"build"},
+
+    {"prompt":"Открой сайт и проверь этот сценарий руками","expect":["browser-e2e"],"stage":"validate"},
+    {"prompt":"Нажми кнопку и посмотри, что произойдёт","expect":["browser-e2e"],"stage":"validate"},
+    {"prompt":"Проверь страницу визуально в браузере","expect":["browser-e2e"],"stage":"validate"},
+
+    {"prompt":"Автоматизируй эту рутинную работу между сервисами","expect":["n8n-automation"],"stage":"build"},
+    {"prompt":"Пусть сообщения сами уходят куда нужно без ручных действий","expect":["n8n-automation"],"stage":"build"},
+    {"prompt":"Собери автоматический процесс, который свяжет эти сервисы","expect":["n8n-automation"],"stage":"build"},
+
+    {"prompt":"Помоги сайту лучше находиться в поиске","expect":["seo-geo"],"stage":"audit"},
+    {"prompt":"Проверь, почему из поиска приходит мало людей","expect":["seo-geo"],"stage":"audit"},
+    {"prompt":"Улучши видимость страниц для поисковиков и нейросетей","expect":["seo-geo"],"stage":"audit"},
+
+    {"prompt":"Сделай красивую презентацию с понятными слайдами","expect":["open-design"],"stage":"design"},
+    {"prompt":"Собери интерактивный прототип, чтобы показать идею","expect":["open-design"],"stage":"design"},
+
+    {"prompt":"Перепиши этот текст нормальным человеческим языком","expect":["copywriting"],"stage":"content"},
+    {"prompt":"Подготовь сильное описание продукта для страницы","expect":["copywriting"],"stage":"content"},
+
+    {"prompt":"Выложи сайт, чтобы рабочая версия стала доступна людям","expect":["deploy-vercel"],"stage":"high-risk"},
+    {"prompt":"Проверь, почему проект не публикуется в production","expect":["deploy-vercel"],"stage":"high-risk"},
+
+    {"prompt":"Может, уже есть готовый инструмент для этой задачи","expect":["find-skills"],"stage":"discovery"},
+    {"prompt":"Поищи подходящий скилл, не пиши всё с нуля","expect":["find-skills"],"stage":"discovery"},
+
+    {"prompt":"Я объясню задачу своими словами, а ты сам выбери нужные инструменты","expect":[],"advisor":true,"stage":"ambiguous"},
+    {"prompt":"Помоги сделать эту штуку удобнее и надёжнее","expect":[],"advisor":true,"stage":"ambiguous"},
+    {"prompt":"Надо нормально решить эту проблему, но я не знаю как","expect":[],"advisor":true,"stage":"ambiguous"},
+    {"prompt":"Не ищи в интернете, используй только этот документ","expect":["markitdown"],"stage":"document","reject":["web-research","web_research"]},
+    {"prompt":"Не делай презентацию, дай только обычный текст","expect":[],"advisor":true,"stage":"ambiguous","reject":["open-design","design"]},
+    {"prompt":"Не публикуй сайт в production, подготовь только план деплоя","expect":[],"advisor":true,"stage":"ambiguous","reject":["deploy-vercel","risk_confirmation","deployment_confirmation"]},
+    {"prompt":"Не пиши с нуля, добавь новую кнопку в существующий проект","expect":[],"advisor":true,"stage":"ambiguous","reject":["from-scratch","clarify-first","grill_rounds"]},
+    {"prompt":"Есть вариант сделать кнопку зелёной","expect":[],"advisor":true,"stage":"ambiguous","reject":["llm-council","llm_council"]},
+    {"prompt":"Где лежит ключ от кабинета в документации","expect":[],"advisor":true,"stage":"ambiguous","reject":["risk_confirmation"]},
+    {"prompt":"Напиши код комментария в README","expect":[],"advisor":true,"stage":"ambiguous","reject":["gitnexus_freshness"]},
+    {"prompt":"Проверь SEO и клонируй лендинг конкурента","expect":["seo-geo","clone-website"],"stage":"build","all":true},
+    {"prompt":"Да, клонируй лендинг конкурента","expect":["clone-website"],"stage":"build"},
+    {"prompt":"Нет, просто клонируй лендинг","expect":["clone-website"],"stage":"build"},
+    {"prompt":"Thanks clone the landing page","expect":["clone-website"],"stage":"build"},
+    {"prompt":"hello please audit the site","expect":[],"advisor":true,"stage":"ambiguous"},
+    {"prompt":"Без клонирования собери свой лендинг","expect":[],"advisor":true,"stage":"ambiguous","reject":["clone-website"]},
+    {"prompt":"Сделай лендинг с нуля","expect":["from-scratch"],"stage":"systemic","reject":["clone-website"]},
+    {"prompt":"Функционирование метода описано в доке, просто прочитай","expect":[],"advisor":true,"stage":"ambiguous","reject":["gitnexus_freshness"]},
+    {"prompt":"Классический лендинг без клонирования","expect":[],"advisor":true,"stage":"ambiguous","reject":["clone-website","gitnexus_freshness"]},
+
+    {"prompt":"Привет","expect":[],"advisor":false,"stage":"social","negative":true},
+    {"prompt":"Спасибо, всё понятно","expect":[],"advisor":false,"stage":"social","negative":true},
+    {"prompt":"Доброе утро","expect":[],"advisor":false,"stage":"social","negative":true},
+    {"prompt":"Как дела?","expect":[],"advisor":false,"stage":"social","negative":true},
+    {"prompt":"Окей","expect":[],"advisor":false,"stage":"social","negative":true},
+    {"prompt":"Да","expect":[],"advisor":false,"stage":"social","negative":true},
+    {"prompt":"Нет","expect":[],"advisor":false,"stage":"social","negative":true}
+  ]
+}

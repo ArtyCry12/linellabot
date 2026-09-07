@@ -1,37 +1,91 @@
 ---
 description: >-
-  Always-on task recognition — honor [TASK ROUTE] from hook; minimal fallback
-  when hook absent. Auto-picks skill, MCP, subagent, mode.
+  Always-on semantic preflight — honor [TASK ROUTE], execute required stages,
+  read Primary SKILL, and run route-advisor for substantive low confidence.
 alwaysApply: true
 ---
 
 # Task Router (always-on)
 
-**Manifest:** `lib/task-router/routes.json` · **Hook:** `hooks/task-router.ps1` · **Tree:** `rules/auto-orchestrator.mdc`
+**Manifest:** `lib/task-router/routes.json` · **Hooks:** `hooks/task-router.ps1` (user), `hooks/task-router-task.ps1` (Task) · **Tree:** `rules/auto-orchestrator.mdc` · **Advisor:** `agents/route-advisor.md`
 
-Пользователь **не обязан** писать `@seo`, `@n8n`, `markitdown` и т.д. — hook классифицирует каждый промпт и подставляет skill/MCP/subagent сам.
+Пользователь **не обязан** писать `@seo`, `@n8n`, `markitdown` и т.д. — hook классифицирует промпт (и при возможности план/Task) и подставляет skill/MCP/subagent.
 
 ## On every user message
 
-1. If prompt contains **`[TASK ROUTE]`** or **`[TASK ROUTE - auto-detected]`** (from hook) — **follow that bundle first**:
-   - Read listed **SKILL.md** before improvising
+1. If context contains **`[TASK ROUTE]`** or **`[TASK ROUTE - auto-detected]`**:
+   - **MUST** Read listed Primary **SKILL.md** before improvising (no dry work when a skill is named)
    - Load listed **rule** if not already active
    - Use listed **MCP** only (one descriptor JSON before first call)
    - Spawn listed **subagent** when scope is large or parallel
    - Respect **Mode** hint (plan / agent / debug / ask)
-2. **Route echo (Boss-facing):** в **первом** блоке ответа (2–4 строки) напиши:
-   `Подключил: <skill> · <MCP если есть> · <subagent если есть>`
-   Если матчей несколько — Primary первым, Secondary через `;`.
+   - If `[TASK PREFLIGHT]` contains `REQUIRED`, execute every applicable action
+     before implementation. A required action may be skipped only with a
+     concrete reason in the receipt.
+2. **Route echo (Boss-facing):** в **первом** блоке ответа (2–4 строки):
+   `Подключил: <только реально выбранные системы>`
+   `Почему: <какой сигнал задачи потребовал их>`
+   Несколько матчей — Primary первым, Secondary через `;`.
+   В финале: `Дало: <факт/решение/проверка>`. Не перечислять систему, если
+   она не была вызвана.
 3. Do **not** load unrelated skills/MCP "just in case"
 4. **Autopilot** (`!auto`, `/autopilot`) overrides — full automation rights apply
 
+## Route-advisor (confidence-gated)
+
+If context contains **`[TASK ROUTE - advisor]`**:
+
+1. Parent **MUST** spawn **one** Task for a substantive low-confidence request:
+   model `composer-2.5-fast`, instructions from `agents/route-advisor.md`
+   (or registered `route-advisor`).
+2. **Never** `inherit`. **Never** spawn advisor from inside advisor. It runs
+   only when the semantic core emits the low-confidence flag.
+3. Use returned 1–2 route ids: Read those SKILL.md paths from `routes.json`, then continue.
+
+## Required preflight actions
+
+- `grill_rounds` → Read `blocks/dev-os/skills/grill-rounds/SKILL.md`; close the
+  full current question frontier before work.
+- `web_research` / `dev_os_research` → gather current external evidence with
+  one web provider; do not research when supplied local facts are sufficient.
+- `llm_council` → Read `blocks/dev-os/skills/llm-council/SKILL.md`; up to three
+  ephemeral workers, no nesting, one parent synthesis.
+- `architecture_options` → present 2–3 real approaches and decisive trade-offs.
+- `architecture_plan` → include problem, facts, choice, components/data flow,
+  risks and verification.
+- `wbs` → Read `skills/task-decomposition/SKILL.md`; every leaf has `verify:`.
+- `validate_plan_contract` → run
+  `node commands/task-router-plan-contract.mjs <plan.md>` before approving a
+  systemic plan.
+- `gitnexus_freshness` / `gitnexus_impact` → refresh stale index once, then
+  analyze impacted symbols before edits.
+- `memory_read` → search prior decisions automatically; propose any durable
+  memory write in the final response and wait for Boss confirmation.
+- `qa`, `code_review`, `security_review` → run the proportional evidence-based
+  check before claiming completion.
+- After first-party source changes, Aikido scan is mandatory even when it was
+  not present in the initial route.
+- `risk_confirmation` / `deployment_confirmation` → stop before the external,
+  destructive or sensitive action.
+
+After a required action, keep a compact receipt (`system | why | evidence |
+status`). When persistence is useful, call `commands/task-router-receipt.ps1`
+with the task fingerprint from `[TASK ROUTE]`. Never put raw prompts or secrets
+in a receipt.
+
+## Tool gate (when to care)
+
+Hook injects a confident local route or a mandatory advisor flag for any
+substantive low-confidence task. Short social/no-task messages stay silent.
+
 ## Fallback (no hook block)
 
-Classify silently using `lib/task-router/routes.json` keywords or `rules/auto-orchestrator.mdc`.
+Classify with `lib/task-router/capabilities.generated.json` and
+`rules/auto-orchestrator.mdc`. Do not fall back to professional keywords only.
 
 ## Multi-intent
 
-Primary + Secondary routes both apply; sequence Primary first unless user order implies otherwise.
+Primary + Secondary both apply; Primary first unless user order implies otherwise.
 
 ## Examples
 
@@ -40,7 +94,7 @@ Primary + Secondary routes both apply; sequence Primary first unless user order 
 | «проверь seo сайта» | seo-geo + seo-audit.ps1 |
 | «клонируй лендинг» | clone-website + browser |
 | «раскадровка для reels» | production-studio |
-| «запомни для Dev OS» | user-memory + squad-memory |
+| «запомни для Dev OS» | user-memory |
 | «почему падает CI» | ci-debug + ci-investigator |
 | «разложи на эпики / WBS» | task-decomposition |
 | «согласовать план / grill me» | grill-rounds (clarify-first) |

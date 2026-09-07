@@ -43,6 +43,16 @@
       {
         "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/rtk-cursor-hook.ps1",
         "matcher": "Shell"
+      },
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/task-router-task.ps1",
+        "matcher": "Task",
+        "timeout": 8
+      },
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File hooks/task-router-task.ps1",
+        "matcher": "Subagent",
+        "timeout": 8
       }
     ]
   }

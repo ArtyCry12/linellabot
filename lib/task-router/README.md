@@ -1,38 +1,70 @@
-# Task Router
+# Task Router Max
 
-Automatic intent → skill / MCP / subagent / mode routing for every chat message.
+Fast semantic preflight: plain-language intent → required skill / MCP /
+Always On system / ephemeral agent / architecture stage.
 
 ## Flow
 
 ```
-User prompt
+User prompt (+ optional *.plan.md path in text)
   → hooks/task-router.ps1 (UserPromptSubmit)
-  → lib/task-router/Resolve-TaskRoute.ps1
-  → scores lib/task-router/routes.json
-  → injects [TASK ROUTE] additionalContext
-  → agent follows rules/task-router.mdc (always-on)
+    → Resolve-TaskRoute.ps1 (compatibility + cache/log)
+    → router-core.mjs (clauses/spans → action/object/context)
+    → capabilities.generated.json
+    → injects [TASK ROUTE] + [TASK PREFLIGHT]
+    → agent MUST execute REQUIRED actions or report blocker
+
+Task/Subagent prompt
+  → hooks/task-router-task.ps1
+    → same Resolve + ephemeral agent report contract
 ```
 
-Runs **alongside** `hooks/autopilot.ps1` (autopilot adds execution rights; router adds tool bundle).
+## Meaning layers
+
+1. Exact tag/path/rare technical keyword.
+2. Phrases and simple utterance examples.
+3. Small clause spans scored as action/object/context inside the larger clause.
+4. Anti-examples, negation, conflict margin and confidence.
+5. Mandatory route-advisor for substantive low-confidence input.
+
+Local budget: p95 ≤250 ms. Current golden corpus: 85 Russian/plain-language
+cases. Social/no-task messages stay silent.
+
+## Capability index
+
+- Source routes: `routes.json`
+- Simple-language overlays and Always On gates: `capability-overrides.json`
+- Preflight state machine: `preflight-policy.json`
+- Generator: `build-capability-index.mjs`
+- Generated SoT for runtime: `capabilities.generated.json`
+
+Archive and unrouted quarantine entries are excluded. Every generated skill path
+is checked; drift fails the build check.
+
+## Advisor
+
+For every substantive unmatched/ambiguous request, parent **must** run
+`agents/route-advisor.md` once with `composer-2.5-fast`. Never inherit or loop.
+The advisor returns route, stage, confidence and required actions.
 
 ## Maintain
 
 | Action | How |
 |--------|-----|
-| Add route | Edit `routes.json` — keywords (RU+EN), phrases, tags |
-| Test | `commands/task-router-test.ps1` |
-| Debug one prompt | `commands/task-router-test.ps1 -Prompt "your text"` |
-| Full tree | `rules/auto-orchestrator.mdc` |
+| Add route | Edit `routes.json`, then rebuild index |
+| Add plain language | Edit `capability-overrides.json` |
+| Build/check index | `node lib/task-router/build-capability-index.mjs [--check]` |
+| Semantic quality | `node commands/task-router-eval.mjs` |
+| Contracts/privacy | `node commands/task-router-contract-test.mjs` |
+| Hook integration | `powershell -File commands/task-router-hook-test.ps1` |
+| Legacy/UTF-8 regression | `powershell -File commands/task-router-test.ps1` |
+| Debug one prompt | `commands/task-router-test.ps1 -Prompt "..."` |
+| Health/receipts | `commands/task-router-health.ps1` |
+| Promote confirmed spans | `node commands/task-router-promote-candidates.mjs` (dry run) |
 
-## Scoring
-
-| Signal | Points |
-|--------|--------|
-| `@tag` match | 15 |
-| Phrase match | 10 |
-| Keyword match | 3 each |
-| Minimum to inject | 6 (configurable in routes.json) |
+Candidate phrases live in `.cache/task-router/candidates.jsonl`; receipts live
+in `.cache/task-router/receipts.jsonl`. Both are gitignored and redacted.
 
 ## Version
 
-DEC-057 · 2026-07-10
+DEC-057 · semantic preflight 2026-09-07

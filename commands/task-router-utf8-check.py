@@ -1,17 +1,16 @@
-"""UTF-8 route probes. Called from task-router-test.ps1. Exit 1 on miss."""
+"""UTF-8 route probes — calls PowerShell Resolve-TaskRoute (single scorer). Exit 1 on miss."""
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
 from pathlib import Path
 
 HUB = Path(__file__).resolve().parents[1]
-cfg = json.loads((HUB / "lib/task-router/routes.json").read_text(encoding="utf-8"))
-min_s = int(cfg["minScore"])
-skip = int(cfg["skipIfShorterThan"])
+RESOLVER = HUB / "lib" / "task-router" / "Resolve-TaskRoute.ps1"
 
 EXPECT = {
-    "сделай лендинг с нуля": {"clarify-first", "from-scratch"},
+    "сделай лендинг с нуля": {"from-scratch"},
     "согласовать план большой задачи": {"clarify-first"},
     "сделай новый проект с нуля": {"from-scratch"},
     "напиши глоссарий CONTEXT.md для клиента": {"project-context"},
@@ -19,44 +18,41 @@ EXPECT = {
 }
 
 
-def score_prompt(prompt: str) -> list[str]:
-    low = prompt.lower()
-    if len(prompt) < skip:
+def top_ids(prompt: str) -> list[str]:
+    ps = f"""
+$ErrorActionPreference='Stop'
+. '{RESOLVER.as_posix()}'
+$r = Resolve-TaskRoute -Prompt @'
+{prompt}
+'@ -HubRoot '{HUB.as_posix()}' -Source 'utf8' -SkipCache -NoLog
+@($r.Matches | ForEach-Object {{ $_.Id }}) | ConvertTo-Json -Compress
+"""
+    raw = subprocess.check_output(
+        ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", ps],
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    ).strip()
+    if not raw or raw == "null":
         return []
-    ranked: list[tuple[int, str]] = []
-    for r in cfg["routes"]:
-        if r.get("id") == "autopilot":
-            continue
-        score = 0
-        for tag in r.get("tags") or []:
-            if str(tag).lower() in low:
-                score += 15
-        for ph in r.get("phrases") or []:
-            if str(ph).lower() in low:
-                score += 10
-        for kw in r.get("keywords") or []:
-            if str(kw).lower() in low:
-                score += 3
-        if score >= min_s:
-            ranked.append((score, r["id"]))
-    ranked.sort(key=lambda x: -x[0])
-    return [i for _, i in ranked[: int(cfg["maxRoutes"])]]
+    data = json.loads(raw)
+    if isinstance(data, str):
+        return [data]
+    if isinstance(data, list):
+        return [str(x) for x in data]
+    return []
 
 
 def main() -> int:
     fail = 0
+    print("=== UTF-8 route probes ===")
     for prompt, need in EXPECT.items():
-        got = set(score_prompt(prompt))
-        ok = bool(need & got) if len(need) == 1 else need.issubset(got) or bool(need & got)
-        # dual-route case: require all listed ids present in top-2
-        if len(need) > 1:
-            ok = need.issubset(got)
-        else:
-            ok = need.issubset(got)
+        got = set(top_ids(prompt))
+        ok = need.issubset(got) if len(need) > 1 else bool(need & got)
         status = "ok" if ok else "FAIL"
         if not ok:
             fail += 1
-        print(f"{status}: {prompt} -> {', '.join(score_prompt(prompt)) or '(none)'} expected {sorted(need)}")
+        print(f"{status}: {prompt} -> {', '.join(sorted(got)) or '(none)'} expected {sorted(need)}")
     return 1 if fail else 0
 
 

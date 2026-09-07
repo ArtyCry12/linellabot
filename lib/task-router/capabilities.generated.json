@@ -1,0 +1,6769 @@
+{
+  "version": 1,
+  "sourceVersion": 1,
+  "policy": {
+    "minScore": 5,
+    "maxRoutes": 2,
+    "skipIfShorterThan": 8,
+    "localLatencyBudgetMs": 250,
+    "maxEphemeralAgents": 3
+  },
+  "language": {
+    "socialPatterns": [
+      "привет",
+      "спасибо",
+      "как дела",
+      "доброе утро",
+      "добрый вечер",
+      "окей",
+      "да",
+      "нет",
+      "hello",
+      "thanks"
+    ],
+    "taskSignals": [
+      "сдел",
+      "созда",
+      "помог",
+      "прове",
+      "посмотр",
+      "поищ",
+      "найд",
+      "узна",
+      "сравн",
+      "объясн",
+      "разбер",
+      "продум",
+      "спроект",
+      "состав",
+      "исправ",
+      "добав",
+      "настро",
+      "запомн",
+      "открой",
+      "перепров",
+      "need",
+      "make",
+      "build",
+      "check",
+      "find",
+      "explain",
+      "design",
+      "review"
+    ],
+    "broadKeywords": [
+      "agent",
+      "audit",
+      "build",
+      "check",
+      "design",
+      "deploy",
+      "fix",
+      "page",
+      "plan",
+      "project",
+      "review",
+      "security",
+      "site",
+      "test",
+      "workflow",
+      "агент",
+      "аудит",
+      "дизайн",
+      "documentation",
+      "документац",
+      "план",
+      "проверка",
+      "проект",
+      "сайт",
+      "задач",
+      "тест"
+    ],
+    "systemicSignals": [
+      "архитект",
+      "спроект",
+      "структур",
+      "как все будет связано",
+      "из каких частей",
+      "целиком",
+      "с нуля",
+      "новый проект",
+      "большая задача",
+      "полный план",
+      "система",
+      "платформа",
+      "рефактор"
+    ],
+    "externalSignals": [
+      "в интернете",
+      "в сети",
+      "как сейчас делают",
+      "что нового",
+      "актуальн",
+      "документац",
+      "рын",
+      "конкурент",
+      "latest",
+      "current"
+    ],
+    "tradeoffSignals": [
+      "вариант",
+      "лучше выбрать",
+      "плюсы и минусы",
+      "сравни подход",
+      "несколько мнений",
+      "разные мнения",
+      "общий вердикт",
+      "поспор",
+      "trade-off",
+      "versus",
+      " vs "
+    ],
+    "riskSignals": [
+      "удали",
+      "секрет",
+      "ключ",
+      "в прод",
+      "продакшн",
+      "production",
+      "deploy",
+      "миграц",
+      "база данных",
+      "оплат",
+      "безопасно ли выпускать",
+      "персональн данные"
+    ]
+  },
+  "preflight": {
+    "version": 1,
+    "stages": {
+      "social": {
+        "requiredActions": [],
+        "description": "No task. Do not route or invent work."
+      },
+      "clear-small": {
+        "requiredActions": [],
+        "description": "Use the matched capability and keep the response proportional."
+      },
+      "ambiguous": {
+        "requiredActions": [
+          "route_advisor"
+        ],
+        "description": "A substantive task without a confident local route."
+      },
+      "decisions": {
+        "requiredActions": [
+          "grill_rounds"
+        ],
+        "description": "Close the current decision frontier before implementation."
+      },
+      "research": {
+        "requiredActions": [
+          "web_research"
+        ],
+        "description": "Gather current external evidence before deciding."
+      },
+      "tradeoff": {
+        "requiredActions": [
+          "llm_council"
+        ],
+        "description": "Compare consequential alternatives with independent opinions."
+      },
+      "systemic": {
+        "requiredActions": [
+          "architecture_options",
+          "architecture_plan",
+          "wbs",
+          "validate_plan_contract"
+        ],
+        "description": "Produce alternatives, architecture and verifiable decomposition."
+      },
+      "high-risk": {
+        "requiredActions": [
+          "risk_confirmation"
+        ],
+        "description": "Stop before destructive, external-write or sensitive action."
+      },
+      "code": {
+        "requiredActions": [
+          "gitnexus_freshness",
+          "gitnexus_impact"
+        ],
+        "description": "Inspect code graph before symbol edits."
+      },
+      "review": {
+        "requiredActions": [
+          "code_review"
+        ],
+        "description": "Review the actual diff with evidence."
+      },
+      "validate": {
+        "requiredActions": [
+          "qa"
+        ],
+        "description": "Run proportional verification before completion."
+      }
+    },
+    "alwaysOnGates": {
+      "gitnexus": "code_or_architecture",
+      "memory": "past_decisions",
+      "aikido": "first_party_source_changed",
+      "markitdown": "document_input",
+      "rtk": "shell_use"
+    },
+    "limits": {
+      "maxEphemeralAgents": 3,
+      "nestedSpawn": false,
+      "advisorPerTask": 1,
+      "localLatencyBudgetMs": 250
+    },
+    "receipt": {
+      "requiredFields": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "allowedStatus": [
+        "done",
+        "skipped",
+        "blocked"
+      ],
+      "forbidUnusedClaims": true
+    }
+  },
+  "cards": [
+    {
+      "id": "clarify-first",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Clarify before big task (grill-rounds)",
+      "mode": "plan",
+      "keywords": [
+        "большая задача",
+        "полный план",
+        "с нуля",
+        "неясно",
+        "уточни",
+        "вопросы",
+        "grill",
+        "допрос",
+        "согласовать план"
+      ],
+      "phrases": [
+        "clarify first",
+        "ask questions first",
+        "полный список вопросов",
+        "сначала вопросы",
+        "grill me",
+        "допроси",
+        "согласовать план",
+        "большая задача",
+        "с нуля"
+      ],
+      "tags": [],
+      "utterances": [
+        "сначала помоги понять что вообще нужно",
+        "задай мне все важные вопросы",
+        "я пока объясняю идею своими словами",
+        "не начинай делать пока не уточним детали",
+        "давай сначала договоримся что строим"
+      ],
+      "actions": [
+        "спрос",
+        "уточн",
+        "разбер",
+        "помог",
+        "договор",
+        "обсуд"
+      ],
+      "objects": [
+        "вопрос",
+        "детал",
+        "иде",
+        "что нужно",
+        "требован",
+        "описан"
+      ],
+      "contexts": [
+        "сначала",
+        "перед работ",
+        "пока не",
+        "до старт"
+      ],
+      "antiExamples": [
+        "один короткий вопрос",
+        "просто ответь",
+        "не пиши с нуля",
+        "не делай с нуля",
+        "добавь новую кнопку"
+      ],
+      "allowNegatedActions": true,
+      "defaultStage": "decisions",
+      "requiredActions": [
+        "read_skill",
+        "grill_rounds"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/dev-os/skills/grill-rounds/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/dev-os/skills/grill-rounds/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Допрос-раундами до старта большой задачи. Дерево решений, фронтир раунда, рекомендация в каждом вопросе. Триггеры: grill, допрос, согласовать план, clarify first, большая задача, с нуля, полный список вопросов. Только ДО старта. После «поняли друг друга» — работа без пауз. Адаптер upstream mattpocock/skills (MIT), не клон."
+        }
+      ],
+      "rule": "blocks/dev-os/rules/grill-rounds.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Grill-rounds adapter (mattpocock/skills MIT). Rounds only BEFORE start. user-profile.mdc is always-on. prompt-coach stays on its own route."
+    },
+    {
+      "id": "from-scratch",
+      "kind": "route",
+      "owner": "hub",
+      "label": "New project / from scratch (wayfinder)",
+      "mode": "plan",
+      "keywords": [
+        "новый проект",
+        "с нуля",
+        "greenfield",
+        "wayfinder",
+        "карта решений",
+        "с чистого листа"
+      ],
+      "phrases": [
+        "from scratch",
+        "new project",
+        "greenfield",
+        "wayfinder map",
+        "карта решений",
+        "с нуля",
+        "новый проект",
+        "с чистого листа"
+      ],
+      "tags": [],
+      "utterances": [
+        "хочу запустить новый сервис",
+        "у меня есть идея нового приложения",
+        "начинаем все с чистого листа",
+        "помоги придумать продукт с самого начала"
+      ],
+      "actions": [
+        "созда",
+        "запуст",
+        "придум",
+        "начина"
+      ],
+      "objects": [
+        "новый проект",
+        "сервис",
+        "приложен",
+        "продукт"
+      ],
+      "contexts": [
+        "с нуля",
+        "с чистого листа",
+        "с самого начала"
+      ],
+      "antiExamples": [
+        "добавь новую кнопку в существующий проект",
+        "не пиши с нуля",
+        "не делай с нуля"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "systemic",
+      "requiredActions": [
+        "wayfinder",
+        "grill_rounds",
+        "architecture_plan",
+        "wbs"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/dev-os/skills/wayfinder/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/dev-os/skills/wayfinder/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Короткая карта решений для «с нуля» / куска больше одной сессии. Один MD в целевом репо, затем сразу task-decomposition (WBS). Не тикет-трекер. Триггеры: новый проект, с нуля, greenfield, wayfinder, карта решений. Адаптер upstream mattpocock/skills/wayfinder (MIT)."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Wayfinder adapter (mattpocock/skills MIT). Sequence if dual-match with clarify-first: map first, then grill-rounds, then WBS. Then project-context if client repo. No squad."
+    },
+    {
+      "id": "project-context",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Client repo glossary (CONTEXT.md)",
+      "mode": "agent",
+      "keywords": [
+        "глоссарий",
+        "glossary",
+        "термины проекта",
+        "domain terms",
+        "ubiquitous language"
+      ],
+      "phrases": [
+        "CONTEXT.md",
+        "context.md",
+        "глоссарий проекта",
+        "термины проекта",
+        "domain glossary"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/dev-os/skills/project-context/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/dev-os/skills/project-context/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Короткий CONTEXT.md в целевом (не хабовом) репо — глоссарий терминов проекта, одно слово/фраза на термин. Триггеры: glossary, глоссарий, CONTEXT.md, domain terms, термины проекта. Не заменяет AGENTS.md хаба. Не для хаба. Адаптер upstream mattpocock/skills/domain-modeling (MIT), только глоссарий."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Writes CONTEXT.md only outside hub. Never AGENTS.md replacement."
+    },
+    {
+      "id": "video-learning",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Video / Reels / YouTube learning",
+      "mode": "agent",
+      "keywords": [
+        "youtube",
+        "reels",
+        "tiktok",
+        "shorts",
+        "видео",
+        "транскрипт",
+        "сводка по ссылке"
+      ],
+      "phrases": [
+        "video summary",
+        "разбери видео",
+        "learn from video"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/media/skills/video-learning/SKILL.md"
+        ],
+        "mcps": [
+          "plugin-exa-exa"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/media/skills/video-learning/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Use when the user shares YouTube, Reels, TikTok, or Shorts URL and wants a transcript-based summary or lesson. Flow: URL → transcript (fetch/Exa) → MarkItDown if attachment → summary → ai-tracking/learning/ + optional Notion. Triggers: youtube, reels, видео, транскрипт, разбери видео."
+        }
+      ],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "plugin-exa-exa",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/ensure-markitdown.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "notion-tasks",
+      "kind": "route",
+      "owner": "ops",
+      "label": "Notion task sync",
+      "mode": "agent",
+      "keywords": [
+        "notion",
+        "задач",
+        "галочк",
+        "чеклист",
+        "notion.so"
+      ],
+      "phrases": [
+        "notion task",
+        "sync notion",
+        "notion page"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/integrations/skills/notion-tasks/SKILL.md"
+        ],
+        "mcps": [
+          "plugin-notion-workspace-notion"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/integrations/skills/notion-tasks/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Use when the user shares a Notion URL or asks about tasks, checklists, colors, or done/not-done status. Fast pass: what is done, open, blocked. Respects automationPrefs.alwaysAsk for MCP writes. Triggers: notion.so, notion task, галочки, чеклист."
+        }
+      ],
+      "rule": "blocks/integrations/rules/notion-workspace.mdc",
+      "mcps": [
+        {
+          "name": "plugin-notion-workspace-notion",
+          "descriptorAvailable": true,
+          "profile": "ops",
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "autopilot",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Full automation",
+      "mode": "agent",
+      "keywords": [],
+      "phrases": [
+        "!auto",
+        "/autopilot"
+      ],
+      "tags": [
+        "!auto",
+        "/autopilot"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "!auto",
+          "/autopilot"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Handled by hooks/autopilot.ps1; do not double-inject"
+    },
+    {
+      "id": "memory",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Session memory",
+      "mode": "agent",
+      "keywords": [
+        "запомни",
+        "remember",
+        "recall",
+        "handoff",
+        "сохрани в память"
+      ],
+      "phrases": [
+        "remember this",
+        "remember we",
+        "запомни для dev os",
+        "сохрани в память"
+      ],
+      "tags": [],
+      "utterances": [
+        "вспомни что мы раньше решили",
+        "найди наши прошлые договоренности",
+        "сохрани это решение на будущее",
+        "мы уже обсуждали это раньше"
+      ],
+      "actions": [
+        "вспомн",
+        "найд",
+        "сохран",
+        "запомн",
+        "обсуждал"
+      ],
+      "objects": [
+        "решен",
+        "договорен",
+        "памят",
+        "раньше",
+        "прошл"
+      ],
+      "contexts": [
+        "на будущее",
+        "уже",
+        "раньше"
+      ],
+      "antiExamples": [
+        "не сохраняй это"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "context",
+      "requiredActions": [
+        "memory_read"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/dev-os/skills/dev-os/SKILL.md"
+        ],
+        "mcps": [
+          "user-memory"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/dev-os/skills/dev-os/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Autonomous AI Dev OS — executive charter DEC-008. Full lifecycle delivery UNDERSTAND→EVOLVE without phase stops. Candidate A. @dev-os for meta/execution."
+        }
+      ],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "user-memory",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Primary: user-memory MCP + AGENTS.md / ai-tracking. Squad archived — do not load project-squad."
+    },
+    {
+      "id": "openrouter-free",
+      "kind": "route",
+      "owner": "hub",
+      "label": "OpenRouter free / TTS / STT (wrapper)",
+      "mode": "agent",
+      "keywords": [
+        "openrouter",
+        "glm-5.2:free",
+        "fish-audio",
+        "mai-transcribe",
+        "бесплатн модел",
+        "бесплатные модели"
+      ],
+      "phrases": [
+        "бесплатные модели",
+        "озвучь",
+        "озвучка текста",
+        "openrouter free",
+        "glm 5.2 free",
+        "mai-transcribe"
+      ],
+      "tags": [
+        "@openrouter-free"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/openrouter-free/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@openrouter-free"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/openrouter-free/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Calls OpenRouter models from a local wrapper (not the Cursor model picker). Catalog SoT: ai-tracking/model-ladder.json (only status=live). Text free: z-ai/glm-5.2:free → minimax/minimax-m3:free → thinkingmachines/inkling:free. TTS: fish-audio/s2.1-pro-free:free. STT mid: microsoft/mai-transcribe-2 (Boss yes). Mid chat after Boss yes. Never Override OpenAI Base URL."
+        }
+      ],
+      "rule": "rules/openrouter-free-routing.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/openrouter-free-test.ps1"
+      ],
+      "note": "Wrapper only; do not Override OpenAI Base URL. Subagent volume: Task composer-2.5-fast (never Task glm-5.2-high as free). Mid/STT need Boss yes + -BossYes. Canon: ai-tracking/openrouter-free.md + ai-tracking/KEYS-MAP.md."
+    },
+    {
+      "id": "seo-geo",
+      "kind": "route",
+      "owner": "hub",
+      "label": "SEO / GEO audit",
+      "mode": "agent",
+      "keywords": [
+        "seo",
+        "geo",
+        "serp",
+        "sitemap",
+        "meta tag",
+        "core web vitals",
+        "ранжир",
+        "индексац",
+        "бэклинк",
+        "schema markup"
+      ],
+      "phrases": [
+        "seo audit",
+        "seo-geo",
+        "geo audit",
+        "аудит seo",
+        "проверь seo",
+        "аудит сайта",
+        "оптимизация сайта",
+        "check seo",
+        "run seo",
+        "seo for"
+      ],
+      "tags": [
+        "@seo-geo"
+      ],
+      "utterances": [
+        "помоги сайту лучше находиться в поиске",
+        "проверь почему мало людей приходит из поиска",
+        "улучши видимость сайта для поисковиков и нейросетей",
+        "разбери что мешает страницам расти"
+      ],
+      "actions": [
+        "улучш",
+        "прове",
+        "разбер",
+        "помог"
+      ],
+      "objects": [
+        "поиск",
+        "видимост",
+        "сайт",
+        "страниц",
+        "трафик"
+      ],
+      "contexts": [
+        "мало людей",
+        "лучше наход",
+        "нейросет"
+      ],
+      "antiExamples": [
+        "поиск файла в проекте"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "audit",
+      "requiredActions": [
+        "read_skill",
+        "seo_audit"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/seo-geo/SKILL.md"
+        ],
+        "mcps": [
+          "plugin-exa-exa"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@seo-geo"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/seo-geo/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "SEO and GEO (Generative Engine Optimization) skill pack — 20 specialist skills for keyword research, content, audits, technical SEO, monitoring, and CORE-EEAT/CITE quality gates. Use for @seo-geo, SEO audit, keyword research, meta tags, schema markup, SERP analysis, content gap, rank tracking, backlinks, GEO visibility, EEAT, AI search optimization, or /aaron:auto-style workflows in Cursor."
+        }
+      ],
+      "rule": "blocks/seo-geo-aio/rules/seo-geo.mdc",
+      "mcps": [
+        {
+          "name": "plugin-exa-exa",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "blocks/seo-geo-aio/commands/seo-audit.ps1",
+        "blocks/seo-geo-aio/commands/seo-stack-verify.ps1",
+        "blocks/seo-geo-aio/commands/gsc-audit.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "seo-geo-aio-block",
+      "kind": "route",
+      "owner": "hub",
+      "label": "SEO+GEO+AIO block foundation",
+      "mode": "agent",
+      "keywords": [
+        "seo geo aio",
+        "geo aio",
+        "aio engine",
+        "content engine seo",
+        "google business",
+        "gmb",
+        "maps seo"
+      ],
+      "phrases": [
+        "seo+geo+aio",
+        "блок seo",
+        "seo geo aio block"
+      ],
+      "tags": [
+        "@seo-geo-aio"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/seo-geo/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@seo-geo-aio"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/seo-geo/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "SEO and GEO (Generative Engine Optimization) skill pack — 20 specialist skills for keyword research, content, audits, technical SEO, monitoring, and CORE-EEAT/CITE quality gates. Use for @seo-geo, SEO audit, keyword research, meta tags, schema markup, SERP analysis, content gap, rank tracking, backlinks, GEO visibility, EEAT, AI search optimization, or /aaron:auto-style workflows in Cursor."
+        }
+      ],
+      "rule": "blocks/seo-geo-aio/rules/seo-geo.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "blocks/seo-geo-aio/commands/seo-audit.ps1",
+        "blocks/seo-geo-aio/commands/seo-stack-verify.ps1",
+        "blocks/seo-geo-aio/commands/gsc-audit.ps1"
+      ],
+      "note": "Canon: ai-tracking/ecosystem-governance/blocks/seo-geo-aio/CHARTER.md"
+    },
+    {
+      "id": "opc-seo-geo",
+      "kind": "route",
+      "owner": "hub",
+      "label": "OPC / resciencelab SEO-GEO",
+      "mode": "agent",
+      "keywords": [
+        "opc seo",
+        "resciencelab",
+        "generative engine",
+        "ai visibility quick",
+        "geo optimization"
+      ],
+      "phrases": [
+        "opc-seo-geo",
+        "@opc-seo-geo",
+        "resciencelab seo"
+      ],
+      "tags": [
+        "@opc-seo-geo"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/opc-seo-geo/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@opc-seo-geo"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/opc-seo-geo/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for resciencelab/opc-skills seo-geo — keyword research, schema, AI search visibility. Triggers: opc seo, resciencelab seo, @opc-seo-geo."
+        }
+      ],
+      "rule": "blocks/seo-geo-aio/rules/seo-geo.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Complement to blocks/seo-geo-aio/skills/seo-geo library; fast opc/resciencelab layer"
+    },
+    {
+      "id": "seo-audit-ms",
+      "kind": "route",
+      "owner": "hub",
+      "label": "SEO audit (marketingskills)",
+      "mode": "agent",
+      "keywords": [
+        "technical seo",
+        "seo health",
+        "on-page seo",
+        "crawl errors",
+        "indexing issues",
+        "почему не ранжиру",
+        "трафик упал"
+      ],
+      "phrases": [
+        "seo audit",
+        "technical seo audit",
+        "why not ranking",
+        "seo issues"
+      ],
+      "tags": [
+        "@seo-audit"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/seo-audit/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@seo-audit"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/seo-audit/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for coreyhaines31/marketingskills seo-audit — technical and on-page SEO diagnostics. Triggers: seo audit, technical seo, @seo-audit."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Fast audit; deep CORE-EEAT -> seo-geo route"
+    },
+    {
+      "id": "programmatic-seo",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Programmatic SEO / pSEO",
+      "mode": "agent",
+      "keywords": [
+        "programmatic seo",
+        "pseo",
+        "template pages",
+        "location pages",
+        "directory pages",
+        "страницы по шаблону"
+      ],
+      "phrases": [
+        "pages at scale",
+        "programmatic landing",
+        "keyword city pages"
+      ],
+      "tags": [
+        "@programmatic-seo"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/programmatic-seo/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@programmatic-seo"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/programmatic-seo/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for coreyhaines31/marketingskills programmatic-seo — template pages at scale. Triggers: programmatic seo, pSEO, location pages, @programmatic-seo."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "ai-search-optimization",
+      "kind": "route",
+      "owner": "hub",
+      "label": "AEO / GEO / AI search visibility",
+      "mode": "agent",
+      "keywords": [
+        "aeo",
+        "llms.txt",
+        "ai crawler",
+        "ai overviews",
+        "perplexity",
+        "chatgpt search",
+        "answer engine",
+        "geo citation"
+      ],
+      "phrases": [
+        "ai search optimization",
+        "llms txt",
+        "make site citable"
+      ],
+      "tags": [
+        "@ai-search-optimization"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/ai-search-optimization/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@ai-search-optimization"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/ai-search-optimization/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for dirnbauer/webconsulting-skills AEO/GEO — llms.txt, AI crawlers, citation visibility. Triggers: aeo, geo citations, llms.txt, @ai-search-optimization."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "entity-seo",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Entity SEO / Knowledge Graph",
+      "mode": "agent",
+      "keywords": [
+        "entity seo",
+        "knowledge graph",
+        "knowledge panel",
+        "entity signals",
+        "brand entity"
+      ],
+      "phrases": [
+        "entity optimization",
+        "entity-first content"
+      ],
+      "tags": [
+        "@entity-seo"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/entity-seo/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@entity-seo"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/entity-seo/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for entity-based SEO — Knowledge Graph, entity signals, brand entities. Triggers: entity seo, knowledge panel, @entity-seo."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "pagespeed",
+      "kind": "route",
+      "owner": "hub",
+      "label": "PageSpeed / performance",
+      "mode": "agent",
+      "keywords": [
+        "pagespeed",
+        "lighthouse",
+        "core web vitals",
+        "cwv",
+        "performance audit"
+      ],
+      "phrases": [
+        "page speed",
+        "скорость сайта"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [],
+      "subagents": [
+        "performance-optimizer"
+      ],
+      "subagentInfo": [
+        {
+          "name": "performance-optimizer",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [
+        "blocks/seo-geo-aio/commands/pagespeed-audit.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "core-web-vitals",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Core Web Vitals (LCP/INP/CLS)",
+      "mode": "agent",
+      "keywords": [
+        "lcp",
+        "inp",
+        "cls",
+        "layout shift",
+        "largest contentful paint",
+        "interaction to next paint"
+      ],
+      "phrases": [
+        "fix core web vitals",
+        "improve cwv",
+        "reduce cls",
+        "fix lcp"
+      ],
+      "tags": [
+        "@core-web-vitals"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/core-web-vitals/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@core-web-vitals"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/core-web-vitals/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for tech-leads-club/core-web-vitals — LCP, INP, CLS fixes. Triggers: core web vitals, fix LCP, fix CLS, @core-web-vitals."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [
+        "performance-optimizer"
+      ],
+      "subagentInfo": [
+        {
+          "name": "performance-optimizer",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": "Targeted CWV fixes; Lighthouse CLI -> pagespeed route"
+    },
+    {
+      "id": "web-quality-audit",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Addy Osmani web quality / Lighthouse audit",
+      "mode": "agent",
+      "keywords": [
+        "web quality",
+        "addy osmani",
+        "page quality",
+        "agentic browsing audit"
+      ],
+      "phrases": [
+        "web-quality-audit",
+        "review web quality",
+        "run lighthouse audit",
+        "lighthouse insights audit"
+      ],
+      "tags": [
+        "@web-quality"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/web-quality-audit/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@web-quality"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/web-quality-audit/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Run an evidence-led web quality audit covering performance, accessibility, SEO, best practices, and agentic browsing. Use when asked to \"audit my site\", \"review web quality\", \"run lighthouse audit\", \"check page quality\", or \"optimize my website\"."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Cherry-pick web-quality-audit only; sibling performance/a11y/seo skills from that repo not installed. Existing seo-geo + core-web-vitals stay primary for generic SEO/CWV."
+    },
+    {
+      "id": "clone-website",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Clone / rebuild website",
+      "mode": "agent",
+      "keywords": [
+        "клон",
+        "clone",
+        "копия сайта",
+        "reverse engineer",
+        "pixel perfect",
+        "скопируй сайт",
+        "лендинг",
+        "landing"
+      ],
+      "phrases": [
+        "clone website",
+        "clone-website",
+        "/clone-website",
+        "clone landing",
+        "клонируй",
+        "посадить лендинг",
+        "лендинг конкурента",
+        "один в один",
+        "pixel perfect",
+        "pixel perfect clone"
+      ],
+      "tags": [
+        "@clone-website"
+      ],
+      "utterances": [
+        "сделай такой же сайт как по этой ссылке",
+        "повтори страницу один в один",
+        "перенеси этот лендинг к нам",
+        "воссоздай внешний вид сайта",
+        "clone the landing page"
+      ],
+      "actions": [
+        "повтор",
+        "воссоз",
+        "перенес",
+        "сдел"
+      ],
+      "objects": [
+        "сайт",
+        "страниц",
+        "лендинг",
+        "внешний вид"
+      ],
+      "contexts": [
+        "такой же",
+        "один в один",
+        "по ссылке",
+        "к нам"
+      ],
+      "antiExamples": [
+        "просто оцени сайт",
+        "без клонирования",
+        "лендинг с нуля"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "build",
+      "requiredActions": [
+        "read_skill",
+        "browser_reference"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/clone-website/SKILL.md"
+        ],
+        "mcps": [
+          "cursor-ide-browser",
+          "plugin-exa-exa"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@clone-website"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/clone-website/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Reverse-engineer and clone websites into Next.js (pixel-perfect). Triggers on @clone-website, /clone-website, clone site, replicate website, rebuild page, copy website, reverse-engineer layout. Works from any Cursor workspace — bootstraps scaffold via init-clone-project.mjs when needed. Requires browser MCP."
+        }
+      ],
+      "rule": "blocks/design/rules/clone-website.mdc",
+      "mcps": [
+        {
+          "name": "cursor-ide-browser",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        },
+        {
+          "name": "plugin-exa-exa",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "open-design",
+      "kind": "route",
+      "owner": "design",
+      "label": "HTML prototype / deck / motion (Open Design)",
+      "mode": "agent",
+      "keywords": [
+        "прототип",
+        "prototype",
+        "deck",
+        "pptx",
+        "motion",
+        "infographic",
+        "слайд",
+        "озвучк",
+        "open-design",
+        "hyperframes",
+        "huashu-design",
+        "花叔"
+      ],
+      "phrases": [
+        "html prototype",
+        "huashu",
+        "open design",
+        "html ppt",
+        "сделай слайды"
+      ],
+      "tags": [
+        "@open-design",
+        "@od",
+        "@huashu"
+      ],
+      "utterances": [
+        "сделай красивую презентацию",
+        "покажи идею в виде понятных слайдов",
+        "собери интерактивный прототип",
+        "сделай наглядную инфографику"
+      ],
+      "actions": [
+        "сдел",
+        "покаж",
+        "собер",
+        "оформ"
+      ],
+      "objects": [
+        "презентац",
+        "слайд",
+        "прототип",
+        "инфограф"
+      ],
+      "contexts": [
+        "красив",
+        "наглядн",
+        "интерактив"
+      ],
+      "antiExamples": [
+        "только текст плана"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "design",
+      "requiredActions": [
+        "read_skill",
+        "design"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/open-design/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@open-design",
+          "@od",
+          "@huashu"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/open-design/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Open Design (nexu-io/open-design) — open-source Claude Design alternative. HTML prototypes, decks (PPTX/PDF), dashboards, mobile frames, motion/HyperFrames (MP4), images, DESIGN.md brand systems. Triggers: @open-design, @od, @huashu (legacy alias), prototype, deck, pptx, motion, infographic, landing mockup, HTML demo, design direction, design critique. Replaces huashu-design as the hub primary for non-React visual HTML pipelines. Not for production Next.js apps (use frontend-design + design-stack)."
+        }
+      ],
+      "rule": "blocks/design/rules/open-design.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Primary HTML/deck/motion path. Legacy @huashu alias."
+    },
+    {
+      "id": "21st-design",
+      "kind": "route",
+      "owner": "design",
+      "label": "21st.dev / shadcn UI",
+      "mode": "agent",
+      "keywords": [
+        "21st",
+        "shadcn",
+        "ui component",
+        "magic mcp"
+      ],
+      "phrases": [],
+      "tags": [
+        "@21st"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/21st-design/SKILL.md"
+        ],
+        "mcps": [
+          "user-21st"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@21st"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/21st-design/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Integrates 21st.dev React UI components (Tailwind + Radix + shadcn pattern) into the user's project. Uses Magic MCP for AI generation, shadcn CLI for registry installs, and a local catalog index. Triggers on @21st, 21st.dev, Magic MCP, /ui component request, 21st component, shadcn add from 21st, hero/pricing/navbar from 21st registry. Not for pure HTML prototypes (use huashu-design) or abstract design tokens only (use ui-ux-pro-max)."
+        }
+      ],
+      "rule": "blocks/design/rules/21st-design.mdc",
+      "mcps": [
+        {
+          "name": "user-21st",
+          "descriptorAvailable": false,
+          "profile": "design",
+          "owner": "21st.dev Magic"
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "design-stack",
+      "kind": "route",
+      "owner": "design",
+      "label": "Design stack / CRO review",
+      "mode": "agent",
+      "keywords": [
+        "cro",
+        "hero review",
+        "design stack",
+        "shadcn block",
+        "ui review"
+      ],
+      "phrases": [],
+      "tags": [
+        "@design-stack"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/design-stack/SKILL.md"
+        ],
+        "mcps": [
+          "user-21st"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@design-stack"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/design-stack/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub design stack — Tailwind, shadcn/ui, Iconify, fontsource, motion, CRO for selling sites. Registry-first; no copy-paste components. Triggers design stack, shadcn, landing page, selling site, daisyUI, framer-motion."
+        }
+      ],
+      "rule": "blocks/design/rules/design-stack.mdc",
+      "mcps": [
+        {
+          "name": "user-21st",
+          "descriptorAvailable": false,
+          "profile": "design",
+          "owner": "21st.dev Magic"
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "production-studio",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Video / storyboard / LVM",
+      "mode": "agent",
+      "keywords": [
+        "storyboard",
+        "раскадров",
+        "lvm",
+        "shorts",
+        "reels",
+        "b-roll",
+        "davinci",
+        "сегмент",
+        "viral"
+      ],
+      "phrases": [
+        "/storyboard",
+        "/production-studio",
+        "production studio",
+        "storyboard for"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/media/skills/production-studio/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/media/skills/production-studio/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Unified Production Studio — live-action + AI/LVM video, storyboards, viral scripts, segment splits. DEC-056 unified with splittable modules. Triggers production studio, storyboard, раскадровка, live shoot, hybrid reel, LVM, reels, tiktok, монтаж 15-30s."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/storyboard.md",
+        "commands/production-studio.md",
+        "commands/lvm-segment.md"
+      ],
+      "note": "user-magnific parked; mcp-profile.ps1 -Name full then Reload. Motion-as-code → remotion-code route, not this."
+    },
+    {
+      "id": "remotion-code",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Remotion video-as-code",
+      "mode": "agent",
+      "keywords": [
+        "remotion",
+        "ремоушен",
+        "npx remotion",
+        "useCurrentFrame"
+      ],
+      "phrases": [
+        "remotion",
+        "ремоушен",
+        "/remotion",
+        "video as code",
+        "remotion captions",
+        "remotion studio",
+        "useCurrentFrame"
+      ],
+      "tags": [
+        "@remotion"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/media/skills/remotion/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@remotion"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/media/skills/remotion/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub fallback for Remotion video-as-code. Prefer Cursor plugin remotion (@remotion). Not a video NLE — use ffmpeg for simple trim/transcode."
+        }
+      ],
+      "rule": "rules/remotion-adapter.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Plugin plane canon (plugins/local/remotion). Not CapCut. Simple ffmpeg trim stays outside this route."
+    },
+    {
+      "id": "task-decomposition",
+      "kind": "route",
+      "owner": "hub",
+      "label": "5-level WBS (project → epic → story → task → package)",
+      "mode": "plan",
+      "keywords": [
+        "wbs",
+        "эпик",
+        "эпики",
+        "декомпозиц",
+        "work package",
+        "подзадач",
+        "иерарх",
+        "атомарн"
+      ],
+      "phrases": [
+        "декомпозиция задач",
+        "разложи на эпики",
+        "разложи задачу",
+        "work breakdown",
+        "иерархия задач",
+        "пять уровней",
+        "user stories",
+        "user story"
+      ],
+      "tags": [
+        "@wbs",
+        "@task-decomposition"
+      ],
+      "utterances": [
+        "разбей работу на маленькие проверяемые шаги",
+        "составь подробный план выполнения",
+        "нужен план работ с проверкой каждого шага",
+        "нужен план работ с понятной проверкой каждого шага",
+        "разложи задачу по этапам и зависимостям",
+        "скажи что делать сначала а что потом"
+      ],
+      "actions": [
+        "разбей",
+        "разлож",
+        "состав",
+        "декомпоз",
+        "нужен"
+      ],
+      "objects": [
+        "шаг",
+        "этап",
+        "зависим",
+        "план работ",
+        "задач"
+      ],
+      "contexts": [
+        "сначала",
+        "потом",
+        "по порядку",
+        "проверяем"
+      ],
+      "antiExamples": [
+        "коротко перечисли"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "systemic",
+      "requiredActions": [
+        "wbs"
+      ],
+      "prerequisites": {
+        "skills": [
+          "skills/task-decomposition/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@wbs",
+          "@task-decomposition"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/task-decomposition/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Builds a proportional 5-level WBS (project, epic, story, task, atomic work package) for Plan/mega-task/new project/!auto+Deliverables. Skip empty levels. L5 needs verify. Triggers: WBS, epics, user stories, декомпозиция, иерархия задач, разложи задачу, work packages. Not one-line fixes. Do not restore writing-plans."
+        }
+      ],
+      "rule": "rules/task-decomposition.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "SECONDARY. Skip empty levels. L5 verify required. TodoWrite is a 1–3 package window. Do not restore quarantined writing-plans. Approval gate except !auto+Deliverables (first epic only)."
+    },
+    {
+      "id": "coding-discipline",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Plan-first coding (Superpowers SECONDARY)",
+      "mode": "plan",
+      "keywords": [
+        "superpowers",
+        "writing-plans",
+        "subagent-driven",
+        "systematic-debugging",
+        "план реализации",
+        "red-green",
+        "план сначала"
+      ],
+      "phrases": [
+        "using superpowers",
+        "plan-first coding",
+        "brainstorm this feature",
+        "subagent driven",
+        "before coding",
+        "systematic debug"
+      ],
+      "tags": [
+        "@superpowers"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/brainstorming/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@superpowers"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/brainstorming/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub bridge for Superpowers plan-first coding. Use when route coding-discipline or user says @superpowers / план сначала — not before every creative task."
+        }
+      ],
+      "rule": "rules/superpowers-adapter.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Plugin plane is canon (obra/superpowers). Hub bridge only. Do not restore quarantined TDD/SDD/writing-plans as CORE. Ponytail + confirm-writes win. No auto-commit, no Squad."
+    },
+    {
+      "id": "frontend-design-web",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Web UI anti-slop (frontend-design)",
+      "mode": "agent",
+      "keywords": [
+        "web app",
+        "dashboard",
+        "landing page",
+        "ui page",
+        "компонент",
+        "интерфейс",
+        "сайт",
+        "next.js page"
+      ],
+      "phrases": [
+        "build a page",
+        "web interface",
+        "production ui",
+        "anti slop",
+        "не серый дизайн"
+      ],
+      "tags": [
+        "@frontend-design"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/frontend-design/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@frontend-design"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/frontend-design/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics."
+        }
+      ],
+      "rule": "blocks/design/rules/design-stack.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Deck/HTML/motion -> open-design route. Web app -> this route. Pair taste/impeccable/guidelines as needed."
+    },
+    {
+      "id": "vercel-react-best-practices",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Vercel React / Next.js performance rules",
+      "mode": "agent",
+      "keywords": [
+        "react performance",
+        "next.js performance",
+        "vercel react",
+        "waterfall fetch",
+        "bundle react",
+        "rerender"
+      ],
+      "phrases": [
+        "vercel-react-best-practices",
+        "react best practices vercel",
+        "optimize react bundle"
+      ],
+      "tags": [
+        "@vercel-react"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/vercel-react-best-practices/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@vercel-react"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/vercel-react-best-practices/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "vercel-composition-patterns",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Vercel React composition patterns",
+      "mode": "agent",
+      "keywords": [
+        "compound components",
+        "boolean props",
+        "composition patterns",
+        "react composition",
+        "render props"
+      ],
+      "phrases": [
+        "vercel-composition-patterns",
+        "compound component",
+        "boolean prop proliferation"
+      ],
+      "tags": [
+        "@vercel-composition"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/vercel-composition-patterns/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@vercel-composition"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/vercel-composition-patterns/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "React composition patterns that scale. Use when refactoring components with"
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "web-design-guidelines",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Vercel Web Interface Guidelines audit",
+      "mode": "agent",
+      "keywords": [
+        "web guidelines",
+        "interface guidelines",
+        "a11y audit",
+        "accessibility audit",
+        "review my ui",
+        "audit design"
+      ],
+      "phrases": [
+        "check against guidelines",
+        "web interface guidelines"
+      ],
+      "tags": [
+        "@web-design-guidelines"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/web-design-guidelines/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@web-design-guidelines"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/web-design-guidelines/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for Vercel Web Interface Guidelines review. Use when auditing UI, accessibility, UX review, or compliance with web best practices. Triggers: web guidelines, review my UI, audit design, @web-design-guidelines."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "shadcn",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Official shadcn/ui CLI skill",
+      "mode": "agent",
+      "keywords": [
+        "shadcn",
+        "shadcn init",
+        "components.json",
+        "shadcn add",
+        "shadcn preset"
+      ],
+      "phrases": [
+        "shadcn init",
+        "add shadcn component",
+        "shadcn cli",
+        "shadcn ui"
+      ],
+      "tags": [
+        "@shadcn"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/shadcn/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@shadcn"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/shadcn/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for official shadcn/ui skill (CLI, components.json, presets). Use when adding/searching/fixing shadcn components. Triggers: shadcn init, components.json, @shadcn."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Official shadcn/ui. Stitch path -> stitch-shadcn-ui. 21st Magic -> 21st-design."
+    },
+    {
+      "id": "stitch-shadcn-ui",
+      "kind": "route",
+      "owner": "design",
+      "label": "Stitch + shadcn-ui (Google Labs)",
+      "mode": "agent",
+      "keywords": [
+        "stitch shadcn",
+        "stitch ui",
+        "stitch component"
+      ],
+      "phrases": [],
+      "tags": [
+        "@stitch-shadcn"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/stitch-shadcn-ui/SKILL.md"
+        ],
+        "mcps": [
+          "user-stitch"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@stitch-shadcn"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/stitch-shadcn-ui/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for google-labs-code stitch-skills (shadcn-ui). Use when building with Stitch MCP + shadcn patterns. Triggers: stitch shadcn, stitch UI, @stitch-shadcn."
+        }
+      ],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "user-stitch",
+          "descriptorAvailable": false,
+          "profile": "design",
+          "owner": "Google Stitch"
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "design-taste-frontend",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Taste skill anti-slop (landings/portfolios)",
+      "mode": "agent",
+      "keywords": [
+        "design taste",
+        "taste skill",
+        "анти-слоп",
+        "anti-slop landing",
+        "portfolio redesign"
+      ],
+      "phrases": [],
+      "tags": [
+        "@design-taste"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/design-taste-frontend/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@design-taste"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/design-taste-frontend/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for leonxlnx taste-skill anti-slop frontend (landings, portfolios, redesigns). Triggers: taste skill, anti-slop landing, design taste, @design-taste."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "impeccable",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Impeccable craft / polish / critique",
+      "mode": "agent",
+      "keywords": [
+        "impeccable",
+        "polish ui",
+        "design critique",
+        "craft ui",
+        "shape ui"
+      ],
+      "phrases": [
+        "impeccable polish",
+        "impeccable audit"
+      ],
+      "tags": [
+        "@impeccable"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/impeccable/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@impeccable"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/impeccable/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for pbakaus/impeccable — craft, audit, polish, shape frontend UI. Triggers: impeccable, polish UI, design critique, @impeccable."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "pr-review",
+      "kind": "route",
+      "owner": "hub",
+      "label": "PR review confidence scoring",
+      "mode": "agent",
+      "keywords": [
+        "pull request",
+        "pr review",
+        "code review pr",
+        "pre-merge",
+        "review pr"
+      ],
+      "phrases": [
+        "/pr-review",
+        "review this pr",
+        "review pull request"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/pr-review/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/pr-review/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "PR code review with confidence scoring (adapted from claude-plugins-official/code-review). Use for pull request review, /pr-review, pre-merge check. Requires gh CLI. Posts only issues scored >= 80. Complements squad-review and thermo-nuclear-review."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/pr-review.ps1"
+      ],
+      "note": "Requires gh auth; posts only issues confidence >= 80 after user OK"
+    },
+    {
+      "id": "code-review-pro",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Deep code review (local)",
+      "mode": "agent",
+      "keywords": [
+        "deep code review",
+        "code audit",
+        "security review code",
+        "performance review code",
+        "refactor review"
+      ],
+      "phrases": [
+        "review this code",
+        "audit this code",
+        "code review pro"
+      ],
+      "tags": [
+        "@code-review-pro"
+      ],
+      "utterances": [
+        "проверь изменения и найди проблемы",
+        "посмотри не сломал ли я что-то",
+        "перепроверь качество этого кода",
+        "дай независимую оценку правкам"
+      ],
+      "actions": [
+        "прове",
+        "посмотр",
+        "перепров",
+        "оцен"
+      ],
+      "objects": [
+        "изменен",
+        "правк",
+        "код",
+        "ошиб",
+        "проблем"
+      ],
+      "contexts": [
+        "независим",
+        "не сломал",
+        "качество"
+      ],
+      "antiExamples": [
+        "просто объясни код",
+        "безопасно ли выпускать"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "review",
+      "requiredActions": [
+        "code_review"
+      ],
+      "prerequisites": {
+        "skills": [
+          "skills/code-review-pro/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@code-review-pro"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/code-review-pro/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for onewave-ai code-review-pro — security, performance, refactor depth. Triggers: deep code review, code audit, @code-review-pro."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [
+        "security-review"
+      ],
+      "subagentInfo": [
+        {
+          "name": "security-review",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": "Local/ad-hoc; GitHub PR -> pr-review route"
+    },
+    {
+      "id": "qa-start",
+      "kind": "route",
+      "owner": "hub",
+      "label": "QA bootstrap from scratch",
+      "mode": "agent",
+      "keywords": [
+        "qa from scratch",
+        "setup qa",
+        "test strategy greenfield",
+        "no tests yet",
+        "bootstrap qa"
+      ],
+      "phrases": [
+        "set up qa",
+        "qa start",
+        "/qa-start",
+        "qa with no coverage"
+      ],
+      "tags": [
+        "@qa-start"
+      ],
+      "utterances": [
+        "проверь что все действительно работает",
+        "прогони тесты перед завершением",
+        "убедись что ничего не сломалось",
+        "проведи полную проверку результата"
+      ],
+      "actions": [
+        "прове",
+        "прогон",
+        "убед",
+        "тест"
+      ],
+      "objects": [
+        "работ",
+        "тест",
+        "результат",
+        "ничего не слом"
+      ],
+      "contexts": [
+        "перед заверш",
+        "полную",
+        "действительно"
+      ],
+      "antiExamples": [
+        "не запускай тесты"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "validate",
+      "requiredActions": [
+        "qa"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/qa/skills/qa-start/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@qa-start"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/qa/skills/qa-start/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for petrkindlmann qa-start — bootstrap QA from scratch (strategy, plan, automation pointers). Triggers: qa from scratch, setup qa, @qa-start."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "automation-audit",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Automation recommendations (scout)",
+      "mode": "agent",
+      "keywords": [
+        "recommend automations",
+        "what hooks",
+        "automation audit",
+        "claude code setup",
+        "что автоматизировать"
+      ],
+      "phrases": [
+        "recommend automations for",
+        "automation audit",
+        "audit automations"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/repo-intake/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/repo-intake/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Auto-analyze dropped repos (GitHub URL, zip, local path). Scout, classify, propose 3 actions — user picks. No repeated \"what to do with repo\" questions. Triggers: github.com link, @path to repo, .zip, \"репозиторий\", /repo."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Automation recommendations via repo-intake. Squad archived — restore only after Boss yes."
+    },
+    {
+      "id": "agency-persona",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Agency marketing persona",
+      "mode": "agent",
+      "keywords": [
+        "копирайт",
+        "copywriting",
+        "linkedin post",
+        "tiktok",
+        "контент-план",
+        "growth hack",
+        "paid media"
+      ],
+      "phrases": [],
+      "tags": [
+        "@content-creator",
+        "@seo-specialist",
+        "@brand-guardian",
+        "@ui-designer"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/agency/skills/agency-agents/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@content-creator",
+          "@seo-specialist",
+          "@brand-guardian",
+          "@ui-designer"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/agency/skills/agency-agents/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "The Agency (msitarzewski/agency-agents) — 66+ hub-integrated marketing, sales, design, product, and paid-media personas as on-demand Cursor rules. Use for @agency, agency agent, content strategist, sales discovery, PPC, brand voice, proposal copy, or when Squad needs a deep specialist persona. Max 2 personas per session. Rules live in rules/agency/*.mdc."
+        }
+      ],
+      "rule": "blocks/agency/rules/agency-agents.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "copywriting",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Conversion copywriting",
+      "mode": "agent",
+      "keywords": [
+        "headline",
+        "hero copy",
+        "cta copy",
+        "value proposition",
+        "tagline",
+        "above the fold",
+        "лендинг текст"
+      ],
+      "phrases": [
+        "write copy",
+        "improve copy",
+        "marketing copy",
+        "rewrite landing"
+      ],
+      "tags": [
+        "@copywriting"
+      ],
+      "utterances": [
+        "напиши текст который будет продавать",
+        "сделай понятное описание продукта",
+        "перепиши текст человеческим языком",
+        "подготовь сильный текст для страницы"
+      ],
+      "actions": [
+        "напиш",
+        "перепиш",
+        "подготов",
+        "сдел"
+      ],
+      "objects": [
+        "текст",
+        "описан",
+        "страниц",
+        "оффер"
+      ],
+      "contexts": [
+        "продав",
+        "человеческ",
+        "понятн",
+        "сильн"
+      ],
+      "antiExamples": [
+        "исправь одну опечатку"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "content",
+      "requiredActions": [
+        "read_skill",
+        "humanizer"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/agency/skills/copywriting/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@copywriting"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/agency/skills/copywriting/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for coreyhaines31/marketingskills copywriting — landing, hero, CTA, value prop copy. Triggers: marketing copy, headline, @copywriting."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "content-strategy",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Content strategy / calendar",
+      "mode": "agent",
+      "keywords": [
+        "content strategy",
+        "editorial calendar",
+        "topic cluster",
+        "content pillar",
+        "blog strategy",
+        "контент-план"
+      ],
+      "phrases": [
+        "what should i write",
+        "content ideas plan",
+        "content roadmap"
+      ],
+      "tags": [
+        "@content-strategy"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/agency/skills/content-strategy/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@content-strategy"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/agency/skills/content-strategy/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for coreyhaines31/marketingskills content-strategy — pillars, topic clusters, editorial calendar. Triggers: content strategy, editorial calendar, @content-strategy."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "marketing-psychology",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Marketing psychology / persuasion",
+      "mode": "agent",
+      "keywords": [
+        "persuasion",
+        "mental model",
+        "cognitive bias",
+        "social proof",
+        "scarcity",
+        "loss aversion",
+        "поведен"
+      ],
+      "phrases": [
+        "marketing psychology",
+        "why people buy",
+        "behavioral science marketing"
+      ],
+      "tags": [
+        "@marketing-psychology"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/agency/skills/marketing-psychology/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@marketing-psychology"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/agency/skills/marketing-psychology/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for coreyhaines31/marketingskills marketing-psychology — persuasion, mental models, behavioral science. Triggers: marketing psychology, social proof, @marketing-psychology."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "marketing-ideas",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Marketing ideas backlog",
+      "mode": "agent",
+      "keywords": [
+        "marketing ideas",
+        "growth ideas",
+        "channel ideas",
+        "go-to-market ideas",
+        "идеи маркетинг"
+      ],
+      "phrases": [
+        "marketing ideas for",
+        "growth tactics list"
+      ],
+      "tags": [
+        "@marketing-ideas"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/agency/skills/marketing-ideas/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@marketing-ideas"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/agency/skills/marketing-ideas/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for coreyhaines31/marketingskills marketing-ideas — SaaS growth idea backlog. Triggers: marketing ideas, growth ideas, @marketing-ideas."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "web-research",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Web research / fact-check",
+      "mode": "agent",
+      "keywords": [
+        "найди",
+        "research",
+        "fact check",
+        "latest",
+        "документац",
+        "что нового",
+        "сравни"
+      ],
+      "phrases": [
+        "web search",
+        "поищи в интернете"
+      ],
+      "tags": [],
+      "utterances": [
+        "посмотри в интернете как это сейчас делают",
+        "поищи свежую информацию по этой теме",
+        "сравни актуальные решения на рынке",
+        "сравни современные решения которые уже есть на рынке",
+        "проверь по официальной документации"
+      ],
+      "actions": [
+        "посмотр",
+        "поищ",
+        "найд",
+        "провер",
+        "сравн"
+      ],
+      "objects": [
+        "интернет",
+        "информац",
+        "документац",
+        "рынок",
+        "источник"
+      ],
+      "contexts": [
+        "сейчас",
+        "свеж",
+        "актуальн",
+        "современн",
+        "официальн"
+      ],
+      "antiExamples": [
+        "без интернета",
+        "не ищи в сети",
+        "не ищи в интернете"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "research",
+      "requiredActions": [
+        "web_research"
+      ],
+      "prerequisites": {
+        "skills": [],
+        "mcps": [
+          "plugin-exa-exa"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "plugin-exa-exa",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "browser-e2e",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Live browser / E2E UI",
+      "mode": "agent",
+      "keywords": [
+        "открой сайт",
+        "кликни",
+        "snapshot",
+        "браузер",
+        "e2e",
+        "playwright",
+        "side panel"
+      ],
+      "phrases": [
+        "open in browser",
+        "click sign in",
+        "открой в браузере",
+        "кликни по кнопке"
+      ],
+      "tags": [],
+      "utterances": [
+        "открой сайт и проверь руками",
+        "нажми кнопку и посмотри что произойдет",
+        "пройди этот сценарий в браузере",
+        "проверь страницу визуально"
+      ],
+      "actions": [
+        "открой",
+        "нажм",
+        "прой",
+        "прове",
+        "посмотр"
+      ],
+      "objects": [
+        "сайт",
+        "страниц",
+        "кнопк",
+        "браузер",
+        "сценар"
+      ],
+      "contexts": [
+        "руками",
+        "визуальн",
+        "что произойдет"
+      ],
+      "antiExamples": [
+        "не открывай браузер"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "validate",
+      "requiredActions": [
+        "browser"
+      ],
+      "prerequisites": {
+        "skills": [],
+        "mcps": [
+          "cursor-ide-browser"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "cursor-ide-browser",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "playwright-e2e",
+      "kind": "route",
+      "owner": "qa",
+      "label": "Playwright E2E tests",
+      "mode": "agent",
+      "keywords": [
+        "playwright test",
+        "e2e spec",
+        "test automation",
+        "cross-browser test",
+        "playwright config"
+      ],
+      "phrases": [
+        "write playwright test",
+        "playwright e2e",
+        "end to end test code"
+      ],
+      "tags": [
+        "@playwright"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/qa/skills/playwright/SKILL.md"
+        ],
+        "mcps": [
+          "cursor-ide-browser"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@playwright"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/qa/skills/playwright/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for bobmatnyc/claude-mpm-skills playwright E2E — cross-browser tests, auto-wait patterns. Triggers: playwright test, e2e test, @playwright."
+        }
+      ],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "cursor-ide-browser",
+          "descriptorAvailable": true,
+          "profile": "qa",
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Test code; live browser -> browser-e2e route"
+    },
+    {
+      "id": "playwright-visual-testing",
+      "kind": "route",
+      "owner": "qa",
+      "label": "Playwright visual regression",
+      "mode": "agent",
+      "keywords": [
+        "visual regression",
+        "screenshot test",
+        "visual diff",
+        "baseline screenshot",
+        "ui regression"
+      ],
+      "phrases": [
+        "visual testing playwright",
+        "screenshot comparison"
+      ],
+      "tags": [
+        "@playwright-visual-testing"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/qa/skills/playwright-visual-testing/SKILL.md"
+        ],
+        "mcps": [
+          "cursor-ide-browser"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@playwright-visual-testing"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/qa/skills/playwright-visual-testing/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for luxor playwright-visual-testing — visual regression, screenshot validation via Playwright MCP. Triggers: visual regression, screenshot test, @playwright-visual-testing."
+        }
+      ],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "cursor-ide-browser",
+          "descriptorAvailable": true,
+          "profile": "qa",
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "notion-workspace",
+      "kind": "route",
+      "owner": "ops",
+      "label": "Notion tasks / workspace",
+      "mode": "agent",
+      "keywords": [
+        "notion",
+        "страницу notion",
+        "t3 cleanup",
+        "обнови статус"
+      ],
+      "phrases": [],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/integrations/skills/notion-workspace/SKILL.md"
+        ],
+        "mcps": [
+          "plugin-notion-workspace-notion"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/integrations/skills/notion-workspace/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Notion MCP workspace ops — read structure, light T3 cleanup (preserve user wording), task colors/emojis by status, session handoff notes. Use when user shares Notion URLs or asks to organize Cursor prompts in Notion."
+        }
+      ],
+      "rule": "blocks/integrations/rules/notion-workspace.mdc",
+      "mcps": [
+        {
+          "name": "plugin-notion-workspace-notion",
+          "descriptorAvailable": true,
+          "profile": "ops",
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "google-workspace",
+      "kind": "route",
+      "owner": "ops",
+      "label": "Gmail / Drive / Calendar",
+      "mode": "agent",
+      "keywords": [
+        "gmail",
+        "google drive",
+        "calendar",
+        "почт",
+        "gsc",
+        "search console"
+      ],
+      "phrases": [],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": [
+          "plugin-gmail-gmail",
+          "plugin-google-calendar-google-calendar",
+          "plugin-google-drive-google-drive"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "plugin-gmail-gmail",
+          "descriptorAvailable": true,
+          "profile": "ops",
+          "owner": null
+        },
+        {
+          "name": "plugin-google-calendar-google-calendar",
+          "descriptorAvailable": true,
+          "profile": "ops",
+          "owner": null
+        },
+        {
+          "name": "plugin-google-drive-google-drive",
+          "descriptorAvailable": true,
+          "profile": "ops",
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "blocks/seo-geo-aio/commands/gsc-audit.ps1",
+        "commands/ensure-google-mcp.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "markitdown",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Document to Markdown",
+      "mode": "agent",
+      "keywords": [
+        "markitdown",
+        "pdf",
+        "docx",
+        "pptx",
+        "xlsx",
+        "convert to markdown",
+        "экономия токенов",
+        "markdown conversion"
+      ],
+      "phrases": [
+        "convert pdf",
+        "read pdf",
+        "extract from pdf",
+        "office to md",
+        "структурированную сводку",
+        "сводку для обучения",
+        "сводка для обучения",
+        "вот pdf",
+        "из pdf"
+      ],
+      "tags": [
+        "@markitdown"
+      ],
+      "utterances": [
+        "вот документ сделай понятную сводку",
+        "прочитай этот файл и вытащи главное",
+        "разбери приложенный документ",
+        "сделай конспект из этого файла",
+        "не ищи в интернете используй только этот документ"
+      ],
+      "actions": [
+        "прочит",
+        "разбер",
+        "вытащ",
+        "сдел",
+        "использ"
+      ],
+      "objects": [
+        "документ",
+        "файл",
+        "pdf",
+        "docx",
+        "сводк",
+        "конспект"
+      ],
+      "contexts": [
+        "прилож",
+        "из этого",
+        "главное"
+      ],
+      "antiExamples": [
+        "создай пустой pdf"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "document",
+      "requiredActions": [
+        "markitdown"
+      ],
+      "prerequisites": {
+        "skills": [
+          "skills/markitdown/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@markitdown"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/markitdown/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Converts PDF, Office, HTML, audio, images, ZIP, EPUB, and more to token-efficient Markdown using Microsoft MarkItDown before LLM analysis. Use when the user attaches binary documents, asks to read/extract/summarize PDFs or Office files, mentions markitdown, markdown conversion, or token economy (экономия токенов). Prefer converted .md over raw binaries in context."
+        }
+      ],
+      "rule": "rules/markitdown.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/ensure-markitdown.ps1",
+        "commands/markitdown-drain.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "n8n-automation",
+      "kind": "route",
+      "owner": "ops",
+      "label": "n8n workflows",
+      "mode": "agent",
+      "keywords": [
+        "n8n",
+        "workflow",
+        "автоматизац",
+        "n8n template"
+      ],
+      "phrases": [],
+      "tags": [
+        "@n8n"
+      ],
+      "utterances": [
+        "автоматизируй эту рутинную работу",
+        "свяжи эти сервисы без ручных действий",
+        "пусть сообщения сами уходят куда нужно",
+        "собери автоматический процесс"
+      ],
+      "actions": [
+        "автоматиз",
+        "свяж",
+        "собер",
+        "отправ"
+      ],
+      "objects": [
+        "рутин",
+        "сервис",
+        "сообщен",
+        "процесс",
+        "интеграц"
+      ],
+      "contexts": [
+        "сами",
+        "автомат",
+        "без ручн"
+      ],
+      "antiExamples": [
+        "сделай вручную один раз"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "build",
+      "requiredActions": [
+        "read_skill",
+        "n8n"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/integrations/skills/n8n-workflow/SKILL.md",
+          "blocks/integrations/skills/n8n-templates/SKILL.md"
+        ],
+        "mcps": [
+          "user-n8n-mcp"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@n8n"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/integrations/skills/n8n-workflow/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Build and validate n8n workflow JSON without hallucinations — node schemas, connections, expressions, validation profiles, AI agent wiring, and architectural patterns. Use for @n8n, n8n workflow, automate with n8n, webhook workflow, n8n JSON export, node parameters, expressions, validate workflow, AI agent n8n, or when user has n8n-mcp / instance MCP connected. Knowledge distilled from czlonkowski/n8n-mcp (MIT); no MCP server required to apply rules."
+        },
+        {
+          "path": "blocks/integrations/skills/n8n-templates/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Match and import n8n workflows from awesome-n8n-templates (280+ JSON). Local index only — never load all templates into context. Use with n8n-mcp for deploy/validate. Triggers: n8n template, workflow template, @n8n."
+        }
+      ],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "user-n8n-mcp",
+          "descriptorAvailable": false,
+          "profile": "ops",
+          "owner": "n8n MCP"
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/n8n-mcp.md",
+        "commands/n8n-workflow.md",
+        "commands/n8n-templates-match.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "n8n-workflow-automation",
+      "kind": "route",
+      "owner": "ops",
+      "label": "n8n production workflows",
+      "mode": "agent",
+      "keywords": [
+        "n8n retry",
+        "n8n error handling",
+        "n8n idempotent",
+        "review queue",
+        "n8n logging"
+      ],
+      "phrases": [
+        "harden n8n workflow",
+        "n8n production json"
+      ],
+      "tags": [
+        "@n8n-workflow-automation"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/integrations/skills/n8n-workflow-automation/SKILL.md"
+        ],
+        "mcps": [
+          "user-n8n-mcp"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@n8n-workflow-automation"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/integrations/skills/n8n-workflow-automation/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for sundial n8n-workflow-automation — idempotent JSON, retries, review queues. Triggers: n8n retries, n8n error handling, @n8n-workflow-automation."
+        }
+      ],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "user-n8n-mcp",
+          "descriptorAvailable": false,
+          "profile": "ops",
+          "owner": "n8n MCP"
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Recipes; JSON authoring -> n8n-workflow skill"
+    },
+    {
+      "id": "n8n-workflow-architect",
+      "kind": "route",
+      "owner": "hub",
+      "label": "n8n automation architecture",
+      "mode": "plan",
+      "keywords": [
+        "n8n architect",
+        "automation architecture",
+        "shopify n8n",
+        "hubspot n8n",
+        "n8n vs python"
+      ],
+      "phrases": [
+        "plan n8n automation",
+        "n8n workflow architect",
+        "automation feasibility"
+      ],
+      "tags": [
+        "@n8n-workflow-architect"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/integrations/skills/n8n-workflow-architect/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@n8n-workflow-architect"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/integrations/skills/n8n-workflow-architect/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for promptadvisers n8n-workflow-architect — stack evaluation, automation architecture, n8n vs code. Triggers: n8n architect, automation plan, @n8n-workflow-architect."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Strategic design; implementation -> n8n-automation route"
+    },
+    {
+      "id": "dev-os",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Dev OS / research-first bootstrap",
+      "mode": "plan",
+      "keywords": [
+        "dev os",
+        "dev-os",
+        "bootstrap",
+        "research sprint",
+        "emergence"
+      ],
+      "phrases": [],
+      "tags": [
+        "@dev-os"
+      ],
+      "utterances": [
+        "сначала собери данные и только потом решай",
+        "изучи как это устроено у других систем",
+        "изучи почему похожие продукты устроены именно так",
+        "проведи исследование перед проектированием",
+        "найди хорошие практики и сравни их"
+      ],
+      "actions": [
+        "исслед",
+        "изуч",
+        "собер",
+        "сравн"
+      ],
+      "objects": [
+        "данн",
+        "практик",
+        "систем",
+        "подход",
+        "источник"
+      ],
+      "contexts": [
+        "сначала",
+        "перед проект",
+        "у других",
+        "только потом"
+      ],
+      "antiExamples": [
+        "не ищи в интернете",
+        "используй только эти данные"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "research",
+      "requiredActions": [
+        "dev_os_research"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/dev-os/skills/dev-os/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@dev-os"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/dev-os/skills/dev-os/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Autonomous AI Dev OS — executive charter DEC-008. Full lifecycle delivery UNDERSTAND→EVOLVE without phase stops. Candidate A. @dev-os for meta/execution."
+        }
+      ],
+      "rule": "blocks/dev-os/rules/dev-os.mdc",
+      "mcps": [],
+      "subagents": [
+        "dev-os-research"
+      ],
+      "subagentInfo": [
+        {
+          "name": "dev-os-research",
+          "file": "agents/dev-os-research.md",
+          "description": "Dev OS research agent. Domain research sprints — Exa discovery, source extraction cards, domain findings merge, knowledge-map updates. Use for @dev-os research, Research Sprint 2+, corpus expansion. NOT workspace audit (use squad-scout)."
+        }
+      ],
+      "commands": [
+        "commands/dev-os.md"
+      ],
+      "note": null
+    },
+    {
+      "id": "figma-design",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Figma design-to-code",
+      "mode": "agent",
+      "keywords": [
+        "figma",
+        "design context",
+        "code connect"
+      ],
+      "phrases": [],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": [
+          "plugin-figma-figma"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "plugin-figma-figma",
+          "descriptorAvailable": false,
+          "profile": "design",
+          "owner": "Figma Cursor plugin"
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/figma-mcp.md"
+      ],
+      "note": "user-figma parked; mcp-profile.ps1 -Name full then Reload"
+    },
+    {
+      "id": "stitch-design",
+      "kind": "route",
+      "owner": "design",
+      "label": "Google Stitch UI",
+      "mode": "agent",
+      "keywords": [
+        "stitch",
+        "google stitch"
+      ],
+      "phrases": [],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": [
+          "user-stitch"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "user-stitch",
+          "descriptorAvailable": false,
+          "profile": "design",
+          "owner": "Google Stitch"
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/stitch-mcp.md",
+        "commands/ensure-stitch.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "gitnexus-refactor",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Symbol-safe refactor",
+      "mode": "agent",
+      "keywords": [
+        "rename",
+        "refactor",
+        "impact analysis",
+        "gitnexus",
+        "call graph"
+      ],
+      "phrases": [],
+      "tags": [],
+      "utterances": [
+        "покажи что сломается если это изменить",
+        "найди все места которые зависят от этой функции",
+        "разберись как код связан между собой",
+        "безопасно переделай общий кусок кода",
+        "безопасно переделай общий кусок и проверь связи"
+      ],
+      "actions": [
+        "измен",
+        "передел",
+        "найд",
+        "разбер",
+        "переимен"
+      ],
+      "objects": [
+        "функц",
+        "класс",
+        "метод",
+        "код",
+        "завис"
+      ],
+      "contexts": [
+        "что сломается",
+        "все места",
+        "безопасно",
+        "связан"
+      ],
+      "antiExamples": [
+        "только текстовый файл"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "code",
+      "requiredActions": [
+        "gitnexus_freshness",
+        "gitnexus_impact"
+      ],
+      "prerequisites": {
+        "skills": [],
+        "mcps": [
+          "user-gitnexus"
+        ]
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": "rules/karpathy-guidelines.mdc",
+      "mcps": [
+        {
+          "name": "user-gitnexus",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [
+        "explore"
+      ],
+      "subagentInfo": [
+        {
+          "name": "explore",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "ci-debug",
+      "kind": "route",
+      "owner": "hub",
+      "label": "CI / failing checks",
+      "mode": "debug",
+      "keywords": [
+        "ci fail",
+        "github check",
+        "pipeline",
+        "failing test",
+        "падает тест",
+        "ошибка сборки",
+        "ci красн"
+      ],
+      "phrases": [
+        "fix ci",
+        "why is build failing",
+        "why is ci failing",
+        "ci failing",
+        "ci красный",
+        "красный ci",
+        "почему ci",
+        "падает ci"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills-cursor/review-bugbot/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills-cursor/review-bugbot/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Review code changes with Bugbot subagent."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [
+        "ci-investigator"
+      ],
+      "subagentInfo": [
+        {
+          "name": "ci-investigator",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "ponytail",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Ponytail / YAGNI minimal code",
+      "mode": "agent",
+      "keywords": [
+        "ponytail",
+        "yagni",
+        "over-engineer",
+        "overengineer",
+        "будь ленив",
+        "минимальный код",
+        "lazy mode",
+        "do less"
+      ],
+      "phrases": [
+        "be lazy",
+        "simplest solution",
+        "shortest path",
+        "stop over-engineering",
+        "/ponytail"
+      ],
+      "tags": [
+        "@ponytail"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/ponytail/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@ponytail"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/ponytail/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": ">"
+        }
+      ],
+      "rule": "rules/ponytail.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/ponytail-status.ps1"
+      ],
+      "note": "Code volume; pair with caveman for prose, RTK for shell"
+    },
+    {
+      "id": "security-hub",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Security Hub orchestrator",
+      "mode": "agent",
+      "keywords": [
+        "security hub",
+        "dast",
+        "recon",
+        "nuclei",
+        "owasp zap",
+        "zap scan",
+        "httpx",
+        "subfinder",
+        "semgrep",
+        "trivy",
+        "checkov"
+      ],
+      "phrases": [
+        "security hub",
+        "run dast",
+        "run nuclei",
+        "zap baseline",
+        "authorized scan"
+      ],
+      "tags": [
+        "@security-hub",
+        "@cybersecurity"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/security/skills/security-hub/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@security-hub",
+          "@cybersecurity"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/security/skills/security-hub/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": ">"
+        }
+      ],
+      "rule": "blocks/security/rules/cybersecurity.mdc",
+      "mcps": [],
+      "subagents": [
+        "security-review"
+      ],
+      "subagentInfo": [
+        {
+          "name": "security-review",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [
+        "commands/ensure-security-tools.ps1",
+        "blocks/security/commands/security-scan.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "security-audit",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Security audit",
+      "mode": "agent",
+      "keywords": [
+        "security",
+        "уязвим",
+        "cve",
+        "secrets scan",
+        "gitleaks",
+        "supply chain"
+      ],
+      "phrases": [],
+      "tags": [
+        "@cybersecurity"
+      ],
+      "utterances": [
+        "проверь нет ли опасных мест",
+        "убедись что данные и ключи защищены",
+        "найди уязвимости в изменениях",
+        "посмотри безопасно ли это выпускать",
+        "посмотри безопасно ли выпускать эти изменения"
+      ],
+      "actions": [
+        "прове",
+        "найд",
+        "убед",
+        "защит"
+      ],
+      "objects": [
+        "опас",
+        "уязв",
+        "ключ",
+        "данн",
+        "безопас"
+      ],
+      "contexts": [
+        "перед выпуск",
+        "нет ли",
+        "защищ"
+      ],
+      "antiExamples": [
+        "не аудит безопасности"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "high-risk",
+      "requiredActions": [
+        "security_review"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/security/skills/security-hub/SKILL.md",
+          "blocks/security/skills/cybersecurity/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "high",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@cybersecurity"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/security/skills/security-hub/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": ">"
+        },
+        {
+          "path": "blocks/security/skills/cybersecurity/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Anthropic Cybersecurity Skills pack — 754 practitioner playbooks for project security, DevSecOps, cloud/IaC, containers, API/web app hardening, vulnerability management, DFIR, threat hunting, and compliance (MITRE ATT&CK, NIST CSF mapped). Use for @cybersecurity, secure this project/repo, security audit, SAST/SCA/secrets in CI, Terraform audit, Kubernetes hardening, OWASP, IOC triage, incident response, or any defensive security workflow. Decline unauthorized offensive testing."
+        }
+      ],
+      "rule": "blocks/security/rules/cybersecurity.mdc",
+      "mcps": [],
+      "subagents": [
+        "security-review"
+      ],
+      "subagentInfo": [
+        {
+          "name": "security-review",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [
+        "commands/ensure-security-tools.ps1",
+        "blocks/security/commands/security-scan.ps1",
+        "commands/bumblebee-scan.ps1",
+        "commands/hub-supply-scan.ps1"
+      ],
+      "note": "Front: security-hub; backend playbooks: cybersecurity library"
+    },
+    {
+      "id": "firebase-security-rules",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Firebase / Firestore security rules",
+      "mode": "agent",
+      "keywords": [
+        "firestore rules",
+        "firebase rules",
+        "security rules audit",
+        "firestore rls"
+      ],
+      "phrases": [
+        "audit firestore rules",
+        "firebase security rules"
+      ],
+      "tags": [
+        "@firebase-security-rules-auditor"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/security/skills/firebase-security-rules-auditor/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@firebase-security-rules-auditor"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/security/skills/firebase-security-rules-auditor/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for firebase/agent-skills Firestore security rules red-team audit. Triggers: firestore rules, firebase security rules, @firebase-security-rules-auditor."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [
+        "security-review"
+      ],
+      "subagentInfo": [
+        {
+          "name": "security-review",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "cloudflare-security-audit",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Exploitable code security audit",
+      "mode": "agent",
+      "keywords": [
+        "pen test code",
+        "exploitable vulnerability",
+        "security review codebase",
+        "cloudflare audit"
+      ],
+      "phrases": [
+        "audit codebase security",
+        "find security bugs in code"
+      ],
+      "tags": [
+        "@cloudflare-security-audit"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/security/skills/cloudflare-security-audit/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@cloudflare-security-audit"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/security/skills/cloudflare-security-audit/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for cloudflare/security-audit-skill — exploitable codebase security review. Triggers: cloudflare security audit, pen test code, @cloudflare-security-audit."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [
+        "security-review"
+      ],
+      "subagentInfo": [
+        {
+          "name": "security-review",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": "Cloudflare skill; broad library -> cybersecurity route"
+    },
+    {
+      "id": "devsecops-expert",
+      "kind": "route",
+      "owner": "hub",
+      "label": "DevSecOps / secure CI/CD",
+      "mode": "agent",
+      "keywords": [
+        "devsecops",
+        "secure pipeline",
+        "sast",
+        "dast",
+        "container scan",
+        "slsa",
+        "supply chain security"
+      ],
+      "phrases": [
+        "secure ci cd",
+        "security gates pipeline",
+        "devsecops expert"
+      ],
+      "tags": [
+        "@devsecops-expert"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/security/skills/devsecops-expert/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@devsecops-expert"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/security/skills/devsecops-expert/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for martinholovsky devsecops-expert — secure CI/CD, SAST/DAST, container and supply-chain gates. Triggers: devsecops, secure pipeline, @devsecops-expert."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [
+        "security-review",
+        "ci-investigator"
+      ],
+      "subagentInfo": [
+        {
+          "name": "security-review",
+          "file": null,
+          "description": null
+        },
+        {
+          "name": "ci-investigator",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "secret-scanning",
+      "kind": "route",
+      "owner": "hub",
+      "label": "GitHub secret scanning",
+      "mode": "agent",
+      "keywords": [
+        "secret scanning",
+        "secrets scan",
+        "push protection",
+        "leaked secret",
+        "custom secret pattern",
+        "blocked push secret"
+      ],
+      "phrases": [
+        "secret scanning",
+        "secrets scan",
+        "enable secret scanning",
+        "github push protection",
+        "triage secret alert"
+      ],
+      "tags": [
+        "@secret-scanning"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/security/skills/secret-scanning/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@secret-scanning"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/security/skills/secret-scanning/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for GitHub secret scanning — push protection, custom patterns, alert remediation. Triggers: secret scanning, gitleaks, leaked secrets, @secret-scanning."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "GitHub config; pre-commit hub scan -> security-audit commands"
+    },
+    {
+      "id": "deploy-vercel",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Deploy / Vercel",
+      "mode": "agent",
+      "keywords": [
+        "deploy",
+        "vercel",
+        "preview url",
+        "production promote"
+      ],
+      "phrases": [],
+      "tags": [],
+      "utterances": [
+        "выложи сайт чтобы он стал доступен людям",
+        "обнови рабочую версию проекта",
+        "подготовь и запусти публикацию",
+        "проверь почему сайт не выкладывается",
+        "проверь почему проект не публикуется в production"
+      ],
+      "actions": [
+        "вылож",
+        "опубли",
+        "запуст",
+        "обнов",
+        "deploy"
+      ],
+      "objects": [
+        "сайт",
+        "рабочая версия",
+        "публикац",
+        "версия"
+      ],
+      "contexts": [
+        "людям",
+        "production",
+        "в прод",
+        "продакшн",
+        "доступен"
+      ],
+      "antiExamples": [
+        "не публикуй",
+        "только план деплоя"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "high-risk",
+      "requiredActions": [
+        "deployment_confirmation"
+      ],
+      "prerequisites": {
+        "skills": [],
+        "mcps": [
+          "plugin-vercel-vercel"
+        ]
+      },
+      "cost": "agent",
+      "risk": "high",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "plugin-vercel-vercel",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [
+        "deployment-expert"
+      ],
+      "subagentInfo": [
+        {
+          "name": "deployment-expert",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "supabase-db",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Supabase / database",
+      "mode": "agent",
+      "keywords": [
+        "supabase",
+        "postgres",
+        "rls",
+        "migration"
+      ],
+      "phrases": [],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": [
+          "plugin-supabase-supabase"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [
+        {
+          "name": "plugin-supabase-supabase",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "hub-refresh",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Hub refresh / taxonomy",
+      "mode": "agent",
+      "keywords": [
+        "refresh hub",
+        "system refresh",
+        "taxonomy",
+        "foundation",
+        "p2 refresh"
+      ],
+      "phrases": [
+        "cursor-system-refresh",
+        "hub supply"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": "rules/system-taxonomy.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/cursor-system-refresh.cmd",
+        "commands/foundation-refresh.md",
+        "commands/p2-refresh.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "prompt-coach",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Prompt engineering lesson",
+      "mode": "ask",
+      "keywords": [
+        "урок промта",
+        "prompt lesson",
+        "prompt engineering",
+        "как писать промт",
+        "prompt coach"
+      ],
+      "phrases": [
+        "/prompt-lesson",
+        "prompt-coach-status",
+        "мой prompt engineering"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/prompt-engineering-coach/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/prompt-engineering-coach/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Параллельное обучение prompt engineering: захват промтов, mini-score 7/10, brief-уроки, Notion publish (с approval), monthly cheatsheet, autopilot contract. Notion: 📚Мой promt-engineering. Триггеры: урок промта, /prompt-lesson."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "explain-only",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Explain / no edits",
+      "mode": "ask",
+      "keywords": [
+        "объясни",
+        "что такое",
+        "как работает",
+        "расскажи",
+        "explain"
+      ],
+      "phrases": [
+        "what is",
+        "how does"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "repo-intake",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Repository drop-in analysis",
+      "mode": "agent",
+      "keywords": [
+        "репозитор",
+        "repository",
+        "github.com",
+        "gitlab.com",
+        ".zip"
+      ],
+      "phrases": [
+        "/repo",
+        "разбери репо",
+        "этот репозиторий"
+      ],
+      "tags": [
+        "@repo"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/repo-intake/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@repo"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/repo-intake/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Auto-analyze dropped repos (GitHub URL, zip, local path). Scout, classify, propose 3 actions — user picks. No repeated \"what to do with repo\" questions. Triggers: github.com link, @path to repo, .zip, \"репозиторий\", /repo."
+        }
+      ],
+      "rule": "rules/repo-intake.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/repo.md"
+      ],
+      "note": null
+    },
+    {
+      "id": "site-compliance-audit",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Site legal / docs / licenses gap scan",
+      "mode": "agent",
+      "keywords": [
+        "юридический аудит",
+        "юрдокумент",
+        "политик конфиденциальности",
+        "privacy policy",
+        "cookie banner",
+        "cookie policy",
+        "imprint",
+        "impressum",
+        "ПДн",
+        "law 195",
+        "закон 195",
+        "лицензии шрифт",
+        "license registry",
+        "site-compliance",
+        "compliance pour",
+        "legal pages",
+        "oss-review",
+        "license-compliance",
+        "gdpr-ccpa",
+        "openrouter dpa"
+      ],
+      "phrases": [
+        "юридический аудит сайта",
+        "перепроверь юридическое",
+        "проверь лицензии сайта",
+        "legal audit website",
+        "gap scan legal",
+        "залей юрдокументы",
+        "site compliance audit"
+      ],
+      "tags": [
+        "@site-compliance",
+        "/site-compliance"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/seo-geo-aio/skills/site-compliance-audit/SKILL.md",
+          "~/.agents/skills/gdpr-ccpa-privacy-auditor/SKILL.md",
+          "~/.agents/skills/license-compliance-auditor/SKILL.md",
+          "~/.agents/skills/oss-review/SKILL.md",
+          "~/.agents/skills/wcag-accessibility-audit/SKILL.md"
+        ],
+        "mcps": [
+          "plugin-exa-exa"
+        ]
+      },
+      "cost": "tool",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@site-compliance",
+          "/site-compliance"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/seo-geo-aio/skills/site-compliance-audit/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Full website legal/docs/licenses gap scan (privacy vs processors, cookies, imprint, fonts/JS licenses, GDPR/Law 195, AI data flows). Use when building or re-checking a client site, legal pages, cookie banner, ПДн, imprint, license registry, юридический аудит сайта, compliance pour. Not a SEO ranking audit."
+        },
+        {
+          "path": "~/.agents/skills/gdpr-ccpa-privacy-auditor/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Audits web applications to ensure declared privacy policies match actual technical data collection practices. Use to identify discrepancies in cookie usage, tracking scripts, and user data handling."
+        },
+        {
+          "path": "~/.agents/skills/license-compliance-auditor/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Scans project dependencies and verifies licenses against a whitelist of approved open-source licenses. Use to ensure legal compliance in software projects and prevent the introduction of restricted licenses."
+        },
+        {
+          "path": "~/.agents/skills/oss-review/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": ">"
+        },
+        {
+          "path": "~/.agents/skills/wcag-accessibility-audit/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Comprehensive web accessibility audit using WCAG 2.1/2.2 guidelines. Evaluate compliance across 4 POUR principles (Perceivable, Operable, Understandable, Robust) with A, AA, AAA conformance levels."
+        }
+      ],
+      "rule": "blocks/security/rules/site-compliance-audit.mdc",
+      "mcps": [
+        {
+          "name": "plugin-exa-exa",
+          "descriptorAvailable": true,
+          "profile": null,
+          "owner": null
+        }
+      ],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/site-compliance.md"
+      ],
+      "note": "Primary orchestrator. Supporting catalog skills in skills[]. Live-refetch official sources every run. Not SEO. Default profile md-eu."
+    },
+    {
+      "id": "find-skills",
+      "kind": "route",
+      "owner": "hub",
+      "label": "skills.sh catalog — find / gap-check / install",
+      "mode": "agent",
+      "keywords": [
+        "find skill",
+        "skills.sh",
+        "npx skills",
+        "skill catalog",
+        "find-skills",
+        "найди скилл",
+        "установи skill",
+        "каталог skills"
+      ],
+      "phrases": [
+        "find a skill for",
+        "is there a skill",
+        "skills.sh search",
+        "npx skills find",
+        "каких скиллов не хватает",
+        "найди скилл",
+        "skills.sh"
+      ],
+      "tags": [
+        "@find-skills"
+      ],
+      "utterances": [
+        "найди готовый навык для этой задачи",
+        "может уже есть инструмент который это умеет",
+        "поищи подходящий скилл",
+        "не пиши с нуля если есть готовое"
+      ],
+      "actions": [
+        "найд",
+        "поищ",
+        "подбер"
+      ],
+      "objects": [
+        "навык",
+        "скилл",
+        "инструмент",
+        "готов"
+      ],
+      "contexts": [
+        "уже есть",
+        "не с нуля",
+        "подходящ"
+      ],
+      "antiExamples": [
+        "найди файл в проекте"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "discovery",
+      "requiredActions": [
+        "find_skill"
+      ],
+      "prerequisites": {
+        "skills": [
+          "skills/find-skills/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@find-skills"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/find-skills/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub wrapper for skills.sh / vercel-labs find-skills. Gap-check on Plan and Phase 0: hub stack + candidates from npx skills find → Ask once → install. Prefer high installs; Design/UI topic allowed below threshold. Triggers: find skill, skills.sh, npx skills, skill catalog, @find-skills."
+        }
+      ],
+      "rule": "rules/find-skills.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/find-skills.ps1",
+        "commands/find-skills-test.ps1"
+      ],
+      "note": "Gap-check mandatory on Plan/Phase0. Ask once before install. Prefer high installs; Design/UI exception."
+    },
+    {
+      "id": "awesome-prompts",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Prompt template match + adapt",
+      "mode": "agent",
+      "keywords": [
+        "улучши промт",
+        "prompt template",
+        "act as",
+        "awesome-prompts",
+        "шаблон промта"
+      ],
+      "phrases": [
+        "improve my prompt",
+        "match prompt",
+        "prompt library",
+        "как написать промт"
+      ],
+      "tags": [
+        "@awesome-prompts"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/awesome-prompts/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@awesome-prompts"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/awesome-prompts/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Match and adapt user prompts using local index from f/awesome-chatgpt-prompts (prompts.chat). Use when the user writes a vague or short prompt and a proven template would help. Does NOT load the full repo into context — local index + optional prompts.chat MCP fallback. Triggers: улучши промт, prompt template, act as, @awesome-prompts."
+        }
+      ],
+      "rule": "rules/awesome-prompts.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/awesome-prompts-match.ps1",
+        "commands/build-awesome-prompts-index.ps1"
+      ],
+      "note": "user-prompts.chat parked; mcp-profile.ps1 -Name full then Reload"
+    },
+    {
+      "id": "llm-council",
+      "kind": "route",
+      "owner": "hub",
+      "label": "LLM Council — multi-perspective task discussion",
+      "mode": "plan",
+      "keywords": [
+        "council",
+        "совет моделей",
+        "несколько мнений",
+        "llm-council",
+        "cross-review"
+      ],
+      "phrases": [
+        "llm council",
+        "обсудим задачу",
+        "совет llm",
+        "rank opinions"
+      ],
+      "tags": [],
+      "utterances": [
+        "пусть несколько умных агентов поспорят",
+        "собери разные мнения и выбери лучшее",
+        "собери независимые мнения с разных сторон и дай общий вердикт",
+        "хочу независимый взгляд с нескольких сторон",
+        "сравните решения и вынесите общий вердикт"
+      ],
+      "actions": [
+        "поспор",
+        "обсуд",
+        "сравн",
+        "оцен"
+      ],
+      "objects": [
+        "агент",
+        "модел",
+        "мнен",
+        "вариант",
+        "решен"
+      ],
+      "contexts": [
+        "несколько",
+        "разные стороны",
+        "общий вердикт",
+        "независим"
+      ],
+      "antiExamples": [
+        "дай один быстрый ответ",
+        "решения на рынке"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "tradeoff",
+      "requiredActions": [
+        "llm_council"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/dev-os/skills/llm-council/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/dev-os/skills/llm-council/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Ephemeral three-stage review for consequential architecture and trade-offs: independent opinions, anonymized cross-review, chairman synthesis. Maximum three workers, no nested spawning, no automatic implementation."
+        }
+      ],
+      "rule": "rules/llm-council.mdc",
+      "mcps": [],
+      "subagents": [
+        "generalPurpose"
+      ],
+      "subagentInfo": [
+        {
+          "name": "generalPurpose",
+          "file": null,
+          "description": null
+        }
+      ],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "ecosystem-architect",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Ecosystem Architect (hub governance)",
+      "mode": "agent",
+      "keywords": [
+        "ecosystem architect",
+        "governance",
+        "quarantine",
+        "hub architecture",
+        "taxonomy skills"
+      ],
+      "phrases": [
+        "@ecosystem-architect",
+        "/ecosystem-architect",
+        "architect экосистем"
+      ],
+      "tags": [
+        "@ecosystem-architect"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "skills/ecosystem-architect/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "agent",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@ecosystem-architect"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "skills/ecosystem-architect/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Hub ecosystem governance — architecture drift, skill taxonomy, quarantine, MCP profiles, registry/graph health, safe cache cleanup, tech research. Triggers: @ecosystem-architect, /ecosystem-architect, governance, quarantine, hub architecture, skill cleanup routing."
+        }
+      ],
+      "rule": null,
+      "mcps": [],
+      "subagents": [
+        "ecosystem-architect"
+      ],
+      "subagentInfo": [
+        {
+          "name": "ecosystem-architect",
+          "file": "agents/ecosystem-architect.md",
+          "description": "Sole permanent ecosystem governance agent. Watches hub architecture, skills taxonomy, quarantine, MCP profiles, graph/registry health, cache safety, and external tech research. Not a project Squad worker. Use for hub governance, /ecosystem-architect, architecture drift, skill routing cleanup."
+        }
+      ],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "ecosystem-audit",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Hub ecosystem audit + quizzes",
+      "mode": "agent",
+      "keywords": [
+        "аудит экосистем",
+        "ecosystem audit",
+        "issuess-index",
+        "quiz-ingest"
+      ],
+      "phrases": [
+        "ecosystem-audit",
+        "hub audit",
+        "квиз профиль"
+      ],
+      "tags": [],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [],
+      "rule": null,
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [
+        "commands/quiz-ingest.ps1"
+      ],
+      "note": null
+    },
+    {
+      "id": "architecture-plan",
+      "kind": "route",
+      "owner": "hub",
+      "label": "Architecture / trade-offs",
+      "mode": "plan",
+      "keywords": [
+        "архитектур",
+        "trade-off",
+        "сравни redis",
+        "vs postgres",
+        "спроектируй"
+      ],
+      "phrases": [],
+      "tags": [],
+      "utterances": [
+        "продумай как все будет связано",
+        "разложи систему на понятные части",
+        "определи из каких блоков это должно состоять",
+        "составь нормальную структуру решения",
+        "сначала реши как это правильно устроить",
+        "design how all system parts should connect"
+      ],
+      "actions": [
+        "продум",
+        "спроект",
+        "определ",
+        "разлож",
+        "устро"
+      ],
+      "objects": [
+        "архитект",
+        "структур",
+        "част",
+        "блок",
+        "связ"
+      ],
+      "contexts": [
+        "сначала",
+        "целиком",
+        "правильно",
+        "до реализац"
+      ],
+      "antiExamples": [
+        "поменяй один текст",
+        "исправь опечатку"
+      ],
+      "allowNegatedActions": false,
+      "defaultStage": "systemic",
+      "requiredActions": [
+        "gitnexus_freshness",
+        "architecture_options",
+        "architecture_plan",
+        "wbs"
+      ],
+      "prerequisites": {
+        "skills": [
+          "blocks/dev-os/skills/dev-os/decision/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": []
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/dev-os/skills/dev-os/decision/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Dev OS decision framework — Research → Reason → Design candidates → Execute. Dynamic subagent emergence checklist, security override, decision log format. Use when @dev-os decide, architecture choice, or after comparative analysis."
+        }
+      ],
+      "rule": "rules/mode-routing.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": "Parent owns project architecture. Use ecosystem-architect only for hub governance; no archived Squad."
+    },
+    {
+      "id": "awesome-design-md",
+      "kind": "route",
+      "owner": "design",
+      "label": "Awesome Design.md library",
+      "mode": "agent",
+      "keywords": [
+        "awesome-design-md",
+        "design.md library",
+        "awesome design.md"
+      ],
+      "phrases": [],
+      "tags": [
+        "@awesome-design-md"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/awesome-design-md/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@awesome-design-md"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/awesome-design-md/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Applies curated Google Stitch–format DESIGN.md design systems from real product sites (Stripe, Linear, Vercel, Apple, etc.). Use when the user wants UI that looks like a known brand, mentions DESIGN.md, design tokens, design system from a website, \"build like X\", pixel-perfect brand styling, or tags @awesome-design-md, @design-md, getdesign.md. Complements clone-website (layout copy) and huashu-design (original HTML prototypes)—this skill supplies the visual spec, not page structure extraction."
+        }
+      ],
+      "rule": "rules/awesome-design-md.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "kind": "route",
+      "owner": "design",
+      "label": "UI/UX Pro Max",
+      "mode": "agent",
+      "keywords": [
+        "ui-ux-pro-max",
+        "ui ux pro max",
+        "pro max ui"
+      ],
+      "phrases": [],
+      "tags": [
+        "@ui-ux-pro-max"
+      ],
+      "utterances": [],
+      "actions": [],
+      "objects": [],
+      "contexts": [],
+      "antiExamples": [],
+      "allowNegatedActions": false,
+      "defaultStage": "clear-small",
+      "requiredActions": [],
+      "prerequisites": {
+        "skills": [
+          "blocks/design/skills/ui-ux-pro-max/SKILL.md"
+        ],
+        "mcps": []
+      },
+      "cost": "local",
+      "risk": "normal",
+      "activation": {
+        "localConfidence": 0.58,
+        "explicitTags": [
+          "@ui-ux-pro-max"
+        ]
+      },
+      "outputs": [
+        "route",
+        "required_actions",
+        "receipt"
+      ],
+      "reportContract": [
+        "system",
+        "why",
+        "evidence",
+        "status"
+      ],
+      "skills": [
+        {
+          "path": "blocks/design/skills/ui-ux-pro-max/SKILL.md",
+          "exists": true,
+          "excluded": false,
+          "description": "Comprehensive UI/UX design intelligence for web and mobile: 67 styles, 96+ color palettes, 57 font pairings, 99 UX guidelines, 25 chart types, 13 stacks (Next.js, React, Vue, Tailwind, shadcn/ui, etc.). Use when designing or building landing pages, dashboards, components, design systems, choosing style/color/typography, reviewing UI for UX/a11y, or user tags @ui-ux, @ui-ux-pro-max, glassmorphism, bento grid, design system. Run search.py for data-backed recommendations."
+        }
+      ],
+      "rule": "rules/ui-ux-pro-max.mdc",
+      "mcps": [],
+      "subagents": [],
+      "subagentInfo": [],
+      "commands": [],
+      "note": null
+    }
+  ],
+  "alwaysOn": [
+    {
+      "id": "gitnexus",
+      "kind": "always-on",
+      "gate": "code_or_architecture",
+      "requiredActions": [
+        "freshness_once",
+        "impact_before_symbol_edit",
+        "detect_changes_after"
+      ]
+    },
+    {
+      "id": "memory",
+      "kind": "always-on",
+      "gate": "past_decisions",
+      "requiredActions": [
+        "auto_read",
+        "confirm_before_write"
+      ]
+    },
+    {
+      "id": "aikido",
+      "kind": "always-on",
+      "gate": "first_party_source_changed",
+      "requiredActions": [
+        "scan_before_completion"
+      ]
+    },
+    {
+      "id": "markitdown",
+      "kind": "always-on",
+      "gate": "document_input",
+      "requiredActions": [
+        "convert_before_read"
+      ]
+    },
+    {
+      "id": "rtk",
+      "kind": "always-on",
+      "gate": "shell_use",
+      "requiredActions": [
+        "compress_shell_output"
+      ]
+    }
+  ],
+  "coreSkills": [
+    "blocks/agency/skills/agency-agents/SKILL.md",
+    "blocks/agency/skills/content-strategy/SKILL.md",
+    "blocks/agency/skills/copywriting/SKILL.md",
+    "blocks/agency/skills/marketing-ideas/SKILL.md",
+    "blocks/agency/skills/marketing-psychology/SKILL.md",
+    "blocks/design/skills/21st-design/SKILL.md",
+    "blocks/design/skills/awesome-design-md/SKILL.md",
+    "blocks/design/skills/clone-website/SKILL.md",
+    "blocks/design/skills/design-stack/SKILL.md",
+    "blocks/design/skills/design-taste-frontend/SKILL.md",
+    "blocks/design/skills/impeccable/SKILL.md",
+    "blocks/design/skills/open-design/SKILL.md",
+    "blocks/design/skills/stitch-shadcn-ui/SKILL.md",
+    "blocks/design/skills/ui-ux-pro-max/SKILL.md",
+    "blocks/design/skills/vercel-composition-patterns/SKILL.md",
+    "blocks/design/skills/vercel-react-best-practices/SKILL.md",
+    "blocks/dev-os/skills/dev-os/SKILL.md",
+    "blocks/dev-os/skills/grill-rounds/SKILL.md",
+    "blocks/dev-os/skills/llm-council/SKILL.md",
+    "blocks/dev-os/skills/project-context/SKILL.md",
+    "blocks/dev-os/skills/wayfinder/SKILL.md",
+    "blocks/integrations/skills/n8n-templates/SKILL.md",
+    "blocks/integrations/skills/n8n-workflow-architect/SKILL.md",
+    "blocks/integrations/skills/n8n-workflow-automation/SKILL.md",
+    "blocks/integrations/skills/n8n-workflow/SKILL.md",
+    "blocks/integrations/skills/notion-tasks/SKILL.md",
+    "blocks/integrations/skills/notion-workspace/SKILL.md",
+    "blocks/media/skills/production-studio/SKILL.md",
+    "blocks/media/skills/remotion/SKILL.md",
+    "blocks/media/skills/video-learning/SKILL.md",
+    "blocks/qa/skills/playwright-visual-testing/SKILL.md",
+    "blocks/qa/skills/playwright/SKILL.md",
+    "blocks/qa/skills/qa-start/SKILL.md",
+    "blocks/security/skills/cloudflare-security-audit/SKILL.md",
+    "blocks/security/skills/cybersecurity/SKILL.md",
+    "blocks/security/skills/devsecops-expert/SKILL.md",
+    "blocks/security/skills/firebase-security-rules-auditor/SKILL.md",
+    "blocks/security/skills/secret-scanning/SKILL.md",
+    "blocks/security/skills/security-hub/SKILL.md",
+    "blocks/seo-geo-aio/skills/ai-search-optimization/SKILL.md",
+    "blocks/seo-geo-aio/skills/core-web-vitals/SKILL.md",
+    "blocks/seo-geo-aio/skills/entity-seo/SKILL.md",
+    "blocks/seo-geo-aio/skills/opc-seo-geo/SKILL.md",
+    "blocks/seo-geo-aio/skills/programmatic-seo/SKILL.md",
+    "blocks/seo-geo-aio/skills/seo-audit/SKILL.md",
+    "blocks/seo-geo-aio/skills/seo-geo/SKILL.md",
+    "blocks/seo-geo-aio/skills/site-compliance-audit/SKILL.md",
+    "blocks/seo-geo-aio/skills/web-quality-audit/SKILL.md",
+    "skills/awesome-prompts/SKILL.md",
+    "skills/brainstorming/SKILL.md",
+    "skills/caveman/SKILL.md",
+    "skills/code-review-pro/SKILL.md",
+    "skills/ecosystem-architect/SKILL.md",
+    "skills/find-skills/SKILL.md",
+    "skills/frontend-design/SKILL.md",
+    "skills/graphify/SKILL.md",
+    "skills/huashu-design/SKILL.md",
+    "skills/markitdown/SKILL.md",
+    "skills/openrouter-free/SKILL.md",
+    "skills/ponytail/SKILL.md",
+    "skills/pr-review/SKILL.md",
+    "skills/prompt-engineering-coach/SKILL.md",
+    "skills/repo-intake/SKILL.md",
+    "skills/shadcn/SKILL.md",
+    "skills/task-decomposition/SKILL.md",
+    "skills/web-design-guidelines/SKILL.md"
+  ],
+  "unroutedSkills": [
+    {
+      "path": "skills/graphify/SKILL.md",
+      "reason": "Separate graph product; GitNexus remains the code-graph default."
+    },
+    {
+      "path": "skills/caveman/SKILL.md",
+      "reason": "Always-on response style, not a task capability."
+    },
+    {
+      "path": "skills/huashu-design/SKILL.md",
+      "reason": "Legacy bridge covered by blocks/design/skills/open-design."
+    }
+  ],
+  "inactiveRoutes": [
+    {
+      "id": "project-squad",
+      "status": "archived"
+    },
+    {
+      "id": "apify-crawl",
+      "status": "unrouted"
+    },
+    {
+      "id": "babyagi",
+      "status": "unrouted"
+    },
+    {
+      "id": "crew-ai",
+      "status": "unrouted"
+    }
+  ],
+  "drift": {
+    "warnings": []
+  }
+}
