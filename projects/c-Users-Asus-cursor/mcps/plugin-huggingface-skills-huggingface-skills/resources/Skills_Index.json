@@ -1,6 +1,0 @@
-{
-  "uri": "skill://index.json",
-  "name": "Skills Index",
-  "description": "Catalog of skills exposed by this server (SEP-2640 index).",
-  "mimeType": "application/json"
-}

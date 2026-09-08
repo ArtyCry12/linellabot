@@ -1,6 +1,0 @@
-{
-  "uri": "gitnexus://setup",
-  "name": "GitNexus Setup Content",
-  "description": "Returns AGENTS.md content for all indexed repos. Useful for setup/onboarding.",
-  "mimeType": "text/markdown"
-}

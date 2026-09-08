@@ -1,6 +1,0 @@
-{
-  "uri": "clerk://sdk/use-session",
-  "name": "useSession hook",
-  "description": "Access the current session object with full session details",
-  "mimeType": "text/markdown"
-}

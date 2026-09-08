@@ -1,6 +1,0 @@
-{
-  "uri": "clerk://sdk/use-sign-in",
-  "name": "useSignIn hook",
-  "description": "Build custom sign-in flows with full control",
-  "mimeType": "text/markdown"
-}

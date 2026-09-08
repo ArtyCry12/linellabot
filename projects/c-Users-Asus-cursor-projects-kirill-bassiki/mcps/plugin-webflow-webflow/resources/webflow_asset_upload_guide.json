@@ -1,6 +1,0 @@
-{
-  "uri": "webflow://guides/asset-upload",
-  "name": "webflow_asset_upload_guide",
-  "description": "How to upload the actual file bytes to Amazon S3 after calling data_assets_tool > create_asset. Includes Node, Python, and curl examples.",
-  "mimeType": "text/markdown"
-}

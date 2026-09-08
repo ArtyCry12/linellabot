@@ -1,6 +1,0 @@
-{
-  "uri": "ui://core/init/mcp-app.html",
-  "name": "Init UI",
-  "description": "Visual interface for Firebase Init",
-  "mimeType": "text/html;profile=mcp-app"
-}

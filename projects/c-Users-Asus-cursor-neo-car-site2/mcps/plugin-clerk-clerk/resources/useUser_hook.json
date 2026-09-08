@@ -1,6 +1,0 @@
-{
-  "uri": "clerk://sdk/use-user",
-  "name": "useUser hook",
-  "description": "Access the current user object and loading state",
-  "mimeType": "text/markdown"
-}

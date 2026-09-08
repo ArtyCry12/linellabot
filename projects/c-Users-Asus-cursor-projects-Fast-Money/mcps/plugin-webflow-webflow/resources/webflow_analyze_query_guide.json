@@ -1,6 +1,0 @@
-{
-  "uri": "webflow://guides/analyze-query",
-  "name": "webflow_analyze_query_guide",
-  "description": "Guidance for constructing data_analyze_tool queries: how to resolve site IDs, date ranges, page paths, CMS collection/item identifiers, and dimension filter values from other tools. Same content as data_analyze_tool > get_query_guide.",
-  "mimeType": "text/markdown"
-}

@@ -1,6 +1,0 @@
-{
-  "uri": "ui://core/update_environment/mcp-app.html",
-  "name": "Update Environment UI",
-  "description": "Visual interface for selecting active Firebase project",
-  "mimeType": "text/html;profile=mcp-app"
-}

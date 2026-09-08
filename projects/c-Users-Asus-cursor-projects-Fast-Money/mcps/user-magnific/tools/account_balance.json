@@ -1,8 +1,0 @@
-{
-  "name": "account_balance",
-  "description": "User plan + credits. Check before paid generations. Returns plan.{tier,productName,isUnlimitedMode,unlimitedAppliesHere}, credits.{available,totalPlan,spent,hasExtraCredits}. No history.",
-  "arguments": {
-    "type": "object",
-    "properties": {}
-  }
-}

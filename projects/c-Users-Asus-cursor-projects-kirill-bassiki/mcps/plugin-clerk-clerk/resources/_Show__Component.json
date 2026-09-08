@@ -1,6 +1,0 @@
-{
-  "uri": "clerk://sdk/show-component",
-  "name": "<Show> Component",
-  "description": "Conditionally render content based on auth state, roles, or permissions",
-  "mimeType": "text/markdown"
-}

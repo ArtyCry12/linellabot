@@ -1,6 +1,0 @@
-{
-  "uri": "ui://core/deploy/mcp-app.html",
-  "name": "Deploy UI",
-  "description": "Visual interface for Firebase Deploy",
-  "mimeType": "text/html;profile=mcp-app"
-}

@@ -1,6 +1,0 @@
-{
-  "uri": "clerk://sdk/use-clerk",
-  "name": "useClerk hook",
-  "description": "Access the Clerk client instance for advanced operations",
-  "mimeType": "text/markdown"
-}

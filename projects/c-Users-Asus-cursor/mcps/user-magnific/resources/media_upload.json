@@ -1,6 +1,0 @@
-{
-  "uri": "ui://creations/upload",
-  "name": "media_upload",
-  "description": "Renders an inline dropzone as an MCP App so the user can upload local images, videos, or audio.",
-  "mimeType": "text/html;profile=mcp-app"
-}

@@ -1,6 +1,0 @@
-{
-  "uri": "webflow://guides/font-upload",
-  "name": "webflow_font_upload_guide",
-  "description": "How to upload the actual font file bytes to Amazon S3 after calling data_fonts_tool > create_font or replace_font_file. Includes Node, Python, and curl examples.",
-  "mimeType": "text/markdown"
-}

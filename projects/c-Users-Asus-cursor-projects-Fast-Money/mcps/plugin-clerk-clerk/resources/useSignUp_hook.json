@@ -1,6 +1,0 @@
-{
-  "uri": "clerk://sdk/use-sign-up",
-  "name": "useSignUp hook",
-  "description": "Build custom sign-up flows with full control",
-  "mimeType": "text/markdown"
-}

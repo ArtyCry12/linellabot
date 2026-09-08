@@ -1,6 +1,0 @@
-{
-  "uri": "gws://safety/policies",
-  "name": "Active Safety Policies",
-  "description": "Current safety policies controlling what operations are allowed, blocked, or audited",
-  "mimeType": "application/json"
-}

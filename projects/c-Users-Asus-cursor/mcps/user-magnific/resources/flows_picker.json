@@ -1,6 +1,0 @@
-{
-  "uri": "ui://flows/picker",
-  "name": "flows_picker",
-  "description": "Renders a grid of flows inline as an MCP App so the user can pick one to run.",
-  "mimeType": "text/html;profile=mcp-app"
-}

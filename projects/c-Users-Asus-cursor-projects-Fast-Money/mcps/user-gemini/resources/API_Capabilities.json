@@ -1,6 +1,0 @@
-{
-  "uri": "gemini://capabilities",
-  "name": "API Capabilities",
-  "description": "Detailed information about Gemini API capabilities",
-  "mimeType": "text/markdown"
-}

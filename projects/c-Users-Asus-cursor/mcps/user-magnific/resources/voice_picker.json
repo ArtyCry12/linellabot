@@ -1,6 +1,0 @@
-{
-  "uri": "ui://audio/voice-picker",
-  "name": "voice_picker",
-  "description": "Renders the catalog of text-to-speech voices inline as an MCP App. The user clicks a voice to drive the next audio_tts call.",
-  "mimeType": "text/html;profile=mcp-app"
-}

@@ -1,4 +1,0 @@
-{
-  "name": "debugging-detective",
-  "description": "A structured debugging assistant that helps you find root causes fast — ranks likely causes by probability, tells you exactly what to check to confirm, and explains the fix so you avoid repeating the same bug."
-}

@@ -1,6 +1,0 @@
-{
-  "uri": "ui://image/model-picker",
-  "name": "image_model_picker",
-  "description": "Renders the image-side AI model catalog inline as an MCP App. The user clicks a card to drive the next images_generate call.",
-  "mimeType": "text/html;profile=mcp-app"
-}

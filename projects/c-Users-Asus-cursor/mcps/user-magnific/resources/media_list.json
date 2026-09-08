@@ -1,6 +1,0 @@
-{
-  "uri": "ui://media/list",
-  "name": "media_list",
-  "description": "Filterable gallery of user creations with type filters, search, and pagination.",
-  "mimeType": "text/html;profile=mcp-app"
-}

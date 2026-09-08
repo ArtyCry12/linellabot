@@ -1,6 +1,0 @@
-{
-  "uri": "clerk://sdk/use-organization",
-  "name": "useOrganization hook",
-  "description": "Access the active organization and its members",
-  "mimeType": "text/markdown"
-}

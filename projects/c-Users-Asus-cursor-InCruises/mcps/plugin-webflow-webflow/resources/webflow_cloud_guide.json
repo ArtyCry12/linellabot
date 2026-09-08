@@ -1,6 +1,0 @@
-{
-  "uri": "webflow://guides/cloud",
-  "name": "webflow_cloud_guide",
-  "description": "Webflow Cloud setup and deployment guide. Read this resource when the user wants to create a new Webflow Cloud app or deploy a project for the first time. Returns step-by-step instructions for CLI setup, project initialization, and first deploy. Also covers how future deployments can be triggered via GitHub or MCP tools.",
-  "mimeType": "text/markdown"
-}

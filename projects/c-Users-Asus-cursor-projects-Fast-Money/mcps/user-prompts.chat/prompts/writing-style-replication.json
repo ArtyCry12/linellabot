@@ -1,4 +1,0 @@
-{
-  "name": "writing-style-replication",
-  "description": "This prompt guides an AI system to analyze a provided text sample for its stylistic characteristics and then create a topic-agnostic writing prompt. The AI will focus on key stylistic elements such as tone, vocabulary, sentence structure, and more, enabling it to replicate the identified style across different topics and contexts seamlessly."
-}

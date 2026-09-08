@@ -1,6 +1,0 @@
----
-pid: 17920
-cwd: |
-  C:\Users\Asus\.cursor\neo-car-site
----
-PS C:\Users\Asus\.cursor\neo-car-site>

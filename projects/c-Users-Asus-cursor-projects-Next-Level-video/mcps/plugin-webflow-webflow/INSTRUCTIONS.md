@@ -1,1 +1,0 @@
-Call webflow_guide_tool once to learn available Webflow MCP capabilities before using any other tools. Only call it once per session.

@@ -1,1 +1,0 @@
-Read the instructions resource completely for detailed usage instructions before answering any API-related questions.

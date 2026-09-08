@@ -1,6 +1,0 @@
-{
-  "uri": "projects://tree",
-  "name": "project_tree",
-  "description": "Project and folder tree for the media list picker. URI: projects://tree or projects://tree?parentReference=uuid",
-  "mimeType": "application/json"
-}

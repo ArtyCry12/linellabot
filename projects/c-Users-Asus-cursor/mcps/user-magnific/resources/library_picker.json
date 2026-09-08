@@ -1,6 +1,0 @@
-{
-  "uri": "ui://library/picker",
-  "name": "library_picker",
-  "description": "Renders the user's library (characters, styles, elements, locations) inline as an MCP App, grouped by ownership and team/project sharing, so the user can pick one to use in the next generation.",
-  "mimeType": "text/html;profile=mcp-app"
-}

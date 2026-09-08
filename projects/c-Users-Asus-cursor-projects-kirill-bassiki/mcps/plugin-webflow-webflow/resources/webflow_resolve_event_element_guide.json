@@ -1,6 +1,0 @@
-{
-  "uri": "webflow://guides/resolve-event-element",
-  "name": "webflow_resolve_event_element_guide",
-  "description": "Guidance for connecting get_top_events_report rows with the Webflow elements, component instances, and CMS content behind those events. Same content as data_analyze_tool > get_resolve_event_element_guide.",
-  "mimeType": "text/markdown"
-}

@@ -1,6 +1,0 @@
-{
-  "uri": "gws://config/services",
-  "name": "Available Services",
-  "description": "Google Workspace services and operations available through this server",
-  "mimeType": "application/json"
-}

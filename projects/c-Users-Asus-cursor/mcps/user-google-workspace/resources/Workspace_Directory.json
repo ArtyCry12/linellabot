@@ -1,6 +1,0 @@
-{
-  "uri": "gws://config/workspace",
-  "name": "Workspace Directory",
-  "description": "File I/O workspace directory status and path",
-  "mimeType": "application/json"
-}

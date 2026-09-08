@@ -1,4 +1,0 @@
-{
-  "name": "kp-prompting",
-  "description": "Build advanced prompts, task specs, verification criteria, and Claude Code setup using Andrej Karpathy's spec / verifier / environment method. Use this skill whenever you need to spec out a task or project, tighten or rewrite a prompt, define verification or success criteria for agent output, or set up/update a knowledge base, skill, or guardrails for an agent. "
-}
