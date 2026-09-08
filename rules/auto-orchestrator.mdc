@@ -13,7 +13,7 @@ Registry: `SYSTEM-REGISTRY.md`. Always-on: `00-agent-orchestrator.mdc`. Taxonomy
 
 ```
 User query
-  ├─ Session / project memory              → user-memory MCP + squad-memory
+  ├─ Session / project memory              → user-memory MCP via parent agent
   ├─ Taxonomy / hub refresh / new skill    → SYSTEM-TAXONOMY.md + foundation-refresh
   ├─ Notion pages / T3 cleanup              → notion-workspace skill + user-notion MCP
   ├─ Video / storyboard / LVM               → production-studio skill
@@ -82,7 +82,7 @@ Maximum three ephemeral agents; never restore Project Squad automatically.
 
 - **Memory:** contextual read via `user-memory`; propose durable write to Boss
   before mutating memory. Project Squad/squad-memory remain archived.
-- **Git commit:** `gitnexus_detect_changes()` if hub code symbols changed
+- **Git commit:** `detect_changes()` if hub code symbols changed
 - **Aikido:** scan first-party source changes before completion
 - **Receipt:** report only systems actually used and what evidence they added
 

@@ -1,7 +1,7 @@
 ---
 description: >-
   CrewAI patterns for marketing and production multi-agent pipelines in Cursor.
-  Maps crews to squad-growth and production-studio.
+  Maps crews to current domain skills and ephemeral agents.
 globs:
 alwaysApply: false
 ---
@@ -10,9 +10,9 @@ alwaysApply: false
 
 When user wants **marketing crew**, **production pipeline**, or **crewAI-style** multi-agent workflow:
 
-1. Read `skills/crew-ai/SKILL.md`
+1. Use `skills/_quarantine/crew-ai/SKILL.md` only after explicit Boss opt-in
 2. Run `commands/crew-plan.ps1` with `-Crew marketing` or `-Crew production`
-3. Execute tasks sequentially via mapped subagents (`squad-growth`, `squad-design`, `squad-qa`)
+3. Execute tasks sequentially via currently registered domain agents; never route to archived `agents/_archive/squad-*`
 4. **Never** auto-publish or deploy — crew gates require user approval
 
 Do not install Python `crewai` inside the hub workspace.

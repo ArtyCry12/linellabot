@@ -4563,7 +4563,7 @@
         {
           "name": "dev-os-research",
           "file": "agents/dev-os-research.md",
-          "description": "Dev OS research agent. Domain research sprints — Exa discovery, source extraction cards, domain findings merge, knowledge-map updates. Use for @dev-os research, Research Sprint 2+, corpus expansion. NOT workspace audit (use squad-scout)."
+          "description": "Dev OS research agent. Domain research sprints — Exa discovery, source extraction cards, domain findings merge, knowledge-map updates. Use for @dev-os research, Research Sprint 2+, corpus expansion. NOT workspace audit (use adversarial-hub-auditor)."
         }
       ],
       "commands": [

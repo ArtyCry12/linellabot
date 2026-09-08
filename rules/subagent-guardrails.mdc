@@ -1,13 +1,13 @@
 ---
 description: >-
   Subagent orchestration guardrails (REQ-032–038) — boss delegates, structured
-  handoffs, verification gates, conflict resolution. Load for Squad/multi-agent work.
+  handoffs, verification gates, conflict resolution. Load for multi-agent work.
 alwaysApply: false
 ---
 
 # Subagent guardrails (DEC-004 aligned)
 
-**Do not rebuild Squad roster.** These rules supplement `project-squad.mdc` and `agents/squad-*.md`.
+**Do not rebuild Project Squad.** It remains archived under `agents/_archive/`; use current ephemeral domain roles.
 
 ## REQ-032 — Known failure modes (awareness only)
 
@@ -22,7 +22,7 @@ alwaysApply: false
 
 Orchestrator (parent agent):
 
-- **MUST** delegate implementation to `squad-build`, `squad-design`, or domain subagents
+- **MUST** delegate substantial implementation to a currently registered domain subagent when delegation adds value
 - **MAY** edit hub config/docs/rules when that IS the task
 - **MUST NOT** write application code in the user's project while acting as orchestrator — spawn builder instead
 
@@ -44,9 +44,9 @@ No floating context from chat alone.
 
 ```
 User → Parent (orchestrator)
-         → squad-scout / squad-architect (plan)
-         → squad-build / squad-design (execute)
-         → squad-qa / squad-review (verify)
+         → current research / architecture role (plan)
+         → current domain implementation role (execute)
+         → current QA / review role (verify)
 ```
 
 Max **2** agency personas per session (existing policy). Flat 9-agent fan-out **forbidden** without architect layer.
@@ -55,7 +55,7 @@ Max **2** agency personas per session (existing policy). Flat 9-agent fan-out **
 
 Parent **must not** mark DONE until:
 
-1. `squad-qa` or equivalent checks pass, OR
+1. Project checks or a current QA-equivalent review pass, OR
 2. User explicitly waives verification
 
 Failed QA → back to builder with handoff delta, not user.
@@ -68,9 +68,9 @@ Failed QA → back to builder with handoff delta, not user.
 | SEO vs speed | Document tradeoff; user only if product decision |
 | security vs ship | security-review blocks ship |
 
-## REQ-038 — squad-memory
+## REQ-038 — memory
 
-Record **why** (decision + rejected alternatives), not only **what**. Trigger `squad-memory` after substantive P2/P3 work.
+Record **why** (decision + rejected alternatives), not only **what**. Route durable memory through the parent and `user-memory`; never restore `squad-memory` automatically.
 
 ## Template
 

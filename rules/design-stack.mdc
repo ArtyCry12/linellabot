@@ -10,7 +10,7 @@ alwaysApply: false
 
 Load skill: `skills/design-stack/SKILL.md`  
 Manifest: `docs/knowledge-base/DESIGN-STACK-MANIFEST.md`  
-Squad routing: `agents/squad-design.md`
+Routing: current design skills and registered domain agents; never archived `agents/_archive/squad-*`.
 
 ## Full matrix (artifact → tool)
 
@@ -28,7 +28,7 @@ Squad routing: `agents/squad-design.md`
 | **Clone landing** | `skills/clone-website` + browser | Копия сайта |
 | **UX checklist** | `skills/ui-ux-pro-max` | Audit UX до handoff |
 | **DESIGN.md** | `skills/awesome-design-md` | Design system docs |
-| **Video motion** | `skills/remotion`, `skills/production-studio` | Motion/Reels |
+| **Video motion** | Remotion plugin + `blocks/media/skills/remotion`; storyboard → `blocks/media/skills/production-studio` | Motion-as-code / Reels |
 | **Copy** | humanizer | Клиентский RU текст |
 | **Personas (max 1)** | agency `@ui-designer` / `@brand-guardian` / `@whimsy-injector` | Глубина |
 

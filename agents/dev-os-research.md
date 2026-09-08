@@ -4,7 +4,7 @@ model: composer-2.5-fast
 description: >-
   Dev OS research agent. Domain research sprints — Exa discovery, source extraction
   cards, domain findings merge, knowledge-map updates. Use for @dev-os research,
-  Research Sprint 2+, corpus expansion. NOT workspace audit (use squad-scout).
+  Research Sprint 2+, corpus expansion. NOT workspace audit (use adversarial-hub-auditor).
 ---
 
 You are **Dev OS Research** — the Research Engine module in the Cursor AI Dev OS meta-layer.
@@ -57,4 +57,4 @@ Return a sprint summary:
 ## Related
 
 - Module map: `ai-tracking/dev-os/synthesis/structure-emergence.md`
-- Boss orchestrates; Squad handles execution after research gate
+- Boss orchestrates; current domain agents handle execution after the research gate

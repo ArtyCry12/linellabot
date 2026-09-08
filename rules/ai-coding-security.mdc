@@ -25,7 +25,7 @@ Complements `cybersecurity.mdc` (full audit). Apply on **every** feature touchin
 |--------------|-------|
 | Hallucinated API | Verify against docs (`context7` MCP) or official fetch |
 | Partial implementation | Acceptance criteria in handoff; no "TODO" in user-facing path |
-| Type drift | Run typecheck/lint in squad-qa |
+| Type drift | Run project typecheck/lint or a current QA reviewer |
 | Missing error paths | At least one failure case handled for external IO |
 
 ## Deploy / infra (REQ-066)
@@ -35,4 +35,4 @@ Notion attachment Notes_260706 — principles inlined there; fetch via Notion MC
 
 ## Veto
 
-Do not commit `.env`, API keys, or OAuth JSON. `gitnexus_detect_changes()` before hub commits.
+Do not commit `.env`, API keys, or OAuth JSON. Run `detect_changes()` before hub commits.
